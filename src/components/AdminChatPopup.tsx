@@ -234,11 +234,11 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
         style={{ backgroundColor: '#ffffff' }}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+        <div className="bg-gradient-to-r from-cyber-pink to-cyber-pink text-white p-4 rounded-t-lg flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="relative">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <ShieldCheckIcon className="h-6 w-6 text-red-500" />
+                <ShieldCheckIcon className="h-6 w-6 text-cyber-pink" />
               </div>
               <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
             </div>
@@ -318,9 +318,9 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                   order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
                   order.status === 'preparing' ? 'bg-purple-100 text-purple-800' :
-                  order.status === 'shipped' ? 'bg-orange-100 text-brand-primary800' :
+                  order.status === 'shipped' ? 'bg-brand-neutral-light text-brand-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :
-                  'bg-red-100 text-red-800'
+                  'bg-brand-neutral-light text-cyber-pink'
                 }`}>
                   {order.status === 'pending' ? 'Pendiente' :
                    order.status === 'confirmed' ? 'Confirmado' :
@@ -382,8 +382,8 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50" style={{ backgroundColor: '#f9fafb' }}>
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
+                    <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-cyber-pink" />
                     </div>
                     <h4 className="font-semibold text-gray-900 mb-2">Chat con cliente</h4>
                     <p className="text-sm text-gray-600">Comunícate directamente con {order.customerName}</p>
@@ -433,8 +433,8 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                             <div className="ml-2">
                               {message.read ? (
                                 <div className="flex space-x-1">
-                                  <CheckIcon className="h-3 w-3 text-red-500" />
-                                  <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
+                                  <CheckIcon className="h-3 w-3 text-cyber-pink" />
+                                  <CheckIcon className="h-3 w-3 text-cyber-pink -ml-1" />
                                 </div>
                               ) : (
                                 <CheckIcon className="h-3 w-3 text-gray-400" />
@@ -471,7 +471,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder={`Responder a ${order.customerName}...`}
-                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
                       rows={2}
                       disabled={loading}
                     />
@@ -479,7 +479,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   <button
                     onClick={sendMessage}
                     disabled={!newMessage.trim() || loading}
-                    className="bg-cyber-pink hover:bg-red-600 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-cyber-pink hover:bg-cyber-pink disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {loading ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -490,7 +490,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                 </div>
                 
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                  <span className="font-medium text-red-600">Modo Admin:</span> El cliente verá tus respuestas instantáneamente
+                  <span className="font-medium text-cyber-pink">Modo Admin:</span> El cliente verá tus respuestas instantáneamente
                 </p>
               </div>
             </div>

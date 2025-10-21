@@ -54,7 +54,7 @@ export default function UsuariosAdminPage() {
             </p>
             <button
               onClick={() => router.push('/admin')}
-              className="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition-colors"
+              className="bg-brand-primary text-white px-6 py-2 rounded-md hover:bg-brand-primary-hover transition-colors"
             >
               Volver al Panel Admin
             </button>
@@ -117,7 +117,7 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-red-100 text-red-800 border-red-200';
+      case 'admin': return 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light';
       case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
@@ -145,7 +145,7 @@ export default function UsuariosAdminPage() {
 
           {/* Administradores y Vendedores */}
           <div className="bg-white rounded-lg shadow overflow-hidden mb-8">
-            <div className="px-6 py-4 bg-red-50 border-b border-red-200">
+            <div className="px-6 py-4 bg-brand-neutral-light border-b border-brand-neutral-light">
               <h3 className="text-lg font-medium text-red-900">👑 Administradores y Vendedores</h3>
               <p className="text-sm text-red-700">Personal autorizado con permisos especiales</p>
             </div>
@@ -224,7 +224,7 @@ export default function UsuariosAdminPage() {
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-red-600 hover:text-red-900"
+                                className="text-lg font-bold text-cyber-pink hover:text-red-900"
                               >
                                 Eliminar
                               </button>
@@ -320,7 +320,7 @@ export default function UsuariosAdminPage() {
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-red-600 hover:text-red-900"
+                                className="text-lg font-bold text-cyber-pink hover:text-red-900"
                               >
                                 Eliminar
                               </button>

@@ -473,7 +473,7 @@ export const heroSlides = [
     ctaText: "Descubrir",
     ctaLink: "/?category=calzado",
     badge: "NUEVO",
-    gradient: "from-orange-500 to-red-600"
+    gradient: "from-brand-primary to-cyber-pink"
   },
   {
     id: 3,
@@ -548,7 +548,7 @@ export const categoryBanners = {
       title: "Smart Kitchen",
       subtitle: "Cocina inteligente",
       image: null,
-      gradient: "from-orange-500 to-red-500"
+      gradient: "from-brand-primary to-cyber-pink"
     },
     {
       id: 2,

@@ -79,7 +79,7 @@ export default function ProductosDestacados() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-brand-primary transition-colors"
             >
               Ver todos los productos
             </Link>
@@ -102,7 +102,7 @@ export default function ProductosDestacados() {
                     </div>
                   )}
                   {product.oferta && (
-                    <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
                       OFERTA
                     </span>
                   )}
@@ -113,7 +113,7 @@ export default function ProductosDestacados() {
                 
                 {/* Content */}
                 <div className="p-4 space-y-3">
-                  <div className="text-xs text-orange-500 uppercase tracking-wide font-semibold">
+                  <div className="text-xs text-brand-primary uppercase tracking-wide font-semibold">
                     {product.categoria}
                   </div>
                   <h3 className="font-bold text-gray-900 line-clamp-2">
@@ -132,7 +132,7 @@ export default function ProductosDestacados() {
                         En stock
                       </span>
                     ) : (
-                      <span className="text-sm text-red-600 font-medium">
+                      <span className="text-sm text-cyber-pink font-medium">
                         Sin stock
                       </span>
                     )}
@@ -141,7 +141,7 @@ export default function ProductosDestacados() {
                   <button 
                     onClick={() => handleAddToCart(product)}
                     disabled={product.stock <= 0}
-                    className="w-full py-3 px-4 bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
+                    className="w-full py-3 px-4 bg-brand-primary hover:bg-brand-primary disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
                   >
                     <span>🛒</span>
                     <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>

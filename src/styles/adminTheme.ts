@@ -2,7 +2,7 @@
 export const adminTheme = {
   // Colores principales
   colors: {
-    primary: '#F16529',
+    primary: 'var(--brand-primary)',
     primaryHover: '#D13C1A',
     primaryLight: '#FF7A45',
     secondary: '#E85C26',
@@ -11,18 +11,18 @@ export const adminTheme = {
 
   // Backgrounds
   backgrounds: {
-    main: 'bg-gradient-to-br from-orange-50/30 via-red-50/20 to-orange-100/40',
+    main: 'bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40',
     card: 'bg-white/90 backdrop-blur-sm',
     header: 'bg-white/80 backdrop-blur-lg',
-    gradient: 'bg-gradient-to-r from-orange-500 to-red-500',
+    gradient: 'bg-gradient-to-r from-brand-primary to-cyber-pink',
     subtle: 'bg-gradient-to-br from-gray-50 via-white to-gray-50',
   },
 
   // Cards y Contenedores
   cards: {
-    base: 'bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-orange-100',
+    base: 'bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light',
     hover: 'hover:shadow-2xl transition-all duration-300 hover:-translate-y-1',
-    interactive: 'bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1',
+    interactive: 'bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1',
   },
 
   // Botones
@@ -36,15 +36,15 @@ export const adminTheme = {
   badges: {
     success: 'bg-green-100 text-green-800 border-green-200',
     warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-    error: 'bg-red-100 text-red-800 border-red-200',
+    error: 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light',
     info: 'bg-blue-100 text-blue-800 border-blue-200',
-    primary: 'bg-orange-100 text-orange-800 border-orange-200',
+    primary: 'bg-brand-neutral-light text-orange-800 border-brand-primary-200',
   },
 
   // Inputs
   inputs: {
     base: 'w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200',
-    focus: 'focus:ring-orange-500',
+    focus: 'focus:ring-brand-primary',
   },
 
   // Headers de secciones
@@ -56,7 +56,7 @@ export const adminTheme = {
 
   // Tablas
   tables: {
-    header: 'bg-gradient-to-r from-orange-50 to-red-50',
+    header: 'bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light',
     row: 'hover:bg-gray-50 transition-colors',
     cell: 'px-6 py-4 text-sm text-gray-900',
   },

@@ -149,14 +149,14 @@ function PaymentSuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
               {orderInfo?.paymentMethod === 'transferencia' ? (
-                <Clock className="w-8 h-8 text-orange-600" />
+                <Clock className="w-8 h-8 text-brand-primary" />
               ) : (
                 <CheckCircle className="w-8 h-8 text-green-600" />
               )}
@@ -175,7 +175,7 @@ function PaymentSuccessContent() {
 
           {/* Order Details Card */}
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden mb-8">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4">
+            <div className="bg-gradient-to-r from-brand-primary to-brand-primary px-6 py-4">
               <h2 className="text-xl font-semibold text-white">
                 Detalles del Pedido
               </h2>
@@ -270,7 +270,7 @@ function PaymentSuccessContent() {
                         {/* Total */}
                         <div className="flex justify-between items-center pt-4 border-t-2 border-gray-200">
                           <span className="text-lg font-bold text-gray-900">Total</span>
-                          <span className="text-xl font-bold text-orange-600">
+                          <span className="text-xl font-bold text-brand-primary">
                             {formatPrice(orderInfo.total)}
                           </span>
                         </div>
@@ -326,11 +326,11 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-md hover:shadow-lg relative"
+                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-brand-primary hover:bg-brand-primary-hover transition-colors shadow-md hover:shadow-lg relative"
               >
                 📦 Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                  <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                     {unreadOrderNotifications > 9 ? '9+' : unreadOrderNotifications}
                   </span>
                 )}
@@ -347,7 +347,7 @@ function PaymentSuccessContent() {
             <div className="text-center">
               <p className="text-sm text-gray-500">
                 ¿Necesitas ayuda? {' '}
-                <Link href="/contacto" className="text-orange-600 hover:text-orange-700 font-medium">
+                <Link href="/contacto" className="text-brand-primary hover:text-brand-primary-hover font-medium">
                   Contáctanos
                 </Link>
               </p>

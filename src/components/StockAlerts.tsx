@@ -21,9 +21,9 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   const getSeverityColor = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return 'bg-red-100 border-red-500 text-red-800';
+        return 'bg-brand-neutral-light border-cyber-pink text-cyber-pink';
       case 'critical':
-        return 'bg-orange-100 border-brand-primary500 text-brand-primary800';
+        return 'bg-brand-neutral-light border-brand-primary500 text-brand-primary800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
@@ -34,7 +34,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   const getSeverityIcon = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return <NoSymbolIcon className="h-5 w-5 text-red-600" />;
+        return <NoSymbolIcon className="h-5 w-5 text-cyber-pink" />;
       case 'critical':
         return <ExclamationTriangleIcon className="h-5 w-5 text-brand-primary600" />;
       case 'low':
@@ -87,11 +87,11 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <BellIcon className="h-5 w-5 text-red-600" />
+            <BellIcon className="h-5 w-5 text-cyber-pink" />
             <h3 className="text-lg font-semibold text-gray-900">
               Alertas de Stock
             </h3>
-            <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+            <span className="bg-brand-neutral-light text-cyber-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
               {stockAlerts.length}
             </span>
           </div>

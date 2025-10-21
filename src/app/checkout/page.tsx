@@ -422,9 +422,9 @@ function CheckoutContent() {
   // Show processing screen while order is being processed
   if (!mounted || (items.length === 0 && !orderSuccess)) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-orange-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-brand-primary mx-auto mb-4"></div>
           <p className="text-gray-600 text-lg font-medium">Cargando...</p>
         </div>
       </div>
@@ -464,21 +464,21 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <Link
             href="/carrito"
-            className="inline-flex items-center text-orange-600 hover:text-orange-700 mb-6 font-medium transition-colors"
+            className="inline-flex items-center text-brand-primary hover:text-brand-primary-hover mb-6 font-medium transition-colors"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Volver al carrito
           </Link>
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white text-lg">💳</span>
               </div>
               <div>
@@ -496,8 +496,8 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-orange-100 overflow-hidden">
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
+              <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
                 </h2>
@@ -505,10 +505,10 @@ function CheckoutContent() {
 
                 <form onSubmit={handleCheckout} className="p-6 space-y-6">
                   {isGuest && (
-                    <div className="bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-500 rounded-lg p-4 mb-4 shadow-sm">
+                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light border-l-4 border-brand-primary rounded-lg p-4 mb-4 shadow-sm">
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0">
-                          <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center shadow-md">
+                          <div className="w-10 h-10 bg-brand-primary rounded-full flex items-center justify-center shadow-md">
                             <span className="text-white text-lg">👤</span>
                           </div>
                         </div>
@@ -516,7 +516,7 @@ function CheckoutContent() {
                           <h3 className="text-base font-semibold text-orange-900 mb-1">
                             Comprando como invitado
                           </h3>
-                          <p className="text-sm text-orange-700 leading-relaxed">
+                          <p className="text-sm text-brand-primary-hover leading-relaxed">
                             Completa los datos para procesar tu pedido. Si deseas crear una cuenta, puedes hacerlo después de la compra.
                           </p>
                         </div>
@@ -563,7 +563,7 @@ function CheckoutContent() {
                         required
                         value={checkoutData.name}
                         onChange={(e) => setCheckoutData({...checkoutData, name: e.target.value})}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                         placeholder={isRegistered ? "Datos cargados automáticamente" : "Ingresa tu nombre completo"}
                       />
                     </div>
@@ -579,7 +579,7 @@ function CheckoutContent() {
                         required
                         value={checkoutData.email}
                         onChange={(e) => setCheckoutData({...checkoutData, email: e.target.value})}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                         placeholder={isRegistered ? "Email cargado automáticamente" : "tu@email.com"}
                       />
                     </div>
@@ -595,7 +595,7 @@ function CheckoutContent() {
                         required
                         value={checkoutData.phone}
                         onChange={(e) => setCheckoutData({...checkoutData, phone: e.target.value})}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                         placeholder={isRegistered ? "Teléfono desde perfil" : "+56 9 XXXX XXXX"}
                       />
                     </div>
@@ -611,7 +611,7 @@ function CheckoutContent() {
                         required={!isRegistered}
                         value={checkoutData.rut}
                         onChange={(e) => setCheckoutData({...checkoutData, rut: e.target.value})}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                         placeholder={isRegistered ? "RUT desde perfil" : "12.345.678-9"}
                       />
                     </div>
@@ -628,14 +628,14 @@ function CheckoutContent() {
                         onClick={() => setDeliveryType('envio')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'envio'
-                            ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200'
-                            : 'border-gray-300 bg-white hover:border-orange-300'
+                            ? 'border-brand-primary bg-brand-neutral-light ring-2 ring-orange-200'
+                            : 'border-gray-300 bg-white hover:border-brand-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-2xl">🚚</span>
                           {deliveryType === 'envio' && (
-                            <span className="text-orange-600 font-bold">✓</span>
+                            <span className="text-brand-primary font-bold">✓</span>
                           )}
                         </div>
                         <div className="font-semibold text-gray-900 text-left">Envío a domicilio</div>
@@ -674,7 +674,7 @@ function CheckoutContent() {
                       rows={3}
                       value={checkoutData.address}
                       onChange={(e) => setCheckoutData({...checkoutData, address: e.target.value})}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                       placeholder={deliveryType === 'envio'
                         ? (isRegistered ? "Dirección desde perfil" : "Calle, número, comuna, región")
                         : "Ej: Prefiero retirar en la mañana, horario laboral, etc."
@@ -715,14 +715,14 @@ function CheckoutContent() {
                         onClick={() => setPaymentMethod('transferencia')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'transferencia'
-                            ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200'
-                            : 'border-gray-300 bg-white hover:border-orange-300'
+                            ? 'border-brand-primary bg-brand-neutral-light ring-2 ring-orange-200'
+                            : 'border-gray-300 bg-white hover:border-brand-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-2xl">🏦</span>
                           {paymentMethod === 'transferencia' && (
-                            <span className="text-orange-600 font-bold">✓</span>
+                            <span className="text-brand-primary font-bold">✓</span>
                           )}
                         </div>
                         <div className="font-semibold text-gray-900 text-left">Transferencia</div>
@@ -746,7 +746,7 @@ function CheckoutContent() {
                             type="button"
                             onClick={handleMercadoPagoCheckout}
                             disabled={isProcessing || mpLoading}
-                            className="w-full py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full py-3 px-6 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             {isProcessing || mpLoading ? 'Procesando...' : 'Continuar con MercadoPago'}
                           </button>
@@ -770,7 +770,7 @@ function CheckoutContent() {
 
                     {/* Sección de Transferencia */}
                     {paymentMethod === 'transferencia' && (
-                      <div className="p-4 border border-orange-300 bg-orange-50 rounded-lg">
+                      <div className="p-4 border border-brand-primary-300 bg-brand-neutral-light rounded-lg">
                       <div className="flex items-center mb-4">
                         <span className="text-2xl mr-3">🏦</span>
                         <div>
@@ -784,7 +784,7 @@ function CheckoutContent() {
                         <h4 className="font-semibold text-gray-900 mb-3">📋 Datos para transferencia:</h4>
                         {bankLoading ? (
                           <div className="flex items-center justify-center py-4">
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-orange-500"></div>
+                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand-primary"></div>
                             <span className="ml-2 text-gray-600">Cargando datos bancarios...</span>
                           </div>
                         ) : (
@@ -826,7 +826,7 @@ function CheckoutContent() {
                           name="comprobante"
                           accept="image/*,.pdf"
                           required
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
                         />
                         <p className="text-xs text-gray-600 mt-2">
                           Formatos aceptados: JPG, PNG, PDF (máx. 5MB)
@@ -849,7 +849,7 @@ function CheckoutContent() {
                         <button
                           type="submit"
                           disabled={isProcessing || stockLoading}
-                          className="flex-1 py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="flex-1 py-3 px-6 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {isProcessing ? 'Procesando...' : stockLoading ? 'Verificando stock...' : 'Confirmar pedido'}
                         </button>
@@ -863,8 +863,8 @@ function CheckoutContent() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-orange-100 overflow-hidden sticky top-8">
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden sticky top-8">
+              <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido
                 </h2>
@@ -874,7 +874,7 @@ function CheckoutContent() {
                 {/* Cart Items */}
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-orange-50 rounded-lg border border-orange-100">
+                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-brand-neutral-light rounded-lg border border-brand-neutral-light">
                       <div className="relative w-12 h-12 flex-shrink-0">
                         {item.imagen ? (
                           <img
@@ -906,14 +906,14 @@ function CheckoutContent() {
                 </div>
 
                 {/* Totals */}
-                <div className="border-t border-orange-100 pt-4 space-y-3">
+                <div className="border-t border-brand-neutral-light pt-4 space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600 font-medium">Subtotal</span>
                     <span className="font-semibold text-gray-800">{formatPrice(getTotalPrice())}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-orange-50 px-4 py-3 rounded-lg border border-orange-200">
+                  <div className="flex justify-between items-center bg-brand-neutral-light px-4 py-3 rounded-lg border border-brand-primary-200">
                     <span className="text-lg font-bold text-gray-800">Total</span>
-                    <span className="text-2xl font-bold text-orange-600">{formatPrice(getTotalPrice())}</span>
+                    <span className="text-2xl font-bold text-brand-primary">{formatPrice(getTotalPrice())}</span>
                   </div>
                 </div>
               </div>

@@ -225,10 +225,10 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="bg-white rounded-2xl shadow-sm border border-orange-100 p-6">
+          <header className="bg-white rounded-2xl shadow-sm border border-brand-neutral-light p-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-orange-500">Catálogo completo</p>
+                <p className="text-sm font-semibold text-brand-primary">Catálogo completo</p>
                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
                   Todos los productos disponibles
                 </h1>
@@ -236,12 +236,12 @@ function AllProductsPageContent() {
                   Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
                 </p>
                 {activeSectionTitle && (
-                  <div className="mt-3 rounded-lg border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-700">
+                  <div className="mt-3 rounded-lg border border-brand-primary-200 bg-brand-neutral-light px-4 py-3 text-sm text-brand-primary-hover">
                     <p className="font-semibold">
                       Estás revisando la sección “{activeSectionTitle}”.
                     </p>
                     {activeSectionDescription && (
-                      <p className="mt-1 text-orange-600">
+                      <p className="mt-1 text-brand-primary">
                         {activeSectionDescription}
                       </p>
                     )}
@@ -250,7 +250,7 @@ function AllProductsPageContent() {
               </div>
               <button
                 onClick={() => refetch()}
-                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-orange-600 bg-orange-50 hover:bg-orange-100 transition-colors"
+                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-brand-primary bg-brand-neutral-light hover:bg-brand-neutral-light transition-colors"
               >
                 ↻ Refrescar lista
               </button>
@@ -266,7 +266,7 @@ function AllProductsPageContent() {
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Nombre, descripción o SKU"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-primary focus:ring-brand-primary"
                 />
               </label>
 
@@ -275,7 +275,7 @@ function AllProductsPageContent() {
                 <select
                   value={selectedCategory}
                   onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-primary focus:ring-brand-primary"
                 >
                   {categoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -291,7 +291,7 @@ function AllProductsPageContent() {
                   <select
                     value={selectedSubcategory}
                     onChange={(event) => setSelectedSubcategory(event.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:ring-orange-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-primary focus:ring-brand-primary"
                   >
                     <option value="">Todas</option>
                     {subcategoryOptions.map((option) => (
@@ -312,7 +312,7 @@ function AllProductsPageContent() {
                     value={minPrice}
                     onChange={(event) => setMinPrice(event.target.value)}
                     placeholder="Mínimo"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:ring-orange-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-primary focus:ring-brand-primary"
                   />
                   <input
                     type="number"
@@ -320,7 +320,7 @@ function AllProductsPageContent() {
                     value={maxPrice}
                     onChange={(event) => setMaxPrice(event.target.value)}
                     placeholder="Máximo"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:ring-orange-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-brand-primary focus:ring-brand-primary"
                   />
                 </div>
               </label>
@@ -338,13 +338,13 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-6">
+          <section className="bg-brand-neutral-light border border-brand-neutral-light text-red-700 rounded-xl p-6">
             <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
             <p className="text-sm mb-4">{productsError}</p>
             <button
               onClick={() => refetch()}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white"
-              style={{ background: 'linear-gradient(135deg, #F16529 0%, #E67E22 100%)' }}
+              style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #E67E22 100%)' }}
             >
               Reintentar
             </button>
@@ -378,7 +378,7 @@ function AllProductsPageContent() {
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-3">
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600 disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-brand-primary-300 hover:text-brand-primary disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.max(1, prev - 1))}
                   disabled={page === 1}
                 >
@@ -388,7 +388,7 @@ function AllProductsPageContent() {
                   Página {page} de {totalPages}
                 </span>
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600 disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-gray-200 text-gray-600 hover:border-brand-primary-300 hover:text-brand-primary disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
                   disabled={page === totalPages}
                 >

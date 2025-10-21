@@ -30,14 +30,14 @@ const UserMenu = memo(function UserMenu({
         <>
           <Link
             href="/perfil"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
           >
             <User className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
             Mi Perfil
           </Link>
           <Link
             href="/mis-pedidos"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
           >
             <ShoppingBag className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
             Mis Pedidos
@@ -49,14 +49,14 @@ const UserMenu = memo(function UserMenu({
         <>
           <Link
             href="/login"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
           >
             <User className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
             Iniciar Sesión
           </Link>
           <Link
             href="/registro"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
           >
             Registrarse
           </Link>
@@ -66,7 +66,7 @@ const UserMenu = memo(function UserMenu({
       {!isGuest && (
         <button
           onClick={onLogout}
-          className="flex items-center w-full text-left px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors border-t border-gray-100 mt-1"
+          className="flex items-center w-full text-left px-4 py-2.5 text-sm font-medium text-cyber-pink hover:bg-brand-neutral-light transition-colors border-t border-gray-100 mt-1"
         >
           <LogOut className="w-5 h-5 mr-3" strokeWidth={2.5} />
           Cerrar Sesión

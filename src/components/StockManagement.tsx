@@ -117,7 +117,7 @@ export default function StockManagement({ productId, className }: StockManagemen
     switch (type) {
       case 'sale':
       case 'reservation':
-        return <MinusIcon className="h-4 w-4 text-red-600" />;
+        return <MinusIcon className="h-4 w-4 text-cyber-pink" />;
       case 'restock':
       case 'release':
         return <PlusIcon className="h-4 w-4 text-green-600" />;
@@ -147,7 +147,7 @@ export default function StockManagement({ productId, className }: StockManagemen
 
   const getStockStatus = (stock: number) => {
     const minStock = 5; // This should come from product data
-    if (stock === 0) return { color: 'text-red-600', text: 'Sin Stock', icon: ExclamationTriangleIcon };
+    if (stock === 0) return { color: 'text-cyber-pink', text: 'Sin Stock', icon: ExclamationTriangleIcon };
     if (stock <= minStock / 2) return { color: 'text-brand-primary600', text: 'Stock Crítico', icon: ExclamationTriangleIcon };
     if (stock <= minStock) return { color: 'text-yellow-600', text: 'Stock Bajo', icon: ExclamationTriangleIcon };
     return { color: 'text-green-600', text: 'Stock Normal', icon: null };
@@ -304,7 +304,7 @@ export default function StockManagement({ productId, className }: StockManagemen
 
                   <div className="text-right">
                     <div className={`text-sm font-medium ${
-                      transaction.quantity > 0 ? 'text-green-600' : 'text-red-600'
+                      transaction.quantity > 0 ? 'text-green-600' : 'text-cyber-pink'
                     }`}>
                       {transaction.quantity > 0 ? '+' : ''}{transaction.quantity}
                     </div>
@@ -441,7 +441,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   </div>
                   <div className="text-sm text-yellow-800">
                     Diferencia: <span className={`font-medium ${
-                      parseInt(adjustmentData.newStock) - selectedProduct.stock > 0 ? 'text-green-600' : 'text-red-600'
+                      parseInt(adjustmentData.newStock) - selectedProduct.stock > 0 ? 'text-green-600' : 'text-cyber-pink'
                     }`}>
                       {parseInt(adjustmentData.newStock) - selectedProduct.stock > 0 ? '+' : ''}
                       {parseInt(adjustmentData.newStock) - selectedProduct.stock}

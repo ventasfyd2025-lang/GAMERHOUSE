@@ -148,7 +148,7 @@ export default function PCFactoryBanner({
                           {/* Current Price */}
                           <div 
                             className="text-sm font-bold"
-                            style={{ color: product.oferta ? '#D64541' : '#F16529' }}
+                            style={{ color: product.oferta ? '#D64541' : 'var(--brand-primary)' }}
                           >
                             {formatPrice(product.precio || 0)}
                           </div>
@@ -182,7 +182,7 @@ export default function PCFactoryBanner({
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 
-                  backgroundColor: index === currentSlide ? '#F16529' : undefined 
+                  backgroundColor: index === currentSlide ? 'var(--brand-primary)' : undefined 
                 }}
               />
             ))}

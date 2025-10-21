@@ -37,7 +37,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-6">
             <div className="flex items-center mb-4">
-              <ExclamationTriangleIcon className="h-6 w-6 text-red-500 mr-2" />
+              <ExclamationTriangleIcon className="h-6 w-6 text-cyber-pink mr-2" />
               <h1 className="text-lg font-semibold text-gray-900">
                 Algo salió mal
               </h1>
@@ -64,7 +64,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 <summary className="cursor-pointer text-gray-500">
                   Detalles del error (solo en desarrollo)
                 </summary>
-                <pre className="mt-2 whitespace-pre-wrap text-red-600 bg-red-50 p-2 rounded">
+                <pre className="mt-2 whitespace-pre-wrap text-cyber-pink bg-brand-neutral-light p-2 rounded">
                   {this.state.error.toString()}
                 </pre>
               </details>

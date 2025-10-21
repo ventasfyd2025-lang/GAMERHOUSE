@@ -272,7 +272,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
             // Botón de chat interno para pedidos
             <button
               onClick={handleChatButtonClick}
-              className="bg-brand-primary-hover hover:bg-orange-700 text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 relative group"
+              className="bg-brand-primary-hover hover:bg-brand-primary-hover text-white p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 relative group"
             >
               <ChatBubbleLeftRightIcon className="h-6 w-6" />
               {unreadCount > 0 && (
@@ -495,7 +495,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                   <button
                     onClick={sendMessage}
                     disabled={!newMessage.trim() || loading}
-                    className="bg-brand-primary-hover hover:bg-orange-700 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-brand-primary-hover hover:bg-brand-primary-hover disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {loading ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />

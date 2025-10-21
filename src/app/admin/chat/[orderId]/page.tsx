@@ -88,7 +88,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-orange-600 bg-orange-50 border-orange-200', 
+    color: 'text-brand-primary bg-brand-neutral-light border-brand-primary-200', 
     icon: TruckIcon,
     description: 'Pedido en camino'
   },
@@ -100,7 +100,7 @@ const statusConfig = {
   },
   cancelled: { 
     label: 'Cancelado', 
-    color: 'text-red-600 bg-red-50 border-red-200', 
+    color: 'text-cyber-pink bg-brand-neutral-light border-brand-neutral-light', 
     icon: XCircleIcon,
     description: 'Pedido cancelado'
   }
@@ -302,7 +302,7 @@ export default function AdminChatPage() {
             
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">Admin: {user?.email}</span>
-              <span className="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-brand-neutral-light text-cyber-pink text-xs font-medium rounded-full">
                 Modo Administrador
               </span>
             </div>
@@ -377,11 +377,11 @@ export default function AdminChatPage() {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header */}
-              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-t-lg">
+              <div className="bg-gradient-to-r from-cyber-pink to-cyber-pink text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                      <ShieldCheckIcon className="h-6 w-6 text-red-500" />
+                      <ShieldCheckIcon className="h-6 w-6 text-cyber-pink" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   </div>
@@ -399,8 +399,8 @@ export default function AdminChatPage() {
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
+                    <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-cyber-pink" />
                     </div>
                     <h4 className="font-semibold text-gray-900 mb-2">Chat con cliente</h4>
                     <p className="text-sm text-gray-600 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
@@ -426,7 +426,7 @@ export default function AdminChatPage() {
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-red-500 text-white'
+                              ? 'bg-cyber-pink text-white'
                               : 'bg-white text-gray-900 border border-gray-200'
                           }`}
                         >
@@ -444,8 +444,8 @@ export default function AdminChatPage() {
                             <div className="ml-2">
                               {message.read ? (
                                 <div className="flex space-x-1">
-                                  <CheckIcon className="h-3 w-3 text-red-500" />
-                                  <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
+                                  <CheckIcon className="h-3 w-3 text-cyber-pink" />
+                                  <CheckIcon className="h-3 w-3 text-cyber-pink -ml-1" />
                                 </div>
                               ) : (
                                 <CheckIcon className="h-3 w-3 text-gray-400" />
@@ -456,7 +456,7 @@ export default function AdminChatPage() {
                       </div>
                       
                       {message.isAdmin && (
-                        <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 bg-cyber-pink rounded-full flex items-center justify-center flex-shrink-0">
                           <ShieldCheckIcon className="h-4 w-4 text-white" />
                         </div>
                       )}
@@ -476,7 +476,7 @@ export default function AdminChatPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Responder al cliente sobre el pedido..."
-                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
                       rows={2}
                       disabled={loading}
                     />
@@ -484,7 +484,7 @@ export default function AdminChatPage() {
                   <button
                     onClick={sendMessage}
                     disabled={!newMessage.trim() || loading}
-                    className="bg-red-500 hover:bg-red-600 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-cyber-pink hover:bg-cyber-pink disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {loading ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -495,7 +495,7 @@ export default function AdminChatPage() {
                 </div>
                 
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                  <span className="font-medium text-red-600">Modo Admin:</span> El cliente verá tus respuestas en tiempo real
+                  <span className="font-medium text-cyber-pink">Modo Admin:</span> El cliente verá tus respuestas en tiempo real
                 </p>
               </div>
             </div>

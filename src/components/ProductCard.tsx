@@ -140,7 +140,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
         {product.stock === 0 && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-            <span className="bg-red-600 text-white px-4 py-2 rounded font-semibold text-sm">
+            <span className="bg-cyber-pink text-white px-4 py-2 rounded font-semibold text-sm">
               Agotado
             </span>
           </div>

@@ -24,7 +24,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-brand-primary via-orange-600 to-red-600 text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-brand-primary via-brand-primary to-cyber-pink text-white relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -141,7 +141,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-brand-primary transition-all text-xs sm:text-sm font-medium group"
                     aria-label="Instagram"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">

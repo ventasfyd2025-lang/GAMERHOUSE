@@ -306,18 +306,18 @@ const ProductCarousel = memo(({
       <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 border border-brand-primary100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
               <span className="text-white text-lg">{title.split(' ')[0]}</span>
             </div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-brand-primary to-red-500 bg-clip-text text-transparent">{title}</h2>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">{title}</h2>
           </div>
           {showViewAll && (
             <Link
               href={viewAllLink}
               className="px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg text-sm"
-              style={{ backgroundColor: '#F16529' }}
+              style={{ backgroundColor: 'var(--brand-primary)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
             >
               {t('homepage.viewAll')} →
             </Link>
@@ -362,7 +362,7 @@ const ProductCarousel = memo(({
               >
                 <Link
                   href={`/producto/${product.id}`}
-                  className="block h-full focus:outline-none focus:ring-2 focus:ring-[#F16529] focus:ring-offset-2"
+                  className="block h-full focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)] focus:ring-offset-2"
                   onClick={(e) => {
                     if (hasDragged) {
                       e.preventDefault();

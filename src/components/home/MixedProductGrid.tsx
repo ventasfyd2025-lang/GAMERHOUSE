@@ -40,7 +40,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-gray-400 hover:text-red-500" />
+          <HeartIcon className="h-5 w-5 text-gray-400 hover:text-cyber-pink" />
         </button>
       </div>
       
@@ -94,7 +94,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-6 w-6 text-gray-400 hover:text-red-500" />
+          <HeartIcon className="h-6 w-6 text-gray-400 hover:text-cyber-pink" />
         </button>
       </div>
       
@@ -155,7 +155,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-gray-400 hover:text-red-500" />
+          <HeartIcon className="h-5 w-5 text-gray-400 hover:text-cyber-pink" />
         </button>
       </div>
       
@@ -212,7 +212,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
             <h3 className="text-base font-medium text-gray-900 line-clamp-2 mt-1">{product.nombre}</h3>
           </div>
           <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-            <HeartIcon className="h-5 w-5 text-gray-400 hover:text-red-500" />
+            <HeartIcon className="h-5 w-5 text-gray-400 hover:text-cyber-pink" />
           </button>
         </div>
         

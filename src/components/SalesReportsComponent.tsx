@@ -95,7 +95,7 @@ export default function SalesReportsComponent() {
   }, [selectedMonth, loadMonthlyReport]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light to-white">
       {/* Header Mejorado */}
       <div className="bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white p-8 rounded-xl shadow-lg mb-8">
         <div className="flex items-center justify-between">
@@ -114,7 +114,7 @@ export default function SalesReportsComponent() {
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-white text-brand-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
+              className="bg-white text-brand-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -133,7 +133,7 @@ export default function SalesReportsComponent() {
       )}
 
       {error && (
-        <div className="bg-red-50 border-l-4 border-red-400 text-red-700 p-6 rounded-lg mb-8">
+        <div className="bg-brand-neutral-light border-l-4 border-red-400 text-red-700 p-6 rounded-lg mb-8">
           <div className="flex">
             <div className="ml-3">
               <h3 className="text-sm font-medium">Error al cargar reportes</h3>
@@ -192,7 +192,7 @@ export default function SalesReportsComponent() {
         {monthlyReport && (
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-brand-primary500">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-orange-100">
+              <div className="p-3 rounded-full bg-brand-neutral-light">
                 <CalendarIcon className="h-8 w-8 text-brand-primary600" />
               </div>
               <div className="ml-4">
@@ -221,7 +221,7 @@ export default function SalesReportsComponent() {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500"
             />
           </div>
           <div>
@@ -232,7 +232,7 @@ export default function SalesReportsComponent() {
               type="month"
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500"
             />
           </div>
         </div>
@@ -250,7 +250,7 @@ export default function SalesReportsComponent() {
               <div key={product.productId} className={`p-4 rounded-lg border-l-4 ${
                 index === 0 ? 'bg-yellow-50 border-yellow-400' :
                 index === 1 ? 'bg-gray-50 border-gray-400' :
-                index === 2 ? 'bg-orange-50 border-brand-primary400' :
+                index === 2 ? 'bg-brand-neutral-light border-brand-primary400' :
                 'bg-blue-50 border-blue-400'
               }`}>
                 <div className="flex items-center justify-between">

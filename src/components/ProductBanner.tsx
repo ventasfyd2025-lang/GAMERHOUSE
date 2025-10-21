@@ -61,7 +61,7 @@ export default function ProductBanner({
   if (safeProducts.length === 0) {
     // Fallback to gradient banner if no products
     return (
-      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, #F16529 0%, #D64541 100%)' }}>
+      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #D64541 100%)' }}>
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
@@ -75,11 +75,11 @@ export default function ProductBanner({
   }
 
   return (
-    <section className="relative bg-gradient-to-r from-orange-50 to-red-50 py-8">
+    <section className="relative bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light py-8">
       {/* Header */}
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#F16529' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
             {title}
           </h2>
           <p className="text-xl md:text-2xl text-gray-600">
@@ -188,7 +188,7 @@ export default function ProductBanner({
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 
-                  backgroundColor: index === currentIndex ? '#F16529' : undefined 
+                  backgroundColor: index === currentIndex ? 'var(--brand-primary)' : undefined 
                 }}
               />
             ))}

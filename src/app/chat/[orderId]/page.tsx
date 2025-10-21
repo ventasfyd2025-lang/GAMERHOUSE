@@ -102,7 +102,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-orange-600 bg-orange-50 border-orange-200', 
+    color: 'text-brand-primary bg-brand-neutral-light border-brand-primary-200', 
     icon: TruckIcon,
     description: 'Tu pedido está en camino'
   },
@@ -114,7 +114,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-red-600 bg-red-50 border-red-200',
+    color: 'text-cyber-pink bg-brand-neutral-light border-brand-neutral-light',
     icon: XCircleIcon,
     description: 'Este pedido ha sido cancelado'
   },
@@ -600,7 +600,7 @@ export default function ChatPage() {
                       />
                       <button
                         onClick={removeImage}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+                        className="absolute -top-2 -right-2 bg-cyber-pink text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-cyber-pink transition-colors"
                       >
                         <XMarkIcon className="h-4 w-4" />
                       </button>
@@ -654,7 +654,7 @@ export default function ChatPage() {
                   <button
                     onClick={sendMessage}
                     disabled={(!newMessage.trim() && !selectedImage) || sendingMessage || uploadingImage}
-                    className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-brand-primary hover:bg-brand-primary-hover disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {sendingMessage || uploadingImage ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />

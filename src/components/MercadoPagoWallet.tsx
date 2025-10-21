@@ -168,10 +168,10 @@ export default function MercadoPagoWallet({
 
   if (error) {
     return (
-      <div className={`p-6 bg-red-50 border border-red-200 rounded-lg ${className}`}>
+      <div className={`p-6 bg-brand-neutral-light border border-brand-neutral-light rounded-lg ${className}`}>
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-            <span className="text-red-600 font-bold">!</span>
+          <div className="w-8 h-8 bg-brand-neutral-light rounded-full flex items-center justify-center">
+            <span className="text-cyber-pink font-bold">!</span>
           </div>
           <div>
             <h3 className="font-medium text-red-900">Error al cargar el pago</h3>

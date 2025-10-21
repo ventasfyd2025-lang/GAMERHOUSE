@@ -27,7 +27,7 @@ export default function CartPageClient() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-16">
+      <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
             <ShoppingBag className="h-24 w-24 text-brand-primary400 mx-auto mb-6" strokeWidth={2} />
@@ -40,7 +40,7 @@ export default function CartPageClient() {
             <Link
               href="/"
               className="inline-flex items-center px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-              style={{ background: 'linear-gradient(to right, #F16529, #E94E1B)' }}
+              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
             >
               🛍️ Explorar productos
             </Link>
@@ -51,12 +51,12 @@ export default function CartPageClient() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
               <span className="text-white text-lg">🛒</span>
             </div>
             <div>
@@ -136,7 +136,7 @@ export default function CartPageClient() {
                   {/* Remove Button */}
                   <button
                     onClick={() => removeItem(item.productId)}
-                    className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-md transition-colors"
+                    className="p-2 text-cyber-pink hover:text-red-700 hover:bg-brand-neutral-light rounded-md transition-colors"
                   >
                     <Trash2 className="h-5 w-5" />
                   </button>
@@ -172,7 +172,7 @@ export default function CartPageClient() {
             <Link
               href="/checkout"
               className="w-full mt-6 py-3 px-4 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg text-center block"
-              style={{ background: 'linear-gradient(to right, #F16529, #E94E1B)' }}
+              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
             >
               💳 Finalizar compra
             </Link>

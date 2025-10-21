@@ -150,7 +150,7 @@ export default function ProductPage() {
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-20">
-            <div className="text-red-500 text-6xl mb-4">❌</div>
+            <div className="text-cyber-pink text-6xl mb-4">❌</div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">
               {error || 'Producto no encontrado'}
             </h1>
@@ -217,7 +217,7 @@ export default function ProductPage() {
                   </span>
                 )}
                 {product.oferta && (
-                  <span className="bg-red-500 text-white text-sm px-3 py-1 rounded-full font-medium">
+                  <span className="bg-cyber-pink text-white text-sm px-3 py-1 rounded-full font-medium">
                     Oferta
                   </span>
                 )}
@@ -314,10 +314,10 @@ export default function ProductPage() {
                   <div className="text-2xl text-gray-500 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
-                  <div className="text-4xl font-bold text-red-600">
+                  <div className="text-4xl font-bold text-cyber-pink">
                     {formatPrice(product.precio)}
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-neutral-light text-cyber-pink">
                     {Math.round(((product.precioOriginal - product.precio) / product.precioOriginal) * 100)}% OFF
                   </div>
                 </>
@@ -342,7 +342,7 @@ export default function ProductPage() {
               <span className="text-gray-700">Stock disponible:</span>
               <span className={`font-semibold ${
                 product.stock > 10 ? 'text-green-600' : 
-                product.stock > 0 ? 'text-yellow-600' : 'text-red-600'
+                product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
               }`}>
                 {product.stock > 0 ? `${product.stock} unidades` : 'Sin stock'}
               </span>
@@ -376,7 +376,7 @@ export default function ProductPage() {
                 <div className="space-y-4">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Agregar al carrito ({formatPrice(product.precio * quantity)})
                   </button>
@@ -392,8 +392,8 @@ export default function ProductPage() {
             )}
 
             {product.stock === 0 && (
-              <div className="bg-red-50 border border-red-200 rounded-md p-4">
-                <p className="text-red-800 font-medium">
+              <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-md p-4">
+                <p className="text-cyber-pink font-medium">
                   Este producto no está disponible en este momento
                 </p>
               </div>

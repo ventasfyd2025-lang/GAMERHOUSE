@@ -43,19 +43,19 @@ const formatPrice = (price: number) => {
 };
 
 const palette = {
-  background: '#FAFAFA',
-  surface: '#F8F9FA',
-  card: '#FFFFFF',
-  primary: '#F16529', // Burnt Orange / Main
-  primaryHover: '#C24C1A', // Dark Orange / Buttons
-  secondary: '#FF0000', // Red / Offer Label
-  accent: '#F16529', // Burnt Orange / Primary
-  success: '#10B981', // Modern Green / Prices
-  neutralText: '#1F2937', // Modern Dark Gray / Text
-  mutedText: '#6B7280', // Modern Gray / Secondary Text
-  divider: '#E5E7EB',
-  headerBg: 'linear-gradient(135deg, #F16529 0%, #E67E22 100%)', // Gradient Header
-  discountTag: 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)', // Gradient Red
+  background: '#0A0E27',
+  surface: '#1F2937',
+  card: '#2A3A4A',
+  primary: 'var(--brand-primary)', // Cyan Futurista
+  primaryHover: 'var(--brand-primary-hover)', // Cyan Oscuro
+  secondary: 'var(--brand-secondary)', // Púrpura Neón
+  accent: 'var(--brand-accent)', // Verde Neón
+  success: '#00FF88', // Green Neon
+  neutralText: '#FFFFFF', // White Text
+  mutedText: '#9CA3AF', // Gray Text
+  divider: '#2D3748',
+  headerBg: 'linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%)', // Cyan to Purple
+  discountTag: 'linear-gradient(135deg, var(--cyber-pink) 0%, var(--brand-secondary) 100%)', // Pink to Purple
 };
 
 export default function RetailHomepage() {
@@ -460,15 +460,15 @@ export default function RetailHomepage() {
     return (
       <>
         <main className="w-full flex flex-col gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-            <h2 className="text-xl font-bold text-red-800 mb-2">Error al cargar productos</h2>
-            <p className="text-red-600">{productsError}</p>
+          <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-lg p-6 text-center">
+            <h2 className="text-xl font-bold text-cyber-pink mb-2">Error al cargar productos</h2>
+            <p className="text-cyber-pink">{productsError}</p>
             <button
               onClick={() => {
                 setRetryCount(prev => prev + 1);
                 refetchProducts();
               }}
-              className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              className="mt-4 px-4 py-2 bg-cyber-pink text-white rounded-lg hover:bg-red-700 transition-colors"
               disabled={retryCount >= 3}
             >
               {retryCount >= 3 ? 'Intentos agotados' : 'Reintentar'}
@@ -686,7 +686,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
 
   return (
     <>
-      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-gradient-to-br from-orange-50/30 via-red-50/20 to-orange-100/40 min-h-screen">
+      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40 min-h-screen">
         {/* Hero Banner Carousel */}
         <section className="mt-4 sm:mt-6">
           {(() => {            return bannerSlides?.length > 0 ? (
@@ -704,11 +704,11 @@ const MAX_ALL_PRODUCTS_HOME = 10;
           <section className="space-y-6">
             <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                   <span className="text-white text-lg">✨</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-red-500 bg-clip-text text-transparent">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
                     Colecciones Destacadas
                   </h2>
                   <p className="mt-1 text-sm sm:text-base text-gray-600 max-w-2xl">
@@ -800,7 +800,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         )}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-brand-primary to-red-600 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-brand-primary to-cyber-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
                         {section.badgeText}
                       </span>
                       <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 text-white">
@@ -897,11 +897,11 @@ const MAX_ALL_PRODUCTS_HOME = 10;
             <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-lg">🛍️</span>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-red-500 bg-clip-text text-transparent">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
                       Nuestro Catálogo
                     </h2>
                     <p className="text-sm sm:text-base text-gray-600">
@@ -920,8 +920,8 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <div className="flex justify-center">
                 <Link
                   href="/?category=all"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500"
-                  style={{ background: 'linear-gradient(135deg, #F16529 0%, #E67E22 100%)' }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
+                  style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #E67E22 100%)' }}
                 >
                   Ver todos los productos
                   <span aria-hidden="true">→</span>
@@ -1019,7 +1019,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       }}
                       disabled={product.stock <= 0}
                       aria-label={product.stock > 0 ? `Agregar ${product.nombre} al carrito` : 'Producto sin stock'}
-                      className="w-full py-3 px-4 bg-brand-primary-hover hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                      className="w-full py-3 px-4 bg-brand-primary-hover hover:bg-brand-primary-hover disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
                       <span aria-hidden="true">🛒</span>
                       <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>
                     </button>

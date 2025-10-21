@@ -193,10 +193,10 @@ export default function HomeClient() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-16">
+      <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-16">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-red-200 text-center">
-            <div className="text-red-500 text-6xl mb-4">❌</div>
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
+            <div className="text-cyber-pink text-6xl mb-4">❌</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Error al cargar productos</h2>
             <p className="text-gray-600 text-lg">{error}</p>
           </div>
@@ -273,7 +273,7 @@ export default function HomeClient() {
                 <Link href="/?category=moda" className="col-span-2 sm:col-span-1 md:row-span-2 group">
                   <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[300px]">
-                      <div className="bg-gradient-to-br from-pink-50 to-red-100 h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-pink-50 to-brand-neutral-light h-full w-full overflow-hidden">
                         <Image
                           src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=700&fit=crop&crop=center"
                           alt="Moda y Ropa"
@@ -283,7 +283,7 @@ export default function HomeClient() {
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-red-600 text-white text-sm font-bold px-3 py-2 rounded-full shadow-lg">
+                      <span className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-cyber-pink text-white text-sm font-bold px-3 py-2 rounded-full shadow-lg">
                         NUEVA COLECCIÓN
                       </span>
                       <div className="absolute bottom-4 left-4 text-white">
@@ -316,7 +316,7 @@ export default function HomeClient() {
                 <Link href="/?category=calzado" className="group">
                   <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-amber-50 to-orange-100 h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-amber-50 to-brand-neutral-light h-full w-full overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center"
                           alt="Calzado"
@@ -334,7 +334,7 @@ export default function HomeClient() {
                 <Link href="/?category=fitness" className="group">
                   <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-red-50 to-rose-100 h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-brand-neutral-light to-rose-100 h-full w-full overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
                           alt="Fitness"
@@ -352,7 +352,7 @@ export default function HomeClient() {
                 <Link href="/?filter=ofertas" className="group">
                   <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-red-500 to-red-600 h-full w-full overflow-hidden flex items-center justify-center">
+                      <div className="bg-gradient-to-br from-cyber-pink to-cyber-pink h-full w-full overflow-hidden flex items-center justify-center">
                         <div className="text-white text-center">
                           <div className="text-4xl mb-2">🔥</div>
                           <h3 className="text-lg font-bold">OFERTAS</h3>
@@ -382,13 +382,13 @@ export default function HomeClient() {
       )}
 
       {/* PRIORIDAD 2: Productos cargan después en segundo plano */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header - Modern Admin Style */}
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                   <span className="text-white text-lg">🛍️</span>
                 </div>
                 <div>
@@ -402,7 +402,7 @@ export default function HomeClient() {
               {/* Filter Controls - Modern Style */}
               <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
                   value={sortBy}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -423,7 +423,7 @@ export default function HomeClient() {
                 </select>
 
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
                   value={priceRange}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());

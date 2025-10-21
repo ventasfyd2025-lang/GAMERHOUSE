@@ -1018,12 +1018,12 @@ export default function AdminPage() {
     pending_verification: 'bg-blue-100 text-blue-800',
     pending_payment: 'bg-amber-100 text-amber-800',
     confirmed: 'bg-green-100 text-green-800',
-    preparing: 'bg-orange-100 text-orange-800',
+    preparing: 'bg-brand-neutral-light text-orange-800',
     processing: 'bg-indigo-100 text-indigo-800',
     shipped: 'bg-purple-100 text-purple-800',
     delivered: 'bg-green-100 text-green-800',
     completed: 'bg-emerald-100 text-emerald-800',
-    cancelled: 'bg-red-100 text-red-800'
+    cancelled: 'bg-brand-neutral-light text-cyber-pink'
   };
 
   const ordersByCustomer = useMemo<CustomerOrderGroup[]>(() => {
@@ -1193,7 +1193,7 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-red-100 text-red-800 border-red-200';
+      case 'admin': return 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light';
       case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
@@ -2196,7 +2196,7 @@ export default function AdminPage() {
   if (authLoading || userAuthLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: '#F16529' }}></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: 'var(--brand-primary)' }}></div>
       </div>
     );
   }
@@ -2223,7 +2223,7 @@ export default function AdminPage() {
                 value={loginForm.email}
                 onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
               />
             </div>
 
@@ -2237,12 +2237,12 @@ export default function AdminPage() {
                 value={loginForm.password}
                 onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
               />
             </div>
 
             {loginError && (
-              <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md">
+              <div className="text-cyber-pink text-sm bg-brand-neutral-light p-3 rounded-md">
                 {loginError}
               </div>
             )}
@@ -2250,25 +2250,25 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loggingIn}
-              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
             >
               {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
           </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-red-50 border border-red-200 rounded-md p-4">
-                <p className="text-red-800 font-semibold">⛔ Acceso Denegado</p>
-                <p className="text-red-600 text-sm mt-2">
+              <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-md p-4">
+                <p className="text-cyber-pink font-semibold">⛔ Acceso Denegado</p>
+                <p className="text-cyber-pink text-sm mt-2">
                   No tienes permisos de administrador para acceder a esta página.
                 </p>
               </div>
               <button
                 onClick={() => router.push('/')}
                 className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors"
-                style={{ backgroundColor: '#F16529' }}
+                style={{ backgroundColor: 'var(--brand-primary)' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
               >
                 Volver al Inicio
               </button>
@@ -2286,25 +2286,25 @@ export default function AdminPage() {
           font-size: 1.02em !important;
         }
       `}</style>
-      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-orange-50/30 via-red-50/20 to-orange-100/40">
+      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40">
 
-      <header className="bg-white/80 backdrop-blur-lg shadow-xl border-b border-orange-100">
+      <header className="bg-white/80 backdrop-blur-lg shadow-xl border-b border-brand-neutral-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white text-lg">🏪</span>
               </div>
-              <h1 className="text-xl font-bold" style={{ color: '#F16529' }}>
+              <h1 className="text-xl font-bold" style={{ color: 'var(--brand-primary)' }}>
                 F&D Admin Panel
               </h1>
             </div>
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-              style={{ backgroundColor: '#F16529' }}
+              style={{ backgroundColor: 'var(--brand-primary)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -2318,7 +2318,7 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl shadow-xl p-4 mb-6 border border-orange-200" style={{ backgroundColor: '#F16529' }}>
+        <div className="bg-gradient-to-r from-brand-primary to-cyber-pink rounded-xl shadow-xl p-4 mb-6 border border-brand-primary-200" style={{ backgroundColor: 'var(--brand-primary)' }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
@@ -2326,7 +2326,7 @@ export default function AdminPage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Panel de Administración</h1>
-                <p className="text-orange-100 text-xs">Gestiona tu tienda</p>
+                <p className="text-brand-neutral-light text-xs">Gestiona tu tienda</p>
               </div>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
@@ -2339,7 +2339,7 @@ export default function AdminPage() {
                           {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
-                { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-red-500' },
+                { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-cyber-pink' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'main-banner', name: 'Banners', icon: '🏆' },
                 { id: 'product-layout', name: 'Layout Productos', icon: '🔲' },
@@ -2356,14 +2356,14 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-white text-orange-600 shadow-lg transform scale-105'
+                    ? 'bg-white text-brand-primary shadow-lg transform scale-105'
                     : 'text-white/80 hover:text-white hover:bg-white/20 backdrop-blur-sm'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
                 <span className="font-semibold whitespace-nowrap">{tab.name}</span>
                 {'badge' in tab && tab.badge && (
-                  <span className={`absolute -top-2 -right-2 ${tab.badgeColor || 'bg-red-500'} text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse`}>
+                  <span className={`absolute -top-2 -right-2 ${tab.badgeColor || 'bg-cyber-pink'} text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse`}>
                     {tab.badge > 9 ? '9+' : tab.badge}
                   </span>
                 )}
@@ -2377,10 +2377,10 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
@@ -2424,7 +2424,7 @@ export default function AdminPage() {
                       // Simple export alert for now (could be enhanced with actual PDF generation)
                       alert(`Reporte de ${monthName}\n\nVentas totales: ${formatPrice(reportData.totalSales)}\nPedidos: ${reportData.totalOrders}\nVenta promedio: ${formatPrice(reportData.averageOrderValue)}\n\nProducto más vendido: ${reportData.topProducts[0]?.nombre || 'N/A'}`);
                     }}
-                    className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-sm"
+                    className="flex items-center gap-2 bg-brand-primary text-white px-4 py-2 rounded-lg hover:bg-brand-primary transition-colors font-semibold text-sm"
                   >
                     📊 Exportar Reporte
                   </button>
@@ -2433,31 +2433,31 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: '#F16529' }}>📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>📦</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#F16529' }}>Total Productos</p>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Total Productos</p>
                     <p className="text-3xl font-bold text-gray-800">{stats.totalProducts}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: '#F16529' }}>🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>🛒</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#F16529' }}>Total Pedidos</p>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Total Pedidos</p>
                     <p className="text-3xl font-bold text-gray-800">{stats.totalOrders}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: '#F16529' }}>💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>💰</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#F16529' }}>Ingresos Totales</p>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Ingresos Totales</p>
                     <p className="text-3xl font-bold text-gray-800">
                       {formatPrice(stats.totalRevenue)}
                     </p>
@@ -2465,11 +2465,11 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: '#F16529' }}>⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>⏳</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#F16529' }}>Pedidos Pendientes</p>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-gray-800">{stats.pendingOrders}</p>
                   </div>
                 </div>
@@ -2478,10 +2478,10 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-orange-100">
-              <div className="p-6 border-b border-orange-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-brand-neutral-light">
+              <div className="p-6 border-b border-brand-neutral-light">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800">Pedidos Recientes</h3>
@@ -2573,9 +2573,9 @@ export default function AdminPage() {
               <Link
                 href="/admin/productos/nuevo"
                 className="text-white px-4 py-2 rounded-md transition-colors inline-block"
-                style={{ backgroundColor: '#F16529' }}
+                style={{ backgroundColor: 'var(--brand-primary)' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
               >
                 <span className="text-lg mr-2">➕</span>
                 Agregar Producto
@@ -2601,7 +2601,7 @@ export default function AdminPage() {
                   {/* Compact Alert Button */}
                   <div
                     onClick={() => setShowStockAlert(!showStockAlert)}
-                    className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
+                    className="bg-gradient-to-r from-cyber-pink to-brand-primary hover:from-cyber-pink hover:to-brand-primary text-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -2620,7 +2620,7 @@ export default function AdminPage() {
                               </span>
                             )}
                             {critical > 0 && (
-                              <span className="bg-orange-700 px-2 py-1 rounded-full text-xs font-bold">
+                              <span className="bg-brand-primary-hover px-2 py-1 rounded-full text-xs font-bold">
                                 {critical} Crítico{critical !== 1 ? 's' : ''}
                               </span>
                             )}
@@ -2643,11 +2643,11 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-white border-2 border-red-200 rounded-xl shadow-lg overflow-hidden">
-                      <div className="bg-gradient-to-r from-red-50 to-orange-50 p-4 border-b border-red-200">
-                        <h4 className="font-bold text-red-800 flex items-center">
+                    <div className="mt-4 bg-white border-2 border-brand-neutral-light rounded-xl shadow-lg overflow-hidden">
+                      <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light p-4 border-b border-brand-neutral-light">
+                        <h4 className="font-bold text-cyber-pink flex items-center">
                           📋 Lista Detallada de Productos
-                          <span className="ml-2 text-sm text-red-600">({lowStockProducts.length} productos)</span>
+                          <span className="ml-2 text-sm text-cyber-pink">({lowStockProducts.length} productos)</span>
                         </h4>
                       </div>
 
@@ -2680,9 +2680,9 @@ export default function AdminPage() {
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
                                       isOutOfStock
-                                        ? 'bg-red-100 text-red-800'
+                                        ? 'bg-brand-neutral-light text-cyber-pink'
                                         : isCritical
-                                          ? 'bg-orange-100 text-orange-800'
+                                          ? 'bg-brand-neutral-light text-orange-800'
                                           : 'bg-yellow-100 text-yellow-800'
                                     }`}>
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
@@ -2690,7 +2690,7 @@ export default function AdminPage() {
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`font-bold ${
-                                      isOutOfStock ? 'text-red-600' : isCritical ? 'text-orange-600' : 'text-yellow-700'
+                                      isOutOfStock ? 'text-cyber-pink' : isCritical ? 'text-brand-primary' : 'text-yellow-700'
                                     }`}>
                                       {product.stock}
                                     </span>
@@ -2703,7 +2703,7 @@ export default function AdminPage() {
                                       <div className="w-16 bg-gray-200 rounded-full h-2">
                                         <div
                                           className={`h-2 rounded-full transition-all duration-300 ${
-                                            isOutOfStock ? 'bg-red-500' : isCritical ? 'bg-orange-500' : 'bg-yellow-500'
+                                            isOutOfStock ? 'bg-cyber-pink' : isCritical ? 'bg-brand-primary' : 'bg-yellow-500'
                                           }`}
                                           style={{ width: `${stockPercentage}%` }}
                                         ></div>
@@ -2720,7 +2720,7 @@ export default function AdminPage() {
                                             updateProduct(product.id, { stock: parseInt(newStock) });
                                           }
                                         }}
-                                        className="bg-orange-600 hover:bg-orange-700 text-white text-xs px-2 py-1 rounded transition-colors"
+                                        className="bg-brand-primary hover:bg-brand-primary-hover text-white text-xs px-2 py-1 rounded transition-colors"
                                         title="Ajustar Stock"
                                       >
                                         📈
@@ -2781,7 +2781,7 @@ export default function AdminPage() {
                 </div>
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2"
+                  className="bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2"
                 >
                   <span>⚙️</span>
                   <span>{showFilters ? 'Ocultar Filtros' : 'Filtros Avanzados'}</span>
@@ -2980,7 +2980,7 @@ export default function AdminPage() {
                         </span>
                       )}
                       {productFilters.tags.map(tag => (
-                        <span key={tag} className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">
+                        <span key={tag} className="bg-brand-neutral-light text-orange-800 px-2 py-1 rounded-full text-xs">
                           {tag === 'nuevo' ? '✨ Nuevo' : '🔥 Oferta'}
                         </span>
                       ))}
@@ -3003,7 +3003,7 @@ export default function AdminPage() {
                   </span>
                   <button
                     onClick={selectAllProducts}
-                    className="text-sm hover:opacity-80 transition-opacity" style={{ color: '#F16529' }}
+                    className="text-sm hover:opacity-80 transition-opacity" style={{ color: 'var(--brand-primary)' }}
                   >
                     Seleccionar todo
                   </button>
@@ -3017,7 +3017,7 @@ export default function AdminPage() {
                 {selectedProducts.length > 0 && (
                   <button
                     onClick={deleteSelectedProducts}
-                    className="px-4 py-2 text-white rounded-md text-sm" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                    className="px-4 py-2 text-white rounded-md text-sm" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                   >
                     <span className="text-lg mr-2">🗑️</span>
                     Eliminar seleccionados ({selectedProducts.length})
@@ -3104,7 +3104,7 @@ export default function AdminPage() {
                                   </span>
                                 )}
                                 {product.oferta && (
-                                  <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">
+                                  <span className="bg-brand-neutral-light text-cyber-pink text-xs px-2 py-1 rounded-full">
                                     Oferta
                                   </span>
                                 )}
@@ -3118,7 +3118,7 @@ export default function AdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`text-sm font-medium ${
                             product.stock > 10 ? 'text-green-600' :
-                            product.stock > 0 ? 'text-yellow-600' : 'text-red-600'
+                            product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
                           }`}>
                             {product.stock}
                           </span>
@@ -3129,13 +3129,13 @@ export default function AdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                           <button
                             onClick={() => editProduct(product)}
-                            className="hover:opacity-80 transition-opacity" style={{ color: '#F16529' }}
+                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--brand-primary)' }}
                           >
                             Editar
                           </button>
                           <button
                             onClick={() => deleteProduct(product.id)}
-                            className="hover:opacity-80 transition-opacity" style={{ color: '#F16529' }}
+                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--brand-primary)' }}
                           >
                             Eliminar
                           </button>
@@ -3187,7 +3187,7 @@ export default function AdminPage() {
                 <button
                   onClick={loadUsers}
                   disabled={usersLoading}
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md disabled:opacity-50"
+                  className="bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2 rounded-md disabled:opacity-50"
                 >
                   {usersLoading ? 'Cargando...' : '🔄 Recargar Usuarios'}
                 </button>
@@ -3287,7 +3287,7 @@ export default function AdminPage() {
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-red-100 text-red-800 border-red-200'
+                              ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
                               : 'bg-green-100 text-green-800 border-green-200'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3326,7 +3326,7 @@ export default function AdminPage() {
                                       order.status === 'delivered' || order.status === 'completed'
                                         ? 'bg-green-100 text-green-800'
                                         : order.status === 'cancelled'
-                                        ? 'bg-red-100 text-red-800'
+                                        ? 'bg-brand-neutral-light text-cyber-pink'
                                         : 'bg-yellow-100 text-yellow-800'
                                     }`}>
                                       {order.status === 'pending' && '⏳ Pendiente'}
@@ -3347,7 +3347,7 @@ export default function AdminPage() {
 
                                 <button
                                   onClick={() => window.open(`/admin/pedido/${order.id}`, '_blank')}
-                                  className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-md text-xs transition-colors"
+                                  className="bg-brand-primary hover:bg-brand-primary-hover text-white px-3 py-1 rounded-md text-xs transition-colors"
                                 >
                                   Ver Detalles
                                 </button>
@@ -3372,7 +3372,7 @@ export default function AdminPage() {
                               {selectedUserOrders.filter(o => o.status === 'delivered' || o.status === 'completed').length}
                             </p>
                           </div>
-                          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                          <div className="bg-brand-neutral-light rounded-lg p-4 border border-brand-primary-200">
                             <p className="text-sm font-semibold text-orange-800">Promedio por Pedido</p>
                             <p className="text-2xl font-bold text-orange-900">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0) / selectedUserOrders.length)}
@@ -3399,7 +3399,7 @@ export default function AdminPage() {
                   </p>
                   <button
                     onClick={loadUsers}
-                    className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md"
+                    className="bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2 rounded-md"
                   >
                     🔄 Intentar de nuevo
                   </button>
@@ -3408,7 +3408,7 @@ export default function AdminPage() {
                 <>
                   {/* Admins y Vendedores - Siempre visibles */}
                   <div className="mb-6">
-                    <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-4 mb-3">
+                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light rounded-lg p-4 mb-3">
                       <h3 className="text-lg font-semibold text-gray-800">
                         👑 Administradores y Vendedores ({users.filter(u => u.role === 'admin' || u.role === 'vendedor').length})
                       </h3>
@@ -3471,7 +3471,7 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-red-100 text-red-800 border-red-200'
+                                    ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
                                     : 'bg-green-100 text-green-800 border-green-200'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3498,7 +3498,7 @@ export default function AdminPage() {
                                     </button>
                                     <button
                                       onClick={() => deleteUser(user.uid)}
-                                      className="text-red-600 hover:text-red-900"
+                                      className="text-cyber-pink hover:text-red-900"
                                     >
                                       Eliminar
                                     </button>
@@ -3512,7 +3512,7 @@ export default function AdminPage() {
                                     ) : (
                                       <button
                                         onClick={() => blockUser(user.uid)}
-                                        className="text-orange-600 hover:text-orange-900"
+                                        className="text-brand-primary hover:text-orange-900"
                                       >
                                         🚫 Bloquear
                                       </button>
@@ -3602,7 +3602,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-red-100 text-red-800 border-red-200'
+                                      ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
                                       : 'bg-green-100 text-green-800 border-green-200'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3629,7 +3629,7 @@ export default function AdminPage() {
                                       </button>
                                       <button
                                         onClick={() => deleteUser(user.uid)}
-                                        className="text-red-600 hover:text-red-900"
+                                        className="text-cyber-pink hover:text-red-900"
                                       >
                                         Eliminar
                                       </button>
@@ -3643,7 +3643,7 @@ export default function AdminPage() {
                                       ) : (
                                         <button
                                           onClick={() => blockUser(user.uid)}
-                                          className="text-orange-600 hover:text-orange-900"
+                                          className="text-brand-primary hover:text-orange-900"
                                         >
                                           🚫 Bloquear
                                         </button>
@@ -3688,10 +3688,10 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
@@ -3739,7 +3739,7 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('active')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
-                      ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white scale-105 shadow-lg'
+                      ? 'bg-gradient-to-r from-brand-primary to-cyber-pink text-white scale-105 shadow-lg'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105'
                   }`}
                 >
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-orange-100 p-6 mb-6">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3771,7 +3771,7 @@ export default function AdminPage() {
                     placeholder="Buscar por nombre, email, teléfono o ID..."
                     value={orderSearchQuery}
                     onChange={(e) => setOrderSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                   />
                 </div>
 
@@ -3783,7 +3783,7 @@ export default function AdminPage() {
                   <select
                     value={orderStatusFilter}
                     onChange={(e) => setOrderStatusFilter(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                   >
                     <option value="all">Todos los estados</option>
                     <option value="pending">⏳ Pendiente</option>
@@ -3835,32 +3835,32 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-orange-100 overflow-hidden">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-orange-100">
-                  <thead className="bg-gradient-to-r from-orange-50 to-red-50">
+                <table className="min-w-full divide-y divide-brand-neutral-light">
+                  <thead className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light">
                     <tr>
                       <th className="px-3 py-3 text-left">
                         <input
                           type="checkbox"
                           checked={selectedOrders.length === orders.length && orders.length > 0}
                           onChange={toggleSelectAllOrders}
-                          className="w-4 h-4 text-orange-600 rounded focus:ring-orange-500"
+                          className="w-4 h-4 text-brand-primary rounded focus:ring-brand-primary"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: '#F16529' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary)' }}>
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: '#F16529' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary)' }}>
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: '#F16529' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary)' }}>
                         Estado & Progreso
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: '#F16529' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary)' }}>
                         Fecha
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: '#F16529' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--brand-primary)' }}>
                         Acciones
                       </th>
                     </tr>
@@ -3908,7 +3908,7 @@ export default function AdminPage() {
                             type="checkbox"
                             checked={selectedOrders.includes(mainOrder.id)}
                             onChange={() => toggleOrderSelection(mainOrder.id)}
-                            className="w-4 h-4 text-orange-600 rounded focus:ring-orange-500"
+                            className="w-4 h-4 text-brand-primary rounded focus:ring-brand-primary"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3962,7 +3962,7 @@ export default function AdminPage() {
                                 <select
                                   value={mainOrder.status}
                                   onChange={(e) => updateOrderStatus(mainOrder.id, e.target.value)}
-                                  className="w-full text-xs border-2 border-orange-200 rounded-lg px-3 py-2 focus:border-orange-500 focus:outline-none font-medium"
+                                  className="w-full text-xs border-2 border-brand-primary-200 rounded-lg px-3 py-2 focus:border-brand-primary focus:outline-none font-medium"
                                 >
                                   <option value="pending">⏳ Pendiente</option>
                                   <option value="confirmed">✅ Confirmado</option>
@@ -4008,11 +4008,11 @@ export default function AdminPage() {
                           <div className="flex items-center space-x-2">
                             <button
                               onClick={() => window.open(`/admin/pedido/${mainOrder.id}`, '_blank')}
-                              className="relative bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-md text-xs transition-colors"
+                              className="relative bg-brand-primary hover:bg-brand-primary-hover text-white px-3 py-1 rounded-md text-xs transition-colors"
                             >
                               📋 Ver Detalles
                               {getOrderMessageCount(mainOrder.id) > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                                <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
                                   {getOrderMessageCount(mainOrder.id) > 9 ? '9+' : getOrderMessageCount(mainOrder.id)}
                                 </span>
                               )}
@@ -4029,7 +4029,7 @@ export default function AdminPage() {
                               type="checkbox"
                               checked={selectedOrders.includes(order.id)}
                               onChange={() => toggleOrderSelection(order.id)}
-                              className="w-4 h-4 text-orange-600 rounded focus:ring-orange-500"
+                              className="w-4 h-4 text-brand-primary rounded focus:ring-brand-primary"
                             />
                           </td>
                           <td className="px-6 py-3 whitespace-nowrap pl-12">
@@ -4050,7 +4050,7 @@ export default function AdminPage() {
                                 <select
                                   value={order.status}
                                   onChange={(e) => updateOrderStatus(order.id, e.target.value)}
-                                  className="w-full text-xs border-2 border-orange-200 rounded-lg px-3 py-2 focus:border-orange-500 focus:outline-none font-medium"
+                                  className="w-full text-xs border-2 border-brand-primary-200 rounded-lg px-3 py-2 focus:border-brand-primary focus:outline-none font-medium"
                                 >
                                   <option value="pending">⏳ Pendiente</option>
                                   <option value="confirmed">✅ Confirmado</option>
@@ -4095,11 +4095,11 @@ export default function AdminPage() {
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => window.open(`/admin/pedido/${order.id}`, '_blank')}
-                                className="relative bg-orange-600 hover:bg-orange-700 text-white px-2 py-1 rounded-md text-xs transition-colors"
+                                className="relative bg-brand-primary hover:bg-brand-primary-hover text-white px-2 py-1 rounded-md text-xs transition-colors"
                               >
                                 📋 Ver Detalles
                                 {getOrderMessageCount(order.id) > 0 && (
-                                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
+                                  <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
                                     {getOrderMessageCount(order.id) > 9 ? '9+' : getOrderMessageCount(order.id)}
                                   </span>
                                 )}
@@ -4133,7 +4133,7 @@ export default function AdminPage() {
                     type="text"
                     value={bannerForm.title}
                     onChange={(e) => setBannerForm({ ...bannerForm, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                   />
                 </div>
                 
@@ -4145,7 +4145,7 @@ export default function AdminPage() {
                     type="text"
                     value={bannerForm.text}
                     onChange={(e) => setBannerForm({ ...bannerForm, text: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                   />
                 </div>
                 
@@ -4168,7 +4168,7 @@ export default function AdminPage() {
                               newFiles[index] = file;
                               setBannerFiles(newFiles);
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                           />
                           {image && (
                             <div className="mt-2">
@@ -4189,7 +4189,7 @@ export default function AdminPage() {
                             setBannerForm({ ...bannerForm, images: newImages });
                             setBannerFiles([...newFiles, null]);
                           }}
-                          className="px-3 py-2 text-white rounded-md mt-6" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                          className="px-3 py-2 text-white rounded-md mt-6" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                         >
                           🗑️
                         </button>
@@ -4272,7 +4272,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBanner}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   {updatingBanner ? 'Actualizando...' : 'Actualizar Banner'}
                 </button>
@@ -4281,7 +4281,7 @@ export default function AdminPage() {
               
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa:</h3>
-                <div className="relative text-white py-12 rounded-lg overflow-hidden" style={{ background: 'linear-gradient(to right, #F16529, #F16529)' }}>
+                <div className="relative text-white py-12 rounded-lg overflow-hidden" style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary))' }}>
                   {bannerForm.images.length > 0 && bannerForm.images[0] && (
                     <div 
                       className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -4528,7 +4528,7 @@ export default function AdminPage() {
                               <button
                                 type="button"
                                 onClick={() => setPopupForm({ ...popupForm, mediaUrl: '' })}
-                                className="text-xs text-red-600 hover:text-red-800 font-medium transition-colors"
+                                className="text-xs text-cyber-pink hover:text-cyber-pink font-medium transition-colors"
                               >
                                 🗑️ Eliminar {popupForm.isVideo ? 'video' : 'imagen'}
                               </button>
@@ -4543,7 +4543,7 @@ export default function AdminPage() {
                 {/* Activation & Actions */}
                 <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-r from-red-500 to-orange-600 rounded-lg p-2">
+                    <div className="bg-gradient-to-r from-cyber-pink to-brand-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                       </svg>
@@ -4635,7 +4635,7 @@ export default function AdminPage() {
                       style={popupPreviewStyle}
                     >
                       <div className="relative w-full" style={{ paddingBottom: `${(popupRatio * 100).toFixed(2)}%` }}>
-                        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-orange-500 to-red-500">
+                        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-brand-primary to-cyber-pink">
                           <button
                             type="button"
                             className="absolute top-2 right-2 z-20 p-1 rounded-full bg-white/90 hover:bg-white transition-all cursor-default shadow-lg"
@@ -4683,7 +4683,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-white text-orange-500 font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
+                              className="bg-white text-brand-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4770,14 +4770,14 @@ export default function AdminPage() {
                         type="button"
                         onClick={handleSaveLayoutPatterns}
                         className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60"
-                        style={{ backgroundColor: '#F16529' }}
+                        style={{ backgroundColor: 'var(--brand-primary)' }}
                         onMouseEnter={(e) => {
                           if (!e.currentTarget.hasAttribute('disabled')) {
                             e.currentTarget.style.backgroundColor = '#D13C1A';
                           }
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#F16529';
+                          e.currentTarget.style.backgroundColor = 'var(--brand-primary)';
                         }}
                         disabled={savingLayoutPatterns || layoutPatternsLoading}
                       >
@@ -4801,7 +4801,7 @@ export default function AdminPage() {
                               <span>Activo</span>
                               <input
                                 type="checkbox"
-                                className="h-4 w-4 text-orange-500 rounded"
+                                className="h-4 w-4 text-brand-primary rounded"
                                 checked={rule.enabled}
                                 onChange={(e) => updateLayoutRule(rule.variant, (prevRule) => ({
                                   ...prevRule,
@@ -4830,7 +4830,7 @@ export default function AdminPage() {
                                   }));
                                 }}
                                 className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1"
-                                style={{ '--tw-ring-color': '#F16529' } as any}
+                                style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               />
                             </div>
@@ -4850,7 +4850,7 @@ export default function AdminPage() {
                                   }));
                                 }}
                                 className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1"
-                                style={{ '--tw-ring-color': '#F16529' } as any}
+                                style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               >
                                 {meta.spanOptions.map((option) => (
@@ -4899,7 +4899,7 @@ export default function AdminPage() {
               setPreviewDescription('');
               setSectionsView('edit');
             }}
-            className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold flex items-center gap-2"
+            className="px-6 py-3 bg-brand-primary text-white rounded-lg hover:bg-brand-primary transition-colors font-semibold flex items-center gap-2"
           >
             <span>+</span> Nueva Sección
           </button>
@@ -4925,7 +4925,7 @@ export default function AdminPage() {
                       </div>
                       <p className="text-sm text-gray-600 mb-3">{section.description}</p>
                       <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <span className="px-2 py-1 bg-orange-50 text-orange-600 rounded-md font-medium">
+                        <span className="px-2 py-1 bg-brand-neutral-light text-brand-primary rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
                         <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded-md font-medium">
@@ -4954,7 +4954,7 @@ export default function AdminPage() {
                             console.error('Error auto-saving section enabled status:', error);
                           }
                         }}
-                        className="w-5 h-5 text-orange-500 rounded"
+                        className="w-5 h-5 text-brand-primary rounded"
                       />
                     </div>
                   </div>
@@ -4967,7 +4967,7 @@ export default function AdminPage() {
                         setPreviewDescription(section.description);
                         setSectionsView('edit');
                       }}
-                      className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium"
+                      className="flex-1 px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary transition-colors text-sm font-medium"
                     >
                       ✏️ Editar
                     </button>
@@ -4996,7 +4996,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
+                      className="px-4 py-2 bg-cyber-pink text-white rounded-lg hover:bg-cyber-pink transition-colors text-sm font-medium"
                     >
                       🗑️
                     </button>
@@ -5017,7 +5017,7 @@ export default function AdminPage() {
                 setPreviewDescription('');
                 setSectionsView('edit');
               }}
-              className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold"
+              className="px-6 py-3 bg-brand-primary text-white rounded-lg hover:bg-brand-primary transition-colors font-semibold"
             >
               + Nueva Sección
             </button>
@@ -5064,7 +5064,7 @@ export default function AdminPage() {
                   defaultValue={editingSection?.name || ''}
                   onChange={(e) => setPreviewName(e.target.value)}
                   placeholder="Ej: Productos Destacados"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 />
               </div>
 
@@ -5078,7 +5078,7 @@ export default function AdminPage() {
                   onChange={(e) => setPreviewDescription(e.target.value)}
                   placeholder="Descripción de la sección"
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 />
               </div>
 
@@ -5089,7 +5089,7 @@ export default function AdminPage() {
                 <select
                   defaultValue={editingSection?.type || 'custom'}
                   id="section-type-select"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 >
                   <option value="custom">🎯 Personalizada</option>
                   <option value="featured">⭐ Destacados</option>
@@ -5104,7 +5104,7 @@ export default function AdminPage() {
                   type="checkbox"
                   id="section-enabled"
                   defaultChecked={editingSection?.enabled ?? true}
-                  className="w-5 h-5 text-orange-500 rounded"
+                  className="w-5 h-5 text-brand-primary rounded"
                 />
                 <label htmlFor="section-enabled" className="text-sm font-medium text-gray-700">
                   Sección activa
@@ -5116,9 +5116,9 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">👁️ Vista Previa</h3>
 
-              <div className="bg-gradient-to-br from-orange-50 to-white rounded-lg p-6 border-2 border-orange-200">
+              <div className="bg-gradient-to-br from-brand-neutral-light to-white rounded-lg p-6 border-2 border-brand-primary-200">
                 <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="border-b-2 border-orange-500 pb-3 mb-3">
+                  <div className="border-b-2 border-brand-primary pb-3 mb-3">
                     <h4 className="text-xl font-bold text-gray-900">
                       {previewName || editingSection?.name || 'Nombre de Sección'}
                     </h4>
@@ -5135,7 +5135,7 @@ export default function AdminPage() {
                   </div>
                   <div className="flex justify-between items-center mt-3 text-xs">
                     <span className="text-gray-500">{editingSection?.selectedProducts?.length || 0} productos</span>
-                    <span className="text-orange-500 font-semibold">Ver todos →</span>
+                    <span className="text-brand-primary font-semibold">Ver todos →</span>
                   </div>
                 </div>
                 <p className="text-xs text-center text-gray-500 mt-3">
@@ -5150,7 +5150,7 @@ export default function AdminPage() {
 
               <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                 <div className="text-center mb-4">
-                  <div className="text-3xl font-bold text-orange-500">
+                  <div className="text-3xl font-bold text-brand-primary">
                     {editingSection?.selectedProducts?.length || 0}
                   </div>
                   <div className="text-sm text-gray-600">productos configurados</div>
@@ -5202,7 +5202,7 @@ export default function AdminPage() {
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
               sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
               sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-              'bg-red-50 text-red-700'
+              'bg-brand-neutral-light text-red-700'
             }`}>
               {sectionSaveStatus === 'saving' && (
                 <>
@@ -5290,7 +5290,7 @@ export default function AdminPage() {
                 }
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="flex-1 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold disabled:opacity-50"
+              className="flex-1 px-6 py-3 bg-brand-primary text-white rounded-lg hover:bg-brand-primary transition-colors font-semibold disabled:opacity-50"
             >
               {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
             </button>
@@ -5328,7 +5328,7 @@ export default function AdminPage() {
 
                 return currentSection ? (
                   <>
-                    <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                    <div className="bg-brand-neutral-light rounded-lg p-4 border border-brand-primary-200">
                       <h3 className="text-lg font-bold text-gray-900 mb-2">
                         {currentSection.name}
                       </h3>
@@ -5336,7 +5336,7 @@ export default function AdminPage() {
                         {currentSection.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-white text-orange-600 rounded-md font-medium text-xs">
+                        <span className="px-2 py-1 bg-white text-brand-primary rounded-md font-medium text-xs">
                           {currentSection.type === 'custom' ? '🎯 Personalizada' :
                            currentSection.type === 'featured' ? '⭐ Destacados' :
                            currentSection.type === 'new' ? '🆕 Nuevos' :
@@ -5347,7 +5347,7 @@ export default function AdminPage() {
 
                     <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                       <div className="text-center mb-4">
-                        <div className="text-3xl font-bold text-orange-500">
+                        <div className="text-3xl font-bold text-brand-primary">
                           {currentSection.selectedProducts?.length || 0}
                         </div>
                         <div className="text-sm text-gray-600">productos seleccionados</div>
@@ -5402,7 +5402,7 @@ export default function AdminPage() {
                       ...prev,
                       search: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                   />
                 </div>
                 <div className="w-48">
@@ -5412,7 +5412,7 @@ export default function AdminPage() {
                       ...prev,
                       category: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                   >
                     <option value="">Todas las categorías</option>
                     {categories.map((category) => (
@@ -5433,7 +5433,7 @@ export default function AdminPage() {
                     ...prev,
                     showOnlySelected: e.target.checked
                   }))}
-                  className="w-4 h-4 text-orange-500 rounded"
+                  className="w-4 h-4 text-brand-primary rounded"
                 />
                 <label htmlFor="show-only-selected" className="text-sm text-gray-700">
                   Mostrar solo seleccionados
@@ -5475,7 +5475,7 @@ export default function AdminPage() {
 
                     return (
                       <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-orange-500 bg-orange-50' : 'border-gray-200'
+                        isSelected ? 'border-brand-primary bg-brand-neutral-light' : 'border-gray-200'
                       }`}>
                         <div className="flex items-start gap-3">
                           <input
@@ -5506,7 +5506,7 @@ export default function AdminPage() {
                                 console.error('Error auto-saving product selection:', error);
                               }
                             }}
-                            className="w-5 h-5 text-orange-500 rounded mt-1"
+                            className="w-5 h-5 text-brand-primary rounded mt-1"
                           />
                           <div className="flex-1 min-w-0">
                             {product.imagen && (
@@ -5545,7 +5545,7 @@ export default function AdminPage() {
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900">Gestión de Banners (v2)</h2>
               {isAutoSavingBanner && (
-                <div className="flex items-center gap-2 text-sm text-orange-600 bg-orange-50 px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 text-sm text-brand-primary bg-brand-neutral-light px-3 py-1 rounded-full">
                   <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -5564,7 +5564,7 @@ export default function AdminPage() {
                     id="mainBannerActive"
                     checked={mainBannerForm.active}
                     onChange={(e) => setMainBannerForm({ ...mainBannerForm, active: e.target.checked })}
-                    className="h-4 w-4 border-gray-300 rounded" style={{ color: '#F16529', '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                    className="h-4 w-4 border-gray-300 rounded" style={{ color: 'var(--brand-primary)', '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                   <label htmlFor="mainBannerActive" className="ml-2 block text-sm font-medium text-gray-700">
                     Banner Principal Activo
@@ -5587,7 +5587,7 @@ export default function AdminPage() {
                               const newSlides = mainBannerForm.slides.filter((_, i) => i !== index);
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="text-red-600 hover:text-red-800 text-sm"
+                            className="text-cyber-pink hover:text-cyber-pink text-sm"
                           >
                             Eliminar
                           </button>
@@ -5627,7 +5627,7 @@ export default function AdminPage() {
                                 }
                               }
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           />
                           <p className="text-xs text-gray-500 mt-1">Formatos soportados: JPG, PNG, GIF</p>
                           
@@ -5646,7 +5646,7 @@ export default function AdminPage() {
                                   newSlides[index] = { ...newSlides[index], imageUrl: "" };
                                   setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                                 }}
-                                className="mt-2 text-red-600 hover:text-red-800 text-sm"
+                                className="mt-2 text-cyber-pink hover:text-cyber-pink text-sm"
                               >
                                 Eliminar imagen
                               </button>
@@ -5655,8 +5655,8 @@ export default function AdminPage() {
                         </div>
 
                         {/* Título */}
-                        <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
-                          <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
+                        <div className="bg-brand-neutral-light p-3 rounded-lg border border-brand-primary-200">
+                          <label className="block text-sm font-bold text-brand-primary-hover mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
@@ -5670,10 +5670,10 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], title: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-orange-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 focus:outline-none bg-white transition-all"
+                            className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-white transition-all"
                             placeholder="Ej: ¡Ofertas Especiales! 🔥"
                           />
-                          <p className="text-xs text-orange-600 mt-1">Este texto aparece grande sobre el banner</p>
+                          <p className="text-xs text-brand-primary mt-1">Este texto aparece grande sobre el banner</p>
                         </div>
 
                         {/* Subtítulo */}
@@ -5715,7 +5715,7 @@ export default function AdminPage() {
                               };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': '#F16529' } as any}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           >
                             <option value="product">Producto Específico</option>
                             <option value="category">Categoría (múltiples productos en promo)</option>
@@ -5738,7 +5738,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], categoryId: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                             >
                               <option value="">Selecciona una categoría</option>
                               {availableCategories.map((category) => (
@@ -5768,7 +5768,7 @@ export default function AdminPage() {
                             onChange={(e) => {
                               setBannerSearchTerms({ ...bannerSearchTerms, [index]: e.target.value });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 mb-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary mb-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                           />
                           
                           <select
@@ -5782,7 +5782,7 @@ export default function AdminPage() {
                               });
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           >
                             <option value="">Selecciona un producto</option>
                             {products
@@ -5884,7 +5884,7 @@ export default function AdminPage() {
                       }];
                       setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                     }}
-                    className="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-orange-500 hover:text-orange-600 transition-colors"
+                    className="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
                   >
                     + Agregar Banner
                   </button>
@@ -5924,7 +5924,7 @@ export default function AdminPage() {
                     value={logoForm.text}
                     onChange={(e) => setLogoForm({ ...logoForm, text: e.target.value })}
                     placeholder="Importadora F&D"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
                 
@@ -5946,7 +5946,7 @@ export default function AdminPage() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                   <p className="text-sm text-gray-500 mt-1">
                     Si subes una imagen, se usará en lugar del emoji
@@ -6011,9 +6011,9 @@ export default function AdminPage() {
                   }}
                   disabled={updatingLogo}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: '#F16529' }}
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   {updatingLogo ? 'Actualizando...' : 'Actualizar Logo'}
                 </button>
@@ -6049,7 +6049,7 @@ export default function AdminPage() {
                     setCategoryForm({ id: '', name: '', active: true, subcategorias: [] });
                     setShowCategoryModal(true);
                   }}
-                  className="text-white px-4 py-2 rounded-md transition-colors" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  className="text-white px-4 py-2 rounded-md transition-colors" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   ➕ Agregar Categoría
                 </button>
@@ -6123,7 +6123,7 @@ export default function AdminPage() {
                                         }
                                       }
                                     }}
-                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-red-600 transition-opacity"
+                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-cyber-pink transition-opacity"
                                     title="Eliminar subcategoría"
                                   >
                                     🗑️
@@ -6141,14 +6141,14 @@ export default function AdminPage() {
                               setShowSubcategoryModal(true);
                             }}
                             className="text-xs mt-1 hover:opacity-80 transition-opacity"
-                            style={{ color: '#F16529' }}
+                            style={{ color: 'var(--brand-primary)' }}
                           >
                             + Agregar subcategoría
                           </button>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            category.active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                            category.active ? 'bg-green-100 text-green-800' : 'bg-brand-neutral-light text-cyber-pink'
                           }`}>
                             {category.active ? 'Activa' : 'Inactiva'}
                           </span>
@@ -6159,7 +6159,7 @@ export default function AdminPage() {
                               setCategoryForm({ ...category, subcategorias: (category as any).subcategorias || [] });
                               setShowCategoryModal(true);
                             }}
-                            className="hover:opacity-80 transition-opacity" style={{ color: '#F16529' }}
+                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--brand-primary)' }}
                           >
                             Editar
                           </button>
@@ -6172,7 +6172,7 @@ export default function AdminPage() {
                                 alert('Error al eliminar categoría');
                               }
                             }}
-                            className="hover:opacity-80 transition-opacity" style={{ color: '#F16529' }}
+                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--brand-primary)' }}
                           >
                             Eliminar
                           </button>
@@ -6213,7 +6213,7 @@ export default function AdminPage() {
                       value={categoryForm.id}
                       onChange={(e) => setCategoryForm({ ...categoryForm, id: e.target.value })}
                       placeholder="electronicos"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -6226,7 +6226,7 @@ export default function AdminPage() {
                       value={categoryForm.name}
                       onChange={(e) => setCategoryForm({ ...categoryForm, name: e.target.value })}
                       placeholder="Electrónicos"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -6282,7 +6282,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                     >
                       Guardar
                     </button>
@@ -6320,7 +6320,7 @@ export default function AdminPage() {
                       value={subcategoryForm.nombre}
                       onChange={(e) => setSubcategoryForm({ ...subcategoryForm, nombre: e.target.value })}
                       placeholder="Smartphones"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': '#F16529' } as any}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -6398,7 +6398,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: '#F16529' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: 'var(--brand-primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                     >
                       Guardar
                     </button>
@@ -6414,7 +6414,7 @@ export default function AdminPage() {
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
             <div className="bg-white/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-gray-200 flex flex-col mx-auto">
               {/* Compact Header */}
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: '#F16529' }}>
+              <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
@@ -6445,9 +6445,9 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Información Básica</h4>
@@ -6462,7 +6462,7 @@ export default function AdminPage() {
                           value={productForm.nombre}
                           onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                           required
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = '#F16529'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Ej: Laptop Gaming RGB"
                         />
                       </div>
@@ -6492,7 +6492,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = '#F16529'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="0"
                         />
                       </div>
@@ -6507,7 +6507,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = '#F16529'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Dejar vacío si no hay descuento"
                         />
                         <p className="text-xs text-gray-500 mt-1">
@@ -6518,9 +6518,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📊</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Control de Inventario</h4>
@@ -6562,9 +6562,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📂</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Categorización</h4>
@@ -6655,7 +6655,7 @@ export default function AdminPage() {
                           })}
                         </div>
                         {productForm.categorias.length === 0 && (
-                          <p className="text-xs text-red-500 mt-1">Debes seleccionar al menos una categoría o subcategoría</p>
+                          <p className="text-xs text-cyber-pink mt-1">Debes seleccionar al menos una categoría o subcategoría</p>
                         )}
                         {productForm.categorias.length > 0 && (
                           <p className="text-xs text-green-600 mt-1">
@@ -6667,9 +6667,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Descripción</h4>
@@ -6678,24 +6678,24 @@ export default function AdminPage() {
                       value={productForm.descripcion}
                       onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
                       rows={2}
-                      className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-all duration-200 resize-none bg-white/70"
+                      className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-brand-primary focus:outline-none transition-all duration-200 resize-none bg-white/70"
                       placeholder="Describe las características principales del producto..."
                     />
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">🖼️</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Imágenes del Producto</h4>
                     </div>
 
                     {/* Image Specifications */}
-                    <div className="mb-3 p-2 bg-orange-50 border border-orange-200 rounded-lg text-xs">
+                    <div className="mb-3 p-2 bg-brand-neutral-light border border-brand-primary-200 rounded-lg text-xs">
                       <p className="text-orange-800 font-medium mb-1">📐 Especificaciones:</p>
-                      <ul className="text-orange-700 space-y-0.5">
+                      <ul className="text-brand-primary-hover space-y-0.5">
                         <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                         <li>• <strong>Formato:</strong> JPG o PNG</li>
                         <li>• <strong>Fondo:</strong> Blanco preferible</li>
@@ -6704,7 +6704,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Compact Image Upload Area */}
-                    <div className="border-2 border-dashed border-orange-200 rounded-lg p-3 text-center bg-orange-50/50 hover:bg-orange-50 transition-colors">
+                    <div className="border-2 border-dashed border-brand-primary-200 rounded-lg p-3 text-center bg-brand-neutral-light/50 hover:bg-brand-neutral-light transition-colors">
                       <input
                         type="file"
                         multiple
@@ -6728,7 +6728,7 @@ export default function AdminPage() {
                       <label htmlFor="product-images" className="cursor-pointer block">
                         <div className="flex flex-col items-center">
                           <div className="text-2xl mb-1">📸</div>
-                          <p className="text-xs font-medium" style={{ color: '#F16529' }}>Agregar imágenes</p>
+                          <p className="text-xs font-medium" style={{ color: 'var(--brand-primary)' }}>Agregar imágenes</p>
                           <p className="text-xs" style={{ color: '#D13C1A' }}>Múltiples archivos</p>
                         </div>
                       </label>
@@ -6760,7 +6760,7 @@ export default function AdminPage() {
                                         imagen: newImagenes.length > 0 ? newImagenes[0] : ''
                                       }));
                                     }}
-                                    className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 transition-colors opacity-0 group-hover:opacity-100"
+                                    className="absolute -top-1 -right-1 bg-cyber-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-cyber-pink transition-colors opacity-0 group-hover:opacity-100"
                                   >
                                     ✕
                                   </button>
@@ -6792,7 +6792,7 @@ export default function AdminPage() {
                                       setProductImages(prev => prev.filter((_, i) => i !== index));
                                       setProductImagePreviews(prev => prev.filter((_, i) => i !== index));
                                     }}
-                                    className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+                                    className="absolute -top-1 -right-1 bg-cyber-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-cyber-pink transition-colors"
                                   >
                                     ✕
                                   </button>
@@ -6809,32 +6809,32 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-orange-100">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">🏷️</span>
                       </div>
                       <h4 className="text-sm font-bold text-gray-800">Etiquetas</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <label className="flex items-center gap-2 cursor-pointer bg-orange-50 px-3 py-2 rounded-lg hover:bg-orange-100 transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-brand-neutral-light px-3 py-2 rounded-lg hover:bg-brand-neutral-light transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.nuevo}
                           onChange={(e) => setProductForm({ ...productForm, nuevo: e.target.checked })}
-                          className="rounded w-4 h-4" style={{ color: '#F16529', '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                          className="rounded w-4 h-4" style={{ color: 'var(--brand-primary)', '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                         />
-                        <span className="text-xs font-semibold" style={{ color: '#F16529' }}>✨ Nuevo</span>
+                        <span className="text-xs font-semibold" style={{ color: 'var(--brand-primary)' }}>✨ Nuevo</span>
                       </label>
 
-                      <label className="flex items-center gap-2 cursor-pointer bg-orange-50 px-3 py-2 rounded-lg hover:bg-orange-100 transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-brand-neutral-light px-3 py-2 rounded-lg hover:bg-brand-neutral-light transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.oferta}
                           onChange={(e) => setProductForm({ ...productForm, oferta: e.target.checked })}
-                          className="rounded w-4 h-4" style={{ color: '#F16529', '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                          className="rounded w-4 h-4" style={{ color: 'var(--brand-primary)', '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                         />
-                        <span className="text-xs font-semibold" style={{ color: '#F16529' }}>🔥 Oferta</span>
+                        <span className="text-xs font-semibold" style={{ color: 'var(--brand-primary)' }}>🔥 Oferta</span>
                       </label>
                     </div>
                   </div>
@@ -6842,7 +6842,7 @@ export default function AdminPage() {
               </div>
 
               {/* Modern Compact Bottom Actions - Fixed */}
-              <div className="bg-white/95 backdrop-blur-sm p-4 border-t border-orange-200 flex-shrink-0">
+              <div className="bg-white/95 backdrop-blur-sm p-4 border-t border-brand-primary-200 flex-shrink-0">
                 <div className="flex gap-3">
                   <button
                     type="button"
@@ -6860,10 +6860,10 @@ export default function AdminPage() {
                     disabled={uploadingProduct}
                     className="flex-[2] text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                     style={{
-                      backgroundColor: '#F16529'
+                      backgroundColor: 'var(--brand-primary)'
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                   >
                     {uploadingProduct ? (
                       <span className="flex items-center justify-center gap-2">
@@ -6941,7 +6941,7 @@ export default function AdminPage() {
                       autoSaveHomepageContent(newContent);
                       alert('✅ Imágenes por defecto restauradas!');
                     }}
-                    className="bg-orange-600 hover:bg-orange-700 text-white text-xs px-3 py-1 rounded transition-colors flex items-center gap-1"
+                    className="bg-brand-primary hover:bg-brand-primary-hover text-white text-xs px-3 py-1 rounded transition-colors flex items-center gap-1"
                   >
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -6950,8 +6950,8 @@ export default function AdminPage() {
                   </button>
 
                   {isAutoSaving ? (
-                    <div className="flex items-center text-orange-600 text-sm">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-orange-600 mr-2"></div>
+                    <div className="flex items-center text-brand-primary text-sm">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-brand-primary mr-2"></div>
                       Guardando...
                     </div>
                   ) : (
@@ -6980,7 +6980,7 @@ export default function AdminPage() {
                     })();
 
                     return (
-                  <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden hover:border-orange-300 transition-colors">
+                  <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden hover:border-brand-primary-300 transition-colors">
                     
                     <div className="bg-gray-50 px-4 py-3 border-b">
                       <div className="flex justify-between items-center">
@@ -7018,7 +7018,7 @@ export default function AdminPage() {
                                 autoSaveHomepageContent(newContent);
                               }
                             }}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors"
+                            className="text-cyber-pink hover:text-red-700 hover:bg-brand-neutral-light p-1 rounded transition-colors"
                             title="Eliminar sección"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7063,7 +7063,7 @@ export default function AdminPage() {
 
                           
                           {section.badgeText && (
-                            <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold shadow-lg">
+                            <div className="absolute top-3 left-3 bg-cyber-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg">
                               {section.badgeText}
                             </div>
                           )}
@@ -7098,7 +7098,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, title: e.target.value });
                           }}
-                          className="w-full font-semibold text-gray-900 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-orange-500 focus:outline-none"
+                          className="w-full font-semibold text-gray-900 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
                           placeholder="Título de la sección"
                         />
                         <input
@@ -7107,7 +7107,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, description: e.target.value });
                           }}
-                          className="w-full text-sm text-gray-600 mt-1 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-orange-500 focus:outline-none"
+                          className="w-full text-sm text-gray-600 mt-1 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
                           placeholder="Descripción de la sección"
                         />
                       </div>
@@ -7120,7 +7120,7 @@ export default function AdminPage() {
                           updateSection(index, { ...section, badgeText: e.target.value });
                         }}
                         placeholder="Texto del badge (ej: OFERTA, NUEVO)"
-                        className="w-full text-xs border rounded px-2 py-1 focus:border-orange-500 focus:outline-none"
+                        className="w-full text-xs border rounded px-2 py-1 focus:border-brand-primary focus:outline-none"
                       />
                       
                       
@@ -7149,11 +7149,11 @@ export default function AdminPage() {
                               handleImageUpload(file, index, section);
                             }
                           }}
-                          className="flex-1 text-xs border rounded px-2 py-1 focus:border-orange-500 focus:outline-none"
+                          className="flex-1 text-xs border rounded px-2 py-1 focus:border-brand-primary focus:outline-none"
                         />
                         {uploadingImages[section.id] && (
-                          <div className="flex items-center text-orange-600 text-xs">
-                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-orange-600 mr-1"></div>
+                          <div className="flex items-center text-brand-primary text-xs">
+                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-brand-primary mr-1"></div>
                             Subiendo...
                           </div>
                         )}
@@ -7167,7 +7167,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, linkType: e.target.value as any, linkValue: '' });
                           }}
-                          className="w-full text-xs border rounded px-2 py-1.5 focus:border-orange-500 focus:outline-none"
+                          className="w-full text-xs border rounded px-2 py-1.5 focus:border-brand-primary focus:outline-none"
                         >
                           <option value="category">Categoría</option>
                           <option value="product">Producto</option>
@@ -7183,7 +7183,7 @@ export default function AdminPage() {
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-orange-500 focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-brand-primary focus:outline-none"
                             >
                               <option value="">-- Selecciona una categoría --</option>
                               {availableCategories.map((cat) => (
@@ -7201,7 +7201,7 @@ export default function AdminPage() {
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-orange-500 focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-brand-primary focus:outline-none"
                             >
                               <option value="">-- Selecciona un producto --</option>
                               {products.map(product => (
@@ -7219,7 +7219,7 @@ export default function AdminPage() {
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-orange-500 focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-brand-primary focus:outline-none"
                             >
                               <option value="">-- Selecciona un filtro --</option>
                               <option value="ofertas">Ofertas</option>
@@ -7236,7 +7236,7 @@ export default function AdminPage() {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
                               placeholder="https://ejemplo.com"
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-orange-500 focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-brand-primary focus:outline-none"
                             />
                           </div>
                         )}
@@ -7248,7 +7248,7 @@ export default function AdminPage() {
                         onChange={(e) => {
                           updateSection(index, { ...section, position: e.target.value as "large" | "tall" | "normal" | "wide" });
                         }}
-                        className="w-full text-xs border rounded px-2 py-1 focus:border-orange-500 focus:outline-none"
+                        className="w-full text-xs border rounded px-2 py-1 focus:border-brand-primary focus:outline-none"
                       >
                         <option value="large">Grande (2x2)</option>
                         <option value="tall">Alto (1x2)</option>
@@ -7301,7 +7301,7 @@ export default function AdminPage() {
                 <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                      <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                       Banners Intermedios
@@ -7318,7 +7318,7 @@ export default function AdminPage() {
                       autoSaveHomepageContent(newContent);
                       alert('✅ Banners restaurados');
                     }}
-                    className="bg-orange-600 hover:bg-orange-700 text-white text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-md"
+                    className="bg-brand-primary hover:bg-brand-primary-hover text-white text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-md"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -7401,8 +7401,8 @@ export default function AdminPage() {
                           </div>
 
                           {/* Título - Mejorado */}
-                          <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
-                            <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
+                          <div className="bg-brand-neutral-light p-3 rounded-lg border border-brand-primary-200">
+                            <label className="block text-sm font-bold text-brand-primary-hover mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                               </svg>
@@ -7412,10 +7412,10 @@ export default function AdminPage() {
                               type="text"
                               value={banner.title}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, title: e.target.value })}
-                              className="w-full text-sm border-2 border-orange-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 focus:outline-none bg-white transition-all"
+                              className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-white transition-all"
                               placeholder="Ej: ¡Ofertas Especiales! 🔥"
                             />
-                            <p className="text-xs text-orange-600 mt-1">Este texto aparece grande en el banner</p>
+                            <p className="text-xs text-brand-primary mt-1">Este texto aparece grande en el banner</p>
                           </div>
 
                           {/* Subtítulo - Mejorado */}
@@ -7482,7 +7482,7 @@ export default function AdminPage() {
                                   )}
                                 </select>
                                 {availableCategories.length === 0 && (
-                                  <p className="text-xs text-red-600 mt-2 flex items-center gap-1">
+                                  <p className="text-xs text-cyber-pink mt-2 flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
@@ -7582,7 +7582,7 @@ export default function AdminPage() {
                               className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-white transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
-                              <p className="text-xs text-orange-600 mt-2 font-medium flex items-center gap-1">
+                              <p className="text-xs text-brand-primary mt-2 font-medium flex items-center gap-1">
                                 <svg className="animate-spin h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -7661,7 +7661,7 @@ export default function AdminPage() {
                 </a>
                 <button
                   onClick={() => saveHomepageContent()}
-                  className="px-4 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2"
+                  className="px-4 py-3 bg-brand-primary text-white rounded-lg hover:bg-brand-primary transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
@@ -7700,7 +7700,7 @@ export default function AdminPage() {
                     placeholder="Tu tienda online de confianza con los mejores productos importados."
                     rows={3}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                    style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                    style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
 
@@ -7719,13 +7719,13 @@ export default function AdminPage() {
                       onChange={(e) => setFooterForm({ ...footerForm, phone: e.target.value })}
                       placeholder="+1 234 567 890"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
-                      <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-cyber-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                       Email
@@ -7736,7 +7736,7 @@ export default function AdminPage() {
                       onChange={(e) => setFooterForm({ ...footerForm, email: e.target.value })}
                       placeholder="info@importadorafyd.com"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
                 </div>
@@ -7755,7 +7755,7 @@ export default function AdminPage() {
                     onChange={(e) => setFooterForm({ ...footerForm, address: e.target.value })}
                     placeholder="Calle Principal 123, Ciudad"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                    style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                    style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
 
@@ -7774,7 +7774,7 @@ export default function AdminPage() {
                         onChange={(e) => setFooterForm({ ...footerForm, facebookUrl: e.target.value })}
                         placeholder="https://facebook.com/tu-pagina"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                        style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
                     
@@ -7788,7 +7788,7 @@ export default function AdminPage() {
                         onChange={(e) => setFooterForm({ ...footerForm, instagramUrl: e.target.value })}
                         placeholder="https://instagram.com/tu-cuenta"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                        style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
 
@@ -7802,7 +7802,7 @@ export default function AdminPage() {
                         onChange={(e) => setFooterForm({ ...footerForm, tiktokUrl: e.target.value })}
                         placeholder="https://tiktok.com/@tu-cuenta"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                        style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
 
@@ -7816,7 +7816,7 @@ export default function AdminPage() {
                         onChange={(e) => setFooterForm({ ...footerForm, whatsappUrl: e.target.value })}
                         placeholder="912345678 o 56912345678"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                        style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                       <p className="text-xs text-gray-500 mt-1">
                         Número de teléfono (se agregará automáticamente el código 56 si no lo incluyes)
@@ -7857,9 +7857,9 @@ export default function AdminPage() {
                   }}
                   disabled={updatingFooter}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: '#F16529' }}
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   {updatingFooter ? 'Actualizando...' : 'Actualizar Información'}
                 </button>
@@ -7868,7 +7868,7 @@ export default function AdminPage() {
               
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa del Footer:</h3>
-                <div className="bg-orange-500 text-white p-6 rounded-lg">
+                <div className="bg-brand-primary text-white p-6 rounded-lg">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold mb-2">Importadora F&D</h4>
@@ -7916,7 +7916,7 @@ export default function AdminPage() {
                       onChange={(e) => setBankForm({ ...bankForm, bankName: e.target.value })}
                       placeholder="Banco de Chile"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
@@ -7928,7 +7928,7 @@ export default function AdminPage() {
                       value={bankForm.accountType}
                       onChange={(e) => setBankForm({ ...bankForm, accountType: e.target.value })}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     >
                       <option value="Cuenta Corriente">Cuenta Corriente</option>
                       <option value="Cuenta Vista">Cuenta Vista</option>
@@ -7948,7 +7948,7 @@ export default function AdminPage() {
                       onChange={(e) => setBankForm({ ...bankForm, accountNumber: e.target.value })}
                       placeholder="123-456-789-01"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
@@ -7962,7 +7962,7 @@ export default function AdminPage() {
                       onChange={(e) => setBankForm({ ...bankForm, rut: e.target.value })}
                       placeholder="12.345.678-9"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
                 </div>
@@ -7978,7 +7978,7 @@ export default function AdminPage() {
                       onChange={(e) => setBankForm({ ...bankForm, holderName: e.target.value })}
                       placeholder="Importadora FyD SpA"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
@@ -7992,7 +7992,7 @@ export default function AdminPage() {
                       onChange={(e) => setBankForm({ ...bankForm, email: e.target.value })}
                       placeholder="pagos@importadorafyd.cl"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
                 </div>
@@ -8013,9 +8013,9 @@ export default function AdminPage() {
                   }}
                   disabled={updatingBank}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: '#F16529' }}
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   {updatingBank ? 'Actualizando...' : 'Actualizar Datos Bancarios'}
                 </button>
@@ -8159,7 +8159,7 @@ export default function AdminPage() {
                         onChange={(e) => setPreviewName(e.target.value)}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
-                        style={{ '--tw-ring-color': '#F16529' } as any}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                         placeholder="Ej: Ofertas Especiales"
                       />
                     </div>
@@ -8174,7 +8174,7 @@ export default function AdminPage() {
                         onChange={(e) => setPreviewDescription(e.target.value)}
                         rows={3}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
-                        style={{ '--tw-ring-color': '#F16529' } as any}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                         placeholder="Breve descripción de la sección"
                       />
                     </div>
@@ -8187,7 +8187,7 @@ export default function AdminPage() {
                         name="type"
                         defaultValue={editingSection?.type || 'custom'}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
-                        style={{ '--tw-ring-color': '#F16529' } as any}
+                        style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                       >
                         <option value="custom">🎯 Productos Personalizados</option>
                         <option value="featured">⭐ Productos Destacados</option>
@@ -8199,12 +8199,12 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-orange-50 via-white to-gray-50 rounded-xl p-6 border-2 border-orange-200">
+                  <div className="bg-gradient-to-br from-brand-neutral-light via-white to-gray-50 rounded-xl p-6 border-2 border-brand-primary-200">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-sm font-semibold text-gray-700 flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio
                       </h4>
-                      <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full font-medium">
+                      <span className="text-xs bg-brand-neutral-light text-brand-primary px-2 py-1 rounded-full font-medium">
                         En Vivo
                       </span>
                     </div>
@@ -8212,7 +8212,7 @@ export default function AdminPage() {
                     {/* Preview of section as it appears on website */}
                     <div className="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
                       {/* Section Header */}
-                      <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-orange-500">
+                      <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-brand-primary">
                         <div>
                           <h3 className="text-xl font-bold text-gray-900">
                             {previewName || editingSection?.name || 'Nombre de Sección'}
@@ -8223,7 +8223,7 @@ export default function AdminPage() {
                         </div>
                         <button
                           type="button"
-                          className="text-xs text-orange-500 font-semibold hover:text-orange-600 whitespace-nowrap"
+                          className="text-xs text-brand-primary font-semibold hover:text-brand-primary whitespace-nowrap"
                         >
                           Ver todos →
                         </button>
@@ -8262,7 +8262,7 @@ export default function AdminPage() {
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
                     sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
                     sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-                    'bg-red-50 text-red-700'
+                    'bg-brand-neutral-light text-red-700'
                   }`}>
                     {sectionSaveStatus === 'saving' && (
                       <>
@@ -8303,9 +8303,9 @@ export default function AdminPage() {
                     type="submit"
                     disabled={sectionSaveStatus === 'saving'}
                     className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{ backgroundColor: '#F16529' }}
+                    style={{ backgroundColor: 'var(--brand-primary)' }}
                     onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                   >
                     {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
                   </button>
@@ -8358,7 +8358,7 @@ export default function AdminPage() {
                       }))}
                       placeholder="Buscar productos..."
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as any}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -8374,7 +8374,7 @@ export default function AdminPage() {
                         category: e.target.value
                       }))}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': '#F16529' } as any}
+                      style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     >
                       <option value="">Todas las categorías</option>
                       {categories.map((category) => (
@@ -8399,7 +8399,7 @@ export default function AdminPage() {
                             ...prev,
                             showOnlySelected: e.target.checked
                           }))}
-                          className="h-4 w-4 text-orange-500 rounded mr-2"
+                          className="h-4 w-4 text-brand-primary rounded mr-2"
                         />
                         <span className="text-sm text-gray-700">Solo seleccionados</span>
                       </label>
@@ -8409,7 +8409,7 @@ export default function AdminPage() {
                           search: '',
                           showOnlySelected: false
                         })}
-                        className="text-sm text-orange-600 hover:text-orange-800"
+                        className="text-sm text-brand-primary hover:text-orange-800"
                       >
                         Limpiar filtros
                       </button>
@@ -8518,7 +8518,7 @@ export default function AdminPage() {
                               console.error('Error auto-saving product selection:', error);
                             }
                           }}
-                          className="mt-1 h-4 w-4 text-orange-500 rounded"
+                          className="mt-1 h-4 w-4 text-brand-primary rounded"
                         />
                         <div className="flex-1">
                           {product.imagen && (
@@ -8542,9 +8542,9 @@ export default function AdminPage() {
                 <button
                   onClick={() => setShowProductSelector(false)}
                   className="text-white font-medium py-2 px-6 rounded-md transition-colors"
-                  style={{ backgroundColor: '#F16529' }}
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F16529'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
                 >
                   Listo
                 </button>

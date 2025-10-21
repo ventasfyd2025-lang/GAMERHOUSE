@@ -25,7 +25,7 @@ export default function PopupOfertasPage() {
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: '#F16529' }}></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: 'var(--brand-primary)' }}></div>
             <span className="ml-3 text-gray-600">Cargando ofertas especiales...</span>
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function PopupOfertasPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4" style={{ color: '#F16529' }}>
+          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
             🔥 {popupConfig.title}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ export default function PopupOfertasPage() {
               
               return sortedCategories.map(category => (
                 <div key={category} className="mb-12">
-                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: '#F16529' }}>
+                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--brand-primary)' }}>
                     📦 {category.charAt(0).toUpperCase() + category.slice(1)}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

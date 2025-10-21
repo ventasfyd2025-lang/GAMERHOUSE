@@ -98,11 +98,11 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
       case 'processing': return 'bg-purple-100 text-purple-800';
       case 'shipped': return 'bg-indigo-100 text-indigo-800';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
+      case 'cancelled': return 'bg-brand-neutral-light text-cyber-pink';
       case 'sent': return 'bg-blue-100 text-blue-800';
       case 'viewed': return 'bg-purple-100 text-purple-800';
       case 'accepted': return 'bg-green-100 text-green-800';
-      case 'rejected': return 'bg-red-100 text-red-800';
+      case 'rejected': return 'bg-brand-neutral-light text-cyber-pink';
       case 'expired': return 'bg-gray-100 text-gray-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -357,7 +357,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       </button>
                       <button
                         onClick={() => deletePurchaseOrder(order.id)}
-                        className="text-red-600 hover:text-red-800"
+                        className="text-cyber-pink hover:text-cyber-pink"
                       >
                         <TrashIcon className="h-5 w-5" />
                       </button>
@@ -436,7 +436,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       )}
                       <button
                         onClick={() => deleteQuote(quote.id)}
-                        className="text-red-600 hover:text-red-800"
+                        className="text-cyber-pink hover:text-cyber-pink"
                       >
                         <TrashIcon className="h-5 w-5" />
                       </button>
@@ -486,7 +486,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {customer.companyName}
                     </h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-brand-neutral-light text-cyber-pink'
                     }`}>
                       {customer.isActive ? 'Activo' : 'Inactivo'}
                     </span>
@@ -607,7 +607,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         </div>
                         <button
                           onClick={() => removeItemFromOrder(item.id)}
-                          className="text-red-600 hover:text-red-800"
+                          className="text-cyber-pink hover:text-cyber-pink"
                         >
                           <XMarkIcon className="h-4 w-4" />
                         </button>

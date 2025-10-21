@@ -35,7 +35,7 @@ function PaymentFailureContent() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <div className="text-center">
-            <XCircleIcon className="mx-auto h-16 w-16 text-red-500" />
+            <XCircleIcon className="mx-auto h-16 w-16 text-cyber-pink" />
             <h2 className="mt-6 text-3xl font-bold text-gray-900">
               Pago No Procesado
             </h2>
@@ -45,23 +45,23 @@ function PaymentFailureContent() {
           </div>
 
           {paymentInfo && (
-            <div className="mt-8 bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="text-lg font-medium text-red-800 mb-2">
+            <div className="mt-8 bg-brand-neutral-light border border-brand-neutral-light rounded-lg p-4">
+              <h3 className="text-lg font-medium text-cyber-pink mb-2">
                 Detalles del Pago
               </h3>
               <div className="space-y-2 text-sm">
                 <div>
                   <span className="font-medium text-red-700">ID de Pago:</span>
-                  <span className="ml-2 text-red-600">{paymentInfo.paymentId}</span>
+                  <span className="ml-2 text-cyber-pink">{paymentInfo.paymentId}</span>
                 </div>
                 <div>
                   <span className="font-medium text-red-700">Estado:</span>
-                  <span className="ml-2 text-red-600 capitalize">{paymentInfo.status}</span>
+                  <span className="ml-2 text-cyber-pink capitalize">{paymentInfo.status}</span>
                 </div>
                 {paymentInfo.externalReference && (
                   <div>
                     <span className="font-medium text-red-700">Número de Orden:</span>
-                    <span className="ml-2 text-red-600">{paymentInfo.externalReference}</span>
+                    <span className="ml-2 text-cyber-pink">{paymentInfo.externalReference}</span>
                   </div>
                 )}
               </div>
@@ -84,14 +84,14 @@ function PaymentFailureContent() {
             <div className="space-y-3">
               <Link
                 href="/carrito"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-primary hover:bg-brand-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
               >
                 Intentar Nuevamente
               </Link>
               
               <Link
                 href="/"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
               >
                 Volver a la Tienda
               </Link>
@@ -102,7 +102,7 @@ function PaymentFailureContent() {
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
             ¿Necesitas ayuda? {' '}
-            <Link href="/contacto" className="text-orange-500 hover:text-orange-600 font-medium">
+            <Link href="/contacto" className="text-brand-primary hover:text-brand-primary font-medium">
               Contáctanos
             </Link>
           </p>

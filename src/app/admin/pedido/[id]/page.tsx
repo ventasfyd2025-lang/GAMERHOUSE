@@ -230,10 +230,10 @@ export default function OrderDetailPage() {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'pending_verification': return 'bg-blue-100 text-blue-800';
       case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'preparing': return 'bg-orange-100 text-orange-800';
+      case 'preparing': return 'bg-brand-neutral-light text-orange-800';
       case 'shipped': return 'bg-purple-100 text-purple-800';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
+      case 'cancelled': return 'bg-brand-neutral-light text-cyber-pink';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -254,7 +254,7 @@ export default function OrderDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand-primary"></div>
       </div>
     );
   }
@@ -266,7 +266,7 @@ export default function OrderDetailPage() {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Pedido no encontrado</h1>
           <button
             onClick={() => window.close()}
-            className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
+            className="bg-brand-primary text-white px-4 py-2 rounded-lg hover:bg-brand-primary"
           >
             Cerrar
           </button>
@@ -328,7 +328,7 @@ export default function OrderDetailPage() {
                   <select
                     value={order.status}
                     onChange={(e) => updateOrderStatus(e.target.value as Order['status'])}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 text-sm"
+                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary text-sm"
                   >
                     <option value="pending">Pendiente</option>
                     <option value="pending_verification">Verificando Pago</option>
@@ -423,11 +423,11 @@ export default function OrderDetailPage() {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header con gradiente */}
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-t-lg">
+              <div className="bg-gradient-to-r from-brand-primary to-brand-primary text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                      <svg className="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
                     </div>
@@ -447,8 +447,8 @@ export default function OrderDetailPage() {
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
                 {chatMessages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="h-8 w-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="h-8 w-8 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.456L3 21l2.544-5.906A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                       </svg>
                     </div>
@@ -478,7 +478,7 @@ export default function OrderDetailPage() {
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-orange-500 text-white'
+                              ? 'bg-brand-primary text-white'
                               : 'bg-white text-gray-900 border border-gray-200'
                           }`}
                         >
@@ -511,7 +511,7 @@ export default function OrderDetailPage() {
                       </div>
 
                       {message.isAdmin && (
-                        <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
                           <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
@@ -535,7 +535,7 @@ export default function OrderDetailPage() {
                       />
                       <button
                         onClick={removeImage}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                        className="absolute -top-2 -right-2 bg-cyber-pink text-white rounded-full p-1 hover:bg-cyber-pink"
                       >
                         <XMarkIcon className="h-4 w-4" />
                       </button>
@@ -553,7 +553,7 @@ export default function OrderDetailPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
                       placeholder="Responder al cliente..."
-                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent max-h-24"
                       rows={2}
                       disabled={sendingMessage}
                     />
@@ -574,7 +574,7 @@ export default function OrderDetailPage() {
                   <button
                     onClick={sendMessage}
                     disabled={(!newMessage.trim() && !selectedImage) || sendingMessage}
-                    className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-brand-primary hover:bg-brand-primary disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {sendingMessage ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -613,7 +613,7 @@ export default function OrderDetailPage() {
                   href={order.paymentProof}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-orange-600 hover:text-orange-700 underline"
+                  className="text-brand-primary hover:text-brand-primary-hover underline"
                 >
                   Ver en tamaño completo
                 </a>

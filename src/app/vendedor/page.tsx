@@ -90,7 +90,7 @@ function VendedorLogin() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                  className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-brand-primary focus:border-brand-primary focus:z-10 sm:text-sm"
                   placeholder="Dirección de email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +106,7 @@ function VendedorLogin() {
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   required
-                  className="relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                  className="relative block w-full px-3 py-2 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-brand-primary focus:border-brand-primary focus:z-10 sm:text-sm"
                   placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -126,14 +126,14 @@ function VendedorLogin() {
             </div>
 
             {error && (
-              <div className="text-red-600 text-sm text-center">{error}</div>
+              <div className="text-cyber-pink text-sm text-center">{error}</div>
             )}
 
             <div>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-brand-primary hover:bg-brand-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
               </button>
@@ -236,7 +236,7 @@ export default function VendedorPage() {
             </p>
             <button
               onClick={() => router.push('/')}
-              className="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition-colors"
+              className="bg-brand-primary text-white px-6 py-2 rounded-md hover:bg-brand-primary-hover transition-colors"
             >
               Volver al Inicio
             </button>
@@ -268,8 +268,8 @@ export default function VendedorPage() {
       case 'confirmed': return 'text-green-600 bg-green-50 border-green-200';
       case 'shipped': return 'text-blue-600 bg-blue-50 border-blue-200';
       case 'delivered': return 'text-purple-600 bg-purple-50 border-purple-200';
-      case 'cancelled': return 'text-red-600 bg-red-50 border-red-200';
-      case 'pending_verification': return 'text-orange-600 bg-orange-50 border-orange-200';
+      case 'cancelled': return 'text-cyber-pink bg-brand-neutral-light border-brand-neutral-light';
+      case 'pending_verification': return 'text-brand-primary bg-brand-neutral-light border-brand-primary-200';
       default: return 'text-gray-600 bg-gray-50 border-gray-200';
     }
   };
@@ -362,7 +362,7 @@ export default function VendedorPage() {
                   onClick={() => setActiveTab('orders')}
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === 'orders'
-                      ? 'border-orange-500 text-orange-600'
+                      ? 'border-brand-primary text-brand-primary'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >

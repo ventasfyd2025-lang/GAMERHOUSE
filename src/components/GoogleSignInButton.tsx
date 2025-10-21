@@ -127,7 +127,7 @@ export default function GoogleSignInButton({
       </button>
 
       {error && (
-        <div className="mt-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md p-2">
+        <div className="mt-2 text-sm text-cyber-pink bg-brand-neutral-light border border-brand-neutral-light rounded-md p-2">
           {error}
         </div>
       )}

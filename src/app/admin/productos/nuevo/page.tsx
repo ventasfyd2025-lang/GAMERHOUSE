@@ -222,7 +222,7 @@ export default function NuevoProductoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -250,9 +250,9 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Información Básica</h4>
@@ -268,8 +268,8 @@ export default function NuevoProductoPage() {
                   onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                   required
                   className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
-                  style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
-                  onFocus={(e) => e.currentTarget.style.borderColor = '#F16529'}
+                  style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="Ej: Laptop Gaming RGB"
                 />
@@ -286,7 +286,7 @@ export default function NuevoProductoPage() {
                   required
                   placeholder="SKU-001"
                   className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 uppercase bg-white"
-                  onFocus={(e) => e.currentTarget.style.borderColor = '#F16529'}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
               </div>
@@ -303,8 +303,8 @@ export default function NuevoProductoPage() {
                   min="0"
                   step="1"
                   className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
-                  style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
-                  onFocus={(e) => e.currentTarget.style.borderColor = '#F16529'}
+                  style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="0"
                 />
@@ -321,8 +321,8 @@ export default function NuevoProductoPage() {
                   min="0"
                   step="1"
                   className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
-                  style={{ '--tw-ring-color': '#F16529' } as React.CSSProperties}
-                  onFocus={(e) => e.currentTarget.style.borderColor = '#F16529'}
+                  style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="Dejar vacío si no hay descuento"
                 />
@@ -334,9 +334,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📊</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Control de Inventario</h4>
@@ -382,9 +382,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📂</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Categorización</h4>
@@ -475,7 +475,7 @@ export default function NuevoProductoPage() {
                   })}
                 </div>
                 {productForm.categorias.length === 0 && (
-                  <p className="text-sm text-red-500 mt-2">Debes seleccionar al menos una categoría o subcategoría</p>
+                  <p className="text-sm text-cyber-pink mt-2">Debes seleccionar al menos una categoría o subcategoría</p>
                 )}
                 {productForm.categorias.length > 0 && (
                   <p className="text-sm text-green-600 mt-2">
@@ -487,9 +487,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Descripción</h4>
@@ -499,25 +499,25 @@ export default function NuevoProductoPage() {
               onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
               rows={4}
               className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 resize-none bg-white"
-              onFocus={(e) => e.currentTarget.style.borderColor = '#F16529'}
+              onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
               onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
               placeholder="Describe las características principales del producto..."
             />
           </div>
 
           {/* Images Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">🖼️</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Imágenes del Producto</h4>
             </div>
 
             {/* Image Specifications */}
-            <div className="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-brand-neutral-light border border-brand-primary-200 rounded-lg text-sm">
               <p className="text-orange-800 font-medium mb-2">📐 Especificaciones:</p>
-              <ul className="text-orange-700 space-y-1">
+              <ul className="text-brand-primary-hover space-y-1">
                 <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                 <li>• <strong>Formato:</strong> JPG o PNG</li>
                 <li>• <strong>Fondo:</strong> Blanco preferible</li>
@@ -526,7 +526,7 @@ export default function NuevoProductoPage() {
             </div>
 
             {/* Image Upload Area */}
-            <div className="border-2 border-dashed border-orange-200 rounded-lg p-6 text-center bg-orange-50/50 hover:bg-orange-50 transition-colors">
+            <div className="border-2 border-dashed border-brand-primary-200 rounded-lg p-6 text-center bg-brand-neutral-light/50 hover:bg-brand-neutral-light transition-colors">
               <input
                 type="file"
                 multiple
@@ -550,7 +550,7 @@ export default function NuevoProductoPage() {
               <label htmlFor="product-images" className="cursor-pointer block">
                 <div className="flex flex-col items-center">
                   <div className="text-4xl mb-2">📸</div>
-                  <p className="text-sm font-medium" style={{ color: '#F16529' }}>Agregar imágenes</p>
+                  <p className="text-sm font-medium" style={{ color: 'var(--brand-primary)' }}>Agregar imágenes</p>
                   <p className="text-sm" style={{ color: '#D13C1A' }}>Múltiples archivos</p>
                 </div>
               </label>
@@ -575,7 +575,7 @@ export default function NuevoProductoPage() {
                           setProductImages(prev => prev.filter((_, i) => i !== index));
                           setProductImagePreviews(prev => prev.filter((_, i) => i !== index));
                         }}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600 transition-colors"
+                        className="absolute -top-2 -right-2 bg-cyber-pink text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-cyber-pink transition-colors"
                       >
                         ✕
                       </button>
@@ -590,9 +590,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-orange-100">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#F16529' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">🏷️</span>
               </div>
               <h4 className="text-lg font-bold text-gray-800">Etiquetas con Duración</h4>
@@ -631,13 +631,13 @@ export default function NuevoProductoPage() {
               </div>
 
               {/* Etiqueta Oferta */}
-              <div className="border-2 border-red-200 rounded-lg p-4 bg-red-50/50">
+              <div className="border-2 border-brand-neutral-light rounded-lg p-4 bg-brand-neutral-light/50">
                 <label className="flex items-center gap-2 cursor-pointer mb-3">
                   <input
                     type="checkbox"
                     checked={productForm.oferta}
                     onChange={(e) => setProductForm({ ...productForm, oferta: e.target.checked })}
-                    className="rounded w-5 h-5 text-red-600"
+                    className="rounded w-5 h-5 text-cyber-pink"
                   />
                   <span className="text-sm font-bold text-red-700">🔥 Oferta</span>
                 </label>
@@ -652,10 +652,10 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, ofertaDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-red-300 rounded-lg focus:outline-none focus:border-red-500 bg-white"
+                      className="w-full px-3 py-2 text-sm border-2 border-red-300 rounded-lg focus:outline-none focus:border-cyber-pink bg-white"
                       placeholder="24"
                     />
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-cyber-pink mt-1">
                       La etiqueta se quitará automáticamente después de {productForm.ofertaDuracionHoras}h
                     </p>
                   </div>
@@ -681,10 +681,10 @@ export default function NuevoProductoPage() {
                 disabled={uploadingProduct}
                 className="flex-[2] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                 style={{
-                  backgroundColor: '#F16529'
+                  backgroundColor: 'var(--brand-primary)'
                 }}
                 onMouseEnter={(e) => !uploadingProduct && (e.currentTarget.style.backgroundColor = '#D13C1A')}
-                onMouseLeave={(e) => !uploadingProduct && (e.currentTarget.style.backgroundColor = '#F16529')}
+                onMouseLeave={(e) => !uploadingProduct && (e.currentTarget.style.backgroundColor = 'var(--brand-primary)')}
               >
                 {uploadingProduct ? (
                   <span className="flex items-center justify-center gap-2">

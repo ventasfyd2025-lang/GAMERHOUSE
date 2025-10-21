@@ -152,7 +152,7 @@ const BannerCarousel = memo(({
         {banners.map((banner, index) => {
           const backgroundImage = banner.imageUrl
             ? `url(${banner.imageUrl})`
-            : 'linear-gradient(135deg, #F16529 0%, #F97316 100%)';
+            : 'linear-gradient(135deg, var(--brand-primary) 0%, #F97316 100%)';
 
           const isActive = index === currentIndex;
 

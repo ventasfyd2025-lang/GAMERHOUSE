@@ -109,7 +109,7 @@ export default function BannerCarousel({
   if (safeImages.length === 0) {
     // Fallback to gradient banner if no images
     return (
-      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, #F16529 0%, #D64541 100%)' }}>
+      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #D64541 100%)' }}>
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}

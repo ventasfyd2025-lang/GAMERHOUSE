@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function TerminosPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
@@ -110,7 +110,7 @@ export default function TerminosPage() {
                 </h2>
                 <p>
                   Para consultas sobre estos términos:{' '}
-                  <a href="mailto:contacto@importadora-fyd.cl" className="text-orange-600 hover:text-orange-700">
+                  <a href="mailto:contacto@importadora-fyd.cl" className="text-brand-primary hover:text-brand-primary-hover">
                     contacto@importadora-fyd.cl
                   </a>
                 </p>
@@ -124,7 +124,7 @@ export default function TerminosPage() {
             <div className="mt-8 pt-6 border-t">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-orange-600 hover:bg-orange-700 transition-colors"
+                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-brand-primary hover:bg-brand-primary-hover transition-colors"
               >
                 Volver al Inicio
               </Link>

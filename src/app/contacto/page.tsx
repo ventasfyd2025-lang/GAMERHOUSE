@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -54,8 +54,8 @@ export default function ContactoPage() {
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                    <Mail className="w-6 h-6 text-orange-600" />
+                  <div className="w-12 h-12 bg-brand-neutral-light rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                    <Mail className="w-6 h-6 text-brand-primary" />
                   </div>
                 </div>
                 <div className="flex-1">
@@ -65,7 +65,7 @@ export default function ContactoPage() {
                   <p className="text-gray-600 mb-2">
                     Envíanos un correo electrónico
                   </p>
-                  <p className="text-orange-600 font-medium">
+                  <p className="text-brand-primary font-medium">
                     contacto@importadora-fyd.cl
                   </p>
                 </div>
@@ -136,7 +136,7 @@ export default function ContactoPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-brand-primary hover:bg-brand-primary-hover transition-colors shadow-md hover:shadow-lg"
             >
               Volver al Inicio
             </Link>
