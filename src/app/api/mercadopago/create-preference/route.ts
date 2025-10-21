@@ -48,7 +48,7 @@ async function validateAndRecalculatePrices(clientItems: RequestItem[]): Promise
     clientTotal += clientItem.price * clientItem.quantity;
 
     // Obtener producto real de Firestore
-    const productDoc = await adminDb.collection('products').doc(clientItem.id).get();
+    const productDoc = await adminDb.collection('gamerhouse_products').doc(clientItem.id).get();
 
     if (!productDoc.exists) {
       throw new Error(`Producto ${clientItem.id} no encontrado en la base de datos`);

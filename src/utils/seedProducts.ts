@@ -103,7 +103,7 @@ export const testProducts = [
 export async function seedProducts() {
   try {
     for (const product of testProducts) {
-      const docRef = await addDoc(collection(db, 'products'), product);
+      const docRef = await addDoc(collection(db, 'gamerhouse_products'), product);
     }
     
     return { success: true, message: 'Productos agregados correctamente' };

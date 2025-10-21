@@ -55,7 +55,7 @@ export function useOptimizedProducts(options: UseOptimizedProductsOptions = {}):
 
   // Build optimized query
   const buildQuery = useCallback((isLoadMore = false) => {
-    let q: any = collection(db, 'products')
+    let q: any = collection(db, 'gamerhouse_products')
 
     // Add category filter if specified
     if (category) {

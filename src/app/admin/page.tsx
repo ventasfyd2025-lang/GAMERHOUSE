@@ -631,7 +631,7 @@ export default function AdminPage() {
   // Load categories from Firebase
   const loadCategories = async () => {
     try {
-      const categoriesSnapshot = await getDocs(collection(db, 'categorias'));
+      const categoriesSnapshot = await getDocs(collection(db, 'gamerhouse_categorias'));
       if (!categoriesSnapshot.empty) {
         const categoriesData = categoriesSnapshot.docs.map(doc => ({
           id: doc.id,
@@ -1209,7 +1209,7 @@ export default function AdminPage() {
       });
 
       // Cargar pedidos del usuario
-      const ordersRef = collection(db, 'orders');
+      const ordersRef = collection(db, 'gamerhouse_orders');
       const ordersQuery = query(ordersRef, where('userId', '==', user.uid));
       const ordersSnapshot = await getDocs(ordersQuery);
 
@@ -1559,7 +1559,7 @@ export default function AdminPage() {
   // Orders functions
   const loadOrders = () => {
     const ordersQuery = query(
-      collection(db, 'orders'),
+      collection(db, 'gamerhouse_orders'),
       orderBy('createdAt', 'desc')
     );
 
@@ -1731,7 +1731,7 @@ export default function AdminPage() {
       } else {
         // Create new product
         try {
-          const docRef = await addDoc(collection(db, 'products'), cleanedData);
+          const docRef = await addDoc(collection(db, 'gamerhouse_products'), cleanedData);
           console.log('✅ Producto creado con ID:', docRef.id);
           console.log('📸 Imágenes guardadas en Firestore:', cleanedData.imagenes);
           alert('Producto creado exitosamente');

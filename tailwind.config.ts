@@ -12,22 +12,23 @@ export default {
         xs: '480px',
       },
       colors: {
-        background: '#FFFFFF',
-        foreground: '#333333',
-        'brand-primary': '#002F6C', // Dark blue for header
-        'brand-primary-hover': '#0056B3',
-        'brand-secondary': '#E91E63', // Pink for discounts
-        'brand-accent': '#FF9800', // Orange for buttons
-        'brand-success': '#2E7D32',
-        'brand-neutral-light': '#F5F5F5',
-        'brand-neutral-dark': '#333333',
-        'brand-text-secondary': '#666666',
-        // Hites brand colors
-        'hites-strong-blue': '#0056B3',
-        'hites-magenta': '#E91E63',
-        'hites-yellow': '#FFD700',
-        'hites-text-black': '#333333',
-        'hites-text-gray': '#666666',
+        background: '#1A1A1A',
+        foreground: '#FFFFFF',
+        'brand-primary': '#FF0000', // Pokéball Red
+        'brand-primary-hover': '#CC0000',
+        'brand-secondary': '#FFD700', // Pokéball Yellow
+        'brand-accent': '#0040FF', // Pokémon Blue
+        'brand-success': '#4CAF50',
+        'brand-neutral-light': '#2A2A2A',
+        'brand-neutral-dark': '#0D0D0D',
+        'brand-text-secondary': '#A0A0A0',
+        // Gaming/Pokémon brand colors
+        'gaming-purple': '#A040EB',
+        'gaming-dark': '#1A1A1A',
+        'gaming-light': '#F0F0F0',
+        'pokeball-red': '#FF0000',
+        'pokeball-yellow': '#FFD700',
+        'pokeball-blue': '#0040FF',
       },
       fontFamily: {
         sans: ['Roboto', 'Open Sans', 'Helvetica Neue', 'system-ui', 'sans-serif'],

@@ -61,7 +61,7 @@ export function usePurchaseOrders() {
     try {
       setLoading(true);
       const ordersQuery = query(
-        collection(db, 'purchase_orders'),
+        collection(db, 'gamerhouse_purchase_orders'),
         orderBy('createdAt', 'desc')
       );
       const snapshot = await getDocs(ordersQuery);
@@ -103,7 +103,7 @@ export function usePurchaseOrders() {
   const generatePONumber = async (): Promise<string> => {
     const year = new Date().getFullYear();
     const poQuery = query(
-      collection(db, 'purchase_orders'),
+      collection(db, 'gamerhouse_purchase_orders'),
       where('poNumber', '>=', `PO-${year}-0000`),
       where('poNumber', '<', `PO-${year + 1}-0000`),
       orderBy('poNumber', 'desc'),
@@ -221,7 +221,7 @@ export function usePurchaseOrders() {
         createdBy: userId
       };
 
-      const docRef = await addDoc(collection(db, 'purchase_orders'), {
+      const docRef = await addDoc(collection(db, 'gamerhouse_purchase_orders'), {
         ...newPO,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
@@ -374,7 +374,7 @@ export function usePurchaseOrders() {
         };
 
         // Add PO
-        const poRef = doc(collection(db, 'purchase_orders'));
+        const poRef = doc(collection(db, 'gamerhouse_purchase_orders'));
         transaction.set(poRef, {
           ...newPO,
           createdAt: serverTimestamp(),

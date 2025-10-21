@@ -198,7 +198,7 @@ export default function VendedorPage() {
     if (!currentUser) return;
 
     const ordersQuery = query(
-      collection(db, 'orders'),
+      collection(db, 'gamerhouse_orders'),
       orderBy('createdAt', 'desc')
     );
 

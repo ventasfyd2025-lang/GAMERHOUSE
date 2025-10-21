@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #333333;
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
 }
 
 @theme inline {
@@ -14,16 +14,17 @@
 
 
 :root {
-  /* Paleta Importadora Muli */
-  --brand-primary: #F16529;
-  --brand-secondary: #E94E1B;
-  --brand-accent: #1E3A8A;
-  --brand-success: #2E7D32;
-  --brand-background: #FFFFFF;
-  --brand-surface: #F5F5F5;
-  --brand-text: #333333;
-  --brand-text-secondary: #666666;
-  --brand-border: #E0E0E0;
+  /* Paleta Gaming/Pokémon */
+  --brand-primary: #FF0000;
+  --brand-secondary: #FFD700;
+  --brand-accent: #0040FF;
+  --brand-success: #4CAF50;
+  --brand-background: #1A1A1A;
+  --brand-surface: #2A2A2A;
+  --brand-text: #FFFFFF;
+  --brand-text-secondary: #A0A0A0;
+  --brand-border: #404040;
+  --gaming-purple: #A040EB;
 }
 
 html {

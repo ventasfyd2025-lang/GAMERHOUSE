@@ -67,7 +67,7 @@ const testProducts = [
 export async function addTestProducts() {
   try {
     for (const product of testProducts) {
-      const docRef = await addDoc(collection(db, 'products'), product);
+      const docRef = await addDoc(collection(db, 'gamerhouse_products'), product);
     }
   } catch (error) {
     // Error adding test products

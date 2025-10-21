@@ -18,26 +18,26 @@ export interface Category {
 }
 
 const defaultCategories: Category[] = [
-  { id: 'all', name: 'Todos los productos', active: true, icon: '🏪' },
+  { id: 'all', name: 'Todos los Juegos', active: true, icon: '🎮' },
 ];
 
-// Icon mapping for common categories
+// Icon mapping for gaming/pokémon categories
 const categoryIcons: Record<string, string> = {
-  'calzado': '👟',
-  'tecnología': '💻',
-  'electro hogar': '🏠',
-  'moda': '👕',
-  'hogar': '🏠',
-  'ropa': '👕',
-  'deportes': '🏃‍♂️',
-  'cocina': '🍳',
-  'muebles': '🪑',
-  'belleza': '💄',
+  'consolas': '🎮',
+  'ps5': '🎮',
+  'xbox': '🎮',
+  'nintendo': '🎮',
+  'juegos': '🕹️',
+  'pokémon': '⚡',
+  'pokemon': '⚡',
+  'accesorios': '🎧',
+  'merchandise': '👕',
+  'tarjetas': '🃏',
+  'figuras': '🎨',
   'libros': '📚',
-  'juguetes': '🧸',
-  'musica': '🎵',
-  'automovil': '🚗',
-  'jardin': '🌱'
+  'mandos': '🕹️',
+  'headsets': '🎧',
+  'cables': '🔌'
 };
 
 // Generate categories from mock products
@@ -71,7 +71,7 @@ export function useCategories() {
 
         // Set up real-time listener for categories
         const unsubscribe = onSnapshot(
-          collection(db, 'categorias'),
+          collection(db, 'gamerhouse_categorias'),
           (snapshot) => {
             // If we have categories in Firebase, use them
             if (!snapshot.empty) {
@@ -143,7 +143,7 @@ export function useCategories() {
 
   const refetch = async () => {
     try {
-      const snapshot = await getDocs(collection(db, 'categorias'));
+      const snapshot = await getDocs(collection(db, 'gamerhouse_categorias'));
       
       // If we have categories in Firebase, use them
       if (!snapshot.empty) {

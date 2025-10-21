@@ -147,7 +147,7 @@ export default function OrdersPage() {
       setLoadingOrders(true);
       // Buscar pedidos por userId (uid o email)
       const ordersQuery = query(
-        collection(db, 'orders'),
+        collection(db, 'gamerhouse_orders'),
         where('userId', '==', (currentUser as any).uid || currentUser.email)
       );
       

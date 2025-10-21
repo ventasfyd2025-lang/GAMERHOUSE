@@ -14,7 +14,7 @@ export async function generateDailyReportUtil(date: string = new Date().toISOStr
   try {
     // Obtener pedidos del día específico
     const ordersQuery = query(
-      collection(db, 'orders'),
+      collection(db, 'gamerhouse_orders'),
       where('createdAt', '>=', new Date(date + 'T00:00:00')),
       where('createdAt', '<=', new Date(date + 'T23:59:59'))
     );

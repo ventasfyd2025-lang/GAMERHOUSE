@@ -39,7 +39,7 @@ export function useProducts() {
 
       // Always use Firebase for real products data
       try {
-        const productsCollection = collection(db, 'products');
+        const productsCollection = collection(db, 'gamerhouse_products');
         // Optimize: Limit query to 100 products, ordered by creation date
         const productsQuery = query(
           productsCollection,

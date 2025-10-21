@@ -2,7 +2,7 @@ import { db } from '@/lib/firebase';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 export const cleanAllOrders = async () => {
-  try {    const ordersSnapshot = await getDocs(collection(db, 'orders'));
+  try {    const ordersSnapshot = await getDocs(collection(db, 'gamerhouse_orders'));
     
     const deletePromises = ordersSnapshot.docs.map(orderDoc => 
       deleteDoc(doc(db, 'orders', orderDoc.id))

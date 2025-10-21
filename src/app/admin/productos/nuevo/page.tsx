@@ -76,7 +76,7 @@ export default function NuevoProductoPage() {
   // Load categories from Firebase
   const loadCategories = async () => {
     try {
-      const categoriesSnapshot = await getDocs(collection(db, 'categorias'));
+      const categoriesSnapshot = await getDocs(collection(db, 'gamerhouse_categorias'));
       if (!categoriesSnapshot.empty) {
         const categoriesData = categoriesSnapshot.docs.map(doc => ({
           id: doc.id,
@@ -178,7 +178,7 @@ export default function NuevoProductoPage() {
 
       // Create new product
       try {
-        const docRef = await addDoc(collection(db, 'products'), productData);
+        const docRef = await addDoc(collection(db, 'gamerhouse_products'), productData);
         console.log('✅ Producto creado con ID:', docRef.id);
         console.log('📸 Imágenes guardadas en Firestore:', productData.imagenes);
         alert('✅ Producto creado exitosamente. Puedes agregar otro producto.');

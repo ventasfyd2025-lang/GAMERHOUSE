@@ -140,7 +140,7 @@ function CheckoutContent() {
         createdAt: new Date()
       };
 
-      const orderRef = await addDoc(collection(db, 'orders'), orderData);
+      const orderRef = await addDoc(collection(db, 'gamerhouse_orders'), orderData);
 
       // NOTA: El email de confirmación se enviará DESPUÉS de que MercadoPago confirme el pago
       // mediante el webhook en /api/mercadopago/webhook/route.ts
@@ -311,7 +311,7 @@ function CheckoutContent() {
       };
 
       console.log('📝 Creando orden en Firestore...');
-      const orderRef = await addDoc(collection(db, 'orders'), orderData);
+      const orderRef = await addDoc(collection(db, 'gamerhouse_orders'), orderData);
       console.log('✅ Orden creada exitosamente:', orderRef.id);
 
       // Enviar notificación por email

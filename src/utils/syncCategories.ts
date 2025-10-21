@@ -25,7 +25,7 @@ const categoryIcons: Record<string, string> = {
 
 export async function syncCategoriesToFirebase() {
   try {    // Obtener todos los productos para extraer las categorías únicas
-    const productsSnapshot = await getDocs(collection(db, 'products'));
+    const productsSnapshot = await getDocs(collection(db, 'gamerhouse_products'));
     const categories = new Set<string>();
 
     productsSnapshot.forEach((doc) => {
@@ -38,7 +38,7 @@ export async function syncCategoriesToFirebase() {
     // console.log('📦 Categorías encontradas en productos:', Array.from(categories));
 
     // Verificar qué categorías ya existen en Firebase
-    const categoriasSnapshot = await getDocs(collection(db, 'categorias'));
+    const categoriasSnapshot = await getDocs(collection(db, 'gamerhouse_categorias'));
     const existingCategories = new Set<string>();
     
     categoriasSnapshot.forEach((doc) => {
