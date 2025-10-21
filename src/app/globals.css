@@ -14,17 +14,20 @@
 
 
 :root {
-  /* Paleta Gaming/Pokémon */
-  --brand-primary: #FF0000;
-  --brand-secondary: #FFD700;
-  --brand-accent: #0040FF;
-  --brand-success: #4CAF50;
-  --brand-background: #1A1A1A;
-  --brand-surface: #2A2A2A;
+  /* Paleta Cyberpunk/Futurista */
+  --brand-primary: #00D9FF;
+  --brand-secondary: #B819FF;
+  --brand-accent: #00FFB3;
+  --brand-success: #00FF88;
+  --brand-background: #0A0E27;
+  --brand-surface: #1F2937;
   --brand-text: #FFFFFF;
-  --brand-text-secondary: #A0A0A0;
-  --brand-border: #404040;
-  --gaming-purple: #A040EB;
+  --brand-text-secondary: #9CA3AF;
+  --brand-border: #2D3748;
+  --cyber-blue: #00D9FF;
+  --cyber-purple: #B819FF;
+  --cyber-green: #00FFB3;
+  --cyber-pink: #FF006E;
 }
 
 html {

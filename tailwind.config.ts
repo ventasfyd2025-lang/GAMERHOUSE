@@ -12,23 +12,23 @@ export default {
         xs: '480px',
       },
       colors: {
-        background: '#1A1A1A',
+        background: '#0A0E27',
         foreground: '#FFFFFF',
-        'brand-primary': '#FF0000', // Pokéball Red
-        'brand-primary-hover': '#CC0000',
-        'brand-secondary': '#FFD700', // Pokéball Yellow
-        'brand-accent': '#0040FF', // Pokémon Blue
-        'brand-success': '#4CAF50',
-        'brand-neutral-light': '#2A2A2A',
-        'brand-neutral-dark': '#0D0D0D',
-        'brand-text-secondary': '#A0A0A0',
-        // Gaming/Pokémon brand colors
-        'gaming-purple': '#A040EB',
-        'gaming-dark': '#1A1A1A',
-        'gaming-light': '#F0F0F0',
-        'pokeball-red': '#FF0000',
-        'pokeball-yellow': '#FFD700',
-        'pokeball-blue': '#0040FF',
+        'brand-primary': '#00D9FF', // Cyan Futurista
+        'brand-primary-hover': '#00B8CC',
+        'brand-secondary': '#B819FF', // Púrpura Neón
+        'brand-accent': '#00FFB3', // Verde Neón
+        'brand-success': '#00FF88',
+        'brand-neutral-light': '#1F2937',
+        'brand-neutral-dark': '#0A0E27',
+        'brand-text-secondary': '#9CA3AF',
+        // Futuristic/Cyberpunk brand colors
+        'cyber-blue': '#00D9FF',
+        'cyber-purple': '#B819FF',
+        'cyber-green': '#00FFB3',
+        'cyber-pink': '#FF006E',
+        'cyber-dark': '#0A0E27',
+        'cyber-light': '#FFFFFF',
       },
       fontFamily: {
         sans: ['Roboto', 'Open Sans', 'Helvetica Neue', 'system-ui', 'sans-serif'],
