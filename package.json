@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "analyze": "ANALYZE=true next build --turbopack"
+    "analyze": "ANALYZE=true next build --turbopack",
+    "init:gamerhouse": "npx ts-node scripts/initialize-gamerhouse.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
