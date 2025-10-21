@@ -274,7 +274,7 @@ const handleMobileCategoryLinkClick = (
                       setExpandedCategories(new Set());
                     }
                   }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg backdrop-blur-sm border border-primary400/50"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg shadow-cyan-500/20 backdrop-blur-sm border border-primary400/50"
                   style={{ backgroundColor: 'var(--primary)' }}
                   aria-haspopup="true"
                   aria-expanded={isDesktopCategoriesOpen}
@@ -435,7 +435,7 @@ const handleMobileCategoryLinkClick = (
                     setExpandedCategories(new Set());
                   }
                 }}
-                className="lg:hidden p-3 ml-3 rounded-xl hover:bg-dark/80/20 transition-all duration-300 border-2 border-white/60 bg-dark/80/30 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm z-50"
+                className="lg:hidden p-3 ml-3 rounded-xl hover:bg-dark/80/20 transition-all duration-300 border-2 border-white/60 bg-dark/80/30 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 hover:scale-105 backdrop-blur-sm z-50"
                 aria-label="Menú de categorías"
               >
                 {isMobileMenuOpen ? (

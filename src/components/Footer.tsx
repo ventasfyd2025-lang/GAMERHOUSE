@@ -39,7 +39,7 @@ export default function Footer() {
               {/* Logo */}
               <div className="relative">
                 {logoConfig?.image ? (
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl overflow-hidden shadow-lg ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl overflow-hidden shadow-lg shadow-cyan-500/20 ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
                     <Image
                       src={logoConfig.image}
                       alt={logoConfig.text || 'Logo'}
@@ -49,7 +49,7 @@ export default function Footer() {
                     />
                   </div>
                 ) : (
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-dark/80/10 rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl shadow-lg ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-dark/80/10 rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl shadow-lg shadow-cyan-500/20 ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
                     {logoConfig?.emoji || '🏪'}
                   </div>
                 )}

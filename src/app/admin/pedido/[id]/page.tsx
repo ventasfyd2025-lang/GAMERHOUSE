@@ -605,7 +605,7 @@ export default function OrderDetailPage() {
               <img
                 src={order.paymentProof}
                 alt="Comprobante de pago"
-                className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
+                className="max-w-full h-auto mx-auto rounded-lg shadow-lg shadow-cyan-500/20"
                 style={{ maxHeight: '500px' }}
               />
               <p className="mt-2 text-primary/80">

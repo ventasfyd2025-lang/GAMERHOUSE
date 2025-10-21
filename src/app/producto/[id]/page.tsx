@@ -117,7 +117,7 @@ export default function ProductPage() {
     notification.textContent = currentUser 
       ? `${quantity} ${product.nombre} agregado al carrito`
       : `${quantity} ${product.nombre} agregado al carrito (como invitado)`;
-    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg z-50 transition-all duration-300';
+    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg shadow-cyan-500/20 z-50 transition-all duration-300';
     document.body.appendChild(notification);
     
     setTimeout(() => {
@@ -237,7 +237,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
                       )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg transition-all"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-cyan-500/20 transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -247,7 +247,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
                       )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg transition-all"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-cyan-500/20 transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

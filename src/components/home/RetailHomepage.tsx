@@ -676,7 +676,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
 
         {/* Notification */}
         {notification && (
-          <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg z-50 transition-all duration-300">
+          <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/20 z-50 transition-all duration-300">
             {notification}
           </div>
         )}
@@ -702,9 +702,9 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Category Promotions Pinterest Grid */}
         {homepageConfig.promotionalSections && homepageConfig.promotionalSections.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 p-6 border border-primary100">
               <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
                   <span className="text-white text-lg">✨</span>
                 </div>
                 <div>
@@ -781,7 +781,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   href={getLink()}
                   className={`${getPositionClasses()} group`}
                 >
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-cyan-500/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className={`relative flex-1 ${getHeightClasses()}`}>
                       <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 h-full w-full overflow-hidden">
                         {section.imageUrl ? (
@@ -800,7 +800,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         )}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-primary to-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-primary to-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg shadow-cyan-500/20">
                         {section.badgeText}
                       </span>
                       <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 text-white">
@@ -847,7 +847,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <section key={section.id} className="space-y-6">
                 {/* Add banner between sections */}
                 {index === 0 && middleBannerData[0] && (
-                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300 mx-2 sm:mx-4">
+                  <div className="rounded-2xl overflow-hidden shadow-xl shadow-cyan-500/30 transform hover:scale-[1.02] transition-transform duration-300 mx-2 sm:mx-4">
                     <BannerCarousel banners={[middleBannerData[0]]} autoPlay={false} />
                   </div>
                 )}
@@ -870,7 +870,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
 
                 {/* Add banner between sections */}
                 {index === 1 && middleBannerData[1] && (
-                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300 mx-2 sm:mx-4">
+                  <div className="rounded-2xl overflow-hidden shadow-xl shadow-cyan-500/30 transform hover:scale-[1.02] transition-transform duration-300 mx-2 sm:mx-4">
                     <BannerCarousel banners={[middleBannerData[1]]} autoPlay={false} />
                   </div>
                 )}
@@ -883,7 +883,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
             {middleBannerData.slice(sectionsWithProducts.length, 2).map((banner, index) => (
               <div
                 key={`fallback-middle-banner-${banner.id}-${index}`}
-                className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300"
+                className="rounded-2xl overflow-hidden shadow-xl shadow-cyan-500/30 transform hover:scale-[1.02] transition-transform duration-300"
               >
                 <BannerCarousel banners={[banner]} autoPlay={false} />
               </div>
@@ -894,10 +894,10 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Main Masonry Product Grid */}
         {products.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 p-6 border border-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🛍️</span>
                   </div>
                   <div>
@@ -920,7 +920,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <div className="flex justify-center">
                 <Link
                   href="/?category=all"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg shadow-cyan-500/20 transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                   style={{ background: 'linear-gradient(135deg, var(--primary) 0%, #E67E22 100%)' }}
                 >
                   Ver todos los productos
@@ -943,7 +943,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         )}
 
         {/* Third Middle Banner */}
-        <section className="rounded-2xl overflow-hidden shadow-xl">
+        <section className="rounded-2xl overflow-hidden shadow-xl shadow-cyan-500/30">
           <BannerCarousel banners={[middleBannerData[2]]} autoPlay={false} />
         </section>
 
@@ -961,7 +961,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {getDiverseProducts(home, 4).map((product) => (
-                <div key={product.id} className="bg-dark/80 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
+                <div key={product.id} className="bg-dark/80 rounded-xl shadow-sm hover:shadow-xl shadow-cyan-500/30 transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
                   {/* Image */}
                   <div className="relative h-48 bg-dark-light">
                     {product.imagen ? (
@@ -1019,7 +1019,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       }}
                       disabled={product.stock <= 0}
                       aria-label={product.stock > 0 ? `Agregar ${product.nombre} al carrito` : 'Producto sin stock'}
-                      className="w-full py-3 px-4 bg-primary-hover hover:bg-primary-hover disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                      className="w-full py-3 px-4 bg-primary-hover hover:bg-primary-hover disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 hover:scale-105">
                       <span aria-hidden="true">🛒</span>
                       <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>
                     </button>
@@ -1033,7 +1033,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
 
       {/* Notification */}
       {notification && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg z-50 transition-all duration-300">
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/20 z-50 transition-all duration-300">
           {notification}
         </div>
       )}

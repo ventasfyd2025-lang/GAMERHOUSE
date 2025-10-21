@@ -25,7 +25,7 @@ export default function ContactoPage() {
               href="https://wa.me/56920265061"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -50,7 +50,7 @@ export default function ContactoPage() {
             {/* Email */}
             <a
               href="mailto:contacto@importadora-fyd.cl"
-              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -75,7 +75,7 @@ export default function ContactoPage() {
             {/* Teléfono */}
             <a
               href="tel:+56920265061"
-              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -98,7 +98,7 @@ export default function ContactoPage() {
             </a>
 
             {/* Ubicación */}
-            <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -121,7 +121,7 @@ export default function ContactoPage() {
           </div>
 
           {/* Horarios */}
-          <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">
               Horario de Atención
             </h2>
@@ -136,7 +136,7 @@ export default function ContactoPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-cyan-500/20"
             >
               Volver al Inicio
             </Link>

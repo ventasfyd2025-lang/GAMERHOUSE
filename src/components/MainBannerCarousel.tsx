@@ -337,7 +337,7 @@ export default function MainBannerCarousel({
                     </h2>
                   )}
                   {slide.subtitle && (
-                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-center drop-shadow-lg opacity-95 max-w-3xl animate-fade-in">
+                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-center drop-shadow-lg shadow-cyan-500/20 opacity-95 max-w-3xl animate-fade-in">
                       {slide.subtitle}
                     </p>
                   )}

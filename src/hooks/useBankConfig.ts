@@ -18,7 +18,7 @@ const DEFAULT_BANK_CONFIG: BankConfig = {
   accountType: 'Cuenta Corriente',
   accountNumber: '123-456-789-01',
   rut: '12.345.678-9',
-  holderName: 'Importadora FyD SpA',
+  holderName: 'GAMERHOUSE SpA',
   email: 'pagos@importadorafyd.cl'
 };
 

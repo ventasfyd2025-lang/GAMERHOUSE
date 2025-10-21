@@ -87,7 +87,7 @@ export default function ProductosDestacados() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-dark/80 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+              <div key={product.id} className="bg-dark/80 rounded-lg shadow-md hover:shadow-xl shadow-cyan-500/30 transition-all duration-300 overflow-hidden group">
                 {/* Image */}
                 <div className="relative h-48 bg-dark-light">
                   {product.imagen ? (

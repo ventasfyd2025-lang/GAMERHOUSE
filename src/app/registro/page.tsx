@@ -140,7 +140,7 @@ export default function RegisterPage() {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-cyan-500/20 sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-dark-light border border-dark-light text-red-700 px-4 py-3 rounded">

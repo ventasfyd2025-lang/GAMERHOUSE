@@ -250,7 +250,7 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📝</span>
@@ -334,7 +334,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📊</span>
@@ -382,7 +382,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📂</span>
@@ -487,7 +487,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📝</span>
@@ -506,7 +506,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Images Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">🖼️</span>
@@ -590,7 +590,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-cyan-500/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">🏷️</span>
@@ -665,11 +665,11 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Bottom Actions */}
-          <div className="bg-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-primary/30 sticky bottom-0 z-10">
+          <div className="bg-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-cyan-500/20 border border-primary/30 sticky bottom-0 z-10">
             <div className="flex gap-4">
               <Link
                 href="/admin"
-                className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -679,7 +679,7 @@ export default function NuevoProductoPage() {
               <button
                 type="submit"
                 disabled={uploadingProduct}
-                className="flex-[2] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-[2] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30"
                 style={{
                   backgroundColor: 'var(--primary)'
                 }}
