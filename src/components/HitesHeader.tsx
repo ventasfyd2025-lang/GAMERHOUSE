@@ -155,7 +155,7 @@ export default function HitesHeader() {
                           onClick={() => setIsCategoriesOpen(false)}
                           className="block px-4 py-3 hover:bg-brand-surface text-brand-text font-medium transition-colors"
                         >
-                          {cat.nombre}
+                          {cat.name}
                         </Link>
                       </div>
                     ))}
@@ -166,7 +166,7 @@ export default function HitesHeader() {
                         onClick={() => setIsCategoriesOpen(false)}
                         className="block px-4 py-3 hover:bg-brand-surface text-brand-text transition-colors border-b last:border-b-0"
                       >
-                        {cat.nombre}
+                        {cat.name}
                       </Link>
                     ))}
                   </div>
@@ -182,7 +182,7 @@ export default function HitesHeader() {
                   href={`/?category=${cat.id}`}
                   className="text-brand-text font-medium hover:text-brand-secondary transition-colors text-sm"
                 >
-                  {cat.nombre}
+                  {cat.name}
                 </Link>
               ))}
             </div>
@@ -225,7 +225,7 @@ export default function HitesHeader() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="block py-2 pl-2 text-brand-text hover:text-brand-secondary transition-colors text-sm"
                   >
-                    {cat.nombre}
+                    {cat.name}
                   </Link>
                 ))}
               </div>
