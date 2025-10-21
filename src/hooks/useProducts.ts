@@ -40,10 +40,9 @@ export function useProducts() {
       // Always use Firebase for real products data
       try {
         const productsCollection = collection(db, 'gamerhouse_products');
-        // Optimize: Limit query to 500 products, ordered by creation date
+        // Optimize: Load all products from gamerhouse_products collection
         const productsQuery = query(
           productsCollection,
-          orderBy('createdAt', 'desc'),
           limit(500)
         );
         const productsSnapshot = await getDocs(productsQuery);
@@ -59,6 +58,7 @@ export function useProducts() {
         // Cache the data
         productCache.set(cacheKey, { data: productsList, timestamp: Date.now() });
         setProducts(productsList);
+        console.log(`✅ Loaded ${productsList.length} products from gamerhouse_products`);
       } catch (firebaseError) {
         console.warn('Firebase failed, using mock fallback:', firebaseError);
         // Fallback to mock products if Firebase fails
