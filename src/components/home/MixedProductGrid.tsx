@@ -30,7 +30,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
       <div className="relative">
         <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-32" />
         {product.oferta && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -65,7 +65,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
             <span className="text-xs text-gray-600 ml-1">4.5</span>
           </div>
           
-          <button className="mt-2 w-full text-xs bg-orange-500 text-white py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+          <button className="mt-2 w-full text-xs bg-brand-primary text-white py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
             Agregar
           </button>
         </div>
@@ -84,7 +84,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
       <div className="relative">
         <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
         {product.oferta && (
-          <span className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1.5 rounded">
+          <span className="absolute top-4 left-4 bg-cyber-pink text-white text-sm font-bold px-3 py-1.5 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -121,7 +121,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           </div>
           
           <div className="flex gap-2 mt-4">
-            <button className="flex-1 text-sm bg-orange-500 text-white py-2 rounded font-medium flex items-center justify-center gap-2">
+            <button className="flex-1 text-sm bg-brand-primary text-white py-2 rounded font-medium flex items-center justify-center gap-2">
               <ShoppingBagIcon className="h-4 w-4" />
               Agregar al carrito
             </button>
@@ -145,7 +145,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
       <div className="relative">
         <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48" />
         {product.oferta && (
-          <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded">
+          <span className="absolute top-3 left-3 bg-cyber-pink text-white text-xs font-bold px-2.5 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -180,7 +180,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
             <span className="text-xs text-gray-600 ml-1">4.5 (42)</span>
           </div>
           
-          <button className="mt-3 w-full text-sm bg-orange-500 text-white py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+          <button className="mt-3 w-full text-sm bg-brand-primary text-white py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
             Agregar al carrito
           </button>
         </div>
@@ -199,7 +199,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
       <div className="relative w-1/3">
         <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
         {product.oferta && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -237,7 +237,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
         </div>
         
         <div className="mt-4 flex gap-2">
-          <button className="text-sm bg-orange-500 text-white px-4 py-2 rounded font-medium flex items-center gap-2">
+          <button className="text-sm bg-brand-primary text-white px-4 py-2 rounded font-medium flex items-center gap-2">
             <ShoppingBagIcon className="h-4 w-4" />
             Agregar
           </button>
@@ -267,7 +267,7 @@ const MixedProductGrid: React.FC<MixedProductGridProps> = ({ products, title, vi
           {viewAllLink && (
             <Link 
               href={viewAllLink} 
-              className="text-orange-500 hover:text-orange-600 font-medium text-sm"
+              className="text-brand-primary500 hover:text-brand-primary600 font-medium text-sm"
             >
               Ver todos →
             </Link>

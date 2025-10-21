@@ -23,7 +23,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return 'bg-red-100 border-red-500 text-red-800';
       case 'critical':
-        return 'bg-orange-100 border-orange-500 text-orange-800';
+        return 'bg-orange-100 border-brand-primary500 text-brand-primary800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
@@ -36,7 +36,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return <NoSymbolIcon className="h-5 w-5 text-red-600" />;
       case 'critical':
-        return <ExclamationTriangleIcon className="h-5 w-5 text-orange-600" />;
+        return <ExclamationTriangleIcon className="h-5 w-5 text-brand-primary600" />;
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:

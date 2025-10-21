@@ -29,8 +29,8 @@ export default function CartPageClient() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-orange-100 text-center">
-            <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" strokeWidth={2} />
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
+            <ShoppingBag className="h-24 w-24 text-brand-primary400 mx-auto mb-6" strokeWidth={2} />
             <h1 className="text-3xl font-bold text-gray-800 mb-4">
               Tu carrito está vacío
             </h1>
@@ -54,7 +54,7 @@ export default function CartPageClient() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100 mb-8">
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
               <span className="text-white text-lg">🛒</span>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-orange-100 hover:shadow-xl transition-all">
+              <div key={item.id} className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-brand-primary100 hover:shadow-xl transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -148,7 +148,7 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100 sticky top-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
               <h2 className="text-xl font-bold text-gray-800">
@@ -161,10 +161,10 @@ export default function CartPageClient() {
                 <span className="text-gray-600 font-medium">Subtotal</span>
                 <span className="font-semibold text-gray-800">{formatPrice(getTotalPrice())}</span>
               </div>
-              <div className="border-t border-orange-100 pt-4">
+              <div className="border-t border-brand-primary100 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-gray-800">Total</span>
-                  <span className="text-2xl font-bold text-orange-600">{formatPrice(getTotalPrice())}</span>
+                  <span className="text-2xl font-bold text-brand-primary600">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function CartPageClient() {
 
             <Link
               href="/"
-              className="block w-full mt-3 text-center text-orange-600 hover:text-orange-700 font-medium transition-colors py-2"
+              className="block w-full mt-3 text-center text-brand-primary600 hover:text-brand-primary700 font-medium transition-colors py-2"
             >
               ← Seguir comprando
             </Link>

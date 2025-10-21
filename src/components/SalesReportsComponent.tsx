@@ -97,24 +97,24 @@ export default function SalesReportsComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-white">
       {/* Header Mejorado */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-8 rounded-xl shadow-lg mb-8">
+      <div className="bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white p-8 rounded-xl shadow-lg mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold flex items-center">
               <ChartBarIcon className="h-10 w-10 mr-3" />
               Dashboard de Ventas
             </h1>
-            <p className="text-orange-100 mt-2 text-lg">Resumen ejecutivo de tu negocio</p>
+            <p className="text-brand-primary100 mt-2 text-lg">Resumen ejecutivo de tu negocio</p>
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <p className="text-orange-100 text-sm">Última actualización</p>
+              <p className="text-brand-primary100 text-sm">Última actualización</p>
               <p className="text-white font-medium">{new Date().toLocaleDateString('es-CL')}</p>
             </div>
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
+              className="bg-white text-brand-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -126,7 +126,7 @@ export default function SalesReportsComponent() {
       {loading && (
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div className="flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary500"></div>
             <span className="ml-4 text-lg text-gray-600">Cargando datos...</span>
           </div>
         </div>
@@ -190,10 +190,10 @@ export default function SalesReportsComponent() {
         )}
 
         {monthlyReport && (
-          <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-500">
+          <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-brand-primary500">
             <div className="flex items-center">
               <div className="p-3 rounded-full bg-orange-100">
-                <CalendarIcon className="h-8 w-8 text-orange-600" />
+                <CalendarIcon className="h-8 w-8 text-brand-primary600" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Ingresos del Mes</p>
@@ -221,7 +221,7 @@ export default function SalesReportsComponent() {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500"
             />
           </div>
           <div>
@@ -232,7 +232,7 @@ export default function SalesReportsComponent() {
               type="month"
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500"
             />
           </div>
         </div>
@@ -250,7 +250,7 @@ export default function SalesReportsComponent() {
               <div key={product.productId} className={`p-4 rounded-lg border-l-4 ${
                 index === 0 ? 'bg-yellow-50 border-yellow-400' :
                 index === 1 ? 'bg-gray-50 border-gray-400' :
-                index === 2 ? 'bg-orange-50 border-orange-400' :
+                index === 2 ? 'bg-orange-50 border-brand-primary400' :
                 'bg-blue-50 border-blue-400'
               }`}>
                 <div className="flex items-center justify-between">
@@ -259,7 +259,7 @@ export default function SalesReportsComponent() {
                       <span className={`text-lg font-bold mr-2 ${
                         index === 0 ? 'text-yellow-600' :
                         index === 1 ? 'text-gray-600' :
-                        index === 2 ? 'text-orange-600' :
+                        index === 2 ? 'text-brand-primary600' :
                         'text-blue-600'
                       }`}>
                         #{index + 1}
@@ -349,7 +349,7 @@ export default function SalesReportsComponent() {
                       <span className={`text-lg font-bold mr-4 w-8 h-8 rounded-full flex items-center justify-center text-white ${
                         index === 0 ? 'bg-yellow-500' :
                         index === 1 ? 'bg-gray-500' :
-                        index === 2 ? 'bg-orange-500' :
+                        index === 2 ? 'bg-brand-primary' :
                         'bg-blue-500'
                       }`}>
                         {index + 1}

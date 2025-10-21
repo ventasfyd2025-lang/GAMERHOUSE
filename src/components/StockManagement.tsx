@@ -148,7 +148,7 @@ export default function StockManagement({ productId, className }: StockManagemen
   const getStockStatus = (stock: number) => {
     const minStock = 5; // This should come from product data
     if (stock === 0) return { color: 'text-red-600', text: 'Sin Stock', icon: ExclamationTriangleIcon };
-    if (stock <= minStock / 2) return { color: 'text-orange-600', text: 'Stock Crítico', icon: ExclamationTriangleIcon };
+    if (stock <= minStock / 2) return { color: 'text-brand-primary600', text: 'Stock Crítico', icon: ExclamationTriangleIcon };
     if (stock <= minStock) return { color: 'text-yellow-600', text: 'Stock Bajo', icon: ExclamationTriangleIcon };
     return { color: 'text-green-600', text: 'Stock Normal', icon: null };
   };
@@ -225,7 +225,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 <div className="text-sm text-gray-600">Stock Actual</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-600">
+                <div className="text-2xl font-bold text-brand-primary600">
                   5
                 </div>
                 <div className="text-sm text-gray-600">Stock Mínimo</div>

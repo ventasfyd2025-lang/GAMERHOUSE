@@ -103,7 +103,7 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-orange-300"
+                      className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-brand-primary-300"
                     >
                       {/* Product Image */}
                       <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
@@ -131,7 +131,7 @@ export default function PCFactoryBanner({
                       {/* Product Info */}
                       <div className="p-3">
                         {/* Product Name */}
-                        <h3 className="text-sm font-medium text-gray-900 line-clamp-2 mb-2 group-hover:text-orange-600 transition-colors">
+                        <h3 className="text-sm font-medium text-gray-900 line-clamp-2 mb-2 group-hover:text-brand-primary600 transition-colors">
                           {product.nombre || 'Producto'}
                         </h3>
                         
@@ -178,7 +178,7 @@ export default function PCFactoryBanner({
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-200 ${
                   index === currentSlide 
-                    ? 'bg-orange-500' 
+                    ? 'bg-brand-primary' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 

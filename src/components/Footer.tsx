@@ -24,7 +24,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-brand-primary via-orange-600 to-red-600 text-white relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>

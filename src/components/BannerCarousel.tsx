@@ -114,7 +114,7 @@ export default function BannerCarousel({
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-orange-100">
+          <p className="text-2xl md:text-3xl text-brand-primary100">
             {text}
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function BannerCarousel({
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-orange-100 drop-shadow-lg">
+          <p className="text-2xl md:text-3xl text-brand-primary100 drop-shadow-lg">
             {text}
           </p>
         </div>

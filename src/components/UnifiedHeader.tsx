@@ -207,7 +207,7 @@ const handleMobileCategoryLinkClick = (
 
   return (
     <>
-      <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-lg shadow-2xl border-b border-orange-100">
+      <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-lg shadow-2xl border-b border-brand-primary100">
         <div className="relative bg-white/80">
           {/* Top Banner */}
           <div className="text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-[#F16529] to-[#E67E22]">
@@ -219,13 +219,13 @@ const handleMobileCategoryLinkClick = (
                 {/* User - Mobile */}
                 <Link
                   href="/perfil"
-                  className="relative p-1.5 text-white hover:text-orange-100 hover:bg-white/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
                 >
                   <User className="h-5 w-5" />
                   {hasUnreadMessages && (
                     <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-pink"></span>
                     </span>
                   )}
                 </Link>
@@ -233,7 +233,7 @@ const handleMobileCategoryLinkClick = (
                 {/* Cart - Mobile */}
                 <Link
                   href="/carrito"
-                  className="relative p-1.5 text-white hover:text-orange-100 hover:bg-white/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   {getTotalItems() > 0 && (
@@ -260,7 +260,7 @@ const handleMobileCategoryLinkClick = (
           </div>
 
           {/* Main Header */}
-          <div className="text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-xl">
+          <div className="text-white bg-gradient-to-r from-brand-primary to-red-500 shadow-xl">
             <div className="mx-auto flex flex-col gap-2 sm:gap-4 px-4 py-2 sm:py-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center lg:justify-between">
 
             {/* Logo + Desktop Categories + Mobile Hamburger */}
@@ -274,7 +274,7 @@ const handleMobileCategoryLinkClick = (
                       setExpandedCategories(new Set());
                     }
                   }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg backdrop-blur-sm border border-orange-400/50"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-white font-semibold text-sm hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-lg backdrop-blur-sm border border-brand-primary400/50"
                   style={{ backgroundColor: '#F16529' }}
                   aria-haspopup="true"
                   aria-expanded={isDesktopCategoriesOpen}
@@ -284,13 +284,13 @@ const handleMobileCategoryLinkClick = (
                 </button>
 
                 {isDesktopCategoriesOpen && (
-                  <div className="absolute left-0 top-full mt-3 w-[420px] rounded-2xl border border-orange-100 bg-white/95 shadow-[0_15px_45px_rgba(217,93,34,0.25)] backdrop-blur-sm z-50 overflow-hidden">
-                    <div className="flex items-center justify-between px-5 py-3 bg-gradient-to-r from-orange-50 to-white border-b border-orange-100">
-                      <span className="flex items-center gap-2 text-sm font-semibold text-orange-600">
+                  <div className="absolute left-0 top-full mt-3 w-[420px] rounded-2xl border border-brand-primary100 bg-white/95 shadow-[0_15px_45px_rgba(217,93,34,0.25)] backdrop-blur-sm z-50 overflow-hidden">
+                    <div className="flex items-center justify-between px-5 py-3 bg-gradient-to-r from-orange-50 to-white border-b border-brand-primary100">
+                      <span className="flex items-center gap-2 text-sm font-semibold text-brand-primary600">
                         <span className="text-base">🏷️</span>
                         Todas las categorías
                       </span>
-                      <span className="text-xs font-medium text-orange-500/70">{categories.length} disponibles</span>
+                      <span className="text-xs font-medium text-brand-primary500/70">{categories.length} disponibles</span>
                     </div>
 
                     <div className="max-h-96 overflow-y-auto px-4 py-4 space-y-3">
@@ -303,7 +303,7 @@ const handleMobileCategoryLinkClick = (
                           {categoriesLoadTimeout && (
                             <button
                               onClick={() => window.location.reload()}
-                              className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                              className="mt-4 px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-hover transition-colors"
                             >
                               Reintentar
                             </button>
@@ -324,7 +324,7 @@ const handleMobileCategoryLinkClick = (
                                 <button
                                   type="button"
                                   onClick={() => handleExpandableCategoryClick(category.id, categoryHref)}
-                                  className={`w-full text-left px-4 py-1 text-gray-700 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 flex items-center justify-between ${expandedCategories.has(category.id) ? 'bg-orange-50/70 text-orange-700' : ''}`}
+                                  className={`w-full text-left px-4 py-1 text-gray-700 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 flex items-center justify-between ${expandedCategories.has(category.id) ? 'bg-orange-50/70 text-brand-primary700' : ''}`}
                                   aria-expanded={expandedCategories.has(category.id)}
                                   aria-controls={`desktop-subcategories-${category.id}`}
                                 >
@@ -332,7 +332,7 @@ const handleMobileCategoryLinkClick = (
                                     <span className="text-lg">{category.icon || '📦'}</span>
                                     <span>{category.name}</span>
                                   </div>
-                                  <span className="text-orange-500 font-semibold">
+                                  <span className="text-brand-primary500 font-semibold">
                                     {expandedCategories.has(category.id) ? '→' : '+'}
                                   </span>
                                 </button>
@@ -340,14 +340,14 @@ const handleMobileCategoryLinkClick = (
                                 <Link
                                   href={categoryHref}
                                   onClick={() => handleCategoryNavigate()}
-                                  className="group block w-full text-left px-4 py-1 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200"
+                                  className="group block w-full text-left px-4 py-1 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200"
                                 >
                                   <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-3">
                                       <span className="text-lg">{category.icon || '📦'}</span>
                                       <span>{category.name}</span>
                                     </div>
-                                    <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                    <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                   </div>
                                 </Link>
                               )}
@@ -361,14 +361,14 @@ const handleMobileCategoryLinkClick = (
                                       key={subcategoria.id}
                                       href={`/?category=${categorySlug}&subcategory=${encodeURIComponent(subcategoria.nombre)}`}
 
-                                      className="group block w-full text-left px-4 py-0.5 text-gray-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-md transition-all duration-300 font-normal text-xs border border-gray-50 shadow-sm hover:shadow-md hover:border-orange-200"
+                                      className="group block w-full text-left px-4 py-0.5 text-gray-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-md transition-all duration-300 font-normal text-xs border border-gray-50 shadow-sm hover:shadow-md hover:border-brand-primary-200"
                                     >
                                       <div className="flex items-center justify-between">
                                         <div className="flex items-center space-x-2">
                                           <span>•</span>
                                           <span>{subcategoria.nombre}</span>
                                         </div>
-                                        <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                        <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                       </div>
                                     </Link>
                                   ))}
@@ -384,28 +384,28 @@ const handleMobileCategoryLinkClick = (
                             <Link
                               href="/?filter=ofertas"
                               onClick={() => handleCategoryNavigate()}
-                              className="group block w-full text-left px-4 py-2 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200"
+                              className="group block w-full text-left px-4 py-2 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200"
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-3">
                                   <span className="text-lg">🔥</span>
                                   <span>Ofertas</span>
                                 </div>
-                                <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                               </div>
                             </Link>
 
                             <Link
                               href="/?filter=nuevos"
                               onClick={() => handleCategoryNavigate()}
-                              className="group block w-full text-left px-4 py-2 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200"
+                              className="group block w-full text-left px-4 py-2 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200"
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-3">
                                   <span className="text-lg">✨</span>
                                   <span>Nuevos</span>
                                 </div>
-                                <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                               </div>
                             </Link>
                           </div>
@@ -473,14 +473,14 @@ const handleMobileCategoryLinkClick = (
               <div className="hidden lg:block relative" ref={userMenuRef}>
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="relative flex items-center space-x-2 p-3 text-white hover:text-orange-100 hover:bg-white/20 rounded-lg transition-colors"
+                  className="relative flex items-center space-x-2 p-3 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-lg transition-colors"
                 >
                   <div className="relative">
                     <User className="h-6 w-6" />
                     {hasUnreadMessages && (
                       <span className="absolute -top-1 -right-1 flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 border border-white"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-cyber-pink border border-white"></span>
                       </span>
                     )}
                   </div>
@@ -504,7 +504,7 @@ const handleMobileCategoryLinkClick = (
                           </p>
                           <p className="text-sm text-gray-600">{currentUser.email}</p>
                           {isGuest && (
-                            <p className="text-xs text-orange-600 mt-1">Usuario Invitado</p>
+                            <p className="text-xs text-brand-primary600 mt-1">Usuario Invitado</p>
                           )}
                         </div>
 
@@ -526,7 +526,7 @@ const handleMobileCategoryLinkClick = (
                               >
                                 Mis Pedidos
                                 {unreadOrderNotifications > 0 && (
-                                  <span className="absolute top-1 right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                                  <span className="absolute top-1 right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                                     {unreadOrderNotifications > 9 ? '9+' : unreadOrderNotifications}
                                   </span>
                                 )}
@@ -538,7 +538,7 @@ const handleMobileCategoryLinkClick = (
                             <Link
                               href="/registro"
                               onClick={() => setIsUserMenuOpen(false)}
-                              className="block px-4 py-2 text-orange-600 hover:bg-orange-50"
+                              className="block px-4 py-2 text-brand-primary600 hover:bg-orange-50"
                             >
                               Crear Cuenta
                             </Link>
@@ -561,14 +561,14 @@ const handleMobileCategoryLinkClick = (
                           <Link
                             href="/login"
                             onClick={() => setIsUserMenuOpen(false)}
-                            className="block w-full text-center px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors"
+                            className="block w-full text-center px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary-hover transition-colors"
                           >
                             Iniciar Sesión
                           </Link>
                           <Link
                             href="/registro"
                             onClick={() => setIsUserMenuOpen(false)}
-                            className="block w-full text-center px-4 py-2 border border-orange-500 text-orange-500 rounded-md hover:bg-orange-50 transition-colors"
+                            className="block w-full text-center px-4 py-2 border border-brand-primary500 text-brand-primary500 rounded-md hover:bg-orange-50 transition-colors"
                           >
                             Registrarse
                           </Link>
@@ -582,7 +582,7 @@ const handleMobileCategoryLinkClick = (
               {/* Cart - Desktop/Tablet only */}
               <Link
                 href="/carrito"
-                className="relative p-2 text-white hover:text-orange-100 hover:bg-white/20 rounded-md transition-colors"
+                className="relative p-2 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
               >
                 <ShoppingCart className="h-6 w-6" />
                 {getTotalItems() > 0 && (
@@ -621,7 +621,7 @@ const handleMobileCategoryLinkClick = (
               <div className="mx-auto max-w-full px-6 py-6 max-h-[calc(100vh-180px)] overflow-y-auto">
               <div className="space-y-3">
                 <div className="text-lg font-bold text-gray-800 mb-4 px-2 flex items-center gap-2">
-                  <span className="text-orange-500">🏷️</span>
+                  <span className="text-brand-primary500">🏷️</span>
                   Categorías ({categories.length} encontradas)
                 </div>
 
@@ -634,7 +634,7 @@ const handleMobileCategoryLinkClick = (
                     {categoriesLoadTimeout && (
                       <button
                         onClick={() => window.location.reload()}
-                        className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                        className="mt-4 px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-hover transition-colors"
                       >
                         Reintentar
                       </button>
@@ -689,7 +689,7 @@ const handleMobileCategoryLinkClick = (
                                 handleCategoryNavigate(); // Close mobile menu after navigation
                               }
                             }}
-                            className={`group block w-full text-left px-4 py-1.5 text-gray-700 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 flex items-center justify-between hover:scale-105 ${expandedCategories.has(category.id) ? 'bg-orange-50/70 text-orange-700' : ''}`}
+                            className={`group block w-full text-left px-4 py-1.5 text-gray-700 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 flex items-center justify-between hover:scale-105 ${expandedCategories.has(category.id) ? 'bg-orange-50/70 text-brand-primary700' : ''}`}
                             aria-expanded={expandedCategories.has(category.id)}
                             aria-controls={`mobile-subcategories-${category.id}`}
                           >
@@ -697,7 +697,7 @@ const handleMobileCategoryLinkClick = (
                               <span className="text-lg">{category.icon || '📦'}</span>
                               <span>{category.name}</span>
                             </div>
-                            <span className="text-orange-500 font-semibold">
+                            <span className="text-brand-primary500 font-semibold">
                               {expandedCategories.has(category.id) ? '→' : '+'}
                             </span>
                           </a>
@@ -705,14 +705,14 @@ const handleMobileCategoryLinkClick = (
                           <Link
                             href={categoryHref}
                             onClick={handleCategoryNavigate}
-                            className="group block w-full text-left px-4 py-1.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 hover:scale-105"
+                            className="group block w-full text-left px-4 py-1.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium text-sm border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200 hover:scale-105"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-3">
                                 <span className="text-lg">{category.icon || '📦'}</span>
                                 <span>{category.name}</span>
                               </div>
-                              <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                              <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                             </div>
                           </Link>
                         )}
@@ -748,14 +748,14 @@ const handleMobileCategoryLinkClick = (
                                       window.location.href = destination;
                                       handleCategoryNavigate(); // Close menu after navigation
                                     }}
-                                    className="group block w-full text-left px-4 py-1.5 text-gray-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-md transition-all duration-300 font-normal text-sm border border-gray-50 shadow-sm hover:shadow-md hover:border-orange-200"
+                                    className="group block w-full text-left px-4 py-1.5 text-gray-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-md transition-all duration-300 font-normal text-sm border border-gray-50 shadow-sm hover:shadow-md hover:border-brand-primary-200"
                                   >
                                     <div className="flex items-center justify-between">
                                       <div className="flex items-center space-x-2">
                                         <span>•</span>
                                         <span>{subcategoria.nombre}</span>
                                       </div>
-                                      <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                      <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                     </div>
                                     </a>
                                   );
@@ -772,28 +772,28 @@ const handleMobileCategoryLinkClick = (
                       <Link
                         href="/?filter=ofertas"
                         onClick={handleCategoryNavigate}
-                        className="group block w-full text-left px-4 py-2.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 hover:scale-105"
+                        className="group block w-full text-left px-4 py-2.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200 hover:scale-105"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-3">
                             <span className="text-lg">🔥</span>
                             <span>Ofertas</span>
                           </div>
-                          <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                          <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>
 
                       <Link
                         href="/?filter=nuevos"
                         onClick={handleCategoryNavigate}
-                        className="group block w-full text-left px-4 py-2.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-orange-600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-orange-200 hover:scale-105"
+                        className="group block w-full text-left px-4 py-2.5 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 hover:text-brand-primary600 rounded-lg transition-all duration-300 font-medium border border-gray-100 shadow-sm hover:shadow-md hover:border-brand-primary-200 hover:scale-105"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-3">
                             <span className="text-lg">✨</span>
                             <span>Nuevos</span>
                           </div>
-                          <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                          <span className="text-brand-primary500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>
                     </div>

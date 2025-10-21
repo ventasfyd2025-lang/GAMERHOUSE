@@ -117,7 +117,7 @@ const ConfigurableBanner: React.FC<ConfigurableBannerProps> = ({
                   <div className="mt-6">
                     <Link 
                       href={slide.linkUrl || `/producto/${slide.productId}` || '#'}
-                      className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                      className="inline-block bg-brand-primary hover:bg-brand-primary-hover text-white font-bold py-3 px-6 rounded-lg transition-colors"
                     >
                       Ver más
                     </Link>

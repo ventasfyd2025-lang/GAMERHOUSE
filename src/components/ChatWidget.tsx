@@ -159,11 +159,11 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-full shadow-lg transition-all duration-200 relative"
+          className="bg-brand-primary hover:bg-brand-primary-hover text-white p-4 rounded-full shadow-lg transition-all duration-200 relative"
         >
           <ChatBubbleLeftRightIcon className="h-6 w-6" />
           {unreadCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
+            <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
               {unreadCount > 9 ? '9+' : unreadCount}
             </span>
           )}
@@ -174,7 +174,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
       {isOpen && (
         <div className="bg-white rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-gray-200">
           {/* Header */}
-          <div className="bg-orange-500 text-white p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-brand-primary text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <ShieldCheckIcon className="h-5 w-5" />
               <div>
@@ -210,18 +210,18 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                     className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm ${
                       message.isAdmin
                         ? 'bg-gray-100 text-gray-900'
-                        : 'bg-orange-500 text-white'
+                        : 'bg-brand-primary text-white'
                     }`}
                   >
                     {message.isAdmin && (
                       <div className="flex items-center space-x-1 mb-1">
-                        <ShieldCheckIcon className="h-3 w-3 text-orange-600" />
-                        <span className="text-xs font-medium text-orange-600">Soporte</span>
+                        <ShieldCheckIcon className="h-3 w-3 text-brand-primary600" />
+                        <span className="text-xs font-medium text-brand-primary600">Soporte</span>
                       </div>
                     )}
                     <p className="whitespace-pre-wrap">{message.message}</p>
                     <p className={`text-xs mt-1 ${
-                      message.isAdmin ? 'text-gray-500' : 'text-orange-100'
+                      message.isAdmin ? 'text-gray-500' : 'text-brand-primary100'
                     }`}>
                       {formatTime(message.timestamp, {
                         hour: '2-digit',
@@ -250,7 +250,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
               <button
                 onClick={sendMessage}
                 disabled={!newMessage.trim() || loading}
-                className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-300 text-white p-2 rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="bg-brand-primary hover:bg-brand-primary-hover disabled:bg-gray-300 text-white p-2 rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />

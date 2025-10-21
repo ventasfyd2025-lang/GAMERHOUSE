@@ -655,7 +655,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               </p>
               <Link
                 href="/"
-                className="inline-flex items-center px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-brand-primary-hover transition-colors"
               >
                 Ver todos los productos
               </Link>
@@ -702,13 +702,13 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Category Promotions Pinterest Grid */}
         {homepageConfig.promotionalSections && homepageConfig.promotionalSections.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
                   <span className="text-white text-lg">✨</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-red-500 bg-clip-text text-transparent">
                     Colecciones Destacadas
                   </h2>
                   <p className="mt-1 text-sm sm:text-base text-gray-600 max-w-2xl">
@@ -800,7 +800,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         )}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-orange-500 to-red-600 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-brand-primary to-red-600 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
                         {section.badgeText}
                       </span>
                       <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 text-white">
@@ -894,14 +894,14 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Main Masonry Product Grid */}
         {products.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
                     <span className="text-white text-lg">🛍️</span>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-red-500 bg-clip-text text-transparent">
                       Nuestro Catálogo
                     </h2>
                     <p className="text-sm sm:text-base text-gray-600">
@@ -977,7 +977,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       <div className="w-full h-full flex items-center justify-center text-gray-400 text-6xl">🏠</div>
                     )}
                     {product.oferta && (
-                      <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
                         OFERTA
                       </span>
                     )}
@@ -1019,7 +1019,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       }}
                       disabled={product.stock <= 0}
                       aria-label={product.stock > 0 ? `Agregar ${product.nombre} al carrito` : 'Producto sin stock'}
-                      className="w-full py-3 px-4 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                      className="w-full py-3 px-4 bg-brand-primary-hover hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
                       <span aria-hidden="true">🛒</span>
                       <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>
                     </button>

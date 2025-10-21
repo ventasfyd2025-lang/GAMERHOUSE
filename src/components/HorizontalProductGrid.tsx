@@ -53,11 +53,11 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-gray-200 hover:border-orange-400 relative">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-gray-200 hover:border-brand-primary-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
-          <div className="absolute top-2 left-2 z-10 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shadow-md">
+          <div className="absolute top-2 left-2 z-10 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
             -{discountPercentage}%
           </div>
         )}
@@ -115,7 +115,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
 
             {/* Stock warning */}
             {product.stock && product.stock <= 5 && product.stock > 0 && (
-              <p className="text-xs text-orange-600 font-medium">
+              <p className="text-xs text-brand-primary600 font-medium">
                 Quedan {product.stock} disponibles
               </p>
             )}
@@ -127,7 +127,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
                   ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
+                  : 'bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
               {(product.stock ?? 1) === 0 ? (

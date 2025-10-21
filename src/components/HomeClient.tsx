@@ -212,7 +212,7 @@ export default function HomeClient() {
         <>
           {/* Banner placeholder inmediato - Totalmente responsive */}
           {!mainBannerConfig || !mainBannerConfig.active || !mainBannerConfig.slides?.length ? (
-            <div className="relative w-full h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] bg-gradient-to-br from-orange-500 via-orange-400 to-orange-600 flex items-center justify-center">
+            <div className="relative w-full h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] bg-gradient-to-br from-brand-primary via-orange-400 to-brand-primary-hover flex items-center justify-center">
               <div className="text-white text-center px-3 sm:px-6 lg:px-8">
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 sm:mb-2 md:mb-4 drop-shadow-2xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                   Importadora F&D
@@ -237,7 +237,7 @@ export default function HomeClient() {
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-gray-900 text-center bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-gray-900 text-center bg-gradient-to-r from-brand-primary to-brand-primary-hover bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
                 <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
@@ -385,7 +385,7 @@ export default function HomeClient() {
       <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-orange-50 via-white to-orange-50">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header - Modern Admin Style */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-orange-100 mb-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#F16529' }}>
@@ -402,7 +402,7 @@ export default function HomeClient() {
               {/* Filter Controls - Modern Style */}
               <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white hover:border-orange-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
                   value={sortBy}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -423,7 +423,7 @@ export default function HomeClient() {
                 </select>
 
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white hover:border-orange-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
                   value={priceRange}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -491,8 +491,8 @@ export default function HomeClient() {
               )}
             </>
           ) : (
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-orange-100 text-center">
-              <div className="text-orange-400 text-6xl mb-4">🔍</div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
+              <div className="text-brand-primary400 text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-gray-800 mb-2">
                 No se encontraron productos
               </h3>

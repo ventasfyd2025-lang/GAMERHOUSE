@@ -66,7 +66,7 @@ export default function ProductBanner({
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-orange-100">
+          <p className="text-2xl md:text-3xl text-brand-primary100">
             {text}
           </p>
         </div>
@@ -184,7 +184,7 @@ export default function ProductBanner({
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-orange-500' 
+                    ? 'bg-brand-primary' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 

@@ -318,7 +318,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                   order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
                   order.status === 'preparing' ? 'bg-purple-100 text-purple-800' :
-                  order.status === 'shipped' ? 'bg-orange-100 text-orange-800' :
+                  order.status === 'shipped' ? 'bg-orange-100 text-brand-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :
                   'bg-red-100 text-red-800'
                 }`}>
@@ -415,7 +415,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                               isSystemMessage
                                 ? 'bg-blue-50 text-blue-900 border border-blue-200'
                                 : message.isAdmin
-                                ? 'bg-red-500 text-white'
+                                ? 'bg-cyber-pink text-white'
                                 : 'bg-white text-gray-900 border border-gray-200'
                             }`}
                           >
@@ -445,7 +445,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         </div>
                         
                         {message.isAdmin && !isSystemMessage && (
-                          <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 bg-cyber-pink rounded-full flex items-center justify-center flex-shrink-0">
                             <ShieldCheckIcon className="h-4 w-4 text-white" />
                           </div>
                         )}
@@ -479,7 +479,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   <button
                     onClick={sendMessage}
                     disabled={!newMessage.trim() || loading}
-                    className="bg-red-500 hover:bg-red-600 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-cyber-pink hover:bg-red-600 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {loading ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
