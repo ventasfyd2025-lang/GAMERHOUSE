@@ -1,24 +1,38 @@
-import * as admin from 'firebase-admin';
+// Simple script to initialize GAMERHOUSE collections in Firestore
+// Run with: FIREBASE_ADMIN_PROJECT_ID=xxx FIREBASE_ADMIN_CLIENT_EMAIL=xxx FIREBASE_ADMIN_PRIVATE_KEY=xxx node scripts/init-firestore.js
 
-// Initialize Firebase Admin with environment variables
+const admin = require('firebase-admin');
+
+const projectId = process.env.FIREBASE_ADMIN_PROJECT_ID;
+const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
+const privateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n');
+
+if (!projectId || !clientEmail || !privateKey) {
+  console.error('❌ Error: Faltan variables de entorno');
+  console.error('Asegúrate de tener:');
+  console.error('- FIREBASE_ADMIN_PROJECT_ID');
+  console.error('- FIREBASE_ADMIN_CLIENT_EMAIL');
+  console.error('- FIREBASE_ADMIN_PRIVATE_KEY');
+  process.exit(1);
+}
+
 const serviceAccount = {
-  projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
-  clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-  privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+  projectId,
+  clientEmail,
+  privateKey,
 };
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount as any),
-  projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
+  credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
 
-async function initializeGamerhouse() {
+async function initGamerhouse() {
   console.log('🎮 Inicializando GAMERHOUSE en Firebase...\n');
 
   try {
-    // 1. Crear categorías
+    // Categorías
     console.log('📂 Creando categorías...');
     const categories = [
       { id: 'all', name: 'Todos los Juegos', active: true, icon: '🎮' },
@@ -32,12 +46,12 @@ async function initializeGamerhouse() {
       { id: 'merchandise', name: 'Merchandise', active: true, icon: '👕' },
     ];
 
-    for (const category of categories) {
-      await db.collection('gamerhouse_categorias').doc(category.id).set(category);
-      console.log(`  ✅ Categoría: ${category.name}`);
+    for (const cat of categories) {
+      await db.collection('gamerhouse_categorias').doc(cat.id).set(cat);
+      console.log(`  ✅ ${cat.name}`);
     }
 
-    // 2. Crear productos de ejemplo
+    // Productos
     console.log('\n🛍️ Creando productos de ejemplo...');
     const products = [
       {
@@ -48,33 +62,37 @@ async function initializeGamerhouse() {
         imagen: 'https://via.placeholder.com/300x300?text=PS5',
         descripcion: 'Consola PlayStation 5 con SSD ultrarrápido',
         tienda: 'gamerhouse',
+        createdAt: new Date(),
       },
       {
         nombre: 'Xbox Series X',
         precio: 499.99,
         stock: 12,
         categoria: 'xbox-series',
-        imagen: 'https://via.placeholder.com/300x300?text=Xbox+Series+X',
+        imagen: 'https://via.placeholder.com/300x300?text=Xbox',
         descripcion: 'Consola Xbox Series X de última generación',
         tienda: 'gamerhouse',
+        createdAt: new Date(),
       },
       {
         nombre: 'Nintendo Switch OLED',
         precio: 349.99,
         stock: 20,
         categoria: 'nintendo-switch',
-        imagen: 'https://via.placeholder.com/300x300?text=Nintendo+Switch',
+        imagen: 'https://via.placeholder.com/300x300?text=Switch',
         descripcion: 'Nintendo Switch modelo OLED con pantalla mejorada',
         tienda: 'gamerhouse',
+        createdAt: new Date(),
       },
       {
         nombre: 'Pokémon Scarlet',
         precio: 59.99,
         stock: 30,
         categoria: 'pokemon',
-        imagen: 'https://via.placeholder.com/300x300?text=Pokemon+Scarlet',
+        imagen: 'https://via.placeholder.com/300x300?text=Pokemon',
         descripcion: 'Pokémon Scarlet para Nintendo Switch',
         tienda: 'gamerhouse',
+        createdAt: new Date(),
       },
       {
         nombre: 'Control DualSense',
@@ -84,40 +102,25 @@ async function initializeGamerhouse() {
         imagen: 'https://via.placeholder.com/300x300?text=DualSense',
         descripcion: 'Control DualSense para PlayStation 5',
         tienda: 'gamerhouse',
+        createdAt: new Date(),
       },
     ];
 
-    for (const product of products) {
-      const docRef = await db.collection('gamerhouse_products').add({
-        ...product,
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      });
-      console.log(`  ✅ Producto: ${product.nombre} (ID: ${docRef.id})`);
+    for (const prod of products) {
+      const ref = await db.collection('gamerhouse_products').add(prod);
+      console.log(`  ✅ ${prod.nombre}`);
     }
 
-    // 3. Crear documento de configuración
-    console.log('\n⚙️ Creando configuración...');
-    await db.collection('gamerhouse_config').doc('store').set({
-      nombre: 'GAMERHOUSE',
-      descripcion: 'Tu tienda de videojuegos y gaming',
-      email: 'info@gamerhouse.com',
-      telefono: '+56 9 XXXX XXXX',
-      direccion: 'Santiago, Chile',
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-    });
-    console.log('  ✅ Configuración creada');
-
-    console.log('\n✨ ¡GAMERHOUSE inicializado correctamente en Firebase!');
+    console.log('\n✨ ¡GAMERHOUSE inicializado correctamente!');
     console.log('\n📊 Resumen:');
-    console.log(`   - Categorías creadas: ${categories.length}`);
-    console.log(`   - Productos de ejemplo: ${products.length}`);
-    console.log('\n🚀 Ya puedes usar GAMERHOUSE con datos iniciales!');
-
+    console.log(`   - Categorías: ${categories.length}`);
+    console.log(`   - Productos: ${products.length}`);
+    console.log('\n🚀 Ya puedes usar GAMERHOUSE!\n');
+    process.exit(0);
   } catch (error) {
-    console.error('❌ Error inicializando GAMERHOUSE:', error);
-  } finally {
-    admin.app().delete();
+    console.error('❌ Error:', error);
+    process.exit(1);
   }
 }
 
-initializeGamerhouse();
+initGamerhouse();
