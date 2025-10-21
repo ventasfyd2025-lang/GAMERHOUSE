@@ -29,18 +29,18 @@ export default function CartPageClient() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
-            <ShoppingBag className="h-24 w-24 text-brand-primary400 mx-auto mb-6" strokeWidth={2} />
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-primary100 text-center">
+            <ShoppingBag className="h-24 w-24 text-primary400 mx-auto mb-6" strokeWidth={2} />
             <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
             </h1>
-            <p className="text-lg text-brand-primary/80 mb-8">
+            <p className="text-lg text-primary/80 mb-8">
               ¡Agrega algunos productos para comenzar tu compra!
             </p>
             <Link
               href="/"
               className="inline-flex items-center px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
+              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               🛍️ Explorar productos
             </Link>
@@ -54,16 +54,16 @@ export default function CartPageClient() {
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
+        <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100 mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">🛒</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">
                 Carrito de compras
               </h1>
-              <p className="text-brand-primary/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
+              <p className="text-primary/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-brand-primary100 hover:shadow-xl transition-all">
+              <div key={item.id} className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-primary100 hover:shadow-xl transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -86,7 +86,7 @@ export default function CartPageClient() {
                     />
                   ) : (
                     <div className="w-full h-full bg-brand-neutral-light rounded-md flex items-center justify-center">
-                      <span className="text-brand-primary/50 text-lg sm:text-2xl">📦</span>
+                      <span className="text-primary/50 text-lg sm:text-2xl">📦</span>
                     </div>
                   )}
                 </div>
@@ -100,9 +100,9 @@ export default function CartPageClient() {
                     {item.nombre}
                   </Link>
                   {item.sku && (
-                    <p className="text-xs text-brand-primary/60">SKU: {item.sku}</p>
+                    <p className="text-xs text-primary/60">SKU: {item.sku}</p>
                   )}
-                  <p className="text-brand-primary/80 mt-1 text-sm sm:text-base">
+                  <p className="text-primary/80 mt-1 text-sm sm:text-base">
                     {formatPrice(item.precio)} c/u
                   </p>
                 </div>
@@ -148,7 +148,7 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 sticky top-8">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
               <h2 className="text-xl font-bold text-white">
@@ -158,13 +158,13 @@ export default function CartPageClient() {
 
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2">
-                <span className="text-brand-primary/80 font-medium">Subtotal</span>
+                <span className="text-primary/80 font-medium">Subtotal</span>
                 <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
               </div>
-              <div className="border-t border-brand-primary100 pt-4">
+              <div className="border-t border-primary100 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-white">Total</span>
-                  <span className="text-2xl font-bold text-brand-primary600">{formatPrice(getTotalPrice())}</span>
+                  <span className="text-2xl font-bold text-primary600">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function CartPageClient() {
             <Link
               href="/checkout"
               className="w-full mt-6 py-3 px-4 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg text-center block"
-              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
+              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               💳 Finalizar compra
             </Link>
@@ -186,7 +186,7 @@ export default function CartPageClient() {
 
             <Link
               href="/"
-              className="block w-full mt-3 text-center text-brand-primary600 hover:text-brand-primary700 font-medium transition-colors py-2"
+              className="block w-full mt-3 text-center text-primary600 hover:text-primary700 font-medium transition-colors py-2"
             >
               ← Seguir comprando
             </Link>

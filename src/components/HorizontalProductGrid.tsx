@@ -53,7 +53,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-brand-primary/30 hover:border-brand-primary-400 relative">
+    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
@@ -88,7 +88,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         {/* Content Section - 65% width */}
         <div className="flex-1 p-3 flex flex-col justify-between">
           {/* Title */}
-          <h3 className="text-sm font-medium text-brand-primary line-clamp-2 leading-tight mb-2">
+          <h3 className="text-sm font-medium text-primary line-clamp-2 leading-tight mb-2">
             {product.nombre || 'Producto sin nombre'}
           </h3>
 
@@ -96,7 +96,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
           <div className="space-y-2">
             {/* Original Price */}
             {product.precioOriginal && product.precioOriginal > (product.precio || 0) && (
-              <div className="text-xs text-brand-primary/50 line-through">
+              <div className="text-xs text-primary/50 line-through">
                 {formatPrice(product.precioOriginal)}
               </div>
             )}
@@ -115,7 +115,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
 
             {/* Stock warning */}
             {product.stock && product.stock <= 5 && product.stock > 0 && (
-              <p className="text-xs text-brand-primary600 font-medium">
+              <p className="text-xs text-primary600 font-medium">
                 Quedan {product.stock} disponibles
               </p>
             )}
@@ -126,8 +126,8 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               disabled={(product.stock ?? 1) === 0}
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
-                  ? 'bg-brand-neutral-light text-brand-primary/60 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
+                  ? 'bg-brand-neutral-light text-primary/60 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-brand-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
               {(product.stock ?? 1) === 0 ? (
@@ -157,7 +157,7 @@ export default function HorizontalProductGrid({ products, title }: HorizontalPro
   return (
     <div className="space-y-6">
       {title && (
-        <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-[var(--brand-primary)] to-[#E67E22] bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-[var(--primary)] to-[#E67E22] bg-clip-text text-transparent">
           {title}
         </h2>
       )}

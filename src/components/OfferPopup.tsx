@@ -104,7 +104,7 @@ export default function OfferPopup({
   return (
     <div className={`fixed z-[100] ${positionClass}`} style={containerStyle}>
       <div className="relative w-full" style={{ paddingBottom: `${paddingPercent}%` }}>
-        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-brand-primary to-cyber-pink" style={bgStyle}>
+        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-cyber-pink" style={bgStyle}>
           {mediaUrl && !isVideo && (
             <div className="absolute inset-0 bg-black/30"></div>
           )}
@@ -127,7 +127,7 @@ export default function OfferPopup({
             onClick={handleClose}
             className="absolute top-2 right-2 z-20 p-1 rounded-full bg-brand-neutral-dark/80/80 hover:bg-brand-neutral-dark/80 transition-all"
           >
-            <XMarkIcon className="h-4 w-4 text-brand-primary/80" />
+            <XMarkIcon className="h-4 w-4 text-primary/80" />
           </button>
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center text-white">
@@ -138,7 +138,7 @@ export default function OfferPopup({
             <p className="text-sm mb-4 opacity-90">{description}</p>
             <button
               onClick={handleButtonClick}
-              className="bg-brand-neutral-dark/80 text-brand-primary500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg transition-all"
+              className="bg-brand-neutral-dark/80 text-primary500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg transition-all"
             >
               {buttonText}
             </button>

@@ -22,7 +22,7 @@ export default function NotificationDisplay() {
             case 'info':
               return <Info className="h-5 w-5 text-blue-500" strokeWidth={2.5} />;
             default:
-              return <Info className="h-5 w-5 text-brand-primary/60" strokeWidth={2.5} />;
+              return <Info className="h-5 w-5 text-primary/60" strokeWidth={2.5} />;
           }
         };
 
@@ -37,7 +37,7 @@ export default function NotificationDisplay() {
             case 'info':
               return 'bg-blue-50 border-blue-200';
             default:
-              return 'bg-brand-neutral-dark border-brand-primary/30';
+              return 'bg-brand-neutral-dark border-primary/30';
           }
         };
 
@@ -55,14 +55,14 @@ export default function NotificationDisplay() {
                   {notification.title}
                 </p>
                 {notification.message && (
-                  <p className="mt-1 text-sm text-brand-primary/60">
+                  <p className="mt-1 text-sm text-primary/60">
                     {notification.message}
                   </p>
                 )}
               </div>
               <div className="ml-4 flex-shrink-0 flex">
                 <button
-                  className="inline-flex text-brand-primary/50 hover:text-brand-primary/80 focus:outline-none"
+                  className="inline-flex text-primary/50 hover:text-primary/80 focus:outline-none"
                   onClick={() => removeNotification(notification.id)}
                 >
                   <X className="h-4 w-4" strokeWidth={2.5} />

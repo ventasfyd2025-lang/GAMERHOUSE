@@ -42,7 +42,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 Algo salió mal
               </h1>
             </div>
-            <p className="text-brand-primary/80 mb-4">
+            <p className="text-primary/80 mb-4">
               Lo sentimos, ha ocurrido un error inesperado. Por favor, recarga la página o inténtalo más tarde.
             </p>
             <div className="flex space-x-3">
@@ -61,7 +61,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             </div>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-4 text-sm">
-                <summary className="cursor-pointer text-brand-primary/60">
+                <summary className="cursor-pointer text-primary/60">
                   Detalles del error (solo en desarrollo)
                 </summary>
                 <pre className="mt-2 whitespace-pre-wrap text-cyber-pink bg-brand-neutral-light p-2 rounded">

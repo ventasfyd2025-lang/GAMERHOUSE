@@ -61,12 +61,12 @@ export default function ProductBanner({
   if (safeProducts.length === 0) {
     // Fallback to gradient banner if no products
     return (
-      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #D64541 100%)' }}>
+      <section className="text-white py-16" style={{ background: 'linear-gradient(135deg, var(--primary) 0%, #D64541 100%)' }}>
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-brand-primary100">
+          <p className="text-2xl md:text-3xl text-primary100">
             {text}
           </p>
         </div>
@@ -79,10 +79,10 @@ export default function ProductBanner({
       {/* Header */}
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
             {title}
           </h2>
-          <p className="text-xl md:text-2xl text-brand-primary/80">
+          <p className="text-xl md:text-2xl text-primary/80">
             {text}
           </p>
         </div>
@@ -119,7 +119,7 @@ export default function ProductBanner({
                       <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#333333' }}>
                         {product.nombre}
                       </h3>
-                      <p className="text-lg text-brand-primary/80 mb-6 line-clamp-3">
+                      <p className="text-lg text-primary/80 mb-6 line-clamp-3">
                         {product.descripcion}
                       </p>
                       
@@ -133,7 +133,7 @@ export default function ProductBanner({
                         <div className="text-4xl md:text-5xl font-bold" style={{ color: '#2E7D32' }}>
                           {formatPrice(product.precio)}
                         </div>
-                        <div className="text-sm text-brand-primary/60 mt-1">IVA incluido</div>
+                        <div className="text-sm text-primary/60 mt-1">IVA incluido</div>
                       </div>
 
                       {/* CTA Button */}
@@ -184,11 +184,11 @@ export default function ProductBanner({
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-brand-primary' 
+                    ? 'bg-primary' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 
-                  backgroundColor: index === currentIndex ? 'var(--brand-primary)' : undefined 
+                  backgroundColor: index === currentIndex ? 'var(--primary)' : undefined 
                 }}
               />
             ))}

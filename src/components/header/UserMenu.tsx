@@ -24,22 +24,22 @@ const UserMenu = memo(function UserMenu({
   return (
     <div
       ref={userMenuRef}
-      className="absolute right-0 mt-2 w-52 bg-brand-neutral-dark/80 rounded-xl shadow-2xl py-2 z-50 border border-brand-primary100"
+      className="absolute right-0 mt-2 w-52 bg-brand-neutral-dark/80 rounded-xl shadow-2xl py-2 z-50 border border-primary100"
     >
       {isRegistered && (
         <>
           <Link
             href="/perfil"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-brand-neutral-light hover:text-primary600 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
             Mi Perfil
           </Link>
           <Link
             href="/mis-pedidos"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-brand-neutral-light hover:text-primary600 transition-colors"
           >
-            <ShoppingBag className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
+            <ShoppingBag className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
             Mis Pedidos
           </Link>
         </>
@@ -49,14 +49,14 @@ const UserMenu = memo(function UserMenu({
         <>
           <Link
             href="/login"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-brand-neutral-light hover:text-primary600 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-brand-primary500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
             Iniciar Sesión
           </Link>
           <Link
             href="/registro"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light hover:text-brand-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-brand-neutral-light hover:text-primary600 transition-colors"
           >
             Registrarse
           </Link>

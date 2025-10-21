@@ -63,7 +63,7 @@ export default function ProductosDestacados() {
           <h1 className="text-3xl font-bold text-white mb-2">
             ⭐ Productos Destacados
           </h1>
-          <p className="text-brand-primary/80">
+          <p className="text-primary/80">
             Descubre nuestra selección especial de productos destacados
           </p>
         </div>
@@ -74,12 +74,12 @@ export default function ProductosDestacados() {
             <h3 className="text-xl font-semibold text-white mb-2">
               No hay productos destacados
             </h3>
-            <p className="text-brand-primary/60 mb-6">
+            <p className="text-primary/60 mb-6">
               Aún no se han configurado productos destacados desde el panel de administración
             </p>
             <Link
               href="/"
-              className="inline-flex items-center px-6 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-brand-primary transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary transition-colors"
             >
               Ver todos los productos
             </Link>
@@ -97,7 +97,7 @@ export default function ProductosDestacados() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-brand-primary/50 text-6xl">
+                    <div className="w-full h-full flex items-center justify-center text-primary/50 text-6xl">
                       📦
                     </div>
                   )}
@@ -107,19 +107,19 @@ export default function ProductosDestacados() {
                     </span>
                   )}
                   <button className="absolute top-2 right-2 p-2 bg-brand-neutral-dark/80/80 rounded-full hover:bg-brand-neutral-dark/80 transition-colors">
-                    <HeartIcon className="h-5 w-5 text-brand-primary/80" />
+                    <HeartIcon className="h-5 w-5 text-primary/80" />
                   </button>
                 </div>
                 
                 {/* Content */}
                 <div className="p-4 space-y-3">
-                  <div className="text-xs text-brand-primary uppercase tracking-wide font-semibold">
+                  <div className="text-xs text-primary uppercase tracking-wide font-semibold">
                     {product.categoria}
                   </div>
                   <h3 className="font-bold text-white line-clamp-2">
                     {product.nombre}
                   </h3>
-                  <p className="text-sm text-brand-primary/80 line-clamp-2">
+                  <p className="text-sm text-primary/80 line-clamp-2">
                     {product.descripcion}
                   </p>
                   
@@ -141,7 +141,7 @@ export default function ProductosDestacados() {
                   <button 
                     onClick={() => handleAddToCart(product)}
                     disabled={product.stock <= 0}
-                    className="w-full py-3 px-4 bg-brand-primary hover:bg-brand-primary disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
+                    className="w-full py-3 px-4 bg-primary hover:bg-primary disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
                   >
                     <span>🛒</span>
                     <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>

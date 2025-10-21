@@ -88,7 +88,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-brand-primary bg-brand-neutral-light border-brand-primary-200', 
+    color: 'text-primary bg-brand-neutral-light border-primary-200', 
     icon: TruckIcon,
     description: 'Pedido en camino'
   },
@@ -279,13 +279,13 @@ export default function AdminChatPage() {
   return (
     <div className="min-h-screen bg-brand-neutral-dark">
       {/* Header */}
-      <div className="bg-brand-neutral-dark/80 border-b border-brand-primary/30 sticky top-0 z-10">
+      <div className="bg-brand-neutral-dark/80 border-b border-primary/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button 
                 onClick={() => router.push('/admin')}
-                className="text-brand-primary/60 hover:text-brand-primary transition-colors"
+                className="text-primary/60 hover:text-primary transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </button>
@@ -301,7 +301,7 @@ export default function AdminChatPage() {
             </div>
             
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-brand-primary/80">Admin: {user?.email}</span>
+              <span className="text-sm text-primary/80">Admin: {user?.email}</span>
               <span className="px-3 py-1 bg-brand-neutral-light text-cyber-pink text-xs font-medium rounded-full">
                 Modo Administrador
               </span>
@@ -320,19 +320,19 @@ export default function AdminChatPage() {
               
               <div className="space-y-2">
                 <div>
-                  <span className="text-base font-semibold text-brand-primary">Nombre:</span>
+                  <span className="text-base font-semibold text-primary">Nombre:</span>
                   <p className="text-sm text-white">{order.customerName}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-brand-primary">Email:</span>
+                  <span className="text-base font-semibold text-primary">Email:</span>
                   <p className="text-sm text-white">{order.customerEmail}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-brand-primary">Teléfono:</span>
+                  <span className="text-base font-semibold text-primary">Teléfono:</span>
                   <p className="text-sm text-white">{order.customerPhone}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-brand-primary">Dirección:</span>
+                  <span className="text-base font-semibold text-primary">Dirección:</span>
                   <p className="text-sm text-white">{order.shippingAddress}</p>
                 </div>
               </div>
@@ -356,7 +356,7 @@ export default function AdminChatPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-base font-semibold text-white">{item.nombre}</p>
-                      <p className="text-xs text-brand-primary/80">
+                      <p className="text-xs text-primary/80">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -403,8 +403,8 @@ export default function AdminChatPage() {
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-cyber-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>
-                    <p className="text-sm text-brand-primary/80 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
-                    <p className="text-xs text-brand-primary/60">Responde cualquier pregunta sobre el pedido</p>
+                    <p className="text-sm text-primary/80 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
+                    <p className="text-xs text-primary/60">Responde cualquier pregunta sobre el pedido</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -420,21 +420,21 @@ export default function AdminChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-brand-primary/60 mb-1 px-3">{order.customerName}</div>
+                          <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
                         )}
                         
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-cyber-pink text-white'
-                              : 'bg-brand-neutral-dark/80 text-white border border-brand-primary/30'
+                              : 'bg-brand-neutral-dark/80 text-white border border-primary/30'
                           }`}
                         >
                           <p className="whitespace-pre-wrap">{message.message}</p>
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-brand-primary/60">
+                          <span className="text-xs text-primary/60">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -448,7 +448,7 @@ export default function AdminChatPage() {
                                   <CheckIcon className="h-3 w-3 text-cyber-pink -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-brand-primary/50" />
+                                <CheckIcon className="h-3 w-3 text-primary/50" />
                               )}
                             </div>
                           )}
@@ -468,7 +468,7 @@ export default function AdminChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-brand-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
                 <div className="flex items-end space-x-3">
                   <div className="flex-1">
                     <textarea
@@ -476,7 +476,7 @@ export default function AdminChatPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Responder al cliente sobre el pedido..."
-                      className="w-full resize-none border border-brand-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
                       rows={2}
                       disabled={loading}
                     />
@@ -494,7 +494,7 @@ export default function AdminChatPage() {
                   </button>
                 </div>
                 
-                <p className="text-xs text-brand-primary/60 mt-2 text-center">
+                <p className="text-xs text-primary/60 mt-2 text-center">
                   <span className="font-medium text-cyber-pink">Modo Admin:</span> El cliente verá tus respuestas en tiempo real
                 </p>
               </div>

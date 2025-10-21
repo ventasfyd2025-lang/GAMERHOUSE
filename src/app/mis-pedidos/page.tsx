@@ -72,7 +72,7 @@ const statusConfig = {
   },
   shipped: {
     label: 'Enviado',
-    color: 'text-brand-primary bg-brand-neutral-light',
+    color: 'text-primary bg-brand-neutral-light',
     icon: Truck
   },
   delivered: {
@@ -180,8 +180,8 @@ export default function OrdersPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-brand-primary mx-auto mb-4"></div>
-          <p className="text-brand-primary/80 text-lg font-medium">Cargando...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
+          <p className="text-primary/80 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -198,12 +198,12 @@ export default function OrdersPage() {
         <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">📦</span>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
-                <p className="text-brand-primary/80 text-sm">Historial y seguimiento de tus compras</p>
+                <p className="text-primary/80 text-sm">Historial y seguimiento de tus compras</p>
               </div>
             </div>
 
@@ -211,7 +211,7 @@ export default function OrdersPage() {
             <Link
               href="/"
               className="inline-flex items-center px-6 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg gap-2"
-              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
+              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               <ArrowLeft className="h-5 w-5" />
               <Home className="h-5 w-5" />
@@ -222,17 +222,17 @@ export default function OrdersPage() {
 
         {loadingOrders ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-primary"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary"></div>
           </div>
         ) : orders.length === 0 ? (
           <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
-            <p className="text-lg text-brand-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
+            <p className="text-lg text-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
               className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
-              style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary-hover))' }}
+              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               🛍️ Ir a la Tienda
             </button>
@@ -253,7 +253,7 @@ export default function OrdersPage() {
                           <h3 className="text-lg font-semibold text-white">
                             Pedido #{order.id.slice(-8).toUpperCase()}
                           </h3>
-                          <p className="text-sm text-brand-primary/80">
+                          <p className="text-sm text-primary/80">
                             {formatDateTime(order.createdAt)}
                           </p>
                         </div>
@@ -269,7 +269,7 @@ export default function OrdersPage() {
                           <p className="text-lg font-bold text-white">
                             {formatPrice(order.total)}
                           </p>
-                          <p className="text-sm text-brand-primary/80">
+                          <p className="text-sm text-primary/80">
                             {order.items.length} producto{order.items.length > 1 ? 's' : ''}
                           </p>
                         </div>
@@ -296,7 +296,7 @@ export default function OrdersPage() {
                               )}
                               <div className="flex-1">
                                 <p className="font-medium text-white">{item.nombre}</p>
-                                <p className="text-sm text-brand-primary/80">
+                                <p className="text-sm text-primary/80">
                                   Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                                 </p>
                               </div>
@@ -310,7 +310,7 @@ export default function OrdersPage() {
 
                       <div>
                         <h4 className="font-medium text-white mb-3">Información de Envío</h4>
-                        <div className="text-sm text-brand-primary/80 space-y-1">
+                        <div className="text-sm text-primary/80 space-y-1">
                           <p><span className="font-medium">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
                           <p><span className="font-medium">Email:</span> {order.shippingAddress.email}</p>
                           <p><span className="font-medium">Teléfono:</span> {order.shippingAddress.phone}</p>
@@ -325,7 +325,7 @@ export default function OrdersPage() {
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-6 pt-4 border-t border-brand-primary/30">
+                    <div className="mt-6 pt-4 border-t border-primary/30">
                       <div className="flex items-center justify-between">
                         <div className="flex space-x-3">
                           <Link
@@ -339,7 +339,7 @@ export default function OrdersPage() {
                           {order.status === 'shipped' && order.trackingNumber && (
                             <button
                               onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
-                              className="flex items-center px-4 py-2 border border-brand-primary/40 text-brand-primary rounded-lg hover:bg-brand-neutral-dark transition-colors"
+                              className="flex items-center px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-brand-neutral-dark transition-colors"
                             >
                               <Truck className="h-4 w-4 mr-2" />
                               Rastrear Envío
@@ -347,7 +347,7 @@ export default function OrdersPage() {
                           )}
                         </div>
 
-                        <div className="text-sm text-brand-primary/60">
+                        <div className="text-sm text-primary/60">
                           Última actualización: {formatDate(order.updatedAt)}
                         </div>
                       </div>

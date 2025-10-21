@@ -267,7 +267,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
         {!isMinimized && (
           <div className="flex flex-1 overflow-hidden bg-brand-neutral-dark/80">
             {/* Order Info Sidebar */}
-            <div className="w-80 bg-brand-neutral-dark border-r border-brand-primary/30 p-4 overflow-y-auto" style={{ backgroundColor: '#f9fafb' }}>
+            <div className="w-80 bg-brand-neutral-dark border-r border-primary/30 p-4 overflow-y-auto" style={{ backgroundColor: '#f9fafb' }}>
               <h4 className="font-semibold text-white mb-4">Información del Pedido</h4>
               
               {/* Customer Info */}
@@ -296,7 +296,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       )}
                       <div className="flex-1">
                         <p className="text-xs font-medium text-white">{item.nombre}</p>
-                        <p className="text-xs text-brand-primary/80">
+                        <p className="text-xs text-primary/80">
                           {item.cantidad} × {formatPrice(item.precio)}
                         </p>
                       </div>
@@ -318,7 +318,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                   order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
                   order.status === 'preparing' ? 'bg-purple-100 text-purple-800' :
-                  order.status === 'shipped' ? 'bg-brand-neutral-light text-brand-primary800' :
+                  order.status === 'shipped' ? 'bg-brand-neutral-light text-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :
                   'bg-brand-neutral-light text-cyber-pink'
                 }`}>
@@ -341,14 +341,14 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                           step.completed 
                             ? 'bg-green-100 text-green-600' 
-                            : 'bg-brand-neutral-light text-brand-primary/50'
+                            : 'bg-brand-neutral-light text-primary/50'
                         }`}>
                           <IconComponent className="h-4 w-4" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
                             <p className={`text-sm font-medium ${
-                              step.completed ? 'text-white' : 'text-brand-primary/60'
+                              step.completed ? 'text-white' : 'text-primary/60'
                             }`}>
                               {step.title}
                             </p>
@@ -356,9 +356,9 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                               <CheckCircleIcon className="h-4 w-4 text-green-500" />
                             )}
                           </div>
-                          <p className="text-xs text-brand-primary/80 mt-1">{step.description}</p>
+                          <p className="text-xs text-primary/80 mt-1">{step.description}</p>
                           {step.date && (
-                            <p className="text-xs text-brand-primary/60 mt-1">
+                            <p className="text-xs text-primary/60 mt-1">
                               {formatDate(step.date, {
                                 day: '2-digit',
                                 month: '2-digit',
@@ -386,7 +386,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-cyber-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>
-                    <p className="text-sm text-brand-primary/80">Comunícate directamente con {order.customerName}</p>
+                    <p className="text-sm text-primary/80">Comunícate directamente con {order.customerName}</p>
                   </div>
                 ) : (
                   messages.map((message) => {
@@ -404,7 +404,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         
                         <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                           {!message.isAdmin && (
-                            <div className="text-xs text-brand-primary/60 mb-1 px-3">{order.customerName}</div>
+                            <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
                           )}
                           {isSystemMessage && (
                             <div className="text-xs text-blue-600 mb-1 px-3 font-medium">Sistema FyD - Actualización Automática</div>
@@ -416,14 +416,14 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                                 ? 'bg-blue-50 text-blue-900 border border-blue-200'
                                 : message.isAdmin
                                 ? 'bg-cyber-pink text-white'
-                                : 'bg-brand-neutral-dark/80 text-white border border-brand-primary/30'
+                                : 'bg-brand-neutral-dark/80 text-white border border-primary/30'
                             }`}
                           >
                             <p className="whitespace-pre-wrap">{message.message}</p>
                           </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-brand-primary/60">
+                          <span className="text-xs text-primary/60">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -437,7 +437,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                                   <CheckIcon className="h-3 w-3 text-cyber-pink -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-brand-primary/50" />
+                                <CheckIcon className="h-3 w-3 text-primary/50" />
                               )}
                             </div>
                           )}
@@ -463,7 +463,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
               </div>
 
               {/* Input */}
-              <div className="border-t border-brand-primary/30 p-4 bg-brand-neutral-dark/80" style={{ backgroundColor: '#ffffff' }}>
+              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80" style={{ backgroundColor: '#ffffff' }}>
                 <div className="flex items-end space-x-3">
                   <div className="flex-1">
                     <textarea
@@ -471,7 +471,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder={`Responder a ${order.customerName}...`}
-                      className="w-full resize-none border border-brand-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent max-h-24"
                       rows={2}
                       disabled={loading}
                     />
@@ -489,7 +489,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   </button>
                 </div>
                 
-                <p className="text-xs text-brand-primary/60 mt-2 text-center">
+                <p className="text-xs text-primary/60 mt-2 text-center">
                   <span className="font-medium text-cyber-pink">Modo Admin:</span> El cliente verá tus respuestas instantáneamente
                 </p>
               </div>

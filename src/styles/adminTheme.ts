@@ -2,7 +2,7 @@
 export const adminTheme = {
   // Colores principales
   colors: {
-    primary: 'var(--brand-primary)',
+    primary: 'var(--primary)',
     primaryHover: '#D13C1A',
     primaryLight: '#FF7A45',
     secondary: '#E85C26',
@@ -14,7 +14,7 @@ export const adminTheme = {
     main: 'bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40',
     card: 'bg-white/90 backdrop-blur-sm',
     header: 'bg-white/80 backdrop-blur-lg',
-    gradient: 'bg-gradient-to-r from-brand-primary to-cyber-pink',
+    gradient: 'bg-gradient-to-r from-primary to-cyber-pink',
     subtle: 'bg-gradient-to-br from-gray-50 via-white to-gray-50',
   },
 
@@ -38,13 +38,13 @@ export const adminTheme = {
     warning: 'bg-yellow-100 text-yellow-800 border-yellow-200',
     error: 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light',
     info: 'bg-blue-100 text-blue-800 border-blue-200',
-    primary: 'bg-brand-neutral-light text-orange-800 border-brand-primary-200',
+    primary: 'bg-brand-neutral-light text-orange-800 border-primary-200',
   },
 
   // Inputs
   inputs: {
     base: 'w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200',
-    focus: 'focus:ring-brand-primary',
+    focus: 'focus:ring-primary',
   },
 
   // Headers de secciones

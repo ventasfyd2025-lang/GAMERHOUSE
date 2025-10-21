@@ -23,7 +23,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return 'bg-brand-neutral-light border-cyber-pink text-cyber-pink';
       case 'critical':
-        return 'bg-brand-neutral-light border-brand-primary500 text-brand-primary800';
+        return 'bg-brand-neutral-light border-primary500 text-primary800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
@@ -36,11 +36,11 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return <NoSymbolIcon className="h-5 w-5 text-cyber-pink" />;
       case 'critical':
-        return <ExclamationTriangleIcon className="h-5 w-5 text-brand-primary600" />;
+        return <ExclamationTriangleIcon className="h-5 w-5 text-primary600" />;
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:
-        return <BellIcon className="h-5 w-5 text-brand-primary/80" />;
+        return <BellIcon className="h-5 w-5 text-primary/80" />;
     }
   };
 
@@ -79,10 +79,10 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   }
 
   return (
-    <div className={`bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg shadow-sm ${className}`}>
+    <div className={`bg-brand-neutral-dark/80 border border-primary/30 rounded-lg shadow-sm ${className}`}>
       {/* Header */}
       <div
-        className="p-4 border-b border-brand-primary/30 cursor-pointer"
+        className="p-4 border-b border-primary/30 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between">
@@ -96,7 +96,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
             </span>
           </div>
           <XMarkIcon
-            className={`h-5 w-5 text-brand-primary/50 transform transition-transform ${
+            className={`h-5 w-5 text-primary/50 transform transition-transform ${
               isExpanded ? 'rotate-45' : ''
             }`}
           />
@@ -124,14 +124,14 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                     {alert.productName}
                   </h4>
 
-                  <div className="text-sm text-brand-primary/80 space-y-1">
+                  <div className="text-sm text-primary/80 space-y-1">
                     <p>
                       <span className="font-medium">Stock actual:</span> {alert.currentStock} unidades
                     </p>
                     <p>
                       <span className="font-medium">Stock mínimo:</span> {alert.minStock} unidades
                     </p>
-                    <p className="text-xs text-brand-primary/60">
+                    <p className="text-xs text-primary/60">
                       {new Date(alert.createdAt).toLocaleString('es-CL')}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       {/* Footer with summary */}
       {!isExpanded && stockAlerts.length > 0 && (
         <div className="p-3 bg-brand-neutral-dark rounded-b-lg">
-          <div className="flex items-center justify-between text-sm text-brand-primary/80">
+          <div className="flex items-center justify-between text-sm text-primary/80">
             <div className="flex space-x-4">
               <span>
                 Sin stock: {stockAlerts.filter(a => a.severity === 'out').length}

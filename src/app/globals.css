@@ -1,34 +1,6 @@
-@import "tailwindcss";
-
-:root {
-  --background: #1A1A1A;
-  --foreground: #FFFFFF;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: var(--font-geist-mono);
-}
-
-
-:root {
-  /* Paleta Cyberpunk/Futurista */
-  --brand-primary: #00D9FF;
-  --brand-secondary: #B819FF;
-  --brand-accent: #00FFB3;
-  --brand-success: #00FF88;
-  --brand-background: #0A0E27;
-  --brand-surface: #1F2937;
-  --brand-text: #FFFFFF;
-  --brand-text-secondary: #9CA3AF;
-  --brand-border: #2D3748;
-  --cyber-blue: #00D9FF;
-  --cyber-purple: #B819FF;
-  --cyber-green: #00FFB3;
-  --cyber-pink: #FF006E;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
   font-size: 16px;
@@ -36,12 +8,9 @@ html {
 }
 
 body {
-  background: var(--brand-background);
-  color: var(--brand-text);
-  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-cyan-950 text-white font-sans;
+  background: #0A0E27;
+  color: #FFFFFF;
 }
 
 @layer utilities {

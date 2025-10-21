@@ -46,16 +46,16 @@ const palette = {
   background: '#0A0E27',
   surface: '#1F2937',
   card: '#2A3A4A',
-  primary: 'var(--brand-primary)', // Cyan Futurista
-  primaryHover: 'var(--brand-primary-hover)', // Cyan Oscuro
-  secondary: 'var(--brand-secondary)', // Púrpura Neón
+  primary: 'var(--primary)', // Cyan Futurista
+  primaryHover: 'var(--primary-hover)', // Cyan Oscuro
+  secondary: 'var(--secondary)', // Púrpura Neón
   accent: 'var(--brand-accent)', // Verde Neón
   success: '#00FF88', // Green Neon
   neutralText: '#FFFFFF', // White Text
   mutedText: '#9CA3AF', // Gray Text
   divider: '#2D3748',
-  headerBg: 'linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%)', // Cyan to Purple
-  discountTag: 'linear-gradient(135deg, var(--cyber-pink) 0%, var(--brand-secondary) 100%)', // Pink to Purple
+  headerBg: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)', // Cyan to Purple
+  discountTag: 'linear-gradient(135deg, var(--cyber-pink) 0%, var(--secondary) 100%)', // Pink to Purple
 };
 
 export default function RetailHomepage() {
@@ -639,7 +639,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
             <h1 className="text-3xl font-bold text-white mb-2">
               {getFilterTitle()}
             </h1>
-            <p className="text-brand-primary/80">
+            <p className="text-primary/80">
               {filteredProducts.length} productos encontrados
             </p>
           </div>
@@ -650,12 +650,12 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <h3 className="text-xl font-semibold text-white mb-2">
                 No se encontraron productos
               </h3>
-              <p className="text-brand-primary/60 mb-6">
+              <p className="text-primary/60 mb-6">
                 Intenta con otros términos de búsqueda o explora nuestras categorías
               </p>
               <Link
                 href="/"
-                className="inline-flex items-center px-6 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-brand-primary-hover transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-hover transition-colors"
               >
                 Ver todos los productos
               </Link>
@@ -667,7 +667,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
-              <div className="text-center text-brand-primary/80 mt-6">
+              <div className="text-center text-primary/80 mt-6">
                 Mostrando {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'}
               </div>
             </>
@@ -693,7 +693,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <BannerCarousel banners={bannerSlides} autoPlay={true} autoPlayInterval={3000} />
             ) : (
               <div className="h-64 bg-brand-neutral-light flex items-center justify-center">
-                <p className="text-brand-primary/60">No hay banners configurados</p>
+                <p className="text-primary/60">No hay banners configurados</p>
               </div>
             );
           })()}
@@ -702,16 +702,16 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Category Promotions Pinterest Grid */}
         {homepageConfig.promotionalSections && homepageConfig.promotionalSections.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
               <div className="flex flex-col items-center text-center gap-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                   <span className="text-white text-lg">✨</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-cyber-pink bg-clip-text text-transparent">
                     Colecciones Destacadas
                   </h2>
-                  <p className="mt-1 text-sm sm:text-base text-brand-primary/80 max-w-2xl">
+                  <p className="mt-1 text-sm sm:text-base text-primary/80 max-w-2xl">
                     Curamos lo mejor de cada categoría para que encuentres ese próximo favorito en segundos.
                   </p>
                 </div>
@@ -794,13 +794,13 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                             sizes="(max-width: 1024px) 100vw, 50vw"
                           />
                         ) : (
-                          <div className="absolute inset-0 flex items-center justify-center text-3xl text-brand-primary/50">
+                          <div className="absolute inset-0 flex items-center justify-center text-3xl text-primary/50">
                             📸
                           </div>
                         )}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-brand-primary to-cyber-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-primary to-cyber-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
                         {section.badgeText}
                       </span>
                       <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 text-white">
@@ -894,17 +894,17 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Main Masonry Product Grid */}
         {products.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🛍️</span>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-cyber-pink bg-clip-text text-transparent">
                       Nuestro Catálogo
                     </h2>
-                    <p className="text-sm sm:text-base text-brand-primary/80">
+                    <p className="text-sm sm:text-base text-primary/80">
                       Una muestra de lo último que llegó. Pulsa "Ver todos los productos" para explorar el catálogo completo.
                     </p>
                   </div>
@@ -920,8 +920,8 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <div className="flex justify-center">
                 <Link
                   href="/?category=all"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
-                  style={{ background: 'linear-gradient(135deg, var(--brand-primary) 0%, #E67E22 100%)' }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm sm:text-base text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                  style={{ background: 'linear-gradient(135deg, var(--primary) 0%, #E67E22 100%)' }}
                 >
                   Ver todos los productos
                   <span aria-hidden="true">→</span>
@@ -955,7 +955,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
               <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 🏠 Hogar & Cocina
               </h2>
-              <p className="text-sm sm:text-base text-brand-primary/80 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-primary/80 max-w-2xl mx-auto">
                 Ambientaciones cálidas, utensilios inteligentes y todo lo que tu casa necesita para destacar.
               </p>
             </div>
@@ -974,7 +974,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-brand-primary/50 text-6xl">🏠</div>
+                      <div className="w-full h-full flex items-center justify-center text-primary/50 text-6xl">🏠</div>
                     )}
                     {product.oferta && (
                       <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
@@ -1019,7 +1019,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       }}
                       disabled={product.stock <= 0}
                       aria-label={product.stock > 0 ? `Agregar ${product.nombre} al carrito` : 'Producto sin stock'}
-                      className="w-full py-3 px-4 bg-brand-primary-hover hover:bg-brand-primary-hover disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                      className="w-full py-3 px-4 bg-primary-hover hover:bg-primary-hover disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold text-sm rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
                       <span aria-hidden="true">🛒</span>
                       <span>{product.stock > 0 ? 'Agregar al Carrito' : 'Sin Stock'}</span>
                     </button>

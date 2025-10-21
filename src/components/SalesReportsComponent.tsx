@@ -97,24 +97,24 @@ export default function SalesReportsComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light to-white">
       {/* Header Mejorado */}
-      <div className="bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white p-8 rounded-xl shadow-lg mb-8">
+      <div className="bg-gradient-to-r from-primary to-primary-hover text-white p-8 rounded-xl shadow-lg mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold flex items-center">
               <ChartBarIcon className="h-10 w-10 mr-3" />
               Dashboard de Ventas
             </h1>
-            <p className="text-brand-primary100 mt-2 text-lg">Resumen ejecutivo de tu negocio</p>
+            <p className="text-primary100 mt-2 text-lg">Resumen ejecutivo de tu negocio</p>
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <p className="text-brand-primary100 text-sm">Última actualización</p>
+              <p className="text-primary100 text-sm">Última actualización</p>
               <p className="text-white font-medium">{new Date().toLocaleDateString('es-CL')}</p>
             </div>
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-brand-neutral-dark/80 text-brand-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
+              className="bg-brand-neutral-dark/80 text-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -126,8 +126,8 @@ export default function SalesReportsComponent() {
       {loading && (
         <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg p-8 mb-8">
           <div className="flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary500"></div>
-            <span className="ml-4 text-lg text-brand-primary/80">Cargando datos...</span>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary500"></div>
+            <span className="ml-4 text-lg text-primary/80">Cargando datos...</span>
           </div>
         </div>
       )}
@@ -153,7 +153,7 @@ export default function SalesReportsComponent() {
                   <CurrencyDollarIcon className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-brand-primary/80">Ingresos Hoy</p>
+                  <p className="text-sm font-medium text-primary/80">Ingresos Hoy</p>
                   <p className="text-2xl font-bold text-white">
                     ${dailyReport.totalRevenue.toLocaleString('es-CL')}
                   </p>
@@ -167,7 +167,7 @@ export default function SalesReportsComponent() {
                   <ShoppingCartIcon className="h-8 w-8 text-blue-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-brand-primary/80">Pedidos Hoy</p>
+                  <p className="text-sm font-medium text-primary/80">Pedidos Hoy</p>
                   <p className="text-2xl font-bold text-white">{dailyReport.totalOrders}</p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function SalesReportsComponent() {
                   <ArrowTrendingUpIcon className="h-8 w-8 text-purple-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-brand-primary/80">Ticket Promedio</p>
+                  <p className="text-sm font-medium text-primary/80">Ticket Promedio</p>
                   <p className="text-2xl font-bold text-white">
                     ${dailyReport.totalOrders > 0 ? Math.round(dailyReport.totalRevenue / dailyReport.totalOrders).toLocaleString('es-CL') : '0'}
                   </p>
@@ -190,13 +190,13 @@ export default function SalesReportsComponent() {
         )}
 
         {monthlyReport && (
-          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg p-6 border-l-4 border-brand-primary500">
+          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg p-6 border-l-4 border-primary500">
             <div className="flex items-center">
               <div className="p-3 rounded-full bg-brand-neutral-light">
-                <CalendarIcon className="h-8 w-8 text-brand-primary600" />
+                <CalendarIcon className="h-8 w-8 text-primary600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-brand-primary/80">Ingresos del Mes</p>
+                <p className="text-sm font-medium text-primary/80">Ingresos del Mes</p>
                 <p className="text-2xl font-bold text-white">
                   ${monthlyReport.totalRevenue.toLocaleString('es-CL')}
                 </p>
@@ -209,30 +209,30 @@ export default function SalesReportsComponent() {
       {/* Controles de Fecha Simplificados */}
       <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center">
-          <ClockIcon className="h-6 w-6 mr-2 text-brand-primary/80" />
+          <ClockIcon className="h-6 w-6 mr-2 text-primary/80" />
           Período de Análisis
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-brand-primary mb-2">
+            <label className="block text-sm font-medium text-primary mb-2">
               📅 Reporte Diario
             </label>
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500"
+              className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary500"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-brand-primary mb-2">
+            <label className="block text-sm font-medium text-primary mb-2">
               📊 Reporte Mensual
             </label>
             <input
               type="month"
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500"
+              className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary500"
             />
           </div>
         </div>
@@ -250,7 +250,7 @@ export default function SalesReportsComponent() {
               <div key={product.productId} className={`p-4 rounded-lg border-l-4 ${
                 index === 0 ? 'bg-yellow-50 border-yellow-400' :
                 index === 1 ? 'bg-brand-neutral-dark border-gray-400' :
-                index === 2 ? 'bg-brand-neutral-light border-brand-primary400' :
+                index === 2 ? 'bg-brand-neutral-light border-primary400' :
                 'bg-blue-50 border-blue-400'
               }`}>
                 <div className="flex items-center justify-between">
@@ -258,15 +258,15 @@ export default function SalesReportsComponent() {
                     <div className="flex items-center">
                       <span className={`text-lg font-bold mr-2 ${
                         index === 0 ? 'text-yellow-600' :
-                        index === 1 ? 'text-brand-primary/80' :
-                        index === 2 ? 'text-brand-primary600' :
+                        index === 1 ? 'text-primary/80' :
+                        index === 2 ? 'text-primary600' :
                         'text-blue-600'
                       }`}>
                         #{index + 1}
                       </span>
                       <p className="font-semibold text-white">{product.productName}</p>
                     </div>
-                    <p className="text-sm text-brand-primary/80 mt-1">
+                    <p className="text-sm text-primary/80 mt-1">
                       {product.quantity} vendidos
                     </p>
                   </div>
@@ -297,7 +297,7 @@ export default function SalesReportsComponent() {
                   <p className="text-2xl font-bold text-green-600 mt-2">
                     ${method.amount.toLocaleString('es-CL')}
                   </p>
-                  <p className="text-sm text-brand-primary/80 mt-1">
+                  <p className="text-sm text-primary/80 mt-1">
                     {method.count} transacciones
                   </p>
                 </div>
@@ -317,23 +317,23 @@ export default function SalesReportsComponent() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div className="text-center p-4 bg-indigo-50 rounded-lg">
-              <p className="text-sm text-brand-primary/80">Total Ingresos</p>
+              <p className="text-sm text-primary/80">Total Ingresos</p>
               <p className="text-2xl font-bold text-indigo-600">
                 ${monthlyReport.totalRevenue.toLocaleString('es-CL')}
               </p>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-brand-primary/80">Total Pedidos</p>
+              <p className="text-sm text-primary/80">Total Pedidos</p>
               <p className="text-2xl font-bold text-blue-600">{monthlyReport.totalOrders}</p>
             </div>
             <div className="text-center p-4 bg-green-50 rounded-lg">
-              <p className="text-sm text-brand-primary/80">Ticket Promedio</p>
+              <p className="text-sm text-primary/80">Ticket Promedio</p>
               <p className="text-2xl font-bold text-green-600">
                 ${Math.round(monthlyReport.avgOrderValue).toLocaleString('es-CL')}
               </p>
             </div>
             <div className="text-center p-4 bg-purple-50 rounded-lg">
-              <p className="text-sm text-brand-primary/80">Días con Ventas</p>
+              <p className="text-sm text-primary/80">Días con Ventas</p>
               <p className="text-2xl font-bold text-purple-600">{monthlyReport.dailyReports.length}</p>
             </div>
           </div>
@@ -349,14 +349,14 @@ export default function SalesReportsComponent() {
                       <span className={`text-lg font-bold mr-4 w-8 h-8 rounded-full flex items-center justify-center text-white ${
                         index === 0 ? 'bg-yellow-500' :
                         index === 1 ? 'bg-brand-neutral-dark0' :
-                        index === 2 ? 'bg-brand-primary' :
+                        index === 2 ? 'bg-primary' :
                         'bg-blue-500'
                       }`}>
                         {index + 1}
                       </span>
                       <div>
                         <p className="font-semibold text-white">{product.productName}</p>
-                        <p className="text-sm text-brand-primary/80">{product.quantity} vendidos • {product.category}</p>
+                        <p className="text-sm text-primary/80">{product.quantity} vendidos • {product.category}</p>
                       </div>
                     </div>
                     <p className="text-lg font-bold text-white">

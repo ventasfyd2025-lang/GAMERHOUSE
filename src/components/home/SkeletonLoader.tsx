@@ -12,7 +12,7 @@ const ProductCardSkeleton = memo(({ count = 1 }: ProductCardSkeletonProps) => {
   return (
     <>
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="flex flex-col bg-brand-neutral-dark/80 rounded-xl border border-brand-primary/30 overflow-hidden shadow-sm animate-pulse" aria-label={t('common.loading')}>
+        <div key={index} className="flex flex-col bg-brand-neutral-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm animate-pulse" aria-label={t('common.loading')}>
           <div className="bg-brand-neutral-light aspect-square w-full rounded-t-xl"></div>
           <div className="p-4 flex flex-col flex-1">
             <div className="h-4 bg-brand-neutral-light rounded w-1/3 mb-2"></div>

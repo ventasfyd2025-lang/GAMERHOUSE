@@ -101,7 +101,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-brand-primary/30 flex flex-col ${customHeight || 'h-full'} hover:border-brand-primary-400 cursor-pointer relative`}>
+      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-primary/30 flex flex-col ${customHeight || 'h-full'} hover:border-primary-400 cursor-pointer relative`}>
 
       {/* Badges flotantes */}
       {mostrarOferta && (
@@ -150,14 +150,14 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       {/* Información del producto */}
       <div className="p-2 flex flex-col flex-grow">
         {/* Título */}
-        <h3 className="text-xs text-brand-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         {/* Precio */}
         <div className="mt-auto">
           {originalPrice && (
-            <div className="text-[10px] text-brand-primary/50 line-through mb-1">
+            <div className="text-[10px] text-primary/50 line-through mb-1">
               {formatPrice(originalPrice)}
             </div>
           )}
@@ -174,7 +174,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
           {/* Stock bajo */}
           {product.stock <= 5 && product.stock > 0 && (
-            <p className="text-[10px] text-brand-primary600 font-medium mb-1.5">
+            <p className="text-[10px] text-primary600 font-medium mb-1.5">
               Quedan {product.stock} disponibles
             </p>
           )}
@@ -187,7 +187,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
                 e.stopPropagation();
                 handleAddToCart(e);
               }}
-              className="w-full bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
+              className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-brand-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
             >
               <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -197,7 +197,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
           ) : (
             <button
               disabled
-              className="w-full bg-brand-neutral-light text-brand-primary/60 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
+              className="w-full bg-brand-neutral-light text-primary/60 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

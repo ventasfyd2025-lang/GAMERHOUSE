@@ -138,7 +138,7 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <span className="ml-3 text-brand-primary/80">Cargando producto...</span>
+            <span className="ml-3 text-primary/80">Cargando producto...</span>
           </div>
         </div>
       </Layout>
@@ -171,10 +171,10 @@ export default function ProductPage() {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-brand-primary/60 mb-8">
-          <Link href="/" className="hover:text-brand-primary">Inicio</Link>
+        <nav className="flex items-center space-x-2 text-sm text-primary/60 mb-8">
+          <Link href="/" className="hover:text-primary">Inicio</Link>
           <span>/</span>
-          <Link href={`/?category=${product.categoria}`} className="hover:text-brand-primary capitalize">
+          <Link href={`/?category=${product.categoria}`} className="hover:text-primary capitalize">
             {product.categoria}
           </Link>
           <span>/</span>
@@ -204,7 +204,7 @@ export default function ProductPage() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-brand-primary/50 text-8xl">📦</span>
+                    <span className="text-primary/50 text-8xl">📦</span>
                   </div>
                 );
               })()}
@@ -275,7 +275,7 @@ export default function ProductPage() {
                       className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-brand-neutral-dark/80 rounded-md overflow-hidden border-3 transition-all ${
                         selectedImageIndex === index
                           ? 'border-green-500 border-4'
-                          : 'border-brand-primary/40 hover:border-gray-400'
+                          : 'border-primary/40 hover:border-gray-400'
                       }`}
                     >
                       <Image
@@ -298,11 +298,11 @@ export default function ProductPage() {
               <h1 className="text-3xl font-bold text-white mb-2">
                 {product.nombre}
               </h1>
-              <p className="text-lg text-brand-primary/80 capitalize">
+              <p className="text-lg text-primary/80 capitalize">
                 Categoría: {product.categoria}
               </p>
               {product.sku && (
-                <p className="text-sm text-brand-primary/60 mt-1">
+                <p className="text-sm text-primary/60 mt-1">
                   SKU: {product.sku}
                 </p>
               )}
@@ -311,7 +311,7 @@ export default function ProductPage() {
             <div className="space-y-2">
               {product.oferta && product.precioOriginal && product.precioOriginal > product.precio ? (
                 <>
-                  <div className="text-2xl text-brand-primary/60 line-through">
+                  <div className="text-2xl text-primary/60 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
                   <div className="text-4xl font-bold text-cyber-pink">
@@ -331,7 +331,7 @@ export default function ProductPage() {
             {product.descripcion && (
               <div>
                 <h3 className="text-lg font-semibold text-white mb-2">Descripción</h3>
-                <p className="text-brand-primary/80 leading-relaxed">
+                <p className="text-primary/80 leading-relaxed">
                   {product.descripcion}
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function ProductPage() {
 
             {/* Stock Info */}
             <div className="flex items-center space-x-2">
-              <span className="text-brand-primary">Stock disponible:</span>
+              <span className="text-primary">Stock disponible:</span>
               <span className={`font-semibold ${
                 product.stock > 10 ? 'text-green-600' : 
                 product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
@@ -352,8 +352,8 @@ export default function ProductPage() {
               <>
                 {/* Quantity Selector */}
                 <div className="flex items-center space-x-4">
-                  <span className="text-brand-primary">Cantidad:</span>
-                  <div className="flex items-center border border-brand-primary/40 rounded-md">
+                  <span className="text-primary">Cantidad:</span>
+                  <div className="flex items-center border border-primary/40 rounded-md">
                     <button
                       onClick={() => handleQuantityChange(-1)}
                       disabled={quantity <= 1}
@@ -376,7 +376,7 @@ export default function ProductPage() {
                 <div className="space-y-4">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Agregar al carrito ({formatPrice(product.precio * quantity)})
                   </button>

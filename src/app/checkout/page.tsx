@@ -19,10 +19,10 @@ import dynamic from 'next/dynamic';
 const MercadoPagoWallet = dynamic(() => import('@/components/MercadoPagoWallet'), {
   ssr: false,
   loading: () => (
-    <div className="p-8 bg-brand-neutral-dark border border-brand-primary/30 rounded-lg">
+    <div className="p-8 bg-brand-neutral-dark border border-primary/30 rounded-lg">
       <div className="flex items-center justify-center space-x-3">
         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
-        <span className="text-brand-primary/80">Cargando MercadoPago...</span>
+        <span className="text-primary/80">Cargando MercadoPago...</span>
       </div>
     </div>
   )
@@ -424,8 +424,8 @@ function CheckoutContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-brand-primary mx-auto mb-4"></div>
-          <p className="text-brand-primary/80 text-lg font-medium">Cargando...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
+          <p className="text-primary/80 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -443,10 +443,10 @@ function CheckoutContent() {
               </svg>
             </div>
             <h1 className="text-3xl font-bold text-white mb-4">¡Pedido Exitoso!</h1>
-            <p className="text-lg text-brand-primary/80 mb-4">
+            <p className="text-lg text-primary/80 mb-4">
               Tu pedido <span className="font-bold text-green-600">#{successOrderId.slice(-8).toUpperCase()}</span> ha sido recibido correctamente.
             </p>
-            <p className="text-sm text-brand-primary/60 mb-6">
+            <p className="text-sm text-primary/60 mb-6">
               Hemos recibido tu comprobante de transferencia y te contactaremos pronto para confirmar el pago.
             </p>
             <div className="space-y-3 bg-green-50 p-4 rounded-lg border border-green-200">
@@ -470,7 +470,7 @@ function CheckoutContent() {
         <div className="mb-8">
           <Link
             href="/carrito"
-            className="inline-flex items-center text-brand-primary hover:text-brand-primary-hover mb-6 font-medium transition-colors"
+            className="inline-flex items-center text-primary hover:text-primary-hover mb-6 font-medium transition-colors"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Volver al carrito
@@ -478,14 +478,14 @@ function CheckoutContent() {
 
           <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">💳</span>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">
                   Finalizar compra
                 </h1>
-                <p className="text-brand-primary/80 text-sm">
+                <p className="text-primary/80 text-sm">
                   Completa los datos para procesar tu pedido
                 </p>
               </div>
@@ -497,7 +497,7 @@ function CheckoutContent() {
           {/* Checkout Form */}
           <div className="lg:col-span-2">
             <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
-              <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-6 py-4">
+              <div className="bg-gradient-to-r from-primary to-cyber-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
                 </h2>
@@ -505,10 +505,10 @@ function CheckoutContent() {
 
                 <form onSubmit={handleCheckout} className="p-6 space-y-6">
                   {isGuest && (
-                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light border-l-4 border-brand-primary rounded-lg p-4 mb-4 shadow-sm">
+                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light border-l-4 border-primary rounded-lg p-4 mb-4 shadow-sm">
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0">
-                          <div className="w-10 h-10 bg-brand-primary rounded-full flex items-center justify-center shadow-md">
+                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-md">
                             <span className="text-white text-lg">👤</span>
                           </div>
                         </div>
@@ -516,7 +516,7 @@ function CheckoutContent() {
                           <h3 className="text-base font-semibold text-orange-900 mb-1">
                             Comprando como invitado
                           </h3>
-                          <p className="text-sm text-brand-primary-hover leading-relaxed">
+                          <p className="text-sm text-primary-hover leading-relaxed">
                             Completa los datos para procesar tu pedido. Si deseas crear una cuenta, puedes hacerlo después de la compra.
                           </p>
                         </div>
@@ -553,7 +553,7 @@ function CheckoutContent() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-brand-primary mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
                         Nombre completo *
                       </label>
                       <input
@@ -563,13 +563,13 @@ function CheckoutContent() {
                         required
                         value={checkoutData.name}
                         onChange={(e) => setCheckoutData({...checkoutData, name: e.target.value})}
-                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder={isRegistered ? "Datos cargados automáticamente" : "Ingresa tu nombre completo"}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-brand-primary mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
                         Email *
                       </label>
                       <input
@@ -579,13 +579,13 @@ function CheckoutContent() {
                         required
                         value={checkoutData.email}
                         onChange={(e) => setCheckoutData({...checkoutData, email: e.target.value})}
-                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder={isRegistered ? "Email cargado automáticamente" : "tu@email.com"}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-brand-primary mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-primary mb-2">
                         Teléfono *
                       </label>
                       <input
@@ -595,13 +595,13 @@ function CheckoutContent() {
                         required
                         value={checkoutData.phone}
                         onChange={(e) => setCheckoutData({...checkoutData, phone: e.target.value})}
-                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder={isRegistered ? "Teléfono desde perfil" : "+56 9 XXXX XXXX"}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="rut" className="block text-sm font-medium text-brand-primary mb-2">
+                      <label htmlFor="rut" className="block text-sm font-medium text-primary mb-2">
                         RUT {!isRegistered && '*'}
                       </label>
                       <input
@@ -611,7 +611,7 @@ function CheckoutContent() {
                         required={!isRegistered}
                         value={checkoutData.rut}
                         onChange={(e) => setCheckoutData({...checkoutData, rut: e.target.value})}
-                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder={isRegistered ? "RUT desde perfil" : "12.345.678-9"}
                       />
                     </div>
@@ -619,7 +619,7 @@ function CheckoutContent() {
 
                   {/* Tipo de entrega */}
                   <div>
-                    <label className="block text-sm font-medium text-brand-primary mb-3">
+                    <label className="block text-sm font-medium text-primary mb-3">
                       Tipo de entrega *
                     </label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -628,18 +628,18 @@ function CheckoutContent() {
                         onClick={() => setDeliveryType('envio')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'envio'
-                            ? 'border-brand-primary bg-brand-neutral-light ring-2 ring-orange-200'
-                            : 'border-brand-primary/40 bg-brand-neutral-dark/80 hover:border-brand-primary-300'
+                            ? 'border-primary bg-brand-neutral-light ring-2 ring-orange-200'
+                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-2xl">🚚</span>
                           {deliveryType === 'envio' && (
-                            <span className="text-brand-primary font-bold">✓</span>
+                            <span className="text-primary font-bold">✓</span>
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Envío a domicilio</div>
-                        <div className="text-sm text-brand-primary/80 text-left mt-1">Recibe tu pedido en casa</div>
+                        <div className="text-sm text-primary/80 text-left mt-1">Recibe tu pedido en casa</div>
                       </button>
 
                       <button
@@ -648,7 +648,7 @@ function CheckoutContent() {
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'retiro'
                             ? 'border-green-500 bg-green-50 ring-2 ring-green-200'
-                            : 'border-brand-primary/40 bg-brand-neutral-dark/80 hover:border-green-300'
+                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-green-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -658,13 +658,13 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Retiro en tienda</div>
-                        <div className="text-sm text-brand-primary/80 text-left mt-1">Retira gratis en nuestra tienda</div>
+                        <div className="text-sm text-primary/80 text-left mt-1">Retira gratis en nuestra tienda</div>
                       </button>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-brand-primary mb-2">
+                    <label htmlFor="address" className="block text-sm font-medium text-primary mb-2">
                       {deliveryType === 'envio' ? 'Dirección de envío *' : 'Notas adicionales (opcional)'}
                     </label>
                     <textarea
@@ -674,7 +674,7 @@ function CheckoutContent() {
                       rows={3}
                       value={checkoutData.address}
                       onChange={(e) => setCheckoutData({...checkoutData, address: e.target.value})}
-                      className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder={deliveryType === 'envio'
                         ? (isRegistered ? "Dirección desde perfil" : "Calle, número, comuna, región")
                         : "Ej: Prefiero retirar en la mañana, horario laboral, etc."
@@ -683,7 +683,7 @@ function CheckoutContent() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-brand-primary mb-3">
+                    <label className="block text-sm font-medium text-primary mb-3">
                       Método de pago
                     </label>
 
@@ -696,7 +696,7 @@ function CheckoutContent() {
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'mercadopago'
                             ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200'
-                            : 'border-brand-primary/40 bg-brand-neutral-dark/80 hover:border-blue-300'
+                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-blue-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -706,7 +706,7 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">MercadoPago</div>
-                        <div className="text-sm text-brand-primary/80 text-left mt-1">Pago online con tarjeta</div>
+                        <div className="text-sm text-primary/80 text-left mt-1">Pago online con tarjeta</div>
                       </button>
 
                       {/* Transferencia */}
@@ -715,18 +715,18 @@ function CheckoutContent() {
                         onClick={() => setPaymentMethod('transferencia')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'transferencia'
-                            ? 'border-brand-primary bg-brand-neutral-light ring-2 ring-orange-200'
-                            : 'border-brand-primary/40 bg-brand-neutral-dark/80 hover:border-brand-primary-300'
+                            ? 'border-primary bg-brand-neutral-light ring-2 ring-orange-200'
+                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-2xl">🏦</span>
                           {paymentMethod === 'transferencia' && (
-                            <span className="text-brand-primary font-bold">✓</span>
+                            <span className="text-primary font-bold">✓</span>
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Transferencia</div>
-                        <div className="text-sm text-brand-primary/80 text-left mt-1">Transferencia bancaria</div>
+                        <div className="text-sm text-primary/80 text-left mt-1">Transferencia bancaria</div>
                       </button>
                     </div>
 
@@ -737,7 +737,7 @@ function CheckoutContent() {
                           <span className="text-2xl mr-3">💳</span>
                           <div>
                             <div className="font-medium text-white">Pago con MercadoPago</div>
-                            <div className="text-sm text-brand-primary/80">Paga con tarjeta de crédito, débito o efectivo</div>
+                            <div className="text-sm text-primary/80">Paga con tarjeta de crédito, débito o efectivo</div>
                           </div>
                         </div>
 
@@ -746,7 +746,7 @@ function CheckoutContent() {
                             type="button"
                             onClick={handleMercadoPagoCheckout}
                             disabled={isProcessing || mpLoading}
-                            className="w-full py-3 px-6 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full py-3 px-6 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             {isProcessing || mpLoading ? 'Procesando...' : 'Continuar con MercadoPago'}
                           </button>
@@ -770,47 +770,47 @@ function CheckoutContent() {
 
                     {/* Sección de Transferencia */}
                     {paymentMethod === 'transferencia' && (
-                      <div className="p-4 border border-brand-primary-300 bg-brand-neutral-light rounded-lg">
+                      <div className="p-4 border border-primary-300 bg-brand-neutral-light rounded-lg">
                       <div className="flex items-center mb-4">
                         <span className="text-2xl mr-3">🏦</span>
                         <div>
                           <div className="font-medium text-white">Transferencia Bancaria</div>
-                          <div className="text-sm text-brand-primary/80">Transfiere el monto total y sube el comprobante</div>
+                          <div className="text-sm text-primary/80">Transfiere el monto total y sube el comprobante</div>
                         </div>
                       </div>
 
                       {/* Datos bancarios */}
-                      <div className="bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg p-4 mb-4">
+                      <div className="bg-brand-neutral-dark/80 border border-primary/30 rounded-lg p-4 mb-4">
                         <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                         {bankLoading ? (
                           <div className="flex items-center justify-center py-4">
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand-primary"></div>
-                            <span className="ml-2 text-brand-primary/80">Cargando datos bancarios...</span>
+                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+                            <span className="ml-2 text-primary/80">Cargando datos bancarios...</span>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                             <div>
-                              <span className="font-medium text-brand-primary">Banco:</span>
+                              <span className="font-medium text-primary">Banco:</span>
                               <span className="ml-2">{bankConfig.bankName}</span>
                             </div>
                             <div>
-                              <span className="font-medium text-brand-primary">Tipo de cuenta:</span>
+                              <span className="font-medium text-primary">Tipo de cuenta:</span>
                               <span className="ml-2">{bankConfig.accountType}</span>
                             </div>
                             <div>
-                              <span className="font-medium text-brand-primary">Número de cuenta:</span>
+                              <span className="font-medium text-primary">Número de cuenta:</span>
                               <span className="ml-2">{bankConfig.accountNumber}</span>
                             </div>
                             <div>
-                              <span className="font-medium text-brand-primary">RUT:</span>
+                              <span className="font-medium text-primary">RUT:</span>
                               <span className="ml-2">{bankConfig.rut}</span>
                             </div>
                             <div className="md:col-span-2">
-                              <span className="font-medium text-brand-primary">Titular:</span>
+                              <span className="font-medium text-primary">Titular:</span>
                               <span className="ml-2">{bankConfig.holderName}</span>
                             </div>
                             <div className="md:col-span-2">
-                              <span className="font-medium text-brand-primary">Email para confirmación:</span>
+                              <span className="font-medium text-primary">Email para confirmación:</span>
                               <span className="ml-2">{bankConfig.email}</span>
                             </div>
                           </div>
@@ -826,9 +826,9 @@ function CheckoutContent() {
                           name="comprobante"
                           accept="image/*,.pdf"
                           required
-                          className="w-full px-3 py-2 border border-brand-primary/40 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                          className="w-full px-3 py-2 border border-primary/40 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         />
-                        <p className="text-xs text-brand-primary/80 mt-2">
+                        <p className="text-xs text-primary/80 mt-2">
                           Formatos aceptados: JPG, PNG, PDF (máx. 5MB)
                         </p>
                       </div>
@@ -842,14 +842,14 @@ function CheckoutContent() {
                       <div className="flex flex-col sm:flex-row gap-4">
                         <Link
                           href="/carrito"
-                          className="flex-1 py-3 px-6 border border-brand-primary/40 rounded-lg text-base font-medium text-brand-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark transition-colors text-center"
+                          className="flex-1 py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark transition-colors text-center"
                         >
                           Volver al carrito
                         </Link>
                         <button
                           type="submit"
                           disabled={isProcessing || stockLoading}
-                          className="flex-1 py-3 px-6 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="flex-1 py-3 px-6 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {isProcessing ? 'Procesando...' : stockLoading ? 'Verificando stock...' : 'Confirmar pedido'}
                         </button>
@@ -864,7 +864,7 @@ function CheckoutContent() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden sticky top-8">
-              <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-6 py-4">
+              <div className="bg-gradient-to-r from-primary to-cyber-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido
                 </h2>
@@ -884,7 +884,7 @@ function CheckoutContent() {
                           />
                         ) : (
                           <div className="w-full h-full bg-brand-neutral-light rounded-md flex items-center justify-center">
-                            <span className="text-brand-primary/50 text-lg">📦</span>
+                            <span className="text-primary/50 text-lg">📦</span>
                           </div>
                         )}
                       </div>
@@ -893,7 +893,7 @@ function CheckoutContent() {
                         <h4 className="text-sm font-medium text-white truncate">
                           {item.nombre}
                         </h4>
-                        <p className="text-sm text-brand-primary/60">
+                        <p className="text-sm text-primary/60">
                           Cantidad: {item.cantidad}
                         </p>
                       </div>
@@ -908,12 +908,12 @@ function CheckoutContent() {
                 {/* Totals */}
                 <div className="border-t border-brand-neutral-light pt-4 space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-brand-primary/80 font-medium">Subtotal</span>
+                    <span className="text-primary/80 font-medium">Subtotal</span>
                     <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-brand-neutral-light px-4 py-3 rounded-lg border border-brand-primary-200">
+                  <div className="flex justify-between items-center bg-brand-neutral-light px-4 py-3 rounded-lg border border-primary-200">
                     <span className="text-lg font-bold text-white">Total</span>
-                    <span className="text-2xl font-bold text-brand-primary">{formatPrice(getTotalPrice())}</span>
+                    <span className="text-2xl font-bold text-primary">{formatPrice(getTotalPrice())}</span>
                   </div>
                 </div>
               </div>

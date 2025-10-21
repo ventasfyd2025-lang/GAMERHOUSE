@@ -76,15 +76,15 @@ export default function PCFactoryBanner({
             <div className="flex space-x-2">
               <button
                 onClick={() => setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
-                className="p-2 rounded-full border border-brand-primary/40 hover:bg-brand-neutral-dark transition-colors"
+                className="p-2 rounded-full border border-primary/40 hover:bg-brand-neutral-dark transition-colors"
               >
-                <ChevronLeftIcon className="h-5 w-5 text-brand-primary/80" />
+                <ChevronLeftIcon className="h-5 w-5 text-primary/80" />
               </button>
               <button
                 onClick={() => setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
-                className="p-2 rounded-full border border-brand-primary/40 hover:bg-brand-neutral-dark transition-colors"
+                className="p-2 rounded-full border border-primary/40 hover:bg-brand-neutral-dark transition-colors"
               >
-                <ChevronRightIcon className="h-5 w-5 text-brand-primary/80" />
+                <ChevronRightIcon className="h-5 w-5 text-primary/80" />
               </button>
             </div>
           )}
@@ -103,7 +103,7 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-brand-primary-300"
+                      className="bg-brand-neutral-dark/80 border border-primary/30 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-primary-300"
                     >
                       {/* Product Image */}
                       <div className="relative aspect-[4/3] bg-brand-neutral-dark overflow-hidden">
@@ -131,7 +131,7 @@ export default function PCFactoryBanner({
                       {/* Product Info */}
                       <div className="p-3">
                         {/* Product Name */}
-                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-brand-primary600 transition-colors">
+                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-primary600 transition-colors">
                           {product.nombre || 'Producto'}
                         </h3>
                         
@@ -140,7 +140,7 @@ export default function PCFactoryBanner({
                           {/* Original Price */}
                           {((product.precioOriginal && product.precioOriginal > (product.precio || 0)) || 
                             false) && (
-                            <div className="text-xs text-brand-primary/60 line-through">
+                            <div className="text-xs text-primary/60 line-through">
                               {formatPrice(product.precioOriginal || 0)}
                             </div>
                           )}
@@ -148,7 +148,7 @@ export default function PCFactoryBanner({
                           {/* Current Price */}
                           <div 
                             className="text-sm font-bold"
-                            style={{ color: product.oferta ? '#D64541' : 'var(--brand-primary)' }}
+                            style={{ color: product.oferta ? '#D64541' : 'var(--primary)' }}
                           >
                             {formatPrice(product.precio || 0)}
                           </div>
@@ -178,11 +178,11 @@ export default function PCFactoryBanner({
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-200 ${
                   index === currentSlide 
-                    ? 'bg-brand-primary' 
+                    ? 'bg-primary' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 
-                  backgroundColor: index === currentSlide ? 'var(--brand-primary)' : undefined 
+                  backgroundColor: index === currentSlide ? 'var(--primary)' : undefined 
                 }}
               />
             ))}

@@ -67,10 +67,10 @@ export default function GoogleSignInButton({
   const getVariantClasses = () => {
     switch (variant) {
       case 'filled':
-        return 'bg-brand-neutral-dark/80 text-brand-primary border border-brand-primary/40 hover:bg-brand-neutral-dark shadow-sm';
+        return 'bg-brand-neutral-dark/80 text-primary border border-primary/40 hover:bg-brand-neutral-dark shadow-sm';
       case 'outline':
       default:
-        return 'bg-brand-neutral-dark/80 text-brand-primary border border-brand-primary/40 hover:bg-brand-neutral-dark';
+        return 'bg-brand-neutral-dark/80 text-primary border border-primary/40 hover:bg-brand-neutral-dark';
     }
   };
 

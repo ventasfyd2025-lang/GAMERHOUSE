@@ -152,7 +152,7 @@ const BannerCarousel = memo(({
         {banners.map((banner, index) => {
           const backgroundImage = banner.imageUrl
             ? `url(${banner.imageUrl})`
-            : 'linear-gradient(135deg, var(--brand-primary) 0%, #F97316 100%)';
+            : 'linear-gradient(135deg, var(--primary) 0%, #F97316 100%)';
 
           const isActive = index === currentIndex;
 
@@ -203,7 +203,7 @@ const BannerCarousel = memo(({
                         {banner.ctaLink ? (
                           <Link
                             href={banner.ctaLink}
-                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-brand-primary text-white font-semibold shadow-lg hover:bg-brand-primary-hover transition-colors"
+                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-white font-semibold shadow-lg hover:bg-primary-hover transition-colors"
                             aria-label={banner.ctaText || banner.title || `Banner ${index + 1}`}
                             tabIndex={isActive ? 0 : -1}
                           >

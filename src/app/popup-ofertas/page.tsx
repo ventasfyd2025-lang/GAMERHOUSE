@@ -25,8 +25,8 @@ export default function PopupOfertasPage() {
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: 'var(--brand-primary)' }}></div>
-            <span className="ml-3 text-brand-primary/80">Cargando ofertas especiales...</span>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: 'var(--primary)' }}></div>
+            <span className="ml-3 text-primary/80">Cargando ofertas especiales...</span>
           </div>
         </div>
       </Layout>
@@ -38,10 +38,10 @@ export default function PopupOfertasPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
+          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
             🔥 {popupConfig.title}
           </h1>
-          <p className="text-lg text-brand-primary/80 max-w-2xl mx-auto">
+          <p className="text-lg text-primary/80 max-w-2xl mx-auto">
             {popupConfig.description}
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function PopupOfertasPage() {
               
               return sortedCategories.map(category => (
                 <div key={category} className="mb-12">
-                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--brand-primary)' }}>
+                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--primary)' }}>
                     📦 {category.charAt(0).toUpperCase() + category.slice(1)}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -73,17 +73,17 @@ export default function PopupOfertasPage() {
               ));
             })()}
             
-            <div className="text-center mt-8 text-brand-primary/80">
+            <div className="text-center mt-8 text-primary/80">
               {displayProducts.length} {displayProducts.length === 1 ? 'producto especial' : 'productos especiales'} seleccionados
             </div>
           </>
         ) : (
           <div className="text-center py-12">
-            <div className="text-brand-primary/50 text-6xl mb-4">🎯</div>
+            <div className="text-primary/50 text-6xl mb-4">🎯</div>
             <h3 className="text-xl font-semibold text-white mb-2">
               No hay ofertas especiales configuradas
             </h3>
-            <p className="text-brand-primary/80">
+            <p className="text-primary/80">
               El administrador aún no ha seleccionado productos para mostrar en esta sección especial.
             </p>
           </div>

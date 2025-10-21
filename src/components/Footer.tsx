@@ -15,8 +15,8 @@ export default function Footer() {
       <footer className="bg-gradient-to-br from-brand-neutral-dark via-brand-neutral-dark to-brand-neutral-dark/80 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="animate-pulse">
-            <div className="h-4 bg-brand-primary/20 rounded w-1/3 mb-4"></div>
-            <div className="h-3 bg-brand-primary/20 rounded w-2/3"></div>
+            <div className="h-4 bg-primary/20 rounded w-1/3 mb-4"></div>
+            <div className="h-3 bg-primary/20 rounded w-2/3"></div>
           </div>
         </div>
       </footer>
@@ -24,11 +24,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-brand-neutral-dark via-brand-neutral-dark/90 to-brand-primary/10 text-white relative overflow-hidden border-t border-brand-primary/30 shadow-[0_-20px_40px_rgba(0,217,255,0.1)]">
+    <footer className="bg-gradient-to-br from-brand-neutral-dark via-brand-neutral-dark/90 to-primary/10 text-white relative overflow-hidden border-t border-primary/30 shadow-[0_-20px_40px_rgba(0,217,255,0.1)]">
       {/* Decorative background elements - Cyberpunk */}
       <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-brand-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-secondary rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-12 relative z-10">
@@ -141,7 +141,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-brand-primary transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-primary transition-all text-xs sm:text-sm font-medium group"
                     aria-label="Instagram"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">

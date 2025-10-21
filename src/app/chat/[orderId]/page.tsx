@@ -102,7 +102,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-brand-primary bg-brand-neutral-light border-brand-primary-200', 
+    color: 'text-primary bg-brand-neutral-light border-primary-200', 
     icon: TruckIcon,
     description: 'Tu pedido está en camino'
   },
@@ -369,13 +369,13 @@ export default function ChatPage() {
   return (
     <div className="min-h-screen bg-brand-neutral-dark">
       {/* Header */}
-      <div className="bg-brand-neutral-dark/80 border-b border-brand-primary/30 sticky top-0 z-10">
+      <div className="bg-brand-neutral-dark/80 border-b border-primary/30 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <Link 
                 href="/mis-pedidos"
-                className="text-brand-primary/60 hover:text-brand-primary transition-colors"
+                className="text-primary/60 hover:text-primary transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </Link>
@@ -416,7 +416,7 @@ export default function ChatPage() {
                         ? 'bg-blue-500 text-white' 
                         : step.current
                         ? 'bg-blue-100 border-2 border-blue-500 text-blue-500'
-                        : 'bg-brand-neutral-light text-brand-primary/50'
+                        : 'bg-brand-neutral-light text-primary/50'
                     }`}>
                       {step.completed ? (
                         <CheckIcon className="h-4 w-4" />
@@ -426,7 +426,7 @@ export default function ChatPage() {
                     </div>
                     <div className="ml-4">
                       <p className={`text-sm font-medium ${
-                        step.completed || step.current ? 'text-white' : 'text-brand-primary/60'
+                        step.completed || step.current ? 'text-white' : 'text-primary/60'
                       }`}>
                         {step.label}
                       </p>
@@ -458,7 +458,7 @@ export default function ChatPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-sm font-medium text-white">{item.nombre}</p>
-                      <p className="text-xs text-brand-primary/80">
+                      <p className="text-xs text-primary/80">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -505,8 +505,8 @@ export default function ChatPage() {
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-blue-500" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
-                    <p className="text-sm text-brand-primary/80 mb-1">Estamos aquí para ayudarte con tu pedido</p>
-                    <p className="text-xs text-brand-primary/60">Escríbenos cualquier pregunta o inquietud</p>
+                    <p className="text-sm text-primary/80 mb-1">Estamos aquí para ayudarte con tu pedido</p>
+                    <p className="text-xs text-primary/60">Escríbenos cualquier pregunta o inquietud</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -522,13 +522,13 @@ export default function ChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-2' : 'order-1'}`}>
                         {message.isAdmin && (
-                          <div className="text-xs text-brand-primary/60 mb-1 px-3">Soporte FyD</div>
+                          <div className="text-xs text-primary/60 mb-1 px-3">Soporte FyD</div>
                         )}
                         
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-brand-neutral-dark/80 text-white border border-brand-primary/30'
+                              ? 'bg-brand-neutral-dark/80 text-white border border-primary/30'
                               : 'bg-blue-500 text-white'
                           }`}
                         >
@@ -554,7 +554,7 @@ export default function ChatPage() {
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-start' : 'justify-end'}`}>
-                          <span className="text-xs text-brand-primary/60">
+                          <span className="text-xs text-primary/60">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -568,7 +568,7 @@ export default function ChatPage() {
                                   <CheckIcon className="h-3 w-3 text-blue-500 -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-brand-primary/50" />
+                                <CheckIcon className="h-3 w-3 text-primary/50" />
                               )}
                             </div>
                           )}
@@ -588,7 +588,7 @@ export default function ChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-brand-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative inline-block">
@@ -605,7 +605,7 @@ export default function ChatPage() {
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-brand-primary/60 mt-1">{selectedImage?.name}</p>
+                    <p className="text-xs text-primary/60 mt-1">{selectedImage?.name}</p>
                     {uploadingImage && (
                       <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
@@ -622,7 +622,7 @@ export default function ChatPage() {
                         onChange={(e) => setNewMessage(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder="Escribe tu mensaje sobre el pedido..."
-                        className="w-full resize-none border border-brand-primary/40 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-24"
+                        className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-24"
                         rows={2}
                         disabled={sendingMessage || uploadingImage}
                       />
@@ -641,8 +641,8 @@ export default function ChatPage() {
                           htmlFor="imageUpload"
                           className={`cursor-pointer p-1 rounded-lg transition-colors ${
                             sendingMessage || uploadingImage
-                              ? 'text-brand-primary/50 cursor-not-allowed'
-                              : 'text-brand-primary/60 hover:text-blue-500 hover:bg-blue-50'
+                              ? 'text-primary/50 cursor-not-allowed'
+                              : 'text-primary/60 hover:text-blue-500 hover:bg-blue-50'
                           }`}
                         >
                           <PhotoIcon className="h-5 w-5" />
@@ -654,7 +654,7 @@ export default function ChatPage() {
                   <button
                     onClick={sendMessage}
                     disabled={(!newMessage.trim() && !selectedImage) || sendingMessage || uploadingImage}
-                    className="bg-brand-primary hover:bg-brand-primary-hover disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-primary hover:bg-primary-hover disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {sendingMessage || uploadingImage ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -664,7 +664,7 @@ export default function ChatPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-brand-primary/60 mt-2 text-center">
+                <p className="text-xs text-primary/60 mt-2 text-center">
                   Responderemos lo antes posible durante horario laboral • Puedes enviar imágenes (máx. 5MB)
                 </p>
               </div>

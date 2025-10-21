@@ -32,7 +32,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
     : 0;
 
   return (
-    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 border border-brand-primary/30 hover:border-brand-primary-400 overflow-hidden h-full flex flex-col">
+    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 border border-primary/30 hover:border-primary-400 overflow-hidden h-full flex flex-col">
       {/* Badges */}
       {discountPercentage > 0 && (
         <div className="absolute top-2 left-2 z-10 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
@@ -67,13 +67,13 @@ const ProductCard = memo(({ product }: { product: Product }) => {
 
       {/* Información */}
       <div className="p-2 flex flex-col flex-grow">
-        <h3 className="text-xs text-brand-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         <div className="mt-auto space-y-1.5">
           {product.precioOriginal && product.precioOriginal > product.precio && (
-            <div className="text-[10px] text-brand-primary/50 line-through">
+            <div className="text-[10px] text-primary/50 line-through">
               {formatPrice(product.precioOriginal)}
             </div>
           )}
@@ -102,7 +102,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
                 product.sku,
               );
             }}
-            className="w-full bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
+            className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-brand-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
           >
             <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -303,21 +303,21 @@ const ProductCarousel = memo(({
 
   return (
     <section className="space-y-3 sm:space-y-4 lg:space-y-5">
-      <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 border border-brand-primary100">
+      <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 border border-primary100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">{title.split(' ')[0]}</span>
             </div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">{title}</h2>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-cyber-pink bg-clip-text text-transparent">{title}</h2>
           </div>
           {showViewAll && (
             <Link
               href={viewAllLink}
               className="px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg text-sm"
-              style={{ backgroundColor: 'var(--brand-primary)' }}
+              style={{ backgroundColor: 'var(--primary)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-primary)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
             >
               {t('homepage.viewAll')} →
             </Link>
@@ -362,7 +362,7 @@ const ProductCarousel = memo(({
               >
                 <Link
                   href={`/producto/${product.id}`}
-                  className="block h-full focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)] focus:ring-offset-2"
+                  className="block h-full focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2"
                   onClick={(e) => {
                     if (hasDragged) {
                       e.preventDefault();
@@ -387,7 +387,7 @@ const ProductCarousel = memo(({
               onClick={() => setCurrentIndex(Math.min(index * itemsToShow, maxIndex))}
               className={`h-2 w-2 rounded-full transition-all ${
                 Math.floor(currentIndex / itemsToShow) === index
-                  ? 'bg-brand-primary w-6'
+                  ? 'bg-primary w-6'
                   : 'bg-gray-300'
               }`}
               aria-label={`${t('carousel.goToPage')} ${index + 1} ${t('common.of')} ${Math.ceil(products.length / itemsToShow)} ${t('common.in')} ${title}`}

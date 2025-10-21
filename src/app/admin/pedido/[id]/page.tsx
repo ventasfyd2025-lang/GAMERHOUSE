@@ -254,7 +254,7 @@ export default function OrderDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand-primary"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -266,7 +266,7 @@ export default function OrderDetailPage() {
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <button
             onClick={() => window.close()}
-            className="bg-brand-primary text-white px-4 py-2 rounded-lg hover:bg-brand-primary"
+            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary"
           >
             Cerrar
           </button>
@@ -278,13 +278,13 @@ export default function OrderDetailPage() {
   return (
     <div className="min-h-screen bg-brand-neutral-dark">
       {/* Header igual al cliente */}
-      <div className="bg-brand-neutral-dark/80 border-b border-brand-primary/30 sticky top-0 z-10">
+      <div className="bg-brand-neutral-dark/80 border-b border-primary/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => window.close()}
-                className="text-brand-primary/60 hover:text-brand-primary transition-colors"
+                className="text-primary/60 hover:text-primary transition-colors"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -304,7 +304,7 @@ export default function OrderDetailPage() {
               <p className="text-lg font-bold text-white">
                 {formatPrice(order.total)}
               </p>
-              <p className="text-sm text-brand-primary/80">
+              <p className="text-sm text-primary/80">
                 {order.items.length} producto{order.items.length > 1 ? 's' : ''}
               </p>
             </div>
@@ -322,13 +322,13 @@ export default function OrderDetailPage() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-base font-semibold text-brand-primary mb-2">
+                  <label className="block text-base font-semibold text-primary mb-2">
                     Actualizar Estado
                   </label>
                   <select
                     value={order.status}
                     onChange={(e) => updateOrderStatus(e.target.value as Order['status'])}
-                    className="block w-full px-3 py-2 border border-brand-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary text-sm"
+                    className="block w-full px-3 py-2 border border-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-sm"
                   >
                     <option value="pending">Pendiente</option>
                     <option value="pending_verification">Verificando Pago</option>
@@ -347,25 +347,25 @@ export default function OrderDetailPage() {
               <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               <div className="space-y-2">
                 <div>
-                  <p className="text-base font-semibold text-brand-primary/60">Nombre</p>
+                  <p className="text-base font-semibold text-primary/60">Nombre</p>
                   <p className="text-white">{order.customerName}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-brand-primary/60">Email</p>
+                  <p className="text-base font-semibold text-primary/60">Email</p>
                   <p className="text-white">{order.customerEmail}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-brand-primary/60">Teléfono</p>
+                  <p className="text-base font-semibold text-primary/60">Teléfono</p>
                   <p className="text-white">{order.customerPhone}</p>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <dt className="text-base font-semibold text-brand-primary/60">RUT</dt>
+                  <dt className="text-base font-semibold text-primary/60">RUT</dt>
                   <p className="text-white">{order.customerRut || 'No proporcionado'}</p>
                 </div>
                 {order.shippingAddress && (
                   <div>
-                    <p className="text-base font-semibold text-brand-primary/60">Dirección</p>
+                    <p className="text-base font-semibold text-primary/60">Dirección</p>
                     <p className="text-white text-sm">{order.shippingAddress}</p>
                   </div>
                 )}
@@ -387,7 +387,7 @@ export default function OrderDetailPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-base font-semibold text-white">{item.nombre}</p>
-                      <p className="text-xs text-brand-primary/80">
+                      <p className="text-xs text-primary/80">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -406,7 +406,7 @@ export default function OrderDetailPage() {
               <div className="mt-4 pt-3 border-t">
                 <div className="space-y-2">
                   <div>
-                    <p className="text-base font-semibold text-brand-primary/60">Método de Pago</p>
+                    <p className="text-base font-semibold text-primary/60">Método de Pago</p>
                     <p className="text-white">{order.paymentMethod || 'No especificado'}</p>
                   </div>
                   {order.paymentProof && (
@@ -423,11 +423,11 @@ export default function OrderDetailPage() {
           <div className="lg:col-span-2">
             <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header con gradiente */}
-              <div className="bg-gradient-to-r from-brand-primary to-brand-primary text-white p-4 rounded-t-lg">
+              <div className="bg-gradient-to-r from-primary to-primary text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="w-10 h-10 bg-brand-neutral-dark/80 rounded-full flex items-center justify-center">
-                      <svg className="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
                     </div>
@@ -448,13 +448,13 @@ export default function OrderDetailPage() {
                 {chatMessages.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="h-8 w-8 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.456L3 21l2.544-5.906A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                       </svg>
                     </div>
                     <h4 className="font-semibold text-white mb-2">Panel de Administración</h4>
-                    <p className="text-sm text-brand-primary/80 mb-1">Comunicación con el cliente</p>
-                    <p className="text-xs text-brand-primary/60">Los mensajes aparecerán aquí</p>
+                    <p className="text-sm text-primary/80 mb-1">Comunicación con el cliente</p>
+                    <p className="text-xs text-primary/60">Los mensajes aparecerán aquí</p>
                   </div>
                 ) : (
                   chatMessages.map((message) => (
@@ -472,14 +472,14 @@ export default function OrderDetailPage() {
 
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-brand-primary/60 mb-1 px-3">{message.userName}</div>
+                          <div className="text-xs text-primary/60 mb-1 px-3">{message.userName}</div>
                         )}
 
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-brand-primary text-white'
-                              : 'bg-brand-neutral-dark/80 text-white border border-brand-primary/30'
+                              ? 'bg-primary text-white'
+                              : 'bg-brand-neutral-dark/80 text-white border border-primary/30'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -504,14 +504,14 @@ export default function OrderDetailPage() {
                         </div>
 
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-brand-primary/60">
+                          <span className="text-xs text-primary/60">
                             {message.timestamp.toLocaleString()}
                           </span>
                         </div>
                       </div>
 
                       {message.isAdmin && (
-                        <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                           <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                           </svg>
@@ -523,7 +523,7 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-brand-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative">
@@ -540,7 +540,7 @@ export default function OrderDetailPage() {
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-brand-primary/60 mt-1">
+                    <p className="text-xs text-primary/60 mt-1">
                       {selectedImage?.name}
                     </p>
                   </div>
@@ -553,14 +553,14 @@ export default function OrderDetailPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
                       placeholder="Responder al cliente..."
-                      className="w-full resize-none border border-brand-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent max-h-24"
                       rows={2}
                       disabled={sendingMessage}
                     />
                   </div>
 
                   {/* Image Upload Button */}
-                  <label className="cursor-pointer bg-brand-neutral-light hover:bg-brand-neutral-light text-brand-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
+                  <label className="cursor-pointer bg-brand-neutral-light hover:bg-brand-neutral-light text-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
                     <PhotoIcon className="h-5 w-5" />
                     <input
                       type="file"
@@ -574,7 +574,7 @@ export default function OrderDetailPage() {
                   <button
                     onClick={sendMessage}
                     disabled={(!newMessage.trim() && !selectedImage) || sendingMessage}
-                    className="bg-brand-primary hover:bg-brand-primary disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-primary hover:bg-primary disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {sendingMessage ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -586,7 +586,7 @@ export default function OrderDetailPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-brand-primary/60 mt-2 text-center">
+                <p className="text-xs text-primary/60 mt-2 text-center">
                   Comunicación directa con el cliente • {uploadingImage ? 'Subiendo imagen...' : 'Puedes enviar texto e imágenes'}
                 </p>
               </div>
@@ -608,12 +608,12 @@ export default function OrderDetailPage() {
                 className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
                 style={{ maxHeight: '500px' }}
               />
-              <p className="mt-2 text-brand-primary/80">
+              <p className="mt-2 text-primary/80">
                 <a
                   href={order.paymentProof}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-primary hover:text-brand-primary-hover underline"
+                  className="text-primary hover:text-primary-hover underline"
                 >
                   Ver en tamaño completo
                 </a>

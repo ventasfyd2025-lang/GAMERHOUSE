@@ -133,7 +133,7 @@ export default function RegisterPage() {
           <h2 className="text-3xl font-bold text-white">
             Crear Cuenta
           </h2>
-          <p className="mt-2 text-sm text-brand-primary/80">
+          <p className="mt-2 text-sm text-primary/80">
             Únete a nuestra tienda y disfruta de beneficios exclusivos
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="firstName" className="block text-sm font-medium text-primary">
                   Nombre
                 </label>
                 <div className="mt-1">
@@ -161,14 +161,14 @@ export default function RegisterPage() {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="Juan"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="lastName" className="block text-sm font-medium text-primary">
                   Apellido
                 </label>
                 <div className="mt-1">
@@ -179,7 +179,7 @@ export default function RegisterPage() {
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="Pérez"
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-brand-primary">
+              <label htmlFor="email" className="block text-sm font-medium text-primary">
                 Email
               </label>
               <div className="mt-1">
@@ -199,14 +199,14 @@ export default function RegisterPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                   placeholder="tu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-brand-primary">
+              <label htmlFor="password" className="block text-sm font-medium text-primary">
                 Contraseña
               </label>
               <div className="mt-1 relative">
@@ -218,7 +218,7 @@ export default function RegisterPage() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 pr-10 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                   placeholder="••••••••"
                 />
                 <button
@@ -227,16 +227,16 @@ export default function RegisterPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-brand-primary/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-primary/50" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-brand-primary/50" />
+                    <EyeIcon className="h-5 w-5 text-primary/50" />
                   )}
                 </button>
               </div>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-brand-primary">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-primary">
                 Confirmar Contraseña
               </label>
               <div className="mt-1 relative">
@@ -248,7 +248,7 @@ export default function RegisterPage() {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 pr-10 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                   placeholder="••••••••"
                 />
                 <button
@@ -257,9 +257,9 @@ export default function RegisterPage() {
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-brand-primary/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-primary/50" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-brand-primary/50" />
+                    <EyeIcon className="h-5 w-5 text-primary/50" />
                   )}
                 </button>
               </div>
@@ -267,7 +267,7 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="phone" className="block text-sm font-medium text-primary">
                   Teléfono
                 </label>
                 <div className="mt-1">
@@ -278,14 +278,14 @@ export default function RegisterPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="+56 9 XXXX XXXX"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="rut" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="rut" className="block text-sm font-medium text-primary">
                   RUT
                 </label>
                 <div className="mt-1">
@@ -296,7 +296,7 @@ export default function RegisterPage() {
                     required
                     value={formData.rut}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="12.345.678-9"
                   />
                 </div>
@@ -307,7 +307,7 @@ export default function RegisterPage() {
               <h3 className="text-lg font-medium text-white">Dirección de Envío</h3>
               
               <div>
-                <label htmlFor="address.street" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="address.street" className="block text-sm font-medium text-primary">
                   Calle y Número
                 </label>
                 <div className="mt-1">
@@ -318,7 +318,7 @@ export default function RegisterPage() {
                     required
                     value={formData.address.street}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="Av. Los Leones 1234"
                   />
                 </div>
@@ -326,7 +326,7 @@ export default function RegisterPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="address.city" className="block text-sm font-medium text-brand-primary">
+                  <label htmlFor="address.city" className="block text-sm font-medium text-primary">
                     Ciudad
                   </label>
                   <div className="mt-1">
@@ -337,14 +337,14 @@ export default function RegisterPage() {
                       required
                       value={formData.address.city}
                       onChange={handleChange}
-                      className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                      className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Santiago"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="address.region" className="block text-sm font-medium text-brand-primary">
+                  <label htmlFor="address.region" className="block text-sm font-medium text-primary">
                     Región
                   </label>
                   <div className="mt-1">
@@ -355,7 +355,7 @@ export default function RegisterPage() {
                       required
                       value={formData.address.region}
                       onChange={handleChange}
-                      className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                      className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Metropolitana"
                     />
                   </div>
@@ -363,7 +363,7 @@ export default function RegisterPage() {
               </div>
 
               <div>
-                <label htmlFor="address.postalCode" className="block text-sm font-medium text-brand-primary">
+                <label htmlFor="address.postalCode" className="block text-sm font-medium text-primary">
                   Código Postal
                 </label>
                 <div className="mt-1">
@@ -374,7 +374,7 @@ export default function RegisterPage() {
                     required
                     value={formData.address.postalCode}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="7500000"
                   />
                 </div>
@@ -385,7 +385,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-primary hover:bg-brand-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center">
@@ -403,10 +403,10 @@ export default function RegisterPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-brand-primary/40" />
+                <div className="w-full border-t border-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-brand-neutral-dark/80 text-brand-primary/60">O regístrate con</span>
+                <span className="px-2 bg-brand-neutral-dark/80 text-primary/60">O regístrate con</span>
               </div>
             </div>
 
@@ -424,24 +424,24 @@ export default function RegisterPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-brand-primary/40" />
+                <div className="w-full border-t border-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-brand-neutral-dark/80 text-brand-primary/60">¿Ya tienes cuenta?</span>
+                <span className="px-2 bg-brand-neutral-dark/80 text-primary/60">¿Ya tienes cuenta?</span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <Link
                 href="/login"
-                className="w-full flex justify-center py-2 px-4 border border-brand-primary rounded-md shadow-sm bg-brand-neutral-dark/80 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
+                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-brand-neutral-dark/80 text-sm font-medium text-primary hover:bg-brand-neutral-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Iniciar Sesión
               </Link>
               
               <Link
                 href="/checkout?guest=true"
-                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-brand-primary/80 hover:text-white"
+                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-primary/80 hover:text-white"
               >
                 Continuar como invitado
               </Link>
@@ -450,7 +450,7 @@ export default function RegisterPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-brand-primary hover:text-brand-primary font-medium">
+          <Link href="/" className="text-primary hover:text-primary font-medium">
             ← Volver a la tienda
           </Link>
         </div>
