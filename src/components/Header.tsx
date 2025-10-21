@@ -1,5 +1,5 @@
-import UnifiedHeader from './UnifiedHeader';
+import HitesHeader from './HitesHeader';
 
 export default function Header() {
-  return <UnifiedHeader />;
+  return <HitesHeader />;
 }

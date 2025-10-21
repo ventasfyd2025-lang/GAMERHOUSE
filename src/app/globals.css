@@ -14,16 +14,16 @@
 
 
 :root {
-  /* Paleta GAMERHOUSE - Modern Gaming */
-  --brand-primary: #00D9FF;
-  --brand-secondary: #D946EF;
-  --brand-accent: #10B981;
-  --brand-success: #22C55E;
-  --brand-background: #0F172A;
-  --brand-surface: #1E293B;
-  --brand-text: #F8FAFC;
-  --brand-text-secondary: #CBD5E1;
-  --brand-border: #475569;
+  /* Paleta GAMERHOUSE - Estilo Hites Minorista */
+  --brand-primary: #003D82;
+  --brand-secondary: #FF6B35;
+  --brand-accent: #FF1493;
+  --brand-success: #28A745;
+  --brand-background: #FFFFFF;
+  --brand-surface: #F5F5F5;
+  --brand-text: #333333;
+  --brand-text-secondary: #666666;
+  --brand-border: #DDDDDD;
 }
 
 html {
@@ -38,7 +38,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  zoom: 0.9; /* Zoom más sutil para vista alejada */
 }
 
 /* Better responsive scaling - reducidos ~15% para vista más alejada */

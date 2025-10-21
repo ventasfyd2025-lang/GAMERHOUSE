@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
-import Footer from './Footer';
+import HitesFooter from './HitesFooter';
 import { NotificationProvider } from '@/context/NotificationContext';
 import NotificationDisplay from './NotificationDisplay';
 
@@ -39,7 +39,7 @@ export default function Layout({ children }: LayoutProps) {
         <main className="flex-1 w-full" style={{ paddingTop: `${paddingTop}px` }}>
           {children}
         </main>
-        <Footer />
+        <HitesFooter />
         <NotificationDisplay />
       </div>
     </NotificationProvider>

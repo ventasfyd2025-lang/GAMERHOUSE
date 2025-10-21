@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
 import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { useCart } from '@/context/CartContext';
-import UnifiedHeader from '@/components/UnifiedHeader';
+import HitesHeader from '@/components/HitesHeader';
 import { HeartIcon } from '@heroicons/react/24/outline';
 
 const formatPrice = (price: number) => {
@@ -35,7 +35,7 @@ export default function ProductosDestacados() {
   if (productsLoading || homepageLoading) {
     return (
       <div className="min-h-screen bg-dark">
-        <UnifiedHeader />
+        <HitesHeader />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
           <div className="animate-pulse space-y-6">
             <div className="h-8 bg-dark-light rounded w-1/3"></div>
@@ -56,7 +56,7 @@ export default function ProductosDestacados() {
 
   return (
     <div className="min-h-screen bg-dark">
-      <UnifiedHeader />
+      <HitesHeader />
       
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         <div className="mb-8">

@@ -686,7 +686,7 @@ const MAX_ALL_PRODUCTS_HOME = 200;
 
   return (
     <>
-      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40 min-h-screen">
+      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-white min-h-screen">
         {/* Hero Banner Carousel */}
         <section className="mt-4 sm:mt-6">
           {(() => {            return bannerSlides?.length > 0 ? (
