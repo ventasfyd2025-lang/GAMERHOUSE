@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
                   // Enviar email de confirmación de pedido DESPUÉS de confirmar el pago
                   try {
                     console.log('📧 Enviando email de confirmación de pedido después de pago aprobado...');
-                    const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://importadora-fyd.vercel.app'}/api/send-email`, {
+                    const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'https://GAMERHOUSE.vercel.app'}/api/send-email`, {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',

@@ -50,7 +50,7 @@ export default function Footer() {
                   </div>
                 ) : (
                   <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-dark/80/10 rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl shadow-lg shadow-cyan-500/20 ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
-                    {logoConfig?.emoji || '🏪'}
+                    {logoConfig?.emoji || '🎮 GAMERHOUSE'}
                   </div>
                 )}
               </div>
@@ -85,7 +85,7 @@ export default function Footer() {
           {/* Contact Info */}
           {footerConfig.showContactInfo && (
             <div>
-              <h4 className="text-sm sm:text-lg font-bold mb-1.5 sm:mb-3 lg:mb-4 text-white">Contacto</h4>
+              <h4 className="text-sm sm:text-lg font-bold mb-1.5 sm:mb-3 lg:mb-4 text-white">Contacto Gamer</h4>
               <div className="space-y-1 sm:space-y-2">
                 <a
                   href={`tel:${footerConfig.contact.phone}`}

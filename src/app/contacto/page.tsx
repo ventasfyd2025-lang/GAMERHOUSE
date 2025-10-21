@@ -49,7 +49,7 @@ export default function ContactoPage() {
 
             {/* Email */}
             <a
-              href="mailto:contacto@importadora-fyd.cl"
+              href="mailto:contacto@GAMERHOUSE.cl"
               className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
@@ -66,7 +66,7 @@ export default function ContactoPage() {
                     Envíanos un correo electrónico
                   </p>
                   <p className="text-primary font-medium">
-                    contacto@importadora-fyd.cl
+                    contacto@GAMERHOUSE.cl
                   </p>
                 </div>
               </div>

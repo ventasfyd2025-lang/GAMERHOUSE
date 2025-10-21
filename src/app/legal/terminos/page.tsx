@@ -110,8 +110,8 @@ export default function TerminosPage() {
                 </h2>
                 <p>
                   Para consultas sobre estos términos:{' '}
-                  <a href="mailto:contacto@importadora-fyd.cl" className="text-primary hover:text-primary-hover">
-                    contacto@importadora-fyd.cl
+                  <a href="mailto:contacto@GAMERHOUSE.cl" className="text-primary hover:text-primary-hover">
+                    contacto@GAMERHOUSE.cl
                   </a>
                 </p>
               </section>

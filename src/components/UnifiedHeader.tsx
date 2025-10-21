@@ -209,23 +209,23 @@ const handleMobileCategoryLinkClick = (
     <>
       <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-xl shadow-2xl border-b border-primary/30">
         <div className="relative bg-gradient-to-br from-dark/95 via-dark/90 to-dark/95">
-          {/* Top Banner */}
-          <div className="text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-primary via-secondary to-accent">
+          {/* Top Banner - Gaming Theme */}
+          <div className="text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-primary/80 via-secondary/70 to-accent/60">
             <div className="mx-auto flex max-w-full items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
-              <span className="font-medium">{t('header.welcome')}</span>
+              <span className="font-bold text-primary">🎮 GAMERHOUSE - ¡Bienvenido Jugador!</span>
 
               {/* Mobile User + Cart Icons in Top Banner */}
               <div className="flex items-center gap-2 sm:hidden">
                 {/* User - Mobile */}
                 <Link
                   href="/perfil"
-                  className="relative p-1.5 text-white hover:text-primary100 hover:bg-dark/80/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-primary hover:bg-primary/20 rounded-md transition-all duration-200"
                 >
                   <User className="h-5 w-5" />
                   {hasUnreadMessages && (
                     <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-pink"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
                     </span>
                   )}
                 </Link>
@@ -233,12 +233,11 @@ const handleMobileCategoryLinkClick = (
                 {/* Cart - Mobile */}
                 <Link
                   href="/carrito"
-                  className="relative p-1.5 text-white hover:text-primary100 hover:bg-dark/80/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-primary hover:bg-primary/20 rounded-md transition-all duration-200"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   {getTotalItems() > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold"
-                          style={{ backgroundColor: '#D64541' }}>
+                    <span className="absolute -top-0.5 -right-0.5 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold bg-secondary">
                       {getTotalItems()}
                     </span>
                   )}
@@ -247,13 +246,13 @@ const handleMobileCategoryLinkClick = (
 
               {/* Desktop Info */}
               <div className="hidden gap-6 text-[11px] font-semibold sm:flex">
-                <span className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
-                  <span aria-hidden className="text-sm">🚚</span>
-                  {t('header.shipping')}
+                <span className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
+                  <span aria-hidden className="text-sm">⚡</span>
+                  Envío Rápido
                 </span>
-                <span className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
-                  <span aria-hidden className="text-sm">🏬</span>
-                  {t('header.pickup')}
+                <span className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
+                  <span aria-hidden className="text-sm">🎁</span>
+                  Ofertas Exclusivas
                 </span>
               </div>
             </div>

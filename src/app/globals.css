@@ -14,16 +14,16 @@
 
 
 :root {
-  /* Paleta GAMERHOUSE - Cyberpunk */
+  /* Paleta GAMERHOUSE - Modern Gaming */
   --brand-primary: #00D9FF;
-  --brand-secondary: #B819FF;
-  --brand-accent: #00FFB3;
-  --brand-success: #00FF88;
-  --brand-background: #0A0E27;
-  --brand-surface: #1F2937;
-  --brand-text: #FFFFFF;
-  --brand-text-secondary: #9CA3AF;
-  --brand-border: #2D3748;
+  --brand-secondary: #D946EF;
+  --brand-accent: #10B981;
+  --brand-success: #22C55E;
+  --brand-background: #0F172A;
+  --brand-surface: #1E293B;
+  --brand-text: #F8FAFC;
+  --brand-text-secondary: #CBD5E1;
+  --brand-border: #475569;
 }
 
 html {

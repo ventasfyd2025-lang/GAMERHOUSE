@@ -82,8 +82,8 @@ export default function PrivacidadPage() {
                 </h2>
                 <p>
                   Para cualquier consulta sobre privacidad, contáctanos en:{' '}
-                  <a href="mailto:contacto@importadora-fyd.cl" className="text-primary hover:text-primary-hover">
-                    contacto@importadora-fyd.cl
+                  <a href="mailto:contacto@GAMERHOUSE.cl" className="text-primary hover:text-primary-hover">
+                    contacto@GAMERHOUSE.cl
                   </a>
                 </p>
               </section>
