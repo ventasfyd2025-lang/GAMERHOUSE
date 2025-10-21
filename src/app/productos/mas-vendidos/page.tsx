@@ -13,10 +13,10 @@ export default function ProductosMasVendidos() {
 
   // Mostrar un mensaje de carga mientras se redirige
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-brand-neutral-dark">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary mx-auto mb-4"></div>
-        <p className="text-gray-600">Cargando productos más vendidos...</p>
+        <p className="text-brand-primary/80">Cargando productos más vendidos...</p>
       </div>
     </div>
   );

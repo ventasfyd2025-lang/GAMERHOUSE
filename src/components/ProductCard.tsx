@@ -101,7 +101,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-gray-200 flex flex-col ${customHeight || 'h-full'} hover:border-brand-primary-400 cursor-pointer relative`}>
+      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-brand-primary/30 flex flex-col ${customHeight || 'h-full'} hover:border-brand-primary-400 cursor-pointer relative`}>
 
       {/* Badges flotantes */}
       {mostrarOferta && (
@@ -120,7 +120,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       )}
 
       {/* Contenedor de imagen */}
-      <div className="relative w-full aspect-square bg-white overflow-hidden p-4">
+      <div className="relative w-full aspect-square bg-brand-neutral-dark/80 overflow-hidden p-4">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -133,7 +133,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-50">
+          <div className="w-full h-full flex items-center justify-center bg-brand-neutral-dark">
             <span className="text-gray-300 text-5xl">📦</span>
           </div>
         )}
@@ -150,19 +150,19 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       {/* Información del producto */}
       <div className="p-2 flex flex-col flex-grow">
         {/* Título */}
-        <h3 className="text-xs text-gray-700 line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-brand-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         {/* Precio */}
         <div className="mt-auto">
           {originalPrice && (
-            <div className="text-[10px] text-gray-400 line-through mb-1">
+            <div className="text-[10px] text-brand-primary/50 line-through mb-1">
               {formatPrice(originalPrice)}
             </div>
           )}
           <div className="flex items-baseline gap-1.5 mb-2">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-lg font-bold text-white">
               {formatPrice(currentPrice)}
             </span>
             {originalPrice && (
@@ -197,7 +197,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
           ) : (
             <button
               disabled
-              className="w-full bg-gray-200 text-gray-500 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
+              className="w-full bg-brand-neutral-light text-brand-primary/60 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

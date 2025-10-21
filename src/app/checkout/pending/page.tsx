@@ -31,15 +31,15 @@ function PaymentPendingContent() {
   }, [paymentId, status, externalReference]);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-brand-neutral-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-brand-neutral-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <div className="text-center">
             <ClockIcon className="mx-auto h-16 w-16 text-yellow-500" />
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            <h2 className="mt-6 text-3xl font-bold text-white">
               Pago Pendiente
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-brand-primary/80">
               Tu pago está siendo procesado
             </p>
           </div>
@@ -83,11 +83,11 @@ function PaymentPendingContent() {
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-gray-800 mb-2">
+            <div className="bg-brand-neutral-dark border border-brand-primary/30 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-white mb-2">
                 Próximos pasos:
               </h3>
-              <ul className="text-sm text-gray-700 space-y-1">
+              <ul className="text-sm text-brand-primary space-y-1">
                 <li>• Te notificaremos cuando se procese el pago</li>
                 <li>• Puedes revisar el estado en &quot;Mis Pedidos&quot;</li>
                 <li>• El producto se reservará por 24 horas</li>
@@ -104,7 +104,7 @@ function PaymentPendingContent() {
               
               <Link
                 href="/"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
+                className="w-full flex justify-center py-2 px-4 border border-brand-primary/40 rounded-md shadow-sm text-sm font-medium text-brand-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
               >
                 Continuar Comprando
               </Link>
@@ -113,7 +113,7 @@ function PaymentPendingContent() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-brand-primary/60">
             ¿Tienes dudas sobre tu pago? {' '}
             <Link href="/contacto" className="text-brand-primary hover:text-brand-primary font-medium">
               Contáctanos

@@ -63,11 +63,11 @@ export default function PCFactoryBanner({
   }
 
   return (
-    <section className="bg-white py-8">
+    <section className="bg-brand-neutral-dark/80 py-8">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
             {title}
           </h2>
           
@@ -76,15 +76,15 @@ export default function PCFactoryBanner({
             <div className="flex space-x-2">
               <button
                 onClick={() => setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
-                className="p-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors"
+                className="p-2 rounded-full border border-brand-primary/40 hover:bg-brand-neutral-dark transition-colors"
               >
-                <ChevronLeftIcon className="h-5 w-5 text-gray-600" />
+                <ChevronLeftIcon className="h-5 w-5 text-brand-primary/80" />
               </button>
               <button
                 onClick={() => setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
-                className="p-2 rounded-full border border-gray-300 hover:bg-gray-50 transition-colors"
+                className="p-2 rounded-full border border-brand-primary/40 hover:bg-brand-neutral-dark transition-colors"
               >
-                <ChevronRightIcon className="h-5 w-5 text-gray-600" />
+                <ChevronRightIcon className="h-5 w-5 text-brand-primary/80" />
               </button>
             </div>
           )}
@@ -103,10 +103,10 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-brand-primary-300"
+                      className="bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-brand-primary-300"
                     >
                       {/* Product Image */}
-                      <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
+                      <div className="relative aspect-[4/3] bg-brand-neutral-dark overflow-hidden">
                         <img
                           src={product.imagen || ''}
                           alt={product.nombre || 'Producto'}
@@ -131,7 +131,7 @@ export default function PCFactoryBanner({
                       {/* Product Info */}
                       <div className="p-3">
                         {/* Product Name */}
-                        <h3 className="text-sm font-medium text-gray-900 line-clamp-2 mb-2 group-hover:text-brand-primary600 transition-colors">
+                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-brand-primary600 transition-colors">
                           {product.nombre || 'Producto'}
                         </h3>
                         
@@ -140,7 +140,7 @@ export default function PCFactoryBanner({
                           {/* Original Price */}
                           {((product.precioOriginal && product.precioOriginal > (product.precio || 0)) || 
                             false) && (
-                            <div className="text-xs text-gray-500 line-through">
+                            <div className="text-xs text-brand-primary/60 line-through">
                               {formatPrice(product.precioOriginal || 0)}
                             </div>
                           )}

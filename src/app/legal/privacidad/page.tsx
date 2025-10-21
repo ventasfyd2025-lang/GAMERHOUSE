@@ -5,14 +5,14 @@ export default function PrivacidadPage() {
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">
+          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-brand-primary/30 p-8">
+            <h1 className="text-3xl font-bold text-white mb-6">
               Política de Privacidad
             </h1>
 
-            <div className="prose prose-orange max-w-none space-y-6 text-gray-700">
+            <div className="prose prose-orange max-w-none space-y-6 text-brand-primary">
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   1. Información que Recopilamos
                 </h2>
                 <p>
@@ -22,7 +22,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   2. Uso de la Información
                 </h2>
                 <p>
@@ -37,7 +37,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   3. Protección de Datos
                 </h2>
                 <p>
@@ -47,7 +47,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   4. Compartir Información
                 </h2>
                 <p>
@@ -57,7 +57,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   5. Cookies
                 </h2>
                 <p>
@@ -67,7 +67,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   6. Tus Derechos
                 </h2>
                 <p>
@@ -77,7 +77,7 @@ export default function PrivacidadPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   7. Contacto
                 </h2>
                 <p>
@@ -88,7 +88,7 @@ export default function PrivacidadPage() {
                 </p>
               </section>
 
-              <p className="text-sm text-gray-500 mt-8">
+              <p className="text-sm text-brand-primary/60 mt-8">
                 Última actualización: {new Date().toLocaleDateString('es-CL')}
               </p>
             </div>

@@ -124,7 +124,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       case 'adjustment':
         return <AdjustmentsHorizontalIcon className="h-4 w-4 text-blue-600" />;
       default:
-        return <ClockIcon className="h-4 w-4 text-gray-600" />;
+        return <ClockIcon className="h-4 w-4 text-brand-primary/80" />;
     }
   };
 
@@ -155,26 +155,26 @@ export default function StockManagement({ productId, className }: StockManagemen
 
   if (productsLoading) {
     return (
-      <div className={`bg-white rounded-lg shadow p-6 ${className}`}>
+      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-          <div className="h-32 bg-gray-200 rounded"></div>
+          <div className="h-6 bg-brand-neutral-light rounded w-1/4"></div>
+          <div className="h-32 bg-brand-neutral-light rounded"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-white rounded-lg shadow ${className}`}>
-      <div className="p-6 border-b border-gray-200">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+    <div className={`bg-brand-neutral-dark/80 rounded-lg shadow ${className}`}>
+      <div className="p-6 border-b border-brand-primary/30">
+        <h2 className="text-xl font-semibold text-white mb-4">
           Gestión de Stock
         </h2>
 
         {/* Product Selector */}
         {!productId && (
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-brand-primary mb-2">
               Seleccionar Producto
             </label>
             <select
@@ -183,7 +183,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 const product = products.find(p => p.id === e.target.value);
                 if (product) handleProductSelect(product);
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Seleccione un producto...</option>
               {products.map((product) => (
@@ -197,9 +197,9 @@ export default function StockManagement({ productId, className }: StockManagemen
 
         {/* Selected Product Info */}
         {selectedProduct && (
-          <div className="bg-gray-50 rounded-lg p-4 mb-4">
+          <div className="bg-brand-neutral-dark rounded-lg p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-white">
                 {selectedProduct.nombre}
               </h3>
               <div className="flex items-center space-x-2">
@@ -219,16 +219,16 @@ export default function StockManagement({ productId, className }: StockManagemen
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-bold text-white">
                   {selectedProduct.stock}
                 </div>
-                <div className="text-sm text-gray-600">Stock Actual</div>
+                <div className="text-sm text-brand-primary/80">Stock Actual</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-brand-primary600">
                   5
                 </div>
-                <div className="text-sm text-gray-600">Stock Mínimo</div>
+                <div className="text-sm text-brand-primary/80">Stock Mínimo</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-600">
@@ -237,7 +237,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     currency: 'CLP'
                   })}
                 </div>
-                <div className="text-sm text-gray-600">Precio</div>
+                <div className="text-sm text-brand-primary/80">Precio</div>
               </div>
             </div>
 
@@ -269,7 +269,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       {/* Transactions History */}
       {selectedProduct && (
         <div className="p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <h3 className="text-lg font-medium text-white mb-4">
             Historial de Movimientos
           </h3>
 
@@ -278,24 +278,24 @@ export default function StockManagement({ productId, className }: StockManagemen
               {transactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                  className="flex items-center justify-between p-3 bg-brand-neutral-dark rounded-lg"
                 >
                   <div className="flex items-center space-x-3">
                     {getTransactionIcon(transaction.type)}
                     <div>
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-white">
                         {getTransactionTypeText(transaction.type)}
                         {transaction.orderId && (
-                          <span className="text-xs text-gray-500 ml-2">
+                          <span className="text-xs text-brand-primary/60 ml-2">
                             (Orden: {transaction.orderId.slice(-6)})
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-brand-primary/60">
                         {new Date(transaction.createdAt).toLocaleString('es-CL')}
                       </div>
                       {transaction.reason && (
-                        <div className="text-xs text-gray-600 mt-1">
+                        <div className="text-xs text-brand-primary/80 mt-1">
                           {transaction.reason}
                         </div>
                       )}
@@ -308,7 +308,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     }`}>
                       {transaction.quantity > 0 ? '+' : ''}{transaction.quantity}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-brand-primary/60">
                       {transaction.previousStock} → {transaction.newStock}
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               ))}
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-brand-primary/60">
               No hay movimientos registrados para este producto
             </div>
           )}
@@ -326,14 +326,14 @@ export default function StockManagement({ productId, className }: StockManagemen
       {/* Restock Modal */}
       {showRestockModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <div className="bg-brand-neutral-dark/80 rounded-lg p-6 w-full max-w-md">
+            <h3 className="text-lg font-medium text-white mb-4">
               Reabastecer Producto
             </h3>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-brand-primary mb-1">
                   Cantidad a agregar
                 </label>
                 <input
@@ -341,20 +341,20 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="1"
                   value={restockData.quantity}
                   onChange={(e) => setRestockData(prev => ({ ...prev, quantity: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Ej: 50"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-brand-primary mb-1">
                   Motivo (opcional)
                 </label>
                 <input
                   type="text"
                   value={restockData.reason}
                   onChange={(e) => setRestockData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Ej: Compra a proveedor"
                 />
               </div>
@@ -386,7 +386,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowRestockModal(false);
                   setRestockData({ quantity: '', reason: '' });
                 }}
-                className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-brand-primary py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>
@@ -398,14 +398,14 @@ export default function StockManagement({ productId, className }: StockManagemen
       {/* Stock Adjustment Modal */}
       {showAdjustModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
+          <div className="bg-brand-neutral-dark/80 rounded-lg p-6 w-full max-w-md">
+            <h3 className="text-lg font-medium text-white mb-4">
               Ajustar Stock
             </h3>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-brand-primary mb-1">
                   Nuevo stock
                 </label>
                 <input
@@ -413,19 +413,19 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="0"
                   value={adjustmentData.newStock}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, newStock: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-brand-primary mb-1">
                   Motivo del ajuste
                 </label>
                 <input
                   type="text"
                   value={adjustmentData.reason}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Ej: Corrección de inventario"
                   required
                 />
@@ -464,7 +464,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowAdjustModal(false);
                   setAdjustmentData({ newStock: '', reason: '' });
                 }}
-                className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-brand-primary py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>

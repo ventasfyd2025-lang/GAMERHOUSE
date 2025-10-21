@@ -234,7 +234,7 @@ export default function OrderDetailPage() {
       case 'shipped': return 'bg-purple-100 text-purple-800';
       case 'delivered': return 'bg-green-100 text-green-800';
       case 'cancelled': return 'bg-brand-neutral-light text-cyber-pink';
-      default: return 'bg-gray-100 text-gray-800';
+      default: return 'bg-brand-neutral-light text-white';
     }
   };
 
@@ -253,7 +253,7 @@ export default function OrderDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-brand-primary"></div>
       </div>
     );
@@ -261,9 +261,9 @@ export default function OrderDetailPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Pedido no encontrado</h1>
+          <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <button
             onClick={() => window.close()}
             className="bg-brand-primary text-white px-4 py-2 rounded-lg hover:bg-brand-primary"
@@ -276,22 +276,22 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-brand-neutral-dark">
       {/* Header igual al cliente */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="bg-brand-neutral-dark/80 border-b border-brand-primary/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => window.close()}
-                className="text-gray-500 hover:text-gray-700 transition-colors"
+                className="text-brand-primary/60 hover:text-brand-primary transition-colors"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
               </button>
               <div>
-                <h1 className="text-xl font-semibold text-gray-900">
+                <h1 className="text-xl font-semibold text-white">
                   Admin - Pedido #{order.id.slice(-8).toUpperCase()}
                 </h1>
                 <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
@@ -301,10 +301,10 @@ export default function OrderDetailPage() {
             </div>
 
             <div className="text-right">
-              <p className="text-lg font-bold text-gray-900">
+              <p className="text-lg font-bold text-white">
                 {formatPrice(order.total)}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-brand-primary/80">
                 {order.items.length} producto{order.items.length > 1 ? 's' : ''}
               </p>
             </div>
@@ -317,18 +317,18 @@ export default function OrderDetailPage() {
           {/* Sidebar izquierdo - Información del Pedido */}
           <div className="lg:col-span-1 space-y-6">
             {/* Estado del Pedido - Admin Controls */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Control de Estado</h3>
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Control de Estado</h3>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-base font-semibold text-gray-700 mb-2">
+                  <label className="block text-base font-semibold text-brand-primary mb-2">
                     Actualizar Estado
                   </label>
                   <select
                     value={order.status}
                     onChange={(e) => updateOrderStatus(e.target.value as Order['status'])}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary text-sm"
+                    className="block w-full px-3 py-2 border border-brand-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-brand-primary focus:border-brand-primary text-sm"
                   >
                     <option value="pending">Pendiente</option>
                     <option value="pending_verification">Verificando Pago</option>
@@ -343,38 +343,38 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Información del Cliente */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Información del Cliente</h3>
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               <div className="space-y-2">
                 <div>
-                  <p className="text-base font-semibold text-gray-500">Nombre</p>
-                  <p className="text-gray-900">{order.customerName}</p>
+                  <p className="text-base font-semibold text-brand-primary/60">Nombre</p>
+                  <p className="text-white">{order.customerName}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-gray-500">Email</p>
-                  <p className="text-gray-900">{order.customerEmail}</p>
+                  <p className="text-base font-semibold text-brand-primary/60">Email</p>
+                  <p className="text-white">{order.customerEmail}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-gray-500">Teléfono</p>
-                  <p className="text-gray-900">{order.customerPhone}</p>
+                  <p className="text-base font-semibold text-brand-primary/60">Teléfono</p>
+                  <p className="text-white">{order.customerPhone}</p>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <dt className="text-base font-semibold text-gray-500">RUT</dt>
-                  <p className="text-gray-900">{order.customerRut || 'No proporcionado'}</p>
+                  <dt className="text-base font-semibold text-brand-primary/60">RUT</dt>
+                  <p className="text-white">{order.customerRut || 'No proporcionado'}</p>
                 </div>
                 {order.shippingAddress && (
                   <div>
-                    <p className="text-base font-semibold text-gray-500">Dirección</p>
-                    <p className="text-gray-900 text-sm">{order.shippingAddress}</p>
+                    <p className="text-base font-semibold text-brand-primary/60">Dirección</p>
+                    <p className="text-white text-sm">{order.shippingAddress}</p>
                   </div>
                 )}
               </div>
             </div>
 
             {/* Resumen del Pedido */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Resumen del Pedido</h3>
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               <div className="space-y-3">
                 {order.items.map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
@@ -386,8 +386,8 @@ export default function OrderDetailPage() {
                       />
                     )}
                     <div className="flex-1">
-                      <p className="text-base font-semibold text-gray-900">{item.nombre}</p>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-base font-semibold text-white">{item.nombre}</p>
+                      <p className="text-xs text-brand-primary/80">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -406,8 +406,8 @@ export default function OrderDetailPage() {
               <div className="mt-4 pt-3 border-t">
                 <div className="space-y-2">
                   <div>
-                    <p className="text-base font-semibold text-gray-500">Método de Pago</p>
-                    <p className="text-gray-900">{order.paymentMethod || 'No especificado'}</p>
+                    <p className="text-base font-semibold text-brand-primary/60">Método de Pago</p>
+                    <p className="text-white">{order.paymentMethod || 'No especificado'}</p>
                   </div>
                   {order.paymentProof && (
                     <div>
@@ -421,12 +421,12 @@ export default function OrderDetailPage() {
 
           {/* Chat Principal - Igual al cliente */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header con gradiente */}
               <div className="bg-gradient-to-r from-brand-primary to-brand-primary text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-brand-neutral-dark/80 rounded-full flex items-center justify-center">
                       <svg className="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
@@ -444,7 +444,7 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-brand-neutral-dark">
                 {chatMessages.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
@@ -452,9 +452,9 @@ export default function OrderDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.456L3 21l2.544-5.906A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                       </svg>
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Panel de Administración</h4>
-                    <p className="text-sm text-gray-600 mb-1">Comunicación con el cliente</p>
-                    <p className="text-xs text-gray-500">Los mensajes aparecerán aquí</p>
+                    <h4 className="font-semibold text-white mb-2">Panel de Administración</h4>
+                    <p className="text-sm text-brand-primary/80 mb-1">Comunicación con el cliente</p>
+                    <p className="text-xs text-brand-primary/60">Los mensajes aparecerán aquí</p>
                   </div>
                 ) : (
                   chatMessages.map((message) => (
@@ -472,14 +472,14 @@ export default function OrderDetailPage() {
 
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-gray-500 mb-1 px-3">{message.userName}</div>
+                          <div className="text-xs text-brand-primary/60 mb-1 px-3">{message.userName}</div>
                         )}
 
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-brand-primary text-white'
-                              : 'bg-white text-gray-900 border border-gray-200'
+                              : 'bg-brand-neutral-dark/80 text-white border border-brand-primary/30'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -504,7 +504,7 @@ export default function OrderDetailPage() {
                         </div>
 
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-brand-primary/60">
                             {message.timestamp.toLocaleString()}
                           </span>
                         </div>
@@ -523,7 +523,7 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-gray-200 p-4 bg-white rounded-b-lg">
+              <div className="border-t border-brand-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative">
@@ -540,7 +540,7 @@ export default function OrderDetailPage() {
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-brand-primary/60 mt-1">
                       {selectedImage?.name}
                     </p>
                   </div>
@@ -553,14 +553,14 @@ export default function OrderDetailPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
                       placeholder="Responder al cliente..."
-                      className="w-full resize-none border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-brand-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent max-h-24"
                       rows={2}
                       disabled={sendingMessage}
                     />
                   </div>
 
                   {/* Image Upload Button */}
-                  <label className="cursor-pointer bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-xl transition-all duration-200 hover:scale-105">
+                  <label className="cursor-pointer bg-brand-neutral-light hover:bg-brand-neutral-light text-brand-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
                     <PhotoIcon className="h-5 w-5" />
                     <input
                       type="file"
@@ -586,7 +586,7 @@ export default function OrderDetailPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-gray-500 mt-2 text-center">
+                <p className="text-xs text-brand-primary/60 mt-2 text-center">
                   Comunicación directa con el cliente • {uploadingImage ? 'Subiendo imagen...' : 'Puedes enviar texto e imágenes'}
                 </p>
               </div>
@@ -596,9 +596,9 @@ export default function OrderDetailPage() {
 
         {/* Payment Proof estilo cliente */}
         {order.paymentProof && (
-          <div className="bg-white rounded-lg shadow-md overflow-hidden mt-8">
-            <div className="bg-gray-50 px-6 py-4 border-b">
-              <h4 className="font-medium text-gray-900">Comprobante de Pago</h4>
+          <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden mt-8">
+            <div className="bg-brand-neutral-dark px-6 py-4 border-b">
+              <h4 className="font-medium text-white">Comprobante de Pago</h4>
             </div>
             <div className="p-6">
               <div className="text-center">
@@ -608,7 +608,7 @@ export default function OrderDetailPage() {
                 className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
                 style={{ maxHeight: '500px' }}
               />
-              <p className="mt-2 text-gray-600">
+              <p className="mt-2 text-brand-primary/80">
                 <a
                   href={order.paymentProof}
                   target="_blank"

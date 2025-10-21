@@ -195,10 +195,10 @@ export default function HomeClient() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-16">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
             <div className="text-cyber-pink text-6xl mb-4">❌</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Error al cargar productos</h2>
-            <p className="text-gray-600 text-lg">{error}</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Error al cargar productos</h2>
+            <p className="text-brand-primary/80 text-lg">{error}</p>
           </div>
         </div>
       </div>
@@ -233,14 +233,14 @@ export default function HomeClient() {
 
       {/* PRIORIDAD 1.5: Layouts Pinterest de categorías promocionales - solo en página principal */}
       {shouldShowBanner && (
-        <section className="py-8 sm:py-12 lg:py-16 bg-white">
+        <section className="py-8 sm:py-12 lg:py-16 bg-brand-neutral-dark/80">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-gray-900 text-center bg-gradient-to-r from-brand-primary to-brand-primary-hover bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-brand-primary to-brand-primary-hover bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
-                <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-brand-primary/80 max-w-2xl mx-auto">
                   Descubre selecciones rápidas con lo más deseado de cada categoría.
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function HomeClient() {
                 
                 {/* Promoción grande - Electrónicos */}
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
-                  <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[350px]">
                       <div className="bg-gradient-to-br from-blue-50 to-purple-100 h-full w-full overflow-hidden">
                         <img
@@ -271,7 +271,7 @@ export default function HomeClient() {
 
                 {/* Promoción alta - Moda */}
                 <Link href="/?category=moda" className="col-span-2 sm:col-span-1 md:row-span-2 group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[300px]">
                       <div className="bg-gradient-to-br from-pink-50 to-brand-neutral-light h-full w-full overflow-hidden">
                         <Image
@@ -296,7 +296,7 @@ export default function HomeClient() {
 
                 {/* Promociones normales */}
                 <Link href="/?category=electrohogar" className="group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-green-50 to-emerald-100 h-full w-full overflow-hidden">
                         <img
@@ -314,7 +314,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?category=calzado" className="group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-amber-50 to-brand-neutral-light h-full w-full overflow-hidden">
                         <img
@@ -332,7 +332,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?category=fitness" className="group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-brand-neutral-light to-rose-100 h-full w-full overflow-hidden">
                         <img
@@ -350,7 +350,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?filter=ofertas" className="group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-cyber-pink to-cyber-pink h-full w-full overflow-hidden flex items-center justify-center">
                         <div className="text-white text-center">
@@ -363,7 +363,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?filter=nuevos" className="group">
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-green-500 to-green-600 h-full w-full overflow-hidden flex items-center justify-center">
                         <div className="text-white text-center">
@@ -385,24 +385,24 @@ export default function HomeClient() {
       <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header - Modern Admin Style */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                   <span className="text-white text-lg">🛍️</span>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-2xl font-bold text-white">
                     {getPageTitle()}
                   </h2>
-                  <p className="text-gray-600 text-sm">Descubre nuestros productos</p>
+                  <p className="text-brand-primary/80 text-sm">Descubre nuestros productos</p>
                 </div>
               </div>
 
               {/* Filter Controls - Modern Style */}
               <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-brand-primary/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-brand-neutral-dark/80 hover:border-brand-primary-300 transition-all shadow-sm"
                   value={sortBy}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -423,7 +423,7 @@ export default function HomeClient() {
                 </select>
 
                 <select
-                  className="px-4 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-white hover:border-brand-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-brand-primary/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary500 bg-brand-neutral-dark/80 hover:border-brand-primary-300 transition-all shadow-sm"
                   value={priceRange}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -457,7 +457,7 @@ export default function HomeClient() {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
                   {[...Array(10)].map((_, i) => (
-                    <div key={i} className="bg-white rounded-lg shadow-md p-3 sm:p-4">
+                    <div key={i} className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-3 sm:p-4">
                       <div className="h-32 sm:h-40 lg:h-48 bg-gray-300 rounded mb-3 sm:mb-4"></div>
                       <div className="h-3 sm:h-4 bg-gray-300 rounded mb-2"></div>
                       <div className="h-4 sm:h-6 bg-gray-300 rounded w-16 sm:w-24"></div>
@@ -484,19 +484,19 @@ export default function HomeClient() {
                 <>
                   <MasonryProductGrid products={displayProducts} layoutConfig={layoutPatternsConfig} />
                   
-                  <div className="text-center mt-8 text-gray-600">
+                  <div className="text-center mt-8 text-brand-primary/80">
                     Mostrando {displayProducts.length} productos
                   </div>
                 </>
               )}
             </>
           ) : (
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
               <div className="text-brand-primary400 text-6xl mb-4">🔍</div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+              <h3 className="text-2xl font-bold text-white mb-2">
                 No se encontraron productos
               </h3>
-              <p className="text-gray-600 text-lg">
+              <p className="text-brand-primary/80 text-lg">
                 Intenta ajustar los filtros o buscar otro término
               </p>
             </div>

@@ -13,10 +13,10 @@ const LanguageSwitcher = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-sm font-semibold text-white transition hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white"
+      className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-brand-neutral-dark/80/15 px-3 py-1 text-sm font-semibold text-white transition hover:bg-brand-neutral-dark/80/30 focus:outline-none focus:ring-2 focus:ring-white"
       aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
     >
-      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-bold text-[var(--brand-primary)]">
+      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-neutral-dark/80 text-xs font-bold text-[var(--brand-primary)]">
         {language === 'es' ? 'ES' : 'EN'}
       </span>
       <span className="hidden sm:inline">

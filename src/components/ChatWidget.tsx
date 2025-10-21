@@ -172,7 +172,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-gray-200">
+        <div className="bg-brand-neutral-dark/80 rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-brand-primary/30">
           {/* Header */}
           <div className="bg-brand-primary text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -195,7 +195,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 ? (
-              <div className="text-center text-gray-500 text-sm py-8">
+              <div className="text-center text-brand-primary/60 text-sm py-8">
                 <ChatBubbleLeftRightIcon className="h-8 w-8 mx-auto mb-2 text-gray-300" />
                 <p>¡Hola! ¿En qué podemos ayudarte?</p>
                 <p className="text-xs mt-1">Escríbenos tu consulta</p>
@@ -209,7 +209,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                   <div
                     className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm ${
                       message.isAdmin
-                        ? 'bg-gray-100 text-gray-900'
+                        ? 'bg-brand-neutral-light text-white'
                         : 'bg-brand-primary text-white'
                     }`}
                   >
@@ -221,7 +221,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                     )}
                     <p className="whitespace-pre-wrap">{message.message}</p>
                     <p className={`text-xs mt-1 ${
-                      message.isAdmin ? 'text-gray-500' : 'text-brand-primary100'
+                      message.isAdmin ? 'text-brand-primary/60' : 'text-brand-primary100'
                     }`}>
                       {formatTime(message.timestamp, {
                         hour: '2-digit',
@@ -236,14 +236,14 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
           </div>
 
           {/* Input */}
-          <div className="border-t border-gray-200 p-4">
+          <div className="border-t border-brand-primary/30 p-4">
             <div className="flex space-x-2">
               <textarea
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Escribe tu mensaje..."
-                className="flex-1 resize-none border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                className="flex-1 resize-none border border-brand-primary/40 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 rows={2}
                 disabled={loading}
               />
@@ -260,7 +260,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
               </button>
             </div>
             
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-brand-primary/60 mt-2">
               Nuestro equipo te responderá lo antes posible
             </p>
           </div>

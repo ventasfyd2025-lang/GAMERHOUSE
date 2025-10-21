@@ -415,8 +415,8 @@ export default function RetailHomepage() {
           {/* Featured Products Carousel */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="h-8 bg-gray-200 rounded w-1/3"></div>
-              <div className="h-4 bg-gray-200 rounded w-20"></div>
+              <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
+              <div className="h-4 bg-brand-neutral-light rounded w-20"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               <ProductCardSkeleton count={4} />
@@ -429,8 +429,8 @@ export default function RetailHomepage() {
           {/* Best Sellers Carousel */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="h-8 bg-gray-200 rounded w-1/3"></div>
-              <div className="h-4 bg-gray-200 rounded w-20"></div>
+              <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
+              <div className="h-4 bg-brand-neutral-light rounded w-20"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               <ProductCardSkeleton count={4} />
@@ -636,10 +636,10 @@ const MAX_ALL_PRODUCTS_HOME = 10;
       <>
         <main className="w-full flex flex-col gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-white mb-2">
               {getFilterTitle()}
             </h1>
-            <p className="text-gray-600">
+            <p className="text-brand-primary/80">
               {filteredProducts.length} productos encontrados
             </p>
           </div>
@@ -647,10 +647,10 @@ const MAX_ALL_PRODUCTS_HOME = 10;
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 No se encontraron productos
               </h3>
-              <p className="text-gray-500 mb-6">
+              <p className="text-brand-primary/60 mb-6">
                 Intenta con otros términos de búsqueda o explora nuestras categorías
               </p>
               <Link
@@ -667,7 +667,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
-              <div className="text-center text-gray-600 mt-6">
+              <div className="text-center text-brand-primary/80 mt-6">
                 Mostrando {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'}
               </div>
             </>
@@ -692,8 +692,8 @@ const MAX_ALL_PRODUCTS_HOME = 10;
           {(() => {            return bannerSlides?.length > 0 ? (
               <BannerCarousel banners={bannerSlides} autoPlay={true} autoPlayInterval={3000} />
             ) : (
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <p className="text-gray-500">No hay banners configurados</p>
+              <div className="h-64 bg-brand-neutral-light flex items-center justify-center">
+                <p className="text-brand-primary/60">No hay banners configurados</p>
               </div>
             );
           })()}
@@ -702,7 +702,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Category Promotions Pinterest Grid */}
         {homepageConfig.promotionalSections && homepageConfig.promotionalSections.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                   <span className="text-white text-lg">✨</span>
@@ -711,7 +711,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
                     Colecciones Destacadas
                   </h2>
-                  <p className="mt-1 text-sm sm:text-base text-gray-600 max-w-2xl">
+                  <p className="mt-1 text-sm sm:text-base text-brand-primary/80 max-w-2xl">
                     Curamos lo mejor de cada categoría para que encuentres ese próximo favorito en segundos.
                   </p>
                 </div>
@@ -781,7 +781,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   href={getLink()}
                   className={`${getPositionClasses()} group`}
                 >
-                  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className={`relative flex-1 ${getHeightClasses()}`}>
                       <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 h-full w-full overflow-hidden">
                         {section.imageUrl ? (
@@ -794,7 +794,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                             sizes="(max-width: 1024px) 100vw, 50vw"
                           />
                         ) : (
-                          <div className="absolute inset-0 flex items-center justify-center text-3xl text-gray-400">
+                          <div className="absolute inset-0 flex items-center justify-center text-3xl text-brand-primary/50">
                             📸
                           </div>
                         )}
@@ -894,7 +894,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Main Masonry Product Grid */}
         {products.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
@@ -904,7 +904,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-brand-primary to-cyber-pink bg-clip-text text-transparent">
                       Nuestro Catálogo
                     </h2>
-                    <p className="text-sm sm:text-base text-gray-600">
+                    <p className="text-sm sm:text-base text-brand-primary/80">
                       Una muestra de lo último que llegó. Pulsa "Ver todos los productos" para explorar el catálogo completo.
                     </p>
                   </div>
@@ -952,18 +952,18 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {home.length > 0 && (
           <section className="space-y-6">
             <div className="text-center space-y-2">
-              <h2 className="text-3xl font-bold text-gray-900 text-center bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+              <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 🏠 Hogar & Cocina
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-brand-primary/80 max-w-2xl mx-auto">
                 Ambientaciones cálidas, utensilios inteligentes y todo lo que tu casa necesita para destacar.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {getDiverseProducts(home, 4).map((product) => (
-                <div key={product.id} className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
+                <div key={product.id} className="bg-brand-neutral-dark/80 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
                   {/* Image */}
-                  <div className="relative h-48 bg-gray-100">
+                  <div className="relative h-48 bg-brand-neutral-light">
                     {product.imagen ? (
                       <Image
                         src={product.imagen}
@@ -974,7 +974,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-6xl">🏠</div>
+                      <div className="w-full h-full flex items-center justify-center text-brand-primary/50 text-6xl">🏠</div>
                     )}
                     {product.oferta && (
                       <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
@@ -989,14 +989,14 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       <div className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-2">
                         {product.categoria}
                       </div>
-                      <h3 className="text-base font-bold text-gray-900 line-clamp-2 mb-3">
+                      <h3 className="text-base font-bold text-white line-clamp-2 mb-3">
                         {product.nombre}
                       </h3>
                     </div>
 
                     {/* Price */}
                     <div className="mb-4">
-                      <div className="text-xl font-bold text-gray-900">
+                      <div className="text-xl font-bold text-white">
                         {formatPrice(product.precio)}
                       </div>
                     </div>

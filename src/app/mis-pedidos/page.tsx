@@ -181,7 +181,7 @@ export default function OrdersPage() {
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-brand-primary mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg font-medium">Cargando...</p>
+          <p className="text-brand-primary/80 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -195,15 +195,15 @@ export default function OrdersPage() {
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light mb-8">
+        <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white text-lg">📦</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">Mis Pedidos</h1>
-                <p className="text-gray-600 text-sm">Historial y seguimiento de tus compras</p>
+                <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
+                <p className="text-brand-primary/80 text-sm">Historial y seguimiento de tus compras</p>
               </div>
             </div>
 
@@ -225,10 +225,10 @@ export default function OrdersPage() {
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-primary"></div>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">No tienes pedidos aún</h3>
-            <p className="text-lg text-gray-600 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
+            <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
+            <p className="text-lg text-brand-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
               className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
@@ -244,16 +244,16 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden hover:shadow-2xl transition-all">
+                <div key={order.id} className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden hover:shadow-2xl transition-all">
                   {/* Order Header */}
                   <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light px-6 py-4 border-b border-brand-neutral-light">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900">
+                          <h3 className="text-lg font-semibold text-white">
                             Pedido #{order.id.slice(-8).toUpperCase()}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-brand-primary/80">
                             {formatDateTime(order.createdAt)}
                           </p>
                         </div>
@@ -266,10 +266,10 @@ export default function OrdersPage() {
                         </div>
                         
                         <div className="text-right">
-                          <p className="text-lg font-bold text-gray-900">
+                          <p className="text-lg font-bold text-white">
                             {formatPrice(order.total)}
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-brand-primary/80">
                             {order.items.length} producto{order.items.length > 1 ? 's' : ''}
                           </p>
                         </div>
@@ -282,7 +282,7 @@ export default function OrdersPage() {
                     {/* Items */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-3">Productos</h4>
+                        <h4 className="font-medium text-white mb-3">Productos</h4>
                         <div className="space-y-3">
                           {order.items.map((item, index) => (
                             <div key={index} className="flex items-center space-x-3">
@@ -295,12 +295,12 @@ export default function OrdersPage() {
                                 />
                               )}
                               <div className="flex-1">
-                                <p className="font-medium text-gray-900">{item.nombre}</p>
-                                <p className="text-sm text-gray-600">
+                                <p className="font-medium text-white">{item.nombre}</p>
+                                <p className="text-sm text-brand-primary/80">
                                   Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                                 </p>
                               </div>
-                              <p className="font-medium text-gray-900">
+                              <p className="font-medium text-white">
                                 {formatPrice(item.precio * item.cantidad)}
                               </p>
                             </div>
@@ -309,8 +309,8 @@ export default function OrdersPage() {
                       </div>
 
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-3">Información de Envío</h4>
-                        <div className="text-sm text-gray-600 space-y-1">
+                        <h4 className="font-medium text-white mb-3">Información de Envío</h4>
+                        <div className="text-sm text-brand-primary/80 space-y-1">
                           <p><span className="font-medium">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
                           <p><span className="font-medium">Email:</span> {order.shippingAddress.email}</p>
                           <p><span className="font-medium">Teléfono:</span> {order.shippingAddress.phone}</p>
@@ -325,7 +325,7 @@ export default function OrdersPage() {
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-6 pt-4 border-t border-gray-200">
+                    <div className="mt-6 pt-4 border-t border-brand-primary/30">
                       <div className="flex items-center justify-between">
                         <div className="flex space-x-3">
                           <Link
@@ -339,7 +339,7 @@ export default function OrdersPage() {
                           {order.status === 'shipped' && order.trackingNumber && (
                             <button
                               onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
-                              className="flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                              className="flex items-center px-4 py-2 border border-brand-primary/40 text-brand-primary rounded-lg hover:bg-brand-neutral-dark transition-colors"
                             >
                               <Truck className="h-4 w-4 mr-2" />
                               Rastrear Envío
@@ -347,7 +347,7 @@ export default function OrdersPage() {
                           )}
                         </div>
 
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-brand-primary/60">
                           Última actualización: {formatDate(order.updatedAt)}
                         </div>
                       </div>

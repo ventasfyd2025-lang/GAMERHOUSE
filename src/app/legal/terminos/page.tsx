@@ -5,14 +5,14 @@ export default function TerminosPage() {
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">
+          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-brand-primary/30 p-8">
+            <h1 className="text-3xl font-bold text-white mb-6">
               Términos y Condiciones
             </h1>
 
-            <div className="prose prose-orange max-w-none space-y-6 text-gray-700">
+            <div className="prose prose-orange max-w-none space-y-6 text-brand-primary">
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   1. Aceptación de Términos
                 </h2>
                 <p>
@@ -22,7 +22,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   2. Productos y Precios
                 </h2>
                 <ul className="list-disc pl-6 space-y-2">
@@ -34,7 +34,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   3. Proceso de Compra
                 </h2>
                 <p>
@@ -44,7 +44,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   4. Métodos de Pago
                 </h2>
                 <p>Aceptamos los siguientes métodos de pago:</p>
@@ -55,7 +55,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   5. Envíos y Entregas
                 </h2>
                 <p>
@@ -65,7 +65,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   6. Devoluciones y Cambios
                 </h2>
                 <p>
@@ -75,7 +75,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   7. Garantía
                 </h2>
                 <p>
@@ -85,7 +85,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   8. Responsabilidad
                 </h2>
                 <p>
@@ -95,7 +95,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   9. Modificaciones
                 </h2>
                 <p>
@@ -105,7 +105,7 @@ export default function TerminosPage() {
               </section>
 
               <section>
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                <h2 className="text-xl font-semibold text-white mb-3">
                   10. Contacto
                 </h2>
                 <p>
@@ -116,7 +116,7 @@ export default function TerminosPage() {
                 </p>
               </section>
 
-              <p className="text-sm text-gray-500 mt-8">
+              <p className="text-sm text-brand-primary/60 mt-8">
                 Última actualización: {new Date().toLocaleDateString('es-CL')}
               </p>
             </div>

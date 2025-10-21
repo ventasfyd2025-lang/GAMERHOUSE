@@ -138,7 +138,7 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <span className="ml-3 text-gray-600">Cargando producto...</span>
+            <span className="ml-3 text-brand-primary/80">Cargando producto...</span>
           </div>
         </div>
       </Layout>
@@ -151,7 +151,7 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-20">
             <div className="text-cyber-pink text-6xl mb-4">❌</div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            <h1 className="text-2xl font-bold text-white mb-4">
               {error || 'Producto no encontrado'}
             </h1>
             <Link 
@@ -171,21 +171,21 @@ export default function ProductPage() {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-          <Link href="/" className="hover:text-gray-700">Inicio</Link>
+        <nav className="flex items-center space-x-2 text-sm text-brand-primary/60 mb-8">
+          <Link href="/" className="hover:text-brand-primary">Inicio</Link>
           <span>/</span>
-          <Link href={`/?category=${product.categoria}`} className="hover:text-gray-700 capitalize">
+          <Link href={`/?category=${product.categoria}`} className="hover:text-brand-primary capitalize">
             {product.categoria}
           </Link>
           <span>/</span>
-          <span className="text-gray-900">{product.nombre}</span>
+          <span className="text-white">{product.nombre}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Image Gallery */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
+            <div className="relative aspect-square bg-brand-neutral-light rounded-lg overflow-hidden">
               {(() => {
                 const images = product.imagenes && product.imagenes.length > 0
                   ? product.imagenes
@@ -204,7 +204,7 @@ export default function ProductPage() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-gray-400 text-8xl">📦</span>
+                    <span className="text-brand-primary/50 text-8xl">📦</span>
                   </div>
                 );
               })()}
@@ -237,7 +237,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
                       )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-brand-neutral-dark/80/80 hover:bg-brand-neutral-dark/80 p-2 rounded-full shadow-lg transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -247,7 +247,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
                       )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-brand-neutral-dark/80/80 hover:bg-brand-neutral-dark/80 p-2 rounded-full shadow-lg transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -272,10 +272,10 @@ export default function ProductPage() {
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
-                      className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-md overflow-hidden border-3 transition-all ${
+                      className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-brand-neutral-dark/80 rounded-md overflow-hidden border-3 transition-all ${
                         selectedImageIndex === index
                           ? 'border-green-500 border-4'
-                          : 'border-gray-300 hover:border-gray-400'
+                          : 'border-brand-primary/40 hover:border-gray-400'
                       }`}
                     >
                       <Image
@@ -295,14 +295,14 @@ export default function ProductPage() {
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl font-bold text-white mb-2">
                 {product.nombre}
               </h1>
-              <p className="text-lg text-gray-600 capitalize">
+              <p className="text-lg text-brand-primary/80 capitalize">
                 Categoría: {product.categoria}
               </p>
               {product.sku && (
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-brand-primary/60 mt-1">
                   SKU: {product.sku}
                 </p>
               )}
@@ -311,7 +311,7 @@ export default function ProductPage() {
             <div className="space-y-2">
               {product.oferta && product.precioOriginal && product.precioOriginal > product.precio ? (
                 <>
-                  <div className="text-2xl text-gray-500 line-through">
+                  <div className="text-2xl text-brand-primary/60 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
                   <div className="text-4xl font-bold text-cyber-pink">
@@ -330,8 +330,8 @@ export default function ProductPage() {
 
             {product.descripcion && (
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Descripción</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className="text-lg font-semibold text-white mb-2">Descripción</h3>
+                <p className="text-brand-primary/80 leading-relaxed">
                   {product.descripcion}
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function ProductPage() {
 
             {/* Stock Info */}
             <div className="flex items-center space-x-2">
-              <span className="text-gray-700">Stock disponible:</span>
+              <span className="text-brand-primary">Stock disponible:</span>
               <span className={`font-semibold ${
                 product.stock > 10 ? 'text-green-600' : 
                 product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
@@ -352,12 +352,12 @@ export default function ProductPage() {
               <>
                 {/* Quantity Selector */}
                 <div className="flex items-center space-x-4">
-                  <span className="text-gray-700">Cantidad:</span>
-                  <div className="flex items-center border border-gray-300 rounded-md">
+                  <span className="text-brand-primary">Cantidad:</span>
+                  <div className="flex items-center border border-brand-primary/40 rounded-md">
                     <button
                       onClick={() => handleQuantityChange(-1)}
                       disabled={quantity <= 1}
-                      className="p-2 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <MinusIcon className="h-4 w-4" />
                     </button>
@@ -365,7 +365,7 @@ export default function ProductPage() {
                     <button
                       onClick={() => handleQuantityChange(1)}
                       disabled={quantity >= product.stock}
-                      className="p-2 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <PlusIcon className="h-4 w-4" />
                     </button>
@@ -383,7 +383,7 @@ export default function ProductPage() {
                   
                   <Link
                     href="/carrito"
-                    className="block w-full text-center bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                    className="block w-full text-center bg-brand-neutral-light hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
                   >
                     Ver carrito
                   </Link>

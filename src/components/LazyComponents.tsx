@@ -12,7 +12,7 @@ export const AdminLoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center">
     <div className="text-center">
       <Spinner size="lg" />
-      <p className="mt-4 text-gray-600">Cargando panel de administración...</p>
+      <p className="mt-4 text-brand-primary/80">Cargando panel de administración...</p>
     </div>
   </div>
 )

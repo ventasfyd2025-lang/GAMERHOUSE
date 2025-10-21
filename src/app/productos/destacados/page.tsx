@@ -34,17 +34,17 @@ export default function ProductosDestacados() {
 
   if (productsLoading || homepageLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-brand-neutral-dark">
         <UnifiedHeader />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
           <div className="animate-pulse space-y-6">
-            <div className="h-8 bg-gray-200 rounded w-1/3"></div>
+            <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg shadow-md p-4 space-y-4">
-                  <div className="h-48 bg-gray-200 rounded"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-6 bg-gray-200 rounded w-1/2"></div>
+                <div key={i} className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 space-y-4">
+                  <div className="h-48 bg-brand-neutral-light rounded"></div>
+                  <div className="h-4 bg-brand-neutral-light rounded w-3/4"></div>
+                  <div className="h-6 bg-brand-neutral-light rounded w-1/2"></div>
                 </div>
               ))}
             </div>
@@ -55,15 +55,15 @@ export default function ProductosDestacados() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-brand-neutral-dark">
       <UnifiedHeader />
       
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             ⭐ Productos Destacados
           </h1>
-          <p className="text-gray-600">
+          <p className="text-brand-primary/80">
             Descubre nuestra selección especial de productos destacados
           </p>
         </div>
@@ -71,10 +71,10 @@ export default function ProductosDestacados() {
         {featuredProducts.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-white mb-2">
               No hay productos destacados
             </h3>
-            <p className="text-gray-500 mb-6">
+            <p className="text-brand-primary/60 mb-6">
               Aún no se han configurado productos destacados desde el panel de administración
             </p>
             <Link
@@ -87,9 +87,9 @@ export default function ProductosDestacados() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+              <div key={product.id} className="bg-brand-neutral-dark/80 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
                 {/* Image */}
-                <div className="relative h-48 bg-gray-100">
+                <div className="relative h-48 bg-brand-neutral-light">
                   {product.imagen ? (
                     <img
                       src={product.imagen}
@@ -97,7 +97,7 @@ export default function ProductosDestacados() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-6xl">
+                    <div className="w-full h-full flex items-center justify-center text-brand-primary/50 text-6xl">
                       📦
                     </div>
                   )}
@@ -106,8 +106,8 @@ export default function ProductosDestacados() {
                       OFERTA
                     </span>
                   )}
-                  <button className="absolute top-2 right-2 p-2 bg-white/80 rounded-full hover:bg-white transition-colors">
-                    <HeartIcon className="h-5 w-5 text-gray-600" />
+                  <button className="absolute top-2 right-2 p-2 bg-brand-neutral-dark/80/80 rounded-full hover:bg-brand-neutral-dark/80 transition-colors">
+                    <HeartIcon className="h-5 w-5 text-brand-primary/80" />
                   </button>
                 </div>
                 
@@ -116,15 +116,15 @@ export default function ProductosDestacados() {
                   <div className="text-xs text-brand-primary uppercase tracking-wide font-semibold">
                     {product.categoria}
                   </div>
-                  <h3 className="font-bold text-gray-900 line-clamp-2">
+                  <h3 className="font-bold text-white line-clamp-2">
                     {product.nombre}
                   </h3>
-                  <p className="text-sm text-gray-600 line-clamp-2">
+                  <p className="text-sm text-brand-primary/80 line-clamp-2">
                     {product.descripcion}
                   </p>
                   
                   <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-gray-900">
+                    <div className="text-xl font-bold text-white">
                       {formatPrice(product.precio)}
                     </div>
                     {product.stock > 0 ? (

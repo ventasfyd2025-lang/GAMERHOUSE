@@ -11,7 +11,7 @@ export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivEl
   return (
     <div
       className={cn(
-        'animate-pulse rounded-md bg-gray-200',
+        'animate-pulse rounded-md bg-brand-neutral-light',
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivEl
 
 export function ProductCardSkeleton() {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden">
       <Skeleton className="h-48 w-full" />
       <div className="p-4 space-y-2">
         <Skeleton className="h-4 w-3/4" />
@@ -67,7 +67,7 @@ export function AdminTableSkeleton({ rows = 5 }: { rows?: number }) {
         <Skeleton className="h-10 w-32" />
       </div>
       <div className="border rounded-lg overflow-hidden">
-        <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50">
+        <div className="grid grid-cols-4 gap-4 p-4 bg-brand-neutral-dark">
           {Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-4 w-20" />
           ))}

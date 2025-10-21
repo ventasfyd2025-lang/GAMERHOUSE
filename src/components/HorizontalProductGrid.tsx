@@ -53,7 +53,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-gray-200 hover:border-brand-primary-400 relative">
+    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-brand-primary/30 hover:border-brand-primary-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
@@ -68,7 +68,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         )}
 
         {/* Image Section - 35% width */}
-        <div className="relative w-[35%] bg-white p-3 flex items-center justify-center">
+        <div className="relative w-[35%] bg-brand-neutral-dark/80 p-3 flex items-center justify-center">
           {product.imagen ? (
             <div className="relative w-full h-full">
               <Image
@@ -88,7 +88,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         {/* Content Section - 65% width */}
         <div className="flex-1 p-3 flex flex-col justify-between">
           {/* Title */}
-          <h3 className="text-sm font-medium text-gray-700 line-clamp-2 leading-tight mb-2">
+          <h3 className="text-sm font-medium text-brand-primary line-clamp-2 leading-tight mb-2">
             {product.nombre || 'Producto sin nombre'}
           </h3>
 
@@ -96,14 +96,14 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
           <div className="space-y-2">
             {/* Original Price */}
             {product.precioOriginal && product.precioOriginal > (product.precio || 0) && (
-              <div className="text-xs text-gray-400 line-through">
+              <div className="text-xs text-brand-primary/50 line-through">
                 {formatPrice(product.precioOriginal)}
               </div>
             )}
 
             {/* Current Price with discount badge */}
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-gray-900">
+              <span className="text-lg font-bold text-white">
                 {formatPrice(product.precio ?? 0)}
               </span>
               {discountPercentage > 0 && (
@@ -126,7 +126,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               disabled={(product.stock ?? 1) === 0}
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
-                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  ? 'bg-brand-neutral-light text-brand-primary/60 cursor-not-allowed'
                   : 'bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:from-brand-primary-hover hover:to-brand-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
@@ -157,7 +157,7 @@ export default function HorizontalProductGrid({ products, title }: HorizontalPro
   return (
     <div className="space-y-6">
       {title && (
-        <h2 className="text-3xl font-bold text-gray-900 text-center bg-gradient-to-r from-[var(--brand-primary)] to-[#E67E22] bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-[var(--brand-primary)] to-[#E67E22] bg-clip-text text-transparent">
           {title}
         </h2>
       )}

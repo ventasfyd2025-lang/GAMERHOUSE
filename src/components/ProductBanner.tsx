@@ -82,7 +82,7 @@ export default function ProductBanner({
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--brand-primary)' }}>
             {title}
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600">
+          <p className="text-xl md:text-2xl text-brand-primary/80">
             {text}
           </p>
         </div>
@@ -100,12 +100,12 @@ export default function ProductBanner({
               <div key={product.id} className="w-full flex-shrink-0">
                 <div 
                   onClick={() => handleProductClick(product.id)}
-                  className="bg-white rounded-xl shadow-lg p-6 mx-2 cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="bg-brand-neutral-dark/80 rounded-xl shadow-lg p-6 mx-2 cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Product Image */}
                     <div className="md:w-1/2">
-                      <div className="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden">
+                      <div className="aspect-video w-full bg-brand-neutral-light rounded-lg overflow-hidden">
                         <img
                           src={product.imagen}
                           alt={product.nombre}
@@ -119,7 +119,7 @@ export default function ProductBanner({
                       <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#333333' }}>
                         {product.nombre}
                       </h3>
-                      <p className="text-lg text-gray-600 mb-6 line-clamp-3">
+                      <p className="text-lg text-brand-primary/80 mb-6 line-clamp-3">
                         {product.descripcion}
                       </p>
                       
@@ -133,7 +133,7 @@ export default function ProductBanner({
                         <div className="text-4xl md:text-5xl font-bold" style={{ color: '#2E7D32' }}>
                           {formatPrice(product.precio)}
                         </div>
-                        <div className="text-sm text-gray-500 mt-1">IVA incluido</div>
+                        <div className="text-sm text-brand-primary/60 mt-1">IVA incluido</div>
                       </div>
 
                       {/* CTA Button */}
@@ -160,14 +160,14 @@ export default function ProductBanner({
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronRightIcon className="h-6 w-6" />

@@ -32,7 +32,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
     : 0;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 border border-gray-200 hover:border-brand-primary-400 overflow-hidden h-full flex flex-col">
+    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 border border-brand-primary/30 hover:border-brand-primary-400 overflow-hidden h-full flex flex-col">
       {/* Badges */}
       {discountPercentage > 0 && (
         <div className="absolute top-2 left-2 z-10 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
@@ -46,7 +46,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
       )}
 
       {/* Imagen cuadrada */}
-      <div className="relative w-full aspect-square bg-white p-4">
+      <div className="relative w-full aspect-square bg-brand-neutral-dark/80 p-4">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -59,7 +59,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-50">
+          <div className="w-full h-full flex items-center justify-center bg-brand-neutral-dark">
             <span className="text-gray-300 text-5xl">📦</span>
           </div>
         )}
@@ -67,19 +67,19 @@ const ProductCard = memo(({ product }: { product: Product }) => {
 
       {/* Información */}
       <div className="p-2 flex flex-col flex-grow">
-        <h3 className="text-xs text-gray-700 line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-brand-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         <div className="mt-auto space-y-1.5">
           {product.precioOriginal && product.precioOriginal > product.precio && (
-            <div className="text-[10px] text-gray-400 line-through">
+            <div className="text-[10px] text-brand-primary/50 line-through">
               {formatPrice(product.precioOriginal)}
             </div>
           )}
 
           <div className="flex items-baseline gap-1.5">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-lg font-bold text-white">
               {formatPrice(product.precio)}
             </span>
             {discountPercentage > 0 && (
@@ -303,7 +303,7 @@ const ProductCarousel = memo(({
 
   return (
     <section className="space-y-3 sm:space-y-4 lg:space-y-5">
-      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 border border-brand-primary100">
+      <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 border border-brand-primary100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>

@@ -33,20 +33,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-brand-neutral-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-white">
             Iniciar Sesión
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-brand-primary/80">
             Accede a tu cuenta para continuar
           </p>
         </div>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-brand-neutral-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-brand-neutral-light border border-brand-neutral-light text-red-700 px-4 py-3 rounded">
@@ -55,7 +55,7 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-brand-primary">
                 Email
               </label>
               <div className="mt-1">
@@ -67,14 +67,14 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
                   placeholder="tu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-brand-primary">
                 Contraseña
               </label>
               <div className="mt-1 relative">
@@ -86,7 +86,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 pr-10 border border-brand-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
                   placeholder="••••••••"
                 />
                 <button
@@ -95,9 +95,9 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-gray-400" />
+                    <EyeSlashIcon className="h-5 w-5 text-brand-primary/50" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-gray-400" />
+                    <EyeIcon className="h-5 w-5 text-brand-primary/50" />
                   )}
                 </button>
               </div>
@@ -125,10 +125,10 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
+                <div className="w-full border-t border-brand-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">O continúa con</span>
+                <span className="px-2 bg-brand-neutral-dark/80 text-brand-primary/60">O continúa con</span>
               </div>
             </div>
 
@@ -146,24 +146,24 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
+                <div className="w-full border-t border-brand-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">¿No tienes cuenta?</span>
+                <span className="px-2 bg-brand-neutral-dark/80 text-brand-primary/60">¿No tienes cuenta?</span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <Link
                 href="/registro"
-                className="w-full flex justify-center py-2 px-4 border border-brand-primary rounded-md shadow-sm bg-white text-sm font-medium text-brand-primary hover:bg-brand-neutral-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
+                className="w-full flex justify-center py-2 px-4 border border-brand-primary rounded-md shadow-sm bg-brand-neutral-dark/80 text-sm font-medium text-brand-primary hover:bg-brand-neutral-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"
               >
                 Crear Nueva Cuenta
               </Link>
               
               <Link
                 href="/checkout?guest=true"
-                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-gray-600 hover:text-gray-800"
+                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-brand-primary/80 hover:text-white"
               >
                 Continuar como invitado
               </Link>

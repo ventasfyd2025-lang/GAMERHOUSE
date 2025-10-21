@@ -224,21 +224,21 @@ export default function NuevoProductoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+      <div className="bg-brand-neutral-dark/80 border-b border-brand-primary/30 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-200"
+                className="w-10 h-10 bg-brand-neutral-light hover:bg-brand-neutral-light rounded-lg flex items-center justify-center transition-all duration-200"
               >
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-brand-primary/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </Link>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Agregar Nuevo Producto</h1>
-                <p className="text-sm text-gray-600">Completa la información del producto</p>
+                <h1 className="text-2xl font-bold text-white">Agregar Nuevo Producto</h1>
+                <p className="text-sm text-brand-primary/80">Completa la información del producto</p>
               </div>
             </div>
           </div>
@@ -250,16 +250,16 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📝</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Información Básica</h4>
+              <h4 className="text-lg font-bold text-white">Información Básica</h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               <div className="md:col-span-2 lg:col-span-3">
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>📦</span> Nombre *
                 </label>
                 <input
@@ -267,7 +267,7 @@ export default function NuevoProductoPage() {
                   value={productForm.nombre}
                   onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                   required
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80"
                   style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
@@ -276,7 +276,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>🏷️</span> SKU *
                 </label>
                 <input
@@ -285,14 +285,14 @@ export default function NuevoProductoPage() {
                   onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                   required
                   placeholder="SKU-001"
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 uppercase bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 uppercase bg-brand-neutral-dark/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>💰</span> Precio ($) *
                 </label>
                 <input
@@ -302,7 +302,7 @@ export default function NuevoProductoPage() {
                   required
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80"
                   style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
@@ -311,7 +311,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div className="md:col-span-2 lg:col-span-3">
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>💸</span> Precio Anterior (Opcional - para mostrar descuento)
                 </label>
                 <input
@@ -320,13 +320,13 @@ export default function NuevoProductoPage() {
                   onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80"
                   style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="Dejar vacío si no hay descuento"
                 />
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-brand-primary/60 mt-2">
                   Si agregas un precio anterior, se mostrará tachado y el % de descuento
                 </p>
               </div>
@@ -334,16 +334,16 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📊</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Control de Inventario</h4>
+              <h4 className="text-lg font-bold text-white">Control de Inventario</h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>📦</span> Stock Actual *
                 </label>
                 <input
@@ -353,7 +353,7 @@ export default function NuevoProductoPage() {
                   required
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = '#10b981'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="0"
@@ -361,7 +361,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-2 flex items-center gap-1">
                   <span>⚠️</span> Stock Mínimo *
                 </label>
                 <input
@@ -372,7 +372,7 @@ export default function NuevoProductoPage() {
                   min="0"
                   step="1"
                   placeholder="5"
-                  className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white"
+                  className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = '#10b981'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
@@ -382,25 +382,25 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📂</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Categorización</h4>
+              <h4 className="text-lg font-bold text-white">Categorización</h4>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div className="lg:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-brand-primary mb-3 flex items-center gap-1">
                   <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                 </label>
-                <div className="border-2 border-gray-200 rounded-lg p-4 bg-white max-h-96 overflow-y-auto space-y-4">
+                <div className="border-2 border-brand-primary/30 rounded-lg p-4 bg-brand-neutral-dark/80 max-h-96 overflow-y-auto space-y-4">
                   {categories.map((category) => {
                     const subcategorias = (category as any).subcategorias || [];
                     const isCategoryChecked = productForm.categorias.includes(category.id);
 
                     return (
-                      <div key={category.id} className="border-b border-gray-200 pb-4 last:border-0">
+                      <div key={category.id} className="border-b border-brand-primary/30 pb-4 last:border-0">
                         {/* Categoría principal */}
                         <label className="flex items-center gap-2 hover:bg-purple-50 p-2 rounded cursor-pointer font-medium">
                           <input
@@ -427,7 +427,7 @@ export default function NuevoProductoPage() {
                                 categoria: newCategorias[0]?.split('-')[0] || ''
                               });
                             }}
-                            className="rounded border-gray-300 text-purple-600 focus:ring-purple-500 w-4 h-4"
+                            className="rounded border-brand-primary/40 text-purple-600 focus:ring-purple-500 w-4 h-4"
                           />
                           <span className="text-sm">📂 {category.name}</span>
                         </label>
@@ -462,7 +462,7 @@ export default function NuevoProductoPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 w-4 h-4"
+                                    className="rounded border-brand-primary/40 text-indigo-600 focus:ring-indigo-500 w-4 h-4"
                                   />
                                   <span className="text-sm">📁 {sub.nombre}</span>
                                 </label>
@@ -487,18 +487,18 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">📝</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Descripción</h4>
+              <h4 className="text-lg font-bold text-white">Descripción</h4>
             </div>
             <textarea
               value={productForm.descripcion}
               onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 resize-none bg-white"
+              className="w-full px-4 py-3 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 resize-none bg-brand-neutral-dark/80"
               onFocus={(e) => e.currentTarget.style.borderColor = 'var(--brand-primary)'}
               onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
               placeholder="Describe las características principales del producto..."
@@ -506,12 +506,12 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Images Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">🖼️</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Imágenes del Producto</h4>
+              <h4 className="text-lg font-bold text-white">Imágenes del Producto</h4>
             </div>
 
             {/* Image Specifications */}
@@ -559,7 +559,7 @@ export default function NuevoProductoPage() {
             {/* Image Previews */}
             {productImagePreviews.length > 0 && (
               <div className="mt-4">
-                <p className="text-sm font-medium text-gray-600 mb-3">✨ Nuevas imágenes a agregar:</p>
+                <p className="text-sm font-medium text-brand-primary/80 mb-3">✨ Nuevas imágenes a agregar:</p>
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
                   {productImagePreviews.map((preview, index) => (
                     <div key={`new-${index}`} className="relative group">
@@ -590,12 +590,12 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg border border-brand-neutral-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <span className="text-white">🏷️</span>
               </div>
-              <h4 className="text-lg font-bold text-gray-800">Etiquetas con Duración</h4>
+              <h4 className="text-lg font-bold text-white">Etiquetas con Duración</h4>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Etiqueta Nuevo */}
@@ -620,7 +620,7 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, nuevoDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-500 bg-white"
+                      className="w-full px-3 py-2 text-sm border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-500 bg-brand-neutral-dark/80"
                       placeholder="24"
                     />
                     <p className="text-xs text-green-600 mt-1">
@@ -652,7 +652,7 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, ofertaDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-red-300 rounded-lg focus:outline-none focus:border-cyber-pink bg-white"
+                      className="w-full px-3 py-2 text-sm border-2 border-red-300 rounded-lg focus:outline-none focus:border-cyber-pink bg-brand-neutral-dark/80"
                       placeholder="24"
                     />
                     <p className="text-xs text-cyber-pink mt-1">
@@ -665,11 +665,11 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Bottom Actions */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-gray-200 sticky bottom-0 z-10">
+          <div className="bg-brand-neutral-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg border border-brand-primary/30 sticky bottom-0 z-10">
             <div className="flex gap-4">
               <Link
                 href="/admin"
-                className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 bg-gray-400 hover:bg-brand-neutral-dark0 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

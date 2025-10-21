@@ -219,7 +219,7 @@ const handleMobileCategoryLinkClick = (
                 {/* User - Mobile */}
                 <Link
                   href="/perfil"
-                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-brand-neutral-dark/80/20 rounded-md transition-colors"
                 >
                   <User className="h-5 w-5" />
                   {hasUnreadMessages && (
@@ -233,7 +233,7 @@ const handleMobileCategoryLinkClick = (
                 {/* Cart - Mobile */}
                 <Link
                   href="/carrito"
-                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
+                  className="relative p-1.5 text-white hover:text-brand-primary100 hover:bg-brand-neutral-dark/80/20 rounded-md transition-colors"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   {getTotalItems() > 0 && (
@@ -378,8 +378,8 @@ const handleMobileCategoryLinkClick = (
                           );
                           })}
 
-                          <div className="pt-4 border-t border-gray-200 space-y-2">
-                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-2">Secciones especiales</div>
+                          <div className="pt-4 border-t border-brand-primary/30 space-y-2">
+                            <div className="text-xs font-semibold text-brand-primary/60 uppercase tracking-wide px-2">Secciones especiales</div>
 
                             <Link
                               href="/?filter=ofertas"
@@ -435,7 +435,7 @@ const handleMobileCategoryLinkClick = (
                     setExpandedCategories(new Set());
                   }
                 }}
-                className="lg:hidden p-3 ml-3 rounded-xl hover:bg-white/20 transition-all duration-300 border-2 border-white/60 bg-white/30 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm z-50"
+                className="lg:hidden p-3 ml-3 rounded-xl hover:bg-brand-neutral-dark/80/20 transition-all duration-300 border-2 border-white/60 bg-brand-neutral-dark/80/30 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm z-50"
                 aria-label="Menú de categorías"
               >
                 {isMobileMenuOpen ? (
@@ -454,7 +454,7 @@ const handleMobileCategoryLinkClick = (
                   placeholder="Buscar productos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 px-3 py-2 text-sm border-2 border-white/50 rounded-l-lg bg-white/10 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-brand-primary-200 focus:border-transparent"
+                  className="flex-1 px-3 py-2 text-sm border-2 border-white/50 rounded-l-lg bg-brand-neutral-dark/80/10 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-brand-primary-200 focus:border-transparent"
                 />
                 <button
                   type="submit"
@@ -473,7 +473,7 @@ const handleMobileCategoryLinkClick = (
               <div className="hidden lg:block relative" ref={userMenuRef}>
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="relative flex items-center space-x-2 p-3 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-lg transition-colors"
+                  className="relative flex items-center space-x-2 p-3 text-white hover:text-brand-primary100 hover:bg-brand-neutral-dark/80/20 rounded-lg transition-colors"
                 >
                   <div className="relative">
                     <User className="h-6 w-6" />
@@ -494,12 +494,12 @@ const handleMobileCategoryLinkClick = (
 
                 {/* User Dropdown */}
                 {isUserMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-64 bg-white shadow-2xl rounded-lg z-50 border border-gray-200">
+                  <div className="absolute top-full right-0 mt-2 w-64 bg-brand-neutral-dark/80 shadow-2xl rounded-lg z-50 border border-brand-primary/30">
                     {currentUser ? (
                       <div>
                         {/* User Info */}
-                        <div className="p-4 border-b border-gray-200">
-                          <p className="font-medium text-gray-900">
+                        <div className="p-4 border-b border-brand-primary/30">
+                          <p className="font-medium text-white">
                             {currentUser.firstName} {currentUser.lastName}
                           </p>
                           <p className="text-sm text-brand-primary/80">{currentUser.email}</p>
@@ -515,14 +515,14 @@ const handleMobileCategoryLinkClick = (
                               <Link
                                 href="/perfil"
                                 onClick={() => setIsUserMenuOpen(false)}
-                                className="block px-4 py-2 text-brand-primary hover:bg-gray-50"
+                                className="block px-4 py-2 text-brand-primary hover:bg-brand-neutral-dark"
                               >
                                 Mi Perfil
                               </Link>
                               <Link
                                 href="/mis-pedidos"
                                 onClick={() => setIsUserMenuOpen(false)}
-                                className="block px-4 py-2 text-brand-primary hover:bg-gray-50 relative"
+                                className="block px-4 py-2 text-brand-primary hover:bg-brand-neutral-dark relative"
                               >
                                 Mis Pedidos
                                 {unreadOrderNotifications > 0 && (
@@ -549,7 +549,7 @@ const handleMobileCategoryLinkClick = (
                               logout();
                               setIsUserMenuOpen(false);
                             }}
-                            className="block w-full text-left px-4 py-2 text-brand-primary hover:bg-gray-50"
+                            className="block w-full text-left px-4 py-2 text-brand-primary hover:bg-brand-neutral-dark"
                           >
                             {isGuest ? 'Cambiar Usuario' : 'Cerrar Sesión'}
                           </button>
@@ -582,7 +582,7 @@ const handleMobileCategoryLinkClick = (
               {/* Cart - Desktop/Tablet only */}
               <Link
                 href="/carrito"
-                className="relative p-2 text-white hover:text-brand-primary100 hover:bg-white/20 rounded-md transition-colors"
+                className="relative p-2 text-white hover:text-brand-primary100 hover:bg-brand-neutral-dark/80/20 rounded-md transition-colors"
               >
                 <ShoppingCart className="h-6 w-6" />
                 {getTotalItems() > 0 && (
@@ -603,7 +603,7 @@ const handleMobileCategoryLinkClick = (
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-brand-primary"
+                className="flex-1 px-3 py-2 text-sm border border-brand-primary/40 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-brand-primary"
               />
               <button
                 type="submit"
@@ -617,10 +617,10 @@ const handleMobileCategoryLinkClick = (
 
           {/* Mobile Menu - Categorías reales */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden absolute left-0 right-0 top-full bg-white border-b shadow-2xl z-[9999]">
+            <div className="lg:hidden absolute left-0 right-0 top-full bg-brand-neutral-dark/80 border-b shadow-2xl z-[9999]">
               <div className="mx-auto max-w-full px-6 py-6 max-h-[calc(100vh-180px)] overflow-y-auto">
               <div className="space-y-3">
-                <div className="text-lg font-bold text-gray-800 mb-4 px-2 flex items-center gap-2">
+                <div className="text-lg font-bold text-white mb-4 px-2 flex items-center gap-2">
                   <span className="text-brand-primary500">🏷️</span>
                   Categorías ({categories.length} encontradas)
                 </div>
@@ -766,8 +766,8 @@ const handleMobileCategoryLinkClick = (
                     })}
 
                     {/* Secciones especiales */}
-                    <div className="pt-4 border-t border-gray-200 space-y-2">
-                      <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3 px-2">Secciones especiales</div>
+                    <div className="pt-4 border-t border-brand-primary/30 space-y-2">
+                      <div className="text-sm font-semibold text-brand-primary/60 uppercase tracking-wide mb-3 px-2">Secciones especiales</div>
 
                       <Link
                         href="/?filter=ofertas"

@@ -29,12 +29,12 @@ export default function CartPageClient() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-primary100 text-center">
             <ShoppingBag className="h-24 w-24 text-brand-primary400 mx-auto mb-6" strokeWidth={2} />
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-brand-primary/80 mb-8">
               ¡Agrega algunos productos para comenzar tu compra!
             </p>
             <Link
@@ -54,16 +54,16 @@ export default function CartPageClient() {
     <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
+        <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
               <span className="text-white text-lg">🛒</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">
+              <h1 className="text-2xl font-bold text-white">
                 Carrito de compras
               </h1>
-              <p className="text-gray-600 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
+              <p className="text-brand-primary/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-brand-primary100 hover:shadow-xl transition-all">
+              <div key={item.id} className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-brand-primary100 hover:shadow-xl transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -85,8 +85,8 @@ export default function CartPageClient() {
                       sizes="(max-width: 640px) 64px, 80px"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center">
-                      <span className="text-gray-400 text-lg sm:text-2xl">📦</span>
+                    <div className="w-full h-full bg-brand-neutral-light rounded-md flex items-center justify-center">
+                      <span className="text-brand-primary/50 text-lg sm:text-2xl">📦</span>
                     </div>
                   )}
                 </div>
@@ -95,14 +95,14 @@ export default function CartPageClient() {
                 <div className="flex-1 min-w-0 sm:order-none order-1">
                   <Link
                     href={`/producto/${item.productId}`}
-                    className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors block"
+                    className="text-sm sm:text-base lg:text-lg font-semibold text-white hover:text-blue-600 transition-colors block"
                   >
                     {item.nombre}
                   </Link>
                   {item.sku && (
-                    <p className="text-xs text-gray-500">SKU: {item.sku}</p>
+                    <p className="text-xs text-brand-primary/60">SKU: {item.sku}</p>
                   )}
-                  <p className="text-gray-600 mt-1 text-sm sm:text-base">
+                  <p className="text-brand-primary/80 mt-1 text-sm sm:text-base">
                     {formatPrice(item.precio)} c/u
                   </p>
                 </div>
@@ -113,7 +113,7 @@ export default function CartPageClient() {
                   <div className="flex items-center space-x-1 sm:space-x-2">
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-brand-neutral-light transition-colors"
                     >
                       <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -122,14 +122,14 @@ export default function CartPageClient() {
                     </span>
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-brand-neutral-light transition-colors"
                     >
                       <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
                   </div>
 
                   {/* Item Total */}
-                  <div className="text-lg font-semibold text-gray-900 min-w-[100px] text-right">
+                  <div className="text-lg font-semibold text-white min-w-[100px] text-right">
                     {formatPrice(item.precio * item.cantidad)}
                   </div>
 
@@ -148,22 +148,22 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 sticky top-8">
+          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-primary100 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
-              <h2 className="text-xl font-bold text-gray-800">
+              <h2 className="text-xl font-bold text-white">
                 Resumen del pedido
               </h2>
             </div>
 
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2">
-                <span className="text-gray-600 font-medium">Subtotal</span>
-                <span className="font-semibold text-gray-800">{formatPrice(getTotalPrice())}</span>
+                <span className="text-brand-primary/80 font-medium">Subtotal</span>
+                <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
               </div>
               <div className="border-t border-brand-primary100 pt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-gray-800">Total</span>
+                  <span className="text-lg font-bold text-white">Total</span>
                   <span className="text-2xl font-bold text-brand-primary600">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function CartPageClient() {
 
             <button
               onClick={clearCart}
-              className="w-full mt-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
+              className="w-full mt-3 bg-brand-neutral-light hover:bg-brand-neutral-light text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
             >
               🗑️ Vaciar carrito
             </button>

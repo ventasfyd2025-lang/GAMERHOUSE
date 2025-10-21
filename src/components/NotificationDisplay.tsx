@@ -22,7 +22,7 @@ export default function NotificationDisplay() {
             case 'info':
               return <Info className="h-5 w-5 text-blue-500" strokeWidth={2.5} />;
             default:
-              return <Info className="h-5 w-5 text-gray-500" strokeWidth={2.5} />;
+              return <Info className="h-5 w-5 text-brand-primary/60" strokeWidth={2.5} />;
           }
         };
 
@@ -37,7 +37,7 @@ export default function NotificationDisplay() {
             case 'info':
               return 'bg-blue-50 border-blue-200';
             default:
-              return 'bg-gray-50 border-gray-200';
+              return 'bg-brand-neutral-dark border-brand-primary/30';
           }
         };
 
@@ -51,18 +51,18 @@ export default function NotificationDisplay() {
                 {getIcon()}
               </div>
               <div className="ml-3 w-0 flex-1">
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-white">
                   {notification.title}
                 </p>
                 {notification.message && (
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-sm text-brand-primary/60">
                     {notification.message}
                   </p>
                 )}
               </div>
               <div className="ml-4 flex-shrink-0 flex">
                 <button
-                  className="inline-flex text-gray-400 hover:text-gray-600 focus:outline-none"
+                  className="inline-flex text-brand-primary/50 hover:text-brand-primary/80 focus:outline-none"
                   onClick={() => removeNotification(notification.id)}
                 >
                   <X className="h-4 w-4" strokeWidth={2.5} />

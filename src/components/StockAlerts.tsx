@@ -27,7 +27,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
-        return 'bg-gray-100 border-gray-500 text-gray-800';
+        return 'bg-brand-neutral-light border-gray-500 text-white';
     }
   };
 
@@ -40,7 +40,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:
-        return <BellIcon className="h-5 w-5 text-gray-600" />;
+        return <BellIcon className="h-5 w-5 text-brand-primary/80" />;
     }
   };
 
@@ -79,16 +79,16 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   }
 
   return (
-    <div className={`bg-white border border-gray-200 rounded-lg shadow-sm ${className}`}>
+    <div className={`bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg shadow-sm ${className}`}>
       {/* Header */}
       <div
-        className="p-4 border-b border-gray-200 cursor-pointer"
+        className="p-4 border-b border-brand-primary/30 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <BellIcon className="h-5 w-5 text-cyber-pink" />
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-white">
               Alertas de Stock
             </h3>
             <span className="bg-brand-neutral-light text-cyber-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
@@ -96,7 +96,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
             </span>
           </div>
           <XMarkIcon
-            className={`h-5 w-5 text-gray-400 transform transition-transform ${
+            className={`h-5 w-5 text-brand-primary/50 transform transition-transform ${
               isExpanded ? 'rotate-45' : ''
             }`}
           />
@@ -120,18 +120,18 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                     </span>
                   </div>
 
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                  <h4 className="text-sm font-semibold text-white mb-1">
                     {alert.productName}
                   </h4>
 
-                  <div className="text-sm text-gray-600 space-y-1">
+                  <div className="text-sm text-brand-primary/80 space-y-1">
                     <p>
                       <span className="font-medium">Stock actual:</span> {alert.currentStock} unidades
                     </p>
                     <p>
                       <span className="font-medium">Stock mínimo:</span> {alert.minStock} unidades
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-brand-primary/60">
                       {new Date(alert.createdAt).toLocaleString('es-CL')}
                     </p>
                   </div>
@@ -140,7 +140,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 <button
                   onClick={() => handleAcknowledge(alert.id)}
                   disabled={loading}
-                  className="ml-4 flex-shrink-0 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
+                  className="ml-4 flex-shrink-0 bg-brand-neutral-light hover:bg-brand-neutral-light text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
                 >
                   {loading ? 'Marcando...' : 'Marcar como visto'}
                 </button>
@@ -165,8 +165,8 @@ export default function StockAlerts({ className }: StockAlertsProps) {
 
       {/* Footer with summary */}
       {!isExpanded && stockAlerts.length > 0 && (
-        <div className="p-3 bg-gray-50 rounded-b-lg">
-          <div className="flex items-center justify-between text-sm text-gray-600">
+        <div className="p-3 bg-brand-neutral-dark rounded-b-lg">
+          <div className="flex items-center justify-between text-sm text-brand-primary/80">
             <div className="flex space-x-4">
               <span>
                 Sin stock: {stockAlerts.filter(a => a.severity === 'out').length}

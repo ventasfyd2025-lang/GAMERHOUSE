@@ -49,7 +49,7 @@ export default function Footer() {
                     />
                   </div>
                 ) : (
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white/10 rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl shadow-lg ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-brand-neutral-dark/80/10 rounded-lg sm:rounded-xl flex items-center justify-center text-xl sm:text-3xl shadow-lg ring-2 ring-white/30 group-hover:ring-white transition-all duration-300">
                     {logoConfig?.emoji || '🏪'}
                   </div>
                 )}
@@ -73,10 +73,10 @@ export default function Footer() {
 
             {/* Trust Badges - ocultos en móvil */}
             <div className="hidden sm:flex flex-wrap gap-2">
-              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+              <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                 <span>✓</span> Pagos Seguros
               </div>
-              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+              <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                 <span>🚚</span> Envío Rápido
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function Footer() {
               <div className="space-y-1 sm:space-y-2">
                 <a
                   href={`tel:${footerConfig.contact.phone}`}
-                  className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all group text-xs sm:text-sm"
+                  className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-brand-neutral-dark/80/20 transition-all group text-xs sm:text-sm"
                 >
                   <span className="text-base sm:text-lg">📞</span>
                   <span className="text-white/90 group-hover:text-white">
@@ -99,7 +99,7 @@ export default function Footer() {
 
                 <a
                   href={`mailto:${footerConfig.contact.email}`}
-                  className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all group text-xs sm:text-sm"
+                  className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-brand-neutral-dark/80/20 transition-all group text-xs sm:text-sm"
                 >
                   <span className="text-base sm:text-lg">📧</span>
                   <span className="text-white/90 group-hover:text-white break-all">
@@ -107,7 +107,7 @@ export default function Footer() {
                   </span>
                 </a>
 
-                <div className="flex items-start gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-white/10 text-xs sm:text-sm">
+                <div className="flex items-start gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg bg-brand-neutral-dark/80/10 text-xs sm:text-sm">
                   <span className="text-base sm:text-lg flex-shrink-0">📍</span>
                   <span className="text-white/90">
                     {footerConfig.contact.address}
@@ -127,7 +127,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-blue-600 transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-blue-600 transition-all text-xs sm:text-sm font-medium group"
                     aria-label="Facebook"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -141,7 +141,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-brand-primary transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-600 hover:to-brand-primary transition-all text-xs sm:text-sm font-medium group"
                     aria-label="Instagram"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -155,7 +155,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.tiktok}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-black transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-black transition-all text-xs sm:text-sm font-medium group"
                     aria-label="TikTok"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ export default function Footer() {
                     href={footerConfig.socialMedia.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-white/10 hover:bg-green-600 transition-all text-xs sm:text-sm font-medium group"
+                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg bg-brand-neutral-dark/80/10 hover:bg-green-600 transition-all text-xs sm:text-sm font-medium group"
                     aria-label="WhatsApp"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">

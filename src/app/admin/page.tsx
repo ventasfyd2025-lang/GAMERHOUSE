@@ -1196,7 +1196,7 @@ export default function AdminPage() {
       case 'admin': return 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light';
       case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      default: return 'bg-brand-neutral-light text-white border-brand-primary/30';
     }
   };
 
@@ -2204,17 +2204,17 @@ export default function AdminPage() {
   // Bloquear acceso si no es administrador
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+        <div className="max-w-md w-full bg-brand-neutral-dark/80 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">🛡️ Admin Panel</h1>
-            <p className="text-gray-600 mt-2">Importadora F&D</p>
+            <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
+            <p className="text-brand-primary/80 mt-2">Importadora F&D</p>
           </div>
 
           {!user ? (
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-brand-primary mb-1">
                 Email
               </label>
               <input
@@ -2223,12 +2223,12 @@ export default function AdminPage() {
                 value={loginForm.email}
                 onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-brand-primary mb-1">
                 Contraseña
               </label>
               <input
@@ -2237,7 +2237,7 @@ export default function AdminPage() {
                 value={loginForm.password}
                 onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
               />
             </div>
 
@@ -2288,7 +2288,7 @@ export default function AdminPage() {
       `}</style>
       <div id="admin-container" className="min-h-screen bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40">
 
-      <header className="bg-white/80 backdrop-blur-lg shadow-xl border-b border-brand-neutral-light">
+      <header className="bg-brand-neutral-dark/80/80 backdrop-blur-lg shadow-xl border-b border-brand-neutral-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
@@ -2321,7 +2321,7 @@ export default function AdminPage() {
         <div className="bg-gradient-to-r from-brand-primary to-cyber-pink rounded-xl shadow-xl p-4 mb-6 border border-brand-primary-200" style={{ backgroundColor: 'var(--brand-primary)' }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
@@ -2329,7 +2329,7 @@ export default function AdminPage() {
                 <p className="text-brand-neutral-light text-xs">Gestiona tu tienda</p>
               </div>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+            <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
               <span className="text-white font-semibold text-xs">🏪 FYD</span>
             </div>
           </div>
@@ -2356,8 +2356,8 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-white text-brand-primary shadow-lg transform scale-105'
-                    : 'text-white/80 hover:text-white hover:bg-white/20 backdrop-blur-sm'
+                    ? 'bg-brand-neutral-dark/80 text-brand-primary shadow-lg transform scale-105'
+                    : 'text-white/80 hover:text-white hover:bg-brand-neutral-dark/80/20 backdrop-blur-sm'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
@@ -2377,15 +2377,15 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800">Dashboard & Reportes</h2>
-                    <p className="text-gray-600 text-sm">Panel principal con estadísticas y exportación</p>
+                    <h2 className="text-2xl font-bold text-white">Dashboard & Reportes</h2>
+                    <p className="text-brand-primary/80 text-sm">Panel principal con estadísticas y exportación</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -2433,44 +2433,44 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>📦</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Total Productos</p>
-                    <p className="text-3xl font-bold text-gray-800">{stats.totalProducts}</p>
+                    <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>🛒</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Total Pedidos</p>
-                    <p className="text-3xl font-bold text-gray-800">{stats.totalOrders}</p>
+                    <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>💰</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Ingresos Totales</p>
-                    <p className="text-3xl font-bold text-gray-800">
+                    <p className="text-3xl font-bold text-white">
                       {formatPrice(stats.totalRevenue)}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>⏳</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--brand-primary)' }}>Pedidos Pendientes</p>
-                    <p className="text-3xl font-bold text-gray-800">{stats.pendingOrders}</p>
+                    <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
                   </div>
                 </div>
               </div>
@@ -2478,40 +2478,40 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-brand-neutral-light">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl border border-brand-neutral-light">
               <div className="p-6 border-b border-brand-neutral-light">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-sm">📋</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800">Pedidos Recientes</h3>
+                  <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
                 </div>
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-brand-neutral-dark">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Pedidos
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Total Comprado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Último Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Estados
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                     {ordersByCustomer.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-gray-500">
+                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-brand-primary/60">
                           No hay pedidos registrados todavía.
                         </td>
                       </tr>
@@ -2520,34 +2520,34 @@ export default function AdminPage() {
                         <tr key={group.lastOrderId}>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div>
-                              <div className="text-sm font-medium text-gray-900">
+                              <div className="text-sm font-medium text-white">
                                 {group.customerName}
                               </div>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-brand-primary/60">
                                 {group.customerEmail}
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                             {group.orderCount}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                             {formatPrice(group.totalSpent)}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                             {group.lastOrderDate.toLocaleDateString('es-CL', {
                               day: '2-digit',
                               month: '2-digit',
                               year: 'numeric'
                             })}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                             <div className="flex flex-wrap gap-2">
                               {Object.entries(group.statusBreakdown).map(([status, count]) => (
                                 <span
                                   key={status}
                                   className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                                    statusClassMap[status as OrderStatus] || 'bg-gray-100 text-gray-800'
+                                    statusClassMap[status as OrderStatus] || 'bg-brand-neutral-light text-white'
                                   }`}
                                 >
                                   {statusLabelMap[status as OrderStatus]} · {count}
@@ -2569,7 +2569,7 @@ export default function AdminPage() {
         {activeTab === 'products' && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-900">Gestión de Productos</h2>
+              <h2 className="text-2xl font-bold text-white">Gestión de Productos</h2>
               <Link
                 href="/admin/productos/nuevo"
                 className="text-white px-4 py-2 rounded-md transition-colors inline-block"
@@ -2643,7 +2643,7 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-white border-2 border-brand-neutral-light rounded-xl shadow-lg overflow-hidden">
+                    <div className="mt-4 bg-brand-neutral-dark/80 border-2 border-brand-neutral-light rounded-xl shadow-lg overflow-hidden">
                       <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light p-4 border-b border-brand-neutral-light">
                         <h4 className="font-bold text-cyber-pink flex items-center">
                           📋 Lista Detallada de Productos
@@ -2654,8 +2654,8 @@ export default function AdminPage() {
                       {/* Stock List Table */}
                       <div className="max-h-96 overflow-y-auto">
                         <table className="w-full">
-                          <thead className="bg-gray-50 sticky top-0">
-                            <tr className="text-left text-xs font-semibold text-gray-600 uppercase">
+                          <thead className="bg-brand-neutral-dark sticky top-0">
+                            <tr className="text-left text-xs font-semibold text-brand-primary/80 uppercase">
                               <th className="px-4 py-2">Producto</th>
                               <th className="px-4 py-2">Estado</th>
                               <th className="px-4 py-2">Stock</th>
@@ -2672,10 +2672,10 @@ export default function AdminPage() {
                               const stockPercentage = Math.min((product.stock / minStock) * 100, 100);
 
                               return (
-                                <tr key={product.id} className="hover:bg-gray-50 transition-colors">
+                                <tr key={product.id} className="hover:bg-brand-neutral-dark transition-colors">
                                   <td className="px-4 py-3">
-                                    <div className="font-medium text-gray-900">{product.nombre}</div>
-                                    <div className="text-xs text-gray-500">{product.categoria}</div>
+                                    <div className="font-medium text-white">{product.nombre}</div>
+                                    <div className="text-xs text-brand-primary/60">{product.categoria}</div>
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
@@ -2696,11 +2696,11 @@ export default function AdminPage() {
                                     </span>
                                   </td>
                                   <td className="px-4 py-3">
-                                    <span className="text-gray-600">{minStock}</span>
+                                    <span className="text-brand-primary/80">{minStock}</span>
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="flex items-center space-x-2">
-                                      <div className="w-16 bg-gray-200 rounded-full h-2">
+                                      <div className="w-16 bg-brand-neutral-light rounded-full h-2">
                                         <div
                                           className={`h-2 rounded-full transition-all duration-300 ${
                                             isOutOfStock ? 'bg-cyber-pink' : isCritical ? 'bg-brand-primary' : 'bg-yellow-500'
@@ -2708,7 +2708,7 @@ export default function AdminPage() {
                                           style={{ width: `${stockPercentage}%` }}
                                         ></div>
                                       </div>
-                                      <span className="text-xs text-gray-600">{Math.round(stockPercentage)}%</span>
+                                      <span className="text-xs text-brand-primary/80">{Math.round(stockPercentage)}%</span>
                                     </div>
                                   </td>
                                   <td className="px-4 py-3">
@@ -2732,7 +2732,7 @@ export default function AdminPage() {
                                             updateProduct(product.id, { minStock: parseInt(minStockNew) });
                                           }
                                         }}
-                                        className="bg-gray-500 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-colors"
+                                        className="bg-brand-neutral-dark0 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-colors"
                                         title="Configurar Mínimo"
                                       >
                                         ⚙️
@@ -2747,14 +2747,14 @@ export default function AdminPage() {
                       </div>
 
                       {/* Quick Actions Footer */}
-                      <div className="bg-gray-50 p-4 border-t border-gray-200">
+                      <div className="bg-brand-neutral-dark p-4 border-t border-brand-primary/30">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-600">
+                          <span className="text-sm text-brand-primary/80">
                             💡 Tip: Haz clic en los botones de acción para gestionar el stock rápidamente
                           </span>
                           <button
                             onClick={() => setShowStockAlert(false)}
-                            className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                            className="bg-brand-neutral-light hover:bg-gray-300 text-brand-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                           >
                             Cerrar Lista
                           </button>
@@ -2802,7 +2802,7 @@ export default function AdminPage() {
                     {productSearch && (
                       <button
                         onClick={() => setProductSearch('')}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 text-lg"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brand-primary/50 hover:text-brand-primary/80 text-lg"
                       >
                         ✕
                       </button>
@@ -2828,7 +2828,7 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-white bg-opacity-80 rounded-xl p-4 space-y-4 border border-blue-100">
+                <div className="bg-brand-neutral-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-blue-100">
                   <h4 className="font-semibold text-blue-800 flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
@@ -2836,7 +2836,7 @@ export default function AdminPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {/* Price Range */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         💰 Rango de Precio
                       </label>
                       <div className="flex space-x-2">
@@ -2848,7 +2848,7 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, min: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-gray-300 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                          className="w-full px-2 py-2 border border-brand-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
                         />
                         <input
                           type="number"
@@ -2858,14 +2858,14 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, max: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-gray-300 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                          className="w-full px-2 py-2 border border-brand-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
                         />
                       </div>
                     </div>
 
                     {/* Stock Status */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         📊 Estado de Stock
                       </label>
                       <select
@@ -2874,7 +2874,7 @@ export default function AdminPage() {
                           ...prev,
                           stockStatus: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-gray-300 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                        className="w-full px-2 py-2 border border-brand-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="in_stock">Con Stock</option>
@@ -2885,7 +2885,7 @@ export default function AdminPage() {
 
                     {/* Status */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         🔘 Estado
                       </label>
                       <select
@@ -2894,7 +2894,7 @@ export default function AdminPage() {
                           ...prev,
                           status: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-gray-300 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                        className="w-full px-2 py-2 border border-brand-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="active">Activos</option>
@@ -2904,7 +2904,7 @@ export default function AdminPage() {
 
                     {/* Tags */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         🏷️ Etiquetas
                       </label>
                       <div className="space-y-1">
@@ -2953,7 +2953,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                      className="bg-brand-neutral-light hover:bg-gray-300 text-brand-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     >
                       🗑️ Limpiar Filtros
                     </button>
@@ -2995,10 +2995,10 @@ export default function AdminPage() {
             </div>
 
             
-            <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-brand-primary/80">
                     {selectedProducts.length} producto(s) seleccionado(s)
                   </span>
                   <button
@@ -3009,7 +3009,7 @@ export default function AdminPage() {
                   </button>
                   <button
                     onClick={clearSelection}
-                    className="text-sm text-gray-600 hover:text-gray-700"
+                    className="text-sm text-brand-primary/80 hover:text-brand-primary"
                   >
                     Limpiar selección
                   </button>
@@ -3026,12 +3026,12 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-brand-neutral-dark">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         <input
                           type="checkbox"
                           checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
@@ -3042,27 +3042,27 @@ export default function AdminPage() {
                               clearSelection();
                             }
                           }}
-                          className="rounded border-gray-300"
+                          className="rounded border-brand-primary/40"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Producto
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Precio
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Stock
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Categoría
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3070,7 +3070,7 @@ export default function AdminPage() {
                             type="checkbox"
                             checked={selectedProducts.includes(product.id)}
                             onChange={() => toggleProductSelection(product.id)}
-                            className="rounded border-gray-300"
+                            className="rounded border-brand-primary/40"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3085,16 +3085,16 @@ export default function AdminPage() {
                                   className="h-10 w-10 object-cover rounded"
                                 />
                               ) : (
-                                <div className="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
+                                <div className="h-10 w-10 bg-brand-neutral-light rounded flex items-center justify-center">
                                   📦
                                 </div>
                               )}
                             </div>
                             <div>
-                              <div className="text-sm font-medium text-gray-900">
+                              <div className="text-sm font-medium text-white">
                                 {product.nombre}
                               </div>
-                              <div className="text-xs text-gray-500 mt-1">
+                              <div className="text-xs text-brand-primary/60 mt-1">
                                 SKU: {product.sku && product.sku.trim() ? product.sku : 'No asignado'}
                               </div>
                               <div className="flex space-x-1 mt-1">
@@ -3112,7 +3112,7 @@ export default function AdminPage() {
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                           {formatPrice(product.precio)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3123,7 +3123,7 @@ export default function AdminPage() {
                             {product.stock}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 capitalize">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white capitalize">
                           {product.categoria}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
@@ -3147,9 +3147,9 @@ export default function AdminPage() {
               </div>
               
               
-              <div className="px-6 py-3 bg-gray-50 border-t border-gray-200">
+              <div className="px-6 py-3 bg-brand-neutral-dark border-t border-brand-primary/30">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-brand-primary">
                     Mostrando <span className="font-bold text-blue-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
                     {(productSearch || selectedCategory !== 'all' || productFilters.tags.length > 0) && (
                       <span className="text-blue-600 ml-1">con filtros aplicados</span>
@@ -3181,9 +3181,9 @@ export default function AdminPage() {
 
         {activeTab === 'user-management' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">👥 Gestión de Usuarios</h2>
+                <h2 className="text-2xl font-bold text-white">👥 Gestión de Usuarios</h2>
                 <button
                   onClick={loadUsers}
                   disabled={usersLoading}
@@ -3195,7 +3195,7 @@ export default function AdminPage() {
 
               {/* Buscador de usuarios */}
               <div className="mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">🔍 Buscar Usuario por Correo</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">🔍 Buscar Usuario por Correo</h3>
                 <div className="flex gap-3">
                   <input
                     type="email"
@@ -3222,7 +3222,7 @@ export default function AdminPage() {
                         setSelectedUserDetails(null);
                         setSelectedUserOrders([]);
                       }}
-                      className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+                      className="bg-brand-neutral-dark0 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
                     >
                       Limpiar
                     </button>
@@ -3233,14 +3233,14 @@ export default function AdminPage() {
               {/* Modal de detalles del usuario */}
               {selectedUserDetails && (
                 <div
-                  className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                  className="fixed inset-0 bg-brand-neutral-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                   onClick={() => {
                     setSelectedUserDetails(null);
                     setSelectedUserOrders([]);
                   }}
                 >
                   <div
-                    className="bg-white rounded-xl border-2 border-blue-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-brand-neutral-dark/80 rounded-xl border-2 border-blue-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 flex justify-between items-center">
@@ -3250,7 +3250,7 @@ export default function AdminPage() {
                           setSelectedUserDetails(null);
                           setSelectedUserOrders([]);
                         }}
-                        className="text-white hover:bg-white/20 rounded-full p-2 transition-colors"
+                        className="text-white hover:bg-brand-neutral-dark/80/20 rounded-full p-2 transition-colors"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -3261,21 +3261,21 @@ export default function AdminPage() {
                   <div className="p-6 overflow-y-auto flex-1">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Nombre Completo</label>
-                        <p className="text-lg font-medium text-gray-900">
+                        <label className="text-sm font-semibold text-brand-primary/80">Nombre Completo</label>
+                        <p className="text-lg font-medium text-white">
                           {selectedUserDetails.firstName} {selectedUserDetails.lastName}
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Correo Electrónico</label>
-                        <p className="text-lg font-medium text-gray-900">{selectedUserDetails.email}</p>
+                        <label className="text-sm font-semibold text-brand-primary/80">Correo Electrónico</label>
+                        <p className="text-lg font-medium text-white">{selectedUserDetails.email}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Teléfono</label>
-                        <p className="text-lg font-medium text-gray-900">{selectedUserDetails.phone || 'No registrado'}</p>
+                        <label className="text-sm font-semibold text-brand-primary/80">Teléfono</label>
+                        <p className="text-lg font-medium text-white">{selectedUserDetails.phone || 'No registrado'}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Rol</label>
+                        <label className="text-sm font-semibold text-brand-primary/80">Rol</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${getRoleColor(selectedUserDetails.role || 'cliente')}`}>
                             {selectedUserDetails.role || 'cliente'}
@@ -3283,7 +3283,7 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Estado</label>
+                        <label className="text-sm font-semibold text-brand-primary/80">Estado</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
@@ -3295,8 +3295,8 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-gray-600">Fecha de Registro</label>
-                        <p className="text-lg font-medium text-gray-900">
+                        <label className="text-sm font-semibold text-brand-primary/80">Fecha de Registro</label>
+                        <p className="text-lg font-medium text-white">
                           {selectedUserDetails.createdAt ? new Date(selectedUserDetails.createdAt.toDate()).toLocaleDateString('es-CL') : 'N/A'}
                         </p>
                       </div>
@@ -3304,22 +3304,22 @@ export default function AdminPage() {
 
                     {/* Historial de compras */}
                     <div className="border-t pt-6">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">
+                      <h4 className="text-lg font-bold text-white mb-4">
                         🛒 Historial de Compras ({selectedUserOrders.length})
                       </h4>
 
                       {selectedUserOrders.length === 0 ? (
-                        <div className="text-center py-8 bg-gray-50 rounded-lg">
-                          <p className="text-gray-500">Este usuario no ha realizado ninguna compra</p>
+                        <div className="text-center py-8 bg-brand-neutral-dark rounded-lg">
+                          <p className="text-brand-primary/60">Este usuario no ha realizado ninguna compra</p>
                         </div>
                       ) : (
                         <div className="space-y-3">
                           {selectedUserOrders.map((order) => (
-                            <div key={order.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                            <div key={order.id} className="border rounded-lg p-4 hover:bg-brand-neutral-dark transition-colors">
                               <div className="flex justify-between items-start">
                                 <div className="flex-1">
                                   <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-sm font-bold text-gray-700">
+                                    <span className="text-sm font-bold text-brand-primary">
                                       Pedido #{order.id.slice(-8).toUpperCase()}
                                     </span>
                                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
@@ -3338,9 +3338,9 @@ export default function AdminPage() {
                                     </span>
                                   </div>
 
-                                  <div className="text-sm text-gray-600">
+                                  <div className="text-sm text-brand-primary/80">
                                     <p>Fecha: {new Date(order.createdAt).toLocaleDateString('es-CL')} - {new Date(order.createdAt).toLocaleTimeString('es-CL')}</p>
-                                    <p>Total: <span className="font-bold text-gray-900">{formatPrice(order.total)}</span></p>
+                                    <p>Total: <span className="font-bold text-white">{formatPrice(order.total)}</span></p>
                                     <p>Productos: {order.items?.length || 0} artículo(s)</p>
                                   </div>
                                 </div>
@@ -3392,9 +3392,9 @@ export default function AdminPage() {
                 </div>
               ) : users.length === 0 ? (
                 <div className="text-center py-12">
-                  <div className="text-gray-400 text-6xl mb-4">👥</div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No hay usuarios encontrados</h3>
-                  <p className="text-gray-600 mb-4">
+                  <div className="text-brand-primary/50 text-6xl mb-4">👥</div>
+                  <h3 className="text-lg font-medium text-white mb-2">No hay usuarios encontrados</h3>
+                  <p className="text-brand-primary/80 mb-4">
                     Puede que no haya usuarios registrados o que haya un problema de conexión con Firebase.
                   </p>
                   <button
@@ -3409,32 +3409,32 @@ export default function AdminPage() {
                   {/* Admins y Vendedores - Siempre visibles */}
                   <div className="mb-6">
                     <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light rounded-lg p-4 mb-3">
-                      <h3 className="text-lg font-semibold text-gray-800">
+                      <h3 className="text-lg font-semibold text-white">
                         👑 Administradores y Vendedores ({users.filter(u => u.role === 'admin' || u.role === 'vendedor').length})
                       </h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
+                        <thead className="bg-brand-neutral-dark">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                               Usuario
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                               Rol
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                               Estado
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                               Fecha Registro
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                               Acciones
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
+                        <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                           {users
                             .filter(user => user.role === 'admin' || user.role === 'vendedor')
                             .map((user) => (
@@ -3445,10 +3445,10 @@ export default function AdminPage() {
                             >
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div>
-                                  <div className="text-sm font-medium text-gray-900">
+                                  <div className="text-sm font-medium text-white">
                                     {user.firstName} {user.lastName}
                                   </div>
-                                  <div className="text-sm text-gray-500">{user.email}</div>
+                                  <div className="text-sm text-brand-primary/60">{user.email}</div>
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">
@@ -3456,7 +3456,7 @@ export default function AdminPage() {
                                   <select
                                     defaultValue={user.role}
                                     onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                                    className="text-sm border border-gray-300 rounded px-2 py-1"
+                                    className="text-sm border border-brand-primary/40 rounded px-2 py-1"
                                   >
                                     <option value="cliente">Cliente</option>
                                     <option value="vendedor">Vendedor</option>
@@ -3477,14 +3477,14 @@ export default function AdminPage() {
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-brand-primary/60">
                                 {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                 {editingUser === user.uid ? (
                                   <button
                                     onClick={() => setEditingUser(null)}
-                                    className="text-gray-600 hover:text-gray-900"
+                                    className="text-brand-primary/80 hover:text-white"
                                   >
                                     Cancelar
                                   </button>
@@ -3534,7 +3534,7 @@ export default function AdminPage() {
                       className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-3 hover:from-blue-100 hover:to-indigo-100 transition-all"
                     >
                       <div className="flex justify-between items-center">
-                        <h3 className="text-lg font-semibold text-gray-800">
+                        <h3 className="text-lg font-semibold text-white">
                           👤 Clientes ({users.filter(u => !u.role || u.role === 'cliente').length})
                         </h3>
                         <span className="text-2xl">
@@ -3546,26 +3546,26 @@ export default function AdminPage() {
                     {showClientes && (
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                          <thead className="bg-gray-50">
+                          <thead className="bg-brand-neutral-dark">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                                 Usuario
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                                 Rol
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                                 Estado
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                                 Fecha Registro
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                                 Acciones
                               </th>
                             </tr>
                           </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
+                          <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                             {users
                               .filter(user => !user.role || user.role === 'cliente')
                               .map((user) => (
@@ -3576,10 +3576,10 @@ export default function AdminPage() {
                               >
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <div>
-                                    <div className="text-sm font-medium text-gray-900">
+                                    <div className="text-sm font-medium text-white">
                                       {user.firstName} {user.lastName}
                                     </div>
-                                    <div className="text-sm text-gray-500">{user.email}</div>
+                                    <div className="text-sm text-brand-primary/60">{user.email}</div>
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -3587,7 +3587,7 @@ export default function AdminPage() {
                                     <select
                                       defaultValue={user.role}
                                       onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                                      className="text-sm border border-gray-300 rounded px-2 py-1"
+                                      className="text-sm border border-brand-primary/40 rounded px-2 py-1"
                                     >
                                       <option value="cliente">Cliente</option>
                                       <option value="vendedor">Vendedor</option>
@@ -3608,14 +3608,14 @@ export default function AdminPage() {
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                   </span>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-brand-primary/60">
                                   {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                   {editingUser === user.uid ? (
                                     <button
                                       onClick={() => setEditingUser(null)}
-                                      className="text-gray-600 hover:text-gray-900"
+                                      className="text-brand-primary/80 hover:text-white"
                                     >
                                       Cancelar
                                     </button>
@@ -3660,8 +3660,8 @@ export default function AdminPage() {
                   </div>
 
                   <div className="mt-8 bg-blue-50 rounded-lg p-6">
-                    <h3 className="text-lg font-medium text-gray-900 mb-4">Cómo crear usuarios vendedor</h3>
-                    <div className="space-y-3 text-sm text-gray-600">
+                    <h3 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h3>
+                    <div className="space-y-3 text-sm text-brand-primary/80">
                       <p><strong>Opción 1 - Firebase Console:</strong></p>
                       <ol className="list-decimal list-inside space-y-1 ml-4">
                         <li>Ve a Firebase Console &gt; Authentication &gt; Users</li>
@@ -3688,15 +3688,15 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--brand-primary)' }}>
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800">Gestión de Pedidos</h2>
-                    <p className="text-gray-600 text-sm">Administra todos los pedidos de clientes</p>
+                    <h2 className="text-2xl font-bold text-white">Gestión de Pedidos</h2>
+                    <p className="text-brand-primary/80 text-sm">Administra todos los pedidos de clientes</p>
                   </div>
                 </div>
                 <div className="flex space-x-3">
@@ -3740,7 +3740,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
                       ? 'bg-gradient-to-r from-brand-primary to-cyber-pink text-white scale-105 shadow-lg'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105'
+                      : 'bg-brand-neutral-light text-brand-primary/80 hover:bg-brand-neutral-light hover:scale-105'
                   }`}
                 >
                   📋 Pedidos Activos
@@ -3750,7 +3750,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105'
+                      : 'bg-brand-neutral-light text-brand-primary/80 hover:bg-brand-neutral-light hover:scale-105'
                   }`}
                 >
                   ✅ Historial de Ventas
@@ -3759,11 +3759,11 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light p-6 mb-6">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-brand-primary mb-2">
                     🔍 Buscar pedido
                   </label>
                   <input
@@ -3771,19 +3771,19 @@ export default function AdminPage() {
                     placeholder="Buscar por nombre, email, teléfono o ID..."
                     value={orderSearchQuery}
                     onChange={(e) => setOrderSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-brand-primary/40 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                   />
                 </div>
 
                 {/* Filtro por Estado */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-brand-primary mb-2">
                     📊 Filtrar por estado
                   </label>
                   <select
                     value={orderStatusFilter}
                     onChange={(e) => setOrderStatusFilter(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-brand-primary/40 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                   >
                     <option value="all">Todos los estados</option>
                     <option value="pending">⏳ Pendiente</option>
@@ -3801,7 +3801,7 @@ export default function AdminPage() {
 
               {/* Contador de resultados */}
               {(orderSearchQuery || orderStatusFilter !== 'all') && (
-                <div className="mt-4 text-sm text-gray-600">
+                <div className="mt-4 text-sm text-brand-primary/80">
                   {orders.filter(order => {
                     // Filtro base (activos/completados)
                     let passesMainFilter = false;
@@ -3835,7 +3835,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
+            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-brand-neutral-light">
                   <thead className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light">
@@ -3865,7 +3865,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                     {groupOrdersByUser(
                       orders.filter(order => {
                         // Filtro base (activos/completados)
@@ -3922,7 +3922,7 @@ export default function AdminPage() {
                               </button>
                             )}
                             <div>
-                              <div className="text-sm font-medium text-gray-900">
+                              <div className="text-sm font-medium text-white">
                                 {mainOrder.customerName}
                                 {totalUserOrders > 1 && (
                                   <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -3930,20 +3930,20 @@ export default function AdminPage() {
                                   </span>
                                 )}
                               </div>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-brand-primary/60">
                                 {mainOrder.customerEmail}
                               </div>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm text-brand-primary/60">
                                 {mainOrder.customerPhone}
                               </div>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                           {totalUserOrders > 1 ? (
                             <div>
                               <div className="font-medium">{formatPrice(totalAmount)}</div>
-                              <div className="text-xs text-gray-500">Total {totalUserOrders} pedidos</div>
+                              <div className="text-xs text-brand-primary/60">Total {totalUserOrders} pedidos</div>
                             </div>
                           ) : (
                             formatPrice(mainOrder.total)
@@ -3951,9 +3951,9 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4">
                           {totalUserOrders > 1 ? (
-                            <div className="text-xs text-gray-600">
+                            <div className="text-xs text-brand-primary/80">
                               <div className="font-medium">Estados múltiples</div>
-                              <div className="text-xs text-gray-400">Ver detalles individuales</div>
+                              <div className="text-xs text-brand-primary/50">Ver detalles individuales</div>
                             </div>
                           ) : (
                             <div className="space-y-3">
@@ -3983,7 +3983,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-green-500 text-white border-green-500 shadow-md'
-                                            : 'bg-gray-100 text-gray-400 border-gray-300'
+                                            : 'bg-brand-neutral-light text-brand-primary/50 border-brand-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4001,7 +4001,7 @@ export default function AdminPage() {
                             </div>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                           {new Date(mainOrder.createdAt).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -4033,14 +4033,14 @@ export default function AdminPage() {
                             />
                           </td>
                           <td className="px-6 py-3 whitespace-nowrap pl-12">
-                            <div className="text-sm text-gray-700">
+                            <div className="text-sm text-brand-primary">
                               <div className="font-medium">Pedido #{order.id.slice(-8).toUpperCase()}</div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-xs text-brand-primary/60">
                                 {new Date(order.createdAt).toLocaleDateString()}
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-3 whitespace-nowrap text-sm text-white">
                             {formatPrice(order.total)}
                           </td>
                           <td className="px-6 py-3">
@@ -4071,7 +4071,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-green-500 text-white border-green-500 shadow-md'
-                                            : 'bg-gray-100 text-gray-400 border-gray-300'
+                                            : 'bg-brand-neutral-light text-brand-primary/50 border-brand-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4088,7 +4088,7 @@ export default function AdminPage() {
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-3 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-3 whitespace-nowrap text-sm text-white">
                             {new Date(order.createdAt).toLocaleDateString()}
                           </td>
                           <td className="px-6 py-3 whitespace-nowrap text-sm font-medium">
@@ -4121,43 +4121,43 @@ export default function AdminPage() {
         
         {activeTab === 'banner' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900">Gestión del Banner</h2>
+            <h2 className="text-2xl font-bold text-white">Gestión del Banner</h2>
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-1">
                     Título del Banner
                   </label>
                   <input
                     type="text"
                     value={bannerForm.title}
                     onChange={(e) => setBannerForm({ ...bannerForm, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-1">
                     Texto del Banner
                   </label>
                   <input
                     type="text"
                     value={bannerForm.text}
                     onChange={(e) => setBannerForm({ ...bannerForm, text: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-1">
                     Imágenes del Carrusel
                   </label>
                   {bannerForm.images.map((image, index) => (
-                    <div key={index} className="mb-4 p-4 border border-gray-200 rounded-lg">
+                    <div key={index} className="mb-4 p-4 border border-brand-primary/30 rounded-lg">
                       <div className="flex gap-2 items-start">
                         <div className="flex-1">
-                          <label className="block text-sm text-gray-600 mb-1">
+                          <label className="block text-sm text-brand-primary/80 mb-1">
                             Imagen {index + 1}
                           </label>
                           <input
@@ -4168,7 +4168,7 @@ export default function AdminPage() {
                               newFiles[index] = file;
                               setBannerFiles(newFiles);
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                           />
                           {image && (
                             <div className="mt-2">
@@ -4202,7 +4202,7 @@ export default function AdminPage() {
                       setBannerForm({ ...bannerForm, images: [...bannerForm.images, ''] });
                       setBannerFiles([...bannerFiles, null]);
                     }}
-                    className="mt-2 px-3 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                    className="mt-2 px-3 py-2 bg-brand-neutral-dark0 text-white rounded-md hover:bg-gray-600"
                   >
                     ➕ Agregar Imagen
                   </button>
@@ -4215,7 +4215,7 @@ export default function AdminPage() {
                     onChange={(e) => setBannerForm({ ...bannerForm, active: e.target.checked })}
                     className="mr-2"
                   />
-                  <label className="text-sm font-medium text-gray-700">
+                  <label className="text-sm font-medium text-brand-primary">
                     Banner Activo
                   </label>
                 </div>
@@ -4280,7 +4280,7 @@ export default function AdminPage() {
               
               
               <div className="mt-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa:</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
                 <div className="relative text-white py-12 rounded-lg overflow-hidden" style={{ background: 'linear-gradient(to right, var(--brand-primary), var(--brand-primary))' }}>
                   {bannerForm.images.length > 0 && bannerForm.images[0] && (
                     <div 
@@ -4308,7 +4308,7 @@ export default function AdminPage() {
             {/* Header Section */}
             <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 rounded-xl shadow-xl p-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
                   </svg>
@@ -4324,19 +4324,19 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-800">📝 Configuración Básica</h2>
+                    <h2 className="text-xl font-bold text-white">📝 Configuración Básica</h2>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         🏷️ Título del Popup
                       </label>
                       <input
@@ -4344,18 +4344,18 @@ export default function AdminPage() {
                         value={popupForm.title}
                         onChange={(e) => setPopupForm({ ...popupForm, title: e.target.value })}
                         placeholder="¡Oferta Especial!"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/70"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         🎨 Tipo de Popup
                       </label>
                       <select
                         value={popupForm.popupType}
                         onChange={(e) => setPopupForm({ ...popupForm, popupType: e.target.value as 'category' | 'information' })}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/70"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
                       >
                         <option value="category">🏷️ Categoría/Promocional</option>
                         <option value="information">ℹ️ Información</option>
@@ -4363,7 +4363,7 @@ export default function AdminPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         📄 Descripción
                       </label>
                       <textarea
@@ -4371,12 +4371,12 @@ export default function AdminPage() {
                         onChange={(e) => setPopupForm({ ...popupForm, description: e.target.value })}
                         placeholder="Descripción detallada de la oferta..."
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/70 resize-none"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70 resize-none"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         🔗 Texto del Botón
                       </label>
                       <input
@@ -4384,32 +4384,32 @@ export default function AdminPage() {
                         value={popupForm.buttonText}
                         onChange={(e) => setPopupForm({ ...popupForm, buttonText: e.target.value })}
                         placeholder="Ver Ofertas"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/70"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-800">🎯 Configuración de Layout</h2>
+                    <h2 className="text-xl font-bold text-white">🎯 Configuración de Layout</h2>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         📏 Tamaño del Popup
                       </label>
                       <select
                         value={popupForm.size}
                         onChange={(e) => setPopupForm({ ...popupForm, size: (isPopupSize(e.target.value) ? e.target.value : '2x2') })}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-white/70"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
                       >
                         {Object.entries(POPUP_SIZE_PRESETS).map(([value, config]) => (
                           <option key={value} value={value}>
@@ -4420,13 +4420,13 @@ export default function AdminPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         📍 Posición en Pantalla
                       </label>
                       <select
                         value={popupForm.position}
                         onChange={(e) => setPopupForm({ ...popupForm, position: e.target.value as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' })}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-white/70"
+                        className="w-full px-4 py-3 border-2 border-brand-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
                       >
                         <option value="bottom-right">🔽➡️ Esquina inferior derecha</option>
                         <option value="bottom-left">🔽⬅️ Esquina inferior izquierda</option>
@@ -4439,19 +4439,19 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-800">🎬 Contenido Multimedia</h2>
+                    <h2 className="text-xl font-bold text-white">🎬 Contenido Multimedia</h2>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      <label className="block text-sm font-semibold text-brand-primary mb-3">
                         📸 Tipo de Contenido
                       </label>
                       <div className="flex items-center gap-6">
@@ -4461,9 +4461,9 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={!popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: false, mediaUrl: '' }))}
-                            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                            className="w-4 h-4 text-blue-600 border-brand-primary/40 focus:ring-blue-500"
                           />
-                          <span className="text-sm font-medium text-gray-700">🖼️ Imagen</span>
+                          <span className="text-sm font-medium text-brand-primary">🖼️ Imagen</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                           <input
@@ -4471,15 +4471,15 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: true, mediaUrl: '' }))}
-                            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                            className="w-4 h-4 text-blue-600 border-brand-primary/40 focus:ring-blue-500"
                           />
-                          <span className="text-sm font-medium text-gray-700">🎥 Video</span>
+                          <span className="text-sm font-medium text-brand-primary">🎥 Video</span>
                         </label>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-brand-primary mb-2">
                         📤 Subir Archivo
                       </label>
                       <div className="space-y-3">
@@ -4492,7 +4492,7 @@ export default function AdminPage() {
                               handlePopupImageUpload(file);
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-white/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                          className="w-full px-4 py-3 border-2 border-dashed border-brand-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
                         />
                         {popupImageUploading && (
                           <div className="flex items-center gap-2 text-green-600">
@@ -4541,26 +4541,26 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-cyber-pink to-brand-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                       </svg>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-800">⚡ Control y Acciones</h2>
+                    <h2 className="text-xl font-bold text-white">⚡ Control y Acciones</h2>
                   </div>
 
                   <div className="space-y-6">
-                    <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center gap-3 p-4 bg-brand-neutral-dark rounded-xl">
                       <input
                         type="checkbox"
                         id="popup-active"
                         checked={popupForm.active}
                         onChange={(e) => setPopupForm({ ...popupForm, active: e.target.checked })}
-                        className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        className="w-5 h-5 text-blue-600 border-brand-primary/40 rounded focus:ring-blue-500"
                       />
-                      <label htmlFor="popup-active" className="text-sm font-semibold text-gray-800">
+                      <label htmlFor="popup-active" className="text-sm font-semibold text-white">
                         🎯 Popup Activo (visible en el sitio web)
                       </label>
                     </div>
@@ -4618,7 +4618,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6 sticky top-6">
+                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4626,7 +4626,7 @@ export default function AdminPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-800">👁️ Vista Previa</h3>
+                    <h3 className="text-lg font-bold text-white">👁️ Vista Previa</h3>
                   </div>
 
                   <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl border-2 border-slate-300 p-6 min-h-[400px] shadow-inner">
@@ -4638,10 +4638,10 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-brand-primary to-cyber-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-white/90 hover:bg-white transition-all cursor-default shadow-lg"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-brand-neutral-dark/80/90 hover:bg-brand-neutral-dark/80 transition-all cursor-default shadow-lg"
                             aria-label="Cerrar"
                           >
-                            <XMarkIcon className="h-4 w-4 text-gray-600" />
+                            <XMarkIcon className="h-4 w-4 text-brand-primary/80" />
                           </button>
 
                           {popupForm.mediaUrl && !popupForm.isVideo && (
@@ -4683,7 +4683,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-white text-brand-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
+                              className="bg-brand-neutral-dark/80 text-brand-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4718,7 +4718,7 @@ export default function AdminPage() {
 
         {activeTab === 'product-layout' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900">🔲 Configuración del Layout de Productos</h2>
+            <h2 className="text-2xl font-bold text-white">🔲 Configuración del Layout de Productos</h2>
             
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
               <div className="flex items-start gap-3">
@@ -4734,7 +4734,7 @@ export default function AdminPage() {
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-white/80 border border-blue-200 rounded-md px-3 py-2 text-sm text-blue-900">
+                    <div className="mt-2 bg-brand-neutral-dark/80/80 border border-blue-200 rounded-md px-3 py-2 text-sm text-blue-900">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4742,17 +4742,17 @@ export default function AdminPage() {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Configurador de Patrones de Layout</h3>
-                      <p className="text-sm text-gray-600">
+                      <h3 className="text-lg font-semibold text-white">Configurador de Patrones de Layout</h3>
+                      <p className="text-sm text-brand-primary/80">
                         Ajusta el ritmo visual de la grilla principal. Los cambios se reflejan en la home una vez guardados.
                       </p>
                       {layoutPatternsFetched.updatedAt && (
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-xs text-brand-primary/50 mt-1">
                           Última actualización: {new Date(layoutPatternsFetched.updatedAt).toLocaleString('es-CL')}
                         </p>
                       )}
@@ -4761,7 +4761,7 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={handleResetLayoutPatterns}
-                        className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 text-gray-600 hover:text-gray-800 hover:border-gray-400 transition-colors"
+                        className="px-4 py-2 text-sm font-medium rounded-md border border-brand-primary/40 text-brand-primary/80 hover:text-white hover:border-gray-400 transition-colors"
                         disabled={savingLayoutPatterns || layoutPatternsLoading}
                       >
                         Restablecer valores
@@ -4790,14 +4790,14 @@ export default function AdminPage() {
                     {orderedLayoutRules.map((rule) => {
                       const meta = LAYOUT_VARIANT_META[rule.variant];
                       return (
-                        <div key={rule.variant} className="border border-gray-200 rounded-lg p-4">
+                        <div key={rule.variant} className="border border-brand-primary/30 rounded-lg p-4">
                           <div className="flex items-start justify-between gap-3">
                             <div className="space-y-1">
                               <div className="text-2xl">{meta.icon}</div>
-                              <h4 className="font-medium text-gray-900">{meta.title}</h4>
-                              <p className="text-sm text-gray-600">{meta.description}</p>
+                              <h4 className="font-medium text-white">{meta.title}</h4>
+                              <p className="text-sm text-brand-primary/80">{meta.description}</p>
                             </div>
-                            <label className="flex items-center gap-2 text-sm text-gray-600">
+                            <label className="flex items-center gap-2 text-sm text-brand-primary/80">
                               <span>Activo</span>
                               <input
                                 type="checkbox"
@@ -4814,7 +4814,7 @@ export default function AdminPage() {
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                              <label className="block text-xs font-semibold text-brand-primary mb-1">
                                 Intervalo (cada cuántos productos)
                               </label>
                               <input
@@ -4829,13 +4829,13 @@ export default function AdminPage() {
                                     interval: value,
                                   }));
                                 }}
-                                className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1"
+                                className="w-full px-2 py-1 border border-brand-primary/40 rounded text-sm focus:outline-none focus:ring-1"
                                 style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               />
                             </div>
                             <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                              <label className="block text-xs font-semibold text-brand-primary mb-1">
                                 Diseño del bloque
                               </label>
                               <select
@@ -4849,7 +4849,7 @@ export default function AdminPage() {
                                     span: value,
                                   }));
                                 }}
-                                className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1"
+                                className="w-full px-2 py-1 border border-brand-primary/40 rounded text-sm focus:outline-none focus:ring-1"
                                 style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               >
@@ -4862,7 +4862,7 @@ export default function AdminPage() {
                             </div>
                           </div>
 
-                          <p className="text-xs text-gray-500 mt-3">
+                          <p className="text-xs text-brand-primary/60 mt-3">
                             {rule.enabled
                               ? `Activo: se aplica a cada ${rule.interval} producto(s).`
                               : 'Este patrón está deshabilitado temporalmente.'}
@@ -4885,10 +4885,10 @@ export default function AdminPage() {
       <>
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               📑 Secciones de Productos
             </h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-brand-primary/80 mt-1">
               Gestiona las secciones que aparecen en la página principal
             </p>
           </div>
@@ -4909,22 +4909,22 @@ export default function AdminPage() {
         {productSections.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {productSections.map((section, index) => (
-              <div key={section.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <div key={section.id} className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-brand-primary/30 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-gray-900">{section.name}</h3>
+                        <h3 className="text-lg font-bold text-white">{section.name}</h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
                             ? 'bg-green-100 text-green-700'
-                            : 'bg-gray-100 text-gray-500'
+                            : 'bg-brand-neutral-light text-brand-primary/60'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 mb-3">{section.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <p className="text-sm text-brand-primary/80 mb-3">{section.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-brand-primary/60">
                         <span className="px-2 py-1 bg-brand-neutral-light text-brand-primary rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
@@ -5006,10 +5006,10 @@ export default function AdminPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
+          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-brand-primary/30 p-12 text-center">
             <div className="text-6xl mb-4">📑</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No hay secciones configuradas</h3>
-            <p className="text-gray-600 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
+            <h3 className="text-xl font-bold text-white mb-2">No hay secciones configuradas</h3>
+            <p className="text-brand-primary/80 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
             <button
               onClick={() => {
                 setEditingSection(null);
@@ -5038,24 +5038,24 @@ export default function AdminPage() {
               setPreviewDescription('');
               setSectionSaveStatus('idle');
             }}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium"
+            className="flex items-center gap-2 text-brand-primary/80 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-brand-primary/30 p-6">
+          <h2 className="text-2xl font-bold text-white mb-6">
             {editingSection ? 'Editar Sección' : 'Nueva Sección'}
           </h2>
 
           <div className="grid grid-cols-3 gap-6">
             {/* Columna Izquierda: Formulario */}
             <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Configuración</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Configuración</h3>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-brand-primary mb-2">
                   Nombre de la Sección
                 </label>
                 <input
@@ -5064,12 +5064,12 @@ export default function AdminPage() {
                   defaultValue={editingSection?.name || ''}
                   onChange={(e) => setPreviewName(e.target.value)}
                   placeholder="Ej: Productos Destacados"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-brand-primary/40 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-brand-primary mb-2">
                   Descripción
                 </label>
                 <textarea
@@ -5078,18 +5078,18 @@ export default function AdminPage() {
                   onChange={(e) => setPreviewDescription(e.target.value)}
                   placeholder="Descripción de la sección"
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-brand-primary/40 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-brand-primary mb-2">
                   Tipo de Sección
                 </label>
                 <select
                   defaultValue={editingSection?.type || 'custom'}
                   id="section-type-select"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-brand-primary/40 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                 >
                   <option value="custom">🎯 Personalizada</option>
                   <option value="featured">⭐ Destacados</option>
@@ -5106,7 +5106,7 @@ export default function AdminPage() {
                   defaultChecked={editingSection?.enabled ?? true}
                   className="w-5 h-5 text-brand-primary rounded"
                 />
-                <label htmlFor="section-enabled" className="text-sm font-medium text-gray-700">
+                <label htmlFor="section-enabled" className="text-sm font-medium text-brand-primary">
                   Sección activa
                 </label>
               </div>
@@ -5114,31 +5114,31 @@ export default function AdminPage() {
 
             {/* Columna Centro: Vista Previa */}
             <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">👁️ Vista Previa</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
 
               <div className="bg-gradient-to-br from-brand-neutral-light to-white rounded-lg p-6 border-2 border-brand-primary-200">
-                <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="bg-brand-neutral-dark/80 rounded-lg p-4 shadow-sm">
                   <div className="border-b-2 border-brand-primary pb-3 mb-3">
-                    <h4 className="text-xl font-bold text-gray-900">
+                    <h4 className="text-xl font-bold text-white">
                       {previewName || editingSection?.name || 'Nombre de Sección'}
                     </h4>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-brand-primary/80 mt-1">
                       {previewDescription || editingSection?.description || 'Descripción de la sección'}
                     </p>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-gray-50 rounded h-20 flex items-center justify-center">
+                      <div key={i} className="bg-brand-neutral-dark rounded h-20 flex items-center justify-center">
                         <span className="text-2xl">📦</span>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between items-center mt-3 text-xs">
-                    <span className="text-gray-500">{editingSection?.selectedProducts?.length || 0} productos</span>
+                    <span className="text-brand-primary/60">{editingSection?.selectedProducts?.length || 0} productos</span>
                     <span className="text-brand-primary font-semibold">Ver todos →</span>
                   </div>
                 </div>
-                <p className="text-xs text-center text-gray-500 mt-3">
+                <p className="text-xs text-center text-brand-primary/60 mt-3">
                   Así se verá en tu sitio web
                 </p>
               </div>
@@ -5146,14 +5146,14 @@ export default function AdminPage() {
 
             {/* Columna Derecha: Resumen de Productos */}
             <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Productos Seleccionados</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Productos Seleccionados</h3>
 
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="bg-brand-neutral-dark rounded-lg p-4 border border-brand-primary/30">
                 <div className="text-center mb-4">
                   <div className="text-3xl font-bold text-brand-primary">
                     {editingSection?.selectedProducts?.length || 0}
                   </div>
-                  <div className="text-sm text-gray-600">productos configurados</div>
+                  <div className="text-sm text-brand-primary/80">productos configurados</div>
                 </div>
 
                 {editingSection?.selectedProducts && editingSection.selectedProducts.length > 0 ? (
@@ -5161,7 +5161,7 @@ export default function AdminPage() {
                     {editingSection.selectedProducts.slice(0, 5).map((productId: string) => {
                       const product = products.find(p => p.id === productId);
                       return product ? (
-                        <div key={productId} className="flex items-center gap-2 bg-white rounded-lg p-2 border border-gray-200">
+                        <div key={productId} className="flex items-center gap-2 bg-brand-neutral-dark/80 rounded-lg p-2 border border-brand-primary/30">
                           {product.imagen && (
                             <img
                               src={product.imagen}
@@ -5170,10 +5170,10 @@ export default function AdminPage() {
                             />
                           )}
                           <div className="flex-1 min-w-0">
-                            <div className="text-xs font-medium text-gray-900 truncate">
+                            <div className="text-xs font-medium text-white truncate">
                               {product.nombre}
                             </div>
-                            <div className="text-xs text-gray-500">
+                            <div className="text-xs text-brand-primary/60">
                               ${product.precio?.toLocaleString()}
                             </div>
                           </div>
@@ -5181,13 +5181,13 @@ export default function AdminPage() {
                       ) : null;
                     })}
                     {editingSection.selectedProducts.length > 5 && (
-                      <div className="text-xs text-gray-500 text-center pt-2">
+                      <div className="text-xs text-brand-primary/60 text-center pt-2">
                         +{editingSection.selectedProducts.length - 5} más
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="text-center py-6 text-gray-400 text-sm">
+                  <div className="text-center py-6 text-brand-primary/50 text-sm">
                     No hay productos seleccionados.
                     <br />
                     Guarda la sección y luego agrega productos.
@@ -5226,7 +5226,7 @@ export default function AdminPage() {
           )}
 
           {/* Action Buttons */}
-          <div className="flex gap-3 mt-6 pt-6 border-t border-gray-200">
+          <div className="flex gap-3 mt-6 pt-6 border-t border-brand-primary/30">
             <button
               onClick={() => {
                 setSectionsView('list');
@@ -5236,7 +5236,7 @@ export default function AdminPage() {
                 setSectionSaveStatus('idle');
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium disabled:opacity-50"
+              className="px-6 py-3 bg-brand-neutral-light text-brand-primary rounded-lg hover:bg-brand-neutral-light transition-colors font-medium disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -5308,14 +5308,14 @@ export default function AdminPage() {
               setSectionsView('list');
               setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
             }}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium"
+            className="flex items-center gap-2 text-brand-primary/80 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-brand-primary/30 p-6">
+          <h2 className="text-2xl font-bold text-white mb-6">
             📦 Gestionar Productos de la Sección
           </h2>
 
@@ -5329,14 +5329,14 @@ export default function AdminPage() {
                 return currentSection ? (
                   <>
                     <div className="bg-brand-neutral-light rounded-lg p-4 border border-brand-primary-200">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      <h3 className="text-lg font-bold text-white mb-2">
                         {currentSection.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mb-4">
+                      <p className="text-sm text-brand-primary/80 mb-4">
                         {currentSection.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-white text-brand-primary rounded-md font-medium text-xs">
+                        <span className="px-2 py-1 bg-brand-neutral-dark/80 text-brand-primary rounded-md font-medium text-xs">
                           {currentSection.type === 'custom' ? '🎯 Personalizada' :
                            currentSection.type === 'featured' ? '⭐ Destacados' :
                            currentSection.type === 'new' ? '🆕 Nuevos' :
@@ -5345,18 +5345,18 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <div className="bg-brand-neutral-dark rounded-lg p-4 border border-brand-primary/30">
                       <div className="text-center mb-4">
                         <div className="text-3xl font-bold text-brand-primary">
                           {currentSection.selectedProducts?.length || 0}
                         </div>
-                        <div className="text-sm text-gray-600">productos seleccionados</div>
+                        <div className="text-sm text-brand-primary/80">productos seleccionados</div>
                       </div>
 
                       {selectedProducts.length > 0 ? (
                         <div className="space-y-2 max-h-96 overflow-y-auto">
                           {selectedProducts.map((product) => (
-                            <div key={product.id} className="flex items-center gap-2 bg-white rounded-lg p-2 border border-gray-200">
+                            <div key={product.id} className="flex items-center gap-2 bg-brand-neutral-dark/80 rounded-lg p-2 border border-brand-primary/30">
                               {product.imagen && (
                                 <img
                                   src={product.imagen}
@@ -5365,10 +5365,10 @@ export default function AdminPage() {
                                 />
                               )}
                               <div className="flex-1 min-w-0">
-                                <div className="text-xs font-medium text-gray-900 truncate">
+                                <div className="text-xs font-medium text-white truncate">
                                   {product.nombre}
                                 </div>
-                                <div className="text-xs text-gray-500">
+                                <div className="text-xs text-brand-primary/60">
                                   ${product.precio?.toLocaleString()}
                                 </div>
                               </div>
@@ -5376,14 +5376,14 @@ export default function AdminPage() {
                           ))}
                         </div>
                       ) : (
-                        <div className="text-center py-6 text-gray-400 text-sm">
+                        <div className="text-center py-6 text-brand-primary/50 text-sm">
                           No hay productos seleccionados
                         </div>
                       )}
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-6 text-gray-400">
+                  <div className="text-center py-6 text-brand-primary/50">
                     Sección no encontrada
                   </div>
                 );
@@ -5402,7 +5402,7 @@ export default function AdminPage() {
                       ...prev,
                       search: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-brand-primary/40 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                   />
                 </div>
                 <div className="w-48">
@@ -5412,7 +5412,7 @@ export default function AdminPage() {
                       ...prev,
                       category: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-brand-primary/40 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
                   >
                     <option value="">Todas las categorías</option>
                     {categories.map((category) => (
@@ -5435,7 +5435,7 @@ export default function AdminPage() {
                   }))}
                   className="w-4 h-4 text-brand-primary rounded"
                 />
-                <label htmlFor="show-only-selected" className="text-sm text-gray-700">
+                <label htmlFor="show-only-selected" className="text-sm text-brand-primary">
                   Mostrar solo seleccionados
                 </label>
               </div>
@@ -5475,7 +5475,7 @@ export default function AdminPage() {
 
                     return (
                       <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-brand-primary bg-brand-neutral-light' : 'border-gray-200'
+                        isSelected ? 'border-brand-primary bg-brand-neutral-light' : 'border-brand-primary/30'
                       }`}>
                         <div className="flex items-start gap-3">
                           <input
@@ -5516,13 +5516,13 @@ export default function AdminPage() {
                                 className="w-full h-32 object-cover rounded-lg mb-2"
                               />
                             )}
-                            <h4 className="font-medium text-gray-900 text-sm truncate">
+                            <h4 className="font-medium text-white text-sm truncate">
                               {product.nombre}
                             </h4>
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className="text-sm text-brand-primary/80 mt-1">
                               ${product.precio?.toLocaleString()}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-brand-primary/60 mt-1">
                               Stock: {product.stock}
                             </p>
                           </div>
@@ -5543,7 +5543,7 @@ export default function AdminPage() {
         {activeTab === 'main-banner' && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Gestión de Banners (v2)</h2>
+              <h2 className="text-2xl font-bold text-white">Gestión de Banners (v2)</h2>
               {isAutoSavingBanner && (
                 <div className="flex items-center gap-2 text-sm text-brand-primary bg-brand-neutral-light px-3 py-1 rounded-full">
                   <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -5555,7 +5555,7 @@ export default function AdminPage() {
               )}
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-6">
                 
                 <div className="flex items-center">
@@ -5564,22 +5564,22 @@ export default function AdminPage() {
                     id="mainBannerActive"
                     checked={mainBannerForm.active}
                     onChange={(e) => setMainBannerForm({ ...mainBannerForm, active: e.target.checked })}
-                    className="h-4 w-4 border-gray-300 rounded" style={{ color: 'var(--brand-primary)', '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                    className="h-4 w-4 border-brand-primary/40 rounded" style={{ color: 'var(--brand-primary)', '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
-                  <label htmlFor="mainBannerActive" className="ml-2 block text-sm font-medium text-gray-700">
+                  <label htmlFor="mainBannerActive" className="ml-2 block text-sm font-medium text-brand-primary">
                     Banner Principal Activo
                   </label>
                 </div>
 
                 
                 <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-900">Banners del Carrusel</h3>
-                  <p className="text-sm text-gray-600">Selecciona los productos que aparecerán en el banner principal</p>
+                  <h3 className="text-lg font-semibold text-white">Banners del Carrusel</h3>
+                  <p className="text-sm text-brand-primary/80">Selecciona los productos que aparecerán en el banner principal</p>
                   
                   {mainBannerForm.slides.map((slide, index) => (
-                    <div key={index} className="border border-gray-200 rounded-lg p-4">
+                    <div key={index} className="border border-brand-primary/30 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-4">
-                        <h4 className="font-medium text-gray-900">Banner {index + 1}</h4>
+                        <h4 className="font-medium text-white">Banner {index + 1}</h4>
                         {mainBannerForm.slides.length > 1 && (
                           <button
                             type="button"
@@ -5596,7 +5596,7 @@ export default function AdminPage() {
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium text-brand-primary mb-2">
                             Imagen del Banner
                           </label>
                           <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm">
@@ -5627,9 +5627,9 @@ export default function AdminPage() {
                                 }
                               }
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                            className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           />
-                          <p className="text-xs text-gray-500 mt-1">Formatos soportados: JPG, PNG, GIF</p>
+                          <p className="text-xs text-brand-primary/60 mt-1">Formatos soportados: JPG, PNG, GIF</p>
                           
                           {slide.imageUrl && (
                             <div className="mt-2">
@@ -5670,7 +5670,7 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], title: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-white transition-all"
+                            className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                             placeholder="Ej: ¡Ofertas Especiales! 🔥"
                           />
                           <p className="text-xs text-brand-primary mt-1">Este texto aparece grande sobre el banner</p>
@@ -5692,14 +5692,14 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], subtitle: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white transition-all"
+                            className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                             placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                           />
                           <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium text-brand-primary mb-2">
                             Tipo de Enlace
                           </label>
                           <select
@@ -5715,7 +5715,7 @@ export default function AdminPage() {
                               };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                            className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           >
                             <option value="product">Producto Específico</option>
                             <option value="category">Categoría (múltiples productos en promo)</option>
@@ -5725,7 +5725,7 @@ export default function AdminPage() {
 
                         {slide.linkType === "category" && (
                           <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-medium text-brand-primary mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                               </svg>
@@ -5738,7 +5738,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], categoryId: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                              className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                             >
                               <option value="">Selecciona una categoría</option>
                               {availableCategories.map((category) => (
@@ -5747,7 +5747,7 @@ export default function AdminPage() {
                                 </option>
                               ))}
                             </select>
-                            <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                            <p className="text-xs text-brand-primary/60 mt-1 flex items-center gap-1">
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -5758,7 +5758,7 @@ export default function AdminPage() {
 
                         {slide.linkType === "product" && (
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-brand-primary mb-2">
                               Buscar Producto para Redirección
                             </label>
                           <input
@@ -5768,7 +5768,7 @@ export default function AdminPage() {
                             onChange={(e) => {
                               setBannerSearchTerms({ ...bannerSearchTerms, [index]: e.target.value });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary mb-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary mb-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                           />
                           
                           <select
@@ -5782,7 +5782,7 @@ export default function AdminPage() {
                               });
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                            className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                           >
                             <option value="">Selecciona un producto</option>
                             {products
@@ -5802,7 +5802,7 @@ export default function AdminPage() {
                           {(() => {
                             const selectedProduct = products.find(p => p.id === slide.productId);
                             return selectedProduct && (
-                              <div className="mt-3 p-3 bg-gray-50 rounded-lg flex items-center space-x-3">
+                              <div className="mt-3 p-3 bg-brand-neutral-dark rounded-lg flex items-center space-x-3">
                                 <img
                                   loading="lazy"
                                   src={selectedProduct.imagen || ''}
@@ -5810,10 +5810,10 @@ export default function AdminPage() {
                                   className="w-16 h-16 object-cover rounded"
                                 />
                                 <div>
-                                  <h5 className="font-medium text-gray-900">
+                                  <h5 className="font-medium text-white">
                                     {selectedProduct.nombre}
                                   </h5>
-                                  <p className="text-sm text-gray-600">
+                                  <p className="text-sm text-brand-primary/80">
                                     ${(selectedProduct.precio || 0).toLocaleString()}
                                   </p>
                                 </div>
@@ -5832,11 +5832,11 @@ export default function AdminPage() {
                                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
-                                <h5 className="font-medium text-gray-900">
+                                <h5 className="font-medium text-white">
                                   {selectedCategory.name}
                                 </h5>
                               </div>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-sm text-brand-primary/80">
                                 {categoryProducts.length} productos en esta categoría
                               </p>
                             </div>
@@ -5859,7 +5859,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], customUrl: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-white transition-all"
+                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                               placeholder="Ej: https://ejemplo.com o /?category=tecnologia"
                             />
                             <p className="text-xs text-purple-600 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
@@ -5884,7 +5884,7 @@ export default function AdminPage() {
                       }];
                       setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                     }}
-                    className="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
+                    className="w-full py-3 border-2 border-dashed border-brand-primary/40 rounded-lg text-brand-primary/80 hover:border-brand-primary hover:text-brand-primary transition-colors"
                   >
                     + Agregar Banner
                   </button>
@@ -5911,12 +5911,12 @@ export default function AdminPage() {
         
         {activeTab === 'logo' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900">Gestión del Logo</h2>
+            <h2 className="text-2xl font-bold text-white">Gestión del Logo</h2>
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-1">
                     Texto del Logo
                   </label>
                   <input
@@ -5924,12 +5924,12 @@ export default function AdminPage() {
                     value={logoForm.text}
                     onChange={(e) => setLogoForm({ ...logoForm, text: e.target.value })}
                     placeholder="Importadora F&D"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-1">
                     Imagen del Logo
                   </label>
                   <div className="mb-3 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
@@ -5946,9 +5946,9 @@ export default function AdminPage() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-brand-primary/60 mt-1">
                     Si subes una imagen, se usará en lugar del emoji
                   </p>
                   {logoForm.image && (
@@ -6021,17 +6021,17 @@ export default function AdminPage() {
               
               
               <div className="mt-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa:</h3>
-                <div className="bg-white p-4 border rounded-lg">
+                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
+                <div className="bg-brand-neutral-dark/80 p-4 border rounded-lg">
                   <div className="flex items-center space-x-2">
                     {logoForm.image ? (
                       <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
                     ) : (
-                      <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
+                      <div className="w-8 h-8 bg-brand-neutral-light rounded flex items-center justify-center text-xs text-brand-primary/60">
                         Sin logo
                       </div>
                     )}
-                    <span className="text-xl font-bold text-gray-900">{logoForm.text}</span>
+                    <span className="text-xl font-bold text-white">{logoForm.text}</span>
                   </div>
                 </div>
               </div>
@@ -6043,7 +6043,7 @@ export default function AdminPage() {
         {activeTab === 'categories' && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-900">Gestión de Categorías</h2>
+              <h2 className="text-2xl font-bold text-white">Gestión de Categorías</h2>
               <button
                   onClick={() => {
                     setCategoryForm({ id: '', name: '', active: true, subcategorias: [] });
@@ -6055,38 +6055,38 @@ export default function AdminPage() {
                 </button>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-brand-neutral-dark">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Nombre
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Subcategorías
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-brand-primary/60 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
                     {categories.map((category) => (
                       <tr key={category.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                           {category.id}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
                           {category.name}
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-900">
+                        <td className="px-6 py-4 text-sm text-white">
                           <div className="flex flex-wrap gap-1">
                             {(category as any).subcategorias && (category as any).subcategorias.length > 0 ? (
                               (category as any).subcategorias.map((sub: any, index: number) => (
@@ -6131,7 +6131,7 @@ export default function AdminPage() {
                                 </div>
                               ))
                             ) : (
-                              <span className="text-gray-400 text-xs">Sin subcategorías</span>
+                              <span className="text-brand-primary/50 text-xs">Sin subcategorías</span>
                             )}
                           </div>
                           <button
@@ -6189,15 +6189,15 @@ export default function AdminPage() {
         
         {showCategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="bg-brand-neutral-dark/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-white">
                     {categoryForm.id ? 'Editar Categoría' : 'Agregar Categoría'}
                   </h3>
                   <button
                     onClick={() => setShowCategoryModal(false)}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-brand-primary/50 hover:text-brand-primary/80"
                   >
                     ✕
                   </button>
@@ -6205,7 +6205,7 @@ export default function AdminPage() {
 
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-brand-primary mb-1">
                       ID de la Categoría
                     </label>
                     <input
@@ -6213,12 +6213,12 @@ export default function AdminPage() {
                       value={categoryForm.id}
                       onChange={(e) => setCategoryForm({ ...categoryForm, id: e.target.value })}
                       placeholder="electronicos"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-brand-primary mb-1">
                       Nombre de la Categoría
                     </label>
                     <input
@@ -6226,7 +6226,7 @@ export default function AdminPage() {
                       value={categoryForm.name}
                       onChange={(e) => setCategoryForm({ ...categoryForm, name: e.target.value })}
                       placeholder="Electrónicos"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -6237,7 +6237,7 @@ export default function AdminPage() {
                       onChange={(e) => setCategoryForm({ ...categoryForm, active: e.target.checked })}
                       className="mr-2"
                     />
-                    <label className="text-sm font-medium text-gray-700">
+                    <label className="text-sm font-medium text-brand-primary">
                       Categoría Activa
                     </label>
                   </div>
@@ -6246,7 +6246,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowCategoryModal(false)}
-                      className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6296,15 +6296,15 @@ export default function AdminPage() {
         
         {showSubcategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="bg-brand-neutral-dark/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-white">
                     {subcategoryForm.id ? 'Editar Subcategoría' : 'Agregar Subcategoría'}
                   </h3>
                   <button
                     onClick={() => setShowSubcategoryModal(false)}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-brand-primary/50 hover:text-brand-primary/80"
                   >
                     ✕
                   </button>
@@ -6312,7 +6312,7 @@ export default function AdminPage() {
 
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-brand-primary mb-1">
                       Nombre de la Subcategoría
                     </label>
                     <input
@@ -6320,7 +6320,7 @@ export default function AdminPage() {
                       value={subcategoryForm.nombre}
                       onChange={(e) => setSubcategoryForm({ ...subcategoryForm, nombre: e.target.value })}
                       placeholder="Smartphones"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
@@ -6331,7 +6331,7 @@ export default function AdminPage() {
                       onChange={(e) => setSubcategoryForm({ ...subcategoryForm, activa: e.target.checked })}
                       className="mr-2"
                     />
-                    <label className="text-sm font-medium text-gray-700">
+                    <label className="text-sm font-medium text-brand-primary">
                       Subcategoría Activa
                     </label>
                   </div>
@@ -6340,7 +6340,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowSubcategoryModal(false)}
-                      className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6412,12 +6412,12 @@ export default function AdminPage() {
         
         {showProductModal && (
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
-            <div className="bg-white/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-gray-200 flex flex-col mx-auto">
+            <div className="bg-brand-neutral-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-brand-primary/30 flex flex-col mx-auto">
               {/* Compact Header */}
               <div className="bg-gradient-to-r from-brand-primary to-cyber-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--brand-primary)' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-10 h-10 bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
@@ -6431,7 +6431,7 @@ export default function AdminPage() {
                   </div>
                   <button
                     onClick={() => setShowProductModal(false)}
-                    className="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-8 h-8 bg-brand-neutral-dark/80/20 hover:bg-brand-neutral-dark/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6445,16 +6445,16 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📝</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Información Básica</h4>
+                      <h4 className="text-sm font-bold text-white">Información Básica</h4>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div className="md:col-span-2 lg:col-span-3">
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>📦</span> Nombre *
                         </label>
                         <input
@@ -6462,13 +6462,13 @@ export default function AdminPage() {
                           value={productForm.nombre}
                           onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                           required
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Ej: Laptop Gaming RGB"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>🏷️</span> SKU *
                         </label>
                         <input
@@ -6477,12 +6477,12 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                           required
                           placeholder="SKU-001"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-200 uppercase bg-white/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-200 uppercase bg-brand-neutral-dark/80/70"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>💰</span> Precio ($) *
                         </label>
                         <input
@@ -6492,13 +6492,13 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="0"
                         />
                       </div>
 
                       <div className="md:col-span-2 lg:col-span-3">
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>💸</span> Precio Anterior (Opcional - para mostrar descuento)
                         </label>
                         <input
@@ -6507,10 +6507,10 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:outline-none transition-all duration-200 bg-white/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--brand-primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Dejar vacío si no hay descuento"
                         />
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-brand-primary/60 mt-1">
                           Si agregas un precio anterior, se mostrará tachado y el % de descuento
                         </p>
                       </div>
@@ -6518,16 +6518,16 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📊</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Control de Inventario</h4>
+                      <h4 className="text-sm font-bold text-white">Control de Inventario</h4>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>📦</span> Stock Actual *
                         </label>
                         <input
@@ -6537,13 +6537,13 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-white/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70"
                           placeholder="0"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-1 flex items-center gap-1">
                           <span>⚠️</span> Stock Mínimo *
                         </label>
                         <input
@@ -6554,7 +6554,7 @@ export default function AdminPage() {
                           min="0"
                           step="1"
                           placeholder="5"
-                          className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-white/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70"
                         />
                         <p className="text-xs text-green-600 mt-1">📊 Para alertas de stock bajo</p>
                       </div>
@@ -6562,25 +6562,25 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📂</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Categorización</h4>
+                      <h4 className="text-sm font-bold text-white">Categorización</h4>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                       <div className="lg:col-span-2">
-                        <label className="block text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-brand-primary mb-2 flex items-center gap-1">
                           <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                         </label>
-                        <div className="border-2 border-gray-200 rounded-lg p-3 bg-white/70 max-h-[55vh] overflow-y-auto space-y-4">
+                        <div className="border-2 border-brand-primary/30 rounded-lg p-3 bg-brand-neutral-dark/80/70 max-h-[55vh] overflow-y-auto space-y-4">
                           {categories.map((category) => {
                             const subcategorias = (category as any).subcategorias || [];
                             const isCategoryChecked = productForm.categorias.includes(category.id);
 
                             return (
-                              <div key={category.id} className="border-b border-gray-200 pb-3 last:border-0">
+                              <div key={category.id} className="border-b border-brand-primary/30 pb-3 last:border-0">
                                 {/* Categoría principal */}
                                 <label className="flex items-center gap-2 hover:bg-purple-50 p-2 rounded cursor-pointer font-medium">
                                   <input
@@ -6607,7 +6607,7 @@ export default function AdminPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                                    className="rounded border-brand-primary/40 text-purple-600 focus:ring-purple-500"
                                   />
                                   <span className="text-sm">📂 {category.name}</span>
                                 </label>
@@ -6642,7 +6642,7 @@ export default function AdminPage() {
                                                 categoria: newCategorias[0]?.split('-')[0] || ''
                                               });
                                             }}
-                                            className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                            className="rounded border-brand-primary/40 text-indigo-600 focus:ring-indigo-500"
                                           />
                                           <span className="text-xs">📁 {sub.nombre}</span>
                                         </label>
@@ -6667,29 +6667,29 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">📝</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Descripción</h4>
+                      <h4 className="text-sm font-bold text-white">Descripción</h4>
                     </div>
                     <textarea
                       value={productForm.descripcion}
                       onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
                       rows={2}
-                      className="w-full px-3 py-2 text-sm border-2 border-gray-200 rounded-lg focus:border-brand-primary focus:outline-none transition-all duration-200 resize-none bg-white/70"
+                      className="w-full px-3 py-2 text-sm border-2 border-brand-primary/30 rounded-lg focus:border-brand-primary focus:outline-none transition-all duration-200 resize-none bg-brand-neutral-dark/80/70"
                       placeholder="Describe las características principales del producto..."
                     />
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">🖼️</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Imágenes del Producto</h4>
+                      <h4 className="text-sm font-bold text-white">Imágenes del Producto</h4>
                     </div>
 
                     {/* Image Specifications */}
@@ -6740,7 +6740,7 @@ export default function AdminPage() {
                         {/* Existing images from product */}
                         {productForm.imagenes && productForm.imagenes.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-gray-600 mb-2">📦 Imágenes actuales del producto:</p>
+                            <p className="text-xs font-medium text-brand-primary/80 mb-2">📦 Imágenes actuales del producto:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productForm.imagenes.map((imageUrl, index) => (
                                 <div key={`existing-${index}`} className="relative group">
@@ -6776,7 +6776,7 @@ export default function AdminPage() {
                         {/* New image previews */}
                         {productImagePreviews.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-gray-600 mb-2">✨ Nuevas imágenes a agregar:</p>
+                            <p className="text-xs font-medium text-brand-primary/80 mb-2">✨ Nuevas imágenes a agregar:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productImagePreviews.map((preview, index) => (
                                 <div key={`new-${index}`} className="relative group">
@@ -6809,12 +6809,12 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--brand-primary)' }}>
                         <span className="text-white text-xs">🏷️</span>
                       </div>
-                      <h4 className="text-sm font-bold text-gray-800">Etiquetas</h4>
+                      <h4 className="text-sm font-bold text-white">Etiquetas</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
                       <label className="flex items-center gap-2 cursor-pointer bg-brand-neutral-light px-3 py-2 rounded-lg hover:bg-brand-neutral-light transition-colors">
@@ -6842,12 +6842,12 @@ export default function AdminPage() {
               </div>
 
               {/* Modern Compact Bottom Actions - Fixed */}
-              <div className="bg-white/95 backdrop-blur-sm p-4 border-t border-brand-primary-200 flex-shrink-0">
+              <div className="bg-brand-neutral-dark/80/95 backdrop-blur-sm p-4 border-t border-brand-primary-200 flex-shrink-0">
                 <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => setShowProductModal(false)}
-                    className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="flex-1 bg-gray-400 hover:bg-brand-neutral-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6902,7 +6902,7 @@ export default function AdminPage() {
         
         {activeTab === 'homepage-content' && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900">📝 Editar Contenido de la Página Principal</h2>
+            <h2 className="text-2xl font-bold text-white">📝 Editar Contenido de la Página Principal</h2>
             
             <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
               <div className="flex items-start">
@@ -6920,9 +6920,9 @@ export default function AdminPage() {
             </div>
             
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                   </svg>
@@ -6966,7 +6966,7 @@ export default function AdminPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {(() => {                  return homepageContent.promotionalSections.map((section, index) => {                    const previewWrapperClasses = (() => {
-                      const base = 'relative w-full bg-gray-900 rounded-lg overflow-hidden border-2 border-dashed border-gray-300';
+                      const base = 'relative w-full bg-gray-900 rounded-lg overflow-hidden border-2 border-dashed border-brand-primary/40';
                       switch (section.position) {
                         case 'large':
                           return `${base} max-w-[240px] aspect-square`;
@@ -6980,11 +6980,11 @@ export default function AdminPage() {
                     })();
 
                     return (
-                  <div key={section.id} className="border border-gray-200 rounded-lg overflow-hidden hover:border-brand-primary-300 transition-colors">
+                  <div key={section.id} className="border border-brand-primary/30 rounded-lg overflow-hidden hover:border-brand-primary-300 transition-colors">
                     
-                    <div className="bg-gray-50 px-4 py-3 border-b">
+                    <div className="bg-brand-neutral-dark px-4 py-3 border-b">
                       <div className="flex justify-between items-center">
-                        <h4 className="font-medium text-gray-900 flex items-center gap-1">
+                        <h4 className="font-medium text-white flex items-center gap-1">
                           {section.position === 'large' ? (
                             <><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" /></svg> Grande (2x2)</>
                            ) : section.position === 'tall' ? (
@@ -6996,7 +6996,7 @@ export default function AdminPage() {
                            )}
                         </h4>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded border flex items-center gap-1">
+                          <span className="text-xs text-brand-primary/60 bg-brand-neutral-dark/80 px-2 py-1 rounded border flex items-center gap-1">
                             {section.linkType === 'category' ? (
                               <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg> Categoría</>
                             ) : section.linkType === 'product' ? (
@@ -7032,7 +7032,7 @@ export default function AdminPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
                       
                       <div className="space-y-2">
-                        <h5 className="text-sm font-semibold text-gray-700 flex items-center gap-1">
+                        <h5 className="text-sm font-semibold text-brand-primary flex items-center gap-1">
                           <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -7051,7 +7051,7 @@ export default function AdminPage() {
                               }}
                             />
                           ) : (
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-800/60">
+                            <div className="absolute inset-0 flex items-center justify-center text-brand-primary/50 bg-gray-800/60">
                               <div className="text-center">
                                 <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -7082,8 +7082,8 @@ export default function AdminPage() {
 
                       
                       <div className="space-y-3">
-                        <h5 className="text-sm font-semibold text-gray-700 flex items-center gap-1">
-                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h5 className="text-sm font-semibold text-brand-primary flex items-center gap-1">
+                          <svg className="w-4 h-4 text-brand-primary/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
@@ -7098,7 +7098,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, title: e.target.value });
                           }}
-                          className="w-full font-semibold text-gray-900 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
+                          className="w-full font-semibold text-white border-0 border-b border-brand-primary/40 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
                           placeholder="Título de la sección"
                         />
                         <input
@@ -7107,7 +7107,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, description: e.target.value });
                           }}
-                          className="w-full text-sm text-gray-600 mt-1 border-0 border-b border-gray-300 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
+                          className="w-full text-sm text-brand-primary/80 mt-1 border-0 border-b border-brand-primary/40 bg-transparent pb-1 focus:border-brand-primary focus:outline-none"
                           placeholder="Descripción de la sección"
                         />
                       </div>
@@ -7161,7 +7161,7 @@ export default function AdminPage() {
                       
                       
                       <div className="space-y-2">
-                        <label className="block text-xs font-medium text-gray-700">Tipo de enlace</label>
+                        <label className="block text-xs font-medium text-brand-primary">Tipo de enlace</label>
                         <select
                           value={section.linkType}
                           onChange={(e) => {
@@ -7177,7 +7177,7 @@ export default function AdminPage() {
 
                         {section.linkType === 'category' ? (
                           <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-1">Seleccionar categoría</label>
+                            <label className="block text-xs font-medium text-brand-primary mb-1">Seleccionar categoría</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
@@ -7195,7 +7195,7 @@ export default function AdminPage() {
                           </div>
                         ) : section.linkType === 'product' ? (
                           <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-1">Seleccionar producto</label>
+                            <label className="block text-xs font-medium text-brand-primary mb-1">Seleccionar producto</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
@@ -7213,7 +7213,7 @@ export default function AdminPage() {
                           </div>
                         ) : section.linkType === 'filter' ? (
                           <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-1">Seleccionar filtro</label>
+                            <label className="block text-xs font-medium text-brand-primary mb-1">Seleccionar filtro</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
@@ -7228,7 +7228,7 @@ export default function AdminPage() {
                           </div>
                         ) : (
                           <div>
-                            <label className="block text-xs font-medium text-gray-700 mb-1">URL personalizada</label>
+                            <label className="block text-xs font-medium text-brand-primary mb-1">URL personalizada</label>
                             <input
                               type="text"
                               value={section.linkValue}
@@ -7297,16 +7297,16 @@ export default function AdminPage() {
               </div>
 
 
-              <div className="mt-10 border-t border-gray-200 pt-6">
+              <div className="mt-10 border-t border-brand-primary/30 pt-6">
                 <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                       <svg className="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                       Banners Intermedios
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-brand-primary/80">
                       Banners que aparecen entre secciones de la página principal.
                     </p>
                   </div>
@@ -7349,9 +7349,9 @@ export default function AdminPage() {
                     const stateKey = `middle-${banner.id}`;
 
                     return (
-                      <div key={banner.id || `middle-${index}`} className="border-2 border-gray-300 rounded-xl p-5 flex flex-col gap-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <div key={banner.id || `middle-${index}`} className="border-2 border-brand-primary/40 rounded-xl p-5 flex flex-col gap-4 bg-brand-neutral-dark/80 shadow-sm hover:shadow-md transition-shadow">
                         <div className="flex items-center justify-between">
-                          <h4 className="font-bold text-gray-900 text-lg">Banner #{index + 1}</h4>
+                          <h4 className="font-bold text-white text-lg">Banner #{index + 1}</h4>
                           {isAutoSaving && (
                             <span className="text-xs text-green-600 flex items-center gap-1">
                               <svg className="animate-spin h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -7362,7 +7362,7 @@ export default function AdminPage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-gray-500 -mt-2">{placementLabel}</p>
+                        <p className="text-xs text-brand-primary/60 -mt-2">{placementLabel}</p>
 
                         <div className="space-y-4">
                           {/* Preview Mejorada */}
@@ -7373,7 +7373,7 @@ export default function AdminPage() {
                               </span>
                             </div>
                             {banner.imageUrl ? (
-                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-gray-300 shadow-lg">
+                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-brand-primary/40 shadow-lg">
                                 <img
                                   src={banner.imageUrl}
                                   alt={banner.title}
@@ -7383,14 +7383,14 @@ export default function AdminPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
                                   <h3 className="font-black text-lg text-center drop-shadow-lg mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
-                                  <button className="mt-3 bg-white text-gray-900 px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
+                                  <button className="mt-3 bg-brand-neutral-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden border-2 border-dashed border-gray-400 flex items-center justify-center">
-                                <div className="text-center text-gray-500">
+                                <div className="text-center text-brand-primary/60">
                                   <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                   </svg>
@@ -7412,7 +7412,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.title}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, title: e.target.value })}
-                              className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-white transition-all"
+                              className="w-full text-sm border-2 border-brand-primary-300 rounded-lg px-3 py-2 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                               placeholder="Ej: ¡Ofertas Especiales! 🔥"
                             />
                             <p className="text-xs text-brand-primary mt-1">Este texto aparece grande en el banner</p>
@@ -7430,7 +7430,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.subtitle}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, subtitle: e.target.value })}
-                              className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white transition-all"
+                              className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                               placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                             />
                             <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -7450,7 +7450,7 @@ export default function AdminPage() {
                                 const linkType = e.target.value as 'category' | 'product' | 'filter' | 'url' | 'popup-ofertas';
                                 updateMiddleBanner(index, { ...banner, linkType, linkValue: '', ctaLink: '' });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-white transition-all font-medium"
+                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all font-medium"
                             >
                               <option value="category">📁 Categoría</option>
                               <option value="product">📦 Producto</option>
@@ -7470,7 +7470,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?category=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-white transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona una categoría --</option>
                                   {availableCategories.length === 0 ? (
@@ -7509,7 +7509,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?filter=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-white transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona un filtro --</option>
                                   <option value="ofertas">Productos en Oferta</option>
@@ -7530,7 +7530,7 @@ export default function AdminPage() {
                                   type="text"
                                   value="/popup-ofertas"
                                   disabled
-                                  className="w-full text-sm border-2 border-gray-300 rounded-lg px-3 py-2 bg-gray-100 text-gray-600 font-medium"
+                                  className="w-full text-sm border-2 border-brand-primary/40 rounded-lg px-3 py-2 bg-brand-neutral-light text-brand-primary/80 font-medium"
                                 />
                                 <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7549,7 +7549,7 @@ export default function AdminPage() {
                                   type="text"
                                   value={banner.ctaLink}
                                   onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-white transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
                                 <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
@@ -7579,7 +7579,7 @@ export default function AdminPage() {
                                   handleMiddleBannerImageUpload(file, index, banner);
                                 }
                               }}
-                              className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-white transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
+                              className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-brand-neutral-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
                               <p className="text-xs text-brand-primary mt-2 font-medium flex items-center gap-1">
@@ -7613,25 +7613,25 @@ export default function AdminPage() {
                     Consejos para Banners Efectivos
                   </h4>
                   <ul className="space-y-3 text-sm text-blue-900">
-                    <li className="flex items-start gap-3 bg-white/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Título claro:</strong> Usa mensajes cortos y directos (ej: "¡Ofertas Imperdibles!")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-white/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Subtítulo descriptivo:</strong> Complementa con información adicional (ej: "Hasta 50% OFF")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-white/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Imágenes de calidad:</strong> Usa imágenes de alta resolución (1440x480px ideal)</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-white/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -7670,7 +7670,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => loadHomepageContent()}
-                  className="px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
+                  className="px-4 py-3 bg-brand-neutral-dark0 text-white rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -7685,13 +7685,13 @@ export default function AdminPage() {
         
         {activeTab === 'footer' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Información del Footer</h2>
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+              <h2 className="text-2xl font-bold text-white mb-6">Información del Footer</h2>
               
               <form className="space-y-6">
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-brand-primary mb-2">
                     Descripción de la Empresa
                   </label>
                   <textarea
@@ -7699,7 +7699,7 @@ export default function AdminPage() {
                     onChange={(e) => setFooterForm({ ...footerForm, companyDescription: e.target.value })}
                     placeholder="Tu tienda online de confianza con los mejores productos importados."
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                     style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
@@ -7707,7 +7707,7 @@ export default function AdminPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
+                    <label className="block text-sm font-medium text-brand-primary mb-2 flex items-center gap-1">
                       <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
@@ -7718,13 +7718,13 @@ export default function AdminPage() {
                       value={footerForm.phone}
                       onChange={(e) => setFooterForm({ ...footerForm, phone: e.target.value })}
                       placeholder="+1 234 567 890"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
+                    <label className="block text-sm font-medium text-brand-primary mb-2 flex items-center gap-1">
                       <svg className="w-4 h-4 text-cyber-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -7735,14 +7735,14 @@ export default function AdminPage() {
                       value={footerForm.email}
                       onChange={(e) => setFooterForm({ ...footerForm, email: e.target.value })}
                       placeholder="info@importadorafyd.com"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
+                  <label className="block text-sm font-medium text-brand-primary mb-2 flex items-center gap-1">
                     <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -7754,18 +7754,18 @@ export default function AdminPage() {
                     value={footerForm.address}
                     onChange={(e) => setFooterForm({ ...footerForm, address: e.target.value })}
                     placeholder="Calle Principal 123, Ciudad"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                     style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                   />
                 </div>
 
                 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Redes Sociales</h3>
+                  <h3 className="text-lg font-semibold text-white">Redes Sociales</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         📘 Facebook URL
                       </label>
                       <input
@@ -7773,13 +7773,13 @@ export default function AdminPage() {
                         value={footerForm.facebookUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, facebookUrl: e.target.value })}
                         placeholder="https://facebook.com/tu-pagina"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         📷 Instagram URL
                       </label>
                       <input
@@ -7787,13 +7787,13 @@ export default function AdminPage() {
                         value={footerForm.instagramUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, instagramUrl: e.target.value })}
                         placeholder="https://instagram.com/tu-cuenta"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         🎵 TikTok URL
                       </label>
                       <input
@@ -7801,13 +7801,13 @@ export default function AdminPage() {
                         value={footerForm.tiktokUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, tiktokUrl: e.target.value })}
                         placeholder="https://tiktok.com/@tu-cuenta"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         💬 WhatsApp (número de teléfono)
                       </label>
                       <input
@@ -7815,10 +7815,10 @@ export default function AdminPage() {
                         value={footerForm.whatsappUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, whatsappUrl: e.target.value })}
                         placeholder="912345678 o 56912345678"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                       />
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-brand-primary/60 mt-1">
                         Número de teléfono (se agregará automáticamente el código 56 si no lo incluyes)
                       </p>
                     </div>
@@ -7867,7 +7867,7 @@ export default function AdminPage() {
               
               
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa del Footer:</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa del Footer:</h3>
                 <div className="bg-brand-primary text-white p-6 rounded-lg">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
@@ -7901,13 +7901,13 @@ export default function AdminPage() {
 
         {activeTab === 'bank-details' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">🏦 Configuración de Datos Bancarios</h2>
+            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+              <h2 className="text-2xl font-bold text-white mb-6">🏦 Configuración de Datos Bancarios</h2>
 
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       🏛️ Nombre del Banco
                     </label>
                     <input
@@ -7915,19 +7915,19 @@ export default function AdminPage() {
                       value={bankForm.bankName}
                       onChange={(e) => setBankForm({ ...bankForm, bankName: e.target.value })}
                       placeholder="Banco de Chile"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       💳 Tipo de Cuenta
                     </label>
                     <select
                       value={bankForm.accountType}
                       onChange={(e) => setBankForm({ ...bankForm, accountType: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     >
                       <option value="Cuenta Corriente">Cuenta Corriente</option>
@@ -7939,7 +7939,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       🔢 Número de Cuenta
                     </label>
                     <input
@@ -7947,13 +7947,13 @@ export default function AdminPage() {
                       value={bankForm.accountNumber}
                       onChange={(e) => setBankForm({ ...bankForm, accountNumber: e.target.value })}
                       placeholder="123-456-789-01"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       🆔 RUT del Titular
                     </label>
                     <input
@@ -7961,7 +7961,7 @@ export default function AdminPage() {
                       value={bankForm.rut}
                       onChange={(e) => setBankForm({ ...bankForm, rut: e.target.value })}
                       placeholder="12.345.678-9"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
@@ -7969,7 +7969,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       👤 Nombre del Titular
                     </label>
                     <input
@@ -7977,13 +7977,13 @@ export default function AdminPage() {
                       value={bankForm.holderName}
                       onChange={(e) => setBankForm({ ...bankForm, holderName: e.target.value })}
                       placeholder="Importadora FyD SpA"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       📧 Email para Confirmaciones
                     </label>
                     <input
@@ -7991,7 +7991,7 @@ export default function AdminPage() {
                       value={bankForm.email}
                       onChange={(e) => setBankForm({ ...bankForm, email: e.target.value })}
                       placeholder="pagos@importadorafyd.cl"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as React.CSSProperties}
                     />
                   </div>
@@ -8023,33 +8023,33 @@ export default function AdminPage() {
 
               {/* Vista previa */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Vista Previa en Checkout:</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa en Checkout:</h3>
                 <div className="bg-blue-50 border border-blue-300 rounded-lg p-4">
-                  <div className="bg-white border border-gray-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-900 mb-3">📋 Datos para transferencia:</h4>
+                  <div className="bg-brand-neutral-dark/80 border border-brand-primary/30 rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                       <div>
-                        <span className="font-medium text-gray-700">Banco:</span>
+                        <span className="font-medium text-brand-primary">Banco:</span>
                         <span className="ml-2">{bankForm.bankName}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Tipo de cuenta:</span>
+                        <span className="font-medium text-brand-primary">Tipo de cuenta:</span>
                         <span className="ml-2">{bankForm.accountType}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Número de cuenta:</span>
+                        <span className="font-medium text-brand-primary">Número de cuenta:</span>
                         <span className="ml-2">{bankForm.accountNumber}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">RUT:</span>
+                        <span className="font-medium text-brand-primary">RUT:</span>
                         <span className="ml-2">{bankForm.rut}</span>
                       </div>
                       <div className="md:col-span-2">
-                        <span className="font-medium text-gray-700">Titular:</span>
+                        <span className="font-medium text-brand-primary">Titular:</span>
                         <span className="ml-2">{bankForm.holderName}</span>
                       </div>
                       <div className="md:col-span-2">
-                        <span className="font-medium text-gray-700">Email para confirmación:</span>
+                        <span className="font-medium text-brand-primary">Email para confirmación:</span>
                         <span className="ml-2">{bankForm.email}</span>
                       </div>
                     </div>
@@ -8073,15 +8073,15 @@ export default function AdminPage() {
 
       
       {showSectionModal && (
-        <div className="fixed inset-0 bg-white/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200">
+        <div className="fixed inset-0 bg-brand-neutral-dark/80/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-brand-neutral-dark/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-primary/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold text-white">
                     {editingSection ? 'Editar Sección' : 'Nueva Sección'}
                   </h3>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-brand-primary/60 mt-1">
                     Configura cómo se verá esta sección en la página principal
                   </p>
                 </div>
@@ -8092,7 +8092,7 @@ export default function AdminPage() {
                     setPreviewName('');
                     setPreviewDescription('');
                   }}
-                  className="text-gray-400 hover:text-gray-600 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                  className="text-brand-primary/50 hover:text-brand-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-brand-neutral-light transition-colors"
                 >
                   ✕
                 </button>
@@ -8149,7 +8149,7 @@ export default function AdminPage() {
                   {/* Left Column - Form */}
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         Nombre de la Sección *
                       </label>
                       <input
@@ -8158,14 +8158,14 @@ export default function AdminPage() {
                         defaultValue={editingSection?.name || ''}
                         onChange={(e) => setPreviewName(e.target.value)}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
+                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                         placeholder="Ej: Ofertas Especiales"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         Descripción
                       </label>
                       <textarea
@@ -8173,20 +8173,20 @@ export default function AdminPage() {
                         defaultValue={editingSection?.description || ''}
                         onChange={(e) => setPreviewDescription(e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
+                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                         placeholder="Breve descripción de la sección"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-brand-primary mb-2">
                         Tipo de Sección
                       </label>
                       <select
                         name="type"
                         defaultValue={editingSection?.type || 'custom'}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
+                        className="w-full px-4 py-3 border border-brand-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
                         style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                       >
                         <option value="custom">🎯 Productos Personalizados</option>
@@ -8201,7 +8201,7 @@ export default function AdminPage() {
                   {/* Right Column - Preview */}
                   <div className="bg-gradient-to-br from-brand-neutral-light via-white to-gray-50 rounded-xl p-6 border-2 border-brand-primary-200">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-sm font-semibold text-gray-700 flex items-center">
+                      <h4 className="text-sm font-semibold text-brand-primary flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio
                       </h4>
                       <span className="text-xs bg-brand-neutral-light text-brand-primary px-2 py-1 rounded-full font-medium">
@@ -8210,14 +8210,14 @@ export default function AdminPage() {
                     </div>
 
                     {/* Preview of section as it appears on website */}
-                    <div className="bg-white rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm p-5 border border-gray-100">
                       {/* Section Header */}
                       <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-brand-primary">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900">
+                          <h3 className="text-xl font-bold text-white">
                             {previewName || editingSection?.name || 'Nombre de Sección'}
                           </h3>
-                          <p className="text-sm text-gray-600 mt-1">
+                          <p className="text-sm text-brand-primary/80 mt-1">
                             {previewDescription || editingSection?.description || 'Descripción de la sección'}
                           </p>
                         </div>
@@ -8232,8 +8232,8 @@ export default function AdminPage() {
                       {/* Product Cards Preview */}
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="bg-gray-50 rounded-lg p-2 border border-gray-200">
-                            <div className="bg-gray-200 rounded h-20 mb-2 flex items-center justify-center">
+                          <div key={i} className="bg-brand-neutral-dark rounded-lg p-2 border border-brand-primary/30">
+                            <div className="bg-brand-neutral-light rounded h-20 mb-2 flex items-center justify-center">
                               <span className="text-2xl">📦</span>
                             </div>
                             <div className="space-y-1">
@@ -8244,7 +8244,7 @@ export default function AdminPage() {
                         ))}
                       </div>
 
-                      <p className="text-xs text-gray-400 mt-3 text-center">
+                      <p className="text-xs text-brand-primary/50 mt-3 text-center">
                         {editingSection?.selectedProducts?.length || 0} productos configurados
                       </p>
                     </div>
@@ -8285,7 +8285,7 @@ export default function AdminPage() {
                   </div>
                 )}
 
-                <div className="flex space-x-3 pt-6 mt-6 border-t border-gray-200">
+                <div className="flex space-x-3 pt-6 mt-6 border-t border-brand-primary/30">
                   <button
                     type="button"
                     onClick={() => {
@@ -8295,7 +8295,7 @@ export default function AdminPage() {
                       setPreviewDescription('');
                     }}
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancelar
                   </button>
@@ -8318,11 +8318,11 @@ export default function AdminPage() {
 
       
       {showProductSelector && (
-        <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-brand-neutral-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-brand-neutral-dark/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3 className="text-xl font-semibold text-white">
                   Seleccionar Productos para la Sección
                 </h3>
                 <button
@@ -8335,18 +8335,18 @@ export default function AdminPage() {
                       showOnlySelected: false
                     });
                   }}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-brand-primary/50 hover:text-brand-primary/80"
                 >
                   ✕
                 </button>
               </div>
 
               
-              <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+              <div className="mb-6 p-4 bg-brand-neutral-dark rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       Buscar por nombre
                     </label>
                     <input
@@ -8357,14 +8357,14 @@ export default function AdminPage() {
                         search: e.target.value
                       }))}
                       placeholder="Buscar productos..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     />
                   </div>
 
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       Filtrar por categoría
                     </label>
                     <select
@@ -8373,7 +8373,7 @@ export default function AdminPage() {
                         ...prev,
                         category: e.target.value
                       }))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-brand-primary/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--brand-primary)' } as any}
                     >
                       <option value="">Todas las categorías</option>
@@ -8387,7 +8387,7 @@ export default function AdminPage() {
 
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-brand-primary mb-2">
                       Opciones de vista
                     </label>
                     <div className="flex items-center space-x-4">
@@ -8401,7 +8401,7 @@ export default function AdminPage() {
                           }))}
                           className="h-4 w-4 text-brand-primary rounded mr-2"
                         />
-                        <span className="text-sm text-gray-700">Solo seleccionados</span>
+                        <span className="text-sm text-brand-primary">Solo seleccionados</span>
                       </label>
                       <button
                         onClick={() => setProductSelectorFilters({
@@ -8419,7 +8419,7 @@ export default function AdminPage() {
               </div>
 
               
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-brand-primary/80">
                 Mostrando {products
                   .filter((product) => {
                     const currentSection = productSections.find(s => s.id === currentSectionId);
@@ -8528,9 +8528,9 @@ export default function AdminPage() {
                               className="w-full h-24 object-cover rounded mb-2"
                             />
                           )}
-                          <h4 className="font-medium text-gray-900 text-sm">{product.nombre}</h4>
-                          <p className="text-gray-600 text-xs mt-1">${product.precio?.toLocaleString()}</p>
-                          <p className="text-gray-500 text-xs">{product.categoria}</p>
+                          <h4 className="font-medium text-white text-sm">{product.nombre}</h4>
+                          <p className="text-brand-primary/80 text-xs mt-1">${product.precio?.toLocaleString()}</p>
+                          <p className="text-brand-primary/60 text-xs">{product.categoria}</p>
                         </div>
                       </div>
                     </div>
