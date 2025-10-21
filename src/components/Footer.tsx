@@ -12,11 +12,11 @@ export default function Footer() {
 
   if (loading) {
     return (
-      <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-orange-900 text-white">
+      <footer className="bg-gradient-to-br from-brand-neutral-dark via-brand-neutral-dark to-brand-neutral-dark/80 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="animate-pulse">
-            <div className="h-4 bg-white/20 rounded w-1/3 mb-4"></div>
-            <div className="h-3 bg-white/20 rounded w-2/3"></div>
+            <div className="h-4 bg-brand-primary/20 rounded w-1/3 mb-4"></div>
+            <div className="h-3 bg-brand-primary/20 rounded w-2/3"></div>
           </div>
         </div>
       </footer>
@@ -24,11 +24,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-brand-primary via-brand-primary to-cyber-pink text-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-700 rounded-full blur-3xl"></div>
+    <footer className="bg-gradient-to-br from-brand-neutral-dark via-brand-neutral-dark/90 to-brand-primary/10 text-white relative overflow-hidden border-t border-brand-primary/30 shadow-[0_-20px_40px_rgba(0,217,255,0.1)]">
+      {/* Decorative background elements - Cyberpunk */}
+      <div className="absolute inset-0 opacity-15">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-brand-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-secondary rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-12 relative z-10">
