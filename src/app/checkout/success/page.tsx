@@ -149,7 +149,7 @@ function PaymentSuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
@@ -174,7 +174,7 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Order Details Card */}
-          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 overflow-hidden mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 overflow-hidden mb-8">
             <div className="bg-gradient-to-r from-primary to-primary px-6 py-4">
               <h2 className="text-xl font-semibold text-white">
                 Detalles del Pedido
@@ -243,9 +243,9 @@ function PaymentSuccessContent() {
                       <h3 className="text-lg font-semibold text-white mb-4">Productos comprados</h3>
                       <div className="space-y-3">
                         {orderInfo.items.map((item, index) => (
-                          <div key={index} className="flex items-center space-x-4 p-3 bg-brand-neutral-dark rounded-lg">
+                          <div key={index} className="flex items-center space-x-4 p-3 bg-dark rounded-lg">
                             {item.imagen && (
-                              <div className="flex-shrink-0 w-16 h-16 bg-brand-neutral-dark/80 rounded-md overflow-hidden border border-primary/30">
+                              <div className="flex-shrink-0 w-16 h-16 bg-dark/80 rounded-md overflow-hidden border border-primary/30">
                                 <img
                                   src={item.imagen}
                                   alt={item.nombre}
@@ -330,7 +330,7 @@ function PaymentSuccessContent() {
               >
                 📦 Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                  <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                     {unreadOrderNotifications > 9 ? '9+' : unreadOrderNotifications}
                   </span>
                 )}
@@ -338,7 +338,7 @@ function PaymentSuccessContent() {
 
               <Link
                 href="/"
-                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark transition-colors shadow-md hover:shadow-lg"
+                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors shadow-md hover:shadow-lg"
               >
                 🛍️ Continuar Comprando
               </Link>
@@ -356,7 +356,7 @@ function PaymentSuccessContent() {
 
           {/* Additional info */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-brand-neutral-light rounded-full">
+            <div className="inline-flex items-center px-4 py-2 bg-dark-light rounded-full">
               <span className="text-sm text-primary/80">
                 📧 Recibirás un email de confirmación en breve
               </span>

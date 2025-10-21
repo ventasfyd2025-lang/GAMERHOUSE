@@ -16,7 +16,7 @@ export default function NotificationDisplay() {
             case 'success':
               return <CheckCircle className="h-5 w-5 text-green-500" strokeWidth={2.5} />;
             case 'error':
-              return <AlertTriangle className="h-5 w-5 text-cyber-pink" strokeWidth={2.5} />;
+              return <AlertTriangle className="h-5 w-5 text-pink" strokeWidth={2.5} />;
             case 'warning':
               return <AlertTriangle className="h-5 w-5 text-yellow-500" strokeWidth={2.5} />;
             case 'info':
@@ -31,13 +31,13 @@ export default function NotificationDisplay() {
             case 'success':
               return 'bg-green-50 border-green-200';
             case 'error':
-              return 'bg-brand-neutral-light border-brand-neutral-light';
+              return 'bg-dark-light border-dark-light';
             case 'warning':
               return 'bg-yellow-50 border-yellow-200';
             case 'info':
               return 'bg-blue-50 border-blue-200';
             default:
-              return 'bg-brand-neutral-dark border-primary/30';
+              return 'bg-dark border-primary/30';
           }
         };
 

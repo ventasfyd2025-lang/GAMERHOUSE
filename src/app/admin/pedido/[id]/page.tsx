@@ -230,11 +230,11 @@ export default function OrderDetailPage() {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'pending_verification': return 'bg-blue-100 text-blue-800';
       case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'preparing': return 'bg-brand-neutral-light text-orange-800';
+      case 'preparing': return 'bg-dark-light text-orange-800';
       case 'shipped': return 'bg-purple-100 text-purple-800';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-brand-neutral-light text-cyber-pink';
-      default: return 'bg-brand-neutral-light text-white';
+      case 'cancelled': return 'bg-dark-light text-pink';
+      default: return 'bg-dark-light text-white';
     }
   };
 
@@ -253,7 +253,7 @@ export default function OrderDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
       </div>
     );
@@ -261,7 +261,7 @@ export default function OrderDetailPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <button
@@ -276,9 +276,9 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-neutral-dark">
+    <div className="min-h-screen bg-dark">
       {/* Header igual al cliente */}
-      <div className="bg-brand-neutral-dark/80 border-b border-primary/30 sticky top-0 z-10">
+      <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -317,7 +317,7 @@ export default function OrderDetailPage() {
           {/* Sidebar izquierdo - Información del Pedido */}
           <div className="lg:col-span-1 space-y-6">
             {/* Estado del Pedido - Admin Controls */}
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Control de Estado</h3>
 
               <div className="space-y-4">
@@ -343,7 +343,7 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Información del Cliente */}
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               <div className="space-y-2">
                 <div>
@@ -373,7 +373,7 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Resumen del Pedido */}
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               <div className="space-y-3">
                 {order.items.map((item, index) => (
@@ -421,12 +421,12 @@ export default function OrderDetailPage() {
 
           {/* Chat Principal - Igual al cliente */}
           <div className="lg:col-span-2">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header con gradiente */}
               <div className="bg-gradient-to-r from-primary to-primary text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-brand-neutral-dark/80 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-dark/80 rounded-full flex items-center justify-center">
                       <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
@@ -444,10 +444,10 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-brand-neutral-dark">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {chatMessages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-brand-neutral-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-dark-light rounded-full flex items-center justify-center mx-auto mb-4">
                       <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.456L3 21l2.544-5.906A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                       </svg>
@@ -479,7 +479,7 @@ export default function OrderDetailPage() {
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-primary text-white'
-                              : 'bg-brand-neutral-dark/80 text-white border border-primary/30'
+                              : 'bg-dark/80 text-white border border-primary/30'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -523,7 +523,7 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-dark/80 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative">
@@ -535,7 +535,7 @@ export default function OrderDetailPage() {
                       />
                       <button
                         onClick={removeImage}
-                        className="absolute -top-2 -right-2 bg-cyber-pink text-white rounded-full p-1 hover:bg-cyber-pink"
+                        className="absolute -top-2 -right-2 bg-pink text-white rounded-full p-1 hover:bg-pink"
                       >
                         <XMarkIcon className="h-4 w-4" />
                       </button>
@@ -560,7 +560,7 @@ export default function OrderDetailPage() {
                   </div>
 
                   {/* Image Upload Button */}
-                  <label className="cursor-pointer bg-brand-neutral-light hover:bg-brand-neutral-light text-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
+                  <label className="cursor-pointer bg-dark-light hover:bg-dark-light text-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
                     <PhotoIcon className="h-5 w-5" />
                     <input
                       type="file"
@@ -596,8 +596,8 @@ export default function OrderDetailPage() {
 
         {/* Payment Proof estilo cliente */}
         {order.paymentProof && (
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden mt-8">
-            <div className="bg-brand-neutral-dark px-6 py-4 border-b">
+          <div className="bg-dark/80 rounded-lg shadow-md overflow-hidden mt-8">
+            <div className="bg-dark px-6 py-4 border-b">
               <h4 className="font-medium text-white">Comprobante de Pago</h4>
             </div>
             <div className="p-6">

@@ -158,7 +158,7 @@ const ConfigurableBanner: React.FC<ConfigurableBannerProps> = ({
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === currentIndex ? 'bg-brand-neutral-dark/80' : 'bg-brand-neutral-dark/80 bg-opacity-50'
+                index === currentIndex ? 'bg-dark/80' : 'bg-dark/80 bg-opacity-50'
               }`}
               aria-label={`Ir a la diapositiva ${index + 1}`}
             />

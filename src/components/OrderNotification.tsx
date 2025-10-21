@@ -56,7 +56,7 @@ export default function OrderNotification() {
           <div className="flex items-center space-x-3">
             <div className="relative">
               <BellIcon className="h-6 w-6" />
-              <span className="absolute -top-1 -right-1 bg-cyber-pink text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
+              <span className="absolute -top-1 -right-1 bg-pink text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
                 {unreadCount}
               </span>
             </div>
@@ -78,7 +78,7 @@ export default function OrderNotification() {
         <div className="mt-3 flex space-x-2">
           <Link
             href="/mis-pedidos"
-            className="flex-1 bg-brand-neutral-dark/80 text-blue-600 text-center py-2 px-3 rounded-md text-sm font-medium hover:bg-brand-neutral-light transition-colors"
+            className="flex-1 bg-dark/80 text-blue-600 text-center py-2 px-3 rounded-md text-sm font-medium hover:bg-dark-light transition-colors"
           >
             <ShoppingBagIcon className="h-4 w-4 inline mr-1" />
             Ver pedidos

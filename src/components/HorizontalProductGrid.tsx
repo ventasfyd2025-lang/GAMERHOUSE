@@ -53,11 +53,11 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
+    <div className="bg-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
-          <div className="absolute top-2 left-2 z-10 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
+          <div className="absolute top-2 left-2 z-10 bg-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
             -{discountPercentage}%
           </div>
         )}
@@ -68,7 +68,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         )}
 
         {/* Image Section - 35% width */}
-        <div className="relative w-[35%] bg-brand-neutral-dark/80 p-3 flex items-center justify-center">
+        <div className="relative w-[35%] bg-dark/80 p-3 flex items-center justify-center">
           {product.imagen ? (
             <div className="relative w-full h-full">
               <Image
@@ -126,8 +126,8 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               disabled={(product.stock ?? 1) === 0}
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
-                  ? 'bg-brand-neutral-light text-primary/60 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-brand-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
+                  ? 'bg-dark-light text-primary/60 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
               {(product.stock ?? 1) === 0 ? (

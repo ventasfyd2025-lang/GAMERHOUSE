@@ -171,8 +171,8 @@ export default function BannerCarousel({
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? 'bg-brand-neutral-dark/80'
-                  : 'bg-brand-neutral-dark/80 bg-opacity-50 hover:bg-opacity-75'
+                  ? 'bg-dark/80'
+                  : 'bg-dark/80 bg-opacity-50 hover:bg-opacity-75'
               }`}
             />
           ))}

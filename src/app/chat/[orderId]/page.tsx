@@ -102,7 +102,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-primary bg-brand-neutral-light border-primary-200', 
+    color: 'text-primary bg-dark-light border-primary-200', 
     icon: TruckIcon,
     description: 'Tu pedido está en camino'
   },
@@ -114,7 +114,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-cyber-pink bg-brand-neutral-light border-brand-neutral-light',
+    color: 'text-pink bg-dark-light border-dark-light',
     icon: XCircleIcon,
     description: 'Este pedido ha sido cancelado'
   },
@@ -341,7 +341,7 @@ export default function ChatPage() {
 
   if (authLoading || orderLoading) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
       </div>
     );
@@ -349,7 +349,7 @@ export default function ChatPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <Link href="/mis-pedidos" className="text-blue-500 hover:text-blue-600">
@@ -367,9 +367,9 @@ export default function ChatPage() {
   const StatusIcon = currentStatusConfig.icon;
 
   return (
-    <div className="min-h-screen bg-brand-neutral-dark">
+    <div className="min-h-screen bg-dark">
       {/* Header */}
-      <div className="bg-brand-neutral-dark/80 border-b border-primary/30 sticky top-0 z-10">
+      <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -405,7 +405,7 @@ export default function ChatPage() {
           {/* Timeline & Order Info */}
           <div className="lg:col-span-1 space-y-6">
             {/* Order Timeline */}
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Estado del Pedido</h3>
               
               <div className="space-y-4">
@@ -416,7 +416,7 @@ export default function ChatPage() {
                         ? 'bg-blue-500 text-white' 
                         : step.current
                         ? 'bg-blue-100 border-2 border-blue-500 text-blue-500'
-                        : 'bg-brand-neutral-light text-primary/50'
+                        : 'bg-dark-light text-primary/50'
                     }`}>
                       {step.completed ? (
                         <CheckIcon className="h-4 w-4" />
@@ -441,7 +441,7 @@ export default function ChatPage() {
             </div>
 
             {/* Order Summary */}
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               
               <div className="space-y-3">
@@ -477,12 +477,12 @@ export default function ChatPage() {
 
           {/* Chat */}
           <div className="lg:col-span-2">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header */}
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-brand-neutral-dark/80 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-dark/80 rounded-full flex items-center justify-center">
                       <ShieldCheckIcon className="h-6 w-6 text-blue-500" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
@@ -498,7 +498,7 @@ export default function ChatPage() {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-brand-neutral-dark">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -528,7 +528,7 @@ export default function ChatPage() {
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-brand-neutral-dark/80 text-white border border-primary/30'
+                              ? 'bg-dark/80 text-white border border-primary/30'
                               : 'bg-blue-500 text-white'
                           }`}
                         >
@@ -588,7 +588,7 @@ export default function ChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-dark/80 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative inline-block">
@@ -600,7 +600,7 @@ export default function ChatPage() {
                       />
                       <button
                         onClick={removeImage}
-                        className="absolute -top-2 -right-2 bg-cyber-pink text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-cyber-pink transition-colors"
+                        className="absolute -top-2 -right-2 bg-pink text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-pink transition-colors"
                       >
                         <XMarkIcon className="h-4 w-4" />
                       </button>

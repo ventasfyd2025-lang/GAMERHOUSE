@@ -31,11 +31,11 @@ function PaymentFailureContent() {
   }, [paymentId, status, externalReference]);
 
   return (
-    <div className="min-h-screen bg-brand-neutral-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-brand-neutral-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <div className="text-center">
-            <XCircleIcon className="mx-auto h-16 w-16 text-cyber-pink" />
+            <XCircleIcon className="mx-auto h-16 w-16 text-pink" />
             <h2 className="mt-6 text-3xl font-bold text-white">
               Pago No Procesado
             </h2>
@@ -45,23 +45,23 @@ function PaymentFailureContent() {
           </div>
 
           {paymentInfo && (
-            <div className="mt-8 bg-brand-neutral-light border border-brand-neutral-light rounded-lg p-4">
-              <h3 className="text-lg font-medium text-cyber-pink mb-2">
+            <div className="mt-8 bg-dark-light border border-dark-light rounded-lg p-4">
+              <h3 className="text-lg font-medium text-pink mb-2">
                 Detalles del Pago
               </h3>
               <div className="space-y-2 text-sm">
                 <div>
                   <span className="font-medium text-red-700">ID de Pago:</span>
-                  <span className="ml-2 text-cyber-pink">{paymentInfo.paymentId}</span>
+                  <span className="ml-2 text-pink">{paymentInfo.paymentId}</span>
                 </div>
                 <div>
                   <span className="font-medium text-red-700">Estado:</span>
-                  <span className="ml-2 text-cyber-pink capitalize">{paymentInfo.status}</span>
+                  <span className="ml-2 text-pink capitalize">{paymentInfo.status}</span>
                 </div>
                 {paymentInfo.externalReference && (
                   <div>
                     <span className="font-medium text-red-700">Número de Orden:</span>
-                    <span className="ml-2 text-cyber-pink">{paymentInfo.externalReference}</span>
+                    <span className="ml-2 text-pink">{paymentInfo.externalReference}</span>
                   </div>
                 )}
               </div>
@@ -91,7 +91,7 @@ function PaymentFailureContent() {
               
               <Link
                 href="/"
-                className="w-full flex justify-center py-2 px-4 border border-primary/40 rounded-md shadow-sm text-sm font-medium text-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-primary/40 rounded-md shadow-sm text-sm font-medium text-primary bg-dark/80 hover:bg-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Volver a la Tienda
               </Link>

@@ -68,7 +68,7 @@ function VendedorLogin() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
@@ -126,7 +126,7 @@ function VendedorLogin() {
             </div>
 
             {error && (
-              <div className="text-cyber-pink text-sm text-center">{error}</div>
+              <div className="text-pink text-sm text-center">{error}</div>
             )}
 
             <div>
@@ -225,7 +225,7 @@ export default function VendedorPage() {
   if (userProfile && !isAdmin && !isVendedor) {
     return (
       <Layout>
-        <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center py-12 px-4">
+        <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full text-center space-y-4">
             <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
             <p className="text-primary/80">
@@ -268,9 +268,9 @@ export default function VendedorPage() {
       case 'confirmed': return 'text-green-600 bg-green-50 border-green-200';
       case 'shipped': return 'text-blue-600 bg-blue-50 border-blue-200';
       case 'delivered': return 'text-purple-600 bg-purple-50 border-purple-200';
-      case 'cancelled': return 'text-cyber-pink bg-brand-neutral-light border-brand-neutral-light';
-      case 'pending_verification': return 'text-primary bg-brand-neutral-light border-primary-200';
-      default: return 'text-primary/80 bg-brand-neutral-dark border-primary/30';
+      case 'cancelled': return 'text-pink bg-dark-light border-dark-light';
+      case 'pending_verification': return 'text-primary bg-dark-light border-primary-200';
+      default: return 'text-primary/80 bg-dark border-primary/30';
     }
   };
 
@@ -302,7 +302,7 @@ export default function VendedorPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-brand-neutral-dark py-8">
+      <div className="min-h-screen bg-dark py-8">
         <div className="max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="mb-8">
@@ -312,7 +312,7 @@ export default function VendedorPage() {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+            <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <ClockIcon className="h-8 w-8 text-yellow-500" />
                 <div className="ml-4">
@@ -322,7 +322,7 @@ export default function VendedorPage() {
               </div>
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+            <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <ShoppingBagIcon className="h-8 w-8 text-blue-500" />
                 <div className="ml-4">
@@ -332,7 +332,7 @@ export default function VendedorPage() {
               </div>
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+            <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <CurrencyDollarIcon className="h-8 w-8 text-green-500" />
                 <div className="ml-4">
@@ -342,7 +342,7 @@ export default function VendedorPage() {
               </div>
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+            <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <UsersIcon className="h-8 w-8 text-purple-500" />
                 <div className="ml-4">
@@ -354,7 +354,7 @@ export default function VendedorPage() {
           </div>
 
           {/* Main Content */}
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow">
+          <div className="bg-dark/80 rounded-lg shadow">
             {/* Tabs */}
             <div className="border-b border-primary/30">
               <nav className="-mb-px flex space-x-8 px-6">
@@ -380,7 +380,7 @@ export default function VendedorPage() {
 
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-brand-neutral-dark">
+                  <thead className="bg-dark">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                         Pedido
@@ -402,9 +402,9 @@ export default function VendedorPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-dark/80 divide-y divide-gray-200">
                     {orders.slice(0, 20).map((order) => (
-                      <tr key={order.id} className="hover:bg-brand-neutral-dark">
+                      <tr key={order.id} className="hover:bg-dark">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">#{order.id.slice(-8)}</div>
                           <div className="text-sm text-primary/60">{order.paymentMethod}</div>

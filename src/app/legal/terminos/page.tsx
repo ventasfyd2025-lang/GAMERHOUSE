@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 export default function TerminosPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8">
             <h1 className="text-3xl font-bold text-white mb-6">
               Términos y Condiciones
             </h1>

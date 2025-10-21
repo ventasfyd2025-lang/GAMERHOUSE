@@ -21,20 +21,20 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   const getSeverityColor = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return 'bg-brand-neutral-light border-cyber-pink text-cyber-pink';
+        return 'bg-dark-light border-pink text-pink';
       case 'critical':
-        return 'bg-brand-neutral-light border-primary500 text-primary800';
+        return 'bg-dark-light border-primary500 text-primary800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
-        return 'bg-brand-neutral-light border-gray-500 text-white';
+        return 'bg-dark-light border-gray-500 text-white';
     }
   };
 
   const getSeverityIcon = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return <NoSymbolIcon className="h-5 w-5 text-cyber-pink" />;
+        return <NoSymbolIcon className="h-5 w-5 text-pink" />;
       case 'critical':
         return <ExclamationTriangleIcon className="h-5 w-5 text-primary600" />;
       case 'low':
@@ -79,7 +79,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   }
 
   return (
-    <div className={`bg-brand-neutral-dark/80 border border-primary/30 rounded-lg shadow-sm ${className}`}>
+    <div className={`bg-dark/80 border border-primary/30 rounded-lg shadow-sm ${className}`}>
       {/* Header */}
       <div
         className="p-4 border-b border-primary/30 cursor-pointer"
@@ -87,11 +87,11 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <BellIcon className="h-5 w-5 text-cyber-pink" />
+            <BellIcon className="h-5 w-5 text-pink" />
             <h3 className="text-lg font-semibold text-white">
               Alertas de Stock
             </h3>
-            <span className="bg-brand-neutral-light text-cyber-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
+            <span className="bg-dark-light text-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
               {stockAlerts.length}
             </span>
           </div>
@@ -140,7 +140,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 <button
                   onClick={() => handleAcknowledge(alert.id)}
                   disabled={loading}
-                  className="ml-4 flex-shrink-0 bg-brand-neutral-light hover:bg-brand-neutral-light text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
+                  className="ml-4 flex-shrink-0 bg-dark-light hover:bg-dark-light text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
                 >
                   {loading ? 'Marcando...' : 'Marcar como visto'}
                 </button>
@@ -165,7 +165,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
 
       {/* Footer with summary */}
       {!isExpanded && stockAlerts.length > 0 && (
-        <div className="p-3 bg-brand-neutral-dark rounded-b-lg">
+        <div className="p-3 bg-dark rounded-b-lg">
           <div className="flex items-center justify-between text-sm text-primary/80">
             <div className="flex space-x-4">
               <span>

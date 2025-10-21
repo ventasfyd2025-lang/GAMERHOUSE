@@ -92,19 +92,19 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'draft': return 'bg-brand-neutral-light text-white';
+      case 'draft': return 'bg-dark-light text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'confirmed': return 'bg-blue-100 text-blue-800';
       case 'processing': return 'bg-purple-100 text-purple-800';
       case 'shipped': return 'bg-indigo-100 text-indigo-800';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-brand-neutral-light text-cyber-pink';
+      case 'cancelled': return 'bg-dark-light text-pink';
       case 'sent': return 'bg-blue-100 text-blue-800';
       case 'viewed': return 'bg-purple-100 text-purple-800';
       case 'accepted': return 'bg-green-100 text-green-800';
-      case 'rejected': return 'bg-brand-neutral-light text-cyber-pink';
-      case 'expired': return 'bg-brand-neutral-light text-white';
-      default: return 'bg-brand-neutral-light text-white';
+      case 'rejected': return 'bg-dark-light text-pink';
+      case 'expired': return 'bg-dark-light text-white';
+      default: return 'bg-dark-light text-white';
     }
   };
 
@@ -240,17 +240,17 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
   if (loading) {
     return (
-      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow p-6 ${className}`}>
+      <div className={`bg-dark/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-brand-neutral-light rounded w-1/4"></div>
-          <div className="h-32 bg-brand-neutral-light rounded"></div>
+          <div className="h-6 bg-dark-light rounded w-1/4"></div>
+          <div className="h-32 bg-dark-light rounded"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-brand-neutral-dark/80 rounded-lg shadow ${className}`}>
+    <div className={`bg-dark/80 rounded-lg shadow ${className}`}>
       {/* Header */}
       <div className="p-6 border-b border-primary/30">
         <div className="flex items-center justify-between mb-4">
@@ -357,7 +357,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       </button>
                       <button
                         onClick={() => deletePurchaseOrder(order.id)}
-                        className="text-cyber-pink hover:text-cyber-pink"
+                        className="text-pink hover:text-pink"
                       >
                         <TrashIcon className="h-5 w-5" />
                       </button>
@@ -436,7 +436,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       )}
                       <button
                         onClick={() => deleteQuote(quote.id)}
-                        className="text-cyber-pink hover:text-cyber-pink"
+                        className="text-pink hover:text-pink"
                       >
                         <TrashIcon className="h-5 w-5" />
                       </button>
@@ -486,7 +486,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {customer.companyName}
                     </h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-brand-neutral-light text-cyber-pink'
+                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-dark-light text-pink'
                     }`}>
                       {customer.isActive ? 'Activo' : 'Inactivo'}
                     </span>
@@ -523,7 +523,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
       {/* Create Order/Quote Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-brand-neutral-dark/80 rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-medium text-white mb-4">
               {createMode === 'po' ? 'Nueva Orden de Compra' : 'Nueva Cotización'}
             </h3>
@@ -595,7 +595,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 {formData.items.length > 0 && (
                   <div className="space-y-2">
                     {formData.items.map((item) => (
-                      <div key={item.id} className="flex items-center justify-between bg-brand-neutral-dark p-2 rounded">
+                      <div key={item.id} className="flex items-center justify-between bg-dark p-2 rounded">
                         <div className="flex-1">
                           <span className="font-medium">{item.productName}</span>
                           <span className="mx-2">×</span>
@@ -607,7 +607,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         </div>
                         <button
                           onClick={() => removeItemFromOrder(item.id)}
-                          className="text-cyber-pink hover:text-cyber-pink"
+                          className="text-pink hover:text-pink"
                         >
                           <XMarkIcon className="h-4 w-4" />
                         </button>
@@ -683,7 +683,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
       {/* Create Customer Modal */}
       {showCustomerModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-brand-neutral-dark/80 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-medium text-white mb-4">
               Nuevo Cliente B2B
             </h3>

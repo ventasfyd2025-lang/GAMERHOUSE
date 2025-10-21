@@ -127,7 +127,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-neutral-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white">
@@ -140,10 +140,10 @@ export default function RegisterPage() {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-brand-neutral-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
+        <div className="bg-dark/80 py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-brand-neutral-light border border-brand-neutral-light text-red-700 px-4 py-3 rounded">
+              <div className="bg-dark-light border border-dark-light text-red-700 px-4 py-3 rounded">
                 {error}
               </div>
             )}
@@ -406,7 +406,7 @@ export default function RegisterPage() {
                 <div className="w-full border-t border-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-brand-neutral-dark/80 text-primary/60">O regístrate con</span>
+                <span className="px-2 bg-dark/80 text-primary/60">O regístrate con</span>
               </div>
             </div>
 
@@ -427,14 +427,14 @@ export default function RegisterPage() {
                 <div className="w-full border-t border-primary/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-brand-neutral-dark/80 text-primary/60">¿Ya tienes cuenta?</span>
+                <span className="px-2 bg-dark/80 text-primary/60">¿Ya tienes cuenta?</span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <Link
                 href="/login"
-                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-brand-neutral-dark/80 text-sm font-medium text-primary hover:bg-brand-neutral-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-dark/80 text-sm font-medium text-primary hover:bg-dark-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Iniciar Sesión
               </Link>

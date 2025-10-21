@@ -72,7 +72,7 @@ const statusConfig = {
   },
   shipped: {
     label: 'Enviado',
-    color: 'text-primary bg-brand-neutral-light',
+    color: 'text-primary bg-dark-light',
     icon: Truck
   },
   delivered: {
@@ -82,7 +82,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-cyber-pink bg-brand-neutral-light',
+    color: 'text-pink bg-dark-light',
     icon: XCircle
   }
 };
@@ -178,7 +178,7 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
           <p className="text-primary/80 text-lg font-medium">Cargando...</p>
@@ -192,10 +192,10 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light mb-8">
+        <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-dark-light mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
@@ -225,7 +225,7 @@ export default function OrdersPage() {
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary"></div>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-brand-neutral-light text-center">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-dark-light text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
             <p className="text-lg text-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
@@ -244,9 +244,9 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden hover:shadow-2xl transition-all">
+                <div key={order.id} className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-dark-light overflow-hidden hover:shadow-2xl transition-all">
                   {/* Order Header */}
-                  <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light px-6 py-4 border-b border-brand-neutral-light">
+                  <div className="bg-gradient-to-r from-dark-light to-dark-light px-6 py-4 border-b border-dark-light">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div>
@@ -339,7 +339,7 @@ export default function OrdersPage() {
                           {order.status === 'shipped' && order.trackingNumber && (
                             <button
                               onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
-                              className="flex items-center px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-brand-neutral-dark transition-colors"
+                              className="flex items-center px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-dark transition-colors"
                             >
                               <Truck className="h-4 w-4 mr-2" />
                               Rastrear Envío

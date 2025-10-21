@@ -225,7 +225,7 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="bg-brand-neutral-dark/80 rounded-2xl shadow-sm border border-brand-neutral-light p-6">
+          <header className="bg-dark/80 rounded-2xl shadow-sm border border-dark-light p-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-primary">Catálogo completo</p>
@@ -236,7 +236,7 @@ function AllProductsPageContent() {
                   Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
                 </p>
                 {activeSectionTitle && (
-                  <div className="mt-3 rounded-lg border border-primary-200 bg-brand-neutral-light px-4 py-3 text-sm text-primary-hover">
+                  <div className="mt-3 rounded-lg border border-primary-200 bg-dark-light px-4 py-3 text-sm text-primary-hover">
                     <p className="font-semibold">
                       Estás revisando la sección “{activeSectionTitle}”.
                     </p>
@@ -250,14 +250,14 @@ function AllProductsPageContent() {
               </div>
               <button
                 onClick={() => refetch()}
-                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-brand-neutral-light hover:bg-brand-neutral-light transition-colors"
+                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-dark-light hover:bg-dark-light transition-colors"
               >
                 ↻ Refrescar lista
               </button>
             </div>
           </header>
 
-          <section className="bg-brand-neutral-dark/80 rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <section className="bg-dark/80 rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
             <form className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
               <label className="flex flex-col text-sm font-medium text-primary gap-2">
                 Buscar
@@ -338,7 +338,7 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-brand-neutral-light border border-brand-neutral-light text-red-700 rounded-xl p-6">
+          <section className="bg-dark-light border border-dark-light text-red-700 rounded-xl p-6">
             <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
             <p className="text-sm mb-4">{productsError}</p>
             <button
@@ -363,7 +363,7 @@ function AllProductsPageContent() {
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 p-10 text-center text-primary/80">
+              <div className="bg-dark/80 rounded-2xl border border-gray-100 p-10 text-center text-primary/80">
                 <div className="text-5xl mb-4">🔍</div>
                 <p>No encontramos resultados con los filtros actuales. Ajusta la búsqueda para ver más productos.</p>
               </div>

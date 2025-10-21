@@ -19,7 +19,7 @@ import dynamic from 'next/dynamic';
 const MercadoPagoWallet = dynamic(() => import('@/components/MercadoPagoWallet'), {
   ssr: false,
   loading: () => (
-    <div className="p-8 bg-brand-neutral-dark border border-primary/30 rounded-lg">
+    <div className="p-8 bg-dark border border-primary/30 rounded-lg">
       <div className="flex items-center justify-center space-x-3">
         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
         <span className="text-primary/80">Cargando MercadoPago...</span>
@@ -422,7 +422,7 @@ function CheckoutContent() {
   // Show processing screen while order is being processed
   if (!mounted || (items.length === 0 && !orderSuccess)) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
           <p className="text-primary/80 text-lg font-medium">Cargando...</p>
@@ -436,7 +436,7 @@ function CheckoutContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 flex items-center justify-center py-16">
         <div className="max-w-md mx-auto px-4">
-          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-green-200 text-center">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-12 border border-green-200 text-center">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
               <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -464,7 +464,7 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -476,7 +476,7 @@ function CheckoutContent() {
             Volver al carrito
           </Link>
 
-          <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-dark-light">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">💳</span>
@@ -496,8 +496,8 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
-              <div className="bg-gradient-to-r from-primary to-cyber-pink px-6 py-4">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-dark-light overflow-hidden">
+              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
                 </h2>
@@ -505,7 +505,7 @@ function CheckoutContent() {
 
                 <form onSubmit={handleCheckout} className="p-6 space-y-6">
                   {isGuest && (
-                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light border-l-4 border-primary rounded-lg p-4 mb-4 shadow-sm">
+                    <div className="bg-gradient-to-r from-dark-light to-dark-light border-l-4 border-primary rounded-lg p-4 mb-4 shadow-sm">
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0">
                           <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-md">
@@ -628,8 +628,8 @@ function CheckoutContent() {
                         onClick={() => setDeliveryType('envio')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'envio'
-                            ? 'border-primary bg-brand-neutral-light ring-2 ring-orange-200'
-                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-primary-300'
+                            ? 'border-primary bg-dark-light ring-2 ring-orange-200'
+                            : 'border-primary/40 bg-dark/80 hover:border-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -648,7 +648,7 @@ function CheckoutContent() {
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'retiro'
                             ? 'border-green-500 bg-green-50 ring-2 ring-green-200'
-                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-green-300'
+                            : 'border-primary/40 bg-dark/80 hover:border-green-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -696,7 +696,7 @@ function CheckoutContent() {
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'mercadopago'
                             ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200'
-                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-blue-300'
+                            : 'border-primary/40 bg-dark/80 hover:border-blue-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -715,8 +715,8 @@ function CheckoutContent() {
                         onClick={() => setPaymentMethod('transferencia')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'transferencia'
-                            ? 'border-primary bg-brand-neutral-light ring-2 ring-orange-200'
-                            : 'border-primary/40 bg-brand-neutral-dark/80 hover:border-primary-300'
+                            ? 'border-primary bg-dark-light ring-2 ring-orange-200'
+                            : 'border-primary/40 bg-dark/80 hover:border-primary-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -770,7 +770,7 @@ function CheckoutContent() {
 
                     {/* Sección de Transferencia */}
                     {paymentMethod === 'transferencia' && (
-                      <div className="p-4 border border-primary-300 bg-brand-neutral-light rounded-lg">
+                      <div className="p-4 border border-primary-300 bg-dark-light rounded-lg">
                       <div className="flex items-center mb-4">
                         <span className="text-2xl mr-3">🏦</span>
                         <div>
@@ -780,7 +780,7 @@ function CheckoutContent() {
                       </div>
 
                       {/* Datos bancarios */}
-                      <div className="bg-brand-neutral-dark/80 border border-primary/30 rounded-lg p-4 mb-4">
+                      <div className="bg-dark/80 border border-primary/30 rounded-lg p-4 mb-4">
                         <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                         {bankLoading ? (
                           <div className="flex items-center justify-center py-4">
@@ -842,7 +842,7 @@ function CheckoutContent() {
                       <div className="flex flex-col sm:flex-row gap-4">
                         <Link
                           href="/carrito"
-                          className="flex-1 py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-brand-neutral-dark/80 hover:bg-brand-neutral-dark transition-colors text-center"
+                          className="flex-1 py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors text-center"
                         >
                           Volver al carrito
                         </Link>
@@ -863,8 +863,8 @@ function CheckoutContent() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden sticky top-8">
-              <div className="bg-gradient-to-r from-primary to-cyber-pink px-6 py-4">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-dark-light overflow-hidden sticky top-8">
+              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido
                 </h2>
@@ -874,7 +874,7 @@ function CheckoutContent() {
                 {/* Cart Items */}
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-brand-neutral-light rounded-lg border border-brand-neutral-light">
+                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-dark-light rounded-lg border border-dark-light">
                       <div className="relative w-12 h-12 flex-shrink-0">
                         {item.imagen ? (
                           <img
@@ -883,7 +883,7 @@ function CheckoutContent() {
                             className="w-full h-full object-cover rounded-md"
                           />
                         ) : (
-                          <div className="w-full h-full bg-brand-neutral-light rounded-md flex items-center justify-center">
+                          <div className="w-full h-full bg-dark-light rounded-md flex items-center justify-center">
                             <span className="text-primary/50 text-lg">📦</span>
                           </div>
                         )}
@@ -906,12 +906,12 @@ function CheckoutContent() {
                 </div>
 
                 {/* Totals */}
-                <div className="border-t border-brand-neutral-light pt-4 space-y-3">
+                <div className="border-t border-dark-light pt-4 space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-primary/80 font-medium">Subtotal</span>
                     <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-brand-neutral-light px-4 py-3 rounded-lg border border-primary-200">
+                  <div className="flex justify-between items-center bg-dark-light px-4 py-3 rounded-lg border border-primary-200">
                     <span className="text-lg font-bold text-white">Total</span>
                     <span className="text-2xl font-bold text-primary">{formatPrice(getTotalPrice())}</span>
                   </div>

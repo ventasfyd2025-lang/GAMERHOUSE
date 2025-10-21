@@ -34,17 +34,17 @@ export default function ProductosDestacados() {
 
   if (productsLoading || homepageLoading) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark">
+      <div className="min-h-screen bg-dark">
         <UnifiedHeader />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
           <div className="animate-pulse space-y-6">
-            <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
+            <div className="h-8 bg-dark-light rounded w-1/3"></div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 space-y-4">
-                  <div className="h-48 bg-brand-neutral-light rounded"></div>
-                  <div className="h-4 bg-brand-neutral-light rounded w-3/4"></div>
-                  <div className="h-6 bg-brand-neutral-light rounded w-1/2"></div>
+                <div key={i} className="bg-dark/80 rounded-lg shadow-md p-4 space-y-4">
+                  <div className="h-48 bg-dark-light rounded"></div>
+                  <div className="h-4 bg-dark-light rounded w-3/4"></div>
+                  <div className="h-6 bg-dark-light rounded w-1/2"></div>
                 </div>
               ))}
             </div>
@@ -55,7 +55,7 @@ export default function ProductosDestacados() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-neutral-dark">
+    <div className="min-h-screen bg-dark">
       <UnifiedHeader />
       
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
@@ -87,9 +87,9 @@ export default function ProductosDestacados() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-brand-neutral-dark/80 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+              <div key={product.id} className="bg-dark/80 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
                 {/* Image */}
-                <div className="relative h-48 bg-brand-neutral-light">
+                <div className="relative h-48 bg-dark-light">
                   {product.imagen ? (
                     <img
                       src={product.imagen}
@@ -102,11 +102,11 @@ export default function ProductosDestacados() {
                     </div>
                   )}
                   {product.oferta && (
-                    <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
+                    <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded-full">
                       OFERTA
                     </span>
                   )}
-                  <button className="absolute top-2 right-2 p-2 bg-brand-neutral-dark/80/80 rounded-full hover:bg-brand-neutral-dark/80 transition-colors">
+                  <button className="absolute top-2 right-2 p-2 bg-dark/80/80 rounded-full hover:bg-dark/80 transition-colors">
                     <HeartIcon className="h-5 w-5 text-primary/80" />
                   </button>
                 </div>
@@ -132,7 +132,7 @@ export default function ProductosDestacados() {
                         En stock
                       </span>
                     ) : (
-                      <span className="text-sm text-cyber-pink font-medium">
+                      <span className="text-sm text-pink font-medium">
                         Sin stock
                       </span>
                     )}

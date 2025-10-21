@@ -34,10 +34,10 @@ export class ErrorBoundary extends React.Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-brand-neutral-dark">
-          <div className="max-w-md w-full bg-brand-neutral-dark/80 shadow-lg rounded-lg p-6">
+        <div className="min-h-screen flex items-center justify-center bg-dark">
+          <div className="max-w-md w-full bg-dark/80 shadow-lg rounded-lg p-6">
             <div className="flex items-center mb-4">
-              <ExclamationTriangleIcon className="h-6 w-6 text-cyber-pink mr-2" />
+              <ExclamationTriangleIcon className="h-6 w-6 text-pink mr-2" />
               <h1 className="text-lg font-semibold text-white">
                 Algo salió mal
               </h1>
@@ -54,7 +54,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
               </button>
               <button
                 onClick={() => this.setState({ hasError: false })}
-                className="flex-1 bg-brand-neutral-light text-white px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+                className="flex-1 bg-dark-light text-white px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
               >
                 Intentar de nuevo
               </button>
@@ -64,7 +64,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 <summary className="cursor-pointer text-primary/60">
                   Detalles del error (solo en desarrollo)
                 </summary>
-                <pre className="mt-2 whitespace-pre-wrap text-cyber-pink bg-brand-neutral-light p-2 rounded">
+                <pre className="mt-2 whitespace-pre-wrap text-pink bg-dark-light p-2 rounded">
                   {this.state.error.toString()}
                 </pre>
               </details>

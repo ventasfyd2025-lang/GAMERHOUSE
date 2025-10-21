@@ -1018,12 +1018,12 @@ export default function AdminPage() {
     pending_verification: 'bg-blue-100 text-blue-800',
     pending_payment: 'bg-amber-100 text-amber-800',
     confirmed: 'bg-green-100 text-green-800',
-    preparing: 'bg-brand-neutral-light text-orange-800',
+    preparing: 'bg-dark-light text-orange-800',
     processing: 'bg-indigo-100 text-indigo-800',
     shipped: 'bg-purple-100 text-purple-800',
     delivered: 'bg-green-100 text-green-800',
     completed: 'bg-emerald-100 text-emerald-800',
-    cancelled: 'bg-brand-neutral-light text-cyber-pink'
+    cancelled: 'bg-dark-light text-pink'
   };
 
   const ordersByCustomer = useMemo<CustomerOrderGroup[]>(() => {
@@ -1193,10 +1193,10 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light';
+      case 'admin': return 'bg-dark-light text-pink border-dark-light';
       case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-brand-neutral-light text-white border-primary/30';
+      default: return 'bg-dark-light text-white border-primary/30';
     }
   };
 
@@ -2204,8 +2204,8 @@ export default function AdminPage() {
   // Bloquear acceso si no es administrador
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
-        <div className="max-w-md w-full bg-brand-neutral-dark/80 rounded-lg shadow-md p-8">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
+        <div className="max-w-md w-full bg-dark/80 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
             <p className="text-primary/80 mt-2">Importadora F&D</p>
@@ -2242,7 +2242,7 @@ export default function AdminPage() {
             </div>
 
             {loginError && (
-              <div className="text-cyber-pink text-sm bg-brand-neutral-light p-3 rounded-md">
+              <div className="text-pink text-sm bg-dark-light p-3 rounded-md">
                 {loginError}
               </div>
             )}
@@ -2257,9 +2257,9 @@ export default function AdminPage() {
           </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-md p-4">
-                <p className="text-cyber-pink font-semibold">⛔ Acceso Denegado</p>
-                <p className="text-cyber-pink text-sm mt-2">
+              <div className="bg-dark-light border border-dark-light rounded-md p-4">
+                <p className="text-pink font-semibold">⛔ Acceso Denegado</p>
+                <p className="text-pink text-sm mt-2">
                   No tienes permisos de administrador para acceder a esta página.
                 </p>
               </div>
@@ -2286,9 +2286,9 @@ export default function AdminPage() {
           font-size: 1.02em !important;
         }
       `}</style>
-      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40">
+      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40">
 
-      <header className="bg-brand-neutral-dark/80/80 backdrop-blur-lg shadow-xl border-b border-brand-neutral-light">
+      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl border-b border-dark-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
@@ -2318,18 +2318,18 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-cyber-pink rounded-xl shadow-xl p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Panel de Administración</h1>
-                <p className="text-brand-neutral-light text-xs">Gestiona tu tienda</p>
+                <p className="text-dark-light text-xs">Gestiona tu tienda</p>
               </div>
             </div>
-            <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
+            <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
               <span className="text-white font-semibold text-xs">🏪 FYD</span>
             </div>
           </div>
@@ -2339,7 +2339,7 @@ export default function AdminPage() {
                           {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
-                { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-cyber-pink' },
+                { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-pink' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'main-banner', name: 'Banners', icon: '🏆' },
                 { id: 'product-layout', name: 'Layout Productos', icon: '🔲' },
@@ -2356,14 +2356,14 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-brand-neutral-dark/80 text-primary shadow-lg transform scale-105'
-                    : 'text-white/80 hover:text-white hover:bg-brand-neutral-dark/80/20 backdrop-blur-sm'
+                    ? 'bg-dark/80 text-primary shadow-lg transform scale-105'
+                    : 'text-white/80 hover:text-white hover:bg-dark/80/20 backdrop-blur-sm'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
                 <span className="font-semibold whitespace-nowrap">{tab.name}</span>
                 {'badge' in tab && tab.badge && (
-                  <span className={`absolute -top-2 -right-2 ${tab.badgeColor || 'bg-cyber-pink'} text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse`}>
+                  <span className={`absolute -top-2 -right-2 ${tab.badgeColor || 'bg-pink'} text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse`}>
                     {tab.badge > 9 ? '9+' : tab.badge}
                   </span>
                 )}
@@ -2377,7 +2377,7 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-dark-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
@@ -2433,7 +2433,7 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
                   <div>
@@ -2443,7 +2443,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
                   <div>
@@ -2453,7 +2453,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
                   <div>
@@ -2465,7 +2465,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-brand-neutral-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
                   <div>
@@ -2478,8 +2478,8 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl border border-brand-neutral-light">
-              <div className="p-6 border-b border-brand-neutral-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl border border-dark-light">
+              <div className="p-6 border-b border-dark-light">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-sm">📋</span>
@@ -2489,7 +2489,7 @@ export default function AdminPage() {
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-brand-neutral-dark">
+                  <thead className="bg-dark">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                         Cliente
@@ -2508,7 +2508,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-dark/80 divide-y divide-gray-200">
                     {ordersByCustomer.length === 0 ? (
                       <tr>
                         <td colSpan={5} className="px-6 py-6 text-center text-sm text-primary/60">
@@ -2547,7 +2547,7 @@ export default function AdminPage() {
                                 <span
                                   key={status}
                                   className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                                    statusClassMap[status as OrderStatus] || 'bg-brand-neutral-light text-white'
+                                    statusClassMap[status as OrderStatus] || 'bg-dark-light text-white'
                                   }`}
                                 >
                                   {statusLabelMap[status as OrderStatus]} · {count}
@@ -2601,7 +2601,7 @@ export default function AdminPage() {
                   {/* Compact Alert Button */}
                   <div
                     onClick={() => setShowStockAlert(!showStockAlert)}
-                    className="bg-gradient-to-r from-cyber-pink to-primary hover:from-cyber-pink hover:to-primary text-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
+                    className="bg-gradient-to-r from-pink to-primary hover:from-pink hover:to-primary text-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -2643,18 +2643,18 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-brand-neutral-dark/80 border-2 border-brand-neutral-light rounded-xl shadow-lg overflow-hidden">
-                      <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light p-4 border-b border-brand-neutral-light">
-                        <h4 className="font-bold text-cyber-pink flex items-center">
+                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg overflow-hidden">
+                      <div className="bg-gradient-to-r from-dark-light to-dark-light p-4 border-b border-dark-light">
+                        <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
-                          <span className="ml-2 text-sm text-cyber-pink">({lowStockProducts.length} productos)</span>
+                          <span className="ml-2 text-sm text-pink">({lowStockProducts.length} productos)</span>
                         </h4>
                       </div>
 
                       {/* Stock List Table */}
                       <div className="max-h-96 overflow-y-auto">
                         <table className="w-full">
-                          <thead className="bg-brand-neutral-dark sticky top-0">
+                          <thead className="bg-dark sticky top-0">
                             <tr className="text-left text-xs font-semibold text-primary/80 uppercase">
                               <th className="px-4 py-2">Producto</th>
                               <th className="px-4 py-2">Estado</th>
@@ -2672,7 +2672,7 @@ export default function AdminPage() {
                               const stockPercentage = Math.min((product.stock / minStock) * 100, 100);
 
                               return (
-                                <tr key={product.id} className="hover:bg-brand-neutral-dark transition-colors">
+                                <tr key={product.id} className="hover:bg-dark transition-colors">
                                   <td className="px-4 py-3">
                                     <div className="font-medium text-white">{product.nombre}</div>
                                     <div className="text-xs text-primary/60">{product.categoria}</div>
@@ -2680,9 +2680,9 @@ export default function AdminPage() {
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
                                       isOutOfStock
-                                        ? 'bg-brand-neutral-light text-cyber-pink'
+                                        ? 'bg-dark-light text-pink'
                                         : isCritical
-                                          ? 'bg-brand-neutral-light text-orange-800'
+                                          ? 'bg-dark-light text-orange-800'
                                           : 'bg-yellow-100 text-yellow-800'
                                     }`}>
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
@@ -2690,7 +2690,7 @@ export default function AdminPage() {
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`font-bold ${
-                                      isOutOfStock ? 'text-cyber-pink' : isCritical ? 'text-primary' : 'text-yellow-700'
+                                      isOutOfStock ? 'text-pink' : isCritical ? 'text-primary' : 'text-yellow-700'
                                     }`}>
                                       {product.stock}
                                     </span>
@@ -2700,10 +2700,10 @@ export default function AdminPage() {
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="flex items-center space-x-2">
-                                      <div className="w-16 bg-brand-neutral-light rounded-full h-2">
+                                      <div className="w-16 bg-dark-light rounded-full h-2">
                                         <div
                                           className={`h-2 rounded-full transition-all duration-300 ${
-                                            isOutOfStock ? 'bg-cyber-pink' : isCritical ? 'bg-primary' : 'bg-yellow-500'
+                                            isOutOfStock ? 'bg-pink' : isCritical ? 'bg-primary' : 'bg-yellow-500'
                                           }`}
                                           style={{ width: `${stockPercentage}%` }}
                                         ></div>
@@ -2732,7 +2732,7 @@ export default function AdminPage() {
                                             updateProduct(product.id, { minStock: parseInt(minStockNew) });
                                           }
                                         }}
-                                        className="bg-brand-neutral-dark0 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-colors"
+                                        className="bg-dark0 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-colors"
                                         title="Configurar Mínimo"
                                       >
                                         ⚙️
@@ -2747,14 +2747,14 @@ export default function AdminPage() {
                       </div>
 
                       {/* Quick Actions Footer */}
-                      <div className="bg-brand-neutral-dark p-4 border-t border-primary/30">
+                      <div className="bg-dark p-4 border-t border-primary/30">
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-primary/80">
                             💡 Tip: Haz clic en los botones de acción para gestionar el stock rápidamente
                           </span>
                           <button
                             onClick={() => setShowStockAlert(false)}
-                            className="bg-brand-neutral-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                            className="bg-dark-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                           >
                             Cerrar Lista
                           </button>
@@ -2828,7 +2828,7 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-brand-neutral-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-blue-100">
+                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-blue-100">
                   <h4 className="font-semibold text-blue-800 flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
@@ -2953,7 +2953,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="bg-brand-neutral-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                      className="bg-dark-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     >
                       🗑️ Limpiar Filtros
                     </button>
@@ -2980,7 +2980,7 @@ export default function AdminPage() {
                         </span>
                       )}
                       {productFilters.tags.map(tag => (
-                        <span key={tag} className="bg-brand-neutral-light text-orange-800 px-2 py-1 rounded-full text-xs">
+                        <span key={tag} className="bg-dark-light text-orange-800 px-2 py-1 rounded-full text-xs">
                           {tag === 'nuevo' ? '✨ Nuevo' : '🔥 Oferta'}
                         </span>
                       ))}
@@ -2995,7 +2995,7 @@ export default function AdminPage() {
             </div>
 
             
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 mb-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-primary/80">
@@ -3026,10 +3026,10 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-dark/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-brand-neutral-dark">
+                  <thead className="bg-dark">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                         <input
@@ -3062,7 +3062,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-dark/80 divide-y divide-gray-200">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3085,7 +3085,7 @@ export default function AdminPage() {
                                   className="h-10 w-10 object-cover rounded"
                                 />
                               ) : (
-                                <div className="h-10 w-10 bg-brand-neutral-light rounded flex items-center justify-center">
+                                <div className="h-10 w-10 bg-dark-light rounded flex items-center justify-center">
                                   📦
                                 </div>
                               )}
@@ -3104,7 +3104,7 @@ export default function AdminPage() {
                                   </span>
                                 )}
                                 {product.oferta && (
-                                  <span className="bg-brand-neutral-light text-cyber-pink text-xs px-2 py-1 rounded-full">
+                                  <span className="bg-dark-light text-pink text-xs px-2 py-1 rounded-full">
                                     Oferta
                                   </span>
                                 )}
@@ -3118,7 +3118,7 @@ export default function AdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`text-sm font-medium ${
                             product.stock > 10 ? 'text-green-600' :
-                            product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
+                            product.stock > 0 ? 'text-yellow-600' : 'text-pink'
                           }`}>
                             {product.stock}
                           </span>
@@ -3147,7 +3147,7 @@ export default function AdminPage() {
               </div>
               
               
-              <div className="px-6 py-3 bg-brand-neutral-dark border-t border-primary/30">
+              <div className="px-6 py-3 bg-dark border-t border-primary/30">
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-primary">
                     Mostrando <span className="font-bold text-blue-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
@@ -3181,7 +3181,7 @@ export default function AdminPage() {
 
         {activeTab === 'user-management' && (
           <div className="space-y-6">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+            <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">👥 Gestión de Usuarios</h2>
                 <button
@@ -3222,7 +3222,7 @@ export default function AdminPage() {
                         setSelectedUserDetails(null);
                         setSelectedUserOrders([]);
                       }}
-                      className="bg-brand-neutral-dark0 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+                      className="bg-dark0 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
                     >
                       Limpiar
                     </button>
@@ -3233,14 +3233,14 @@ export default function AdminPage() {
               {/* Modal de detalles del usuario */}
               {selectedUserDetails && (
                 <div
-                  className="fixed inset-0 bg-brand-neutral-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                  className="fixed inset-0 bg-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                   onClick={() => {
                     setSelectedUserDetails(null);
                     setSelectedUserOrders([]);
                   }}
                 >
                   <div
-                    className="bg-brand-neutral-dark/80 rounded-xl border-2 border-blue-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-dark/80 rounded-xl border-2 border-blue-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 flex justify-between items-center">
@@ -3250,7 +3250,7 @@ export default function AdminPage() {
                           setSelectedUserDetails(null);
                           setSelectedUserOrders([]);
                         }}
-                        className="text-white hover:bg-brand-neutral-dark/80/20 rounded-full p-2 transition-colors"
+                        className="text-white hover:bg-dark/80/20 rounded-full p-2 transition-colors"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -3287,7 +3287,7 @@ export default function AdminPage() {
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
+                              ? 'bg-dark-light text-pink border-dark-light'
                               : 'bg-green-100 text-green-800 border-green-200'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3309,13 +3309,13 @@ export default function AdminPage() {
                       </h4>
 
                       {selectedUserOrders.length === 0 ? (
-                        <div className="text-center py-8 bg-brand-neutral-dark rounded-lg">
+                        <div className="text-center py-8 bg-dark rounded-lg">
                           <p className="text-primary/60">Este usuario no ha realizado ninguna compra</p>
                         </div>
                       ) : (
                         <div className="space-y-3">
                           {selectedUserOrders.map((order) => (
-                            <div key={order.id} className="border rounded-lg p-4 hover:bg-brand-neutral-dark transition-colors">
+                            <div key={order.id} className="border rounded-lg p-4 hover:bg-dark transition-colors">
                               <div className="flex justify-between items-start">
                                 <div className="flex-1">
                                   <div className="flex items-center gap-3 mb-2">
@@ -3326,7 +3326,7 @@ export default function AdminPage() {
                                       order.status === 'delivered' || order.status === 'completed'
                                         ? 'bg-green-100 text-green-800'
                                         : order.status === 'cancelled'
-                                        ? 'bg-brand-neutral-light text-cyber-pink'
+                                        ? 'bg-dark-light text-pink'
                                         : 'bg-yellow-100 text-yellow-800'
                                     }`}>
                                       {order.status === 'pending' && '⏳ Pendiente'}
@@ -3372,7 +3372,7 @@ export default function AdminPage() {
                               {selectedUserOrders.filter(o => o.status === 'delivered' || o.status === 'completed').length}
                             </p>
                           </div>
-                          <div className="bg-brand-neutral-light rounded-lg p-4 border border-primary-200">
+                          <div className="bg-dark-light rounded-lg p-4 border border-primary-200">
                             <p className="text-sm font-semibold text-orange-800">Promedio por Pedido</p>
                             <p className="text-2xl font-bold text-orange-900">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0) / selectedUserOrders.length)}
@@ -3408,14 +3408,14 @@ export default function AdminPage() {
                 <>
                   {/* Admins y Vendedores - Siempre visibles */}
                   <div className="mb-6">
-                    <div className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light rounded-lg p-4 mb-3">
+                    <div className="bg-gradient-to-r from-dark-light to-dark-light rounded-lg p-4 mb-3">
                       <h3 className="text-lg font-semibold text-white">
                         👑 Administradores y Vendedores ({users.filter(u => u.role === 'admin' || u.role === 'vendedor').length})
                       </h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-brand-neutral-dark">
+                        <thead className="bg-dark">
                           <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                               Usuario
@@ -3434,7 +3434,7 @@ export default function AdminPage() {
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                        <tbody className="bg-dark/80 divide-y divide-gray-200">
                           {users
                             .filter(user => user.role === 'admin' || user.role === 'vendedor')
                             .map((user) => (
@@ -3471,7 +3471,7 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
+                                    ? 'bg-dark-light text-pink border-dark-light'
                                     : 'bg-green-100 text-green-800 border-green-200'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3498,7 +3498,7 @@ export default function AdminPage() {
                                     </button>
                                     <button
                                       onClick={() => deleteUser(user.uid)}
-                                      className="text-cyber-pink hover:text-red-900"
+                                      className="text-pink hover:text-red-900"
                                     >
                                       Eliminar
                                     </button>
@@ -3546,7 +3546,7 @@ export default function AdminPage() {
                     {showClientes && (
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                          <thead className="bg-brand-neutral-dark">
+                          <thead className="bg-dark">
                             <tr>
                               <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                                 Usuario
@@ -3565,7 +3565,7 @@ export default function AdminPage() {
                               </th>
                             </tr>
                           </thead>
-                          <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                          <tbody className="bg-dark/80 divide-y divide-gray-200">
                             {users
                               .filter(user => !user.role || user.role === 'cliente')
                               .map((user) => (
@@ -3602,7 +3602,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light'
+                                      ? 'bg-dark-light text-pink border-dark-light'
                                       : 'bg-green-100 text-green-800 border-green-200'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3629,7 +3629,7 @@ export default function AdminPage() {
                                       </button>
                                       <button
                                         onClick={() => deleteUser(user.uid)}
-                                        className="text-cyber-pink hover:text-red-900"
+                                        className="text-pink hover:text-red-900"
                                       >
                                         Eliminar
                                       </button>
@@ -3688,7 +3688,7 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-brand-neutral-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-dark-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
@@ -3739,8 +3739,8 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('active')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
-                      ? 'bg-gradient-to-r from-primary to-cyber-pink text-white scale-105 shadow-lg'
-                      : 'bg-brand-neutral-light text-primary/80 hover:bg-brand-neutral-light hover:scale-105'
+                      ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg'
+                      : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
                   📋 Pedidos Activos
@@ -3750,7 +3750,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg'
-                      : 'bg-brand-neutral-light text-primary/80 hover:bg-brand-neutral-light hover:scale-105'
+                      : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
                   ✅ Historial de Ventas
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light p-6 mb-6">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-dark-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3835,10 +3835,10 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-brand-neutral-light overflow-hidden">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl border border-dark-light overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-brand-neutral-light">
-                  <thead className="bg-gradient-to-r from-brand-neutral-light to-brand-neutral-light">
+                <table className="min-w-full divide-y divide-dark-light">
+                  <thead className="bg-gradient-to-r from-dark-light to-dark-light">
                     <tr>
                       <th className="px-3 py-3 text-left">
                         <input
@@ -3865,7 +3865,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-dark/80 divide-y divide-gray-200">
                     {groupOrdersByUser(
                       orders.filter(order => {
                         // Filtro base (activos/completados)
@@ -3983,7 +3983,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-green-500 text-white border-green-500 shadow-md'
-                                            : 'bg-brand-neutral-light text-primary/50 border-primary/40'
+                                            : 'bg-dark-light text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4012,7 +4012,7 @@ export default function AdminPage() {
                             >
                               📋 Ver Detalles
                               {getOrderMessageCount(mainOrder.id) > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                                <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
                                   {getOrderMessageCount(mainOrder.id) > 9 ? '9+' : getOrderMessageCount(mainOrder.id)}
                                 </span>
                               )}
@@ -4071,7 +4071,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-green-500 text-white border-green-500 shadow-md'
-                                            : 'bg-brand-neutral-light text-primary/50 border-primary/40'
+                                            : 'bg-dark-light text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4099,7 +4099,7 @@ export default function AdminPage() {
                               >
                                 📋 Ver Detalles
                                 {getOrderMessageCount(order.id) > 0 && (
-                                  <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
+                                  <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">
                                     {getOrderMessageCount(order.id) > 9 ? '9+' : getOrderMessageCount(order.id)}
                                   </span>
                                 )}
@@ -4123,7 +4123,7 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Banner</h2>
             
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-primary mb-1">
@@ -4202,7 +4202,7 @@ export default function AdminPage() {
                       setBannerForm({ ...bannerForm, images: [...bannerForm.images, ''] });
                       setBannerFiles([...bannerFiles, null]);
                     }}
-                    className="mt-2 px-3 py-2 bg-brand-neutral-dark0 text-white rounded-md hover:bg-gray-600"
+                    className="mt-2 px-3 py-2 bg-dark0 text-white rounded-md hover:bg-gray-600"
                   >
                     ➕ Agregar Imagen
                   </button>
@@ -4308,7 +4308,7 @@ export default function AdminPage() {
             {/* Header Section */}
             <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 rounded-xl shadow-xl p-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-lg p-3">
+                <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
                   </svg>
@@ -4324,7 +4324,7 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4344,7 +4344,7 @@ export default function AdminPage() {
                         value={popupForm.title}
                         onChange={(e) => setPopupForm({ ...popupForm, title: e.target.value })}
                         placeholder="¡Oferta Especial!"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       />
                     </div>
 
@@ -4355,7 +4355,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.popupType}
                         onChange={(e) => setPopupForm({ ...popupForm, popupType: e.target.value as 'category' | 'information' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         <option value="category">🏷️ Categoría/Promocional</option>
                         <option value="information">ℹ️ Información</option>
@@ -4371,7 +4371,7 @@ export default function AdminPage() {
                         onChange={(e) => setPopupForm({ ...popupForm, description: e.target.value })}
                         placeholder="Descripción detallada de la oferta..."
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70 resize-none"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 resize-none"
                       />
                     </div>
 
@@ -4384,14 +4384,14 @@ export default function AdminPage() {
                         value={popupForm.buttonText}
                         onChange={(e) => setPopupForm({ ...popupForm, buttonText: e.target.value })}
                         placeholder="Ver Ofertas"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4409,7 +4409,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.size}
                         onChange={(e) => setPopupForm({ ...popupForm, size: (isPopupSize(e.target.value) ? e.target.value : '2x2') })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         {Object.entries(POPUP_SIZE_PRESETS).map(([value, config]) => (
                           <option key={value} value={value}>
@@ -4426,7 +4426,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.position}
                         onChange={(e) => setPopupForm({ ...popupForm, position: e.target.value as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         <option value="bottom-right">🔽➡️ Esquina inferior derecha</option>
                         <option value="bottom-left">🔽⬅️ Esquina inferior izquierda</option>
@@ -4439,7 +4439,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4492,7 +4492,7 @@ export default function AdminPage() {
                               handlePopupImageUpload(file);
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-dashed border-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-brand-neutral-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                          className="w-full px-4 py-3 border-2 border-dashed border-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
                         />
                         {popupImageUploading && (
                           <div className="flex items-center gap-2 text-green-600">
@@ -4528,7 +4528,7 @@ export default function AdminPage() {
                               <button
                                 type="button"
                                 onClick={() => setPopupForm({ ...popupForm, mediaUrl: '' })}
-                                className="text-xs text-cyber-pink hover:text-cyber-pink font-medium transition-colors"
+                                className="text-xs text-pink hover:text-pink font-medium transition-colors"
                               >
                                 🗑️ Eliminar {popupForm.isVideo ? 'video' : 'imagen'}
                               </button>
@@ -4541,9 +4541,9 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-r from-cyber-pink to-primary rounded-lg p-2">
+                    <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                       </svg>
@@ -4552,7 +4552,7 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-6">
-                    <div className="flex items-center gap-3 p-4 bg-brand-neutral-dark rounded-xl">
+                    <div className="flex items-center gap-3 p-4 bg-dark rounded-xl">
                       <input
                         type="checkbox"
                         id="popup-active"
@@ -4618,7 +4618,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-brand-neutral-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6 sticky top-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4635,10 +4635,10 @@ export default function AdminPage() {
                       style={popupPreviewStyle}
                     >
                       <div className="relative w-full" style={{ paddingBottom: `${(popupRatio * 100).toFixed(2)}%` }}>
-                        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-cyber-pink">
+                        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-brand-neutral-dark/80/90 hover:bg-brand-neutral-dark/80 transition-all cursor-default shadow-lg"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg"
                             aria-label="Cerrar"
                           >
                             <XMarkIcon className="h-4 w-4 text-primary/80" />
@@ -4683,7 +4683,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-brand-neutral-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
+                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4734,7 +4734,7 @@ export default function AdminPage() {
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-brand-neutral-dark/80/80 border border-blue-200 rounded-md px-3 py-2 text-sm text-blue-900">
+                    <div className="mt-2 bg-dark/80/80 border border-blue-200 rounded-md px-3 py-2 text-sm text-blue-900">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4742,7 +4742,7 @@ export default function AdminPage() {
               </div>
             </div>
             
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -4909,7 +4909,7 @@ export default function AdminPage() {
         {productSections.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {productSections.map((section, index) => (
-              <div key={section.id} className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-primary/30 overflow-hidden hover:shadow-md transition-shadow">
+              <div key={section.id} className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -4918,14 +4918,14 @@ export default function AdminPage() {
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
                             ? 'bg-green-100 text-green-700'
-                            : 'bg-brand-neutral-light text-primary/60'
+                            : 'bg-dark-light text-primary/60'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
                         </span>
                       </div>
                       <p className="text-sm text-primary/80 mb-3">{section.description}</p>
                       <div className="flex items-center gap-2 text-sm text-primary/60">
-                        <span className="px-2 py-1 bg-brand-neutral-light text-primary rounded-md font-medium">
+                        <span className="px-2 py-1 bg-dark-light text-primary rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
                         <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded-md font-medium">
@@ -4996,7 +4996,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="px-4 py-2 bg-cyber-pink text-white rounded-lg hover:bg-cyber-pink transition-colors text-sm font-medium"
+                      className="px-4 py-2 bg-pink text-white rounded-lg hover:bg-pink transition-colors text-sm font-medium"
                     >
                       🗑️
                     </button>
@@ -5006,7 +5006,7 @@ export default function AdminPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-primary/30 p-12 text-center">
+          <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-12 text-center">
             <div className="text-6xl mb-4">📑</div>
             <h3 className="text-xl font-bold text-white mb-2">No hay secciones configuradas</h3>
             <p className="text-primary/80 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
@@ -5044,7 +5044,7 @@ export default function AdminPage() {
           </button>
         </div>
 
-        <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
+        <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             {editingSection ? 'Editar Sección' : 'Nueva Sección'}
           </h2>
@@ -5116,8 +5116,8 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
 
-              <div className="bg-gradient-to-br from-brand-neutral-light to-white rounded-lg p-6 border-2 border-primary-200">
-                <div className="bg-brand-neutral-dark/80 rounded-lg p-4 shadow-sm">
+              <div className="bg-gradient-to-br from-dark-light to-white rounded-lg p-6 border-2 border-primary-200">
+                <div className="bg-dark/80 rounded-lg p-4 shadow-sm">
                   <div className="border-b-2 border-primary pb-3 mb-3">
                     <h4 className="text-xl font-bold text-white">
                       {previewName || editingSection?.name || 'Nombre de Sección'}
@@ -5128,7 +5128,7 @@ export default function AdminPage() {
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-brand-neutral-dark rounded h-20 flex items-center justify-center">
+                      <div key={i} className="bg-dark rounded h-20 flex items-center justify-center">
                         <span className="text-2xl">📦</span>
                       </div>
                     ))}
@@ -5148,7 +5148,7 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">Productos Seleccionados</h3>
 
-              <div className="bg-brand-neutral-dark rounded-lg p-4 border border-primary/30">
+              <div className="bg-dark rounded-lg p-4 border border-primary/30">
                 <div className="text-center mb-4">
                   <div className="text-3xl font-bold text-primary">
                     {editingSection?.selectedProducts?.length || 0}
@@ -5161,7 +5161,7 @@ export default function AdminPage() {
                     {editingSection.selectedProducts.slice(0, 5).map((productId: string) => {
                       const product = products.find(p => p.id === productId);
                       return product ? (
-                        <div key={productId} className="flex items-center gap-2 bg-brand-neutral-dark/80 rounded-lg p-2 border border-primary/30">
+                        <div key={productId} className="flex items-center gap-2 bg-dark/80 rounded-lg p-2 border border-primary/30">
                           {product.imagen && (
                             <img
                               src={product.imagen}
@@ -5202,7 +5202,7 @@ export default function AdminPage() {
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
               sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
               sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-              'bg-brand-neutral-light text-red-700'
+              'bg-dark-light text-red-700'
             }`}>
               {sectionSaveStatus === 'saving' && (
                 <>
@@ -5236,7 +5236,7 @@ export default function AdminPage() {
                 setSectionSaveStatus('idle');
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="px-6 py-3 bg-brand-neutral-light text-primary rounded-lg hover:bg-brand-neutral-light transition-colors font-medium disabled:opacity-50"
+              className="px-6 py-3 bg-dark-light text-primary rounded-lg hover:bg-dark-light transition-colors font-medium disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -5314,7 +5314,7 @@ export default function AdminPage() {
           </button>
         </div>
 
-        <div className="bg-brand-neutral-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
+        <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             📦 Gestionar Productos de la Sección
           </h2>
@@ -5328,7 +5328,7 @@ export default function AdminPage() {
 
                 return currentSection ? (
                   <>
-                    <div className="bg-brand-neutral-light rounded-lg p-4 border border-primary-200">
+                    <div className="bg-dark-light rounded-lg p-4 border border-primary-200">
                       <h3 className="text-lg font-bold text-white mb-2">
                         {currentSection.name}
                       </h3>
@@ -5336,7 +5336,7 @@ export default function AdminPage() {
                         {currentSection.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-brand-neutral-dark/80 text-primary rounded-md font-medium text-xs">
+                        <span className="px-2 py-1 bg-dark/80 text-primary rounded-md font-medium text-xs">
                           {currentSection.type === 'custom' ? '🎯 Personalizada' :
                            currentSection.type === 'featured' ? '⭐ Destacados' :
                            currentSection.type === 'new' ? '🆕 Nuevos' :
@@ -5345,7 +5345,7 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="bg-brand-neutral-dark rounded-lg p-4 border border-primary/30">
+                    <div className="bg-dark rounded-lg p-4 border border-primary/30">
                       <div className="text-center mb-4">
                         <div className="text-3xl font-bold text-primary">
                           {currentSection.selectedProducts?.length || 0}
@@ -5356,7 +5356,7 @@ export default function AdminPage() {
                       {selectedProducts.length > 0 ? (
                         <div className="space-y-2 max-h-96 overflow-y-auto">
                           {selectedProducts.map((product) => (
-                            <div key={product.id} className="flex items-center gap-2 bg-brand-neutral-dark/80 rounded-lg p-2 border border-primary/30">
+                            <div key={product.id} className="flex items-center gap-2 bg-dark/80 rounded-lg p-2 border border-primary/30">
                               {product.imagen && (
                                 <img
                                   src={product.imagen}
@@ -5475,7 +5475,7 @@ export default function AdminPage() {
 
                     return (
                       <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-primary bg-brand-neutral-light' : 'border-primary/30'
+                        isSelected ? 'border-primary bg-dark-light' : 'border-primary/30'
                       }`}>
                         <div className="flex items-start gap-3">
                           <input
@@ -5545,7 +5545,7 @@ export default function AdminPage() {
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Gestión de Banners (v2)</h2>
               {isAutoSavingBanner && (
-                <div className="flex items-center gap-2 text-sm text-primary bg-brand-neutral-light px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 text-sm text-primary bg-dark-light px-3 py-1 rounded-full">
                   <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -5555,7 +5555,7 @@ export default function AdminPage() {
               )}
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-6">
                 
                 <div className="flex items-center">
@@ -5587,7 +5587,7 @@ export default function AdminPage() {
                               const newSlides = mainBannerForm.slides.filter((_, i) => i !== index);
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="text-cyber-pink hover:text-cyber-pink text-sm"
+                            className="text-pink hover:text-pink text-sm"
                           >
                             Eliminar
                           </button>
@@ -5646,7 +5646,7 @@ export default function AdminPage() {
                                   newSlides[index] = { ...newSlides[index], imageUrl: "" };
                                   setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                                 }}
-                                className="mt-2 text-cyber-pink hover:text-cyber-pink text-sm"
+                                className="mt-2 text-pink hover:text-pink text-sm"
                               >
                                 Eliminar imagen
                               </button>
@@ -5655,7 +5655,7 @@ export default function AdminPage() {
                         </div>
 
                         {/* Título */}
-                        <div className="bg-brand-neutral-light p-3 rounded-lg border border-primary-200">
+                        <div className="bg-dark-light p-3 rounded-lg border border-primary-200">
                           <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -5670,7 +5670,7 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], title: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                            className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-dark/80 transition-all"
                             placeholder="Ej: ¡Ofertas Especiales! 🔥"
                           />
                           <p className="text-xs text-primary mt-1">Este texto aparece grande sobre el banner</p>
@@ -5692,7 +5692,7 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], subtitle: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                            className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-dark/80 transition-all"
                             placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                           />
                           <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -5802,7 +5802,7 @@ export default function AdminPage() {
                           {(() => {
                             const selectedProduct = products.find(p => p.id === slide.productId);
                             return selectedProduct && (
-                              <div className="mt-3 p-3 bg-brand-neutral-dark rounded-lg flex items-center space-x-3">
+                              <div className="mt-3 p-3 bg-dark rounded-lg flex items-center space-x-3">
                                 <img
                                   loading="lazy"
                                   src={selectedProduct.imagen || ''}
@@ -5859,7 +5859,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], customUrl: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
                               placeholder="Ej: https://ejemplo.com o /?category=tecnologia"
                             />
                             <p className="text-xs text-purple-600 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
@@ -5913,7 +5913,7 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Logo</h2>
             
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-primary mb-1">
@@ -6022,12 +6022,12 @@ export default function AdminPage() {
               
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
-                <div className="bg-brand-neutral-dark/80 p-4 border rounded-lg">
+                <div className="bg-dark/80 p-4 border rounded-lg">
                   <div className="flex items-center space-x-2">
                     {logoForm.image ? (
                       <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
                     ) : (
-                      <div className="w-8 h-8 bg-brand-neutral-light rounded flex items-center justify-center text-xs text-primary/60">
+                      <div className="w-8 h-8 bg-dark-light rounded flex items-center justify-center text-xs text-primary/60">
                         Sin logo
                       </div>
                     )}
@@ -6055,10 +6055,10 @@ export default function AdminPage() {
                 </button>
             </div>
 
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-dark/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-brand-neutral-dark">
+                  <thead className="bg-dark">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                         ID
@@ -6077,7 +6077,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-dark/80 divide-y divide-gray-200">
                     {categories.map((category) => (
                       <tr key={category.id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
@@ -6123,7 +6123,7 @@ export default function AdminPage() {
                                         }
                                       }
                                     }}
-                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-cyber-pink transition-opacity"
+                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-pink transition-opacity"
                                     title="Eliminar subcategoría"
                                   >
                                     🗑️
@@ -6148,7 +6148,7 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            category.active ? 'bg-green-100 text-green-800' : 'bg-brand-neutral-light text-cyber-pink'
+                            category.active ? 'bg-green-100 text-green-800' : 'bg-dark-light text-pink'
                           }`}>
                             {category.active ? 'Activa' : 'Inactiva'}
                           </span>
@@ -6189,7 +6189,7 @@ export default function AdminPage() {
         
         {showCategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-brand-neutral-dark/80 rounded-lg max-w-md w-full">
+            <div className="bg-dark/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6246,7 +6246,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowCategoryModal(false)}
-                      className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6296,7 +6296,7 @@ export default function AdminPage() {
         
         {showSubcategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-brand-neutral-dark/80 rounded-lg max-w-md w-full">
+            <div className="bg-dark/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6340,7 +6340,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowSubcategoryModal(false)}
-                      className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6412,12 +6412,12 @@ export default function AdminPage() {
         
         {showProductModal && (
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
-            <div className="bg-brand-neutral-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-primary/30 flex flex-col mx-auto">
+            <div className="bg-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-primary/30 flex flex-col mx-auto">
               {/* Compact Header */}
-              <div className="bg-gradient-to-r from-primary to-cyber-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--primary)' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-neutral-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
@@ -6431,7 +6431,7 @@ export default function AdminPage() {
                   </div>
                   <button
                     onClick={() => setShowProductModal(false)}
-                    className="w-8 h-8 bg-brand-neutral-dark/80/20 hover:bg-brand-neutral-dark/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-8 h-8 bg-dark/80/20 hover:bg-dark/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6445,7 +6445,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6462,7 +6462,7 @@ export default function AdminPage() {
                           value={productForm.nombre}
                           onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                           required
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Ej: Laptop Gaming RGB"
                         />
                       </div>
@@ -6477,7 +6477,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                           required
                           placeholder="SKU-001"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-200 uppercase bg-brand-neutral-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-200 uppercase bg-dark/80/70"
                         />
                       </div>
 
@@ -6492,7 +6492,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="0"
                         />
                       </div>
@@ -6507,7 +6507,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Dejar vacío si no hay descuento"
                         />
                         <p className="text-xs text-primary/60 mt-1">
@@ -6518,7 +6518,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📊</span>
@@ -6537,7 +6537,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-dark/80/70"
                           placeholder="0"
                         />
                       </div>
@@ -6554,7 +6554,7 @@ export default function AdminPage() {
                           min="0"
                           step="1"
                           placeholder="5"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-brand-neutral-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-dark/80/70"
                         />
                         <p className="text-xs text-green-600 mt-1">📊 Para alertas de stock bajo</p>
                       </div>
@@ -6562,7 +6562,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📂</span>
@@ -6574,7 +6574,7 @@ export default function AdminPage() {
                         <label className="block text-xs font-semibold text-primary mb-2 flex items-center gap-1">
                           <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                         </label>
-                        <div className="border-2 border-primary/30 rounded-lg p-3 bg-brand-neutral-dark/80/70 max-h-[55vh] overflow-y-auto space-y-4">
+                        <div className="border-2 border-primary/30 rounded-lg p-3 bg-dark/80/70 max-h-[55vh] overflow-y-auto space-y-4">
                           {categories.map((category) => {
                             const subcategorias = (category as any).subcategorias || [];
                             const isCategoryChecked = productForm.categorias.includes(category.id);
@@ -6655,7 +6655,7 @@ export default function AdminPage() {
                           })}
                         </div>
                         {productForm.categorias.length === 0 && (
-                          <p className="text-xs text-cyber-pink mt-1">Debes seleccionar al menos una categoría o subcategoría</p>
+                          <p className="text-xs text-pink mt-1">Debes seleccionar al menos una categoría o subcategoría</p>
                         )}
                         {productForm.categorias.length > 0 && (
                           <p className="text-xs text-green-600 mt-1">
@@ -6667,7 +6667,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6678,13 +6678,13 @@ export default function AdminPage() {
                       value={productForm.descripcion}
                       onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
                       rows={2}
-                      className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-primary focus:outline-none transition-all duration-200 resize-none bg-brand-neutral-dark/80/70"
+                      className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-primary focus:outline-none transition-all duration-200 resize-none bg-dark/80/70"
                       placeholder="Describe las características principales del producto..."
                     />
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🖼️</span>
@@ -6693,7 +6693,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Image Specifications */}
-                    <div className="mb-3 p-2 bg-brand-neutral-light border border-primary-200 rounded-lg text-xs">
+                    <div className="mb-3 p-2 bg-dark-light border border-primary-200 rounded-lg text-xs">
                       <p className="text-orange-800 font-medium mb-1">📐 Especificaciones:</p>
                       <ul className="text-primary-hover space-y-0.5">
                         <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
@@ -6704,7 +6704,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Compact Image Upload Area */}
-                    <div className="border-2 border-dashed border-primary-200 rounded-lg p-3 text-center bg-brand-neutral-light/50 hover:bg-brand-neutral-light transition-colors">
+                    <div className="border-2 border-dashed border-primary-200 rounded-lg p-3 text-center bg-dark-light/50 hover:bg-dark-light transition-colors">
                       <input
                         type="file"
                         multiple
@@ -6760,7 +6760,7 @@ export default function AdminPage() {
                                         imagen: newImagenes.length > 0 ? newImagenes[0] : ''
                                       }));
                                     }}
-                                    className="absolute -top-1 -right-1 bg-cyber-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-cyber-pink transition-colors opacity-0 group-hover:opacity-100"
+                                    className="absolute -top-1 -right-1 bg-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-pink transition-colors opacity-0 group-hover:opacity-100"
                                   >
                                     ✕
                                   </button>
@@ -6792,7 +6792,7 @@ export default function AdminPage() {
                                       setProductImages(prev => prev.filter((_, i) => i !== index));
                                       setProductImagePreviews(prev => prev.filter((_, i) => i !== index));
                                     }}
-                                    className="absolute -top-1 -right-1 bg-cyber-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-cyber-pink transition-colors"
+                                    className="absolute -top-1 -right-1 bg-pink text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-pink transition-colors"
                                   >
                                     ✕
                                   </button>
@@ -6809,7 +6809,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-brand-neutral-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🏷️</span>
@@ -6817,7 +6817,7 @@ export default function AdminPage() {
                       <h4 className="text-sm font-bold text-white">Etiquetas</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <label className="flex items-center gap-2 cursor-pointer bg-brand-neutral-light px-3 py-2 rounded-lg hover:bg-brand-neutral-light transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-dark-light px-3 py-2 rounded-lg hover:bg-dark-light transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.nuevo}
@@ -6827,7 +6827,7 @@ export default function AdminPage() {
                         <span className="text-xs font-semibold" style={{ color: 'var(--primary)' }}>✨ Nuevo</span>
                       </label>
 
-                      <label className="flex items-center gap-2 cursor-pointer bg-brand-neutral-light px-3 py-2 rounded-lg hover:bg-brand-neutral-light transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-dark-light px-3 py-2 rounded-lg hover:bg-dark-light transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.oferta}
@@ -6842,12 +6842,12 @@ export default function AdminPage() {
               </div>
 
               {/* Modern Compact Bottom Actions - Fixed */}
-              <div className="bg-brand-neutral-dark/80/95 backdrop-blur-sm p-4 border-t border-primary-200 flex-shrink-0">
+              <div className="bg-dark/80/95 backdrop-blur-sm p-4 border-t border-primary-200 flex-shrink-0">
                 <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => setShowProductModal(false)}
-                    className="flex-1 bg-gray-400 hover:bg-brand-neutral-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6920,7 +6920,7 @@ export default function AdminPage() {
             </div>
             
             
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -6982,7 +6982,7 @@ export default function AdminPage() {
                     return (
                   <div key={section.id} className="border border-primary/30 rounded-lg overflow-hidden hover:border-primary-300 transition-colors">
                     
-                    <div className="bg-brand-neutral-dark px-4 py-3 border-b">
+                    <div className="bg-dark px-4 py-3 border-b">
                       <div className="flex justify-between items-center">
                         <h4 className="font-medium text-white flex items-center gap-1">
                           {section.position === 'large' ? (
@@ -6996,7 +6996,7 @@ export default function AdminPage() {
                            )}
                         </h4>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-primary/60 bg-brand-neutral-dark/80 px-2 py-1 rounded border flex items-center gap-1">
+                          <span className="text-xs text-primary/60 bg-dark/80 px-2 py-1 rounded border flex items-center gap-1">
                             {section.linkType === 'category' ? (
                               <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg> Categoría</>
                             ) : section.linkType === 'product' ? (
@@ -7018,7 +7018,7 @@ export default function AdminPage() {
                                 autoSaveHomepageContent(newContent);
                               }
                             }}
-                            className="text-cyber-pink hover:text-red-700 hover:bg-brand-neutral-light p-1 rounded transition-colors"
+                            className="text-pink hover:text-red-700 hover:bg-dark-light p-1 rounded transition-colors"
                             title="Eliminar sección"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7063,7 +7063,7 @@ export default function AdminPage() {
 
                           
                           {section.badgeText && (
-                            <div className="absolute top-3 left-3 bg-cyber-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg">
+                            <div className="absolute top-3 left-3 bg-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg">
                               {section.badgeText}
                             </div>
                           )}
@@ -7349,7 +7349,7 @@ export default function AdminPage() {
                     const stateKey = `middle-${banner.id}`;
 
                     return (
-                      <div key={banner.id || `middle-${index}`} className="border-2 border-primary/40 rounded-xl p-5 flex flex-col gap-4 bg-brand-neutral-dark/80 shadow-sm hover:shadow-md transition-shadow">
+                      <div key={banner.id || `middle-${index}`} className="border-2 border-primary/40 rounded-xl p-5 flex flex-col gap-4 bg-dark/80 shadow-sm hover:shadow-md transition-shadow">
                         <div className="flex items-center justify-between">
                           <h4 className="font-bold text-white text-lg">Banner #{index + 1}</h4>
                           {isAutoSaving && (
@@ -7383,7 +7383,7 @@ export default function AdminPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
                                   <h3 className="font-black text-lg text-center drop-shadow-lg mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
-                                  <button className="mt-3 bg-brand-neutral-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
+                                  <button className="mt-3 bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
                                   </button>
                                 </div>
@@ -7401,7 +7401,7 @@ export default function AdminPage() {
                           </div>
 
                           {/* Título - Mejorado */}
-                          <div className="bg-brand-neutral-light p-3 rounded-lg border border-primary-200">
+                          <div className="bg-dark-light p-3 rounded-lg border border-primary-200">
                             <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -7412,7 +7412,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.title}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, title: e.target.value })}
-                              className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-dark/80 transition-all"
                               placeholder="Ej: ¡Ofertas Especiales! 🔥"
                             />
                             <p className="text-xs text-primary mt-1">Este texto aparece grande en el banner</p>
@@ -7430,7 +7430,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.subtitle}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, subtitle: e.target.value })}
-                              className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-dark/80 transition-all"
                               placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                             />
                             <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -7450,7 +7450,7 @@ export default function AdminPage() {
                                 const linkType = e.target.value as 'category' | 'product' | 'filter' | 'url' | 'popup-ofertas';
                                 updateMiddleBanner(index, { ...banner, linkType, linkValue: '', ctaLink: '' });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all font-medium"
+                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all font-medium"
                             >
                               <option value="category">📁 Categoría</option>
                               <option value="product">📦 Producto</option>
@@ -7470,7 +7470,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?category=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona una categoría --</option>
                                   {availableCategories.length === 0 ? (
@@ -7482,7 +7482,7 @@ export default function AdminPage() {
                                   )}
                                 </select>
                                 {availableCategories.length === 0 && (
-                                  <p className="text-xs text-cyber-pink mt-2 flex items-center gap-1">
+                                  <p className="text-xs text-pink mt-2 flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
@@ -7509,7 +7509,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?filter=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona un filtro --</option>
                                   <option value="ofertas">Productos en Oferta</option>
@@ -7530,7 +7530,7 @@ export default function AdminPage() {
                                   type="text"
                                   value="/popup-ofertas"
                                   disabled
-                                  className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-brand-neutral-light text-primary/80 font-medium"
+                                  className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-dark-light text-primary/80 font-medium"
                                 />
                                 <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7549,7 +7549,7 @@ export default function AdminPage() {
                                   type="text"
                                   value={banner.ctaLink}
                                   onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-brand-neutral-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
                                 <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
@@ -7579,7 +7579,7 @@ export default function AdminPage() {
                                   handleMiddleBannerImageUpload(file, index, banner);
                                 }
                               }}
-                              className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-brand-neutral-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
+                              className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
                               <p className="text-xs text-primary mt-2 font-medium flex items-center gap-1">
@@ -7613,25 +7613,25 @@ export default function AdminPage() {
                     Consejos para Banners Efectivos
                   </h4>
                   <ul className="space-y-3 text-sm text-blue-900">
-                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Título claro:</strong> Usa mensajes cortos y directos (ej: "¡Ofertas Imperdibles!")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Subtítulo descriptivo:</strong> Complementa con información adicional (ej: "Hasta 50% OFF")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Imágenes de calidad:</strong> Usa imágenes de alta resolución (1440x480px ideal)</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-brand-neutral-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -7670,7 +7670,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => loadHomepageContent()}
-                  className="px-4 py-3 bg-brand-neutral-dark0 text-white rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
+                  className="px-4 py-3 bg-dark0 text-white rounded-lg hover:bg-gray-600 transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -7685,7 +7685,7 @@ export default function AdminPage() {
         
         {activeTab === 'footer' && (
           <div className="space-y-6">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">Información del Footer</h2>
               
               <form className="space-y-6">
@@ -7725,7 +7725,7 @@ export default function AdminPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
-                      <svg className="w-4 h-4 text-cyber-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                       Email
@@ -7901,7 +7901,7 @@ export default function AdminPage() {
 
         {activeTab === 'bank-details' && (
           <div className="space-y-6">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">🏦 Configuración de Datos Bancarios</h2>
 
               <form className="space-y-6">
@@ -8025,7 +8025,7 @@ export default function AdminPage() {
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa en Checkout:</h3>
                 <div className="bg-blue-50 border border-blue-300 rounded-lg p-4">
-                  <div className="bg-brand-neutral-dark/80 border border-primary/30 rounded-lg p-4">
+                  <div className="bg-dark/80 border border-primary/30 rounded-lg p-4">
                     <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                       <div>
@@ -8073,8 +8073,8 @@ export default function AdminPage() {
 
       
       {showSectionModal && (
-        <div className="fixed inset-0 bg-brand-neutral-dark/80/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-brand-neutral-dark/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/30">
+        <div className="fixed inset-0 bg-dark/80/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-dark/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <div>
@@ -8092,7 +8092,7 @@ export default function AdminPage() {
                     setPreviewName('');
                     setPreviewDescription('');
                   }}
-                  className="text-primary/50 hover:text-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-brand-neutral-light transition-colors"
+                  className="text-primary/50 hover:text-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-dark-light transition-colors"
                 >
                   ✕
                 </button>
@@ -8199,18 +8199,18 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-brand-neutral-light via-white to-gray-50 rounded-xl p-6 border-2 border-primary-200">
+                  <div className="bg-gradient-to-br from-dark-light via-white to-gray-50 rounded-xl p-6 border-2 border-primary-200">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-sm font-semibold text-primary flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio
                       </h4>
-                      <span className="text-xs bg-brand-neutral-light text-primary px-2 py-1 rounded-full font-medium">
+                      <span className="text-xs bg-dark-light text-primary px-2 py-1 rounded-full font-medium">
                         En Vivo
                       </span>
                     </div>
 
                     {/* Preview of section as it appears on website */}
-                    <div className="bg-brand-neutral-dark/80 rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div className="bg-dark/80 rounded-lg shadow-sm p-5 border border-gray-100">
                       {/* Section Header */}
                       <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-primary">
                         <div>
@@ -8232,8 +8232,8 @@ export default function AdminPage() {
                       {/* Product Cards Preview */}
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="bg-brand-neutral-dark rounded-lg p-2 border border-primary/30">
-                            <div className="bg-brand-neutral-light rounded h-20 mb-2 flex items-center justify-center">
+                          <div key={i} className="bg-dark rounded-lg p-2 border border-primary/30">
+                            <div className="bg-dark-light rounded h-20 mb-2 flex items-center justify-center">
                               <span className="text-2xl">📦</span>
                             </div>
                             <div className="space-y-1">
@@ -8262,7 +8262,7 @@ export default function AdminPage() {
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
                     sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
                     sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-                    'bg-brand-neutral-light text-red-700'
+                    'bg-dark-light text-red-700'
                   }`}>
                     {sectionSaveStatus === 'saving' && (
                       <>
@@ -8295,7 +8295,7 @@ export default function AdminPage() {
                       setPreviewDescription('');
                     }}
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 bg-brand-neutral-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancelar
                   </button>
@@ -8318,8 +8318,8 @@ export default function AdminPage() {
 
       
       {showProductSelector && (
-        <div className="fixed inset-0 bg-brand-neutral-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-brand-neutral-dark/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-dark/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-semibold text-white">
@@ -8342,7 +8342,7 @@ export default function AdminPage() {
               </div>
 
               
-              <div className="mb-6 p-4 bg-brand-neutral-dark rounded-lg">
+              <div className="mb-6 p-4 bg-dark rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   
                   <div>

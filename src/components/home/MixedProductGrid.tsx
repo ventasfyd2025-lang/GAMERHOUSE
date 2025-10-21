@@ -26,11 +26,11 @@ const SmallProductCard = ({ product }: { product: Product }) => {
   const originalPrice = discountPercentage > 0 ? product.precio / (1 - discountPercentage / 100) : 0;
 
   return (
-    <article className="group relative flex flex-col bg-brand-neutral-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
-        <div className="bg-brand-neutral-light border-2 border-dashed rounded-xl w-full h-32" />
+        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-32" />
         {product.oferta && (
-          <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -40,7 +40,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-primary/50 hover:text-cyber-pink" />
+          <HeartIcon className="h-5 w-5 text-primary/50 hover:text-pink" />
         </button>
       </div>
       
@@ -80,11 +80,11 @@ const LargeProductCard = ({ product }: { product: Product }) => {
   const originalPrice = discountPercentage > 0 ? product.precio / (1 - discountPercentage / 100) : 0;
 
   return (
-    <article className="group relative flex flex-col bg-brand-neutral-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2 md:row-span-2">
+    <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2 md:row-span-2">
       <div className="relative">
-        <div className="bg-brand-neutral-light border-2 border-dashed rounded-xl w-full h-64" />
+        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-64" />
         {product.oferta && (
-          <span className="absolute top-4 left-4 bg-cyber-pink text-white text-sm font-bold px-3 py-1.5 rounded">
+          <span className="absolute top-4 left-4 bg-pink text-white text-sm font-bold px-3 py-1.5 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -94,7 +94,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-6 w-6 text-primary/50 hover:text-cyber-pink" />
+          <HeartIcon className="h-6 w-6 text-primary/50 hover:text-pink" />
         </button>
       </div>
       
@@ -141,11 +141,11 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
   const originalPrice = discountPercentage > 0 ? product.precio / (1 - discountPercentage / 100) : 0;
 
   return (
-    <article className="group relative flex flex-col bg-brand-neutral-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
-        <div className="bg-brand-neutral-light border-2 border-dashed rounded-xl w-full h-48" />
+        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-48" />
         {product.oferta && (
-          <span className="absolute top-3 left-3 bg-cyber-pink text-white text-xs font-bold px-2.5 py-1 rounded">
+          <span className="absolute top-3 left-3 bg-pink text-white text-xs font-bold px-2.5 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -155,7 +155,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-primary/50 hover:text-cyber-pink" />
+          <HeartIcon className="h-5 w-5 text-primary/50 hover:text-pink" />
         </button>
       </div>
       
@@ -195,11 +195,11 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
   const originalPrice = discountPercentage > 0 ? product.precio / (1 - discountPercentage / 100) : 0;
 
   return (
-    <article className="group relative flex bg-brand-neutral-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+    <article className="group relative flex bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2">
       <div className="relative w-1/3">
-        <div className="bg-brand-neutral-light border-2 border-dashed rounded-xl w-full h-full" />
+        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-full" />
         {product.oferta && (
-          <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
           </span>
         )}
@@ -212,7 +212,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
             <h3 className="text-base font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
           </div>
           <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-            <HeartIcon className="h-5 w-5 text-primary/50 hover:text-cyber-pink" />
+            <HeartIcon className="h-5 w-5 text-primary/50 hover:text-pink" />
           </button>
         </div>
         

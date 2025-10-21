@@ -163,7 +163,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
         >
           <ChatBubbleLeftRightIcon className="h-6 w-6" />
           {unreadCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
+            <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
               {unreadCount > 9 ? '9+' : unreadCount}
             </span>
           )}
@@ -172,7 +172,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-brand-neutral-dark/80 rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-primary/30">
+        <div className="bg-dark/80 rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-primary/30">
           {/* Header */}
           <div className="bg-primary text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -209,7 +209,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                   <div
                     className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm ${
                       message.isAdmin
-                        ? 'bg-brand-neutral-light text-white'
+                        ? 'bg-dark-light text-white'
                         : 'bg-primary text-white'
                     }`}
                   >

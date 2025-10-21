@@ -182,7 +182,7 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center">
+      <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
       </div>
     );
@@ -194,13 +194,13 @@ export default function ProfilePage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-brand-neutral-dark py-4 sm:py-8">
+      <div className="min-h-screen bg-dark py-4 sm:py-8">
       <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Header */}
-        <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="bg-dark/80 rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-3 sm:space-x-4">
-              <div className="bg-brand-neutral-light p-2 sm:p-3 rounded-full">
+              <div className="bg-dark-light p-2 sm:p-3 rounded-full">
                 <UserIcon className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               </div>
               <div>
@@ -220,7 +220,7 @@ export default function ProfilePage() {
               <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
                 <button
                   onClick={handleCancel}
-                  className="px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm sm:text-base"
+                  className="px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-dark transition-colors text-sm sm:text-base"
                 >
                   Cancelar
                 </button>
@@ -238,7 +238,7 @@ export default function ProfilePage() {
           {message && (
             <div className={`mt-4 p-3 rounded ${
               message.includes('Error') 
-                ? 'bg-brand-neutral-light text-red-700 border border-brand-neutral-light' 
+                ? 'bg-dark-light text-red-700 border border-dark-light' 
                 : 'bg-green-50 text-green-700 border border-green-200'
             }`}>
               {message}
@@ -248,7 +248,7 @@ export default function ProfilePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Información Personal */}
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 sm:p-6">
+          <div className="bg-dark/80 rounded-lg shadow-md p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6 flex items-center">
               <UserIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-primary/80" />
               Información Personal
@@ -296,7 +296,7 @@ export default function ProfilePage() {
                   <EnvelopeIcon className="h-4 w-4 mr-1" />
                   Email
                 </label>
-                <p className="text-white bg-brand-neutral-dark px-3 py-2 rounded-lg text-sm sm:text-base">
+                <p className="text-white bg-dark px-3 py-2 rounded-lg text-sm sm:text-base">
                   {userProfile?.email} (no se puede modificar)
                 </p>
               </div>
@@ -341,7 +341,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Dirección */}
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 sm:p-6">
+          <div className="bg-dark/80 rounded-lg shadow-md p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6 flex items-center">
               <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-primary/80" />
               Dirección
@@ -442,23 +442,23 @@ export default function ProfilePage() {
         </div>
 
         {/* Actions */}
-        <div className="mt-6 sm:mt-8 bg-brand-neutral-dark/80 rounded-lg shadow-md p-4 sm:p-6">
+        <div className="mt-6 sm:mt-8 bg-dark/80 rounded-lg shadow-md p-4 sm:p-6">
           <h2 className="text-base sm:text-lg font-semibold text-white mb-4">Acciones Rápidas</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
               onClick={() => setShowPasswordModal(true)}
-              className="flex items-center justify-center px-4 py-3 border border-primary/40 rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm sm:text-base"
+              className="flex items-center justify-center px-4 py-3 border border-primary/40 rounded-lg hover:bg-dark transition-colors text-sm sm:text-base"
             >
               <KeyIcon className="h-5 w-5 mr-2 text-primary/80" />
               <span className="text-primary">Cambiar Contraseña</span>
             </button>
             <button
               onClick={() => router.push('/mis-pedidos')}
-              className="flex items-center justify-center px-4 py-3 border border-primary/40 rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm sm:text-base relative"
+              className="flex items-center justify-center px-4 py-3 border border-primary/40 rounded-lg hover:bg-dark transition-colors text-sm sm:text-base relative"
             >
               <span className="text-primary">Ver Mis Pedidos</span>
               {unreadOrderNotifications > 0 && (
-                <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                   {unreadOrderNotifications > 9 ? '9+' : unreadOrderNotifications}
                 </span>
               )}
@@ -475,7 +475,7 @@ export default function ProfilePage() {
         {/* Password Change Modal */}
         {showPasswordModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-brand-neutral-dark/80 rounded-lg shadow-xl max-w-md w-full p-6">
+            <div className="bg-dark/80 rounded-lg shadow-xl max-w-md w-full p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-white flex items-center">
                   <KeyIcon className="h-6 w-6 mr-2 text-primary" />
@@ -538,7 +538,7 @@ export default function ProfilePage() {
                 {message && (
                   <div className={`p-3 rounded ${
                     message.includes('Error') || message.includes('incorrecta') || message.includes('coinciden')
-                      ? 'bg-brand-neutral-light text-red-700 border border-brand-neutral-light'
+                      ? 'bg-dark-light text-red-700 border border-dark-light'
                       : 'bg-green-50 text-green-700 border border-green-200'
                   }`}>
                     {message}
@@ -552,7 +552,7 @@ export default function ProfilePage() {
                       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
                       setMessage('');
                     }}
-                    className="flex-1 px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-brand-neutral-dark transition-colors"
+                    className="flex-1 px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-dark transition-colors"
                   >
                     Cancelar
                   </button>

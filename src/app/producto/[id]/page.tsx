@@ -150,7 +150,7 @@ export default function ProductPage() {
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-20">
-            <div className="text-cyber-pink text-6xl mb-4">❌</div>
+            <div className="text-pink text-6xl mb-4">❌</div>
             <h1 className="text-2xl font-bold text-white mb-4">
               {error || 'Producto no encontrado'}
             </h1>
@@ -185,7 +185,7 @@ export default function ProductPage() {
           {/* Product Image Gallery */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="relative aspect-square bg-brand-neutral-light rounded-lg overflow-hidden">
+            <div className="relative aspect-square bg-dark-light rounded-lg overflow-hidden">
               {(() => {
                 const images = product.imagenes && product.imagenes.length > 0
                   ? product.imagenes
@@ -217,7 +217,7 @@ export default function ProductPage() {
                   </span>
                 )}
                 {product.oferta && (
-                  <span className="bg-cyber-pink text-white text-sm px-3 py-1 rounded-full font-medium">
+                  <span className="bg-pink text-white text-sm px-3 py-1 rounded-full font-medium">
                     Oferta
                   </span>
                 )}
@@ -237,7 +237,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
                       )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-brand-neutral-dark/80/80 hover:bg-brand-neutral-dark/80 p-2 rounded-full shadow-lg transition-all"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -247,7 +247,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
                       )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-brand-neutral-dark/80/80 hover:bg-brand-neutral-dark/80 p-2 rounded-full shadow-lg transition-all"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -272,7 +272,7 @@ export default function ProductPage() {
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
-                      className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-brand-neutral-dark/80 rounded-md overflow-hidden border-3 transition-all ${
+                      className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-dark/80 rounded-md overflow-hidden border-3 transition-all ${
                         selectedImageIndex === index
                           ? 'border-green-500 border-4'
                           : 'border-primary/40 hover:border-gray-400'
@@ -314,10 +314,10 @@ export default function ProductPage() {
                   <div className="text-2xl text-primary/60 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
-                  <div className="text-4xl font-bold text-cyber-pink">
+                  <div className="text-4xl font-bold text-pink">
                     {formatPrice(product.precio)}
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-neutral-light text-cyber-pink">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-dark-light text-pink">
                     {Math.round(((product.precioOriginal - product.precio) / product.precioOriginal) * 100)}% OFF
                   </div>
                 </>
@@ -342,7 +342,7 @@ export default function ProductPage() {
               <span className="text-primary">Stock disponible:</span>
               <span className={`font-semibold ${
                 product.stock > 10 ? 'text-green-600' : 
-                product.stock > 0 ? 'text-yellow-600' : 'text-cyber-pink'
+                product.stock > 0 ? 'text-yellow-600' : 'text-pink'
               }`}>
                 {product.stock > 0 ? `${product.stock} unidades` : 'Sin stock'}
               </span>
@@ -357,7 +357,7 @@ export default function ProductPage() {
                     <button
                       onClick={() => handleQuantityChange(-1)}
                       disabled={quantity <= 1}
-                      className="p-2 hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <MinusIcon className="h-4 w-4" />
                     </button>
@@ -365,7 +365,7 @@ export default function ProductPage() {
                     <button
                       onClick={() => handleQuantityChange(1)}
                       disabled={quantity >= product.stock}
-                      className="p-2 hover:bg-brand-neutral-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <PlusIcon className="h-4 w-4" />
                     </button>
@@ -383,7 +383,7 @@ export default function ProductPage() {
                   
                   <Link
                     href="/carrito"
-                    className="block w-full text-center bg-brand-neutral-light hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                    className="block w-full text-center bg-dark-light hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
                   >
                     Ver carrito
                   </Link>
@@ -392,8 +392,8 @@ export default function ProductPage() {
             )}
 
             {product.stock === 0 && (
-              <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-md p-4">
-                <p className="text-cyber-pink font-medium">
+              <div className="bg-dark-light border border-dark-light rounded-md p-4">
+                <p className="text-pink font-medium">
                   Este producto no está disponible en este momento
                 </p>
               </div>

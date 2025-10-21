@@ -101,12 +101,12 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-brand-neutral-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-primary/30 flex flex-col ${customHeight || 'h-full'} hover:border-primary-400 cursor-pointer relative`}>
+      <div className={`bg-dark/80 rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 group border border-primary/30 flex flex-col ${customHeight || 'h-full'} hover:border-primary-400 cursor-pointer relative`}>
 
       {/* Badges flotantes */}
       {mostrarOferta && (
         <div className="absolute top-2 left-2 z-10">
-          <span className="bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
+          <span className="bg-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
             OFERTA
           </span>
         </div>
@@ -120,7 +120,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       )}
 
       {/* Contenedor de imagen */}
-      <div className="relative w-full aspect-square bg-brand-neutral-dark/80 overflow-hidden p-4">
+      <div className="relative w-full aspect-square bg-dark/80 overflow-hidden p-4">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -133,14 +133,14 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-brand-neutral-dark">
+          <div className="w-full h-full flex items-center justify-center bg-dark">
             <span className="text-gray-300 text-5xl">📦</span>
           </div>
         )}
 
         {product.stock === 0 && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-            <span className="bg-cyber-pink text-white px-4 py-2 rounded font-semibold text-sm">
+            <span className="bg-pink text-white px-4 py-2 rounded font-semibold text-sm">
               Agotado
             </span>
           </div>
@@ -187,7 +187,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
                 e.stopPropagation();
                 handleAddToCart(e);
               }}
-              className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-brand-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
+              className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
             >
               <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -197,7 +197,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
           ) : (
             <button
               disabled
-              className="w-full bg-brand-neutral-light text-primary/60 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
+              className="w-full bg-dark-light text-primary/60 font-semibold py-2.5 px-3 rounded-xl cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

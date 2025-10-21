@@ -49,13 +49,13 @@ const palette = {
   primary: 'var(--primary)', // Cyan Futurista
   primaryHover: 'var(--primary-hover)', // Cyan Oscuro
   secondary: 'var(--secondary)', // Púrpura Neón
-  accent: 'var(--brand-accent)', // Verde Neón
+  accent: 'var(--accent)', // Verde Neón
   success: '#00FF88', // Green Neon
   neutralText: '#FFFFFF', // White Text
   mutedText: '#9CA3AF', // Gray Text
   divider: '#2D3748',
   headerBg: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)', // Cyan to Purple
-  discountTag: 'linear-gradient(135deg, var(--cyber-pink) 0%, var(--secondary) 100%)', // Pink to Purple
+  discountTag: 'linear-gradient(135deg, var(--pink) 0%, var(--secondary) 100%)', // Pink to Purple
 };
 
 export default function RetailHomepage() {
@@ -415,8 +415,8 @@ export default function RetailHomepage() {
           {/* Featured Products Carousel */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
-              <div className="h-4 bg-brand-neutral-light rounded w-20"></div>
+              <div className="h-8 bg-dark-light rounded w-1/3"></div>
+              <div className="h-4 bg-dark-light rounded w-20"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               <ProductCardSkeleton count={4} />
@@ -429,8 +429,8 @@ export default function RetailHomepage() {
           {/* Best Sellers Carousel */}
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="h-8 bg-brand-neutral-light rounded w-1/3"></div>
-              <div className="h-4 bg-brand-neutral-light rounded w-20"></div>
+              <div className="h-8 bg-dark-light rounded w-1/3"></div>
+              <div className="h-4 bg-dark-light rounded w-20"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               <ProductCardSkeleton count={4} />
@@ -460,15 +460,15 @@ export default function RetailHomepage() {
     return (
       <>
         <main className="w-full flex flex-col gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
-          <div className="bg-brand-neutral-light border border-brand-neutral-light rounded-lg p-6 text-center">
-            <h2 className="text-xl font-bold text-cyber-pink mb-2">Error al cargar productos</h2>
-            <p className="text-cyber-pink">{productsError}</p>
+          <div className="bg-dark-light border border-dark-light rounded-lg p-6 text-center">
+            <h2 className="text-xl font-bold text-pink mb-2">Error al cargar productos</h2>
+            <p className="text-pink">{productsError}</p>
             <button
               onClick={() => {
                 setRetryCount(prev => prev + 1);
                 refetchProducts();
               }}
-              className="mt-4 px-4 py-2 bg-cyber-pink text-white rounded-lg hover:bg-red-700 transition-colors"
+              className="mt-4 px-4 py-2 bg-pink text-white rounded-lg hover:bg-red-700 transition-colors"
               disabled={retryCount >= 3}
             >
               {retryCount >= 3 ? 'Intentos agotados' : 'Reintentar'}
@@ -686,13 +686,13 @@ const MAX_ALL_PRODUCTS_HOME = 10;
 
   return (
     <>
-      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-gradient-to-br from-brand-neutral-light/30 via-brand-neutral-light/20 to-brand-neutral-light/40 min-h-screen">
+      <main className="w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20 space-y-6 sm:space-y-8 lg:space-y-10 bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40 min-h-screen">
         {/* Hero Banner Carousel */}
         <section className="mt-4 sm:mt-6">
           {(() => {            return bannerSlides?.length > 0 ? (
               <BannerCarousel banners={bannerSlides} autoPlay={true} autoPlayInterval={3000} />
             ) : (
-              <div className="h-64 bg-brand-neutral-light flex items-center justify-center">
+              <div className="h-64 bg-dark-light flex items-center justify-center">
                 <p className="text-primary/60">No hay banners configurados</p>
               </div>
             );
@@ -702,13 +702,13 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Category Promotions Pinterest Grid */}
         {homepageConfig.promotionalSections && homepageConfig.promotionalSections.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                   <span className="text-white text-lg">✨</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-cyber-pink bg-clip-text text-transparent">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-pink bg-clip-text text-transparent">
                     Colecciones Destacadas
                   </h2>
                   <p className="mt-1 text-sm sm:text-base text-primary/80 max-w-2xl">
@@ -781,7 +781,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                   href={getLink()}
                   className={`${getPositionClasses()} group`}
                 >
-                  <div className="bg-brand-neutral-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className={`relative flex-1 ${getHeightClasses()}`}>
                       <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 h-full w-full overflow-hidden">
                         {section.imageUrl ? (
@@ -800,7 +800,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                         )}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-primary to-cyber-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-gradient-to-r from-primary to-pink text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-2 rounded-full shadow-lg">
                         {section.badgeText}
                       </span>
                       <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 text-white">
@@ -894,14 +894,14 @@ const MAX_ALL_PRODUCTS_HOME = 10;
         {/* Main Masonry Product Grid */}
         {products.length > 0 && (
           <section className="space-y-6">
-            <div className="bg-brand-neutral-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-primary100">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🛍️</span>
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-cyber-pink bg-clip-text text-transparent">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-pink bg-clip-text text-transparent">
                       Nuestro Catálogo
                     </h2>
                     <p className="text-sm sm:text-base text-primary/80">
@@ -961,9 +961,9 @@ const MAX_ALL_PRODUCTS_HOME = 10;
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {getDiverseProducts(home, 4).map((product) => (
-                <div key={product.id} className="bg-brand-neutral-dark/80 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
+                <div key={product.id} className="bg-dark/80 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col overflow-hidden hover:-translate-y-1">
                   {/* Image */}
-                  <div className="relative h-48 bg-brand-neutral-light">
+                  <div className="relative h-48 bg-dark-light">
                     {product.imagen ? (
                       <Image
                         src={product.imagen}
@@ -977,7 +977,7 @@ const MAX_ALL_PRODUCTS_HOME = 10;
                       <div className="w-full h-full flex items-center justify-center text-primary/50 text-6xl">🏠</div>
                     )}
                     {product.oferta && (
-                      <span className="absolute top-2 left-2 bg-cyber-pink text-white text-xs font-bold px-2 py-1 rounded-full">
+                      <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded-full">
                         OFERTA
                       </span>
                     )}

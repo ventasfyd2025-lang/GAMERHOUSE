@@ -63,7 +63,7 @@ export default function PCFactoryBanner({
   }
 
   return (
-    <section className="bg-brand-neutral-dark/80 py-8">
+    <section className="bg-dark/80 py-8">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -76,13 +76,13 @@ export default function PCFactoryBanner({
             <div className="flex space-x-2">
               <button
                 onClick={() => setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
-                className="p-2 rounded-full border border-primary/40 hover:bg-brand-neutral-dark transition-colors"
+                className="p-2 rounded-full border border-primary/40 hover:bg-dark transition-colors"
               >
                 <ChevronLeftIcon className="h-5 w-5 text-primary/80" />
               </button>
               <button
                 onClick={() => setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
-                className="p-2 rounded-full border border-primary/40 hover:bg-brand-neutral-dark transition-colors"
+                className="p-2 rounded-full border border-primary/40 hover:bg-dark transition-colors"
               >
                 <ChevronRightIcon className="h-5 w-5 text-primary/80" />
               </button>
@@ -103,10 +103,10 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-brand-neutral-dark/80 border border-primary/30 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-primary-300"
+                      className="bg-dark/80 border border-primary/30 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group hover:border-primary-300"
                     >
                       {/* Product Image */}
-                      <div className="relative aspect-[4/3] bg-brand-neutral-dark overflow-hidden">
+                      <div className="relative aspect-[4/3] bg-dark overflow-hidden">
                         <img
                           src={product.imagen || ''}
                           alt={product.nombre || 'Producto'}

@@ -276,7 +276,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
             >
               <ChatBubbleLeftRightIcon className="h-6 w-6" />
               {unreadCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-cyber-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse">
+                <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
@@ -290,12 +290,12 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
 
       {/* Chat Window */}
       {isOpen && !shouldRedirectToWhatsApp && (
-        <div className={`bg-brand-neutral-dark/80 rounded-lg shadow-2xl w-80 ${isMinimized ? 'h-14' : 'h-[500px]'} flex flex-col border border-primary/30 transition-all duration-300`}>
+        <div className={`bg-dark/80 rounded-lg shadow-2xl w-80 ${isMinimized ? 'h-14' : 'h-[500px]'} flex flex-col border border-primary/30 transition-all duration-300`}>
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-8 h-8 bg-brand-neutral-dark/80 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-dark/80 rounded-full flex items-center justify-center">
                   <ShieldCheckIcon className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
@@ -340,7 +340,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
               )}
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-brand-neutral-dark">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -354,19 +354,19 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                     <div className="space-y-2 max-w-xs mx-auto">
                       <button
                         onClick={() => setNewMessage('Hola, necesito ayuda con mi pedido')}
-                        className="w-full text-left p-3 bg-brand-neutral-dark/80 border border-primary/30 rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm"
+                        className="w-full text-left p-3 bg-dark/80 border border-primary/30 rounded-lg hover:bg-dark transition-colors text-sm"
                       >
                         💼 Ayuda con mi pedido
                       </button>
                       <button
                         onClick={() => setNewMessage('¿Cuándo llegará mi producto?')}
-                        className="w-full text-left p-3 bg-brand-neutral-dark/80 border border-primary/30 rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm"
+                        className="w-full text-left p-3 bg-dark/80 border border-primary/30 rounded-lg hover:bg-dark transition-colors text-sm"
                       >
                         🚚 Estado de envío
                       </button>
                       <button
                         onClick={() => setNewMessage('Quiero hacer un cambio o devolución')}
-                        className="w-full text-left p-3 bg-brand-neutral-dark/80 border border-primary/30 rounded-lg hover:bg-brand-neutral-dark transition-colors text-sm"
+                        className="w-full text-left p-3 bg-dark/80 border border-primary/30 rounded-lg hover:bg-dark transition-colors text-sm"
                       >
                         🔄 Cambios y devoluciones
                       </button>
@@ -406,7 +406,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-brand-neutral-dark/80 text-white border border-primary/30'
+                              ? 'bg-dark/80 text-white border border-primary/30'
                               : 'bg-blue-500 text-white'
                           }`}
                         >
@@ -446,7 +446,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <ShieldCheckIcon className="h-4 w-4 text-white" />
                     </div>
-                    <div className="bg-brand-neutral-dark/80 border border-primary/30 rounded-2xl px-4 py-3 shadow-sm">
+                    <div className="bg-dark/80 border border-primary/30 rounded-2xl px-4 py-3 shadow-sm">
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
@@ -460,7 +460,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
               </div>
 
               {/* Input */}
-              <div className="border-t border-primary/30 p-4 bg-brand-neutral-dark/80 rounded-b-lg">
+              <div className="border-t border-primary/30 p-4 bg-dark/80 rounded-b-lg">
                 <div className="flex items-end space-x-2">
                   <div className="flex-1">
                     <textarea

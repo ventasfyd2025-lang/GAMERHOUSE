@@ -23,7 +23,7 @@ const NotificationBadge = memo(function NotificationBadge({
     >
       <MessageCircle className="h-6 w-6" strokeWidth={2.5} />
       {hasUnreadMessages && (
-        <span className="absolute top-1 right-1 w-3 h-3 bg-cyber-pink rounded-full animate-pulse shadow-lg border-2 border-white"></span>
+        <span className="absolute top-1 right-1 w-3 h-3 bg-pink rounded-full animate-pulse shadow-lg border-2 border-white"></span>
       )}
     </Link>
   );

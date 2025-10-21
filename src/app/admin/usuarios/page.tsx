@@ -46,7 +46,7 @@ export default function UsuariosAdminPage() {
   if (!currentUser || !isAdmin) {
     return (
       <Layout>
-        <div className="min-h-screen bg-brand-neutral-dark flex items-center justify-center py-12 px-4">
+        <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full text-center space-y-4">
             <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
             <p className="text-primary/80">
@@ -117,10 +117,10 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-brand-neutral-light text-cyber-pink border-brand-neutral-light';
+      case 'admin': return 'bg-dark-light text-pink border-dark-light';
       case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-brand-neutral-light text-white border-primary/30';
+      default: return 'bg-dark-light text-white border-primary/30';
     }
   };
 
@@ -136,7 +136,7 @@ export default function UsuariosAdminPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-brand-neutral-dark py-8">
+      <div className="min-h-screen bg-dark py-8">
         <div className="max-w-full mx-auto px-4">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Gestión de Usuarios</h1>
@@ -144,14 +144,14 @@ export default function UsuariosAdminPage() {
           </div>
 
           {/* Administradores y Vendedores */}
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow overflow-hidden mb-8">
-            <div className="px-6 py-4 bg-brand-neutral-light border-b border-brand-neutral-light">
+          <div className="bg-dark/80 rounded-lg shadow overflow-hidden mb-8">
+            <div className="px-6 py-4 bg-dark-light border-b border-dark-light">
               <h3 className="text-lg font-medium text-red-900">👑 Administradores y Vendedores</h3>
               <p className="text-sm text-red-700">Personal autorizado con permisos especiales</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-brand-neutral-dark">
+                <thead className="bg-dark">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                       Usuario
@@ -167,9 +167,9 @@ export default function UsuariosAdminPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                <tbody className="bg-dark/80 divide-y divide-gray-200">
                   {users.filter(user => user.role === 'admin' || user.role === 'vendedor').map((user) => (
-                    <tr key={user.uid} className="hover:bg-brand-neutral-dark">
+                    <tr key={user.uid} className="hover:bg-dark">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-lg font-bold text-white">
@@ -224,7 +224,7 @@ export default function UsuariosAdminPage() {
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-cyber-pink hover:text-red-900"
+                                className="text-lg font-bold text-pink hover:text-red-900"
                               >
                                 Eliminar
                               </button>
@@ -240,14 +240,14 @@ export default function UsuariosAdminPage() {
           </div>
 
           {/* Clientes */}
-          <div className="bg-brand-neutral-dark/80 rounded-lg shadow overflow-hidden">
+          <div className="bg-dark/80 rounded-lg shadow overflow-hidden">
             <div className="px-6 py-4 bg-green-50 border-b border-green-200">
               <h3 className="text-lg font-medium text-green-900">👥 Clientes</h3>
               <p className="text-sm text-green-700">Usuarios registrados de la tienda</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-brand-neutral-dark">
+                <thead className="bg-dark">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
                       Usuario
@@ -263,9 +263,9 @@ export default function UsuariosAdminPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-brand-neutral-dark/80 divide-y divide-gray-200">
+                <tbody className="bg-dark/80 divide-y divide-gray-200">
                   {users.filter(user => !user.role || user.role === 'cliente').map((user) => (
-                    <tr key={user.uid} className="hover:bg-brand-neutral-dark">
+                    <tr key={user.uid} className="hover:bg-dark">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-lg font-bold text-white">
@@ -320,7 +320,7 @@ export default function UsuariosAdminPage() {
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-cyber-pink hover:text-red-900"
+                                className="text-lg font-bold text-pink hover:text-red-900"
                               >
                                 Eliminar
                               </button>
@@ -335,7 +335,7 @@ export default function UsuariosAdminPage() {
             </div>
           </div>
 
-          <div className="mt-8 bg-brand-neutral-dark/80 rounded-lg shadow p-6">
+          <div className="mt-8 bg-dark/80 rounded-lg shadow p-6">
             <h2 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h2>
             <div className="space-y-3 text-sm text-primary/80">
               <p><strong>Opción 1 - Firebase Console:</strong></p>

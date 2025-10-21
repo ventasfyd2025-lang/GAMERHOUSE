@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-neutral-light via-white to-brand-neutral-light">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -25,7 +25,7 @@ export default function ContactoPage() {
               href="https://wa.me/56920265061"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -50,11 +50,11 @@ export default function ContactoPage() {
             {/* Email */}
             <a
               href="mailto:contacto@importadora-fyd.cl"
-              className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-brand-neutral-light rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                  <div className="w-12 h-12 bg-dark-light rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export default function ContactoPage() {
             {/* Teléfono */}
             <a
               href="tel:+56920265061"
-              className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 hover:shadow-xl transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -98,7 +98,7 @@ export default function ContactoPage() {
             </a>
 
             {/* Ubicación */}
-            <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8">
+            <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -121,7 +121,7 @@ export default function ContactoPage() {
           </div>
 
           {/* Horarios */}
-          <div className="bg-brand-neutral-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg border border-primary/30 p-8 mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">
               Horario de Atención
             </h2>
