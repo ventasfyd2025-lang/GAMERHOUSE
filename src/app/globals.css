@@ -14,16 +14,16 @@
 
 
 :root {
-  /* Paleta Importadora Muli */
-  --brand-primary: #F16529;
-  --brand-secondary: #E94E1B;
-  --brand-accent: #1E3A8A;
-  --brand-success: #2E7D32;
-  --brand-background: #FFFFFF;
-  --brand-surface: #F5F5F5;
-  --brand-text: #333333;
-  --brand-text-secondary: #666666;
-  --brand-border: #E0E0E0;
+  /* Paleta GAMERHOUSE - Cyberpunk */
+  --brand-primary: #00D9FF;
+  --brand-secondary: #B819FF;
+  --brand-accent: #00FFB3;
+  --brand-success: #00FF88;
+  --brand-background: #0A0E27;
+  --brand-surface: #1F2937;
+  --brand-text: #FFFFFF;
+  --brand-text-secondary: #9CA3AF;
+  --brand-border: #2D3748;
 }
 
 html {
