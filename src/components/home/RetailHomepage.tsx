@@ -79,8 +79,8 @@ export default function RetailHomepage() {
   const [notification, setNotification] = useState<string>('');
   const [retryCount, setRetryCount] = useState(0);
 
-  // Filtrar productos sin stock (SIEMPRE ocultar productos agotados)
-  const productsInStock = products.filter(product => (product.stock || 0) > 0);
+  // Mostrar todos los productos (incluyendo sin stock)
+  const productsInStock = products;
 
   // Get filter parameters
   const categoryParam = searchParams.get('category') || '';
@@ -480,7 +480,7 @@ export default function RetailHomepage() {
   }
 
   // Helper function to get diverse products by categories
-  const getDiverseProducts = (productList: typeof products, count: number = 8) => {
+  const getDiverseProducts = (productList: typeof products, count: number = 30) => {
     const categories = [...new Set(productList.map(p => p.categoria))];
     const diverseProducts: typeof products = [];
 
@@ -507,7 +507,7 @@ export default function RetailHomepage() {
 
   // Get products for a specific section based on its configuration
   const getProductsForSection = (section: ProductSectionConfig) => {
-    const count = 8; // Default number of products per section
+    const count = 30; // Default number of products per section
 
     switch (section.type) {
       case 'custom':
@@ -601,18 +601,18 @@ export default function RetailHomepage() {
       p.categoria.toLowerCase().includes('moda') ||
       p.categoria.toLowerCase().includes('ropa') ||
       p.categoria.toLowerCase().includes('calzado')
-    ), 8
+    ), 30
   );
   const home = getDiverseProducts(
     productsInStock.filter(p =>
       p.categoria.toLowerCase().includes('hogar') ||
       p.categoria.toLowerCase().includes('casa') ||
       p.categoria.toLowerCase().includes('cocina')
-    ), 8
+    ), 30
   );
 
   // Generate structured data for products
-const MAX_ALL_PRODUCTS_HOME = 10;
+const MAX_ALL_PRODUCTS_HOME = 200;
   const displayedAllProducts = productsInStock.slice(0, MAX_ALL_PRODUCTS_HOME);
   const hasMoreAllProducts = productsInStock.length > MAX_ALL_PRODUCTS_HOME;
 

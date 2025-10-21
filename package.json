@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "analyze": "ANALYZE=true next build --turbopack",
-    "init:gamerhouse": "node scripts/init-firestore.js"
+    "init:gamerhouse": "node scripts/init-firestore.js",
+    "import:csv": "node scripts/import-csv-products.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -35,6 +36,7 @@
     "@types/node": "^20.19.23",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "csv-parse": "^6.1.0",
     "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
