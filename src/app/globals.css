@@ -1,16 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+
+:root {
+  /* Paleta Importadora Muli */
+  --brand-primary: #F16529;
+  --brand-secondary: #E94E1B;
+  --brand-accent: #1E3A8A;
+  --brand-success: #2E7D32;
+  --brand-background: #FFFFFF;
+  --brand-surface: #F5F5F5;
+  --brand-text: #333333;
+  --brand-text-secondary: #666666;
+  --brand-border: #E0E0E0;
+}
 
 html {
-  font-size: 16px;
+  font-size: 14px; /* Tamaño base reducido ~15% para vista más alejada */
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-cyan-950 text-white font-sans;
-  background: #0A0E27;
-  color: #FFFFFF;
+  background: var(--brand-background);
+  color: var(--brand-text);
+  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  zoom: 0.9; /* Zoom más sutil para vista alejada */
+}
+
+/* Better responsive scaling - reducidos ~15% para vista más alejada */
+@media (max-width: 640px) {
+  html {
+    font-size: 13px; /* Móvil reducido */
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 16px; /* Desktop reducido ~20% */
+  }
 }
 
 @layer utilities {
@@ -46,24 +87,24 @@ body {
     @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
-  /* Consistent card styling - Cyberpunk */
+  /* Consistent card styling */
   .card-modern {
-    @apply bg-gradient-to-br from-brand-neutral-dark/80 to-brand-neutral-dark/60 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-brand-primary/30 hover:-translate-y-1 hover:border-brand-primary/60 hover:shadow-[0_0_30px_rgba(0,217,255,0.3)];
+    @apply bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1;
   }
 
-  /* Better button styles - Cyberpunk */
+  /* Better button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-brand-primary hover:to-brand-accent hover:scale-105 shadow-lg hover:shadow-[0_0_20px_rgba(0,217,255,0.5)] transform;
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2;
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-blue-700 hover:to-blue-800 hover:scale-105 shadow-lg hover:shadow-xl transform;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-brand-neutral-light/20 text-brand-primary font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-brand-neutral-light/40 hover:scale-105 shadow-sm hover:shadow-md transform border border-brand-primary/40;
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2;
+    @apply bg-gray-100 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-gray-200 hover:scale-105 shadow-sm hover:shadow-md transform;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 }
 
-/* Cyberpunk/Modern animations */
+/* Custom animations for popup */
 @keyframes vibrate {
   0% { transform: translate(0, 0) rotate(0deg); }
   25% { transform: translate(-1px, 1px) rotate(-0.5deg); }
@@ -81,65 +122,6 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
-}
-
-@keyframes glowCyan {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(0, 217, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.8), 0 0 60px rgba(0, 217, 255, 0.4);
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-.glow-cyan {
-  animation: glowCyan 2s ease-in-out infinite;
-}
-
-.gradient-shift {
-  background-size: 200% 200%;
-  animation: gradientShift 3s ease infinite;
-}
-
-.float-up {
-  animation: floatUp 3s ease-in-out infinite;
-}
-
-.pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite;
 }
 
 .popup-slide-in {
