@@ -142,7 +142,7 @@ export function generateMonthlySalesPDF(report: MonthlySalesReport) {
     doc.setFontSize(8);
     doc.setTextColor(128, 128, 128);
     doc.text(`Página ${i} de ${pageCount}`, 20, doc.internal.pageSize.height - 10);
-    doc.text('Importadora F&D - Reporte Confidencial', doc.internal.pageSize.width - 80, doc.internal.pageSize.height - 10);
+    doc.text('GAMERHOUSE - Reporte Confidencial', doc.internal.pageSize.width - 80, doc.internal.pageSize.height - 10);
   }
   
   // Save the PDF

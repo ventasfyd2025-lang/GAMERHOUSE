@@ -127,7 +127,7 @@ export default function OrderDetailPage() {
         orderId: orderId,
         userId: order.customerEmail, // Use customer email as userId for proper filtering
         userEmail: order.customerEmail, // Send to customer's email
-        userName: 'Admin FyD',
+        userName: 'Admin GAMERHOUSE',
         message: newMessage.trim() || (imageUrl ? 'Imagen enviada por el administrador' : ''),
         isAdmin: true,
         timestamp: serverTimestamp(),
@@ -206,7 +206,7 @@ export default function OrderDetailPage() {
         orderId: orderId,
         userId: order.customerEmail, // Use customer email as userId for proper filtering
         userEmail: order.customerEmail, // Send to customer's email
-        userName: 'Sistema FyD',
+        userName: 'Sistema GAMERHOUSE',
         message: `Estado del pedido actualizado: ${statusMessages[newStatus]}`,
         isAdmin: true,
         timestamp: serverTimestamp(),
@@ -434,7 +434,7 @@ export default function OrderDetailPage() {
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Admin FyD</h3>
+                    <h3 className="font-semibold">Admin GAMERHOUSE</h3>
                     <div className="flex items-center space-x-1">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                       <p className="text-sm opacity-90">Conectado</p>

@@ -271,7 +271,7 @@ export async function POST(request: NextRequest) {
     const replyTo = normalizeEmail(data?.customerEmail || data?.email || null) || undefined;
 
     const { data: emailData, error } = await resend.emails.send({
-      from: 'Importadora F&D <onboarding@resend.dev>',
+      from: 'GAMERHOUSE <onboarding@resend.dev>',
       to,
       ...(replyTo ? { reply_to: replyTo } : {}),
       subject,
@@ -313,7 +313,7 @@ export async function POST(request: NextRequest) {
             ${emailContent}
             <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
             <p style="font-size: 12px; color: #999;">
-              Este es un email automático de Importadora F&D<br>
+              Este es un email automático de GAMERHOUSE<br>
               Fecha: ${new Date().toLocaleString('es-CL')}
             </p>
           </body>

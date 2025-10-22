@@ -150,7 +150,7 @@ function CheckoutContent() {
       const mpItems = items.map(item => ({
         id: item.productId,
         title: item.nombre,
-        description: `${item.nombre} - Importadora F&D`,
+        description: `${item.nombre} - GAMERHOUSE`,
         quantity: item.cantidad,
         price: item.precio,
         image: item.imagen,
@@ -344,8 +344,8 @@ function CheckoutContent() {
             orderId: orderRef.id,
             userId: (currentUser as any).uid,
             userEmail: finalData.email,
-            userName: 'Sistema FyD',
-            message: `¡Hola ${finalData.name}! 👋\n\nTu pedido #${orderRef.id.slice(-8).toUpperCase()} ha sido recibido exitosamente.${paymentMessage}\n\n📋 Puedes hacer seguimiento del estado en "Mis Pedidos".\n💬 Si tienes alguna pregunta, no dudes en escribirnos aquí.\n\n¡Gracias por elegir FyD!`,
+            userName: 'Sistema GAMERHOUSE',
+            message: `¡Hola ${finalData.name}! 👋\n\nTu pedido #${orderRef.id.slice(-8).toUpperCase()} ha sido recibido exitosamente.${paymentMessage}\n\n📋 Puedes hacer seguimiento del estado en "Mis Pedidos".\n💬 Si tienes alguna pregunta, no dudes en escribirnos aquí.\n\n¡Gracias por elegir GAMERHOUSE!`,
             isAdmin: true,
             timestamp: new Date(),
             read: false

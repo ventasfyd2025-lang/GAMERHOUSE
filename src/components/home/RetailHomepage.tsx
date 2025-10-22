@@ -445,7 +445,7 @@ export default function RetailHomepage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Importadora F&D",
+              "name": "GAMERHOUSE",
               "url": "https://importadorafyd.cl",
               "description": "Tienda online de productos importados con ofertas especiales"
             })
@@ -1062,7 +1062,7 @@ const MAX_ALL_PRODUCTS_HOME = 200;
             "@graph": [
               {
                 "@type": "WebSite",
-                "name": "Importadora F&D",
+                "name": "GAMERHOUSE",
                 "url": "https://importadorafyd.cl",
                 "description": "Tienda online de productos importados con ofertas especiales"
               },

@@ -16,7 +16,7 @@ export default function PrivacidadPage() {
                   1. Información que Recopilamos
                 </h2>
                 <p>
-                  En Importadora F&D recopilamos información personal necesaria para procesar tus pedidos,
+                  En GAMERHOUSE recopilamos información personal necesaria para procesar tus pedidos,
                   incluyendo nombre, email, teléfono, RUT y dirección de entrega.
                 </p>
               </section>

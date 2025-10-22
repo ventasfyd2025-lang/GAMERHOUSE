@@ -416,10 +416,10 @@ const handleMobileCategoryLinkClick = (
               </div>
 
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-3" aria-label={logoConfig?.text || 'Importadora F&D'}>
+              <Link href="/" className="flex items-center gap-3" aria-label={logoConfig?.text || 'GAMERHOUSE'}>
                 {renderLogoBadge()}
                 <div className="flex flex-col">
-                  <span className="text-lg font-semibold">{logoConfig?.text || 'Importadora F&D'}</span>
+                  <span className="text-lg font-semibold">{logoConfig?.text || 'GAMERHOUSE'}</span>
                   <span className="text-[11px] uppercase tracking-[0.28em] text-white/80">
                     Tu tienda de confianza
                   </span>

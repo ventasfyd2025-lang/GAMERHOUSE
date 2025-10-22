@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Importadora F&D - Tu tienda online de confianza",
+  title: "GAMERHOUSE - Tu tienda de gaming online",
   description: "Encuentra los mejores productos importados con ofertas especiales. Electrónicos, hogar, ropa y deportes con envío a domicilio.",
 };
 

@@ -488,7 +488,7 @@ export default function ChatPage() {
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Soporte FyD</h3>
+                    <h3 className="font-semibold">Soporte GAMERHOUSE</h3>
                     <div className="flex items-center space-x-1">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                       <p className="text-sm opacity-90">En línea</p>
@@ -522,7 +522,7 @@ export default function ChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-2' : 'order-1'}`}>
                         {message.isAdmin && (
-                          <div className="text-xs text-primary/60 mb-1 px-3">Soporte FyD</div>
+                          <div className="text-xs text-primary/60 mb-1 px-3">Soporte GAMERHOUSE</div>
                         )}
                         
                         <div

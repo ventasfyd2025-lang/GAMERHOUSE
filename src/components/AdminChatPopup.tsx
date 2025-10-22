@@ -390,7 +390,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   </div>
                 ) : (
                   messages.map((message) => {
-                    const isSystemMessage = message.isAdmin && message.userName === 'Sistema FyD';
+                    const isSystemMessage = message.isAdmin && message.userName === 'Sistema GAMERHOUSE';
                     return (
                       <div
                         key={message.id}
@@ -407,7 +407,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                             <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
                           )}
                           {isSystemMessage && (
-                            <div className="text-xs text-blue-600 mb-1 px-3 font-medium">Sistema FyD - Actualización Automática</div>
+                            <div className="text-xs text-blue-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
                           )}
                           
                           <div

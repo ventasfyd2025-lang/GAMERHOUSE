@@ -16,7 +16,7 @@ export default function TerminosPage() {
                   1. Aceptación de Términos
                 </h2>
                 <p>
-                  Al utilizar nuestro sitio web y realizar compras en Importadora F&D, aceptas
+                  Al utilizar nuestro sitio web y realizar compras en GAMERHOUSE, aceptas
                   estos términos y condiciones en su totalidad.
                 </p>
               </section>

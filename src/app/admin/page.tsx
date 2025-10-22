@@ -558,7 +558,7 @@ export default function AdminPage() {
   
   // Logo management state
   const [logoForm, setLogoForm] = useState({
-    text: 'Importadora F&D',
+    text: 'GAMERHOUSE',
     emoji: '🏪',
     image: ''
   });
@@ -964,7 +964,7 @@ export default function AdminPage() {
       if (logoDoc.exists()) {
         const logoData = logoDoc.data();
         setLogoForm({
-          text: logoData.text || 'Importadora F&D',
+          text: logoData.text || 'GAMERHOUSE',
           emoji: logoData.emoji || '🏪',
           image: logoData.image || ''
         });
@@ -2208,7 +2208,7 @@ export default function AdminPage() {
         <div className="max-w-md w-full bg-dark/80 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
-            <p className="text-primary/80 mt-2">Importadora F&D</p>
+            <p className="text-primary/80 mt-2">GAMERHOUSE</p>
           </div>
 
           {!user ? (
@@ -5923,7 +5923,7 @@ export default function AdminPage() {
                     type="text"
                     value={logoForm.text}
                     onChange={(e) => setLogoForm({ ...logoForm, text: e.target.value })}
-                    placeholder="Importadora F&D"
+                    placeholder="GAMERHOUSE"
                     className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
                 </div>
@@ -7871,7 +7871,7 @@ export default function AdminPage() {
                 <div className="bg-primary text-white p-6 rounded-lg">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                      <h4 className="text-lg font-semibold mb-2">Importadora F&D</h4>
+                      <h4 className="text-lg font-semibold mb-2">GAMERHOUSE</h4>
                       <p className="text-gray-300 text-sm">{footerForm.companyDescription}</p>
                     </div>
                     
