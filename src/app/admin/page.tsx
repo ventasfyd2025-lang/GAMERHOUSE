@@ -1976,7 +1976,7 @@ export default function AdminPage() {
 
       const oldStatus = order.status;
 
-      await updateDoc(doc(db, 'orders', orderId), {
+      await updateDoc(doc(db, 'gamerhouse_orders', orderId), {
         status: newStatus,
         updatedAt: serverTimestamp()
       });
@@ -2075,7 +2075,7 @@ export default function AdminPage() {
     try {
       // Eliminar pedidos seleccionados
       for (const orderId of selectedOrders) {
-        await deleteDoc(doc(db, 'orders', orderId));
+        await deleteDoc(doc(db, 'gamerhouse_orders', orderId));
 
         // Eliminar mensajes de chat asociados
         const messagesQuery = query(

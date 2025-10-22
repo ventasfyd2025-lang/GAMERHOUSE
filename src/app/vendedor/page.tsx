@@ -248,7 +248,7 @@ export default function VendedorPage() {
 
   const updateOrderStatus = async (orderId: string, newStatus: string) => {
     try {
-      await updateDoc(doc(db, 'orders', orderId), {
+      await updateDoc(doc(db, 'gamerhouse_orders', orderId), {
         status: newStatus,
         updatedAt: new Date().toISOString()
       });

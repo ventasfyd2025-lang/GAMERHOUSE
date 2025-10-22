@@ -52,7 +52,7 @@ export default function OrderDetailPage() {
   useEffect(() => {
     const loadOrder = async () => {
       try {
-        const orderDoc = await getDoc(doc(db, 'orders', orderId));
+        const orderDoc = await getDoc(doc(db, 'gamerhouse_orders', orderId));
         if (orderDoc.exists()) {
           const orderData = {
             id: orderDoc.id,
@@ -181,7 +181,7 @@ export default function OrderDetailPage() {
     if (!order) return;
 
     try {
-      await updateDoc(doc(db, 'orders', orderId), {
+      await updateDoc(doc(db, 'gamerhouse_orders', orderId), {
         status: newStatus,
         updatedAt: serverTimestamp()
       });

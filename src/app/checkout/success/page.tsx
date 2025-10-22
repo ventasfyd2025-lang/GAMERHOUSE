@@ -53,7 +53,7 @@ function PaymentSuccessContent() {
       if (currentUser) {
         try {
           // Obtener detalles completos de la orden desde Firebase
-          const orderDoc = await getDoc(doc(db, 'orders', orderId));
+          const orderDoc = await getDoc(doc(db, 'gamerhouse_orders', orderId));
 
           if (orderDoc.exists()) {
             const orderData = orderDoc.data();

@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
           // Actualizar orden en Firestore solo si tenemos orderId
           if (orderId && orderId !== 'undefined') {
             try {
-              const orderRef = doc(db, 'orders', orderId);
+              const orderRef = doc(db, 'gamerhouse_orders', orderId);
               const orderDoc = await getDoc(orderRef);
 
               if (orderDoc.exists()) {
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
                   console.log('✅ Condiciones cumplidas - procesando pago aprobado');
                   const items = orderData.items || [];
                   for (const item of items) {
-                    const productRef = doc(db, 'products', item.productId);
+                    const productRef = doc(db, 'gamerhouse_products', item.productId);
                     const productDoc = await getDoc(productRef);
 
                     if (productDoc.exists()) {

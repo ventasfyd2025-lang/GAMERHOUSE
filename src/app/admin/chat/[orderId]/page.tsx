@@ -130,10 +130,10 @@ export default function AdminChatPage() {
 
   const loadOrder = useCallback(async () => {
     if (!orderId) return;
-    
+
     try {
       setOrderLoading(true);
-      const orderDoc = await getDoc(doc(db, 'orders', orderId));
+      const orderDoc = await getDoc(doc(db, 'gamerhouse_orders', orderId));
       if (orderDoc.exists()) {
         const data = orderDoc.data();
         setOrder({

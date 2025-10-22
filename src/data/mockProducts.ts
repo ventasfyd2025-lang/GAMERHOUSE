@@ -1,3 +1,22 @@
+/**
+ * ⚠️ ADVERTENCIA: DATOS MOCK PARA DESARROLLO
+ *
+ * Este archivo contiene productos de prueba/ejemplo solamente.
+ * En producción, estos datos deben ser reemplazados con productos reales
+ * de la base de datos Firebase.
+ *
+ * Para remover estos datos mock:
+ * 1. Reemplazar las importaciones de mockProducts en:
+ *    - src/hooks/useProducts.ts
+ *    - src/hooks/useCategories.ts
+ *    - src/app/producto/[id]/page.tsx
+ *    - src/data/homepageData.ts
+ *
+ * 2. Eliminar este archivo (src/data/mockProducts.ts)
+ *
+ * 3. Asegurar que los datos vengan directamente de Firebase
+ */
+
 const baseMockProducts = [
   // CALZADO
   {
