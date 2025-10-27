@@ -554,7 +554,7 @@ export default function RetailHomepage() {
         if (section.categoryId) {
           return getDiverseProducts(
             productsInStock.filter(p =>
-              p.categoria.toLowerCase().includes(section.categoryId!.toLowerCase())
+              productMatchesCategory(p, section.categoryId!)
             ), count
           );
         }
@@ -597,18 +597,24 @@ export default function RetailHomepage() {
   //   ), 8
   // );
   const fashion = getDiverseProducts(
-    productsInStock.filter(p =>
-      p.categoria.toLowerCase().includes('moda') ||
-      p.categoria.toLowerCase().includes('ropa') ||
-      p.categoria.toLowerCase().includes('calzado')
-    ), 30
+    productsInStock.filter(p => {
+      const categories = getProductCategoryCandidates(p);
+      return categories.some(cat =>
+        cat.toLowerCase().includes('moda') ||
+        cat.toLowerCase().includes('ropa') ||
+        cat.toLowerCase().includes('calzado')
+      );
+    }), 30
   );
   const home = getDiverseProducts(
-    productsInStock.filter(p =>
-      p.categoria.toLowerCase().includes('hogar') ||
-      p.categoria.toLowerCase().includes('casa') ||
-      p.categoria.toLowerCase().includes('cocina')
-    ), 30
+    productsInStock.filter(p => {
+      const categories = getProductCategoryCandidates(p);
+      return categories.some(cat =>
+        cat.toLowerCase().includes('hogar') ||
+        cat.toLowerCase().includes('casa') ||
+        cat.toLowerCase().includes('cocina')
+      );
+    }), 30
   );
 
   // Generate structured data for products
