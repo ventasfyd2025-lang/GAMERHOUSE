@@ -26,7 +26,7 @@ export default function RetailHomepage() {
     setSearchQuery(searchParam);
   }, [categoryParam, searchParam]);
 
-  // Filter products
+  // Filter products - only show in stock
   const filteredProducts = useMemo(() => {
     let filtered = products.filter(p => (p.stock || 0) > 0);
 
@@ -75,54 +75,65 @@ export default function RetailHomepage() {
     const descuento = precioOriginal && precio ? Math.round(((precioOriginal - precio) / precioOriginal) * 100) : 0;
 
     return (
-      <div className="group relative bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
-        {/* Image */}
-        <div className="relative h-64 w-full overflow-hidden bg-gray-800">
+      <div className="group relative h-full overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+        {/* Image Container */}
+        <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-300"
+            className="object-cover transition-all duration-500 group-hover:scale-125 group-hover:brightness-110"
           />
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+          {/* Discount Badge */}
           {descuento > 0 && (
-            <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
+            <div className="absolute top-4 right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
               -{descuento}%
             </div>
           )}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
+
+          {/* Stock Badge */}
+          <div className="absolute bottom-3 left-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-90">
+            {product.stock} en stock
+          </div>
         </div>
 
         {/* Content */}
-        <div className="p-4">
-          <h3 className="text-sm font-semibold text-white line-clamp-2 mb-2">
+        <div className="p-5 flex flex-col h-48">
+          {/* Title */}
+          <h3 className="text-sm font-bold text-white line-clamp-2 mb-3 group-hover:text-cyan-300 transition-colors">
             {product.nombre}
           </h3>
 
-          {/* Price */}
-          <div className="mb-3">
-            <div className="text-xl font-bold text-cyan-400">
-              ${precio?.toLocaleString() || 'N/A'}
+          {/* Price Section */}
+          <div className="mb-auto">
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                ${precio?.toLocaleString() || 'N/A'}
+              </span>
+              {precioOriginal && precio && precioOriginal > precio && (
+                <span className="text-sm text-gray-400 line-through">
+                  ${precioOriginal.toLocaleString()}
+                </span>
+              )}
             </div>
-            {precioOriginal && precio && precioOriginal > precio && (
-              <div className="text-xs text-gray-500 line-through">
-                ${precioOriginal.toLocaleString()}
-              </div>
-            )}
           </div>
 
-          {/* Stock */}
-          <div className="mb-3 text-xs text-gray-400">
-            Stock: {product.stock || 0}
-          </div>
-
-          {/* Add to cart button */}
+          {/* Add to Cart Button */}
           <button
             onClick={() => handleAddToCart(product)}
-            disabled={!product.stock}
-            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-2 rounded font-semibold transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full mt-4 py-3 px-4 rounded-lg font-bold text-white text-sm
+              bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600
+              hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700
+              shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50
+              transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5
+              flex items-center justify-center gap-2"
           >
-            <ShoppingCart size={16} />
-            {product.stock ? 'Agregar' : 'Agotado'}
+            <ShoppingCart size={18} />
+            Agregar al carrito
           </button>
         </div>
       </div>
@@ -164,49 +175,68 @@ export default function RetailHomepage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
-        <div className="mb-16">
-          <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-cyan-900/50 to-blue-900/50 border border-cyan-500/30 p-12 flex items-center justify-between">
-            <div className="flex-1">
-              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                Bienvenido a GAMERHOUSE
-              </h1>
-              <p className="text-xl text-gray-300 mb-6">
-                La tienda definitiva para gamers y coleccionistas
-              </p>
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setSelectedCategory('all')}
-                  className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-bold transition-colors"
-                >
-                  Ver Todo
-                </button>
-                <Link
-                  href="/productos"
-                  className="px-6 py-3 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 rounded-lg font-bold transition-colors"
-                >
-                  Explorar Más
-                </Link>
+        <div className="mb-20">
+          <div className="relative rounded-2xl overflow-hidden border border-purple-500/30 group">
+            {/* Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 via-blue-900/40 to-cyan-900/40 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+
+            {/* Content */}
+            <div className="relative p-16 md:p-24 flex items-center justify-between min-h-96">
+              <div className="flex-1 z-10">
+                <div className="mb-4 inline-block px-4 py-2 rounded-full border border-cyan-500/50 bg-cyan-500/10">
+                  <span className="text-cyan-300 text-sm font-semibold">🎮 Gaming & Collectibles</span>
+                </div>
+
+                <h1 className="text-6xl md:text-7xl font-black mb-6 leading-tight">
+                  <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    GAMERHOUSE
+                  </span>
+                </h1>
+
+                <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
+                  La tienda definitiva para gamers, coleccionistas y entusiastas de la tecnología
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => setSelectedCategory('all')}
+                    className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105"
+                  >
+                    Ver Catálogo
+                  </button>
+                  <Link
+                    href="/productos"
+                    className="px-8 py-4 border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 rounded-lg font-bold text-lg transition-all duration-300 backdrop-blur-sm"
+                  >
+                    Explorar Más
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="hidden lg:flex text-8xl opacity-20">
-              🎮
+
+              {/* Decorative Element */}
+              <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 text-9xl opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                🎮
+              </div>
             </div>
           </div>
         </div>
 
         {/* Categories Filter */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Categorías</h2>
+        <div className="mb-16">
+          <h2 className="text-3xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            Explora por Categoría
+          </h2>
           <div className="flex gap-3 overflow-x-auto pb-4 scroll-smooth">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-6 py-2 rounded-lg font-semibold transition-all whitespace-nowrap ${
+              className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                 selectedCategory === 'all'
-                  ? 'bg-cyan-500 text-black'
-                  : 'bg-gray-800 hover:bg-gray-700 text-white'
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-cyan-400 shadow-lg shadow-cyan-500/50'
+                  : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-cyan-500/50 hover:bg-slate-700/50'
               }`}
             >
-              Todos
+              🏠 Todos
             </button>
             {categories.map(
               cat =>
@@ -214,10 +244,10 @@ export default function RetailHomepage() {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-6 py-2 rounded-lg font-semibold transition-all whitespace-nowrap ${
+                    className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                       selectedCategory === cat.id
-                        ? 'bg-cyan-500 text-black'
-                        : 'bg-gray-800 hover:bg-gray-700 text-white'
+                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-cyan-400 shadow-lg shadow-cyan-500/50'
+                        : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-cyan-500/50 hover:bg-slate-700/50'
                     }`}
                   >
                     {cat.icon} {cat.name}
@@ -256,20 +286,23 @@ export default function RetailHomepage() {
 
         {/* All Products Grid */}
         <div>
-          <h2 className="text-3xl font-bold mb-6">
-            {searchQuery ? `Resultados para: "${searchQuery}"` : 'Todos los Productos'}
-          </h2>
+          <div className="mb-8">
+            <h2 className="text-4xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              {searchQuery ? `Resultados para: "${searchQuery}"` : 'Catálogo Completo'}
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-cyan-500 to-purple-500 rounded mt-3"></div>
+          </div>
 
           {productsLoading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="text-gray-400">Cargando productos...</div>
+              <div className="text-lg text-gray-400">Cargando productos...</div>
             </div>
           ) : filteredProducts.length === 0 ? (
             <div className="flex justify-center items-center h-64">
-              <div className="text-gray-400">No hay productos disponibles</div>
+              <div className="text-lg text-gray-400">No hay productos disponibles en esta categoría</div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -278,15 +311,26 @@ export default function RetailHomepage() {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-16 bg-gradient-to-r from-cyan-900/50 to-blue-900/50 border border-cyan-500/30 rounded-xl p-8 text-center">
-          <h3 className="text-2xl font-bold mb-4">¿Buscas algo específico?</h3>
-          <p className="text-gray-300 mb-6">Explora nuestro catálogo completo con filtros avanzados</p>
-          <Link
-            href="/productos"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 rounded-lg font-bold transition-all"
-          >
-            Ver Catálogo Completo
-          </Link>
+        <div className="mt-20 relative rounded-2xl overflow-hidden border border-purple-500/30 group">
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-blue-900/30 to-cyan-900/30 group-hover:from-purple-900/50 group-hover:via-blue-900/50 group-hover:to-cyan-900/50 transition-all duration-500" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.1),transparent_50%)]" />
+
+          {/* Content */}
+          <div className="relative p-12 md:p-16 text-center">
+            <h3 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              ¿Necesitas algo más?
+            </h3>
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Accede a nuestro catálogo completo con filtros avanzados, búsqueda inteligente y las mejores ofertas
+            </p>
+            <Link
+              href="/productos"
+              className="inline-block px-10 py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 hover:-translate-y-1"
+            >
+              Explorar Catálogo Completo →
+            </Link>
+          </div>
         </div>
       </div>
     </div>
