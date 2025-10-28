@@ -407,7 +407,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                             <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
                           )}
                           {isSystemMessage && (
-                            <div className="text-xs text-blue-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
+                            <div className="text-xs text-orange-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
                           )}
                           
                           <div
@@ -450,7 +450,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                           </div>
                         )}
                         {isSystemMessage && (
-                          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                             <CheckCircleIcon className="h-4 w-4 text-white" />
                           </div>
                         )}

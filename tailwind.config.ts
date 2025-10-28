@@ -12,20 +12,20 @@ export default {
         xs: '480px',
       },
       colors: {
-        /* Paleta GAMERHOUSE - Gaming Moderno */
-        background: '#ffffff',
-        foreground: '#333333',
+        /* Paleta GAMERHOUSE - Pikachu Amarillo y Negro */
+        background: '#0a0a0a',
+        foreground: '#ffffff',
 
         /* Colores Primarios */
-        'primary': 'var(--color-primary)',           /* Cyan */
-        'secondary': 'var(--color-secondary)',       /* Blue */
-        'accent': 'var(--color-accent)',             /* Purple */
+        'primary': 'var(--color-primary)',           /* Amarillo Pikachu */
+        'secondary': 'var(--color-secondary)',       /* Naranja-Rojo */
+        'accent': 'var(--color-accent)',             /* Amarillo Oscuro */
 
         /* Estados */
         'success': 'var(--color-success)',           /* Emerald */
         'warning': 'var(--color-warning)',           /* Amber */
         'error': 'var(--color-error)',               /* Red */
-        'info': 'var(--color-info)',                 /* Blue */
+        'info': 'var(--color-info)',                 /* Naranja-Rojo */
 
         /* Fondos Oscuros */
         'bg-darkest': 'var(--color-bg-darkest)',
@@ -42,16 +42,19 @@ export default {
         'border-default': 'var(--color-border)',
         'border-light': 'var(--color-border-light)',
 
-        /* Variantes Individuales */
-        'cyan-300': '#06dba3',
-        'cyan-400': '#06b6d4',
-        'cyan-500': '#0891b2',
-        'blue-400': '#60a5fa',
-        'blue-500': '#3b82f6',
-        'blue-600': '#2563eb',
-        'purple-400': '#d8b4fe',
-        'purple-500': '#a855f7',
-        'purple-600': '#9333ea',
+        /* Variantes Individuales - Amarillo */
+        'yellow-300': '#FFE573',
+        'yellow-400': '#FFED4E',
+        'yellow-500': '#FFB700',
+        /* Variantes Individuales - Naranja */
+        'orange-400': '#FF8C42',
+        'orange-500': '#FF6B35',
+        'orange-600': '#E55100',
+        /* Variantes Individuales - Amber */
+        'amber-400': '#FFD700',
+        'amber-500': '#FFB700',
+        'amber-600': '#FFA500',
+        /* Grises */
         'gray-300': '#d1d5db',
         'gray-400': '#9ca3af',
         'gray-500': '#6b7280',

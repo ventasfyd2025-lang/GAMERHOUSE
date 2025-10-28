@@ -20,7 +20,7 @@ export default function NotificationDisplay() {
             case 'warning':
               return <AlertTriangle className="h-5 w-5 text-yellow-500" strokeWidth={2.5} />;
             case 'info':
-              return <Info className="h-5 w-5 text-blue-500" strokeWidth={2.5} />;
+              return <Info className="h-5 w-5 text-orange-500" strokeWidth={2.5} />;
             default:
               return <Info className="h-5 w-5 text-primary/60" strokeWidth={2.5} />;
           }
@@ -44,7 +44,7 @@ export default function NotificationDisplay() {
         return (
           <div
             key={notification.id}
-            className={`w-full ${getBgColor()} border rounded-lg shadow-xl shadow-cyan-500/30 p-4 animate-slide-in-right pointer-events-auto min-h-[4rem]`}
+            className={`w-full ${getBgColor()} border rounded-lg shadow-xl shadow-yellow-400/30 p-4 animate-slide-in-right pointer-events-auto min-h-[4rem]`}
           >
             <div className="flex items-start">
               <div className="flex-shrink-0">

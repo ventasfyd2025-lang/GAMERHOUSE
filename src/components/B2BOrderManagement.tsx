@@ -428,7 +428,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {quote.status === 'accepted' && !quote.convertedToPO && (
                         <button
                           onClick={() => convertQuoteToPO(quote.id, (currentUser as any)?.uid || currentUser?.email || '')}
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-orange-600 hover:text-blue-800"
                           title="Convertir a Orden de Compra"
                         >
                           <DocumentDuplicateIcon className="h-5 w-5" />
@@ -451,7 +451,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     </div>
                     <div>
                       <span className="font-medium text-primary">Total:</span>
-                      <div className="text-xl font-bold text-blue-600">
+                      <div className="text-xl font-bold text-orange-600">
                         {formatCurrency(quote.total)}
                       </div>
                     </div>

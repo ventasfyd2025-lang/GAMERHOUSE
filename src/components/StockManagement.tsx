@@ -122,7 +122,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       case 'release':
         return <PlusIcon className="h-4 w-4 text-green-600" />;
       case 'adjustment':
-        return <AdjustmentsHorizontalIcon className="h-4 w-4 text-blue-600" />;
+        return <AdjustmentsHorizontalIcon className="h-4 w-4 text-orange-600" />;
       default:
         return <ClockIcon className="h-4 w-4 text-primary/80" />;
     }
@@ -231,7 +231,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 <div className="text-sm text-primary/80">Stock Mínimo</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">
+                <div className="text-2xl font-bold text-orange-600">
                   {selectedProduct.precio?.toLocaleString('es-CL', {
                     style: 'currency',
                     currency: 'CLP'

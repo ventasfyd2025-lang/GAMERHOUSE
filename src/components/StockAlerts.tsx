@@ -178,7 +178,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 Bajo: {stockAlerts.filter(a => a.severity === 'low').length}
               </span>
             </div>
-            <span className="text-blue-600 hover:text-blue-800 cursor-pointer">
+            <span className="text-orange-600 hover:text-blue-800 cursor-pointer">
               Ver detalles
             </span>
           </div>
