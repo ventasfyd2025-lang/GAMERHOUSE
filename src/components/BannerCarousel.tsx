@@ -153,10 +153,10 @@ export default function BannerCarousel({
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg shadow-red-600/20">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg shadow-primary/20">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-primary100 drop-shadow-lg shadow-red-600/20">
+          <p className="text-2xl md:text-3xl text-primary100 drop-shadow-lg shadow-primary/20">
             {text}
           </p>
         </div>

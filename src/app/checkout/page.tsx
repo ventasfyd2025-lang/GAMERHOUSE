@@ -436,8 +436,8 @@ function CheckoutContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-dark-light to-green-50 flex items-center justify-center py-16">
         <div className="max-w-md mx-auto px-4">
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-green-200 text-center">
-            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-600/20">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 p-12 border border-green-200 text-center">
+            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/20">
               <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -476,9 +476,9 @@ function CheckoutContent() {
             Volver al carrito
           </Link>
 
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 p-6 border border-dark-light">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">💳</span>
               </div>
               <div>
@@ -496,7 +496,7 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 border border-dark-light overflow-hidden">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
@@ -863,7 +863,7 @@ function CheckoutContent() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden sticky top-8">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 border border-dark-light overflow-hidden sticky top-8">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido

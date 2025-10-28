@@ -130,7 +130,7 @@ const BannerCarousel = memo(({
 
   return (
     <div
-      className="relative w-full rounded-2xl overflow-hidden shadow-xl shadow-red-600/30 cursor-grab active:cursor-grabbing"
+      className="relative w-full rounded-2xl overflow-hidden shadow-xl shadow-primary/30 cursor-grab active:cursor-grabbing"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
@@ -179,7 +179,7 @@ const BannerCarousel = memo(({
                   <div className="px-4 sm:px-8 lg:px-12 w-full max-w-2xl">
                     {banner.badgeText && (
                       <span
-                        className="inline-block px-3 py-1 text-xs font-semibold text-white rounded-full shadow-lg shadow-red-600/20 mb-4"
+                        className="inline-block px-3 py-1 text-xs font-semibold text-white rounded-full shadow-lg shadow-primary/20 mb-4"
                         style={banner.badgeColor ? { backgroundColor: banner.badgeColor } : { backgroundColor: 'rgba(217, 93, 34, 0.85)' }}
                       >
                         {banner.badgeText}
@@ -203,14 +203,14 @@ const BannerCarousel = memo(({
                         {banner.ctaLink ? (
                           <Link
                             href={banner.ctaLink}
-                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-white font-semibold shadow-lg shadow-red-600/20 hover:bg-primary-hover transition-colors"
+                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-white font-semibold shadow-lg shadow-primary/20 hover:bg-primary-hover transition-colors"
                             aria-label={banner.ctaText || banner.title || `Banner ${index + 1}`}
                             tabIndex={isActive ? 0 : -1}
                           >
                             {banner.ctaText || 'Ver más'}
                           </Link>
                         ) : (
-                          <span className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-dark/80/20 text-white font-semibold shadow-lg shadow-red-600/20">
+                          <span className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-dark/80/20 text-white font-semibold shadow-lg shadow-primary/20">
                             {banner.ctaText || 'Más información'}
                           </span>
                         )}

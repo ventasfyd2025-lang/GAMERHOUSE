@@ -27,7 +27,7 @@ export default function AppHeader() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="text-2xl font-black bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+            <div className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               🎮
             </div>
             <span className="text-lg font-bold text-white group-hover:text-primary transition-colors">

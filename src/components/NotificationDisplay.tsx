@@ -44,7 +44,7 @@ export default function NotificationDisplay() {
         return (
           <div
             key={notification.id}
-            className={`w-full ${getBgColor()} border rounded-lg shadow-xl shadow-red-600/30 p-4 animate-slide-in-right pointer-events-auto min-h-[4rem]`}
+            className={`w-full ${getBgColor()} border rounded-lg shadow-xl shadow-primary/30 p-4 animate-slide-in-right pointer-events-auto min-h-[4rem]`}
           >
             <div className="flex items-start">
               <div className="flex-shrink-0">

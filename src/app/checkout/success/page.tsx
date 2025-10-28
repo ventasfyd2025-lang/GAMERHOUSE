@@ -174,7 +174,7 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Order Details Card */}
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 overflow-hidden mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 border border-primary/30 overflow-hidden mb-8">
             <div className="bg-gradient-to-r from-primary to-primary px-6 py-4">
               <h2 className="text-xl font-semibold text-white">
                 Detalles del Pedido
@@ -326,7 +326,7 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-red-600/20 relative"
+                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-primary/20 relative"
               >
                 📦 Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (
@@ -338,7 +338,7 @@ function PaymentSuccessContent() {
 
               <Link
                 href="/"
-                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
+                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors shadow-md hover:shadow-lg shadow-primary/20"
               >
                 🛍️ Continuar Comprando
               </Link>
