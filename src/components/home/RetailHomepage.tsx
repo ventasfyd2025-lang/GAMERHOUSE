@@ -183,7 +183,7 @@ export default function RetailHomepage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
 
             {/* Content */}
-            <div className="relative p-8 sm:p-16 md:p-24 flex items-center justify-between min-h-auto sm:min-h-96">
+            <div className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex items-center justify-between min-h-auto sm:min-h-96">
               <div className="flex-1 z-10">
                 <div className="mb-4 inline-block px-4 py-2 rounded-full border border-cyan-500/50 bg-cyan-500/10">
                   <span className="text-cyan-300 text-xs sm:text-sm font-semibold">🎮 Gaming & Collectibles</span>
@@ -265,7 +265,7 @@ export default function RetailHomepage() {
               <Zap className="text-yellow-400" size={20} className="sm:w-6 sm:h-6" />
               <h2 className="text-2xl sm:text-3xl font-bold">Destacados</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
               {featuredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -277,7 +277,7 @@ export default function RetailHomepage() {
         {bestSellers.length > 0 && (
           <div className="mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Los Más Vendidos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
               {bestSellers.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -303,7 +303,7 @@ export default function RetailHomepage() {
               <div className="text-base sm:text-lg text-gray-400">No hay productos disponibles en esta categoría</div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
               {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -318,7 +318,7 @@ export default function RetailHomepage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.1),transparent_50%)]" />
 
           {/* Content */}
-          <div className="relative p-8 sm:p-12 md:p-16 text-center">
+          <div className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center">
             <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               ¿Necesitas algo más?
             </h3>

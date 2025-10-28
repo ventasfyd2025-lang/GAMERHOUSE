@@ -120,7 +120,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       )}
 
       {/* Contenedor de imagen */}
-      <div className="relative w-full aspect-square bg-dark/80 overflow-hidden p-4">
+      <div className="relative w-full aspect-square bg-dark/80 overflow-hidden p-3 sm:p-4 lg:p-5">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -148,7 +148,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       </div>
 
       {/* Información del producto */}
-      <div className="p-2 flex flex-col flex-grow">
+      <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow">
         {/* Título */}
         <h3 className="text-xs text-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
@@ -187,7 +187,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
                 e.stopPropagation();
                 handleAddToCart(e);
               }}
-              className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white font-bold py-2.5 px-3 rounded-lg transition-all duration-300 text-sm shadow-md hover:shadow-xl hover:shadow-primary/40 hover:border-primary/60 shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
+              className="w-full bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white font-bold py-2 px-3 sm:py-2.5 sm:px-4 rounded-lg transition-all duration-300 text-xs sm:text-sm shadow-md hover:shadow-xl hover:shadow-primary/40 hover:border-primary/60 shadow-cyan-500/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
             >
               <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
