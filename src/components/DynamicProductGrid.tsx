@@ -42,7 +42,7 @@ export default function DynamicProductGrid({ products }: DynamicProductGridProps
         // 7th card: tall rectangle
         return {
           gridClass: 'col-span-1 row-span-2',
-          heightClass: 'h-[36rem] sm:h-[40rem] lg:h-[44rem]'
+          heightClass: 'h-80 sm:h-96 lg:h-[40rem] xl:h-[44rem]'
         };
       case 7:
         // 8th card: wide rectangle

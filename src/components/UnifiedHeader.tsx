@@ -210,8 +210,8 @@ const handleMobileCategoryLinkClick = (
       <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-xl shadow-2xl border-b border-primary/30">
         <div className="relative bg-gradient-to-br from-dark/95 via-dark/90 to-dark/95">
           {/* Top Banner - Gaming Theme */}
-          <div className="text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-primary/80 via-secondary/70 to-accent/60">
-            <div className="mx-auto flex max-w-full items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+          <div className="text-[9px] sm:text-[10px] lg:text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-primary/80 via-secondary/70 to-accent/60">
+            <div className="mx-auto flex max-w-full items-center justify-between gap-2 sm:gap-4 px-4 py-2 sm:px-6 lg:px-8">
               <span className="font-bold text-primary">🎮 GAMERHOUSE - ¡Bienvenido Jugador!</span>
 
               {/* Mobile User + Cart Icons in Top Banner */}
@@ -283,7 +283,7 @@ const handleMobileCategoryLinkClick = (
                 </button>
 
                 {isDesktopCategoriesOpen && (
-                  <div className="absolute left-0 top-full mt-3 w-[420px] rounded-2xl border border-primary/40 bg-dark/95 shadow-[0_15px_45px_rgba(0,217,255,0.2)] backdrop-blur-lg z-50 overflow-hidden">
+                  <div className="absolute left-0 top-full mt-3 w-72 sm:w-96 lg:w-[420px] rounded-2xl border border-primary/40 bg-dark/95 shadow-[0_15px_45px_rgba(0,217,255,0.2)] backdrop-blur-lg z-50 overflow-hidden">
                     <div className="flex items-center justify-between px-5 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 border-b border-primary/30">
                       <span className="flex items-center gap-2 text-sm font-semibold text-primary">
                         <span className="text-base">🏷️</span>

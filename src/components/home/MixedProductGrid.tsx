@@ -45,8 +45,8 @@ const SmallProductCard = ({ product }: { product: Product }) => {
       </div>
       
       <div className="p-2 flex flex-col flex-1">
-        <div className="text-xs text-primary/60 uppercase tracking-wide">{product.categoria}</div>
-        <h3 className="text-sm font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
+        <div className="text-[10px] sm:text-xs text-primary/60 uppercase tracking-wide">{product.categoria}</div>
+        <h3 className="text-xs sm:text-sm font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
         
         <div className="mt-2 flex flex-col flex-1">
           <div className="flex items-baseline gap-1">
@@ -65,7 +65,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
             <span className="text-xs text-primary/80 ml-1">4.5</span>
           </div>
           
-          <button className="mt-2 w-full text-xs bg-primary text-white py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+          <button className="mt-2 w-full text-xs sm:text-sm bg-primary text-white py-1 sm:py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
             Agregar
           </button>
         </div>
@@ -275,7 +275,7 @@ const MixedProductGrid: React.FC<MixedProductGridProps> = ({ products, title, vi
         </div>
       )}
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
         {products.map((product, index) => {
           const cardType = getCardType(index);
           

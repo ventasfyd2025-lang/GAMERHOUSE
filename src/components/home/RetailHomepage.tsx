@@ -77,7 +77,7 @@ export default function RetailHomepage() {
     return (
       <div className="group relative h-full overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
         {/* Image Container */}
-        <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
+        <div className="relative h-48 sm:h-60 lg:h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
@@ -102,20 +102,20 @@ export default function RetailHomepage() {
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col h-48">
+        <div className="p-3 sm:p-4 lg:p-5 flex flex-col h-48">
           {/* Title */}
-          <h3 className="text-sm font-bold text-white line-clamp-2 mb-3 group-hover:text-cyan-300 transition-colors">
+          <h3 className="text-xs sm:text-sm font-bold text-white line-clamp-2 mb-3 group-hover:text-cyan-300 transition-colors">
             {product.nombre}
           </h3>
 
           {/* Price Section */}
           <div className="mb-auto">
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                 ${precio?.toLocaleString() || 'N/A'}
               </span>
               {precioOriginal && precio && precioOriginal > precio && (
-                <span className="text-sm text-gray-400 line-through">
+                <span className="text-xs sm:text-sm text-gray-400 line-through">
                   ${precioOriginal.toLocaleString()}
                 </span>
               )}
@@ -125,15 +125,16 @@ export default function RetailHomepage() {
           {/* Add to Cart Button */}
           <button
             onClick={() => handleAddToCart(product)}
-            className="w-full mt-4 py-3 px-4 rounded-lg font-bold text-white text-sm
+            className="w-full mt-4 py-2 px-3 sm:py-3 sm:px-4 rounded-lg font-bold text-white text-xs sm:text-sm
               bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600
               hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700
               shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50
               transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5
               flex items-center justify-center gap-2"
           >
-            <ShoppingCart size={18} />
-            Agregar al carrito
+            <ShoppingCart size={16} className="sm:w-[18px] sm:h-[18px]" />
+            <span className="hidden sm:inline">Agregar al carrito</span>
+            <span className="sm:hidden">Agregar</span>
           </button>
         </div>
       </div>
@@ -182,32 +183,32 @@ export default function RetailHomepage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
 
             {/* Content */}
-            <div className="relative p-16 md:p-24 flex items-center justify-between min-h-96">
+            <div className="relative p-8 sm:p-16 md:p-24 flex items-center justify-between min-h-auto sm:min-h-96">
               <div className="flex-1 z-10">
                 <div className="mb-4 inline-block px-4 py-2 rounded-full border border-cyan-500/50 bg-cyan-500/10">
-                  <span className="text-cyan-300 text-sm font-semibold">🎮 Gaming & Collectibles</span>
+                  <span className="text-cyan-300 text-xs sm:text-sm font-semibold">🎮 Gaming & Collectibles</span>
                 </div>
 
-                <h1 className="text-6xl md:text-7xl font-black mb-6 leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                     GAMERHOUSE
                   </span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
+                <p className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8 leading-relaxed font-light">
                   La tienda definitiva para gamers, coleccionistas y entusiastas de la tecnología
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setSelectedCategory('all')}
-                    className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105"
                   >
                     Ver Catálogo
                   </button>
                   <Link
                     href="/productos"
-                    className="px-8 py-4 border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 rounded-lg font-bold text-lg transition-all duration-300 backdrop-blur-sm"
+                    className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-500 text-purple-300 hover:bg-purple-500/10 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 backdrop-blur-sm"
                   >
                     Explorar Más
                   </Link>
@@ -223,8 +224,8 @@ export default function RetailHomepage() {
         </div>
 
         {/* Categories Filter */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             Explora por Categoría
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-4 scroll-smooth">
@@ -259,12 +260,12 @@ export default function RetailHomepage() {
 
         {/* Featured Section */}
         {featuredProducts.length > 0 && (
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <Zap className="text-yellow-400" size={24} />
-              <h2 className="text-3xl font-bold">Destacados</h2>
+          <div className="mb-12 sm:mb-16">
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
+              <Zap className="text-yellow-400" size={20} className="sm:w-6 sm:h-6" />
+              <h2 className="text-2xl sm:text-3xl font-bold">Destacados</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {featuredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -274,9 +275,9 @@ export default function RetailHomepage() {
 
         {/* Best Sellers */}
         {bestSellers.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-6">Los Más Vendidos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Los Más Vendidos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {bestSellers.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -286,23 +287,23 @@ export default function RetailHomepage() {
 
         {/* All Products Grid */}
         <div>
-          <div className="mb-8">
-            <h2 className="text-4xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               {searchQuery ? `Resultados para: "${searchQuery}"` : 'Catálogo Completo'}
             </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-cyan-500 to-purple-500 rounded mt-3"></div>
+            <div className="h-1 w-16 sm:w-24 bg-gradient-to-r from-cyan-500 to-purple-500 rounded mt-3"></div>
           </div>
 
           {productsLoading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="text-lg text-gray-400">Cargando productos...</div>
+              <div className="text-base sm:text-lg text-gray-400">Cargando productos...</div>
             </div>
           ) : filteredProducts.length === 0 ? (
             <div className="flex justify-center items-center h-64">
-              <div className="text-lg text-gray-400">No hay productos disponibles en esta categoría</div>
+              <div className="text-base sm:text-lg text-gray-400">No hay productos disponibles en esta categoría</div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-8">
               {filteredProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -311,22 +312,22 @@ export default function RetailHomepage() {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-20 relative rounded-2xl overflow-hidden border border-purple-500/30 group">
+        <div className="mt-12 sm:mt-16 lg:mt-20 relative rounded-2xl overflow-hidden border border-purple-500/30 group">
           {/* Background */}
           <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-blue-900/30 to-cyan-900/30 group-hover:from-purple-900/50 group-hover:via-blue-900/50 group-hover:to-cyan-900/50 transition-all duration-500" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.1),transparent_50%)]" />
 
           {/* Content */}
-          <div className="relative p-12 md:p-16 text-center">
-            <h3 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="relative p-8 sm:p-12 md:p-16 text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               ¿Necesitas algo más?
             </h3>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
               Accede a nuestro catálogo completo con filtros avanzados, búsqueda inteligente y las mejores ofertas
             </p>
             <Link
               href="/productos"
-              className="inline-block px-10 py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 rounded-lg font-bold text-lg text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 hover:-translate-y-1"
+              className="inline-block px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700 rounded-lg font-bold text-sm sm:text-base lg:text-lg text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 hover:-translate-y-1"
             >
               Explorar Catálogo Completo →
             </Link>
