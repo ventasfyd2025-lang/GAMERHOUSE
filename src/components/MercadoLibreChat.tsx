@@ -292,7 +292,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
       {isOpen && !shouldRedirectToWhatsApp && (
         <div className={`bg-dark/80 rounded-lg shadow-2xl w-80 ${isMinimized ? 'h-14' : 'h-[500px]'} flex flex-col border border-primary/30 transition-all duration-300`}>
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <div className="w-8 h-8 bg-dark/80 rounded-full flex items-center justify-center">
@@ -329,10 +329,10 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
             <>
               {/* Order Info */}
               {orderId && (
-                <div className="bg-blue-50 border-b border-blue-100 px-4 py-2">
+                <div className="bg-amber-50 border-b border-orange-100 px-4 py-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="text-xs font-medium text-blue-700">
+                    <span className="text-xs font-medium text-orange-700">
                       Pedido #{orderId.slice(-8).toUpperCase()}
                     </span>
                   </div>
@@ -343,7 +343,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-orange-500" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
@@ -380,7 +380,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                       )}
                       <button
                         onClick={() => window.location.href = '/'}
-                        className="w-full text-left p-3 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors text-sm text-blue-700 font-medium"
+                        className="w-full text-left p-3 bg-amber-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors text-sm text-orange-700 font-medium"
                       >
                         🏠 Volver a la tienda
                       </button>
@@ -468,7 +468,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Escribe tu mensaje..."
-                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent max-h-24"
                       rows={1}
                       disabled={loading}
                       style={{

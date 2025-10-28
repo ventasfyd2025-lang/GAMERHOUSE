@@ -163,7 +163,7 @@ export default function SalesReportsComponent() {
 
             <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 p-6 border-l-4 border-orange-500">
               <div className="flex items-center">
-                <div className="p-3 rounded-full bg-blue-100">
+                <div className="p-3 rounded-full bg-orange-100">
                   <ShoppingCartIcon className="h-8 w-8 text-orange-600" />
                 </div>
                 <div className="ml-4">
@@ -173,10 +173,10 @@ export default function SalesReportsComponent() {
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 p-6 border-l-4 border-purple-500">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 p-6 border-l-4 border-orange-500">
               <div className="flex items-center">
-                <div className="p-3 rounded-full bg-purple-100">
-                  <ArrowTrendingUpIcon className="h-8 w-8 text-purple-600" />
+                <div className="p-3 rounded-full bg-amber-100">
+                  <ArrowTrendingUpIcon className="h-8 w-8 text-amber-600" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-primary/80">Ticket Promedio</p>
@@ -251,7 +251,7 @@ export default function SalesReportsComponent() {
                 index === 0 ? 'bg-yellow-50 border-yellow-400' :
                 index === 1 ? 'bg-dark border-gray-400' :
                 index === 2 ? 'bg-dark-light border-primary400' :
-                'bg-blue-50 border-blue-400'
+                'bg-amber-50 border-blue-400'
               }`}>
                 <div className="flex items-center justify-between">
                   <div>
@@ -311,18 +311,18 @@ export default function SalesReportsComponent() {
       {monthlyReport && (
         <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 p-6">
           <h2 className="text-xl font-semibold mb-6 flex items-center">
-            <ChartBarIcon className="h-6 w-6 mr-2 text-indigo-500" />
+            <ChartBarIcon className="h-6 w-6 mr-2 text-orange-500" />
             📈 Resumen del Mes - {monthlyReport.month}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <div className="text-center p-4 bg-indigo-50 rounded-lg">
+            <div className="text-center p-4 bg-amber-50 rounded-lg">
               <p className="text-sm text-primary/80">Total Ingresos</p>
-              <p className="text-2xl font-bold text-indigo-600">
+              <p className="text-2xl font-bold text-orange-600">
                 ${monthlyReport.totalRevenue.toLocaleString('es-CL')}
               </p>
             </div>
-            <div className="text-center p-4 bg-blue-50 rounded-lg">
+            <div className="text-center p-4 bg-amber-50 rounded-lg">
               <p className="text-sm text-primary/80">Total Pedidos</p>
               <p className="text-2xl font-bold text-orange-600">{monthlyReport.totalOrders}</p>
             </div>
@@ -332,9 +332,9 @@ export default function SalesReportsComponent() {
                 ${Math.round(monthlyReport.avgOrderValue).toLocaleString('es-CL')}
               </p>
             </div>
-            <div className="text-center p-4 bg-purple-50 rounded-lg">
+            <div className="text-center p-4 bg-amber-50 rounded-lg">
               <p className="text-sm text-primary/80">Días con Ventas</p>
-              <p className="text-2xl font-bold text-purple-600">{monthlyReport.dailyReports.length}</p>
+              <p className="text-2xl font-bold text-amber-600">{monthlyReport.dailyReports.length}</p>
             </div>
           </div>
 

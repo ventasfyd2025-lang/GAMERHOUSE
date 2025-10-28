@@ -75,7 +75,7 @@ export default function RetailHomepage() {
     const descuento = precioOriginal && precio ? Math.round(((precioOriginal - precio) / precioOriginal) * 100) : 0;
 
     return (
-      <div className="group relative h-full overflow-hidden rounded-xl border border-purple-500/20 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-yellow-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+      <div className="group relative h-full overflow-hidden rounded-xl border border-orange-500/20 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-yellow-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
         {/* Image Container */}
         <div className="relative h-48 sm:h-60 lg:h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
           <Image
@@ -126,8 +126,8 @@ export default function RetailHomepage() {
           <button
             onClick={() => handleAddToCart(product)}
             className="w-full mt-4 py-2 px-3 sm:py-3 sm:px-4 rounded-lg font-bold text-white text-xs sm:text-sm
-              bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600
-              hover:from-cyan-600 hover:via-blue-600 hover:to-purple-700
+              bg-gradient-to-r from-cyan-500 via-blue-500 to-amber-600
+              hover:from-cyan-600 hover:via-orange-600 hover:to-orange-700
               shadow-lg hover:shadow-2xl hover:shadow-yellow-400/50
               transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5
               flex items-center justify-center gap-2"

@@ -5,7 +5,7 @@ export default function PrivacidadPage() {
     <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8">
             <h1 className="text-3xl font-bold text-white mb-6">
               Política de Privacidad
             </h1>

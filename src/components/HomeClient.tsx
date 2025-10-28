@@ -250,7 +250,7 @@ export default function HomeClient() {
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
                   <div className="bg-dark/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-yellow-400/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[350px]">
-                      <div className="bg-gradient-to-br from-blue-50 to-purple-100 h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-amber-50 to-amber-100 h-full w-full overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800&h=600&fit=crop&crop=center"
                           alt="Electrónicos y Tecnología"
@@ -258,7 +258,7 @@ export default function HomeClient() {
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-6 left-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-lg font-bold px-4 py-3 rounded-full shadow-lg shadow-yellow-400/20">
+                      <span className="absolute top-6 left-6 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-lg font-bold px-4 py-3 rounded-full shadow-lg shadow-yellow-400/20">
                         HASTA 50% OFF
                       </span>
                       <div className="absolute bottom-6 left-6 text-white">

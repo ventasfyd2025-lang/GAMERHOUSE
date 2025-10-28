@@ -35,7 +35,7 @@ export default function NotificationDisplay() {
             case 'warning':
               return 'bg-yellow-50 border-yellow-200';
             case 'info':
-              return 'bg-blue-50 border-blue-200';
+              return 'bg-amber-50 border-orange-200';
             default:
               return 'bg-dark border-primary/30';
           }

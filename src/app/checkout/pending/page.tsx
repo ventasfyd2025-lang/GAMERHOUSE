@@ -33,7 +33,7 @@ function PaymentPendingContent() {
   return (
     <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-cyan-500/20 sm:rounded-lg sm:px-10">
+        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-yellow-400/20 sm:rounded-lg sm:px-10">
           <div className="text-center">
             <ClockIcon className="mx-auto h-16 w-16 text-yellow-500" />
             <h2 className="mt-6 text-3xl font-bold text-white">
@@ -69,11 +69,11 @@ function PaymentPendingContent() {
           )}
 
           <div className="mt-8 space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-blue-800 mb-2">
+            <div className="bg-amber-50 border border-orange-200 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-orange-800 mb-2">
                 ¿Qué significa esto?
               </h3>
-              <div className="text-sm text-blue-700 space-y-2">
+              <div className="text-sm text-orange-700 space-y-2">
                 <p>Tu pago está siendo verificado. Esto puede suceder cuando:</p>
                 <ul className="space-y-1 ml-4">
                   <li>• Elegiste pagar en efectivo o transferencia bancaria</li>

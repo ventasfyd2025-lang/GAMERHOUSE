@@ -228,10 +228,10 @@ export default function OrderDetailPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'pending_verification': return 'bg-blue-100 text-blue-800';
+      case 'pending_verification': return 'bg-orange-100 text-orange-800';
       case 'confirmed': return 'bg-green-100 text-green-800';
       case 'preparing': return 'bg-dark-light text-orange-800';
-      case 'shipped': return 'bg-purple-100 text-purple-800';
+      case 'shipped': return 'bg-amber-100 text-amber-800';
       case 'delivered': return 'bg-green-100 text-green-800';
       case 'cancelled': return 'bg-dark-light text-pink';
       default: return 'bg-dark-light text-white';
@@ -605,7 +605,7 @@ export default function OrderDetailPage() {
               <img
                 src={order.paymentProof}
                 alt="Comprobante de pago"
-                className="max-w-full h-auto mx-auto rounded-lg shadow-lg shadow-cyan-500/20"
+                className="max-w-full h-auto mx-auto rounded-lg shadow-lg shadow-yellow-400/20"
                 style={{ maxHeight: '500px' }}
               />
               <p className="mt-2 text-primary/80">

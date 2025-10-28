@@ -183,7 +183,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 const product = products.find(p => p.id === e.target.value);
                 if (product) handleProductSelect(product);
               }}
-              className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Seleccione un producto...</option>
               {products.map((product) => (
@@ -256,7 +256,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowAdjustModal(true);
                 }}
                 disabled={loading}
-                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 <AdjustmentsHorizontalIcon className="h-4 w-4 mr-2" />
                 Ajustar Stock
@@ -341,7 +341,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="1"
                   value={restockData.quantity}
                   onChange={(e) => setRestockData(prev => ({ ...prev, quantity: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: 50"
                 />
               </div>
@@ -354,17 +354,17 @@ export default function StockManagement({ productId, className }: StockManagemen
                   type="text"
                   value={restockData.reason}
                   onChange={(e) => setRestockData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: Compra a proveedor"
                 />
               </div>
 
               {selectedProduct && restockData.quantity && (
-                <div className="bg-blue-50 p-3 rounded-md">
-                  <div className="text-sm text-blue-800">
+                <div className="bg-amber-50 p-3 rounded-md">
+                  <div className="text-sm text-orange-800">
                     Stock actual: <span className="font-medium">{selectedProduct.stock}</span>
                   </div>
-                  <div className="text-sm text-blue-800">
+                  <div className="text-sm text-orange-800">
                     Nuevo stock: <span className="font-medium">
                       {selectedProduct.stock + parseInt(restockData.quantity || '0')}
                     </span>
@@ -413,7 +413,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="0"
                   value={adjustmentData.newStock}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, newStock: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
 
@@ -425,7 +425,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   type="text"
                   value={adjustmentData.reason}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: Corrección de inventario"
                   required
                 />
@@ -455,7 +455,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               <button
                 onClick={handleStockAdjustment}
                 disabled={loading || !adjustmentData.newStock || !adjustmentData.reason}
-                className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50"
+                className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 {loading ? 'Procesando...' : 'Ajustar Stock'}
               </button>

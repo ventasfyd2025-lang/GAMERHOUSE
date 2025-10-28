@@ -483,7 +483,7 @@ export const heroSlides = [
     ctaText: "Ver Ofertas",
     ctaLink: "/?category=tecnologia&filter=ofertas",
     badge: "40% DCTO",
-    gradient: "from-blue-600 to-purple-700"
+    gradient: "from-orange-600 to-orange-700"
   },
   {
     id: 2,
@@ -528,7 +528,7 @@ export const categoryBanners = {
       title: "Adidas Boost",
       subtitle: "Energía infinita",
       image: null,
-      gradient: "from-blue-600 to-indigo-700"
+      gradient: "from-orange-600 to-orange-700"
     },
     {
       id: 3,
@@ -551,14 +551,14 @@ export const categoryBanners = {
       title: "Gaming Setup",
       subtitle: "Para gamers pro",
       image: null,
-      gradient: "from-purple-600 to-pink-600"
+      gradient: "from-amber-600 to-pink-600"
     },
     {
       id: 3,
       title: "Audio Premium",
       subtitle: "Sonido de calidad",
       image: null,
-      gradient: "from-indigo-600 to-blue-700"
+      gradient: "from-indigo-600 to-orange-700"
     }
   ],
   electrohogar: [

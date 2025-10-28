@@ -76,13 +76,13 @@ const statusConfig = {
   },
   confirmed: { 
     label: 'Confirmado', 
-    color: 'text-blue-600 bg-blue-50 border-blue-200', 
+    color: 'text-orange-600 bg-amber-50 border-orange-200', 
     icon: CheckCircleIcon,
     description: 'Pedido confirmado y será preparado'
   },
   preparing: { 
     label: 'Preparando', 
-    color: 'text-purple-600 bg-purple-50 border-purple-200', 
+    color: 'text-amber-600 bg-amber-50 border-amber-200', 
     icon: CheckCircleIcon,
     description: 'Preparando pedido para envío'
   },
@@ -253,7 +253,7 @@ export default function AdminChatPage() {
   if (authLoading || orderLoading) {
     return (
       <div className="min-h-screen bg-dark flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500"></div>
       </div>
     );
   }
@@ -265,7 +265,7 @@ export default function AdminChatPage() {
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <button 
             onClick={() => router.push('/admin')} 
-            className="text-blue-500 hover:text-blue-600"
+            className="text-orange-500 hover:text-orange-600"
           >
             Volver al panel admin
           </button>

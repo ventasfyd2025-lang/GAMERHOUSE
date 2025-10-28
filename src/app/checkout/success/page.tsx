@@ -174,7 +174,7 @@ function PaymentSuccessContent() {
           </div>
 
           {/* Order Details Card */}
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 overflow-hidden mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 overflow-hidden mb-8">
             <div className="bg-gradient-to-r from-primary to-primary px-6 py-4">
               <h2 className="text-xl font-semibold text-white">
                 Detalles del Pedido
@@ -210,7 +210,7 @@ function PaymentSuccessContent() {
                         <div className="flex items-center mt-1">
                           {orderInfo.paymentMethod === 'transferencia' ? (
                             <>
-                              <Banknote className="w-5 h-5 text-blue-600 mr-2" />
+                              <Banknote className="w-5 h-5 text-orange-600 mr-2" />
                               <span className="text-base text-white">Transferencia Bancaria</span>
                             </>
                           ) : (
@@ -286,14 +286,14 @@ function PaymentSuccessContent() {
 
                   {/* Payment specific info */}
                   {orderInfo.paymentMethod === 'transferencia' ? (
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                    <div className="bg-amber-50 border border-orange-200 rounded-lg p-4 mt-6">
                       <div className="flex items-start">
-                        <Clock className="w-5 h-5 text-blue-600 mt-0.5 mr-3" />
+                        <Clock className="w-5 h-5 text-orange-600 mt-0.5 mr-3" />
                         <div>
-                          <h3 className="text-lg font-medium text-blue-800 mb-2">
+                          <h3 className="text-lg font-medium text-orange-800 mb-2">
                             Próximos pasos
                           </h3>
-                          <ul className="text-sm text-blue-700 space-y-2">
+                          <ul className="text-sm text-orange-700 space-y-2">
                             <li>• Recibirás un email de confirmación con tu número de orden</li>
                             <li>• Envíanos la confirmación con los datos de envío o día de retiro</li>
                             <li>• Verificaremos tu pago y procesaremos tu pedido</li>
@@ -326,7 +326,7 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-cyan-500/20 relative"
+                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-yellow-400/20 relative"
               >
                 📦 Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (
@@ -338,7 +338,7 @@ function PaymentSuccessContent() {
 
               <Link
                 href="/"
-                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors shadow-md hover:shadow-lg shadow-cyan-500/20"
+                className="flex items-center justify-center py-3 px-6 border border-primary/40 rounded-lg text-base font-medium text-primary bg-dark/80 hover:bg-dark transition-colors shadow-md hover:shadow-lg shadow-yellow-400/20"
               >
                 🛍️ Continuar Comprando
               </Link>

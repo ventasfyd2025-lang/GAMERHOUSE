@@ -51,7 +51,7 @@ export default function OrderNotification() {
 
   return (
     <div className="fixed top-4 right-4 z-50 max-w-sm">
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg shadow-2xl border border-blue-300 animate-pulse">
+      <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-4 rounded-lg shadow-2xl border border-amber-300 animate-pulse">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             <div className="relative">
@@ -85,7 +85,7 @@ export default function OrderNotification() {
           </Link>
           <button
             onClick={() => setIsVisible(false)}
-            className="bg-blue-700 text-white py-2 px-3 rounded-md text-sm font-medium hover:bg-blue-800 transition-colors"
+            className="bg-orange-700 text-white py-2 px-3 rounded-md text-sm font-medium hover:bg-blue-800 transition-colors"
           >
             Más tarde
           </button>

@@ -94,13 +94,13 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
     switch (status) {
       case 'draft': return 'bg-dark-light text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'confirmed': return 'bg-blue-100 text-blue-800';
-      case 'processing': return 'bg-purple-100 text-purple-800';
-      case 'shipped': return 'bg-indigo-100 text-indigo-800';
+      case 'confirmed': return 'bg-orange-100 text-orange-800';
+      case 'processing': return 'bg-amber-100 text-amber-800';
+      case 'shipped': return 'bg-amber-100 text-orange-800';
       case 'delivered': return 'bg-green-100 text-green-800';
       case 'cancelled': return 'bg-dark-light text-pink';
-      case 'sent': return 'bg-blue-100 text-blue-800';
-      case 'viewed': return 'bg-purple-100 text-purple-800';
+      case 'sent': return 'bg-orange-100 text-orange-800';
+      case 'viewed': return 'bg-amber-100 text-amber-800';
       case 'accepted': return 'bg-green-100 text-green-800';
       case 'rejected': return 'bg-dark-light text-pink';
       case 'expired': return 'bg-dark-light text-white';
@@ -270,7 +270,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 setCreateMode('quote');
                 setShowCreateModal(true);
               }}
-              className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
             >
               <DocumentTextIcon className="h-4 w-4 mr-2" />
               Nueva Cotización
@@ -280,7 +280,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 setCreateMode('po');
                 setShowCreateModal(true);
               }}
-              className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+              className="flex items-center px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-orange-700"
             >
               <PlusIcon className="h-4 w-4 mr-2" />
               Nueva Orden
@@ -294,7 +294,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('orders')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'orders'
-                ? 'bg-blue-100 text-blue-700'
+                ? 'bg-orange-100 text-orange-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -304,7 +304,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('quotes')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'quotes'
-                ? 'bg-blue-100 text-blue-700'
+                ? 'bg-orange-100 text-orange-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -314,7 +314,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('customers')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'customers'
-                ? 'bg-blue-100 text-blue-700'
+                ? 'bg-orange-100 text-orange-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -428,7 +428,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {quote.status === 'accepted' && !quote.convertedToPO && (
                         <button
                           onClick={() => convertQuoteToPO(quote.id, (currentUser as any)?.uid || currentUser?.email || '')}
-                          className="text-orange-600 hover:text-blue-800"
+                          className="text-orange-600 hover:text-orange-800"
                           title="Convertir a Orden de Compra"
                         >
                           <DocumentDuplicateIcon className="h-5 w-5" />
@@ -537,7 +537,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 <select
                   value={formData.customerId}
                   onChange={(e) => setFormData(prev => ({ ...prev, customerId: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value="">Seleccionar cliente...</option>
                   {b2bCustomers.map((customer) => (
@@ -556,7 +556,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                   <select
                     value={newItem.productId}
                     onChange={(e) => setNewItem(prev => ({ ...prev, productId: e.target.value }))}
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   >
                     <option value="">Seleccionar producto...</option>
                     {products.map((product) => (
@@ -572,7 +572,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     value={newItem.quantity}
                     onChange={(e) => setNewItem(prev => ({ ...prev, quantity: parseInt(e.target.value) || 1 }))}
                     placeholder="Cantidad"
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
 
                   <input
@@ -580,12 +580,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     value={newItem.specifications}
                     onChange={(e) => setNewItem(prev => ({ ...prev, specifications: e.target.value }))}
                     placeholder="Especificaciones"
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
 
                   <button
                     onClick={addItemToOrder}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
                   >
                     Agregar
                   </button>
@@ -627,7 +627,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     type="date"
                     value={formData.requestedDeliveryDate}
                     onChange={(e) => setFormData(prev => ({ ...prev, requestedDeliveryDate: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -640,7 +640,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={formData.shipping}
                     onChange={(e) => setFormData(prev => ({ ...prev, shipping: parseFloat(e.target.value) || 0 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
@@ -653,7 +653,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                   value={formData.notes}
                   onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
                   rows={3}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
             </div>
@@ -662,7 +662,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
               <button
                 onClick={handleCreateOrder}
                 disabled={!formData.customerId || formData.items.length === 0}
-                className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50"
+                className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 {createMode === 'po' ? 'Crear Orden de Compra' : 'Crear Cotización'}
               </button>
@@ -698,7 +698,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     type="text"
                     value={customerData.companyName}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, companyName: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -710,7 +710,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     type="text"
                     value={customerData.businessType}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, businessType: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -722,7 +722,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     type="text"
                     value={customerData.rut}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, rut: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -734,7 +734,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     type="email"
                     value={customerData.email}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -747,7 +747,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={customerData.creditLimit}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, creditLimit: parseFloat(e.target.value) || 0 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
@@ -760,7 +760,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={customerData.creditTerms}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, creditTerms: parseInt(e.target.value) || 30 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
@@ -780,7 +780,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, name: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
@@ -795,7 +795,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, position: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
@@ -810,7 +810,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, email: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
@@ -825,7 +825,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, phone: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
                 </div>

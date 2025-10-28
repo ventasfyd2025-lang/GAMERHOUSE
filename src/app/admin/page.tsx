@@ -1015,12 +1015,12 @@ export default function AdminPage() {
 
   const statusClassMap: Record<OrderStatus, string> = {
     pending: 'bg-yellow-100 text-yellow-800',
-    pending_verification: 'bg-blue-100 text-blue-800',
+    pending_verification: 'bg-orange-100 text-orange-800',
     pending_payment: 'bg-amber-100 text-amber-800',
     confirmed: 'bg-green-100 text-green-800',
     preparing: 'bg-dark-light text-orange-800',
-    processing: 'bg-indigo-100 text-indigo-800',
-    shipped: 'bg-purple-100 text-purple-800',
+    processing: 'bg-amber-100 text-orange-800',
+    shipped: 'bg-amber-100 text-amber-800',
     delivered: 'bg-green-100 text-green-800',
     completed: 'bg-emerald-100 text-emerald-800',
     cancelled: 'bg-dark-light text-pink'
@@ -1194,7 +1194,7 @@ export default function AdminPage() {
   const getRoleColor = (role: string) => {
     switch (role) {
       case 'admin': return 'bg-dark-light text-pink border-dark-light';
-      case 'vendedor': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'vendedor': return 'bg-orange-100 text-orange-800 border-orange-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-dark-light text-white border-primary/30';
     }
@@ -2288,11 +2288,11 @@ export default function AdminPage() {
       `}</style>
       <div id="admin-container" className="min-h-screen bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40">
 
-      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl shadow-cyan-500/30 border-b border-dark-light">
+      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl shadow-yellow-400/30 border-b border-dark-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">🏪</span>
               </div>
               <h1 className="text-xl font-bold" style={{ color: 'var(--primary)' }}>
@@ -2301,7 +2301,7 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-cyan-500/20"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-yellow-400/20"
               style={{ backgroundColor: 'var(--primary)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
@@ -2318,10 +2318,10 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-cyan-500/30 p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-yellow-400/30 p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
@@ -2356,7 +2356,7 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-dark/80 text-primary shadow-lg shadow-cyan-500/20 transform scale-105'
+                    ? 'bg-dark/80 text-primary shadow-lg shadow-yellow-400/20 transform scale-105'
                     : 'text-white/80 hover:text-white hover:bg-dark/80/20 backdrop-blur-sm'
                 }`}
               >
@@ -2377,10 +2377,10 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 p-6 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-6 border border-dark-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
@@ -2433,9 +2433,9 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-cyan-500/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-yellow-400/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Productos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
@@ -2443,9 +2443,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-cyan-500/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-yellow-400/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Pedidos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
@@ -2453,9 +2453,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-cyan-500/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-yellow-400/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Ingresos Totales</p>
                     <p className="text-3xl font-bold text-white">
@@ -2465,9 +2465,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-cyan-500/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-yellow-400/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
@@ -2478,10 +2478,10 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-cyan-500/30 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-yellow-400/30 border border-dark-light">
               <div className="p-6 border-b border-dark-light">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
@@ -2601,7 +2601,7 @@ export default function AdminPage() {
                   {/* Compact Alert Button */}
                   <div
                     onClick={() => setShowStockAlert(!showStockAlert)}
-                    className="bg-gradient-to-r from-pink to-primary hover:from-pink hover:to-primary text-white rounded-xl p-4 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
+                    className="bg-gradient-to-r from-pink to-primary hover:from-pink hover:to-primary text-white rounded-xl p-4 shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -2643,7 +2643,7 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg shadow-cyan-500/20 overflow-hidden">
+                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg shadow-yellow-400/20 overflow-hidden">
                       <div className="bg-gradient-to-r from-dark-light to-dark-light p-4 border-b border-dark-light">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
@@ -2768,14 +2768,14 @@ export default function AdminPage() {
 
 
             {/* Advanced Search and Filters Section */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 shadow-lg shadow-cyan-500/20 mb-6">
+            <div className="bg-gradient-to-r from-amber-50 to-amber-50 border border-orange-200 rounded-xl p-6 shadow-lg shadow-yellow-400/20 mb-6">
               {/* Search Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <div className="relative mr-3">
-                    <div className="h-6 w-6 text-blue-600">🔍</div>
+                    <div className="h-6 w-6 text-orange-600">🔍</div>
                   </div>
-                  <h3 className="text-lg font-bold text-blue-800">
+                  <h3 className="text-lg font-bold text-orange-800">
                     Buscar y Filtrar Productos
                   </h3>
                 </div>
@@ -2797,7 +2797,7 @@ export default function AdminPage() {
                       value={productSearch}
                       onChange={(e) => setProductSearch(e.target.value)}
                       placeholder="🔍 Buscar por nombre, descripción, SKU o categoría..."
-                      className="w-full pl-4 pr-12 py-3 border-2 border-blue-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all duration-200 text-sm"
+                      className="w-full pl-4 pr-12 py-3 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:outline-none transition-all duration-200 text-sm"
                     />
                     {productSearch && (
                       <button
@@ -2814,7 +2814,7 @@ export default function AdminPage() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-blue-200 rounded-xl focus:border-blue-500 focus:outline-none transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 border-2 border-orange-200 rounded-xl focus:border-orange-500 focus:outline-none transition-all duration-200 text-sm"
                   >
                     <option value="all">📦 Todas las categorías</option>
                     {categories.map((category) => (
@@ -2828,8 +2828,8 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-blue-100">
-                  <h4 className="font-semibold text-blue-800 flex items-center">
+                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-orange-100">
+                  <h4 className="font-semibold text-orange-800 flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
 
@@ -2848,7 +2848,7 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, min: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-orange-500 focus:outline-none"
                         />
                         <input
                           type="number"
@@ -2858,7 +2858,7 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, max: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-orange-500 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -2874,7 +2874,7 @@ export default function AdminPage() {
                           ...prev,
                           stockStatus: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-orange-500 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="in_stock">Con Stock</option>
@@ -2894,7 +2894,7 @@ export default function AdminPage() {
                           ...prev,
                           status: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-blue-500 focus:outline-none"
+                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-orange-500 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="active">Activos</option>
@@ -2964,7 +2964,7 @@ export default function AdminPage() {
               {/* Results Summary */}
               <div className="mt-4 flex items-center justify-between text-sm">
                 <div className="flex items-center space-x-4">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-medium">
                     📊 {getFilteredProducts().length} de {products.length} productos
                   </span>
                   {(productSearch || selectedCategory !== 'all' || showFilters) && (
@@ -2975,7 +2975,7 @@ export default function AdminPage() {
                         </span>
                       )}
                       {selectedCategory !== 'all' && (
-                        <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">
+                        <span className="bg-amber-100 text-amber-800 px-2 py-1 rounded-full text-xs">
                           📦 {categories.find(c => c.id === selectedCategory)?.name}
                         </span>
                       )}
@@ -2988,7 +2988,7 @@ export default function AdminPage() {
                   )}
                 </div>
 
-                <div className="text-blue-600">
+                <div className="text-orange-600">
                   💡 Tip: Usa los filtros para encontrar productos específicos
                 </div>
               </div>
@@ -3150,9 +3150,9 @@ export default function AdminPage() {
               <div className="px-6 py-3 bg-dark border-t border-primary/30">
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-primary">
-                    Mostrando <span className="font-bold text-blue-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
+                    Mostrando <span className="font-bold text-orange-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
                     {(productSearch || selectedCategory !== 'all' || productFilters.tags.length > 0) && (
-                      <span className="text-blue-600 ml-1">con filtros aplicados</span>
+                      <span className="text-orange-600 ml-1">con filtros aplicados</span>
                     )}
                   </p>
                   {getFilteredProducts().length !== products.length && (
@@ -3167,7 +3167,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="text-xs text-blue-600 hover:text-blue-800 underline"
+                      className="text-xs text-orange-600 hover:text-orange-800 underline"
                     >
                       Ver todos los productos
                     </button>
@@ -3194,7 +3194,7 @@ export default function AdminPage() {
               </div>
 
               {/* Buscador de usuarios */}
-              <div className="mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+              <div className="mb-6 bg-gradient-to-r from-amber-50 to-amber-50 rounded-lg p-6 border border-orange-200">
                 <h3 className="text-lg font-semibold text-white mb-4">🔍 Buscar Usuario por Correo</h3>
                 <div className="flex gap-3">
                   <input
@@ -3207,11 +3207,11 @@ export default function AdminPage() {
                         searchUserByEmail(userSearchQuery);
                       }
                     }}
-                    className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="flex-1 px-4 py-2 border-2 border-amber-300 rounded-lg focus:border-orange-500 focus:outline-none"
                   />
                   <button
                     onClick={() => searchUserByEmail(userSearchQuery)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                   >
                     Buscar
                   </button>
@@ -3240,10 +3240,10 @@ export default function AdminPage() {
                   }}
                 >
                   <div
-                    className="bg-dark/80 rounded-xl border-2 border-blue-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-dark/80 rounded-xl border-2 border-amber-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 flex justify-between items-center">
+                    <div className="bg-gradient-to-r from-amber-500 to-amber-500 text-white p-4 flex justify-between items-center">
                       <h3 className="text-xl font-bold">📋 Información del Usuario</h3>
                       <button
                         onClick={() => {
@@ -3360,9 +3360,9 @@ export default function AdminPage() {
                       {/* Resumen estadístico */}
                       {selectedUserOrders.length > 0 && (
                         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                            <p className="text-sm font-semibold text-blue-800">Total Gastado</p>
-                            <p className="text-2xl font-bold text-blue-900">
+                          <div className="bg-amber-50 rounded-lg p-4 border border-orange-200">
+                            <p className="text-sm font-semibold text-orange-800">Total Gastado</p>
+                            <p className="text-2xl font-bold text-orange-900">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0))}
                             </p>
                           </div>
@@ -3440,7 +3440,7 @@ export default function AdminPage() {
                             .map((user) => (
                             <tr
                               key={user.uid}
-                              className="hover:bg-blue-50 cursor-pointer transition-colors"
+                              className="hover:bg-amber-50 cursor-pointer transition-colors"
                               onClick={() => loadUserDetails(user)}
                             >
                               <td className="px-6 py-4 whitespace-nowrap">
@@ -3492,7 +3492,7 @@ export default function AdminPage() {
                                   <>
                                     <button
                                       onClick={() => setEditingUser(user.uid)}
-                                      className="text-indigo-600 hover:text-indigo-900"
+                                      className="text-orange-600 hover:text-orange-900"
                                     >
                                       Editar Rol
                                     </button>
@@ -3531,7 +3531,7 @@ export default function AdminPage() {
                   <div className="mb-6">
                     <button
                       onClick={() => setShowClientes(!showClientes)}
-                      className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-3 hover:from-blue-100 hover:to-indigo-100 transition-all"
+                      className="w-full bg-gradient-to-r from-amber-50 to-amber-50 rounded-lg p-4 mb-3 hover:from-amber-100 hover:to-amber-100 transition-all"
                     >
                       <div className="flex justify-between items-center">
                         <h3 className="text-lg font-semibold text-white">
@@ -3571,7 +3571,7 @@ export default function AdminPage() {
                               .map((user) => (
                               <tr
                                 key={user.uid}
-                                className="hover:bg-blue-50 cursor-pointer transition-colors"
+                                className="hover:bg-amber-50 cursor-pointer transition-colors"
                                 onClick={() => loadUserDetails(user)}
                               >
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -3623,7 +3623,7 @@ export default function AdminPage() {
                                     <>
                                       <button
                                         onClick={() => setEditingUser(user.uid)}
-                                        className="text-indigo-600 hover:text-indigo-900"
+                                        className="text-orange-600 hover:text-orange-900"
                                       >
                                         Editar Rol
                                       </button>
@@ -3659,7 +3659,7 @@ export default function AdminPage() {
                     )}
                   </div>
 
-                  <div className="mt-8 bg-blue-50 rounded-lg p-6">
+                  <div className="mt-8 bg-amber-50 rounded-lg p-6">
                     <h3 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h3>
                     <div className="space-y-3 text-sm text-primary/80">
                       <p><strong>Opción 1 - Firebase Console:</strong></p>
@@ -3688,10 +3688,10 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 p-6 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-6 border border-dark-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
@@ -3701,8 +3701,8 @@ export default function AdminPage() {
                 </div>
                 <div className="flex space-x-3">
                   {selectedOrders.length > 0 && (
-                    <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 rounded-xl border border-blue-200">
-                      <span className="text-sm font-medium text-blue-700">
+                    <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 rounded-xl border border-orange-200">
+                      <span className="text-sm font-medium text-orange-700">
                         {selectedOrders.length} seleccionado(s)
                       </span>
                     </div>
@@ -3710,7 +3710,7 @@ export default function AdminPage() {
                   <button
                     onClick={handleDeleteSelectedOrders}
                     disabled={deletingOrders || selectedOrders.length === 0}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-cyan-500/20 disabled:opacity-50 disabled:transform-none"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-yellow-400/20 disabled:opacity-50 disabled:transform-none"
                     style={{ backgroundColor: selectedOrders.length > 0 ? '#dc2626' : '#9ca3af' }}
                     onMouseEnter={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#b91c1c')}
                     onMouseLeave={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#dc2626')}
@@ -3739,7 +3739,7 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('active')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
-                      ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-cyan-500/20'
+                      ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-yellow-400/20'
                       : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
@@ -3749,7 +3749,7 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('completed')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-cyan-500/20'
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-yellow-400/20'
                       : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 border border-dark-light p-6 mb-6">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 border border-dark-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3835,7 +3835,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-cyan-500/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 border border-dark-light overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
                   <thead className="bg-gradient-to-r from-dark-light to-dark-light">
@@ -3902,7 +3902,7 @@ export default function AdminPage() {
                       
                       return (
                         <React.Fragment key={`group-${groupIndex}`}>
-                          <tr key={mainOrder.id} className={totalUserOrders > 1 ? 'bg-blue-50' : ''}>
+                          <tr key={mainOrder.id} className={totalUserOrders > 1 ? 'bg-amber-50' : ''}>
                         <td className="px-3 py-4 whitespace-nowrap">
                           <input
                             type="checkbox"
@@ -3916,7 +3916,7 @@ export default function AdminPage() {
                             {totalUserOrders > 1 && (
                               <button
                                 onClick={() => toggleGroupExpansion(groupIndex)}
-                                className="mr-2 p-1 rounded hover:bg-blue-200 transition-colors"
+                                className="mr-2 p-1 rounded hover:bg-amber-200 transition-colors"
                               >
                                 {expandedGroups.has(groupIndex) ? '▼' : '▶'}
                               </button>
@@ -3925,7 +3925,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {mainOrder.customerName}
                                 {totalUserOrders > 1 && (
-                                  <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                  <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                                     {totalUserOrders} pedidos
                                   </span>
                                 )}
@@ -4023,7 +4023,7 @@ export default function AdminPage() {
 
                       {/* Show individual orders when expanded */}
                       {totalUserOrders > 1 && expandedGroups.has(groupIndex) && userOrders.slice(1).map((order, orderIndex) => (
-                        <tr key={`${groupIndex}-${orderIndex + 1}`} className="bg-blue-25 border-l-4 border-blue-300">
+                        <tr key={`${groupIndex}-${orderIndex + 1}`} className="bg-amber-50 border-l-4 border-amber-300">
                           <td className="px-3 py-3 whitespace-nowrap">
                             <input
                               type="checkbox"
@@ -4304,9 +4304,9 @@ export default function AdminPage() {
 
         
         {activeTab === 'popup' && (
-          <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
+          <div className="min-h-screen bg-gradient-to-br from-amber-50 via-amber-50 to-amber-50 p-6">
             {/* Header Section */}
-            <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 rounded-xl shadow-xl shadow-cyan-500/30 p-6 mb-8">
+            <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-orange-700 rounded-xl shadow-xl shadow-yellow-400/30 p-6 mb-8">
               <div className="flex items-center gap-3">
                 <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4315,7 +4315,7 @@ export default function AdminPage() {
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold text-white mb-1">🎯 Gestión de Popup</h1>
-                  <p className="text-blue-100">Configura las ventanas emergentes promocionales</p>
+                  <p className="text-amber-100">Configura las ventanas emergentes promocionales</p>
                 </div>
               </div>
             </div>
@@ -4324,9 +4324,9 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-cyan-500/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-yellow-400/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-2">
+                    <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
@@ -4344,7 +4344,7 @@ export default function AdminPage() {
                         value={popupForm.title}
                         onChange={(e) => setPopupForm({ ...popupForm, title: e.target.value })}
                         placeholder="¡Oferta Especial!"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       />
                     </div>
 
@@ -4355,7 +4355,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.popupType}
                         onChange={(e) => setPopupForm({ ...popupForm, popupType: e.target.value as 'category' | 'information' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         <option value="category">🏷️ Categoría/Promocional</option>
                         <option value="information">ℹ️ Información</option>
@@ -4371,7 +4371,7 @@ export default function AdminPage() {
                         onChange={(e) => setPopupForm({ ...popupForm, description: e.target.value })}
                         placeholder="Descripción detallada de la oferta..."
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 resize-none"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 resize-none"
                       />
                     </div>
 
@@ -4384,16 +4384,16 @@ export default function AdminPage() {
                         value={popupForm.buttonText}
                         onChange={(e) => setPopupForm({ ...popupForm, buttonText: e.target.value })}
                         placeholder="Ver Ofertas"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-cyan-500/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-yellow-400/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg p-2">
+                    <div className="bg-gradient-to-r from-amber-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                       </svg>
@@ -4409,7 +4409,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.size}
                         onChange={(e) => setPopupForm({ ...popupForm, size: (isPopupSize(e.target.value) ? e.target.value : '2x2') })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         {Object.entries(POPUP_SIZE_PRESETS).map(([value, config]) => (
                           <option key={value} value={value}>
@@ -4426,7 +4426,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.position}
                         onChange={(e) => setPopupForm({ ...popupForm, position: e.target.value as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
                       >
                         <option value="bottom-right">🔽➡️ Esquina inferior derecha</option>
                         <option value="bottom-left">🔽⬅️ Esquina inferior izquierda</option>
@@ -4439,7 +4439,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-cyan-500/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-yellow-400/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4461,7 +4461,7 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={!popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: false, mediaUrl: '' }))}
-                            className="w-4 h-4 text-blue-600 border-primary/40 focus:ring-blue-500"
+                            className="w-4 h-4 text-orange-600 border-primary/40 focus:ring-orange-500"
                           />
                           <span className="text-sm font-medium text-primary">🖼️ Imagen</span>
                         </label>
@@ -4471,7 +4471,7 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: true, mediaUrl: '' }))}
-                            className="w-4 h-4 text-blue-600 border-primary/40 focus:ring-blue-500"
+                            className="w-4 h-4 text-orange-600 border-primary/40 focus:ring-orange-500"
                           />
                           <span className="text-sm font-medium text-primary">🎥 Video</span>
                         </label>
@@ -4541,7 +4541,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-cyan-500/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-yellow-400/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4558,7 +4558,7 @@ export default function AdminPage() {
                         id="popup-active"
                         checked={popupForm.active}
                         onChange={(e) => setPopupForm({ ...popupForm, active: e.target.checked })}
-                        className="w-5 h-5 text-blue-600 border-primary/40 rounded focus:ring-blue-500"
+                        className="w-5 h-5 text-orange-600 border-primary/40 rounded focus:ring-orange-500"
                       />
                       <label htmlFor="popup-active" className="text-sm font-semibold text-white">
                         🎯 Popup Activo (visible en el sitio web)
@@ -4595,7 +4595,7 @@ export default function AdminPage() {
                           }
                         }}
                         disabled={updatingPopup}
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 transform disabled:opacity-50 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="flex-1 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-orange-700 hover:to-orange-700 hover:scale-105 shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30 transform disabled:opacity-50 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                       >
                         {updatingPopup ? '⏳ Actualizando...' : '💾 Guardar Configuración'}
                       </button>
@@ -4607,7 +4607,7 @@ export default function AdminPage() {
                           sessionStorage.removeItem('offer-popup-last-shown');
                           window.open('/', '_blank');
                         }}
-                        className="flex-1 sm:flex-initial bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-green-700 hover:to-teal-700 hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                        className="flex-1 sm:flex-initial bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-green-700 hover:to-teal-700 hover:scale-105 shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30 transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                       >
                         🧪 Probar Popup
                       </button>
@@ -4618,9 +4618,9 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-cyan-500/20 border border-white/50 p-6 sticky top-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-yellow-400/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-lg p-2">
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -4638,7 +4638,7 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-cyan-500/20"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-yellow-400/20"
                             aria-label="Cerrar"
                           >
                             <XMarkIcon className="h-4 w-4 text-primary/80" />
@@ -4683,7 +4683,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-cyan-500/20 transition-all"
+                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-yellow-400/20 transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4692,12 +4692,12 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                    <div className="mt-6 p-4 bg-gradient-to-r from-amber-50 to-amber-50 rounded-xl border border-orange-200">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-blue-600 text-sm">📍</span>
-                        <span className="text-sm font-semibold text-blue-800">Posición actual:</span>
+                        <span className="text-orange-600 text-sm">📍</span>
+                        <span className="text-sm font-semibold text-orange-800">Posición actual:</span>
                       </div>
-                      <p className="text-xs text-blue-700 ml-6">
+                      <p className="text-xs text-orange-700 ml-6">
                         {
                           {
                             'top-left': '🔝⬅️ Esquina superior izquierda',
@@ -4720,21 +4720,21 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">🔲 Configuración del Layout de Productos</h2>
             
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <div className="bg-amber-50 border border-orange-200 rounded-lg p-4 mb-6">
               <div className="flex items-start gap-3">
-                <div className="text-blue-500 text-xl">ℹ️</div>
+                <div className="text-orange-500 text-xl">ℹ️</div>
                 <div className="space-y-2">
-                  <h3 className="text-blue-900 font-semibold">¿Cómo funciona el layout?</h3>
-                  <p className="text-sm text-blue-800">
+                  <h3 className="text-orange-900 font-semibold">¿Cómo funciona el layout?</h3>
+                  <p className="text-sm text-orange-800">
                     El layout de productos utiliza una cuadrícula tipo masonry. Puedes activar bloques especiales (hero, horizontales, verticales) y definir cada cuántos productos deben aparecer.
                   </p>
-                  <ul className="text-sm text-blue-800 space-y-1">
+                  <ul className="text-sm text-orange-800 space-y-1">
                     <li>• <strong>Activo:</strong> habilita o deshabilita el patrón.</li>
                     <li>• <strong>Intervalo:</strong> cada cuántos productos se aplica el diseño.</li>
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-dark/80/80 border border-blue-200 rounded-md px-3 py-2 text-sm text-blue-900">
+                    <div className="mt-2 bg-dark/80/80 border border-orange-200 rounded-md px-3 py-2 text-sm text-orange-900">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4928,7 +4928,7 @@ export default function AdminPage() {
                         <span className="px-2 py-1 bg-dark-light text-primary rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
-                        <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded-md font-medium">
+                        <span className="px-2 py-1 bg-amber-50 text-orange-600 rounded-md font-medium">
                           {section.type === 'custom' ? '🎯 Personalizada' :
                            section.type === 'featured' ? '⭐ Destacados' :
                            section.type === 'new' ? '🆕 Nuevos' :
@@ -4977,7 +4977,7 @@ export default function AdminPage() {
                         setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
                         setSectionsView('products');
                       }}
-                      className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium"
+                      className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium"
                     >
                       📦 Productos
                     </button>
@@ -5200,7 +5200,7 @@ export default function AdminPage() {
           {/* Status Messages */}
           {sectionSaveStatus !== 'idle' && (
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
-              sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
+              sectionSaveStatus === 'saving' ? 'bg-amber-50 text-orange-700 animate-pulse' :
               sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
               'bg-dark-light text-red-700'
             }`}>
@@ -5599,8 +5599,8 @@ export default function AdminPage() {
                           <label className="block text-sm font-medium text-primary mb-2">
                             Imagen del Banner
                           </label>
-                          <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm">
-                            <p className="text-blue-800 font-medium flex items-center gap-2">
+                          <div className="mb-3 p-3 bg-amber-50 border border-orange-200 rounded-lg text-sm">
+                            <p className="text-orange-800 font-medium flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                               </svg>
@@ -5677,8 +5677,8 @@ export default function AdminPage() {
                         </div>
 
                         {/* Subtítulo */}
-                        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-                          <label className="block text-sm font-bold text-blue-700 mb-2 flex items-center gap-2">
+                        <div className="bg-amber-50 p-3 rounded-lg border border-orange-200">
+                          <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
@@ -5692,10 +5692,10 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], subtitle: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-dark/80 transition-all"
+                            className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                             placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                           />
-                          <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
+                          <p className="text-xs text-orange-600 mt-1">Texto descriptivo que acompaña al título</p>
                         </div>
 
                         <div>
@@ -5726,7 +5726,7 @@ export default function AdminPage() {
                         {slide.linkType === "category" && (
                           <div className="mb-4">
                             <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-2">
-                              <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                               </svg>
                               Seleccionar Categoría o Subcategoría
@@ -5827,9 +5827,9 @@ export default function AdminPage() {
                           const selectedCategory = categories.find(c => c.id === slide.categoryId);
                           const categoryProducts = products.filter(p => p.categoria === slide.categoryId);
                           return selectedCategory && (
-                            <div className="mt-3 p-3 bg-blue-50 rounded-lg">
+                            <div className="mt-3 p-3 bg-amber-50 rounded-lg">
                               <div className="flex items-center space-x-2 mb-2">
-                                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
                                 <h5 className="font-medium text-white">
@@ -5844,8 +5844,8 @@ export default function AdminPage() {
                         })()}
 
                         {slide.linkType === "url" && (
-                          <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
-                            <label className="block text-sm font-bold text-purple-700 mb-2 flex items-center gap-2">
+                          <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                            <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
@@ -5859,10 +5859,10 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], customUrl: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                               placeholder="Ej: https://ejemplo.com o /?category=tecnologia"
                             />
-                            <p className="text-xs text-purple-600 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
+                            <p className="text-xs text-amber-600 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
                           </div>
                         )}
                       </div>
@@ -6092,7 +6092,7 @@ export default function AdminPage() {
                               (category as any).subcategorias.map((sub: any, index: number) => (
                                 <div
                                   key={index}
-                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 group"
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800 group"
                                 >
                                   <span>{sub.nombre}</span>
                                   <button
@@ -6101,7 +6101,7 @@ export default function AdminPage() {
                                       setSubcategoryForm({ id: sub.id, nombre: sub.nombre, activa: sub.activa });
                                       setShowSubcategoryModal(true);
                                     }}
-                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-blue-900 transition-opacity"
+                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-orange-900 transition-opacity"
                                     title="Editar subcategoría"
                                   >
                                     ✏️
@@ -6417,14 +6417,14 @@ export default function AdminPage() {
               <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--primary)' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold">
                         {productForm.id ? '📝 Editar Producto' : '✨ Nuevo Producto'}
                       </h3>
-                      <p className="text-blue-100 text-xs">
+                      <p className="text-amber-100 text-xs">
                         {productForm.id ? 'Actualiza la información del producto' : 'Completa la información del producto'}
                       </p>
                     </div>
@@ -6445,7 +6445,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6477,7 +6477,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                           required
                           placeholder="SKU-001"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-blue-500 focus:outline-none transition-all duration-200 uppercase bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-orange-500 focus:outline-none transition-all duration-200 uppercase bg-dark/80/70"
                         />
                       </div>
 
@@ -6518,7 +6518,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📊</span>
@@ -6562,7 +6562,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📂</span>
@@ -6582,7 +6582,7 @@ export default function AdminPage() {
                             return (
                               <div key={category.id} className="border-b border-primary/30 pb-3 last:border-0">
                                 {/* Categoría principal */}
-                                <label className="flex items-center gap-2 hover:bg-purple-50 p-2 rounded cursor-pointer font-medium">
+                                <label className="flex items-center gap-2 hover:bg-amber-50 p-2 rounded cursor-pointer font-medium">
                                   <input
                                     type="checkbox"
                                     checked={isCategoryChecked}
@@ -6607,7 +6607,7 @@ export default function AdminPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-primary/40 text-purple-600 focus:ring-purple-500"
+                                    className="rounded border-primary/40 text-amber-600 focus:ring-amber-500"
                                   />
                                   <span className="text-sm">📂 {category.name}</span>
                                 </label>
@@ -6618,7 +6618,7 @@ export default function AdminPage() {
                                     {subcategorias.map((sub: any) => {
                                       const subId = `${category.id}-${sub.id}`;
                                       return (
-                                        <label key={sub.id} className="flex items-center gap-2 hover:bg-purple-50 p-1.5 rounded cursor-pointer">
+                                        <label key={sub.id} className="flex items-center gap-2 hover:bg-amber-50 p-1.5 rounded cursor-pointer">
                                           <input
                                             type="checkbox"
                                             checked={productForm.categorias.includes(subId)}
@@ -6642,7 +6642,7 @@ export default function AdminPage() {
                                                 categoria: newCategorias[0]?.split('-')[0] || ''
                                               });
                                             }}
-                                            className="rounded border-primary/40 text-indigo-600 focus:ring-indigo-500"
+                                            className="rounded border-primary/40 text-orange-600 focus:ring-orange-500"
                                           />
                                           <span className="text-xs">📁 {sub.nombre}</span>
                                         </label>
@@ -6667,7 +6667,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6684,7 +6684,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🖼️</span>
@@ -6784,7 +6784,7 @@ export default function AdminPage() {
                                     loading="lazy"
                                     src={preview}
                                     alt={`Preview ${index + 1}`}
-                                    className="w-full h-16 object-cover rounded-lg border-2 border-indigo-200 shadow-sm"
+                                    className="w-full h-16 object-cover rounded-lg border-2 border-amber-200 shadow-sm"
                                   />
                                   <button
                                     type="button"
@@ -6797,7 +6797,7 @@ export default function AdminPage() {
                                     ✕
                                   </button>
                                   <div className="absolute -top-1 -left-1">
-                                    <span className="bg-indigo-500 text-white text-xs px-1.5 py-0.5 rounded-full text-[10px]">Nuevo</span>
+                                    <span className="bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full text-[10px]">Nuevo</span>
                                   </div>
                                 </div>
                               ))}
@@ -6809,7 +6809,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-cyan-500/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-yellow-400/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🏷️</span>
@@ -6847,7 +6847,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => setShowProductModal(false)}
-                    className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2"
+                    className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30 flex items-center justify-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6858,7 +6858,7 @@ export default function AdminPage() {
                     type="submit"
                     onClick={handleProductSubmit}
                     disabled={uploadingProduct}
-                    className="flex-[2] text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 hover:shadow-xl shadow-cyan-500/30"
+                    className="flex-[2] text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30"
                     style={{
                       backgroundColor: 'var(--primary)'
                     }}
@@ -6923,7 +6923,7 @@ export default function AdminPage() {
             <div className="bg-dark/80 rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                   </svg>
                   Secciones Promocionales de la Página Principal
@@ -7033,7 +7033,7 @@ export default function AdminPage() {
                       
                       <div className="space-y-2">
                         <h5 className="text-sm font-semibold text-primary flex items-center gap-1">
-                          <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
@@ -7063,7 +7063,7 @@ export default function AdminPage() {
 
                           
                           {section.badgeText && (
-                            <div className="absolute top-3 left-3 bg-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg shadow-cyan-500/20">
+                            <div className="absolute top-3 left-3 bg-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg shadow-yellow-400/20">
                               {section.badgeText}
                             </div>
                           )}
@@ -7124,14 +7124,14 @@ export default function AdminPage() {
                       />
                       
                       
-                      <div className="mb-2 p-2 bg-purple-50 border border-purple-200 rounded text-xs">
-                        <p className="text-purple-800 font-medium flex items-center gap-1">
+                      <div className="mb-2 p-2 bg-amber-50 border border-amber-200 rounded text-xs">
+                        <p className="text-amber-800 font-medium flex items-center gap-1">
                           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                           </svg>
                           Resolución recomendada:
                         </p>
-                        <p className="text-purple-700">
+                        <p className="text-orange-700">
                           {section.position === 'large' ? '1200x1200px (1:1)' :
                            section.position === 'tall' ? '800x1600px (1:2)' :
                            section.position === 'wide' ? '1440x480px (3:1)' : '1200x900px (4:3)'}
@@ -7327,14 +7327,14 @@ export default function AdminPage() {
                   </button>
                 </div>
 
-                <div className="mb-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+                <div className="mb-4 p-4 bg-gradient-to-r from-amber-50 to-amber-50 border border-orange-200 rounded-xl">
                   <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <div>
-                      <p className="text-blue-900 text-sm font-bold">Especificaciones Recomendadas</p>
-                      <p className="text-blue-700 text-xs mt-1">Tamaño: 1440x480px (ratio 3:1) • Formato: JPG o PNG • Peso máximo: 4MB</p>
+                      <p className="text-orange-900 text-sm font-bold">Especificaciones Recomendadas</p>
+                      <p className="text-orange-700 text-xs mt-1">Tamaño: 1440x480px (ratio 3:1) • Formato: JPG o PNG • Peso máximo: 4MB</p>
                     </div>
                   </div>
                 </div>
@@ -7368,12 +7368,12 @@ export default function AdminPage() {
                           {/* Preview Mejorada */}
                           <div className="relative">
                             <div className="absolute -top-2 left-3 z-10">
-                              <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-cyan-500/20">
+                              <span className="bg-gradient-to-r from-amber-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-yellow-400/20">
                                 Vista Previa
                               </span>
                             </div>
                             {banner.imageUrl ? (
-                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-primary/40 shadow-lg shadow-cyan-500/20">
+                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-primary/40 shadow-lg shadow-yellow-400/20">
                                 <img
                                   src={banner.imageUrl}
                                   alt={banner.title}
@@ -7381,7 +7381,7 @@ export default function AdminPage() {
                                 />
                                 {/* Overlay mejorado con gradiente */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
-                                  <h3 className="font-black text-lg text-center drop-shadow-lg shadow-cyan-500/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
+                                  <h3 className="font-black text-lg text-center drop-shadow-lg shadow-yellow-400/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
                                   <button className="mt-3 bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
@@ -7419,8 +7419,8 @@ export default function AdminPage() {
                           </div>
 
                           {/* Subtítulo - Mejorado */}
-                          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-                            <label className="block text-sm font-bold text-blue-700 mb-2 flex items-center gap-2">
+                          <div className="bg-amber-50 p-3 rounded-lg border border-orange-200">
+                            <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                               </svg>
@@ -7430,15 +7430,15 @@ export default function AdminPage() {
                               type="text"
                               value={banner.subtitle}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, subtitle: e.target.value })}
-                              className="w-full text-sm border-2 border-blue-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                               placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                             />
-                            <p className="text-xs text-blue-600 mt-1">Texto descriptivo que acompaña al título</p>
+                            <p className="text-xs text-orange-600 mt-1">Texto descriptivo que acompaña al título</p>
                           </div>
 
                           {/* Tipo de Enlace - Mejorado */}
-                          <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
-                            <label className="block text-sm font-bold text-purple-700 mb-2 flex items-center gap-2">
+                          <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                            <label className="block text-sm font-bold text-orange-700 mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
@@ -7450,7 +7450,7 @@ export default function AdminPage() {
                                 const linkType = e.target.value as 'category' | 'product' | 'filter' | 'url' | 'popup-ofertas';
                                 updateMiddleBanner(index, { ...banner, linkType, linkValue: '', ctaLink: '' });
                               }}
-                              className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all font-medium"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all font-medium"
                             >
                               <option value="category">📁 Categoría</option>
                               <option value="product">📦 Producto</option>
@@ -7461,7 +7461,7 @@ export default function AdminPage() {
 
                             {banner.linkType === 'category' ? (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-purple-700 mb-2">
+                                <label className="block text-xs font-semibold text-orange-700 mb-2">
                                   Selecciona la categoría:
                                 </label>
                                 <select
@@ -7470,7 +7470,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?category=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona una categoría --</option>
                                   {availableCategories.length === 0 ? (
@@ -7500,7 +7500,7 @@ export default function AdminPage() {
                               </div>
                             ) : banner.linkType === 'filter' ? (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-purple-700 mb-2">
+                                <label className="block text-xs font-semibold text-orange-700 mb-2">
                                   Selecciona el filtro:
                                 </label>
                                 <select
@@ -7509,7 +7509,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?filter=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                                 >
                                   <option value="">-- Selecciona un filtro --</option>
                                   <option value="ofertas">Productos en Oferta</option>
@@ -7532,7 +7532,7 @@ export default function AdminPage() {
                                   disabled
                                   className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-dark-light text-primary/80 font-medium"
                                 />
-                                <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
+                                <p className="text-xs text-amber-600 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -7542,17 +7542,17 @@ export default function AdminPage() {
                               </div>
                             ) : (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-purple-700 mb-2">
+                                <label className="block text-xs font-semibold text-orange-700 mb-2">
                                   URL completa:
                                 </label>
                                 <input
                                   type="text"
                                   value={banner.ctaLink}
                                   onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
-                                  className="w-full text-sm border-2 border-purple-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-orange-500 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
-                                <p className="text-xs text-purple-600 mt-2 flex items-center gap-1">
+                                <p className="text-xs text-amber-600 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                   </svg>
@@ -7605,14 +7605,14 @@ export default function AdminPage() {
                 </div>
 
                 {/* Información de Ayuda */}
-                <div className="mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-6 shadow-md">
-                  <h4 className="font-bold text-blue-900 mb-4 flex items-center gap-2 text-lg">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="mt-6 bg-gradient-to-r from-amber-50 to-amber-50 border-2 border-amber-300 rounded-xl p-6 shadow-md">
+                  <h4 className="font-bold text-orange-900 mb-4 flex items-center gap-2 text-lg">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                     Consejos para Banners Efectivos
                   </h4>
-                  <ul className="space-y-3 text-sm text-blue-900">
+                  <ul className="space-y-3 text-sm text-orange-900">
                     <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -7651,7 +7651,7 @@ export default function AdminPage() {
                 <a
                   href="/"
                   target="_blank"
-                  className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold shadow-lg shadow-cyan-500/20 flex items-center gap-2"
+                  className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold shadow-lg shadow-yellow-400/20 flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -7708,7 +7708,7 @@ export default function AdminPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
-                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                       Teléfono
@@ -8024,7 +8024,7 @@ export default function AdminPage() {
               {/* Vista previa */}
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa en Checkout:</h3>
-                <div className="bg-blue-50 border border-blue-300 rounded-lg p-4">
+                <div className="bg-amber-50 border border-amber-300 rounded-lg p-4">
                   <div className="bg-dark/80 border border-primary/30 rounded-lg p-4">
                     <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
@@ -8249,8 +8249,8 @@ export default function AdminPage() {
                       </p>
                     </div>
 
-                    <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-3">
-                      <p className="text-xs text-blue-700 text-center font-medium">
+                    <div className="mt-4 bg-amber-50 border border-orange-200 rounded-lg p-3">
+                      <p className="text-xs text-orange-700 text-center font-medium">
                         💡 Los productos se mostrarán en carrusel horizontal
                       </p>
                     </div>
@@ -8260,7 +8260,7 @@ export default function AdminPage() {
                 {/* Status Messages */}
                 {sectionSaveStatus !== 'idle' && (
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
-                    sectionSaveStatus === 'saving' ? 'bg-blue-50 text-blue-700 animate-pulse' :
+                    sectionSaveStatus === 'saving' ? 'bg-amber-50 text-orange-700 animate-pulse' :
                     sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
                     'bg-dark-light text-red-700'
                   }`}>

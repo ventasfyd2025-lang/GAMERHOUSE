@@ -25,7 +25,7 @@ export default function ContactoPage() {
               href="https://wa.me/56920265061"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8 hover:shadow-xl shadow-yellow-400/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -50,7 +50,7 @@ export default function ContactoPage() {
             {/* Email */}
             <a
               href="mailto:contacto@GAMERHOUSE.cl"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8 hover:shadow-xl shadow-yellow-400/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -75,12 +75,12 @@ export default function ContactoPage() {
             {/* Teléfono */}
             <a
               href="tel:+56920265061"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 hover:shadow-xl shadow-cyan-500/30 transition-shadow group"
+              className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8 hover:shadow-xl shadow-yellow-400/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                    <Phone className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-amber-200 transition-colors">
+                    <Phone className="w-6 h-6 text-orange-600" />
                   </div>
                 </div>
                 <div className="flex-1">
@@ -90,7 +90,7 @@ export default function ContactoPage() {
                   <p className="text-primary/80 mb-2">
                     Llámanos durante horario comercial
                   </p>
-                  <p className="text-blue-600 font-medium">
+                  <p className="text-orange-600 font-medium">
                     +56 9 2026 5061
                   </p>
                 </div>
@@ -98,11 +98,11 @@ export default function ContactoPage() {
             </a>
 
             {/* Ubicación */}
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-amber-600" />
                   </div>
                 </div>
                 <div className="flex-1">
@@ -112,7 +112,7 @@ export default function ContactoPage() {
                   <p className="text-primary/80 mb-2">
                     Estamos en Chile
                   </p>
-                  <p className="text-purple-600 font-medium">
+                  <p className="text-amber-600 font-medium">
                     Región Metropolitana
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export default function ContactoPage() {
           </div>
 
           {/* Horarios */}
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-cyan-500/20 border border-primary/30 p-8 mb-8">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 border border-primary/30 p-8 mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">
               Horario de Atención
             </h2>
@@ -136,7 +136,7 @@ export default function ContactoPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-cyan-500/20"
+              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-yellow-400/20"
             >
               Volver al Inicio
             </Link>
