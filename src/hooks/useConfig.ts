@@ -34,7 +34,7 @@ interface MainBannerConfig {
 
 const DEFAULT_LOGO: LogoConfig = {
   emoji: '🏪',
-  text: 'Importadora F&D',
+  text: 'GAMERHOUSE',
   image: '',
 };
 

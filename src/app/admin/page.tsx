@@ -2330,7 +2330,7 @@ export default function AdminPage() {
               </div>
             </div>
             <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
-              <span className="text-white font-semibold text-xs">🏪 FYD</span>
+              <span className="text-white font-semibold text-xs">🎮 GAMERHOUSE</span>
             </div>
           </div>
 

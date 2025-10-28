@@ -14,7 +14,7 @@ export const translations = {
     'header.cart': 'Carrito',
     
     // Footer
-    'footer.title': 'Importadora F&D',
+    'footer.title': 'GAMERHOUSE',
     'footer.description': 'Retail moderno con foco en diseño, sustentabilidad y experiencias personalizadas. Entregamos en todo Chile con embalajes reciclables y seguimiento en tiempo real.',
     'footer.quickLinks': 'Enlaces Rápidos',
     'footer.allProducts': 'Todos los productos',
