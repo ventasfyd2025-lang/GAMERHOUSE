@@ -262,7 +262,7 @@ export default function RetailHomepage() {
         {featuredProducts.length > 0 && (
           <div className="mb-12 sm:mb-16">
             <div className="flex items-center gap-2 mb-4 sm:mb-6">
-              <Zap className="text-yellow-400" size={20} className="sm:w-6 sm:h-6" />
+              <Zap className="text-yellow-400 w-5 h-5 sm:w-6 sm:h-6" />
               <h2 className="text-2xl sm:text-3xl font-bold">Destacados</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
