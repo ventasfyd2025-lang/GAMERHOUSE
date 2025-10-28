@@ -178,13 +178,13 @@ export default function RetailHomepage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setSelectedCategory('all')}
-                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-yellow-500 hover:to-red-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 text-black"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 text-white"
                   >
                     Ver Catálogo
                   </button>
                   <Link
                     href="/productos"
-                    className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-red-600 text-orange-300 hover:bg-red-600/10 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 backdrop-blur-sm"
+                    className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-yellow-400/50 text-yellow-400 hover:border-yellow-400 hover:bg-yellow-400/10 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 backdrop-blur-sm hover:scale-105"
                   >
                     Explorar Más
                   </Link>
