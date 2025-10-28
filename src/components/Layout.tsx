@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import HitesFooter from './HitesFooter';
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
 import { NotificationProvider } from '@/context/NotificationContext';
 import NotificationDisplay from './NotificationDisplay';
 
@@ -35,11 +35,11 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <NotificationProvider>
       <div className="min-h-screen flex flex-col">
-        <Header />
+        <AppHeader />
         <main className="flex-1 w-full" style={{ paddingTop: `${paddingTop}px` }}>
           {children}
         </main>
-        <HitesFooter />
+        <AppFooter />
         <NotificationDisplay />
       </div>
     </NotificationProvider>
