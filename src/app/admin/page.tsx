@@ -6111,7 +6111,7 @@ export default function AdminPage() {
                                       if (confirm(`¿Eliminar subcategoría "${sub.nombre}"?`)) {
                                         try {
                                           const updatedSubcategorias = (category as any).subcategorias.filter((_: any, i: number) => i !== index);
-                                          await updateDoc(doc(db, 'categorias', category.id), {
+                                          await updateDoc(doc(db, 'gamerhouse_categorias', category.id), {
                                             subcategorias: updatedSubcategorias
                                           });
                                           setCategories(categories.map(c =>
@@ -6166,7 +6166,7 @@ export default function AdminPage() {
                           <button
                             onClick={async () => {
                               try {
-                                await deleteDoc(doc(db, 'categorias', category.id));
+                                await deleteDoc(doc(db, 'gamerhouse_categorias', category.id));
                                 setCategories(categories.filter(c => c.id !== category.id));
                               } catch (error) {
                                 alert('Error al eliminar categoría');
@@ -6264,14 +6264,14 @@ export default function AdminPage() {
                             const existingIndex = categories.findIndex(c => c.id === categoryForm.id);
                             if (existingIndex >= 0) {
                               // Update existing category in Firebase
-                              await setDoc(doc(db, 'categorias', categoryForm.id), categoryData);
+                              await setDoc(doc(db, 'gamerhouse_categorias', categoryForm.id), categoryData);
                               // Update local state
                               const newCategories = [...categories];
                               newCategories[existingIndex] = categoryForm;
                               setCategories(newCategories);
                             } else {
                               // Add new category to Firebase
-                              await setDoc(doc(db, 'categorias', categoryForm.id), categoryData);
+                              await setDoc(doc(db, 'gamerhouse_categorias', categoryForm.id), categoryData);
                               // Add to local state
                               setCategories([...categories, categoryForm]);
                             }
@@ -6377,7 +6377,7 @@ export default function AdminPage() {
                               const updatedCategory = { ...category, subcategorias: updatedSubcategorias };
 
                               // Update in Firebase
-                              await setDoc(doc(db, 'categorias', selectedCategoryForSub), {
+                              await setDoc(doc(db, 'gamerhouse_categorias', selectedCategoryForSub), {
                                 name: category.name,
                                 active: category.active,
                                 subcategorias: updatedSubcategorias,
