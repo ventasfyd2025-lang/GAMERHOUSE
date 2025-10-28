@@ -1720,7 +1720,7 @@ export default function AdminPage() {
       if (productForm.id) {
         // Update existing product
         try {
-          const productRef = doc(db, 'products', productForm.id);
+          const productRef = doc(db, 'gamerhouse_products', productForm.id);
           await updateDoc(productRef, cleanedData);
           alert('Producto actualizado exitosamente');
           refetch(); // Refetch to show the new data
@@ -1810,7 +1810,7 @@ export default function AdminPage() {
 
   const updateProduct = async (id: string, updates: Partial<Product>) => {
     try {
-      const productRef = doc(db, 'products', id);
+      const productRef = doc(db, 'gamerhouse_products', id);
       await updateDoc(productRef, updates);
       refetch(); // Refetch to show the updated data
       alert('Producto actualizado exitosamente');

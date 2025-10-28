@@ -90,7 +90,7 @@ export function useStockManager() {
         // PASO 1: Hacer TODAS las lecturas primero
         const productsData = [];
         for (const item of items) {
-          const productRef = doc(db, 'products', item.productId);
+          const productRef = doc(db, 'gamerhouse_products', item.productId);
           const productDoc = await transaction.get(productRef);
 
           if (!productDoc.exists()) {
@@ -173,7 +173,7 @@ export function useStockManager() {
 
       await runTransaction(db, async (transaction) => {
         for (const item of items) {
-          const productRef = doc(db, 'products', item.productId);
+          const productRef = doc(db, 'gamerhouse_products', item.productId);
           const productDoc = await transaction.get(productRef);
 
           if (!productDoc.exists()) {
@@ -247,7 +247,7 @@ export function useStockManager() {
 
       await runTransaction(db, async (transaction) => {
         // PASO 1: Hacer todas las lecturas primero
-        const productRef = doc(db, 'products', productId);
+        const productRef = doc(db, 'gamerhouse_products', productId);
         const productDoc = await transaction.get(productRef);
 
         if (!productDoc.exists()) {
@@ -305,7 +305,7 @@ export function useStockManager() {
       setLoading(true);
 
       await runTransaction(db, async (transaction) => {
-        const productRef = doc(db, 'products', productId);
+        const productRef = doc(db, 'gamerhouse_products', productId);
         const productDoc = await transaction.get(productRef);
 
         if (!productDoc.exists()) {

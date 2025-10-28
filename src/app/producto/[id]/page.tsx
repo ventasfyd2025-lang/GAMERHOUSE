@@ -40,7 +40,7 @@ export default function ProductPage() {
         
         // First try Firebase
         try {
-          const productDoc = await getDoc(doc(db, 'products', params.id as string));
+          const productDoc = await getDoc(doc(db, 'gamerhouse_products', params.id as string));
           
           if (productDoc.exists()) {
             const productData = {

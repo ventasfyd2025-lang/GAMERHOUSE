@@ -185,7 +185,7 @@ export function useProducts() {
 
   const removeProduct = async (id: string) => {
     try {
-      await deleteDoc(doc(db, 'products', id));
+      await deleteDoc(doc(db, 'gamerhouse_products', id));
       setProducts(prev => prev.filter(product => product.id !== id));
       
       // Invalidate cache
@@ -197,7 +197,7 @@ export function useProducts() {
 
   const removeProducts = async (ids: string[]) => {
     try {
-      const deletePromises = ids.map(id => deleteDoc(doc(db, 'products', id)));
+      const deletePromises = ids.map(id => deleteDoc(doc(db, 'gamerhouse_products', id)));
       await Promise.all(deletePromises);
       setProducts(prev => prev.filter(product => !ids.includes(product.id)));
       
@@ -210,7 +210,7 @@ export function useProducts() {
 
   const updateProduct = async (id: string, updatedData: Partial<Product>) => {
     try {
-      const productDoc = doc(db, 'products', id);
+      const productDoc = doc(db, 'gamerhouse_products', id);
       await updateDoc(productDoc, updatedData);
       setProducts(prev => prev.map(product =>
         product.id === id ? { ...product, ...updatedData } : product
