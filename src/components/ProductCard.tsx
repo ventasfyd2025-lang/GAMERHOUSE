@@ -101,7 +101,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-dark/80 rounded-lg shadow-sm hover:shadow-xl hover:shadow-primary/40 shadow-red-600/20 transition-all duration-300 group border border-primary/30 hover:border-primary/60 flex flex-col ${customHeight || 'h-full'} cursor-pointer relative`}>
+      <div className={`bg-dark/80 rounded-lg shadow-sm hover:shadow-xl hover:shadow-primary/50 shadow-red-600/20 transition-all duration-300 group border border-primary/40 hover:border-primary/80 flex flex-col ${customHeight || 'h-full'} cursor-pointer relative`}>
 
       {/* Badges flotantes */}
       {mostrarOferta && (
