@@ -422,7 +422,7 @@ function CheckoutContent() {
   // Show processing screen while order is being processed
   if (!mounted || (items.length === 0 && !orderSuccess)) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
           <p className="text-primary/80 text-lg font-medium">Cargando...</p>
@@ -434,7 +434,7 @@ function CheckoutContent() {
   // Show success screen if order was completed
   if (orderSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 flex items-center justify-center py-16">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-dark-light to-green-50 flex items-center justify-center py-16">
         <div className="max-w-md mx-auto px-4">
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-green-200 text-center">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-600/20">
@@ -464,7 +464,7 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">

@@ -8199,7 +8199,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-dark-light via-white to-gray-50 rounded-xl p-6 border-2 border-primary-200">
+                  <div className="bg-gradient-to-br from-dark-light via-dark-light to-gray-50 rounded-xl p-6 border-2 border-primary-200">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-sm font-semibold text-primary flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio

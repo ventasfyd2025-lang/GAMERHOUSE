@@ -178,7 +178,7 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
           <p className="text-primary/80 text-lg font-medium">Cargando...</p>
@@ -192,7 +192,7 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light mb-8">

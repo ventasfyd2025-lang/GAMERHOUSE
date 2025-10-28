@@ -149,7 +149,7 @@ function PaymentSuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}

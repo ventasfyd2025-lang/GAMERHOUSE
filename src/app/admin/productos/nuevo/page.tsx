@@ -222,7 +222,7 @@ export default function NuevoProductoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light">
+    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light">
       {/* Header */}
       <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
