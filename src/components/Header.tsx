@@ -1,5 +1,5 @@
-import HitesHeader from './HitesHeader';
+import AppHeader from './AppHeader';
 
 export default function Header() {
-  return <HitesHeader />;
+  return <AppHeader />;
 }
