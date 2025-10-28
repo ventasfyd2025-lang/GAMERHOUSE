@@ -3,10 +3,10 @@
 :root {
   /* ==================== PALETA GAMERHOUSE - AMARILLO/ROJO/NEGRO ALTO CONTRASTE ==================== */
 
-  /* Colores Primarios - Accesos Rápidos */
-  --color-primary: #FFD700;        /* Amarillo Dorado Brillante - Color principal */
-  --color-secondary: #DC2626;      /* Rojo Vivo - Color secundario para detalles */
-  --color-accent: #FFC400;         /* Amarillo Oscuro - Acentos y jerarquía */
+  /* Colores Primarios - Paleta Pikachu Oficial */
+  --color-primary: #FFDE00;        /* Amarillo Pikachu Brillante - Color principal */
+  --color-secondary: #E60012;      /* Rojo Pikachu - Color secundario para detalles */
+  --color-accent: #FFB800;         /* Amarillo Oscuro - Acentos y jerarquía */
 
   /* Grises - Fondos y Fondos Oscuros */
   --color-bg-darkest: #000000;     /* Negro puro */
@@ -20,29 +20,29 @@
   --color-text-primary: #ffffff;   /* Blanco puro - texto principal */
   --color-text-secondary: #e5e5e5; /* Gris claro - texto secundario */
   --color-text-tertiary: #b0b0b0;  /* Gris medio - texto terciario */
-  --color-border: #FFD700;         /* Amarillo Dorado - bordes principales */
-  --color-border-light: #FFC400;   /* Amarillo Oscuro - bordes secundarios */
+  --color-border: #FFDE00;         /* Amarillo Pikachu - bordes principales */
+  --color-border-light: #FFB800;   /* Amarillo Oscuro - bordes secundarios */
 
   /* Estados y Componentes */
   --color-success: #10b981;        /* Emerald - éxito */
   --color-warning: #f59e0b;        /* Amber - advertencia */
-  --color-error: #DC2626;          /* Rojo Vivo - error */
-  --color-info: #DC2626;           /* Rojo Vivo - información importante */
+  --color-error: #E60012;          /* Rojo Pikachu - error */
+  --color-info: #E60012;           /* Rojo Pikachu - información importante */
 
-  /* Variantes de Amarillo (Distintos tonos) */
+  /* Variantes de Amarillo (Pikachu) */
   --color-yellow-300: #FFED4E;     /* Amarillo Claro - detalles secundarios */
-  --color-yellow-400: #FFD700;     /* Amarillo Dorado - principal */
-  --color-yellow-500: #FFC400;     /* Amarillo Oscuro - acentos */
+  --color-yellow-400: #FFDE00;     /* Amarillo Pikachu - principal */
+  --color-yellow-500: #FFB800;     /* Amarillo Oscuro - acentos */
 
-  /* Variantes de Rojo (Detalles importantes) */
-  --color-red-400: #F87171;        /* Rojo Claro - hover */
-  --color-red-500: #EF4444;        /* Rojo Medio */
-  --color-red-600: #DC2626;        /* Rojo Oscuro - principal */
+  /* Variantes de Rojo (Pikachu) */
+  --color-red-400: #FF6B6B;        /* Rojo Claro - hover */
+  --color-red-500: #FF4444;        /* Rojo Medio */
+  --color-red-600: #E60012;        /* Rojo Pikachu - principal */
 
   /* Variantes de Amarillo para Distinción */
-  --color-amber-400: #FFD700;
-  --color-amber-500: #FFC400;
-  --color-amber-600: #F59E0B;
+  --color-amber-400: #FFDE00;
+  --color-amber-500: #FFB800;
+  --color-amber-600: #FF9500;
 
   /* Backgrounds de Componentes */
   --bg-header: linear-gradient(to right, #0a0a0a, #1a1a1a, #000000);

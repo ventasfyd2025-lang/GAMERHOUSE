@@ -42,19 +42,19 @@ export default {
         'border-default': 'var(--color-border)',
         'border-light': 'var(--color-border-light)',
 
-        /* Variantes de Amarillo - Distintos Tonos */
+        /* Variantes de Amarillo - Pikachu */
         'yellow-300': '#FFED4E',     /* Amarillo Claro */
-        'yellow-400': '#FFD700',     /* Amarillo Dorado - Principal */
-        'yellow-500': '#FFC400',     /* Amarillo Oscuro - Acentos */
-        /* Variantes de Rojo - Para Detalles Importantes */
-        'red-400': '#F87171',        /* Rojo Claro - Hover */
-        'red-500': '#EF4444',        /* Rojo Medio */
-        'red-600': '#DC2626',        /* Rojo Oscuro - Principal */
-        'red-700': '#B91C1C',        /* Rojo Muy Oscuro */
+        'yellow-400': '#FFDE00',     /* Amarillo Pikachu - Principal */
+        'yellow-500': '#FFB800',     /* Amarillo Oscuro - Acentos */
+        /* Variantes de Rojo - Pikachu */
+        'red-400': '#FF6B6B',        /* Rojo Claro - Hover */
+        'red-500': '#FF4444',        /* Rojo Medio */
+        'red-600': '#E60012',        /* Rojo Pikachu - Principal */
+        'red-700': '#CC0010',        /* Rojo Muy Oscuro */
         /* Variantes Legacy para Compatibilidad */
-        'amber-400': '#FFD700',
-        'amber-500': '#FFC400',
-        'amber-600': '#F59E0B',
+        'amber-400': '#FFDE00',
+        'amber-500': '#FFB800',
+        'amber-600': '#FF9500',
         /* Grises */
         'gray-300': '#d1d5db',
         'gray-400': '#9ca3af',
