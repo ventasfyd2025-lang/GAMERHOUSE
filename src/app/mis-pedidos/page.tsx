@@ -57,7 +57,7 @@ const statusConfig = {
   },
   pending_verification: {
     label: 'Verificando Pago',
-    color: 'text-orange-600 bg-amber-50',
+    color: 'text-red-600 bg-yellow-50',
     icon: Clock
   },
   confirmed: {
@@ -67,7 +67,7 @@ const statusConfig = {
   },
   preparing: {
     label: 'Preparando',
-    color: 'text-amber-600 bg-amber-50',
+    color: 'text-yellow-500 bg-yellow-50',
     icon: ShoppingBag
   },
   shipped: {
@@ -195,10 +195,10 @@ export default function OrdersPage() {
     <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-6 border border-dark-light mb-8">
+        <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">📦</span>
               </div>
               <div>
@@ -210,7 +210,7 @@ export default function OrdersPage() {
             {/* Botón volver al home */}
             <Link
               href="/"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-yellow-400/20 gap-2"
+              className="inline-flex items-center px-6 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 gap-2"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -225,13 +225,13 @@ export default function OrdersPage() {
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary"></div>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-12 border border-dark-light text-center">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-dark-light text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
             <p className="text-lg text-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
-              className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-yellow-400/20"
+              className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               🛍️ Ir a la Tienda
@@ -244,7 +244,7 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 border border-dark-light overflow-hidden hover:shadow-2xl transition-all">
+                <div key={order.id} className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden hover:shadow-2xl transition-all">
                   {/* Order Header */}
                   <div className="bg-gradient-to-r from-dark-light to-dark-light px-6 py-4 border-b border-dark-light">
                     <div className="flex items-center justify-between">
@@ -330,7 +330,7 @@ export default function OrdersPage() {
                         <div className="flex space-x-3">
                           <Link
                             href={`/chat/${order.id}`}
-                            className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                            className="flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                           >
                             <MessageSquare className="h-4 w-4 mr-2" />
                             Estado del Pedido

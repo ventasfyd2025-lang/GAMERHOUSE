@@ -266,8 +266,8 @@ export default function VendedorPage() {
     switch (status) {
       case 'pending': return 'text-yellow-600 bg-yellow-50 border-yellow-200';
       case 'confirmed': return 'text-green-600 bg-green-50 border-green-200';
-      case 'shipped': return 'text-orange-600 bg-amber-50 border-orange-200';
-      case 'delivered': return 'text-amber-600 bg-amber-50 border-amber-200';
+      case 'shipped': return 'text-red-600 bg-yellow-50 border-orange-200';
+      case 'delivered': return 'text-yellow-500 bg-yellow-50 border-yellow-300';
       case 'cancelled': return 'text-pink bg-dark-light border-dark-light';
       case 'pending_verification': return 'text-primary bg-dark-light border-primary-200';
       default: return 'text-primary/80 bg-dark border-primary/30';
@@ -324,7 +324,7 @@ export default function VendedorPage() {
 
             <div className="bg-dark/80 rounded-lg shadow p-6">
               <div className="flex items-center">
-                <ShoppingBagIcon className="h-8 w-8 text-orange-500" />
+                <ShoppingBagIcon className="h-8 w-8 text-red-500" />
                 <div className="ml-4">
                   <p className="text-lg font-bold text-primary/80">Pedidos Hoy</p>
                   <p className="text-2xl font-bold text-white">{stats.todayOrders}</p>
@@ -451,7 +451,7 @@ export default function VendedorPage() {
 
                           <button
                             onClick={() => resendEmail(order.id, order.customerEmail)}
-                            className="text-lg font-bold text-orange-600 hover:text-orange-900"
+                            className="text-lg font-bold text-red-600 hover:text-red-800"
                             title="Reenviar email"
                           >
                             <EnvelopeIcon className="h-4 w-4" />

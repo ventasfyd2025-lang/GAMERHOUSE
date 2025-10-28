@@ -118,7 +118,7 @@ export default function UsuariosAdminPage() {
   const getRoleColor = (role: string) => {
     switch (role) {
       case 'admin': return 'bg-dark-light text-pink border-dark-light';
-      case 'vendedor': return 'bg-orange-100 text-orange-800 border-orange-200';
+      case 'vendedor': return 'bg-orange-100 text-red-700 border-orange-200';
       case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-dark-light text-white border-primary/30';
     }
@@ -217,7 +217,7 @@ export default function UsuariosAdminPage() {
                           <>
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="text-lg font-bold text-orange-600 hover:text-orange-900"
+                              className="text-lg font-bold text-red-600 hover:text-red-800"
                             >
                               Editar Rol
                             </button>
@@ -313,7 +313,7 @@ export default function UsuariosAdminPage() {
                           <>
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="text-lg font-bold text-orange-600 hover:text-orange-900"
+                              className="text-lg font-bold text-red-600 hover:text-red-800"
                             >
                               Editar Rol
                             </button>

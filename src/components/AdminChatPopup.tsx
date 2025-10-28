@@ -316,8 +316,8 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                 <h5 className="font-medium text-white mb-2">Estado Actual</h5>
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                  order.status === 'confirmed' ? 'bg-orange-100 text-orange-800' :
-                  order.status === 'preparing' ? 'bg-amber-100 text-amber-800' :
+                  order.status === 'confirmed' ? 'bg-orange-100 text-red-700' :
+                  order.status === 'preparing' ? 'bg-yellow-100 text-amber-800' :
                   order.status === 'shipped' ? 'bg-dark-light text-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :
                   'bg-dark-light text-pink'
@@ -407,13 +407,13 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                             <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
                           )}
                           {isSystemMessage && (
-                            <div className="text-xs text-orange-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
+                            <div className="text-xs text-red-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
                           )}
                           
                           <div
                             className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                               isSystemMessage
-                                ? 'bg-amber-50 text-orange-900 border border-orange-200'
+                                ? 'bg-yellow-50 text-red-800 border border-orange-200'
                                 : message.isAdmin
                                 ? 'bg-pink text-white'
                                 : 'bg-dark/80 text-white border border-primary/30'
@@ -450,7 +450,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                           </div>
                         )}
                         {isSystemMessage && (
-                          <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                             <CheckCircleIcon className="h-4 w-4 text-white" />
                           </div>
                         )}

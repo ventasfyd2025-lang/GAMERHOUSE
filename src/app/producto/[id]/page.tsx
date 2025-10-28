@@ -117,7 +117,7 @@ export default function ProductPage() {
     notification.textContent = currentUser 
       ? `${quantity} ${product.nombre} agregado al carrito`
       : `${quantity} ${product.nombre} agregado al carrito (como invitado)`;
-    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg shadow-yellow-400/20 z-50 transition-all duration-300';
+    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg shadow-red-600/20 z-50 transition-all duration-300';
     document.body.appendChild(notification);
     
     setTimeout(() => {
@@ -137,7 +137,7 @@ export default function ProductPage() {
       <Layout>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-700"></div>
             <span className="ml-3 text-primary/80">Cargando producto...</span>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function ProductPage() {
             </h1>
             <Link 
               href="/" 
-              className="inline-flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-red-700 text-white rounded-md hover:bg-orange-700 transition-colors"
             >
               <ChevronLeftIcon className="h-4 w-4 mr-2" />
               Volver al inicio
@@ -237,7 +237,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
                       )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-yellow-400/20 transition-all"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-red-600/20 transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -247,7 +247,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
                       )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-yellow-400/20 transition-all"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-dark/80/80 hover:bg-dark/80 p-2 rounded-full shadow-lg shadow-red-600/20 transition-all"
                     >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -322,7 +322,7 @@ export default function ProductPage() {
                   </div>
                 </>
               ) : (
-                <div className="text-4xl font-bold text-orange-600">
+                <div className="text-4xl font-bold text-red-600">
                   {formatPrice(product.precio)}
                 </div>
               )}
@@ -402,7 +402,7 @@ export default function ProductPage() {
             {/* Back Button */}
             <Link
               href="/"
-              className="inline-flex items-center text-orange-600 hover:text-orange-700 transition-colors"
+              className="inline-flex items-center text-red-600 hover:text-red-700 transition-colors"
             >
               <ChevronLeftIcon className="h-4 w-4 mr-1" />
               Seguir comprando

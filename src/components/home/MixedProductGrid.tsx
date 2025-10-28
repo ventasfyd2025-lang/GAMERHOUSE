@@ -35,7 +35,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         {product.nuevo && (
-          <span className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
             Nuevo
           </span>
         )}
@@ -89,7 +89,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         {product.nuevo && (
-          <span className="absolute top-4 right-4 bg-orange-500 text-white text-sm font-bold px-3 py-1.5 rounded">
+          <span className="absolute top-4 right-4 bg-red-600 text-white text-sm font-bold px-3 py-1.5 rounded">
             Nuevo
           </span>
         )}
@@ -150,7 +150,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         {product.nuevo && (
-          <span className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded">
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded">
             Nuevo
           </span>
         )}

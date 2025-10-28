@@ -50,7 +50,7 @@ const BannerSkeleton = memo(({ count = 1 }: BannerSkeletonProps) => {
   return (
     <>
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-xl shadow-yellow-400/30 animate-pulse" aria-label={t('common.loading')}>
+        <div key={index} className="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-xl shadow-red-600/30 animate-pulse" aria-label={t('common.loading')}>
           <div className="bg-dark-light w-full h-full"></div>
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 md:px-8">

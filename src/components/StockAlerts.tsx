@@ -148,13 +148,13 @@ export default function StockAlerts({ className }: StockAlertsProps) {
 
               {/* Quick Actions */}
               <div className="mt-3 flex flex-wrap gap-2">
-                <button className="text-xs bg-orange-100 hover:bg-amber-200 text-orange-800 px-2 py-1 rounded transition-colors">
+                <button className="text-xs bg-orange-100 hover:bg-amber-200 text-red-700 px-2 py-1 rounded transition-colors">
                   Ver Producto
                 </button>
                 <button className="text-xs bg-green-100 hover:bg-green-200 text-green-800 px-2 py-1 rounded transition-colors">
                   Reabastecer
                 </button>
-                <button className="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors">
+                <button className="text-xs bg-yellow-100 hover:bg-amber-200 text-amber-800 px-2 py-1 rounded transition-colors">
                   Ver Historial
                 </button>
               </div>
@@ -178,7 +178,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 Bajo: {stockAlerts.filter(a => a.severity === 'low').length}
               </span>
             </div>
-            <span className="text-orange-600 hover:text-orange-800 cursor-pointer">
+            <span className="text-red-600 hover:text-red-700 cursor-pointer">
               Ver detalles
             </span>
           </div>

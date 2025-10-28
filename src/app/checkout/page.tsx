@@ -21,7 +21,7 @@ const MercadoPagoWallet = dynamic(() => import('@/components/MercadoPagoWallet')
   loading: () => (
     <div className="p-8 bg-dark border border-primary/30 rounded-lg">
       <div className="flex items-center justify-center space-x-3">
-        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
         <span className="text-primary/80">Cargando MercadoPago...</span>
       </div>
     </div>
@@ -436,8 +436,8 @@ function CheckoutContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 flex items-center justify-center py-16">
         <div className="max-w-md mx-auto px-4">
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-12 border border-green-200 text-center">
-            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-yellow-400/20">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-green-200 text-center">
+            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-600/20">
               <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -476,9 +476,9 @@ function CheckoutContent() {
             Volver al carrito
           </Link>
 
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 p-6 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">💳</span>
               </div>
               <div>
@@ -496,7 +496,7 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
@@ -513,7 +513,7 @@ function CheckoutContent() {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-base font-semibold text-orange-900 mb-1">
+                          <h3 className="text-base font-semibold text-red-800 mb-1">
                             Comprando como invitado
                           </h3>
                           <p className="text-sm text-primary-hover leading-relaxed">
@@ -695,14 +695,14 @@ function CheckoutContent() {
                         onClick={() => setPaymentMethod('mercadopago')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'mercadopago'
-                            ? 'border-orange-500 bg-amber-50 ring-2 ring-amber-200'
+                            ? 'border-red-600 bg-yellow-50 ring-2 ring-amber-200'
                             : 'border-primary/40 bg-dark/80 hover:border-amber-300'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-2xl">💳</span>
                           {paymentMethod === 'mercadopago' && (
-                            <span className="text-orange-600 font-bold">✓</span>
+                            <span className="text-red-600 font-bold">✓</span>
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">MercadoPago</div>
@@ -732,7 +732,7 @@ function CheckoutContent() {
 
                     {/* Sección de MercadoPago */}
                     {paymentMethod === 'mercadopago' && (
-                      <div className="p-4 border border-amber-300 bg-amber-50 rounded-lg">
+                      <div className="p-4 border border-amber-300 bg-yellow-50 rounded-lg">
                         <div className="flex items-center mb-4">
                           <span className="text-2xl mr-3">💳</span>
                           <div>
@@ -863,7 +863,7 @@ function CheckoutContent() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-yellow-400/30 border border-dark-light overflow-hidden sticky top-8">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden sticky top-8">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido
@@ -929,7 +929,7 @@ export default function CheckoutPage() {
     <Layout>
       <Suspense fallback={
         <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-700"></div>
         </div>
       }>
         <CheckoutContent />

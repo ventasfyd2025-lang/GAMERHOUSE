@@ -35,7 +35,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
       return (
         <div className="min-h-screen flex items-center justify-center bg-dark">
-          <div className="max-w-md w-full bg-dark/80 shadow-lg shadow-yellow-400/20 rounded-lg p-6">
+          <div className="max-w-md w-full bg-dark/80 shadow-lg shadow-red-600/20 rounded-lg p-6">
             <div className="flex items-center mb-4">
               <ExclamationTriangleIcon className="h-6 w-6 text-pink mr-2" />
               <h1 className="text-lg font-semibold text-white">
@@ -48,7 +48,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             <div className="flex space-x-3">
               <button
                 onClick={() => window.location.reload()}
-                className="flex-1 bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
+                className="flex-1 bg-red-700 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
               >
                 Recargar página
               </button>

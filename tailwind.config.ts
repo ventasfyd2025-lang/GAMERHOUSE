@@ -12,20 +12,20 @@ export default {
         xs: '480px',
       },
       colors: {
-        /* Paleta GAMERHOUSE - Pikachu Amarillo y Negro */
-        background: '#0a0a0a',
+        /* Paleta GAMERHOUSE - Amarillo/Rojo/Negro Alto Contraste */
+        background: '#000000',
         foreground: '#ffffff',
 
         /* Colores Primarios */
-        'primary': 'var(--color-primary)',           /* Amarillo Pikachu */
-        'secondary': 'var(--color-secondary)',       /* Naranja-Rojo */
-        'accent': 'var(--color-accent)',             /* Amarillo Oscuro */
+        'primary': 'var(--color-primary)',           /* Amarillo Dorado Brillante */
+        'secondary': 'var(--color-secondary)',       /* Rojo Vivo - Detalles */
+        'accent': 'var(--color-accent)',             /* Amarillo Oscuro - Acentos */
 
         /* Estados */
         'success': 'var(--color-success)',           /* Emerald */
         'warning': 'var(--color-warning)',           /* Amber */
-        'error': 'var(--color-error)',               /* Red */
-        'info': 'var(--color-info)',                 /* Naranja-Rojo */
+        'error': 'var(--color-error)',               /* Rojo Vivo */
+        'info': 'var(--color-info)',                 /* Rojo Vivo - Información */
 
         /* Fondos Oscuros */
         'bg-darkest': 'var(--color-bg-darkest)',
@@ -42,18 +42,19 @@ export default {
         'border-default': 'var(--color-border)',
         'border-light': 'var(--color-border-light)',
 
-        /* Variantes Individuales - Amarillo */
-        'yellow-300': '#FFE573',
-        'yellow-400': '#FFED4E',
-        'yellow-500': '#FFB700',
-        /* Variantes Individuales - Naranja */
-        'orange-400': '#FF8C42',
-        'orange-500': '#FF6B35',
-        'orange-600': '#E55100',
-        /* Variantes Individuales - Amber */
+        /* Variantes de Amarillo - Distintos Tonos */
+        'yellow-300': '#FFED4E',     /* Amarillo Claro */
+        'yellow-400': '#FFD700',     /* Amarillo Dorado - Principal */
+        'yellow-500': '#FFC400',     /* Amarillo Oscuro - Acentos */
+        /* Variantes de Rojo - Para Detalles Importantes */
+        'red-400': '#F87171',        /* Rojo Claro - Hover */
+        'red-500': '#EF4444',        /* Rojo Medio */
+        'red-600': '#DC2626',        /* Rojo Oscuro - Principal */
+        'red-700': '#B91C1C',        /* Rojo Muy Oscuro */
+        /* Variantes Legacy para Compatibilidad */
         'amber-400': '#FFD700',
-        'amber-500': '#FFB700',
-        'amber-600': '#FFA500',
+        'amber-500': '#FFC400',
+        'amber-600': '#F59E0B',
         /* Grises */
         'gray-300': '#d1d5db',
         'gray-400': '#9ca3af',

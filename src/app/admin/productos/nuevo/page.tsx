@@ -250,7 +250,7 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📝</span>
@@ -334,7 +334,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📊</span>
@@ -382,7 +382,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📂</span>
@@ -402,7 +402,7 @@ export default function NuevoProductoPage() {
                     return (
                       <div key={category.id} className="border-b border-primary/30 pb-4 last:border-0">
                         {/* Categoría principal */}
-                        <label className="flex items-center gap-2 hover:bg-amber-50 p-2 rounded cursor-pointer font-medium">
+                        <label className="flex items-center gap-2 hover:bg-yellow-50 p-2 rounded cursor-pointer font-medium">
                           <input
                             type="checkbox"
                             checked={isCategoryChecked}
@@ -427,7 +427,7 @@ export default function NuevoProductoPage() {
                                 categoria: newCategorias[0]?.split('-')[0] || ''
                               });
                             }}
-                            className="rounded border-primary/40 text-amber-600 focus:ring-amber-500 w-4 h-4"
+                            className="rounded border-primary/40 text-yellow-500 focus:ring-amber-500 w-4 h-4"
                           />
                           <span className="text-sm">📂 {category.name}</span>
                         </label>
@@ -438,7 +438,7 @@ export default function NuevoProductoPage() {
                             {subcategorias.map((sub: any) => {
                               const subId = `${category.id}-${sub.id}`;
                               return (
-                                <label key={sub.id} className="flex items-center gap-2 hover:bg-amber-50 p-2 rounded cursor-pointer">
+                                <label key={sub.id} className="flex items-center gap-2 hover:bg-yellow-50 p-2 rounded cursor-pointer">
                                   <input
                                     type="checkbox"
                                     checked={productForm.categorias.includes(subId)}
@@ -462,7 +462,7 @@ export default function NuevoProductoPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-primary/40 text-orange-600 focus:ring-orange-500 w-4 h-4"
+                                    className="rounded border-primary/40 text-red-600 focus:ring-orange-500 w-4 h-4"
                                   />
                                   <span className="text-sm">📁 {sub.nombre}</span>
                                 </label>
@@ -487,7 +487,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">📝</span>
@@ -506,7 +506,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Images Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">🖼️</span>
@@ -516,7 +516,7 @@ export default function NuevoProductoPage() {
 
             {/* Image Specifications */}
             <div className="mb-4 p-3 bg-dark-light border border-primary-200 rounded-lg text-sm">
-              <p className="text-orange-800 font-medium mb-2">📐 Especificaciones:</p>
+              <p className="text-red-700 font-medium mb-2">📐 Especificaciones:</p>
               <ul className="text-primary-hover space-y-1">
                 <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                 <li>• <strong>Formato:</strong> JPG o PNG</li>
@@ -567,7 +567,7 @@ export default function NuevoProductoPage() {
                         loading="lazy"
                         src={preview}
                         alt={`Preview ${index + 1}`}
-                        className="w-full h-24 object-cover rounded-lg border-2 border-amber-200 shadow-sm"
+                        className="w-full h-24 object-cover rounded-lg border-2 border-yellow-300 shadow-sm"
                       />
                       <button
                         type="button"
@@ -580,7 +580,7 @@ export default function NuevoProductoPage() {
                         ✕
                       </button>
                       <div className="absolute -top-2 -left-2">
-                        <span className="bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full">Nuevo</span>
+                        <span className="bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">Nuevo</span>
                       </div>
                     </div>
                   ))}
@@ -590,7 +590,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-yellow-400/20 border border-dark-light">
+          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white">🏷️</span>
@@ -665,11 +665,11 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Bottom Actions */}
-          <div className="bg-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-yellow-400/20 border border-primary/30 sticky bottom-0 z-10">
+          <div className="bg-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-red-600/20 border border-primary/30 sticky bottom-0 z-10">
             <div className="flex gap-4">
               <Link
                 href="/admin"
-                className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30 flex items-center justify-center gap-2"
+                className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30 flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -679,7 +679,7 @@ export default function NuevoProductoPage() {
               <button
                 type="submit"
                 disabled={uploadingProduct}
-                className="flex-[2] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-yellow-400/20 hover:shadow-xl shadow-yellow-400/30"
+                className="flex-[2] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30"
                 style={{
                   backgroundColor: 'var(--primary)'
                 }}

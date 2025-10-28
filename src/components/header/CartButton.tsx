@@ -17,7 +17,7 @@ const CartButton = memo(function CartButton({ totalItems }: CartButtonProps) {
     >
       <ShoppingCart className="h-6 w-6" strokeWidth={2.5} />
       {totalItems > 0 && (
-        <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-primary-hover text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-lg shadow-yellow-400/20 animate-pulse">
+        <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-primary-hover text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-lg shadow-red-600/20 animate-pulse">
           {totalItems > 99 ? '99+' : totalItems}
         </span>
       )}

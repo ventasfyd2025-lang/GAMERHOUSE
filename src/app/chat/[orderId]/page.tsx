@@ -90,13 +90,13 @@ const statusConfig = {
   },
   confirmed: { 
     label: 'Confirmado', 
-    color: 'text-orange-600 bg-amber-50 border-orange-200', 
+    color: 'text-red-600 bg-yellow-50 border-orange-200', 
     icon: CheckCircleIcon,
     description: 'Tu pedido ha sido confirmado y será preparado pronto'
   },
   preparing: { 
     label: 'Preparando', 
-    color: 'text-amber-600 bg-amber-50 border-amber-200', 
+    color: 'text-yellow-500 bg-yellow-50 border-yellow-300', 
     icon: CheckCircleIcon,
     description: 'Estamos preparando tu pedido para el envío'
   },
@@ -342,7 +342,7 @@ export default function ChatPage() {
   if (authLoading || orderLoading) {
     return (
       <div className="min-h-screen bg-dark flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600"></div>
       </div>
     );
   }
@@ -352,7 +352,7 @@ export default function ChatPage() {
       <div className="min-h-screen bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
-          <Link href="/mis-pedidos" className="text-orange-500 hover:text-orange-600">
+          <Link href="/mis-pedidos" className="text-red-500 hover:text-red-600">
             Volver a mis pedidos
           </Link>
         </div>
@@ -392,7 +392,7 @@ export default function ChatPage() {
             
             <Link
               href="/"
-              className="text-orange-500 hover:text-orange-600 font-medium text-sm"
+              className="text-red-500 hover:text-red-600 font-medium text-sm"
             >
               Volver a la tienda
             </Link>
@@ -413,9 +413,9 @@ export default function ChatPage() {
                   <div key={step.key} className="flex items-center">
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                       step.completed 
-                        ? 'bg-orange-500 text-white' 
+                        ? 'bg-red-600 text-white' 
                         : step.current
-                        ? 'bg-orange-100 border-2 border-orange-500 text-orange-500'
+                        ? 'bg-orange-100 border-2 border-red-600 text-red-500'
                         : 'bg-dark-light text-primary/50'
                     }`}>
                       {step.completed ? (
@@ -479,11 +479,11 @@ export default function ChatPage() {
           <div className="lg:col-span-2">
             <div className="bg-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header */}
-              <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-4 rounded-t-lg">
+              <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <div className="w-10 h-10 bg-dark/80 rounded-full flex items-center justify-center">
-                      <ShieldCheckIcon className="h-6 w-6 text-orange-500" />
+                      <ShieldCheckIcon className="h-6 w-6 text-red-500" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                   </div>
@@ -502,7 +502,7 @@ export default function ChatPage() {
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-orange-500" />
+                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
                     <p className="text-sm text-primary/80 mb-1">Estamos aquí para ayudarte con tu pedido</p>
@@ -515,7 +515,7 @@ export default function ChatPage() {
                       className={`flex ${message.isAdmin ? 'justify-start' : 'justify-end'} items-end space-x-2`}
                     >
                       {message.isAdmin && (
-                        <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                           <ShieldCheckIcon className="h-4 w-4 text-white" />
                         </div>
                       )}
@@ -529,7 +529,7 @@ export default function ChatPage() {
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-dark/80 text-white border border-primary/30'
-                              : 'bg-orange-500 text-white'
+                              : 'bg-red-600 text-white'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -564,8 +564,8 @@ export default function ChatPage() {
                             <div className="ml-2">
                               {message.read ? (
                                 <div className="flex space-x-1">
-                                  <CheckIcon className="h-3 w-3 text-orange-500" />
-                                  <CheckIcon className="h-3 w-3 text-orange-500 -ml-1" />
+                                  <CheckIcon className="h-3 w-3 text-red-500" />
+                                  <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
                                 </div>
                               ) : (
                                 <CheckIcon className="h-3 w-3 text-primary/50" />
@@ -642,7 +642,7 @@ export default function ChatPage() {
                           className={`cursor-pointer p-1 rounded-lg transition-colors ${
                             sendingMessage || uploadingImage
                               ? 'text-primary/50 cursor-not-allowed'
-                              : 'text-primary/60 hover:text-orange-500 hover:bg-amber-50'
+                              : 'text-primary/60 hover:text-red-500 hover:bg-yellow-50'
                           }`}
                         >
                           <PhotoIcon className="h-5 w-5" />

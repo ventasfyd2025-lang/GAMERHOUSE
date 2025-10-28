@@ -35,7 +35,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     // Show notification
     const notification = document.createElement('div');
     notification.textContent = 'Producto agregado al carrito';
-    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg shadow-yellow-400/20 z-50 transition-all duration-300';
+    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-xl shadow-lg shadow-red-600/20 z-50 transition-all duration-300';
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 3000);
   };
@@ -53,7 +53,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-dark/80 rounded-lg shadow-sm hover:shadow-lg shadow-yellow-400/20 transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
+    <div className="bg-dark/80 rounded-lg shadow-sm hover:shadow-lg shadow-red-600/20 transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
@@ -127,7 +127,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
                   ? 'bg-dark-light text-primary/60 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white shadow-md hover:shadow-lg shadow-yellow-400/20 hover:scale-[1.02] active:scale-[0.98] group'
+                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white shadow-md hover:shadow-lg shadow-red-600/20 hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
               {(product.stock ?? 1) === 0 ? (

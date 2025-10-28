@@ -483,7 +483,7 @@ export const heroSlides = [
     ctaText: "Ver Ofertas",
     ctaLink: "/?category=tecnologia&filter=ofertas",
     badge: "40% DCTO",
-    gradient: "from-orange-600 to-orange-700"
+    gradient: "from-red-700 to-red-800"
   },
   {
     id: 2,
@@ -528,7 +528,7 @@ export const categoryBanners = {
       title: "Adidas Boost",
       subtitle: "Energía infinita",
       image: null,
-      gradient: "from-orange-600 to-orange-700"
+      gradient: "from-red-700 to-red-800"
     },
     {
       id: 3,

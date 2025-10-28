@@ -21,7 +21,7 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-950 via-gray-900 to-black border-b border-yellow-400/30 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-950 via-gray-900 to-black border-b border-yellow-300/30 transition-all duration-300">
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -44,7 +44,7 @@ export default function AppHeader() {
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-gray-800 transition-all"
+                className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-300 focus:bg-gray-800 transition-all"
               />
             </div>
           </form>
@@ -59,7 +59,7 @@ export default function AppHeader() {
               <Link href="/carrito" className="relative text-gray-300 hover:text-yellow-400 transition-colors p-2">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-yellow-300 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {getTotalItems()}
                   </span>
                 )}
@@ -85,7 +85,7 @@ export default function AppHeader() {
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-all"
+              className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-300 transition-all"
             />
           </div>
         </form>
@@ -110,7 +110,7 @@ export default function AppHeader() {
                 <ShoppingCart className="h-5 w-5" />
                 Carrito
                 {getTotalItems() > 0 && (
-                  <span className="bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="bg-yellow-300 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {getTotalItems()}
                   </span>
                 )}

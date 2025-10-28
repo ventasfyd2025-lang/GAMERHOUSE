@@ -122,7 +122,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       case 'release':
         return <PlusIcon className="h-4 w-4 text-green-600" />;
       case 'adjustment':
-        return <AdjustmentsHorizontalIcon className="h-4 w-4 text-orange-600" />;
+        return <AdjustmentsHorizontalIcon className="h-4 w-4 text-red-600" />;
       default:
         return <ClockIcon className="h-4 w-4 text-primary/80" />;
     }
@@ -231,7 +231,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 <div className="text-sm text-primary/80">Stock Mínimo</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-orange-600">
+                <div className="text-2xl font-bold text-red-600">
                   {selectedProduct.precio?.toLocaleString('es-CL', {
                     style: 'currency',
                     currency: 'CLP'
@@ -256,7 +256,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowAdjustModal(true);
                 }}
                 disabled={loading}
-                className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 disabled:opacity-50"
+                className="flex items-center px-4 py-2 bg-red-700 text-white rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 <AdjustmentsHorizontalIcon className="h-4 w-4 mr-2" />
                 Ajustar Stock
@@ -360,11 +360,11 @@ export default function StockManagement({ productId, className }: StockManagemen
               </div>
 
               {selectedProduct && restockData.quantity && (
-                <div className="bg-amber-50 p-3 rounded-md">
-                  <div className="text-sm text-orange-800">
+                <div className="bg-yellow-50 p-3 rounded-md">
+                  <div className="text-sm text-red-700">
                     Stock actual: <span className="font-medium">{selectedProduct.stock}</span>
                   </div>
-                  <div className="text-sm text-orange-800">
+                  <div className="text-sm text-red-700">
                     Nuevo stock: <span className="font-medium">
                       {selectedProduct.stock + parseInt(restockData.quantity || '0')}
                     </span>
@@ -455,7 +455,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               <button
                 onClick={handleStockAdjustment}
                 disabled={loading || !adjustmentData.newStock || !adjustmentData.reason}
-                className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
+                className="flex-1 bg-red-700 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 {loading ? 'Procesando...' : 'Ajustar Stock'}
               </button>

@@ -94,13 +94,13 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
     switch (status) {
       case 'draft': return 'bg-dark-light text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'confirmed': return 'bg-orange-100 text-orange-800';
-      case 'processing': return 'bg-amber-100 text-amber-800';
-      case 'shipped': return 'bg-amber-100 text-orange-800';
+      case 'confirmed': return 'bg-orange-100 text-red-700';
+      case 'processing': return 'bg-yellow-100 text-amber-800';
+      case 'shipped': return 'bg-yellow-100 text-red-700';
       case 'delivered': return 'bg-green-100 text-green-800';
       case 'cancelled': return 'bg-dark-light text-pink';
-      case 'sent': return 'bg-orange-100 text-orange-800';
-      case 'viewed': return 'bg-amber-100 text-amber-800';
+      case 'sent': return 'bg-orange-100 text-red-700';
+      case 'viewed': return 'bg-yellow-100 text-amber-800';
       case 'accepted': return 'bg-green-100 text-green-800';
       case 'rejected': return 'bg-dark-light text-pink';
       case 'expired': return 'bg-dark-light text-white';
@@ -270,7 +270,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 setCreateMode('quote');
                 setShowCreateModal(true);
               }}
-              className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
+              className="flex items-center px-4 py-2 bg-red-700 text-white rounded-md hover:bg-orange-700"
             >
               <DocumentTextIcon className="h-4 w-4 mr-2" />
               Nueva Cotización
@@ -294,7 +294,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('orders')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'orders'
-                ? 'bg-orange-100 text-orange-700'
+                ? 'bg-orange-100 text-red-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -304,7 +304,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('quotes')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'quotes'
-                ? 'bg-orange-100 text-orange-700'
+                ? 'bg-orange-100 text-red-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -314,7 +314,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('customers')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'customers'
-                ? 'bg-orange-100 text-orange-700'
+                ? 'bg-orange-100 text-red-700'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -428,7 +428,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {quote.status === 'accepted' && !quote.convertedToPO && (
                         <button
                           onClick={() => convertQuoteToPO(quote.id, (currentUser as any)?.uid || currentUser?.email || '')}
-                          className="text-orange-600 hover:text-orange-800"
+                          className="text-red-600 hover:text-red-700"
                           title="Convertir a Orden de Compra"
                         >
                           <DocumentDuplicateIcon className="h-5 w-5" />
@@ -451,7 +451,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     </div>
                     <div>
                       <span className="font-medium text-primary">Total:</span>
-                      <div className="text-xl font-bold text-orange-600">
+                      <div className="text-xl font-bold text-red-600">
                         {formatCurrency(quote.total)}
                       </div>
                     </div>
@@ -585,7 +585,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
                   <button
                     onClick={addItemToOrder}
-                    className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700"
+                    className="px-4 py-2 bg-red-700 text-white rounded-md hover:bg-orange-700"
                   >
                     Agregar
                   </button>
@@ -662,7 +662,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
               <button
                 onClick={handleCreateOrder}
                 disabled={!formData.customerId || formData.items.length === 0}
-                className="flex-1 bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
+                className="flex-1 bg-red-700 text-white py-2 px-4 rounded-md hover:bg-orange-700 disabled:opacity-50"
               >
                 {createMode === 'po' ? 'Crear Orden de Compra' : 'Crear Cotización'}
               </button>

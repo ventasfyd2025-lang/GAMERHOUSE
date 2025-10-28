@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* ==================== PALETA GAMERHOUSE - PIKACHU AMARILLO Y NEGRO ==================== */
+  /* ==================== PALETA GAMERHOUSE - AMARILLO/ROJO/NEGRO ALTO CONTRASTE ==================== */
 
   /* Colores Primarios - Accesos Rápidos */
-  --color-primary: #FFED4E;        /* Amarillo Pikachu - Color principal de marca */
-  --color-secondary: #FF6B35;      /* Naranja-Rojo - Color secundario */
-  --color-accent: #FFB700;         /* Amarillo Oscuro - Acentos y detalles */
+  --color-primary: #FFD700;        /* Amarillo Dorado Brillante - Color principal */
+  --color-secondary: #DC2626;      /* Rojo Vivo - Color secundario para detalles */
+  --color-accent: #FFC400;         /* Amarillo Oscuro - Acentos y jerarquía */
 
   /* Grises - Fondos y Fondos Oscuros */
-  --color-bg-darkest: #0a0a0a;     /* Negro puro */
+  --color-bg-darkest: #000000;     /* Negro puro */
   --color-bg-dark-900: #1a1a1a;    /* Negro muy oscuro */
   --color-bg-dark-800: #2a2a2a;    /* Negro oscuro */
   --color-bg-dark-700: #3a3a3a;    /* Gris oscuro */
@@ -20,29 +20,29 @@
   --color-text-primary: #ffffff;   /* Blanco puro - texto principal */
   --color-text-secondary: #e5e5e5; /* Gris claro - texto secundario */
   --color-text-tertiary: #b0b0b0;  /* Gris medio - texto terciario */
-  --color-border: #333333;         /* Gris oscuro - bordes */
-  --color-border-light: #505050;   /* Gris medio - bordes claros */
+  --color-border: #FFD700;         /* Amarillo Dorado - bordes principales */
+  --color-border-light: #FFC400;   /* Amarillo Oscuro - bordes secundarios */
 
   /* Estados y Componentes */
   --color-success: #10b981;        /* Emerald - éxito */
   --color-warning: #f59e0b;        /* Amber - advertencia */
-  --color-error: #ef4444;          /* Red - error */
-  --color-info: #FF6B35;           /* Naranja-Rojo - información */
+  --color-error: #DC2626;          /* Rojo Vivo - error */
+  --color-info: #DC2626;           /* Rojo Vivo - información importante */
 
-  /* Variantes de Amarillo (Color Primario) */
-  --color-yellow-300: #FFE573;
-  --color-yellow-400: #FFED4E;
-  --color-yellow-500: #FFB700;
+  /* Variantes de Amarillo (Distintos tonos) */
+  --color-yellow-300: #FFED4E;     /* Amarillo Claro - detalles secundarios */
+  --color-yellow-400: #FFD700;     /* Amarillo Dorado - principal */
+  --color-yellow-500: #FFC400;     /* Amarillo Oscuro - acentos */
 
-  /* Variantes de Naranja (Color Secundario) */
-  --color-orange-400: #FF8C42;
-  --color-orange-500: #FF6B35;
-  --color-orange-600: #E55100;
+  /* Variantes de Rojo (Detalles importantes) */
+  --color-red-400: #F87171;        /* Rojo Claro - hover */
+  --color-red-500: #EF4444;        /* Rojo Medio */
+  --color-red-600: #DC2626;        /* Rojo Oscuro - principal */
 
-  /* Variantes de Amarillo Oscuro (Color Acentuado) */
+  /* Variantes de Amarillo para Distinción */
   --color-amber-400: #FFD700;
-  --color-amber-500: #FFB700;
-  --color-amber-600: #FFA500;
+  --color-amber-500: #FFC400;
+  --color-amber-600: #F59E0B;
 
   /* Backgrounds de Componentes */
   --bg-header: linear-gradient(to right, #0a0a0a, #1a1a1a, #000000);

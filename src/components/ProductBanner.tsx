@@ -100,7 +100,7 @@ export default function ProductBanner({
               <div key={product.id} className="w-full flex-shrink-0">
                 <div 
                   onClick={() => handleProductClick(product.id)}
-                  className="bg-dark/80 rounded-xl shadow-lg shadow-yellow-400/20 p-6 mx-2 cursor-pointer hover:shadow-xl shadow-yellow-400/30 transition-all duration-300 hover:scale-105"
+                  className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mx-2 cursor-pointer hover:shadow-xl shadow-red-600/30 transition-all duration-300 hover:scale-105"
                 >
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Product Image */}
@@ -142,7 +142,7 @@ export default function ProductBanner({
                           e.stopPropagation();
                           handleProductClick(product.id);
                         }}
-                        className="text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 hover:shadow-lg shadow-yellow-400/20 hover:scale-105"
+                        className="text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 hover:shadow-lg shadow-red-600/20 hover:scale-105"
                         style={{ backgroundColor: '#D64541' }}
                       >
                         Ver Producto →
@@ -160,14 +160,14 @@ export default function ProductBanner({
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-yellow-400/20 transition-all duration-200 hover:scale-110"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-yellow-400/20 transition-all duration-200 hover:scale-110"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronRightIcon className="h-6 w-6" />
