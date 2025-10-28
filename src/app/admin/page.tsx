@@ -2288,11 +2288,11 @@ export default function AdminPage() {
       `}</style>
       <div id="admin-container" className="min-h-screen bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40">
 
-      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl shadow-primary/30 border-b border-dark-light">
+      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-dark-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">🏪</span>
               </div>
               <h1 className="text-xl font-bold" style={{ color: 'var(--primary)' }}>
@@ -2301,7 +2301,7 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-primary/20"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
               style={{ backgroundColor: 'var(--primary)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
@@ -2318,10 +2318,10 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-primary/30 p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
@@ -2330,7 +2330,7 @@ export default function AdminPage() {
               </div>
             </div>
             <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
-              <span className="text-white font-semibold text-xs">🎮 GAMERHOUSE</span>
+              <span className="text-white font-semibold text-xs">🏪 FYD</span>
             </div>
           </div>
 
@@ -2356,7 +2356,7 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-dark/80 text-primary shadow-lg shadow-primary/20 transform scale-105'
+                    ? 'bg-dark/80 text-primary shadow-lg shadow-red-600/20 transform scale-105'
                     : 'text-white/80 hover:text-white hover:bg-dark/80/20 backdrop-blur-sm'
                 }`}
               >
@@ -2377,10 +2377,10 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 p-6 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
@@ -2433,9 +2433,9 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-primary/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Productos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
@@ -2443,9 +2443,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-primary/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Pedidos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
@@ -2453,9 +2453,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-primary/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Ingresos Totales</p>
                     <p className="text-3xl font-bold text-white">
@@ -2465,9 +2465,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-primary/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
@@ -2478,10 +2478,10 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-primary/30 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light">
               <div className="p-6 border-b border-dark-light">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
@@ -2601,13 +2601,13 @@ export default function AdminPage() {
                   {/* Compact Alert Button */}
                   <div
                     onClick={() => setShowStockAlert(!showStockAlert)}
-                    className="bg-gradient-to-r from-pink to-primary hover:from-pink hover:to-primary text-white rounded-xl p-4 shadow-lg shadow-primary/20 hover:shadow-xl shadow-primary/30 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
+                    className="bg-gradient-to-r from-pink to-primary hover:from-pink hover:to-primary text-white rounded-xl p-4 shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] animate-pulse-slow"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="relative mr-3">
                           <ExclamationTriangleIcon className="h-6 w-6 animate-bounce" />
-                          <div className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full animate-ping"></div>
+                          <div className="absolute -top-1 -right-1 h-3 w-3 bg-yellow-300 rounded-full animate-ping"></div>
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">
@@ -2643,7 +2643,7 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg shadow-primary/20 overflow-hidden">
+                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
                       <div className="bg-gradient-to-r from-dark-light to-dark-light p-4 border-b border-dark-light">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
@@ -2768,7 +2768,7 @@ export default function AdminPage() {
 
 
             {/* Advanced Search and Filters Section */}
-            <div className="bg-red-600 hover:bg-red-700-50 to-yellow-50 border border-orange-200 rounded-xl p-6 shadow-lg shadow-primary/20 mb-6">
+            <div className="bg-red-600 hover:bg-red-700-50 to-yellow-50 border border-orange-200 rounded-xl p-6 shadow-lg shadow-red-600/20 mb-6">
               {/* Search Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
@@ -3688,10 +3688,10 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 p-6 border border-dark-light">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
@@ -3710,7 +3710,7 @@ export default function AdminPage() {
                   <button
                     onClick={handleDeleteSelectedOrders}
                     disabled={deletingOrders || selectedOrders.length === 0}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:transform-none"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 disabled:opacity-50 disabled:transform-none"
                     style={{ backgroundColor: selectedOrders.length > 0 ? '#dc2626' : '#9ca3af' }}
                     onMouseEnter={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#b91c1c')}
                     onMouseLeave={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#dc2626')}
@@ -3739,7 +3739,7 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('active')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
-                      ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-primary/20'
+                      ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-red-600/20'
                       : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
@@ -3749,7 +3749,7 @@ export default function AdminPage() {
                   onClick={() => setOrdersFilter('completed')}
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-primary/20'
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-red-600/20'
                       : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
                   }`}
                 >
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 border border-dark-light p-6 mb-6">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3835,7 +3835,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
                   <thead className="bg-gradient-to-r from-dark-light to-dark-light">
@@ -4306,7 +4306,7 @@ export default function AdminPage() {
         {activeTab === 'popup' && (
           <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-50 to-yellow-50 p-6">
             {/* Header Section */}
-            <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-orange-700 rounded-xl shadow-xl shadow-primary/30 p-6 mb-8">
+            <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-orange-700 rounded-xl shadow-xl shadow-red-600/30 p-6 mb-8">
               <div className="flex items-center gap-3">
                 <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4324,7 +4324,7 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-primary/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4391,7 +4391,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-primary/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4439,7 +4439,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-primary/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4541,7 +4541,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-primary/20 border border-white/50 p-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4595,7 +4595,7 @@ export default function AdminPage() {
                           }
                         }}
                         disabled={updatingPopup}
-                        className="flex-1 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-red-700 hover:to-red-700 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-xl shadow-primary/30 transform disabled:opacity-50 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                        className="flex-1 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-red-700 hover:to-red-700 hover:scale-105 shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30 transform disabled:opacity-50 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                       >
                         {updatingPopup ? '⏳ Actualizando...' : '💾 Guardar Configuración'}
                       </button>
@@ -4607,7 +4607,7 @@ export default function AdminPage() {
                           sessionStorage.removeItem('offer-popup-last-shown');
                           window.open('/', '_blank');
                         }}
-                        className="flex-1 sm:flex-initial bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-green-700 hover:to-teal-700 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-xl shadow-primary/30 transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                        className="flex-1 sm:flex-initial bg-gradient-to-r from-green-600 to-teal-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-green-700 hover:to-teal-700 hover:scale-105 shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30 transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                       >
                         🧪 Probar Popup
                       </button>
@@ -4618,7 +4618,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-primary/20 border border-white/50 p-6 sticky top-6">
+                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4638,7 +4638,7 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-primary/20"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-red-600/20"
                             aria-label="Cerrar"
                           >
                             <XMarkIcon className="h-4 w-4 text-primary/80" />
@@ -4683,7 +4683,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-primary/20 transition-all"
+                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-red-600/20 transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -6417,7 +6417,7 @@ export default function AdminPage() {
               <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--primary)' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
@@ -6445,7 +6445,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6518,7 +6518,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📊</span>
@@ -6562,7 +6562,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📂</span>
@@ -6667,7 +6667,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">📝</span>
@@ -6684,7 +6684,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🖼️</span>
@@ -6809,7 +6809,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-primary/20 border border-dark-light">
+                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                         <span className="text-white text-xs">🏷️</span>
@@ -6847,7 +6847,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => setShowProductModal(false)}
-                    className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-xl shadow-primary/30 flex items-center justify-center gap-2"
+                    className="flex-1 bg-gray-400 hover:bg-dark0 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30 flex items-center justify-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6858,7 +6858,7 @@ export default function AdminPage() {
                     type="submit"
                     onClick={handleProductSubmit}
                     disabled={uploadingProduct}
-                    className="flex-[2] text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-primary/20 hover:shadow-xl shadow-primary/30"
+                    className="flex-[2] text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed shadow-lg shadow-red-600/20 hover:shadow-xl shadow-red-600/30"
                     style={{
                       backgroundColor: 'var(--primary)'
                     }}
@@ -7063,7 +7063,7 @@ export default function AdminPage() {
 
                           
                           {section.badgeText && (
-                            <div className="absolute top-3 left-3 bg-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg shadow-primary/20">
+                            <div className="absolute top-3 left-3 bg-pink text-white text-xs px-2 py-1 rounded font-bold shadow-lg shadow-red-600/20">
                               {section.badgeText}
                             </div>
                           )}
@@ -7368,12 +7368,12 @@ export default function AdminPage() {
                           {/* Preview Mejorada */}
                           <div className="relative">
                             <div className="absolute -top-2 left-3 z-10">
-                              <span className="bg-gradient-to-r from-amber-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-primary/20">
+                              <span className="bg-gradient-to-r from-amber-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-red-600/20">
                                 Vista Previa
                               </span>
                             </div>
                             {banner.imageUrl ? (
-                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-primary/40 shadow-lg shadow-primary/20">
+                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-primary/40 shadow-lg shadow-red-600/20">
                                 <img
                                   src={banner.imageUrl}
                                   alt={banner.title}
@@ -7381,7 +7381,7 @@ export default function AdminPage() {
                                 />
                                 {/* Overlay mejorado con gradiente */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
-                                  <h3 className="font-black text-lg text-center drop-shadow-lg shadow-primary/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
+                                  <h3 className="font-black text-lg text-center drop-shadow-lg shadow-red-600/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
                                   <button className="mt-3 bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
@@ -7651,7 +7651,7 @@ export default function AdminPage() {
                 <a
                   href="/"
                   target="_blank"
-                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-lg shadow-primary/20 flex items-center gap-2"
+                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-lg shadow-red-600/20 flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

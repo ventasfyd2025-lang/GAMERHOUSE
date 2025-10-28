@@ -23,7 +23,7 @@ export interface FooterConfig {
 }
 
 const defaultFooterConfig: FooterConfig = {
-  companyName: 'GAMERHOUSE',
+  companyName: 'Importadora F&D',
   description: 'Tu tienda online de confianza con los mejores productos importados.',
   contact: {
     phone: '+56 9 XXXX XXXX',

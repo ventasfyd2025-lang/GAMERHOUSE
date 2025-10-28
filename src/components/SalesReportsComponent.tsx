@@ -97,7 +97,7 @@ export default function SalesReportsComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-light to-white">
       {/* Header Mejorado */}
-      <div className="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-xl shadow-lg shadow-primary/20 mb-8">
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-xl shadow-lg shadow-red-600/20 mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold flex items-center">
@@ -114,7 +114,7 @@ export default function SalesReportsComponent() {
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-dark/80 text-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-primary/20 transition-all"
+              className="bg-dark/80 text-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-red-600/20 transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -124,7 +124,7 @@ export default function SalesReportsComponent() {
       </div>
 
       {loading && (
-        <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-8 mb-8">
+        <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-8 mb-8">
           <div className="flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary500"></div>
             <span className="ml-4 text-lg text-primary/80">Cargando datos...</span>
@@ -147,7 +147,7 @@ export default function SalesReportsComponent() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {dailyReport && (
           <>
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 border-l-4 border-green-500">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-green-500">
               <div className="flex items-center">
                 <div className="p-3 rounded-full bg-green-100">
                   <CurrencyDollarIcon className="h-8 w-8 text-green-600" />
@@ -161,7 +161,7 @@ export default function SalesReportsComponent() {
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 border-l-4 border-red-600">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-red-600">
               <div className="flex items-center">
                 <div className="p-3 rounded-full bg-orange-100">
                   <ShoppingCartIcon className="h-8 w-8 text-red-600" />
@@ -173,7 +173,7 @@ export default function SalesReportsComponent() {
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 border-l-4 border-red-600">
+            <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-red-600">
               <div className="flex items-center">
                 <div className="p-3 rounded-full bg-yellow-100">
                   <ArrowTrendingUpIcon className="h-8 w-8 text-yellow-500" />
@@ -190,7 +190,7 @@ export default function SalesReportsComponent() {
         )}
 
         {monthlyReport && (
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 border-l-4 border-primary500">
+          <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-primary500">
             <div className="flex items-center">
               <div className="p-3 rounded-full bg-dark-light">
                 <CalendarIcon className="h-8 w-8 text-primary600" />
@@ -207,7 +207,7 @@ export default function SalesReportsComponent() {
       </div>
 
       {/* Controles de Fecha Simplificados */}
-      <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 mb-8">
+      <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center">
           <ClockIcon className="h-6 w-6 mr-2 text-primary/80" />
           Período de Análisis
@@ -240,7 +240,7 @@ export default function SalesReportsComponent() {
 
       {/* Top Productos - Información Clave */}
       {dailyReport && dailyReport.topProducts.length > 0 && (
-        <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 mb-8">
+        <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mb-8">
           <h2 className="text-xl font-semibold mb-6 flex items-center">
             <TrophyIcon className="h-6 w-6 mr-2 text-yellow-500" />
             🏆 Productos Estrella del Día
@@ -284,7 +284,7 @@ export default function SalesReportsComponent() {
 
       {/* Métodos de Pago - Información Simple */}
       {dailyReport && dailyReport.paymentMethods.length > 0 && (
-        <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6 mb-8">
+        <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mb-8">
           <h2 className="text-xl font-semibold mb-6 flex items-center">
             <CreditCardIcon className="h-6 w-6 mr-2 text-green-500" />
             💳 Métodos de Pago del Día
@@ -309,7 +309,7 @@ export default function SalesReportsComponent() {
 
       {/* Resumen Mensual Simplificado */}
       {monthlyReport && (
-        <div className="bg-dark/80 rounded-xl shadow-lg shadow-primary/20 p-6">
+        <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6">
           <h2 className="text-xl font-semibold mb-6 flex items-center">
             <ChartBarIcon className="h-6 w-6 mr-2 text-red-500" />
             📈 Resumen del Mes - {monthlyReport.month}

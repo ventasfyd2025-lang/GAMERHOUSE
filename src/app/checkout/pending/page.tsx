@@ -33,7 +33,7 @@ function PaymentPendingContent() {
   return (
     <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-primary/20 sm:rounded-lg sm:px-10">
+        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
           <div className="text-center">
             <ClockIcon className="mx-auto h-16 w-16 text-yellow-500" />
             <h2 className="mt-6 text-3xl font-bold text-white">

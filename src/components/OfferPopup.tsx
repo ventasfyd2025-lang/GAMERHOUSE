@@ -138,7 +138,7 @@ export default function OfferPopup({
             <p className="text-sm mb-4 opacity-90">{description}</p>
             <button
               onClick={handleButtonClick}
-              className="bg-dark/80 text-primary500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-primary/20 transition-all"
+              className="bg-dark/80 text-primary500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-red-600/20 transition-all"
             >
               {buttonText}
             </button>

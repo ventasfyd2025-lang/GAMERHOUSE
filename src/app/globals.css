@@ -117,25 +117,25 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
-  /* Better focus states - Using primary colors */
+  /* Better focus states */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
   /* Consistent card styling */
   .card-modern {
-    @apply bg-dark/80 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/30 hover:border-primary/60 hover:-translate-y-1;
+    @apply bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1;
   }
 
-  /* Better button styles - Using primary/secondary Pikachu colors */
+  /* Better button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-secondary text-black font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-primary hover:to-secondary hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30 transform;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark;
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:from-blue-700 hover:to-blue-800 hover:scale-105 shadow-lg hover:shadow-xl transform;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-dark/80 text-primary font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-dark border border-primary/30 hover:border-primary/60 hover:scale-105 shadow-sm hover:shadow-md hover:shadow-primary/20 transform;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark;
+    @apply bg-gray-100 text-gray-700 font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-gray-200 hover:scale-105 shadow-sm hover:shadow-md transform;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 }
 
