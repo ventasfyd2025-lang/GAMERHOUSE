@@ -75,7 +75,8 @@ export default function RetailHomepage() {
     const descuento = precioOriginal && precio ? Math.round(((precioOriginal - precio) / precioOriginal) * 100) : 0;
 
     return (
-      <div className="group relative h-full overflow-hidden rounded-xl border border-red-600/20 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-yellow-300/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
+      <Link href={`/producto/${product.id}`} className="block h-full group">
+      <div className="relative h-full overflow-hidden rounded-xl border border-yellow-300/50 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-red-600/70 transition-all duration-500 hover:shadow-2xl hover:shadow-red-600/30 cursor-pointer">
         {/* Image Container */}
         <div className="relative h-48 sm:h-60 lg:h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
           <Image
@@ -111,7 +112,7 @@ export default function RetailHomepage() {
           {/* Price Section */}
           <div className="mb-auto">
             <div className="flex items-baseline gap-2">
-              <span className="text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-yellow-300 via-yellow-400 to-red-500 bg-clip-text text-transparent">
                 ${precio?.toLocaleString() || 'N/A'}
               </span>
               {precioOriginal && precio && precioOriginal > precio && (
@@ -124,10 +125,14 @@ export default function RetailHomepage() {
 
           {/* Add to Cart Button */}
           <button
-            onClick={() => handleAddToCart(product)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleAddToCart(product);
+            }}
             className="w-full mt-4 py-2 px-3 sm:py-3 sm:px-4 rounded-lg font-bold text-white text-xs sm:text-sm
-              bg-gradient-to-r from-cyan-500 via-blue-500 to-amber-600
-              hover:from-cyan-600 hover:via-orange-600 hover:to-red-700
+              bg-gradient-to-r from-red-600 to-red-700
+              hover:from-red-700 hover:to-red-800
               shadow-lg hover:shadow-2xl hover:shadow-red-600/50
               transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5
               flex items-center justify-center gap-2"
@@ -138,6 +143,7 @@ export default function RetailHomepage() {
           </button>
         </div>
       </div>
+      </Link>
     );
   };
 
@@ -149,7 +155,7 @@ export default function RetailHomepage() {
         <div className="mb-20">
           <div className="relative rounded-2xl overflow-hidden border border-yellow-300/30 group">
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-900/40 via-orange-900/40 to-amber-900/40 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-red-600 hover:bg-red-700-900/40 via-orange-900/40 to-amber-900/40 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,237,78,0.1),transparent_50%)]" />
 
             {/* Content */}
@@ -160,7 +166,7 @@ export default function RetailHomepage() {
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-                  <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+                  <span className="bg-red-600 hover:bg-red-700-300 via-orange-400 to-amber-400 bg-clip-text text-transparent">
                     GAMERHOUSE
                   </span>
                 </h1>
@@ -172,7 +178,7 @@ export default function RetailHomepage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setSelectedCategory('all')}
-                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-red-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 text-black"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-yellow-500 hover:to-red-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 text-black"
                   >
                     Ver Catálogo
                   </button>
@@ -195,7 +201,7 @@ export default function RetailHomepage() {
 
         {/* Categories Filter */}
         <div className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 bg-red-600 hover:bg-red-700-400 to-orange-400 bg-clip-text text-transparent">
             Explora por Categoría
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-4 scroll-smooth">
@@ -203,7 +209,7 @@ export default function RetailHomepage() {
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-black border-yellow-300 shadow-lg shadow-red-600/50'
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/50'
                   : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-yellow-300/50 hover:bg-slate-700/50'
               }`}
             >
@@ -217,7 +223,7 @@ export default function RetailHomepage() {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                       selectedCategory === cat.id
-                        ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-black border-yellow-300 shadow-lg shadow-red-600/50'
+                        ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/50'
                         : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-yellow-300/50 hover:bg-slate-700/50'
                     }`}
                   >
@@ -258,10 +264,10 @@ export default function RetailHomepage() {
         {/* All Products Grid */}
         <div>
           <div className="mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black bg-red-600 hover:bg-red-700-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
               {searchQuery ? `Resultados para: "${searchQuery}"` : 'Catálogo Completo'}
             </h2>
-            <div className="h-1 w-16 sm:w-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded mt-3"></div>
+            <div className="h-1 w-16 sm:w-24 bg-gradient-to-r from-red-600 to-red-700 rounded mt-3"></div>
           </div>
 
           {productsLoading ? (
@@ -284,12 +290,12 @@ export default function RetailHomepage() {
         {/* Footer CTA */}
         <div className="mt-12 sm:mt-16 lg:mt-20 relative rounded-2xl overflow-hidden border border-yellow-300/30 group">
           {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-900/30 via-orange-900/30 to-amber-900/30 group-hover:from-yellow-900/50 group-hover:via-orange-900/50 group-hover:to-amber-900/50 transition-all duration-500" />
+          <div className="absolute inset-0 bg-red-600 hover:bg-red-700-900/30 via-orange-900/30 to-amber-900/30 group-hover:from-yellow-900/50 group-hover:via-orange-900/50 group-hover:to-amber-900/50 transition-all duration-500" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,237,78,0.1),transparent_50%)]" />
 
           {/* Content */}
           <div className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-gradient-to-r from-yellow-300 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-red-600 hover:bg-red-700-300 via-orange-400 to-amber-400 bg-clip-text text-transparent">
               ¿Necesitas algo más?
             </h3>
             <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -297,7 +303,7 @@ export default function RetailHomepage() {
             </p>
             <Link
               href="/productos"
-              className="inline-block px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-500 hover:from-yellow-500 hover:via-orange-600 hover:to-amber-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg text-black transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 hover:-translate-y-1"
+              className="inline-block px-6 sm:px-10 py-3 sm:py-4 bg-red-600 hover:bg-red-700-400 via-orange-500 to-yellow-500 hover:from-yellow-500 hover:via-orange-600 hover:to-amber-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg text-black transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 hover:-translate-y-1"
             >
               Explorar Catálogo Completo →
             </Link>

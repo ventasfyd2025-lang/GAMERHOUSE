@@ -97,7 +97,7 @@ export default function SalesReportsComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-light to-white">
       {/* Header Mejorado */}
-      <div className="bg-gradient-to-r from-primary to-primary-hover text-white p-8 rounded-xl shadow-lg shadow-red-600/20 mb-8">
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-xl shadow-lg shadow-red-600/20 mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold flex items-center">

@@ -237,7 +237,7 @@ export default function HomeClient() {
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
                 <p className="text-sm sm:text-base text-primary/80 max-w-2xl mx-auto">

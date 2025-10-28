@@ -127,7 +127,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
                   ? 'bg-dark-light text-primary/60 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-accent text-white shadow-md hover:shadow-lg shadow-red-600/20 hover:scale-[1.02] active:scale-[0.98] group'
+                  : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md hover:shadow-lg shadow-red-600/20 hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >
               {(product.stock ?? 1) === 0 ? (

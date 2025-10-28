@@ -376,7 +376,7 @@ export default function ProductPage() {
                 <div className="space-y-4">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                   >
                     Agregar al carrito ({formatPrice(product.precio * quantity)})
                   </button>
