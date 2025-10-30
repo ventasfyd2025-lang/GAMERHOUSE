@@ -17,35 +17,35 @@ export default {
         foreground: '#ffffff',
 
         /* Colores Primarios */
-        'primary': 'var(--color-primary)',           /* Amarillo Dorado Brillante */
-        'secondary': 'var(--color-secondary)',       /* Rojo Vivo - Detalles */
-        'accent': 'var(--color-accent)',             /* Amarillo Oscuro - Acentos */
+        'primary': '#FFDE00',                        /* Amarillo Pikachu */
+        'secondary': '#E60012',                      /* Rojo Pikachu */
+        'accent': '#FFB800',                         /* Amarillo Oscuro */
 
         /* Estados */
-        'success': 'var(--color-success)',           /* Emerald */
-        'warning': 'var(--color-warning)',           /* Amber */
-        'error': 'var(--color-error)',               /* Rojo Vivo */
-        'info': 'var(--color-info)',                 /* Rojo Vivo - Información */
+        'success': '#10b981',                        /* Emerald - Éxito */
+        'warning': '#f59e0b',                        /* Amber - Advertencia */
+        'error': '#E60012',                          /* Rojo Pikachu */
+        'info': '#E60012',                           /* Rojo Pikachu */
 
         /* Fondos Oscuros */
-        'bg-darkest': 'var(--color-bg-darkest)',
-        'bg-dark-900': 'var(--color-bg-dark-900)',
-        'bg-dark-800': 'var(--color-bg-dark-800)',
-        'bg-dark-700': 'var(--color-bg-dark-700)',
-        'bg-950': 'var(--color-bg-950)',
-        'bg-900': 'var(--color-bg-900)',
+        'bg-darkest': '#000000',                     /* Negro puro */
+        'bg-dark-900': '#1a1a1a',                    /* Negro muy oscuro */
+        'bg-dark-800': '#2a2a2a',                    /* Negro oscuro */
+        'bg-dark-700': '#3a3a3a',                    /* Gris oscuro */
+        'bg-950': '#0d0d0d',                         /* Negro ultra oscuro */
+        'bg-900': '#0f0f0f',                         /* Negro muy oscuro */
 
         /* Alias cortos para admin pages */
-        'dark': 'var(--color-bg-dark-900)',         /* #1a1a1a - Negro muy oscuro */
-        'dark-light': 'var(--color-bg-dark-800)',   /* #2a2a2a - Negro oscuro */
-        'pink': 'var(--color-secondary)',           /* #E60012 - Rojo Pikachu */
+        'dark': '#1a1a1a',                          /* Negro muy oscuro */
+        'dark-light': '#2a2a2a',                    /* Negro oscuro */
+        'pink': '#E60012',                          /* Rojo Pikachu */
 
         /* Texto y Bordes */
-        'text-primary': 'var(--color-text-primary)',
-        'text-secondary': 'var(--color-text-secondary)',
-        'text-tertiary': 'var(--color-text-tertiary)',
-        'border-default': 'var(--color-border)',
-        'border-light': 'var(--color-border-light)',
+        'text-primary': '#ffffff',                   /* Blanco puro */
+        'text-secondary': '#e5e5e5',                 /* Gris claro */
+        'text-tertiary': '#b0b0b0',                  /* Gris medio */
+        'border-default': '#FFDE00',                 /* Amarillo Pikachu */
+        'border-light': '#FFB800',                   /* Amarillo Oscuro */
 
         /* Variantes de Amarillo - Pikachu */
         'yellow-300': '#FFED4E',     /* Amarillo Claro */
