@@ -48,10 +48,34 @@ export function useProducts() {
         const productsSnapshot = await getDocs(productsQuery);
         const productsList = productsSnapshot.docs.map(doc => {
           const data = doc.data();
+
+          // Map Firebase fields to Product interface
           return {
             id: doc.id,
-            ...data,
-            sku: (data as { sku?: string }).sku || data?.sku || ''
+            sku: data.sku || '',
+            nombre: data.nombre,
+            precio: data.precioRebajado || data.precioNormal || 0,
+            precioOriginal: data.precioNormal,
+            descripcion: data.descripcion,
+            imagen: data.imagenes?.[0],
+            imagenes: data.imagenes,
+            stock: data.stock || 0,
+            minStock: data.minStock,
+            categoria: data.categorias?.[0] || 'Sin categoría',
+            categorias: data.categorias || [],
+            subcategoria: data.subcategoria,
+            nuevo: data.nuevo || false,
+            oferta: data.precioRebajado ? true : false,
+            activo: data.publicado !== false,
+            fechaCreacion: data.createdAt,
+            envioGratis: data.envioGratis || false,
+            rating: data.rating,
+            reviews: data.reviews,
+            marca: data.marca || '',
+            nuevoDesde: data.nuevoDesde,
+            nuevoDuracionHoras: data.nuevoDuracionHoras,
+            ofertaDesde: data.ofertaDesde,
+            ofertaDuracionHoras: data.ofertaDuracionHoras
           } as Product;
         });
 

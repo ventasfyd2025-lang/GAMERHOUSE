@@ -41,14 +41,31 @@ export default function ProductPage() {
         // First try Firebase
         try {
           const productDoc = await getDoc(doc(db, 'gamerhouse_products', params.id as string));
-          
+
           if (productDoc.exists()) {
-            const productData = {
+            const firebaseData = productDoc.data();
+
+            // Map Firebase fields to Product interface
+            const productData: Product = {
               id: productDoc.id,
-              ...productDoc.data()
-            } as Product;
+              sku: firebaseData.sku || '',
+              nombre: firebaseData.nombre,
+              precio: firebaseData.precioRebajado || firebaseData.precioNormal || 0,
+              precioOriginal: firebaseData.precioNormal,
+              descripcion: firebaseData.descripcion,
+              imagen: firebaseData.imagenes?.[0],
+              imagenes: firebaseData.imagenes,
+              stock: firebaseData.stock || 0,
+              categoria: firebaseData.categorias?.[0] || 'Sin categoría',
+              categorias: firebaseData.categorias || [],
+              marca: firebaseData.marca || '',
+              activo: firebaseData.publicado !== false,
+              oferta: firebaseData.precioRebajado ? true : false
+            };
 
             console.log('📦 Producto cargado:', productData.nombre);
+            console.log('💰 Precios:', { normal: firebaseData.precioNormal, rebajado: firebaseData.precioRebajado });
+            console.log('📁 Categorías:', productData.categorias);
             console.log('📸 Imágenes del producto:', {
               imagen: productData.imagen,
               imagenes: productData.imagenes,
@@ -59,6 +76,7 @@ export default function ProductPage() {
             return;
           }
         } catch (firebaseErr) {
+          console.error('Firebase error:', firebaseErr);
           // Firebase error, trying mock data
         }
         
