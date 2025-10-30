@@ -85,7 +85,7 @@ export default function CartPageClient() {
                       sizes="(max-width: 640px) 64px, 80px"
                     />
                   ) : (
-                    <div className="w-full h-full bg-dark-light rounded-md flex items-center justify-center">
+                    <div className="w-full h-full bg-darklight rounded-md flex items-center justify-center">
                       <span className="text-primary/50 text-lg sm:text-2xl">📦</span>
                     </div>
                   )}
@@ -113,7 +113,7 @@ export default function CartPageClient() {
                   <div className="flex items-center space-x-1 sm:space-x-2">
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-dark-light transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-darklight transition-colors"
                     >
                       <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -122,7 +122,7 @@ export default function CartPageClient() {
                     </span>
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-dark-light transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-darklight transition-colors"
                     >
                       <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -136,7 +136,7 @@ export default function CartPageClient() {
                   {/* Remove Button */}
                   <button
                     onClick={() => removeItem(item.productId)}
-                    className="p-2 text-pink hover:text-red-700 hover:bg-dark-light rounded-md transition-colors"
+                    className="p-2 text-pink hover:text-red-700 hover:bg-darklight rounded-md transition-colors"
                   >
                     <Trash2 className="h-5 w-5" />
                   </button>
@@ -179,7 +179,7 @@ export default function CartPageClient() {
 
             <button
               onClick={clearCart}
-              className="w-full mt-3 bg-dark-light hover:bg-dark-light text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
+              className="w-full mt-3 bg-darklight hover:bg-darklight text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
             >
               🗑️ Vaciar carrito
             </button>

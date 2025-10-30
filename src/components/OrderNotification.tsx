@@ -78,7 +78,7 @@ export default function OrderNotification() {
         <div className="mt-3 flex space-x-2">
           <Link
             href="/mis-pedidos"
-            className="flex-1 bg-dark/80 text-red-600 text-center py-2 px-3 rounded-md text-sm font-medium hover:bg-dark-light transition-colors"
+            className="flex-1 bg-dark/80 text-red-600 text-center py-2 px-3 rounded-md text-sm font-medium hover:bg-darklight transition-colors"
           >
             <ShoppingBagIcon className="h-4 w-4 inline mr-1" />
             Ver pedidos

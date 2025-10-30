@@ -21,13 +21,13 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   const getSeverityColor = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return 'bg-dark-light border-pink text-pink';
+        return 'bg-darklight border-pink text-pink';
       case 'critical':
-        return 'bg-dark-light border-primary500 text-primary800';
+        return 'bg-darklight border-primary500 text-primary800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
-        return 'bg-dark-light border-gray-500 text-white';
+        return 'bg-darklight border-gray-500 text-white';
     }
   };
 
@@ -91,7 +91,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
             <h3 className="text-lg font-semibold text-white">
               Alertas de Stock
             </h3>
-            <span className="bg-dark-light text-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
+            <span className="bg-darklight text-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
               {stockAlerts.length}
             </span>
           </div>
@@ -140,7 +140,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 <button
                   onClick={() => handleAcknowledge(alert.id)}
                   disabled={loading}
-                  className="ml-4 flex-shrink-0 bg-dark-light hover:bg-dark-light text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
+                  className="ml-4 flex-shrink-0 bg-darklight hover:bg-darklight text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
                 >
                   {loading ? 'Marcando...' : 'Marcar como visto'}
                 </button>

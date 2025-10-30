@@ -318,9 +318,9 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                   order.status === 'confirmed' ? 'bg-orange-100 text-red-700' :
                   order.status === 'preparing' ? 'bg-yellow-100 text-amber-800' :
-                  order.status === 'shipped' ? 'bg-dark-light text-primary800' :
+                  order.status === 'shipped' ? 'bg-darklight text-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :
-                  'bg-dark-light text-pink'
+                  'bg-darklight text-pink'
                 }`}>
                   {order.status === 'pending' ? 'Pendiente' :
                    order.status === 'confirmed' ? 'Confirmado' :
@@ -341,7 +341,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                           step.completed 
                             ? 'bg-green-100 text-green-600' 
-                            : 'bg-dark-light text-primary/50'
+                            : 'bg-darklight text-primary/50'
                         }`}>
                           <IconComponent className="h-4 w-4" />
                         </div>
@@ -382,7 +382,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark" style={{ backgroundColor: '#f9fafb' }}>
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-dark-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-darklight rounded-full flex items-center justify-center mx-auto mb-4">
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>

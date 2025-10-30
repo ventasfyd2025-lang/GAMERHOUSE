@@ -105,7 +105,7 @@ export default function ProductBanner({
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Product Image */}
                     <div className="md:w-1/2">
-                      <div className="aspect-video w-full bg-dark-light rounded-lg overflow-hidden">
+                      <div className="aspect-video w-full bg-darklight rounded-lg overflow-hidden">
                         <img
                           src={product.imagen}
                           alt={product.nombre}

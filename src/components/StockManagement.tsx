@@ -157,8 +157,8 @@ export default function StockManagement({ productId, className }: StockManagemen
     return (
       <div className={`bg-dark/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-dark-light rounded w-1/4"></div>
-          <div className="h-32 bg-dark-light rounded"></div>
+          <div className="h-6 bg-darklight rounded w-1/4"></div>
+          <div className="h-32 bg-darklight rounded"></div>
         </div>
       </div>
     );

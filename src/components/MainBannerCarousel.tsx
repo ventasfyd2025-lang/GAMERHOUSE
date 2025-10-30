@@ -278,7 +278,7 @@ export default function MainBannerCarousel({
 
   if (slides.length === 0) {
     return (
-      <div className="relative w-full bg-dark-light h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] flex items-center justify-center">
+      <div className="relative w-full bg-darklight h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] flex items-center justify-center">
         <div className="text-center p-8">
           <div className="text-primary/50 text-6xl mb-4">📸</div>
           <h3 className="text-xl font-bold text-primary mb-2">No hay banners configurados</h3>

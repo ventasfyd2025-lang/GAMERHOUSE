@@ -356,7 +356,7 @@ function PaymentSuccessContent() {
 
           {/* Additional info */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-dark-light rounded-full">
+            <div className="inline-flex items-center px-4 py-2 bg-darklight rounded-full">
               <span className="text-sm text-primary/80">
                 📧 Recibirás un email de confirmación en breve
               </span>

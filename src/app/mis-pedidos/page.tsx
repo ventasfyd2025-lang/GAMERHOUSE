@@ -72,7 +72,7 @@ const statusConfig = {
   },
   shipped: {
     label: 'Enviado',
-    color: 'text-primary bg-dark-light',
+    color: 'text-primary bg-darklight',
     icon: Truck
   },
   delivered: {
@@ -82,7 +82,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-dark-light',
+    color: 'text-pink bg-darklight',
     icon: XCircle
   }
 };

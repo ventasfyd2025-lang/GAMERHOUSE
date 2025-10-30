@@ -28,7 +28,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
-        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-32" />
+        <div className="bg-darklight border-2 border-dashed rounded-xl w-full h-32" />
         {product.oferta && (
           <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
@@ -82,7 +82,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2 md:row-span-2">
       <div className="relative">
-        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-64" />
+        <div className="bg-darklight border-2 border-dashed rounded-xl w-full h-64" />
         {product.oferta && (
           <span className="absolute top-4 left-4 bg-pink text-white text-sm font-bold px-3 py-1.5 rounded">
             -{discountPercentage}%
@@ -143,7 +143,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group relative flex flex-col bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
-        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-48" />
+        <div className="bg-darklight border-2 border-dashed rounded-xl w-full h-48" />
         {product.oferta && (
           <span className="absolute top-3 left-3 bg-pink text-white text-xs font-bold px-2.5 py-1 rounded">
             -{discountPercentage}%
@@ -197,7 +197,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group relative flex bg-dark/80 rounded-xl border border-primary/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow md:col-span-2">
       <div className="relative w-1/3">
-        <div className="bg-dark-light border-2 border-dashed rounded-xl w-full h-full" />
+        <div className="bg-darklight border-2 border-dashed rounded-xl w-full h-full" />
         {product.oferta && (
           <span className="absolute top-2 left-2 bg-pink text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%

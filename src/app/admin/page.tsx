@@ -1018,12 +1018,12 @@ export default function AdminPage() {
     pending_verification: 'bg-warning/20 text-secondary',
     pending_payment: 'bg-warning/20 text-amber-800',
     confirmed: 'bg-success/20 text-success',
-    preparing: 'bg-dark-light text-secondary',
+    preparing: 'bg-darklight text-secondary',
     processing: 'bg-warning/20 text-secondary',
     shipped: 'bg-warning/20 text-amber-800',
     delivered: 'bg-success/20 text-success',
     completed: 'bg-emerald-100 text-emerald-800',
-    cancelled: 'bg-dark-light text-pink'
+    cancelled: 'bg-darklight text-pink'
   };
 
   const ordersByCustomer = useMemo<CustomerOrderGroup[]>(() => {
@@ -1193,10 +1193,10 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-dark-light text-pink border-dark-light';
+      case 'admin': return 'bg-darklight text-pink border-dark-light';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
-      default: return 'bg-dark-light text-white border-primary/30';
+      default: return 'bg-darklight text-white border-primary/30';
     }
   };
 
@@ -2242,7 +2242,7 @@ export default function AdminPage() {
             </div>
 
             {loginError && (
-              <div className="text-pink text-sm bg-dark-light p-3 rounded-md">
+              <div className="text-pink text-sm bg-darklight p-3 rounded-md">
                 {loginError}
               </div>
             )}
@@ -2257,7 +2257,7 @@ export default function AdminPage() {
           </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-dark-light border border-dark-light rounded-md p-4">
+              <div className="bg-darklight border border-dark-light rounded-md p-4">
                 <p className="text-pink font-semibold">⛔ Acceso Denegado</p>
                 <p className="text-pink text-sm mt-2">
                   No tienes permisos de administrador para acceder a esta página.
@@ -2547,7 +2547,7 @@ export default function AdminPage() {
                                 <span
                                   key={status}
                                   className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                                    statusClassMap[status as OrderStatus] || 'bg-dark-light text-white'
+                                    statusClassMap[status as OrderStatus] || 'bg-darklight text-white'
                                   }`}
                                 >
                                   {statusLabelMap[status as OrderStatus]} · {count}
@@ -2680,9 +2680,9 @@ export default function AdminPage() {
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
                                       isOutOfStock
-                                        ? 'bg-dark-light text-pink'
+                                        ? 'bg-darklight text-pink'
                                         : isCritical
-                                          ? 'bg-dark-light text-secondary'
+                                          ? 'bg-darklight text-secondary'
                                           : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
@@ -2700,7 +2700,7 @@ export default function AdminPage() {
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="flex items-center space-x-2">
-                                      <div className="w-16 bg-dark-light rounded-full h-2">
+                                      <div className="w-16 bg-darklight rounded-full h-2">
                                         <div
                                           className={`h-2 rounded-full transition-all duration-300 ${
                                             isOutOfStock ? 'bg-pink' : isCritical ? 'bg-primary' : 'bg-yellow-500'
@@ -2754,7 +2754,7 @@ export default function AdminPage() {
                           </span>
                           <button
                             onClick={() => setShowStockAlert(false)}
-                            className="bg-dark-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                            className="bg-darklight hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                           >
                             Cerrar Lista
                           </button>
@@ -2953,7 +2953,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="bg-dark-light hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                      className="bg-darklight hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     >
                       🗑️ Limpiar Filtros
                     </button>
@@ -2980,7 +2980,7 @@ export default function AdminPage() {
                         </span>
                       )}
                       {productFilters.tags.map(tag => (
-                        <span key={tag} className="bg-dark-light text-secondary px-2 py-1 rounded-full text-xs">
+                        <span key={tag} className="bg-darklight text-secondary px-2 py-1 rounded-full text-xs">
                           {tag === 'nuevo' ? '✨ Nuevo' : '🔥 Oferta'}
                         </span>
                       ))}
@@ -3085,7 +3085,7 @@ export default function AdminPage() {
                                   className="h-10 w-10 object-cover rounded"
                                 />
                               ) : (
-                                <div className="h-10 w-10 bg-dark-light rounded flex items-center justify-center">
+                                <div className="h-10 w-10 bg-darklight rounded flex items-center justify-center">
                                   📦
                                 </div>
                               )}
@@ -3104,7 +3104,7 @@ export default function AdminPage() {
                                   </span>
                                 )}
                                 {product.oferta && (
-                                  <span className="bg-dark-light text-pink text-xs px-2 py-1 rounded-full">
+                                  <span className="bg-darklight text-pink text-xs px-2 py-1 rounded-full">
                                     Oferta
                                   </span>
                                 )}
@@ -3287,7 +3287,7 @@ export default function AdminPage() {
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-dark-light text-pink border-dark-light'
+                              ? 'bg-darklight text-pink border-dark-light'
                               : 'bg-success/20 text-success border-success'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3326,7 +3326,7 @@ export default function AdminPage() {
                                       order.status === 'delivered' || order.status === 'completed'
                                         ? 'bg-success/20 text-success'
                                         : order.status === 'cancelled'
-                                        ? 'bg-dark-light text-pink'
+                                        ? 'bg-darklight text-pink'
                                         : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {order.status === 'pending' && '⏳ Pendiente'}
@@ -3372,7 +3372,7 @@ export default function AdminPage() {
                               {selectedUserOrders.filter(o => o.status === 'delivered' || o.status === 'completed').length}
                             </p>
                           </div>
-                          <div className="bg-dark-light rounded-lg p-4 border border-primary-200">
+                          <div className="bg-darklight rounded-lg p-4 border border-primary-200">
                             <p className="text-sm font-semibold text-secondary">Promedio por Pedido</p>
                             <p className="text-2xl font-bold text-secondary">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0) / selectedUserOrders.length)}
@@ -3471,7 +3471,7 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-dark-light text-pink border-dark-light'
+                                    ? 'bg-darklight text-pink border-dark-light'
                                     : 'bg-success/20 text-success border-success'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3602,7 +3602,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-dark-light text-pink border-dark-light'
+                                      ? 'bg-darklight text-pink border-dark-light'
                                       : 'bg-success/20 text-success border-success'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3740,7 +3740,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
                       ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
+                      : 'bg-darklight text-primary/80 hover:bg-darklight hover:scale-105'
                   }`}
                 >
                   📋 Pedidos Activos
@@ -3750,7 +3750,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-dark-light text-primary/80 hover:bg-dark-light hover:scale-105'
+                      : 'bg-darklight text-primary/80 hover:bg-darklight hover:scale-105'
                   }`}
                 >
                   ✅ Historial de Ventas
@@ -3983,7 +3983,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-dark-light text-primary/50 border-primary/40'
+                                            : 'bg-darklight text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4071,7 +4071,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-dark-light text-primary/50 border-primary/40'
+                                            : 'bg-darklight text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4918,14 +4918,14 @@ export default function AdminPage() {
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
                             ? 'bg-success/20 text-success'
-                            : 'bg-dark-light text-primary/60'
+                            : 'bg-darklight text-primary/60'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
                         </span>
                       </div>
                       <p className="text-sm text-primary/80 mb-3">{section.description}</p>
                       <div className="flex items-center gap-2 text-sm text-primary/60">
-                        <span className="px-2 py-1 bg-dark-light text-primary rounded-md font-medium">
+                        <span className="px-2 py-1 bg-darklight text-primary rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
                         <span className="px-2 py-1 bg-yellow-50 text-red-600 rounded-md font-medium">
@@ -5202,7 +5202,7 @@ export default function AdminPage() {
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
               sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
               sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-              'bg-dark-light text-secondary'
+              'bg-darklight text-secondary'
             }`}>
               {sectionSaveStatus === 'saving' && (
                 <>
@@ -5236,7 +5236,7 @@ export default function AdminPage() {
                 setSectionSaveStatus('idle');
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="px-6 py-3 bg-dark-light text-primary rounded-lg hover:bg-dark-light transition-colors font-medium disabled:opacity-50"
+              className="px-6 py-3 bg-darklight text-primary rounded-lg hover:bg-darklight transition-colors font-medium disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -5328,7 +5328,7 @@ export default function AdminPage() {
 
                 return currentSection ? (
                   <>
-                    <div className="bg-dark-light rounded-lg p-4 border border-primary-200">
+                    <div className="bg-darklight rounded-lg p-4 border border-primary-200">
                       <h3 className="text-lg font-bold text-white mb-2">
                         {currentSection.name}
                       </h3>
@@ -5475,7 +5475,7 @@ export default function AdminPage() {
 
                     return (
                       <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-primary bg-dark-light' : 'border-primary/30'
+                        isSelected ? 'border-primary bg-darklight' : 'border-primary/30'
                       }`}>
                         <div className="flex items-start gap-3">
                           <input
@@ -5545,7 +5545,7 @@ export default function AdminPage() {
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Gestión de Banners (v2)</h2>
               {isAutoSavingBanner && (
-                <div className="flex items-center gap-2 text-sm text-primary bg-dark-light px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 text-sm text-primary bg-darklight px-3 py-1 rounded-full">
                   <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -5655,7 +5655,7 @@ export default function AdminPage() {
                         </div>
 
                         {/* Título */}
-                        <div className="bg-dark-light p-3 rounded-lg border border-primary-200">
+                        <div className="bg-darklight p-3 rounded-lg border border-primary-200">
                           <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -6027,7 +6027,7 @@ export default function AdminPage() {
                     {logoForm.image ? (
                       <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
                     ) : (
-                      <div className="w-8 h-8 bg-dark-light rounded flex items-center justify-center text-xs text-primary/60">
+                      <div className="w-8 h-8 bg-darklight rounded flex items-center justify-center text-xs text-primary/60">
                         Sin logo
                       </div>
                     )}
@@ -6148,7 +6148,7 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            category.active ? 'bg-success/20 text-success' : 'bg-dark-light text-pink'
+                            category.active ? 'bg-success/20 text-success' : 'bg-darklight text-pink'
                           }`}>
                             {category.active ? 'Activa' : 'Inactiva'}
                           </span>
@@ -6246,7 +6246,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowCategoryModal(false)}
-                      className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6340,7 +6340,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowSubcategoryModal(false)}
-                      className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6693,7 +6693,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Image Specifications */}
-                    <div className="mb-3 p-2 bg-dark-light border border-primary-200 rounded-lg text-xs">
+                    <div className="mb-3 p-2 bg-darklight border border-primary-200 rounded-lg text-xs">
                       <p className="text-secondary font-medium mb-1">📐 Especificaciones:</p>
                       <ul className="text-primary-hover space-y-0.5">
                         <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
@@ -6704,7 +6704,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Compact Image Upload Area */}
-                    <div className="border-2 border-dashed border-primary-200 rounded-lg p-3 text-center bg-dark-light/50 hover:bg-dark-light transition-colors">
+                    <div className="border-2 border-dashed border-primary-200 rounded-lg p-3 text-center bg-darklight/50 hover:bg-darklight transition-colors">
                       <input
                         type="file"
                         multiple
@@ -6817,7 +6817,7 @@ export default function AdminPage() {
                       <h4 className="text-sm font-bold text-white">Etiquetas</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <label className="flex items-center gap-2 cursor-pointer bg-dark-light px-3 py-2 rounded-lg hover:bg-dark-light transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-darklight px-3 py-2 rounded-lg hover:bg-darklight transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.nuevo}
@@ -6827,7 +6827,7 @@ export default function AdminPage() {
                         <span className="text-xs font-semibold" style={{ color: 'var(--primary)' }}>✨ Nuevo</span>
                       </label>
 
-                      <label className="flex items-center gap-2 cursor-pointer bg-dark-light px-3 py-2 rounded-lg hover:bg-dark-light transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-darklight px-3 py-2 rounded-lg hover:bg-darklight transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.oferta}
@@ -7018,7 +7018,7 @@ export default function AdminPage() {
                                 autoSaveHomepageContent(newContent);
                               }
                             }}
-                            className="text-pink hover:text-secondary hover:bg-dark-light p-1 rounded transition-colors"
+                            className="text-pink hover:text-secondary hover:bg-darklight p-1 rounded transition-colors"
                             title="Eliminar sección"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7401,7 +7401,7 @@ export default function AdminPage() {
                           </div>
 
                           {/* Título - Mejorado */}
-                          <div className="bg-dark-light p-3 rounded-lg border border-primary-200">
+                          <div className="bg-darklight p-3 rounded-lg border border-primary-200">
                             <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -7530,7 +7530,7 @@ export default function AdminPage() {
                                   type="text"
                                   value="/popup-ofertas"
                                   disabled
-                                  className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-dark-light text-primary/80 font-medium"
+                                  className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-darklight text-primary/80 font-medium"
                                 />
                                 <p className="text-xs text-yellow-500 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -8092,7 +8092,7 @@ export default function AdminPage() {
                     setPreviewName('');
                     setPreviewDescription('');
                   }}
-                  className="text-primary/50 hover:text-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-dark-light transition-colors"
+                  className="text-primary/50 hover:text-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-darklight transition-colors"
                 >
                   ✕
                 </button>
@@ -8204,7 +8204,7 @@ export default function AdminPage() {
                       <h4 className="text-sm font-semibold text-primary flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio
                       </h4>
-                      <span className="text-xs bg-dark-light text-primary px-2 py-1 rounded-full font-medium">
+                      <span className="text-xs bg-darklight text-primary px-2 py-1 rounded-full font-medium">
                         En Vivo
                       </span>
                     </div>
@@ -8233,7 +8233,7 @@ export default function AdminPage() {
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map((i) => (
                           <div key={i} className="bg-dark rounded-lg p-2 border border-primary/30">
-                            <div className="bg-dark-light rounded h-20 mb-2 flex items-center justify-center">
+                            <div className="bg-darklight rounded h-20 mb-2 flex items-center justify-center">
                               <span className="text-2xl">📦</span>
                             </div>
                             <div className="space-y-1">
@@ -8262,7 +8262,7 @@ export default function AdminPage() {
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
                     sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
                     sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-                    'bg-dark-light text-secondary'
+                    'bg-darklight text-secondary'
                   }`}>
                     {sectionSaveStatus === 'saving' && (
                       <>
@@ -8295,7 +8295,7 @@ export default function AdminPage() {
                       setPreviewDescription('');
                     }}
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 bg-dark-light hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancelar
                   </button>

@@ -268,8 +268,8 @@ export default function VendedorPage() {
       case 'confirmed': return 'text-green-600 bg-green-50 border-green-200';
       case 'shipped': return 'text-red-600 bg-yellow-50 border-orange-200';
       case 'delivered': return 'text-yellow-500 bg-yellow-50 border-yellow-300';
-      case 'cancelled': return 'text-pink bg-dark-light border-dark-light';
-      case 'pending_verification': return 'text-primary bg-dark-light border-primary-200';
+      case 'cancelled': return 'text-pink bg-darklight border-dark-light';
+      case 'pending_verification': return 'text-primary bg-darklight border-primary-200';
       default: return 'text-primary/80 bg-dark border-primary/30';
     }
   };

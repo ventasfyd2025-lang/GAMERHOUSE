@@ -88,7 +88,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-primary bg-dark-light border-primary-200', 
+    color: 'text-primary bg-darklight border-primary-200', 
     icon: TruckIcon,
     description: 'Pedido en camino'
   },
@@ -100,7 +100,7 @@ const statusConfig = {
   },
   cancelled: { 
     label: 'Cancelado', 
-    color: 'text-pink bg-dark-light border-dark-light', 
+    color: 'text-pink bg-darklight border-dark-light', 
     icon: XCircleIcon,
     description: 'Pedido cancelado'
   }
@@ -302,7 +302,7 @@ export default function AdminChatPage() {
             
             <div className="flex items-center space-x-4">
               <span className="text-sm text-primary/80">Admin: {user?.email}</span>
-              <span className="px-3 py-1 bg-dark-light text-pink text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-darklight text-pink text-xs font-medium rounded-full">
                 Modo Administrador
               </span>
             </div>
@@ -399,7 +399,7 @@ export default function AdminChatPage() {
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-dark-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-darklight rounded-full flex items-center justify-center mx-auto mb-4">
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>

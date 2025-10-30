@@ -143,7 +143,7 @@ export default function RegisterPage() {
         <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-dark-light border border-dark-light text-red-700 px-4 py-3 rounded">
+              <div className="bg-darklight border border-dark-light text-red-700 px-4 py-3 rounded">
                 {error}
               </div>
             )}
@@ -434,7 +434,7 @@ export default function RegisterPage() {
             <div className="mt-6 space-y-3">
               <Link
                 href="/login"
-                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-dark/80 text-sm font-medium text-primary hover:bg-dark-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-dark/80 text-sm font-medium text-primary hover:bg-darklight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Iniciar Sesión
               </Link>

@@ -203,7 +203,7 @@ export default function ProductPage() {
           {/* Product Image Gallery */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="relative aspect-square bg-dark-light rounded-lg overflow-hidden">
+            <div className="relative aspect-square bg-darklight rounded-lg overflow-hidden">
               {(() => {
                 const images = product.imagenes && product.imagenes.length > 0
                   ? product.imagenes
@@ -335,7 +335,7 @@ export default function ProductPage() {
                   <div className="text-4xl font-bold text-pink">
                     {formatPrice(product.precio)}
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-dark-light text-pink">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-darklight text-pink">
                     {Math.round(((product.precioOriginal - product.precio) / product.precioOriginal) * 100)}% OFF
                   </div>
                 </>
@@ -375,7 +375,7 @@ export default function ProductPage() {
                     <button
                       onClick={() => handleQuantityChange(-1)}
                       disabled={quantity <= 1}
-                      className="p-2 hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-darklight disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <MinusIcon className="h-4 w-4" />
                     </button>
@@ -383,7 +383,7 @@ export default function ProductPage() {
                     <button
                       onClick={() => handleQuantityChange(1)}
                       disabled={quantity >= product.stock}
-                      className="p-2 hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-2 hover:bg-darklight disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <PlusIcon className="h-4 w-4" />
                     </button>
@@ -401,7 +401,7 @@ export default function ProductPage() {
                   
                   <Link
                     href="/carrito"
-                    className="block w-full text-center bg-dark-light hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                    className="block w-full text-center bg-darklight hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
                   >
                     Ver carrito
                   </Link>
@@ -410,7 +410,7 @@ export default function ProductPage() {
             )}
 
             {product.stock === 0 && (
-              <div className="bg-dark-light border border-dark-light rounded-md p-4">
+              <div className="bg-darklight border border-dark-light rounded-md p-4">
                 <p className="text-pink font-medium">
                   Este producto no está disponible en este momento
                 </p>

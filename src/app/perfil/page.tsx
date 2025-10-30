@@ -200,7 +200,7 @@ export default function ProfilePage() {
         <div className="bg-dark/80 rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-3 sm:space-x-4">
-              <div className="bg-dark-light p-2 sm:p-3 rounded-full">
+              <div className="bg-darklight p-2 sm:p-3 rounded-full">
                 <UserIcon className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
               </div>
               <div>
@@ -238,7 +238,7 @@ export default function ProfilePage() {
           {message && (
             <div className={`mt-4 p-3 rounded ${
               message.includes('Error') 
-                ? 'bg-dark-light text-red-700 border border-dark-light' 
+                ? 'bg-darklight text-red-700 border border-dark-light' 
                 : 'bg-green-50 text-green-700 border border-green-200'
             }`}>
               {message}
@@ -538,7 +538,7 @@ export default function ProfilePage() {
                 {message && (
                   <div className={`p-3 rounded ${
                     message.includes('Error') || message.includes('incorrecta') || message.includes('coinciden')
-                      ? 'bg-dark-light text-red-700 border border-dark-light'
+                      ? 'bg-darklight text-red-700 border border-dark-light'
                       : 'bg-green-50 text-green-700 border border-green-200'
                   }`}>
                     {message}

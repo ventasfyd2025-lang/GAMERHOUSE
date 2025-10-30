@@ -197,7 +197,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
           ) : (
             <button
               disabled
-              className="w-full bg-dark-light text-primary/60 font-semibold py-2.5 px-3 rounded-lg cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
+              className="w-full bg-darklight text-primary/60 font-semibold py-2.5 px-3 rounded-lg cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

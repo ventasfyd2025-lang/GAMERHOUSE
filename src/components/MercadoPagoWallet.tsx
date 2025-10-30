@@ -168,9 +168,9 @@ export default function MercadoPagoWallet({
 
   if (error) {
     return (
-      <div className={`p-6 bg-dark-light border border-dark-light rounded-lg ${className}`}>
+      <div className={`p-6 bg-darklight border border-dark-light rounded-lg ${className}`}>
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-dark-light rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-darklight rounded-full flex items-center justify-center">
             <span className="text-pink font-bold">!</span>
           </div>
           <div>

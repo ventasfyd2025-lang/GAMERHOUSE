@@ -114,7 +114,7 @@ export default function SalesReportsComponent() {
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-dark/80 text-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-dark-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-red-600/20 transition-all"
+              className="bg-dark/80 text-primary600 px-6 py-3 rounded-lg font-semibold hover:bg-darklight disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-red-600/20 transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -133,7 +133,7 @@ export default function SalesReportsComponent() {
       )}
 
       {error && (
-        <div className="bg-dark-light border-l-4 border-red-400 text-red-700 p-6 rounded-lg mb-8">
+        <div className="bg-darklight border-l-4 border-red-400 text-red-700 p-6 rounded-lg mb-8">
           <div className="flex">
             <div className="ml-3">
               <h3 className="text-sm font-medium">Error al cargar reportes</h3>
@@ -192,7 +192,7 @@ export default function SalesReportsComponent() {
         {monthlyReport && (
           <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-primary500">
             <div className="flex items-center">
-              <div className="p-3 rounded-full bg-dark-light">
+              <div className="p-3 rounded-full bg-darklight">
                 <CalendarIcon className="h-8 w-8 text-primary600" />
               </div>
               <div className="ml-4">
@@ -250,7 +250,7 @@ export default function SalesReportsComponent() {
               <div key={product.productId} className={`p-4 rounded-lg border-l-4 ${
                 index === 0 ? 'bg-yellow-50 border-yellow-300' :
                 index === 1 ? 'bg-dark border-gray-400' :
-                index === 2 ? 'bg-dark-light border-primary400' :
+                index === 2 ? 'bg-darklight border-primary400' :
                 'bg-yellow-50 border-blue-400'
               }`}>
                 <div className="flex items-center justify-between">
@@ -344,7 +344,7 @@ export default function SalesReportsComponent() {
               <h3 className="text-lg font-semibold mb-4">🏅 Top 5 Productos del Mes</h3>
               <div className="space-y-3">
                 {monthlyReport.topProducts.slice(0, 5).map((product, index) => (
-                  <div key={product.productId} className="flex items-center justify-between p-4 bg-dark rounded-lg hover:bg-dark-light transition-colors">
+                  <div key={product.productId} className="flex items-center justify-between p-4 bg-dark rounded-lg hover:bg-darklight transition-colors">
                     <div className="flex items-center">
                       <span className={`text-lg font-bold mr-4 w-8 h-8 rounded-full flex items-center justify-center text-white ${
                         index === 0 ? 'bg-yellow-500' :

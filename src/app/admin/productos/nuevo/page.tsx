@@ -230,7 +230,7 @@ export default function NuevoProductoPage() {
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="w-10 h-10 bg-dark-light hover:bg-dark-light rounded-lg flex items-center justify-center transition-all duration-200"
+                className="w-10 h-10 bg-darklight hover:bg-darklight rounded-lg flex items-center justify-center transition-all duration-200"
               >
                 <svg className="w-5 h-5 text-primary/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -515,7 +515,7 @@ export default function NuevoProductoPage() {
             </div>
 
             {/* Image Specifications */}
-            <div className="mb-4 p-3 bg-dark-light border border-primary-200 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-darklight border border-primary-200 rounded-lg text-sm">
               <p className="text-secondary font-medium mb-2">📐 Especificaciones:</p>
               <ul className="text-primary-hover space-y-1">
                 <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
@@ -526,7 +526,7 @@ export default function NuevoProductoPage() {
             </div>
 
             {/* Image Upload Area */}
-            <div className="border-2 border-dashed border-primary-200 rounded-lg p-6 text-center bg-dark-light/50 hover:bg-dark-light transition-colors">
+            <div className="border-2 border-dashed border-primary-200 rounded-lg p-6 text-center bg-darklight/50 hover:bg-darklight transition-colors">
               <input
                 type="file"
                 multiple
@@ -631,7 +631,7 @@ export default function NuevoProductoPage() {
               </div>
 
               {/* Etiqueta Oferta */}
-              <div className="border-2 border-dark-light rounded-lg p-4 bg-dark-light/50">
+              <div className="border-2 border-dark-light rounded-lg p-4 bg-darklight/50">
                 <label className="flex items-center gap-2 cursor-pointer mb-3">
                   <input
                     type="checkbox"

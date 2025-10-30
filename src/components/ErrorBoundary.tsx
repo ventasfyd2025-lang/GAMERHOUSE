@@ -54,7 +54,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
               </button>
               <button
                 onClick={() => this.setState({ hasError: false })}
-                className="flex-1 bg-dark-light text-white px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+                className="flex-1 bg-darklight text-white px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
               >
                 Intentar de nuevo
               </button>
@@ -64,7 +64,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 <summary className="cursor-pointer text-primary/60">
                   Detalles del error (solo en desarrollo)
                 </summary>
-                <pre className="mt-2 whitespace-pre-wrap text-pink bg-dark-light p-2 rounded">
+                <pre className="mt-2 whitespace-pre-wrap text-pink bg-darklight p-2 rounded">
                   {this.state.error.toString()}
                 </pre>
               </details>

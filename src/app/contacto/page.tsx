@@ -54,7 +54,7 @@ export default function ContactoPage() {
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-dark-light rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                  <div className="w-12 h-12 bg-darklight rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                 </div>

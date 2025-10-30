@@ -230,11 +230,11 @@ export default function OrderDetailPage() {
       case 'pending': return 'bg-warning/20 text-yellow-800';
       case 'pending_verification': return 'bg-warning/20 text-secondary';
       case 'confirmed': return 'bg-success/20 text-success';
-      case 'preparing': return 'bg-dark-light text-secondary';
+      case 'preparing': return 'bg-darklight text-secondary';
       case 'shipped': return 'bg-warning/20 text-amber-800';
       case 'delivered': return 'bg-success/20 text-success';
-      case 'cancelled': return 'bg-dark-light text-pink';
-      default: return 'bg-dark-light text-white';
+      case 'cancelled': return 'bg-darklight text-pink';
+      default: return 'bg-darklight text-white';
     }
   };
 
@@ -447,7 +447,7 @@ export default function OrderDetailPage() {
               <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
                 {chatMessages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-dark-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-darklight rounded-full flex items-center justify-center mx-auto mb-4">
                       <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.456L3 21l2.544-5.906A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                       </svg>
@@ -560,7 +560,7 @@ export default function OrderDetailPage() {
                   </div>
 
                   {/* Image Upload Button */}
-                  <label className="cursor-pointer bg-dark-light hover:bg-dark-light text-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
+                  <label className="cursor-pointer bg-darklight hover:bg-darklight text-primary/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
                     <PhotoIcon className="h-5 w-5" />
                     <input
                       type="file"

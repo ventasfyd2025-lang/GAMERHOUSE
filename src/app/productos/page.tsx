@@ -236,7 +236,7 @@ function AllProductsPageContent() {
                   Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
                 </p>
                 {activeSectionTitle && (
-                  <div className="mt-3 rounded-lg border border-primary-200 bg-dark-light px-4 py-3 text-sm text-primary-hover">
+                  <div className="mt-3 rounded-lg border border-primary-200 bg-darklight px-4 py-3 text-sm text-primary-hover">
                     <p className="font-semibold">
                       Estás revisando la sección “{activeSectionTitle}”.
                     </p>
@@ -250,7 +250,7 @@ function AllProductsPageContent() {
               </div>
               <button
                 onClick={() => refetch()}
-                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-dark-light hover:bg-dark-light transition-colors"
+                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-darklight hover:bg-darklight transition-colors"
               >
                 ↻ Refrescar lista
               </button>
@@ -338,7 +338,7 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-dark-light border border-dark-light text-red-700 rounded-xl p-6">
+          <section className="bg-darklight border border-dark-light text-red-700 rounded-xl p-6">
             <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
             <p className="text-sm mb-4">{productsError}</p>
             <button

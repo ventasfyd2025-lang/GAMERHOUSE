@@ -45,7 +45,7 @@ function PaymentFailureContent() {
           </div>
 
           {paymentInfo && (
-            <div className="mt-8 bg-dark-light border border-dark-light rounded-lg p-4">
+            <div className="mt-8 bg-darklight border border-dark-light rounded-lg p-4">
               <h3 className="text-lg font-medium text-pink mb-2">
                 Detalles del Pago
               </h3>

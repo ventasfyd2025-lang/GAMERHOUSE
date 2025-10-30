@@ -628,7 +628,7 @@ function CheckoutContent() {
                         onClick={() => setDeliveryType('envio')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           deliveryType === 'envio'
-                            ? 'border-primary bg-dark-light ring-2 ring-orange-200'
+                            ? 'border-primary bg-darklight ring-2 ring-orange-200'
                             : 'border-primary/40 bg-dark/80 hover:border-primary-300'
                         }`}
                       >
@@ -715,7 +715,7 @@ function CheckoutContent() {
                         onClick={() => setPaymentMethod('transferencia')}
                         className={`p-4 border-2 rounded-lg transition-all ${
                           paymentMethod === 'transferencia'
-                            ? 'border-primary bg-dark-light ring-2 ring-orange-200'
+                            ? 'border-primary bg-darklight ring-2 ring-orange-200'
                             : 'border-primary/40 bg-dark/80 hover:border-primary-300'
                         }`}
                       >
@@ -770,7 +770,7 @@ function CheckoutContent() {
 
                     {/* Sección de Transferencia */}
                     {paymentMethod === 'transferencia' && (
-                      <div className="p-4 border border-primary-300 bg-dark-light rounded-lg">
+                      <div className="p-4 border border-primary-300 bg-darklight rounded-lg">
                       <div className="flex items-center mb-4">
                         <span className="text-2xl mr-3">🏦</span>
                         <div>
@@ -874,7 +874,7 @@ function CheckoutContent() {
                 {/* Cart Items */}
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-dark-light rounded-lg border border-dark-light">
+                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-darklight rounded-lg border border-dark-light">
                       <div className="relative w-12 h-12 flex-shrink-0">
                         {item.imagen ? (
                           <img
@@ -883,7 +883,7 @@ function CheckoutContent() {
                             className="w-full h-full object-cover rounded-md"
                           />
                         ) : (
-                          <div className="w-full h-full bg-dark-light rounded-md flex items-center justify-center">
+                          <div className="w-full h-full bg-darklight rounded-md flex items-center justify-center">
                             <span className="text-primary/50 text-lg">📦</span>
                           </div>
                         )}
@@ -911,7 +911,7 @@ function CheckoutContent() {
                     <span className="text-primary/80 font-medium">Subtotal</span>
                     <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-dark-light px-4 py-3 rounded-lg border border-primary-200">
+                  <div className="flex justify-between items-center bg-darklight px-4 py-3 rounded-lg border border-primary-200">
                     <span className="text-lg font-bold text-white">Total</span>
                     <span className="text-2xl font-bold text-primary">{formatPrice(getTotalPrice())}</span>
                   </div>

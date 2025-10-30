@@ -140,7 +140,7 @@ body {
 
   /* Admin Components */
   .admin-card {
-    @apply bg-dark-light rounded-lg shadow-md p-6 border border-dark-light/50 hover:border-primary/30 transition-colors;
+    @apply bg-darklight rounded-lg shadow-md p-6 border border-darklight/50 hover:border-primary/30 transition-colors;
   }
 
   .admin-header {
@@ -152,11 +152,11 @@ body {
   }
 
   .admin-button-secondary {
-    @apply px-4 py-2 bg-dark-light text-white rounded-lg font-semibold hover:bg-dark-light/80 border border-primary/30 transition-colors;
+    @apply px-4 py-2 bg-darklight text-white rounded-lg font-semibold hover:bg-darklight/80 border border-primary/30 transition-colors;
   }
 
   .admin-input {
-    @apply w-full px-4 py-2 bg-dark-light rounded-lg text-white border border-primary/30 focus:border-primary focus:outline-none transition-colors;
+    @apply w-full px-4 py-2 bg-darklight rounded-lg text-white border border-primary/30 focus:border-primary focus:outline-none transition-colors;
   }
 
   .admin-table {
@@ -164,7 +164,7 @@ body {
   }
 
   .admin-table thead {
-    @apply bg-dark-light/50 border-b border-primary/30;
+    @apply bg-darklight/50 border-b border-primary/30;
   }
 
   .admin-table th {
@@ -172,11 +172,11 @@ body {
   }
 
   .admin-table td {
-    @apply px-4 py-3 border-b border-dark-light/50;
+    @apply px-4 py-3 border-b border-darklight/50;
   }
 
   .admin-table tbody tr {
-    @apply hover:bg-dark-light/50 transition-colors;
+    @apply hover:bg-darklight/50 transition-colors;
   }
 }
 

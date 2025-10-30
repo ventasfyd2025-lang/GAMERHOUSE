@@ -102,7 +102,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-primary bg-dark-light border-primary-200', 
+    color: 'text-primary bg-darklight border-primary-200', 
     icon: TruckIcon,
     description: 'Tu pedido está en camino'
   },
@@ -114,7 +114,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-dark-light border-dark-light',
+    color: 'text-pink bg-darklight border-dark-light',
     icon: XCircleIcon,
     description: 'Este pedido ha sido cancelado'
   },
@@ -416,7 +416,7 @@ export default function ChatPage() {
                         ? 'bg-red-600 text-white' 
                         : step.current
                         ? 'bg-orange-100 border-2 border-red-600 text-red-500'
-                        : 'bg-dark-light text-primary/50'
+                        : 'bg-darklight text-primary/50'
                     }`}>
                       {step.completed ? (
                         <CheckIcon className="h-4 w-4" />

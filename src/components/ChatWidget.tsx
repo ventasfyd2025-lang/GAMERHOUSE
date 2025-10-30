@@ -209,7 +209,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                   <div
                     className={`max-w-xs lg:max-w-md px-3 py-2 rounded-lg text-sm ${
                       message.isAdmin
-                        ? 'bg-dark-light text-white'
+                        ? 'bg-darklight text-white'
                         : 'bg-primary text-white'
                     }`}
                   >

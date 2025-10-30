@@ -17,35 +17,33 @@ export default {
         foreground: '#ffffff',
 
         /* Colores Primarios */
-        'primary': '#FFDE00',                        /* Amarillo Pikachu */
-        'secondary': '#E60012',                      /* Rojo Pikachu */
-        'accent': '#FFB800',                         /* Amarillo Oscuro */
+        primary: '#FFDE00',                          /* Amarillo Pikachu */
+        secondary: '#E60012',                        /* Rojo Pikachu */
+        accent: '#FFB800',                           /* Amarillo Oscuro */
 
         /* Estados */
-        'success': '#10b981',                        /* Emerald - Éxito */
-        'warning': '#f59e0b',                        /* Amber - Advertencia */
-        'error': '#E60012',                          /* Rojo Pikachu */
-        'info': '#E60012',                           /* Rojo Pikachu */
+        success: '#10b981',                          /* Emerald - Éxito */
+        warning: '#f59e0b',                          /* Amber - Advertencia */
+        error: '#E60012',                            /* Rojo Pikachu */
+        info: '#E60012',                             /* Rojo Pikachu */
 
-        /* Fondos Oscuros */
-        'bg-darkest': '#000000',                     /* Negro puro */
-        'bg-dark-900': '#1a1a1a',                    /* Negro muy oscuro */
-        'bg-dark-800': '#2a2a2a',                    /* Negro oscuro */
-        'bg-dark-700': '#3a3a3a',                    /* Gris oscuro */
-        'bg-950': '#0d0d0d',                         /* Negro ultra oscuro */
-        'bg-900': '#0f0f0f',                         /* Negro muy oscuro */
+        /* Alias para admin pages - sin guiones en el nombre */
+        dark: '#1a1a1a',                             /* Negro muy oscuro */
+        darklight: '#2a2a2a',                        /* Negro oscuro */
+        pink: '#E60012',                             /* Rojo Pikachu */
 
-        /* Alias cortos para admin pages */
-        'dark': '#1a1a1a',                          /* Negro muy oscuro */
-        'dark-light': '#2a2a2a',                    /* Negro oscuro */
-        'pink': '#E60012',                          /* Rojo Pikachu */
+        /* Fondos Oscuros - nombres simples */
+        darkest: '#000000',                          /* Negro puro */
+        dark900: '#1a1a1a',                          /* Negro muy oscuro */
+        dark800: '#2a2a2a',                          /* Negro oscuro */
+        dark700: '#3a3a3a',                          /* Gris oscuro */
 
         /* Texto y Bordes */
-        'text-primary': '#ffffff',                   /* Blanco puro */
-        'text-secondary': '#e5e5e5',                 /* Gris claro */
-        'text-tertiary': '#b0b0b0',                  /* Gris medio */
-        'border-default': '#FFDE00',                 /* Amarillo Pikachu */
-        'border-light': '#FFB800',                   /* Amarillo Oscuro */
+        textprimary: '#ffffff',                      /* Blanco puro */
+        textsecondary: '#e5e5e5',                    /* Gris claro */
+        texttertiary: '#b0b0b0',                     /* Gris medio */
+        borderdefault: '#FFDE00',                    /* Amarillo Pikachu */
+        borderlight: '#FFB800',                      /* Amarillo Oscuro */
 
         /* Variantes de Amarillo - Pikachu */
         'yellow-300': '#FFED4E',     /* Amarillo Claro */

@@ -117,10 +117,10 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-dark-light text-pink border-dark-light';
+      case 'admin': return 'bg-darklight text-pink border-dark-light';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
-      default: return 'bg-dark-light text-white border-primary/30';
+      default: return 'bg-darklight text-white border-primary/30';
     }
   };
 
@@ -145,7 +145,7 @@ export default function UsuariosAdminPage() {
 
           {/* Administradores y Vendedores */}
           <div className="admin-card mb-8">
-            <div className="px-6 py-4 bg-dark-light border-b border-primary/30">
+            <div className="px-6 py-4 bg-darklight border-b border-primary/30">
               <h3 className="text-lg font-medium text-primary">👑 Administradores y Vendedores</h3>
               <p className="text-sm text-primary/60">Personal autorizado con permisos especiales</p>
             </div>
@@ -241,7 +241,7 @@ export default function UsuariosAdminPage() {
 
           {/* Clientes */}
           <div className="admin-card">
-            <div className="px-6 py-4 bg-dark-light border-b border-primary/30">
+            <div className="px-6 py-4 bg-darklight border-b border-primary/30">
               <h3 className="text-lg font-medium text-primary">👥 Clientes</h3>
               <p className="text-sm text-primary/60">Usuarios registrados de la tienda</p>
             </div>

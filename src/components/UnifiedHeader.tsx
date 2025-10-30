@@ -537,7 +537,7 @@ const handleMobileCategoryLinkClick = (
                             <Link
                               href="/registro"
                               onClick={() => setIsUserMenuOpen(false)}
-                              className="block px-4 py-2 text-primary hover:bg-dark-light"
+                              className="block px-4 py-2 text-primary hover:bg-darklight"
                             >
                               Crear Cuenta
                             </Link>
@@ -567,7 +567,7 @@ const handleMobileCategoryLinkClick = (
                           <Link
                             href="/registro"
                             onClick={() => setIsUserMenuOpen(false)}
-                            className="block w-full text-center px-4 py-2 border border-primary500 text-primary500 rounded-md hover:bg-dark-light transition-colors"
+                            className="block w-full text-center px-4 py-2 border border-primary500 text-primary500 rounded-md hover:bg-darklight transition-colors"
                           >
                             Registrarse
                           </Link>

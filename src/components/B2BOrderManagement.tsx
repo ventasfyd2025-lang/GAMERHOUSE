@@ -92,19 +92,19 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'draft': return 'bg-dark-light text-white';
+      case 'draft': return 'bg-darklight text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'confirmed': return 'bg-orange-100 text-red-700';
       case 'processing': return 'bg-yellow-100 text-amber-800';
       case 'shipped': return 'bg-yellow-100 text-red-700';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-dark-light text-pink';
+      case 'cancelled': return 'bg-darklight text-pink';
       case 'sent': return 'bg-orange-100 text-red-700';
       case 'viewed': return 'bg-yellow-100 text-amber-800';
       case 'accepted': return 'bg-green-100 text-green-800';
-      case 'rejected': return 'bg-dark-light text-pink';
-      case 'expired': return 'bg-dark-light text-white';
-      default: return 'bg-dark-light text-white';
+      case 'rejected': return 'bg-darklight text-pink';
+      case 'expired': return 'bg-darklight text-white';
+      default: return 'bg-darklight text-white';
     }
   };
 
@@ -242,8 +242,8 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
     return (
       <div className={`bg-dark/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-dark-light rounded w-1/4"></div>
-          <div className="h-32 bg-dark-light rounded"></div>
+          <div className="h-6 bg-darklight rounded w-1/4"></div>
+          <div className="h-32 bg-darklight rounded"></div>
         </div>
       </div>
     );
@@ -486,7 +486,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {customer.companyName}
                     </h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-dark-light text-pink'
+                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-darklight text-pink'
                     }`}>
                       {customer.isActive ? 'Activo' : 'Inactivo'}
                     </span>
