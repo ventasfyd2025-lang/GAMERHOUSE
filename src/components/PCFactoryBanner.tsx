@@ -131,7 +131,7 @@ export default function PCFactoryBanner({
                       {/* Product Info */}
                       <div className="p-3">
                         {/* Product Name */}
-                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-yellow-300600 transition-colors">
+                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-yellow-400 transition-colors">
                           {product.nombre || 'Producto'}
                         </h3>
                         

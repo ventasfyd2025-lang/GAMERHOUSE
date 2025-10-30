@@ -51,7 +51,7 @@ export default function OrderNotification() {
 
   return (
     <div className="fixed top-4 right-4 z-50 max-w-sm">
-      <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-lg shadow-2xl border border-amber-300 animate-pulse">
+      <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-lg shadow-lg border border-amber-300 animate-pulse">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             <div className="relative">

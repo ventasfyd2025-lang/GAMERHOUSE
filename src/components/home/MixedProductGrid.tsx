@@ -267,7 +267,7 @@ const MixedProductGrid: React.FC<MixedProductGridProps> = ({ products, title, vi
           {viewAllLink && (
             <Link 
               href={viewAllLink} 
-              className="text-yellow-300500 hover:text-yellow-300600 font-medium text-sm"
+              className="text-yellow-400 hover:text-yellow-400 font-medium text-sm"
             >
               Ver todos →
             </Link>

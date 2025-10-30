@@ -133,7 +133,7 @@ function VendedorLogin() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-yellow-400 hover:bg-yellow-400-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
               </button>
@@ -236,7 +236,7 @@ export default function VendedorPage() {
             </p>
             <button
               onClick={() => router.push('/')}
-              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-400-hover transition-colors"
+              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-500 transition-colors"
             >
               Volver al Inicio
             </button>

@@ -332,7 +332,7 @@ export default function MainBannerCarousel({
               {(slide.title || slide.subtitle) && (
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-white p-4 sm:p-8">
                   {slide.title && (
-                    <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center drop-shadow-2xl mb-2 sm:mb-4 animate-fade-in">
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center drop-shadow-lg mb-2 sm:mb-4 animate-fade-in">
                       {slide.title}
                     </h2>
                   )}
@@ -341,7 +341,7 @@ export default function MainBannerCarousel({
                       {slide.subtitle}
                     </p>
                   )}
-                  <button className="mt-4 sm:mt-6 bg-slate-900/80 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-fade-in">
+                  <button className="mt-4 sm:mt-6 bg-slate-900/80 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold hover:scale-110 hover:shadow-lg transition-all duration-300 animate-fade-in">
                     Ver Más
                   </button>
                 </div>

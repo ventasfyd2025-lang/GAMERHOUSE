@@ -104,7 +104,7 @@ export default function OfferPopup({
   return (
     <div className={`fixed z-[100] ${positionClass}`} style={containerStyle}>
       <div className="relative w-full" style={{ paddingBottom: `${paddingPercent}%` }}>
-        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink" style={bgStyle}>
+        <div className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary to-pink" style={bgStyle}>
           {mediaUrl && !isVideo && (
             <div className="absolute inset-0 bg-black/30"></div>
           )}
@@ -138,7 +138,7 @@ export default function OfferPopup({
             <p className="text-sm mb-4 opacity-90">{description}</p>
             <button
               onClick={handleButtonClick}
-              className="bg-slate-900/80 text-yellow-300500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-red-600/20 transition-all"
+              className="bg-slate-900/80 text-yellow-400 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-red-600/20 transition-all"
             >
               {buttonText}
             </button>

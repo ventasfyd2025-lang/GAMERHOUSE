@@ -214,7 +214,7 @@ export default function HomeClient() {
           {!mainBannerConfig || !mainBannerConfig.active || !mainBannerConfig.slides?.length ? (
             <div className="relative w-full h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] bg-gradient-to-br from-primary via-orange-400 to-primary-hover flex items-center justify-center">
               <div className="text-white text-center px-3 sm:px-6 lg:px-8">
-                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 sm:mb-2 md:mb-4 drop-shadow-2xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 sm:mb-2 md:mb-4 drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                   Importadora F&D
                 </h1>
                 <p className="text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl font-medium drop-shadow-xl shadow-red-600/30" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7)' }}>
@@ -248,7 +248,7 @@ export default function HomeClient() {
                 
                 {/* Promoción grande - Electrónicos */}
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
-                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/20 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[350px]">
                       <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 h-full w-full overflow-hidden">
                         <img
@@ -385,7 +385,7 @@ export default function HomeClient() {
       <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-slate-800 via-white to-slate-800">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header - Modern Admin Style */}
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 mb-8">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
@@ -491,7 +491,7 @@ export default function HomeClient() {
               )}
             </>
           ) : (
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300100 text-center">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300 text-center">
               <div className="text-yellow-300400 text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-white mb-2">
                 No se encontraron productos

@@ -244,7 +244,7 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden hover:shadow-2xl transition-all">
+                <div key={order.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden hover:shadow-lg transition-all">
                   {/* Order Header */}
                   <div className="bg-gradient-to-r from-slate-800 to-slate-800 px-6 py-4 border-b border-slate-700">
                     <div className="flex items-center justify-between">

@@ -203,7 +203,7 @@ const BannerCarousel = memo(({
                         {banner.ctaLink ? (
                           <Link
                             href={banner.ctaLink}
-                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-yellow-400 text-white font-semibold shadow-lg shadow-red-600/20 hover:bg-yellow-400-hover transition-colors"
+                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-yellow-400 text-white font-semibold shadow-lg shadow-red-600/20 hover:bg-yellow-500 transition-colors"
                             aria-label={banner.ctaText || banner.title || `Banner ${index + 1}`}
                             tabIndex={isActive ? 0 : -1}
                           >

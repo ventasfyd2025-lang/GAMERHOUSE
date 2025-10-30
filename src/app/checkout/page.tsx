@@ -746,7 +746,7 @@ function CheckoutContent() {
                             type="button"
                             onClick={handleMercadoPagoCheckout}
                             disabled={isProcessing || mpLoading}
-                            className="w-full py-3 px-6 bg-yellow-400 hover:bg-yellow-400-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full py-3 px-6 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             {isProcessing || mpLoading ? 'Procesando...' : 'Continuar con MercadoPago'}
                           </button>
@@ -849,7 +849,7 @@ function CheckoutContent() {
                         <button
                           type="submit"
                           disabled={isProcessing || stockLoading}
-                          className="flex-1 py-3 px-6 bg-yellow-400 hover:bg-yellow-400-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="flex-1 py-3 px-6 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {isProcessing ? 'Procesando...' : stockLoading ? 'Verificando stock...' : 'Confirmar pedido'}
                         </button>

@@ -114,7 +114,7 @@ export default function SalesReportsComponent() {
             <button
               onClick={generatePDF}
               disabled={!monthlyReport}
-              className="bg-slate-900/80 text-yellow-300600 px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-red-600/20 transition-all"
+              className="bg-slate-900/80 text-yellow-400 px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg shadow-red-600/20 transition-all"
             >
               <DocumentArrowDownIcon className="h-5 w-5 mr-2" />
               Exportar PDF
@@ -193,7 +193,7 @@ export default function SalesReportsComponent() {
           <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 p-6 border-l-4 border-yellow-300500">
             <div className="flex items-center">
               <div className="p-3 rounded-full bg-slate-800">
-                <CalendarIcon className="h-8 w-8 text-yellow-300600" />
+                <CalendarIcon className="h-8 w-8 text-yellow-400" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-yellow-300/80">Ingresos del Mes</p>
@@ -259,7 +259,7 @@ export default function SalesReportsComponent() {
                       <span className={`text-lg font-bold mr-2 ${
                         index === 0 ? 'text-yellow-600' :
                         index === 1 ? 'text-yellow-300/80' :
-                        index === 2 ? 'text-yellow-300600' :
+                        index === 2 ? 'text-yellow-400' :
                         'text-red-600'
                       }`}>
                         #{index + 1}

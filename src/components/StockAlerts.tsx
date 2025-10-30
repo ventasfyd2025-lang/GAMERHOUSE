@@ -36,7 +36,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return <NoSymbolIcon className="h-5 w-5 text-pink" />;
       case 'critical':
-        return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-300600" />;
+        return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-400" />;
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:

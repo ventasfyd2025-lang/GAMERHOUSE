@@ -207,7 +207,7 @@ const handleMobileCategoryLinkClick = (
 
   return (
     <>
-      <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-xl shadow-2xl border-b border-yellow-300/30">
+      <header id="main-header" className="fixed inset-x-0 top-0 z-[100] backdrop-blur-xl shadow-lg border-b border-yellow-300/30">
         <div className="relative bg-gradient-to-br from-dark/95 via-dark/90 to-dark/95">
           {/* Top Banner - Gaming Theme */}
           <div className="text-[9px] sm:text-[10px] lg:text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-yellow-300/80 via-secondary/70 to-accent/60">
@@ -302,7 +302,7 @@ const handleMobileCategoryLinkClick = (
                           {categoriesLoadTimeout && (
                             <button
                               onClick={() => window.location.reload()}
-                              className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400-hover transition-colors"
+                              className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500 transition-colors"
                             >
                               Reintentar
                             </button>
@@ -331,7 +331,7 @@ const handleMobileCategoryLinkClick = (
                                     <span className="text-lg">{category.icon || '📦'}</span>
                                     <span>{category.name}</span>
                                   </div>
-                                  <span className="text-yellow-300500 font-semibold">
+                                  <span className="text-yellow-400 font-semibold">
                                     {expandedCategories.has(category.id) ? '→' : '+'}
                                   </span>
                                 </button>
@@ -346,7 +346,7 @@ const handleMobileCategoryLinkClick = (
                                       <span className="text-lg">{category.icon || '📦'}</span>
                                       <span>{category.name}</span>
                                     </div>
-                                    <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                    <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                   </div>
                                 </Link>
                               )}
@@ -367,7 +367,7 @@ const handleMobileCategoryLinkClick = (
                                           <span>•</span>
                                           <span>{subcategoria.nombre}</span>
                                         </div>
-                                        <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                        <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                       </div>
                                     </Link>
                                   ))}
@@ -390,7 +390,7 @@ const handleMobileCategoryLinkClick = (
                                   <span className="text-lg">🔥</span>
                                   <span>Ofertas</span>
                                 </div>
-                                <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                               </div>
                             </Link>
 
@@ -404,7 +404,7 @@ const handleMobileCategoryLinkClick = (
                                   <span className="text-lg">✨</span>
                                   <span>Nuevos</span>
                                 </div>
-                                <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                               </div>
                             </Link>
                           </div>
@@ -493,7 +493,7 @@ const handleMobileCategoryLinkClick = (
 
                 {/* User Dropdown */}
                 {isUserMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-64 bg-slate-900/80 shadow-2xl rounded-lg z-50 border border-yellow-300/30">
+                  <div className="absolute top-full right-0 mt-2 w-64 bg-slate-900/80 shadow-lg rounded-lg z-50 border border-yellow-300/30">
                     {currentUser ? (
                       <div>
                         {/* User Info */}
@@ -560,14 +560,14 @@ const handleMobileCategoryLinkClick = (
                           <Link
                             href="/login"
                             onClick={() => setIsUserMenuOpen(false)}
-                            className="block w-full text-center px-4 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-400-hover transition-colors"
+                            className="block w-full text-center px-4 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-500 transition-colors"
                           >
                             Iniciar Sesión
                           </Link>
                           <Link
                             href="/registro"
                             onClick={() => setIsUserMenuOpen(false)}
-                            className="block w-full text-center px-4 py-2 border border-yellow-300500 text-yellow-300500 rounded-md hover:bg-slate-800 transition-colors"
+                            className="block w-full text-center px-4 py-2 border border-yellow-300500 text-yellow-400 rounded-md hover:bg-slate-800 transition-colors"
                           >
                             Registrarse
                           </Link>
@@ -616,11 +616,11 @@ const handleMobileCategoryLinkClick = (
 
           {/* Mobile Menu - Categorías reales */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden absolute left-0 right-0 top-full bg-slate-900/80 border-b shadow-2xl z-[9999]">
+            <div className="lg:hidden absolute left-0 right-0 top-full bg-slate-900/80 border-b shadow-lg z-[9999]">
               <div className="mx-auto max-w-full px-6 py-6 max-h-[calc(100vh-180px)] overflow-y-auto">
               <div className="space-y-3">
                 <div className="text-lg font-bold text-white mb-4 px-2 flex items-center gap-2">
-                  <span className="text-yellow-300500">🏷️</span>
+                  <span className="text-yellow-400">🏷️</span>
                   Categorías ({categories.length} encontradas)
                 </div>
 
@@ -633,7 +633,7 @@ const handleMobileCategoryLinkClick = (
                     {categoriesLoadTimeout && (
                       <button
                         onClick={() => window.location.reload()}
-                        className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400-hover transition-colors"
+                        className="mt-4 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500 transition-colors"
                       >
                         Reintentar
                       </button>
@@ -696,7 +696,7 @@ const handleMobileCategoryLinkClick = (
                               <span className="text-lg">{category.icon || '📦'}</span>
                               <span>{category.name}</span>
                             </div>
-                            <span className="text-yellow-300500 font-semibold">
+                            <span className="text-yellow-400 font-semibold">
                               {expandedCategories.has(category.id) ? '→' : '+'}
                             </span>
                           </a>
@@ -711,7 +711,7 @@ const handleMobileCategoryLinkClick = (
                                 <span className="text-lg">{category.icon || '📦'}</span>
                                 <span>{category.name}</span>
                               </div>
-                              <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                              <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                             </div>
                           </Link>
                         )}
@@ -754,7 +754,7 @@ const handleMobileCategoryLinkClick = (
                                         <span>•</span>
                                         <span>{subcategoria.nombre}</span>
                                       </div>
-                                      <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                      <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                                     </div>
                                     </a>
                                   );
@@ -778,7 +778,7 @@ const handleMobileCategoryLinkClick = (
                             <span className="text-lg">🔥</span>
                             <span>Ofertas</span>
                           </div>
-                          <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                          <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>
 
@@ -792,7 +792,7 @@ const handleMobileCategoryLinkClick = (
                             <span className="text-lg">✨</span>
                             <span>Nuevos</span>
                           </div>
-                          <span className="text-yellow-300500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                          <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>
                     </div>

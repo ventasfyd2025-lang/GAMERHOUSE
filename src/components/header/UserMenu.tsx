@@ -24,22 +24,22 @@ const UserMenu = memo(function UserMenu({
   return (
     <div
       ref={userMenuRef}
-      className="absolute right-0 mt-2 w-52 bg-slate-900/80 rounded-xl shadow-2xl py-2 z-50 border border-yellow-300100"
+      className="absolute right-0 mt-2 w-52 bg-slate-900/80 rounded-xl shadow-lg py-2 z-50 border border-yellow-300"
     >
       {isRegistered && (
         <>
           <Link
             href="/perfil"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-400 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-yellow-400" strokeWidth={2.5} />
             Mi Perfil
           </Link>
           <Link
             href="/mis-pedidos"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-400 transition-colors"
           >
-            <ShoppingBag className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
+            <ShoppingBag className="w-5 h-5 mr-3 text-yellow-400" strokeWidth={2.5} />
             Mis Pedidos
           </Link>
         </>
@@ -49,14 +49,14 @@ const UserMenu = memo(function UserMenu({
         <>
           <Link
             href="/login"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-400 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-yellow-400" strokeWidth={2.5} />
             Iniciar Sesión
           </Link>
           <Link
             href="/registro"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-400 transition-colors"
           >
             Registrarse
           </Link>

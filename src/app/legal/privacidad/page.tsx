@@ -96,7 +96,7 @@ export default function PrivacidadPage() {
             <div className="mt-8 pt-6 border-t">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400-hover transition-colors"
+                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors"
               >
                 Volver al Inicio
               </Link>

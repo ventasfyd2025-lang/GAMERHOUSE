@@ -272,7 +272,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
             // Botón de chat interno para pedidos
             <button
               onClick={handleChatButtonClick}
-              className="bg-yellow-400-hover hover:bg-yellow-400-hover text-white p-4 rounded-full shadow-xl shadow-red-600/30 transition-all duration-300 hover:scale-110 relative group"
+              className="bg-yellow-500 hover:bg-yellow-500 text-white p-4 rounded-full shadow-xl shadow-red-600/30 transition-all duration-300 hover:scale-110 relative group"
             >
               <ChatBubbleLeftRightIcon className="h-6 w-6" />
               {unreadCount > 0 && (
@@ -290,7 +290,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
 
       {/* Chat Window */}
       {isOpen && !shouldRedirectToWhatsApp && (
-        <div className={`bg-slate-900/80 rounded-lg shadow-2xl w-80 ${isMinimized ? 'h-14' : 'h-[500px]'} flex flex-col border border-yellow-300/30 transition-all duration-300`}>
+        <div className={`bg-slate-900/80 rounded-lg shadow-lg w-80 ${isMinimized ? 'h-14' : 'h-[500px]'} flex flex-col border border-yellow-300/30 transition-all duration-300`}>
           {/* Header */}
           <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -495,7 +495,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                   <button
                     onClick={sendMessage}
                     disabled={!newMessage.trim() || loading}
-                    className="bg-yellow-400-hover hover:bg-yellow-400-hover disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-yellow-500 hover:bg-yellow-500 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
                   >
                     {loading ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />

@@ -136,7 +136,7 @@ export default function ContactoPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400-hover transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
+              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
             >
               Volver al Inicio
             </Link>

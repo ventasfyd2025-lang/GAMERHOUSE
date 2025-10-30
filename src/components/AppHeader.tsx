@@ -21,7 +21,7 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-950 via-gray-900 to-black border-b border-yellow-300/30 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 border-b border-yellow-300/30 transition-all duration-300">
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

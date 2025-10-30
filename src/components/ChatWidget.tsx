@@ -159,7 +159,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-yellow-400 hover:bg-yellow-400-hover text-white p-4 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 relative"
+          className="bg-yellow-400 hover:bg-yellow-500 text-white p-4 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 relative"
         >
           <ChatBubbleLeftRightIcon className="h-6 w-6" />
           {unreadCount > 0 && (
@@ -172,7 +172,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="bg-slate-900/80 rounded-lg shadow-2xl w-80 h-96 flex flex-col border border-yellow-300/30">
+        <div className="bg-slate-900/80 rounded-lg shadow-lg w-80 h-96 flex flex-col border border-yellow-300/30">
           {/* Header */}
           <div className="bg-yellow-400 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -215,8 +215,8 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                   >
                     {message.isAdmin && (
                       <div className="flex items-center space-x-1 mb-1">
-                        <ShieldCheckIcon className="h-3 w-3 text-yellow-300600" />
-                        <span className="text-xs font-medium text-yellow-300600">Soporte</span>
+                        <ShieldCheckIcon className="h-3 w-3 text-yellow-400" />
+                        <span className="text-xs font-medium text-yellow-400">Soporte</span>
                       </div>
                     )}
                     <p className="whitespace-pre-wrap">{message.message}</p>
@@ -250,7 +250,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
               <button
                 onClick={sendMessage}
                 disabled={!newMessage.trim() || loading}
-                className="bg-yellow-400 hover:bg-yellow-400-hover disabled:bg-gray-300 text-white p-2 rounded-lg transition-colors disabled:cursor-not-allowed"
+                className="bg-yellow-400 hover:bg-yellow-500 disabled:bg-gray-300 text-white p-2 rounded-lg transition-colors disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />

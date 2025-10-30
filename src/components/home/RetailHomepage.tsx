@@ -76,7 +76,7 @@ export default function RetailHomepage() {
 
     return (
       <Link href={`/producto/${product.id}`} className="block h-full group">
-      <div className="relative h-full overflow-hidden rounded-xl border border-yellow-300/50 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-red-600/70 transition-all duration-500 hover:shadow-2xl hover:shadow-red-600/30 cursor-pointer">
+      <div className="relative h-full overflow-hidden rounded-xl border border-yellow-300/50 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm hover:border-red-600/70 transition-all duration-500 hover:shadow-lg hover:shadow-red-600/30 cursor-pointer">
         {/* Image Container */}
         <div className="relative h-48 sm:h-60 lg:h-72 w-full overflow-hidden bg-gradient-to-br from-slate-700 to-slate-800">
           <Image
@@ -133,7 +133,7 @@ export default function RetailHomepage() {
             className="w-full mt-4 py-2 px-3 sm:py-3 sm:px-4 rounded-lg font-bold text-white text-xs sm:text-sm
               bg-gradient-to-r from-red-600 to-red-700
               hover:from-red-700 hover:to-red-800
-              shadow-lg hover:shadow-2xl hover:shadow-red-600/50
+              shadow-lg hover:shadow-lg hover:shadow-red-600/30
               transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5
               flex items-center justify-center gap-2"
           >
@@ -148,7 +148,7 @@ export default function RetailHomepage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-800 via-gray-700 to-gray-900 text-white">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
@@ -178,7 +178,7 @@ export default function RetailHomepage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setSelectedCategory('all')}
-                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 text-white"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-lg font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-lg hover:shadow-lg hover:shadow-red-600/30 transform hover:scale-105 text-white"
                   >
                     Ver Catálogo
                   </button>
@@ -209,7 +209,7 @@ export default function RetailHomepage() {
               onClick={() => setSelectedCategory('all')}
               className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/50'
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/30'
                   : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-yellow-300/50 hover:bg-slate-700/50'
               }`}
             >
@@ -223,7 +223,7 @@ export default function RetailHomepage() {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-6 py-3 rounded-lg font-bold transition-all duration-300 whitespace-nowrap backdrop-blur-sm border ${
                       selectedCategory === cat.id
-                        ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/50'
+                        ? 'bg-gradient-to-r from-red-600 to-red-700 text-black border-yellow-300 shadow-lg shadow-red-600/30'
                         : 'bg-slate-800/50 border-slate-700 text-gray-200 hover:border-yellow-300/50 hover:bg-slate-700/50'
                     }`}
                   >
@@ -303,7 +303,7 @@ export default function RetailHomepage() {
             </p>
             <Link
               href="/productos"
-              className="inline-block px-6 sm:px-10 py-3 sm:py-4 bg-red-600 hover:bg-red-700-400 via-orange-500 to-yellow-500 hover:from-yellow-500 hover:via-orange-600 hover:to-amber-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg text-black transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 hover:-translate-y-1"
+              className="inline-block px-6 sm:px-10 py-3 sm:py-4 bg-red-600 hover:bg-red-700-400 via-orange-500 to-yellow-500 hover:from-yellow-500 hover:via-orange-600 hover:to-amber-600 rounded-lg font-bold text-sm sm:text-base lg:text-lg text-black transition-all duration-300 shadow-lg hover:shadow-lg hover:shadow-red-600/30 transform hover:scale-105 hover:-translate-y-1"
             >
               Explorar Catálogo Completo →
             </Link>

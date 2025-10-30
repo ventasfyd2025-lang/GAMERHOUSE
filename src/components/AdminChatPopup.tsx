@@ -229,7 +229,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
       
       {/* Modal Content */}
       <div 
-        className={`relative bg-slate-900/80 rounded-lg shadow-2xl ${isMinimized ? 'w-80 h-16' : 'w-full max-w-6xl h-full max-h-[90vh]'} flex flex-col transition-all duration-300 mx-4`}
+        className={`relative bg-slate-900/80 rounded-lg shadow-lg ${isMinimized ? 'w-80 h-16' : 'w-full max-w-6xl h-full max-h-[90vh]'} flex flex-col transition-all duration-300 mx-4`}
         onClick={(e) => e.stopPropagation()}
         style={{ backgroundColor: '#ffffff' }}
       >

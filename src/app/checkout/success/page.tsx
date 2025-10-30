@@ -326,7 +326,7 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400-hover transition-colors shadow-md hover:shadow-lg shadow-red-600/20 relative"
+                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors shadow-md hover:shadow-lg shadow-red-600/20 relative"
               >
                 📦 Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (

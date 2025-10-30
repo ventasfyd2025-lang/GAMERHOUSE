@@ -115,7 +115,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
 
             {/* Stock warning */}
             {product.stock && product.stock <= 5 && product.stock > 0 && (
-              <p className="text-xs text-yellow-300600 font-medium">
+              <p className="text-xs text-yellow-400 font-medium">
                 Quedan {product.stock} disponibles
               </p>
             )}

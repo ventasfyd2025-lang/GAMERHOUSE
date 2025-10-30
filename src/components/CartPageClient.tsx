@@ -29,7 +29,7 @@ export default function CartPageClient() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300100 text-center">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300 text-center">
             <ShoppingBag className="h-24 w-24 text-yellow-300400 mx-auto mb-6" strokeWidth={2} />
             <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
@@ -54,7 +54,7 @@ export default function CartPageClient() {
     <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 mb-8">
+        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">🛒</span>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-yellow-300100 hover:shadow-xl shadow-red-600/30 transition-all">
+              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-yellow-300 hover:shadow-xl shadow-red-600/30 transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -148,7 +148,7 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 sticky top-8">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
               <h2 className="text-xl font-bold text-white">
@@ -161,10 +161,10 @@ export default function CartPageClient() {
                 <span className="text-yellow-300/80 font-medium">Subtotal</span>
                 <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
               </div>
-              <div className="border-t border-yellow-300100 pt-4">
+              <div className="border-t border-yellow-300 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-white">Total</span>
-                  <span className="text-2xl font-bold text-yellow-300600">{formatPrice(getTotalPrice())}</span>
+                  <span className="text-2xl font-bold text-yellow-400">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function CartPageClient() {
 
             <Link
               href="/"
-              className="block w-full mt-3 text-center text-yellow-300600 hover:text-yellow-300700 font-medium transition-colors py-2"
+              className="block w-full mt-3 text-center text-yellow-400 hover:text-yellow-300700 font-medium transition-colors py-2"
             >
               ← Seguir comprando
             </Link>

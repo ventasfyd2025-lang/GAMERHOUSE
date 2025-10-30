@@ -2427,7 +2427,7 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">📦</div>
                   <div>
@@ -2437,7 +2437,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">🛒</div>
                   <div>
@@ -2447,7 +2447,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">💰</div>
                   <div>
@@ -2459,7 +2459,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">⏳</div>
                   <div>
@@ -2611,7 +2611,7 @@ export default function AdminPage() {
                               </span>
                             )}
                             {critical > 0 && (
-                              <span className="bg-yellow-400-hover px-2 py-1 rounded-full text-xs font-bold">
+                              <span className="bg-yellow-500 px-2 py-1 rounded-full text-xs font-bold">
                                 {critical} Crítico{critical !== 1 ? 's' : ''}
                               </span>
                             )}
@@ -3231,7 +3231,7 @@ export default function AdminPage() {
                   }}
                 >
                   <div
-                    className="bg-slate-900/80 rounded-xl border-2 border-amber-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-slate-900/80 rounded-xl border-2 border-amber-300 shadow-lg max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-red-600 hover:bg-secondary-500 to-yellow-500 text-white p-4 flex justify-between items-center">
@@ -4625,7 +4625,7 @@ export default function AdminPage() {
                       style={popupPreviewStyle}
                     >
                       <div className="relative w-full" style={{ paddingBottom: `${(popupRatio * 100).toFixed(2)}%` }}>
-                        <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
+                        <div className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
                             className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-900/90 hover:bg-slate-900/80 transition-all cursor-default shadow-lg shadow-red-600/20"
@@ -6397,7 +6397,7 @@ export default function AdminPage() {
         
         {showProductModal && (
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
-            <div className="bg-slate-900/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-yellow-300/30 flex flex-col mx-auto">
+            <div className="bg-slate-900/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-lg border border-yellow-300/30 flex flex-col mx-auto">
               {/* Compact Header */}
               <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white bg-yellow-400">
                 <div className="flex items-center justify-between">
@@ -8052,7 +8052,7 @@ export default function AdminPage() {
       
       {showSectionModal && (
         <div className="fixed inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-yellow-300/30">
+          <div className="bg-slate-900/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-lg border border-yellow-300/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <div>

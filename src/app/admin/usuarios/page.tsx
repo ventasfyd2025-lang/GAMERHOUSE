@@ -54,7 +54,7 @@ export default function UsuariosAdminPage() {
             </p>
             <button
               onClick={() => router.push('/admin')}
-              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-400-hover transition-colors"
+              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-500 transition-colors"
             >
               Volver al Panel Admin
             </button>
