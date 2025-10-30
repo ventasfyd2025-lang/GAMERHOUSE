@@ -144,10 +144,10 @@ export default function UsuariosAdminPage() {
           </div>
 
           {/* Administradores y Vendedores */}
-          <div className="bg-dark/80 rounded-lg shadow overflow-hidden mb-8">
-            <div className="px-6 py-4 bg-dark-light border-b border-dark-light">
-              <h3 className="text-lg font-medium text-red-900">👑 Administradores y Vendedores</h3>
-              <p className="text-sm text-red-700">Personal autorizado con permisos especiales</p>
+          <div className="admin-card mb-8">
+            <div className="px-6 py-4 bg-dark-light border-b border-primary/30">
+              <h3 className="text-lg font-medium text-primary">👑 Administradores y Vendedores</h3>
+              <p className="text-sm text-primary/60">Personal autorizado con permisos especiales</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -183,7 +183,7 @@ export default function UsuariosAdminPage() {
                           <select
                             defaultValue={user.role}
                             onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                            className="text-sm border border-primary/40 rounded px-2 py-1"
+                            className="admin-input text-sm py-1 px-2 max-w-xs"
                           >
                             <option value="cliente">Cliente</option>
                             <option value="vendedor">Vendedor</option>
@@ -205,11 +205,11 @@ export default function UsuariosAdminPage() {
                           }
                         })() : 'N/A'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-lg font-bold space-x-2">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                         {editingUser === user.uid ? (
                           <button
                             onClick={() => setEditingUser(null)}
-                            className="text-primary/80 hover:text-white"
+                            className="admin-button-secondary text-xs"
                           >
                             Cancelar
                           </button>
@@ -217,14 +217,14 @@ export default function UsuariosAdminPage() {
                           <>
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="text-lg font-bold text-red-600 hover:text-red-800"
+                              className="admin-button text-xs"
                             >
-                              Editar Rol
+                              Editar
                             </button>
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-pink hover:text-red-900"
+                                className="admin-button-secondary text-xs bg-pink/20 text-pink border-pink/30 hover:bg-pink/30"
                               >
                                 Eliminar
                               </button>
@@ -240,10 +240,10 @@ export default function UsuariosAdminPage() {
           </div>
 
           {/* Clientes */}
-          <div className="bg-dark/80 rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 bg-green-50 border-b border-green-200">
-              <h3 className="text-lg font-medium text-green-900">👥 Clientes</h3>
-              <p className="text-sm text-green-700">Usuarios registrados de la tienda</p>
+          <div className="admin-card">
+            <div className="px-6 py-4 bg-dark-light border-b border-primary/30">
+              <h3 className="text-lg font-medium text-primary">👥 Clientes</h3>
+              <p className="text-sm text-primary/60">Usuarios registrados de la tienda</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -301,11 +301,11 @@ export default function UsuariosAdminPage() {
                           }
                         })() : 'N/A'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-lg font-bold space-x-2">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                         {editingUser === user.uid ? (
                           <button
                             onClick={() => setEditingUser(null)}
-                            className="text-primary/80 hover:text-white"
+                            className="admin-button-secondary text-xs"
                           >
                             Cancelar
                           </button>
@@ -313,14 +313,14 @@ export default function UsuariosAdminPage() {
                           <>
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="text-lg font-bold text-red-600 hover:text-red-800"
+                              className="admin-button text-xs"
                             >
-                              Editar Rol
+                              Editar
                             </button>
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="text-lg font-bold text-pink hover:text-red-900"
+                                className="admin-button-secondary text-xs bg-pink/20 text-pink border-pink/30 hover:bg-pink/30"
                               >
                                 Eliminar
                               </button>

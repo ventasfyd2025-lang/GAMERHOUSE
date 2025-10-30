@@ -35,6 +35,11 @@ export default {
         'bg-950': 'var(--color-bg-950)',
         'bg-900': 'var(--color-bg-900)',
 
+        /* Alias cortos para admin pages */
+        'dark': 'var(--color-bg-dark-900)',         /* #1a1a1a - Negro muy oscuro */
+        'dark-light': 'var(--color-bg-dark-800)',   /* #2a2a2a - Negro oscuro */
+        'pink': 'var(--color-secondary)',           /* #E60012 - Rojo Pikachu */
+
         /* Texto y Bordes */
         'text-primary': 'var(--color-text-primary)',
         'text-secondary': 'var(--color-text-secondary)',
