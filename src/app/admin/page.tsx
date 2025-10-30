@@ -2298,12 +2298,9 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
-              className="bg-primary"
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+              >
+<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
               Cerrar Sesión
@@ -2569,12 +2566,9 @@ export default function AdminPage() {
               <h2 className="text-2xl font-bold text-white">Gestión de Productos</h2>
               <Link
                 href="/admin/productos/nuevo"
-                className="text-white px-4 py-2 rounded-md transition-colors inline-block"
-                className="bg-primary"
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-              >
-                <span className="text-lg mr-2">➕</span>
+                className="text-white px-4 py-2 rounded-md transition-colors inline-block bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                >
+<span className="text-lg mr-2">➕</span>
                 Agregar Producto
               </Link>
             </div>
@@ -3710,9 +3704,8 @@ export default function AdminPage() {
                     className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 disabled:opacity-50 disabled:transform-none"
                     style={{ backgroundColor: selectedOrders.length > 0 ? '#dc2626' : '#9ca3af' }}
                     onMouseEnter={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#b91c1c')}
-                    onMouseLeave={(e) => selectedOrders.length > 0 && !deletingOrders && (e.currentTarget.style.backgroundColor = '#dc2626')}
-                  >
-                    {deletingOrders ? (
+                    >
+{deletingOrders ? (
                       <>
                         <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -4766,9 +4759,7 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={handleSaveLayoutPatterns}
-                        className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60"
-                        className="bg-primary"
-                        onMouseEnter={(e) => {
+                        className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60 bg-primary" onMouseEnter={(e) => {
                           if (!e.currentTarget.hasAttribute('disabled')) {
                             e.currentTarget.style.backgroundColor = '#D13C1A';
                           }
@@ -6007,12 +5998,9 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingLogo}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  className="bg-primary"
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                >
-                  {updatingLogo ? 'Actualizando...' : 'Actualizar Logo'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  >
+{updatingLogo ? 'Actualizando...' : 'Actualizar Logo'}
                 </button>
               </form>
               
@@ -6860,9 +6848,8 @@ export default function AdminPage() {
                       backgroundColor: 'var(--primary)'
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                  >
-                    {uploadingProduct ? (
+                    >
+{uploadingProduct ? (
                       <span className="flex items-center justify-center gap-2">
                         <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -7853,12 +7840,9 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingFooter}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  className="bg-primary"
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                >
-                  {updatingFooter ? 'Actualizando...' : 'Actualizar Información'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  >
+{updatingFooter ? 'Actualizando...' : 'Actualizar Información'}
                 </button>
               </form>
               
@@ -8009,12 +7993,9 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBank}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  className="bg-primary"
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                >
-                  {updatingBank ? 'Actualizando...' : 'Actualizar Datos Bancarios'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  >
+{updatingBank ? 'Actualizando...' : 'Actualizar Datos Bancarios'}
                 </button>
               </form>
 
@@ -8299,12 +8280,9 @@ export default function AdminPage() {
                   <button
                     type="submit"
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    className="bg-primary"
-                    onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                  >
-                    {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
+                    className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-primary" onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
+                    >
+{sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
                   </button>
                 </div>
               </form>
@@ -8538,12 +8516,9 @@ export default function AdminPage() {
               <div className="flex justify-end pt-6">
                 <button
                   onClick={() => setShowProductSelector(false)}
-                  className="text-white font-medium py-2 px-6 rounded-md transition-colors"
-                  className="bg-primary"
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
-                >
-                  Listo
+                  className="text-white font-medium py-2 px-6 rounded-md transition-colors bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  >
+Listo
                 </button>
               </div>
             </div>

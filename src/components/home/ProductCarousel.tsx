@@ -316,8 +316,7 @@ const ProductCarousel = memo(({
               href={viewAllLink}
               className="px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 text-sm"
               style={{ backgroundColor: 'var(--primary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+              
             >
               {t('homepage.viewAll')} →
             </Link>

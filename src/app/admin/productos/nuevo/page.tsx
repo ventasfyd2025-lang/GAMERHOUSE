@@ -683,8 +683,7 @@ export default function NuevoProductoPage() {
                 style={{
                   backgroundColor: 'var(--primary)'
                 }}
-                onMouseEnter={(e) => !uploadingProduct && (e.currentTarget.style.backgroundColor = '#D13C1A')}
-                onMouseLeave={(e) => !uploadingProduct && (e.currentTarget.style.backgroundColor = 'var(--primary)')}
+                
               >
                 {uploadingProduct ? (
                   <span className="flex items-center justify-center gap-2">
