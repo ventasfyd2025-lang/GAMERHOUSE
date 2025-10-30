@@ -2196,7 +2196,7 @@ export default function AdminPage() {
   if (authLoading || userAuthLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderBottomColor: 'var(--primary)' }}></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2"></div>
       </div>
     );
   }
@@ -2265,10 +2265,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => router.push('/')}
-                className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors"
-                className="bg-primary"
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors bg-primary hover:bg-yellow-400"
               >
                 Volver al Inicio
               </button>
@@ -2292,10 +2289,10 @@ export default function AdminPage() {
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
                 <span className="text-white text-lg">🏪</span>
               </div>
-              <h1 className="text-xl font-bold" style={{ color: 'var(--primary)' }}>
+              <h1 className="text-xl font-bold">
                 F&D Admin Panel
               </h1>
             </div>
@@ -2318,7 +2315,7 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200" className="bg-primary">
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200 bg-primary">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -2380,7 +2377,7 @@ export default function AdminPage() {
             <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
@@ -2435,9 +2432,9 @@ export default function AdminPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">📦</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Productos</p>
+                    <p className="text-sm font-semibold">Total Productos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
                   </div>
                 </div>
@@ -2445,9 +2442,9 @@ export default function AdminPage() {
 
               <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">🛒</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Pedidos</p>
+                    <p className="text-sm font-semibold">Total Pedidos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
                   </div>
                 </div>
@@ -2455,9 +2452,9 @@ export default function AdminPage() {
 
               <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">💰</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Ingresos Totales</p>
+                    <p className="text-sm font-semibold">Ingresos Totales</p>
                     <p className="text-3xl font-bold text-white">
                       {formatPrice(stats.totalRevenue)}
                     </p>
@@ -2467,9 +2464,9 @@ export default function AdminPage() {
 
               <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">⏳</div>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Pedidos Pendientes</p>
+                    <p className="text-sm font-semibold">Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
                   </div>
                 </div>
@@ -2481,7 +2478,7 @@ export default function AdminPage() {
             <div className="bg-dark/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-darklight">
               <div className="p-6 border-b border-darklight">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
@@ -3003,7 +3000,7 @@ export default function AdminPage() {
                   </span>
                   <button
                     onClick={selectAllProducts}
-                    className="text-sm hover:opacity-80 transition-opacity" style={{ color: 'var(--primary)' }}
+                    className="text-sm hover:opacity-80 transition-opacity"
                   >
                     Seleccionar todo
                   </button>
@@ -3017,7 +3014,7 @@ export default function AdminPage() {
                 {selectedProducts.length > 0 && (
                   <button
                     onClick={deleteSelectedProducts}
-                    className="px-4 py-2 text-white rounded-md text-sm" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                    className="px-4 py-2 text-white rounded-md text-sm bg-primary"
                   >
                     <span className="text-lg mr-2">🗑️</span>
                     Eliminar seleccionados ({selectedProducts.length})
@@ -3129,13 +3126,13 @@ export default function AdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                           <button
                             onClick={() => editProduct(product)}
-                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--primary)' }}
+                            className="hover:opacity-80 transition-opacity"
                           >
                             Editar
                           </button>
                           <button
                             onClick={() => deleteProduct(product.id)}
-                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--primary)' }}
+                            className="hover:opacity-80 transition-opacity"
                           >
                             Eliminar
                           </button>
@@ -3691,7 +3688,7 @@ export default function AdminPage() {
             <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
@@ -3848,19 +3845,19 @@ export default function AdminPage() {
                           className="w-4 h-4 text-primary rounded focus:ring-primary"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--primary)' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--primary)' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--primary)' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                         Estado & Progreso
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--primary)' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                         Fecha
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--primary)' }}>
+                      <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
@@ -4189,7 +4186,7 @@ export default function AdminPage() {
                             setBannerForm({ ...bannerForm, images: newImages });
                             setBannerFiles([...newFiles, null]);
                           }}
-                          className="px-3 py-2 text-white rounded-md mt-6" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                          className="px-3 py-2 text-white rounded-md mt-6 bg-primary"
                         >
                           🗑️
                         </button>
@@ -4272,7 +4269,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBanner}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary"
                 >
                   {updatingBanner ? 'Actualizando...' : 'Actualizar Banner'}
                 </button>
@@ -6049,7 +6046,7 @@ export default function AdminPage() {
                     setCategoryForm({ id: '', name: '', active: true, subcategorias: [] });
                     setShowCategoryModal(true);
                   }}
-                  className="text-white px-4 py-2 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                  className="text-white px-4 py-2 rounded-md transition-colors bg-primary"
                 >
                   ➕ Agregar Categoría
                 </button>
@@ -6141,7 +6138,7 @@ export default function AdminPage() {
                               setShowSubcategoryModal(true);
                             }}
                             className="text-xs mt-1 hover:opacity-80 transition-opacity"
-                            style={{ color: 'var(--primary)' }}
+
                           >
                             + Agregar subcategoría
                           </button>
@@ -6159,7 +6156,7 @@ export default function AdminPage() {
                               setCategoryForm({ ...category, subcategorias: (category as any).subcategorias || [] });
                               setShowCategoryModal(true);
                             }}
-                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--primary)' }}
+                            className="hover:opacity-80 transition-opacity"
                           >
                             Editar
                           </button>
@@ -6172,7 +6169,7 @@ export default function AdminPage() {
                                 alert('Error al eliminar categoría');
                               }
                             }}
-                            className="hover:opacity-80 transition-opacity" style={{ color: 'var(--primary)' }}
+                            className="hover:opacity-80 transition-opacity"
                           >
                             Eliminar
                           </button>
@@ -6282,7 +6279,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-primary"
                     >
                       Guardar
                     </button>
@@ -6398,7 +6395,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-primary"
                     >
                       Guardar
                     </button>
@@ -6414,7 +6411,7 @@ export default function AdminPage() {
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
             <div className="bg-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-primary/30 flex flex-col mx-auto">
               {/* Compact Header */}
-              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" className="bg-primary">
+              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white bg-primary">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -6447,7 +6444,7 @@ export default function AdminPage() {
                   {/* Compact Basic Info Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Información Básica</h4>
@@ -6520,7 +6517,7 @@ export default function AdminPage() {
                   {/* Compact Stock Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">📊</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Control de Inventario</h4>
@@ -6564,7 +6561,7 @@ export default function AdminPage() {
                   {/* Compact Categories Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">📂</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Categorización</h4>
@@ -6669,7 +6666,7 @@ export default function AdminPage() {
                   {/* Compact Description Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Descripción</h4>
@@ -6686,7 +6683,7 @@ export default function AdminPage() {
                   {/* Compact Images Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">🖼️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Imágenes del Producto</h4>
@@ -6728,7 +6725,7 @@ export default function AdminPage() {
                       <label htmlFor="product-images" className="cursor-pointer block">
                         <div className="flex flex-col items-center">
                           <div className="text-2xl mb-1">📸</div>
-                          <p className="text-xs font-medium" style={{ color: 'var(--primary)' }}>Agregar imágenes</p>
+                          <p className="text-xs font-medium">Agregar imágenes</p>
                           <p className="text-xs" style={{ color: '#D13C1A' }}>Múltiples archivos</p>
                         </div>
                       </label>
@@ -6811,7 +6808,7 @@ export default function AdminPage() {
                   {/* Compact Tags Section */}
                   <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
                         <span className="text-white text-xs">🏷️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Etiquetas</h4>
@@ -6824,7 +6821,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, nuevo: e.target.checked })}
                           className="rounded w-4 h-4" style={{ color: 'var(--primary)', '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                         />
-                        <span className="text-xs font-semibold" style={{ color: 'var(--primary)' }}>✨ Nuevo</span>
+                        <span className="text-xs font-semibold">✨ Nuevo</span>
                       </label>
 
                       <label className="flex items-center gap-2 cursor-pointer bg-darklight px-3 py-2 rounded-lg hover:bg-darklight transition-colors">
@@ -6834,7 +6831,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, oferta: e.target.checked })}
                           className="rounded w-4 h-4" style={{ color: 'var(--primary)', '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                         />
-                        <span className="text-xs font-semibold" style={{ color: 'var(--primary)' }}>🔥 Oferta</span>
+                        <span className="text-xs font-semibold">🔥 Oferta</span>
                       </label>
                     </div>
                   </div>
