@@ -76,7 +76,7 @@ const statusConfig = {
   },
   confirmed: { 
     label: 'Confirmado', 
-    color: 'text-red-600 bg-yellow-50 border-orange-200', 
+    color: 'text-red-600 bg-yellow-50 border-warning', 
     icon: CheckCircleIcon,
     description: 'Pedido confirmado y será preparado'
   },
@@ -94,7 +94,7 @@ const statusConfig = {
   },
   delivered: { 
     label: 'Entregado', 
-    color: 'text-green-600 bg-green-50 border-green-200', 
+    color: 'text-success bg-success/10 border-success', 
     icon: CheckCircleIcon,
     description: 'Pedido entregado exitosamente'
   },
@@ -383,12 +383,12 @@ export default function AdminChatPage() {
                     <div className="w-10 h-10 bg-dark/80 rounded-full flex items-center justify-center">
                       <ShieldCheckIcon className="h-6 w-6 text-pink" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold">Chat con {order.customerName}</h3>
                     <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      <div className="w-2 h-2 bg-success rounded-full"></div>
                       <p className="text-sm opacity-90">Administrador conectado</p>
                     </div>
                   </div>

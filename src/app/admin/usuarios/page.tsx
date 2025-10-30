@@ -118,8 +118,8 @@ export default function UsuariosAdminPage() {
   const getRoleColor = (role: string) => {
     switch (role) {
       case 'admin': return 'bg-dark-light text-pink border-dark-light';
-      case 'vendedor': return 'bg-orange-100 text-red-700 border-orange-200';
-      case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
+      case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
+      case 'cliente': return 'bg-success/20 text-success border-success';
       default: return 'bg-dark-light text-white border-primary/30';
     }
   };

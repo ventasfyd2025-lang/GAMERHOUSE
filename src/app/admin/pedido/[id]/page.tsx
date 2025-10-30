@@ -227,12 +227,12 @@ export default function OrderDetailPage() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'pending_verification': return 'bg-orange-100 text-red-700';
-      case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'preparing': return 'bg-dark-light text-red-700';
-      case 'shipped': return 'bg-yellow-100 text-amber-800';
-      case 'delivered': return 'bg-green-100 text-green-800';
+      case 'pending': return 'bg-warning/20 text-yellow-800';
+      case 'pending_verification': return 'bg-warning/20 text-secondary';
+      case 'confirmed': return 'bg-success/20 text-success';
+      case 'preparing': return 'bg-dark-light text-secondary';
+      case 'shipped': return 'bg-warning/20 text-amber-800';
+      case 'delivered': return 'bg-success/20 text-success';
       case 'cancelled': return 'bg-dark-light text-pink';
       default: return 'bg-dark-light text-white';
     }
@@ -411,7 +411,7 @@ export default function OrderDetailPage() {
                   </div>
                   {order.paymentProof && (
                     <div>
-                      <p className="text-green-600 text-sm">✅ Comprobante recibido</p>
+                      <p className="text-success text-sm">✅ Comprobante recibido</p>
                     </div>
                   )}
                 </div>
@@ -431,12 +431,12 @@ export default function OrderDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-white"></div>
                   </div>
                   <div>
                     <h3 className="font-semibold">Admin GAMERHOUSE</h3>
                     <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      <div className="w-2 h-2 bg-success rounded-full"></div>
                       <p className="text-sm opacity-90">Conectado</p>
                     </div>
                   </div>

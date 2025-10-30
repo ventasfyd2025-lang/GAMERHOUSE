@@ -1014,14 +1014,14 @@ export default function AdminPage() {
   };
 
   const statusClassMap: Record<OrderStatus, string> = {
-    pending: 'bg-yellow-100 text-yellow-800',
-    pending_verification: 'bg-orange-100 text-red-700',
-    pending_payment: 'bg-yellow-100 text-amber-800',
-    confirmed: 'bg-green-100 text-green-800',
-    preparing: 'bg-dark-light text-red-700',
-    processing: 'bg-yellow-100 text-red-700',
-    shipped: 'bg-yellow-100 text-amber-800',
-    delivered: 'bg-green-100 text-green-800',
+    pending: 'bg-warning/20 text-yellow-800',
+    pending_verification: 'bg-warning/20 text-secondary',
+    pending_payment: 'bg-warning/20 text-amber-800',
+    confirmed: 'bg-success/20 text-success',
+    preparing: 'bg-dark-light text-secondary',
+    processing: 'bg-warning/20 text-secondary',
+    shipped: 'bg-warning/20 text-amber-800',
+    delivered: 'bg-success/20 text-success',
     completed: 'bg-emerald-100 text-emerald-800',
     cancelled: 'bg-dark-light text-pink'
   };
@@ -1194,8 +1194,8 @@ export default function AdminPage() {
   const getRoleColor = (role: string) => {
     switch (role) {
       case 'admin': return 'bg-dark-light text-pink border-dark-light';
-      case 'vendedor': return 'bg-orange-100 text-red-700 border-orange-200';
-      case 'cliente': return 'bg-green-100 text-green-800 border-green-200';
+      case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
+      case 'cliente': return 'bg-success/20 text-success border-success';
       default: return 'bg-dark-light text-white border-primary/30';
     }
   };
@@ -2615,7 +2615,7 @@ export default function AdminPage() {
                           </h3>
                           <div className="flex items-center space-x-3 text-sm">
                             {outOfStock > 0 && (
-                              <span className="bg-red-700 px-2 py-1 rounded-full text-xs font-bold">
+                              <span className="bg-secondary px-2 py-1 rounded-full text-xs font-bold">
                                 {outOfStock} Sin Stock
                               </span>
                             )}
@@ -2682,8 +2682,8 @@ export default function AdminPage() {
                                       isOutOfStock
                                         ? 'bg-dark-light text-pink'
                                         : isCritical
-                                          ? 'bg-dark-light text-red-700'
-                                          : 'bg-yellow-100 text-yellow-800'
+                                          ? 'bg-dark-light text-secondary'
+                                          : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
                                     </span>
@@ -2720,7 +2720,7 @@ export default function AdminPage() {
                                             updateProduct(product.id, { stock: parseInt(newStock) });
                                           }
                                         }}
-                                        className="bg-red-600 hover:bg-red-700 text-white text-xs px-2 py-1 rounded transition-colors"
+                                        className="bg-red-600 hover:bg-secondary text-white text-xs px-2 py-1 rounded transition-colors"
                                         title="Ajustar Stock"
                                       >
                                         📈
@@ -2768,20 +2768,20 @@ export default function AdminPage() {
 
 
             {/* Advanced Search and Filters Section */}
-            <div className="bg-red-600 hover:bg-red-700-50 to-yellow-50 border border-orange-200 rounded-xl p-6 shadow-lg shadow-red-600/20 mb-6">
+            <div className="bg-red-600 hover:bg-secondary-50 to-yellow-50 border border-warning rounded-xl p-6 shadow-lg shadow-red-600/20 mb-6">
               {/* Search Header */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <div className="relative mr-3">
                     <div className="h-6 w-6 text-red-600">🔍</div>
                   </div>
-                  <h3 className="text-lg font-bold text-red-700">
+                  <h3 className="text-lg font-bold text-secondary">
                     Buscar y Filtrar Productos
                   </h3>
                 </div>
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2"
+                  className="bg-red-600 hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2"
                 >
                   <span>⚙️</span>
                   <span>{showFilters ? 'Ocultar Filtros' : 'Filtros Avanzados'}</span>
@@ -2797,7 +2797,7 @@ export default function AdminPage() {
                       value={productSearch}
                       onChange={(e) => setProductSearch(e.target.value)}
                       placeholder="🔍 Buscar por nombre, descripción, SKU o categoría..."
-                      className="w-full pl-4 pr-12 py-3 border-2 border-orange-200 rounded-xl focus:border-red-600 focus:outline-none transition-all duration-200 text-sm"
+                      className="w-full pl-4 pr-12 py-3 border-2 border-warning rounded-xl focus:border-red-600 focus:outline-none transition-all duration-200 text-sm"
                     />
                     {productSearch && (
                       <button
@@ -2814,7 +2814,7 @@ export default function AdminPage() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-orange-200 rounded-xl focus:border-red-600 focus:outline-none transition-all duration-200 text-sm"
+                    className="w-full px-4 py-3 border-2 border-warning rounded-xl focus:border-red-600 focus:outline-none transition-all duration-200 text-sm"
                   >
                     <option value="all">📦 Todas las categorías</option>
                     {categories.map((category) => (
@@ -2828,8 +2828,8 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-orange-100">
-                  <h4 className="font-semibold text-red-700 flex items-center">
+                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-warning/30">
+                  <h4 className="font-semibold text-secondary flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
 
@@ -2964,23 +2964,23 @@ export default function AdminPage() {
               {/* Results Summary */}
               <div className="mt-4 flex items-center justify-between text-sm">
                 <div className="flex items-center space-x-4">
-                  <span className="bg-orange-100 text-red-700 px-3 py-1 rounded-full font-medium">
+                  <span className="bg-warning/20 text-secondary px-3 py-1 rounded-full font-medium">
                     📊 {getFilteredProducts().length} de {products.length} productos
                   </span>
                   {(productSearch || selectedCategory !== 'all' || showFilters) && (
                     <div className="flex items-center space-x-2">
                       {productSearch && (
-                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">
+                        <span className="bg-success/20 text-success px-2 py-1 rounded-full text-xs">
                           🔍 "{productSearch}"
                         </span>
                       )}
                       {selectedCategory !== 'all' && (
-                        <span className="bg-yellow-100 text-amber-800 px-2 py-1 rounded-full text-xs">
+                        <span className="bg-warning/20 text-amber-800 px-2 py-1 rounded-full text-xs">
                           📦 {categories.find(c => c.id === selectedCategory)?.name}
                         </span>
                       )}
                       {productFilters.tags.map(tag => (
-                        <span key={tag} className="bg-dark-light text-red-700 px-2 py-1 rounded-full text-xs">
+                        <span key={tag} className="bg-dark-light text-secondary px-2 py-1 rounded-full text-xs">
                           {tag === 'nuevo' ? '✨ Nuevo' : '🔥 Oferta'}
                         </span>
                       ))}
@@ -3099,7 +3099,7 @@ export default function AdminPage() {
                               </div>
                               <div className="flex space-x-1 mt-1">
                                 {product.nuevo && (
-                                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                                  <span className="bg-success/20 text-success text-xs px-2 py-1 rounded-full">
                                     Nuevo
                                   </span>
                                 )}
@@ -3117,7 +3117,7 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`text-sm font-medium ${
-                            product.stock > 10 ? 'text-green-600' :
+                            product.stock > 10 ? 'text-success' :
                             product.stock > 0 ? 'text-yellow-600' : 'text-pink'
                           }`}>
                             {product.stock}
@@ -3167,7 +3167,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="text-xs text-red-600 hover:text-red-700 underline"
+                      className="text-xs text-red-600 hover:text-secondary underline"
                     >
                       Ver todos los productos
                     </button>
@@ -3187,14 +3187,14 @@ export default function AdminPage() {
                 <button
                   onClick={loadUsers}
                   disabled={usersLoading}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md disabled:opacity-50"
+                  className="bg-red-600 hover:bg-secondary text-white px-4 py-2 rounded-md disabled:opacity-50"
                 >
                   {usersLoading ? 'Cargando...' : '🔄 Recargar Usuarios'}
                 </button>
               </div>
 
               {/* Buscador de usuarios */}
-              <div className="mb-6 bg-red-600 hover:bg-red-700-50 to-yellow-50 rounded-lg p-6 border border-orange-200">
+              <div className="mb-6 bg-red-600 hover:bg-secondary-50 to-yellow-50 rounded-lg p-6 border border-warning">
                 <h3 className="text-lg font-semibold text-white mb-4">🔍 Buscar Usuario por Correo</h3>
                 <div className="flex gap-3">
                   <input
@@ -3211,7 +3211,7 @@ export default function AdminPage() {
                   />
                   <button
                     onClick={() => searchUserByEmail(userSearchQuery)}
-                    className="bg-red-700 hover:bg-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                    className="bg-secondary hover:bg-warning text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                   >
                     Buscar
                   </button>
@@ -3243,7 +3243,7 @@ export default function AdminPage() {
                     className="bg-dark/80 rounded-xl border-2 border-amber-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="bg-red-600 hover:bg-red-700-500 to-yellow-500 text-white p-4 flex justify-between items-center">
+                    <div className="bg-red-600 hover:bg-secondary-500 to-yellow-500 text-white p-4 flex justify-between items-center">
                       <h3 className="text-xl font-bold">📋 Información del Usuario</h3>
                       <button
                         onClick={() => {
@@ -3288,7 +3288,7 @@ export default function AdminPage() {
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
                               ? 'bg-dark-light text-pink border-dark-light'
-                              : 'bg-green-100 text-green-800 border-green-200'
+                              : 'bg-success/20 text-success border-success'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                           </span>
@@ -3324,10 +3324,10 @@ export default function AdminPage() {
                                     </span>
                                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
                                       order.status === 'delivered' || order.status === 'completed'
-                                        ? 'bg-green-100 text-green-800'
+                                        ? 'bg-success/20 text-success'
                                         : order.status === 'cancelled'
                                         ? 'bg-dark-light text-pink'
-                                        : 'bg-yellow-100 text-yellow-800'
+                                        : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {order.status === 'pending' && '⏳ Pendiente'}
                                       {order.status === 'confirmed' && '✅ Confirmado'}
@@ -3347,7 +3347,7 @@ export default function AdminPage() {
 
                                 <button
                                   onClick={() => window.open(`/admin/pedido/${order.id}`, '_blank')}
-                                  className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs transition-colors"
+                                  className="bg-red-600 hover:bg-secondary text-white px-3 py-1 rounded-md text-xs transition-colors"
                                 >
                                   Ver Detalles
                                 </button>
@@ -3360,21 +3360,21 @@ export default function AdminPage() {
                       {/* Resumen estadístico */}
                       {selectedUserOrders.length > 0 && (
                         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                          <div className="bg-yellow-50 rounded-lg p-4 border border-orange-200">
-                            <p className="text-sm font-semibold text-red-700">Total Gastado</p>
-                            <p className="text-2xl font-bold text-red-800">
+                          <div className="bg-yellow-50 rounded-lg p-4 border border-warning">
+                            <p className="text-sm font-semibold text-secondary">Total Gastado</p>
+                            <p className="text-2xl font-bold text-secondary">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0))}
                             </p>
                           </div>
-                          <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                            <p className="text-sm font-semibold text-green-800">Pedidos Completados</p>
-                            <p className="text-2xl font-bold text-green-900">
+                          <div className="bg-success/10 rounded-lg p-4 border border-success">
+                            <p className="text-sm font-semibold text-success">Pedidos Completados</p>
+                            <p className="text-2xl font-bold text-success">
                               {selectedUserOrders.filter(o => o.status === 'delivered' || o.status === 'completed').length}
                             </p>
                           </div>
                           <div className="bg-dark-light rounded-lg p-4 border border-primary-200">
-                            <p className="text-sm font-semibold text-red-700">Promedio por Pedido</p>
-                            <p className="text-2xl font-bold text-red-800">
+                            <p className="text-sm font-semibold text-secondary">Promedio por Pedido</p>
+                            <p className="text-2xl font-bold text-secondary">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0) / selectedUserOrders.length)}
                             </p>
                           </div>
@@ -3399,7 +3399,7 @@ export default function AdminPage() {
                   </p>
                   <button
                     onClick={loadUsers}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+                    className="bg-red-600 hover:bg-secondary text-white px-4 py-2 rounded-md"
                   >
                     🔄 Intentar de nuevo
                   </button>
@@ -3472,7 +3472,7 @@ export default function AdminPage() {
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
                                     ? 'bg-dark-light text-pink border-dark-light'
-                                    : 'bg-green-100 text-green-800 border-green-200'
+                                    : 'bg-success/20 text-success border-success'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                 </span>
@@ -3492,27 +3492,27 @@ export default function AdminPage() {
                                   <>
                                     <button
                                       onClick={() => setEditingUser(user.uid)}
-                                      className="text-red-600 hover:text-red-800"
+                                      className="text-red-600 hover:text-secondary"
                                     >
                                       Editar Rol
                                     </button>
                                     <button
                                       onClick={() => deleteUser(user.uid)}
-                                      className="text-pink hover:text-red-900"
+                                      className="text-pink hover:text-secondary/80"
                                     >
                                       Eliminar
                                     </button>
                                     {user.blocked ? (
                                       <button
                                         onClick={() => unblockUser(user.uid)}
-                                        className="text-green-600 hover:text-green-900"
+                                        className="text-success hover:text-success"
                                       >
                                         ✅ Desbloquear
                                       </button>
                                     ) : (
                                       <button
                                         onClick={() => blockUser(user.uid)}
-                                        className="text-primary hover:text-red-800"
+                                        className="text-primary hover:text-secondary"
                                       >
                                         🚫 Bloquear
                                       </button>
@@ -3531,7 +3531,7 @@ export default function AdminPage() {
                   <div className="mb-6">
                     <button
                       onClick={() => setShowClientes(!showClientes)}
-                      className="w-full bg-red-600 hover:bg-red-700-50 to-yellow-50 rounded-lg p-4 mb-3 hover:from-yellow-100 hover:to-yellow-100 transition-all"
+                      className="w-full bg-red-600 hover:bg-secondary-50 to-yellow-50 rounded-lg p-4 mb-3 hover:from-yellow-100 hover:to-yellow-100 transition-all"
                     >
                       <div className="flex justify-between items-center">
                         <h3 className="text-lg font-semibold text-white">
@@ -3603,7 +3603,7 @@ export default function AdminPage() {
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
                                       ? 'bg-dark-light text-pink border-dark-light'
-                                      : 'bg-green-100 text-green-800 border-green-200'
+                                      : 'bg-success/20 text-success border-success'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                   </span>
@@ -3623,27 +3623,27 @@ export default function AdminPage() {
                                     <>
                                       <button
                                         onClick={() => setEditingUser(user.uid)}
-                                        className="text-red-600 hover:text-red-800"
+                                        className="text-red-600 hover:text-secondary"
                                       >
                                         Editar Rol
                                       </button>
                                       <button
                                         onClick={() => deleteUser(user.uid)}
-                                        className="text-pink hover:text-red-900"
+                                        className="text-pink hover:text-secondary/80"
                                       >
                                         Eliminar
                                       </button>
                                       {user.blocked ? (
                                         <button
                                           onClick={() => unblockUser(user.uid)}
-                                          className="text-green-600 hover:text-green-900"
+                                          className="text-success hover:text-success"
                                         >
                                           ✅ Desbloquear
                                         </button>
                                       ) : (
                                         <button
                                           onClick={() => blockUser(user.uid)}
-                                          className="text-primary hover:text-red-800"
+                                          className="text-primary hover:text-secondary"
                                         >
                                           🚫 Bloquear
                                         </button>
@@ -3701,8 +3701,8 @@ export default function AdminPage() {
                 </div>
                 <div className="flex space-x-3">
                   {selectedOrders.length > 0 && (
-                    <div className="flex items-center gap-2 px-3 py-2 bg-yellow-50 rounded-xl border border-orange-200">
-                      <span className="text-sm font-medium text-red-700">
+                    <div className="flex items-center gap-2 px-3 py-2 bg-yellow-50 rounded-xl border border-warning">
+                      <span className="text-sm font-medium text-secondary">
                         {selectedOrders.length} seleccionado(s)
                       </span>
                     </div>
@@ -3925,7 +3925,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {mainOrder.customerName}
                                 {totalUserOrders > 1 && (
-                                  <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-red-700">
+                                  <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/20 text-secondary">
                                     {totalUserOrders} pedidos
                                   </span>
                                 )}
@@ -3982,7 +3982,7 @@ export default function AdminPage() {
                                       <div
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
-                                            ? 'bg-green-500 text-white border-green-500 shadow-md'
+                                            ? 'bg-success/100 text-white border-green-500 shadow-md'
                                             : 'bg-dark-light text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
@@ -3991,7 +3991,7 @@ export default function AdminPage() {
                                       </div>
                                       {index < getOrderTimeline(mainOrder).length - 1 && (
                                         <div className={`h-0.5 w-4 ${
-                                          step.completed ? 'bg-green-500' : 'bg-gray-300'
+                                          step.completed ? 'bg-success/100' : 'bg-gray-300'
                                         }`}></div>
                                       )}
                                     </React.Fragment>
@@ -4008,7 +4008,7 @@ export default function AdminPage() {
                           <div className="flex items-center space-x-2">
                             <button
                               onClick={() => window.open(`/admin/pedido/${mainOrder.id}`, '_blank')}
-                              className="relative bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-xs transition-colors"
+                              className="relative bg-red-600 hover:bg-secondary text-white px-3 py-1 rounded-md text-xs transition-colors"
                             >
                               📋 Ver Detalles
                               {getOrderMessageCount(mainOrder.id) > 0 && (
@@ -4070,7 +4070,7 @@ export default function AdminPage() {
                                       <div
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
-                                            ? 'bg-green-500 text-white border-green-500 shadow-md'
+                                            ? 'bg-success/100 text-white border-green-500 shadow-md'
                                             : 'bg-dark-light text-primary/50 border-primary/40'
                                         }`}
                                         title={step.title}
@@ -4079,7 +4079,7 @@ export default function AdminPage() {
                                       </div>
                                       {index < getOrderTimeline(order).length - 1 && (
                                         <div className={`h-0.5 w-4 ${
-                                          step.completed ? 'bg-green-500' : 'bg-gray-300'
+                                          step.completed ? 'bg-success/100' : 'bg-gray-300'
                                         }`}></div>
                                       )}
                                     </React.Fragment>
@@ -4095,7 +4095,7 @@ export default function AdminPage() {
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => window.open(`/admin/pedido/${order.id}`, '_blank')}
-                                className="relative bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-md text-xs transition-colors"
+                                className="relative bg-red-600 hover:bg-secondary text-white px-2 py-1 rounded-md text-xs transition-colors"
                               >
                                 📋 Ver Detalles
                                 {getOrderMessageCount(order.id) > 0 && (
@@ -4326,7 +4326,7 @@ export default function AdminPage() {
                 {/* Basic Configuration */}
                 <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-red-600 hover:bg-red-700-500 to-amber-600 rounded-lg p-2">
+                    <div className="bg-red-600 hover:bg-secondary-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
@@ -4393,7 +4393,7 @@ export default function AdminPage() {
                 {/* Layout Configuration */}
                 <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-red-600 hover:bg-red-700-500 to-pink-600 rounded-lg p-2">
+                    <div className="bg-red-600 hover:bg-secondary-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                       </svg>
@@ -4492,10 +4492,10 @@ export default function AdminPage() {
                               handlePopupImageUpload(file);
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-dashed border-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                          className="w-full px-4 py-3 border-2 border-dashed border-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-success/10 file:text-success hover:file:bg-success/20"
                         />
                         {popupImageUploading && (
-                          <div className="flex items-center gap-2 text-green-600">
+                          <div className="flex items-center gap-2 text-success">
                             <svg className="animate-spin w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
@@ -4505,12 +4505,12 @@ export default function AdminPage() {
                       </div>
 
                       {popupForm.mediaUrl && (
-                        <div className="mt-4 p-4 bg-green-50 rounded-xl border-2 border-green-100">
+                        <div className="mt-4 p-4 bg-success/10 rounded-xl border-2 border-green-100">
                           <div className="flex items-center gap-4">
                             {popupForm.isVideo ? (
                               <video
                                 src={popupForm.mediaUrl}
-                                className="w-20 h-20 rounded-lg object-cover border-2 border-green-200 shadow-sm"
+                                className="w-20 h-20 rounded-lg object-cover border-2 border-success shadow-sm"
                                 muted
                               />
                             ) : (
@@ -4518,11 +4518,11 @@ export default function AdminPage() {
                                 loading="lazy"
                                 src={popupForm.mediaUrl}
                                 alt="Popup"
-                                className="w-20 h-20 rounded-lg object-cover border-2 border-green-200 shadow-sm"
+                                className="w-20 h-20 rounded-lg object-cover border-2 border-success shadow-sm"
                               />
                             )}
                             <div className="flex-1">
-                              <p className="text-sm font-semibold text-green-800 mb-1">
+                              <p className="text-sm font-semibold text-success mb-1">
                                 ✅ {popupForm.isVideo ? 'Video' : 'Imagen'} cargada correctamente
                               </p>
                               <button
@@ -4620,7 +4620,7 @@ export default function AdminPage() {
               <div className="lg:col-span-1">
                 <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-red-600 hover:bg-red-700-500 to-orange-600 rounded-lg p-2">
+                    <div className="bg-red-600 hover:bg-secondary-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -4692,12 +4692,12 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-red-600 hover:bg-red-700-50 to-yellow-50 rounded-xl border border-orange-200">
+                    <div className="mt-6 p-4 bg-red-600 hover:bg-secondary-50 to-yellow-50 rounded-xl border border-warning">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-red-600 text-sm">📍</span>
-                        <span className="text-sm font-semibold text-red-700">Posición actual:</span>
+                        <span className="text-sm font-semibold text-secondary">Posición actual:</span>
                       </div>
-                      <p className="text-xs text-red-700 ml-6">
+                      <p className="text-xs text-secondary ml-6">
                         {
                           {
                             'top-left': '🔝⬅️ Esquina superior izquierda',
@@ -4720,21 +4720,21 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">🔲 Configuración del Layout de Productos</h2>
             
-            <div className="bg-yellow-50 border border-orange-200 rounded-lg p-4 mb-6">
+            <div className="bg-yellow-50 border border-warning rounded-lg p-4 mb-6">
               <div className="flex items-start gap-3">
-                <div className="text-red-500 text-xl">ℹ️</div>
+                <div className="text-secondary text-xl">ℹ️</div>
                 <div className="space-y-2">
-                  <h3 className="text-red-800 font-semibold">¿Cómo funciona el layout?</h3>
-                  <p className="text-sm text-red-700">
+                  <h3 className="text-secondary font-semibold">¿Cómo funciona el layout?</h3>
+                  <p className="text-sm text-secondary">
                     El layout de productos utiliza una cuadrícula tipo masonry. Puedes activar bloques especiales (hero, horizontales, verticales) y definir cada cuántos productos deben aparecer.
                   </p>
-                  <ul className="text-sm text-red-700 space-y-1">
+                  <ul className="text-sm text-secondary space-y-1">
                     <li>• <strong>Activo:</strong> habilita o deshabilita el patrón.</li>
                     <li>• <strong>Intervalo:</strong> cada cuántos productos se aplica el diseño.</li>
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-dark/80 border border-orange-200 rounded-md px-3 py-2 text-sm text-red-800">
+                    <div className="mt-2 bg-dark/80 border border-warning rounded-md px-3 py-2 text-sm text-secondary">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4917,7 +4917,7 @@ export default function AdminPage() {
                         <h3 className="text-lg font-bold text-white">{section.name}</h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
-                            ? 'bg-green-100 text-green-700'
+                            ? 'bg-success/20 text-success'
                             : 'bg-dark-light text-primary/60'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
@@ -4977,7 +4977,7 @@ export default function AdminPage() {
                         setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
                         setSectionsView('products');
                       }}
-                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
                     >
                       📦 Productos
                     </button>
@@ -5200,9 +5200,9 @@ export default function AdminPage() {
           {/* Status Messages */}
           {sectionSaveStatus !== 'idle' && (
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
-              sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-red-700 animate-pulse' :
-              sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-              'bg-dark-light text-red-700'
+              sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
+              sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
+              'bg-dark-light text-secondary'
             }`}>
               {sectionSaveStatus === 'saving' && (
                 <>
@@ -5599,8 +5599,8 @@ export default function AdminPage() {
                           <label className="block text-sm font-medium text-primary mb-2">
                             Imagen del Banner
                           </label>
-                          <div className="mb-3 p-3 bg-yellow-50 border border-orange-200 rounded-lg text-sm">
-                            <p className="text-red-700 font-medium flex items-center gap-2">
+                          <div className="mb-3 p-3 bg-yellow-50 border border-warning rounded-lg text-sm">
+                            <p className="text-secondary font-medium flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                               </svg>
@@ -5677,8 +5677,8 @@ export default function AdminPage() {
                         </div>
 
                         {/* Subtítulo */}
-                        <div className="bg-yellow-50 p-3 rounded-lg border border-orange-200">
-                          <label className="block text-sm font-bold text-red-700 mb-2 flex items-center gap-2">
+                        <div className="bg-yellow-50 p-3 rounded-lg border border-warning">
+                          <label className="block text-sm font-bold text-secondary mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
@@ -5845,7 +5845,7 @@ export default function AdminPage() {
 
                         {slide.linkType === "url" && (
                           <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-300">
-                            <label className="block text-sm font-bold text-red-700 mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-bold text-secondary mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
@@ -5890,14 +5890,14 @@ export default function AdminPage() {
                   </button>
                 </div>
 
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                  <p className="text-green-700 font-medium flex items-center justify-center gap-2">
+                <div className="bg-success/10 border border-success rounded-lg p-4 text-center">
+                  <p className="text-success font-medium flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Los cambios se guardan automáticamente
                   </p>
-                  <p className="text-green-600 text-sm mt-1">
+                  <p className="text-success text-sm mt-1">
                     No necesitas hacer clic en ningún botón, todos los cambios se sincronizan con Firebase automáticamente.
                   </p>
                 </div>
@@ -5932,15 +5932,15 @@ export default function AdminPage() {
                   <label className="block text-sm font-medium text-primary mb-1">
                     Imagen del Logo
                   </label>
-                  <div className="mb-3 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-                    <p className="text-green-800 font-medium mb-1">📐 Medidas recomendadas:</p>
-                    <ul className="text-green-700 space-y-1">
+                  <div className="mb-3 p-3 bg-success/10 border border-success rounded-lg text-sm">
+                    <p className="text-success font-medium mb-1">📐 Medidas recomendadas:</p>
+                    <ul className="text-success space-y-1">
                       <li>• <strong>Tamaño:</strong> 200x60px o 300x90px</li>
                       <li>• <strong>Formato:</strong> PNG con transparencia</li>
                       <li>• <strong>Estilo:</strong> Logo horizontal preferible</li>
                       <li>• <strong>Tamaño máximo:</strong> 2MB</li>
                     </ul>
-                    <p className="text-green-600 text-xs mt-2">💡 Tip: Usa fondo transparente para mejor integración</p>
+                    <p className="text-success text-xs mt-2">💡 Tip: Usa fondo transparente para mejor integración</p>
                   </div>
                   <input
                     type="file"
@@ -6092,7 +6092,7 @@ export default function AdminPage() {
                               (category as any).subcategorias.map((sub: any, index: number) => (
                                 <div
                                   key={index}
-                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-orange-100 text-red-700 group"
+                                  className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-warning/20 text-secondary group"
                                 >
                                   <span>{sub.nombre}</span>
                                   <button
@@ -6101,7 +6101,7 @@ export default function AdminPage() {
                                       setSubcategoryForm({ id: sub.id, nombre: sub.nombre, activa: sub.activa });
                                       setShowSubcategoryModal(true);
                                     }}
-                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-red-800 transition-opacity"
+                                    className="ml-1 opacity-0 group-hover:opacity-100 hover:text-secondary transition-opacity"
                                     title="Editar subcategoría"
                                   >
                                     ✏️
@@ -6148,7 +6148,7 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            category.active ? 'bg-green-100 text-green-800' : 'bg-dark-light text-pink'
+                            category.active ? 'bg-success/20 text-success' : 'bg-dark-light text-pink'
                           }`}>
                             {category.active ? 'Activa' : 'Inactiva'}
                           </span>
@@ -6537,7 +6537,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-dark/80/70"
                           placeholder="0"
                         />
                       </div>
@@ -6554,9 +6554,9 @@ export default function AdminPage() {
                           min="0"
                           step="1"
                           placeholder="5"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-green-500 focus:outline-none transition-all duration-200 bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-dark/80/70"
                         />
-                        <p className="text-xs text-green-600 mt-1">📊 Para alertas de stock bajo</p>
+                        <p className="text-xs text-success mt-1">📊 Para alertas de stock bajo</p>
                       </div>
                     </div>
                   </div>
@@ -6658,7 +6658,7 @@ export default function AdminPage() {
                           <p className="text-xs text-pink mt-1">Debes seleccionar al menos una categoría o subcategoría</p>
                         )}
                         {productForm.categorias.length > 0 && (
-                          <p className="text-xs text-green-600 mt-1">
+                          <p className="text-xs text-success mt-1">
                             ✓ {productForm.categorias.length} seleccionada(s)
                           </p>
                         )}
@@ -6694,7 +6694,7 @@ export default function AdminPage() {
 
                     {/* Image Specifications */}
                     <div className="mb-3 p-2 bg-dark-light border border-primary-200 rounded-lg text-xs">
-                      <p className="text-red-700 font-medium mb-1">📐 Especificaciones:</p>
+                      <p className="text-secondary font-medium mb-1">📐 Especificaciones:</p>
                       <ul className="text-primary-hover space-y-0.5">
                         <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                         <li>• <strong>Formato:</strong> JPG o PNG</li>
@@ -6748,7 +6748,7 @@ export default function AdminPage() {
                                     loading="lazy"
                                     src={imageUrl}
                                     alt={`Actual ${index + 1}`}
-                                    className="w-full h-16 object-cover rounded-lg border-2 border-green-200 shadow-sm"
+                                    className="w-full h-16 object-cover rounded-lg border-2 border-success shadow-sm"
                                   />
                                   <button
                                     type="button"
@@ -6765,7 +6765,7 @@ export default function AdminPage() {
                                     ✕
                                   </button>
                                   <div className="absolute -top-1 -left-1">
-                                    <span className="bg-green-500 text-white text-xs px-1.5 py-0.5 rounded-full text-[10px]">#{index + 1}</span>
+                                    <span className="bg-success/100 text-white text-xs px-1.5 py-0.5 rounded-full text-[10px]">#{index + 1}</span>
                                   </div>
                                 </div>
                               ))}
@@ -6904,12 +6904,12 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">📝 Editar Contenido de la Página Principal</h2>
             
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+            <div className="bg-success/10 border border-success rounded-lg p-4 mb-6">
               <div className="flex items-start">
-                <div className="text-green-500 text-xl mr-3">✨</div>
+                <div className="text-success text-xl mr-3">✨</div>
                 <div>
-                  <h3 className="text-green-800 font-semibold mb-2">🚀 ¡Súper fácil! Solo selecciona y se guarda automáticamente</h3>
-                  <ul className="text-green-700 text-sm space-y-1">
+                  <h3 className="text-success font-semibold mb-2">🚀 ¡Súper fácil! Solo selecciona y se guarda automáticamente</h3>
+                  <ul className="text-success text-sm space-y-1">
                     <li>• <strong>📁 Subir imágenes:</strong> Haz clic en &quot;Elegir archivo&quot; para subir directamente desde tu computadora</li>
                     <li>• <strong>🎯 Seleccionar enlaces:</strong> Listas desplegables con categorías y productos existentes</li>
                     <li>• <strong>⚡ Guardado automático:</strong> Se guarda automáticamente al cambiar cualquier opción</li>
@@ -6941,7 +6941,7 @@ export default function AdminPage() {
                       autoSaveHomepageContent(newContent);
                       alert('✅ Imágenes por defecto restauradas!');
                     }}
-                    className="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1 rounded transition-colors flex items-center gap-1"
+                    className="bg-red-600 hover:bg-secondary text-white text-xs px-3 py-1 rounded transition-colors flex items-center gap-1"
                   >
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -6955,7 +6955,7 @@ export default function AdminPage() {
                       Guardando...
                     </div>
                   ) : (
-                    <div className="text-green-600 text-sm flex items-center gap-1">
+                    <div className="text-success text-sm flex items-center gap-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -7018,7 +7018,7 @@ export default function AdminPage() {
                                 autoSaveHomepageContent(newContent);
                               }
                             }}
-                            className="text-pink hover:text-red-700 hover:bg-dark-light p-1 rounded transition-colors"
+                            className="text-pink hover:text-secondary hover:bg-dark-light p-1 rounded transition-colors"
                             title="Eliminar sección"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7131,7 +7131,7 @@ export default function AdminPage() {
                           </svg>
                           Resolución recomendada:
                         </p>
-                        <p className="text-red-700">
+                        <p className="text-secondary">
                           {section.position === 'large' ? '1200x1200px (1:1)' :
                            section.position === 'tall' ? '800x1600px (1:2)' :
                            section.position === 'wide' ? '1440x480px (3:1)' : '1200x900px (4:3)'}
@@ -7287,7 +7287,7 @@ export default function AdminPage() {
                     setHomepageContent(newContent);
                     autoSaveHomepageContent(newContent);
                   }}
-                  className="bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition-colors shadow-md"
+                  className="bg-success hover:bg-success/80 text-white font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition-colors shadow-md"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -7318,7 +7318,7 @@ export default function AdminPage() {
                       autoSaveHomepageContent(newContent);
                       alert('✅ Banners restaurados');
                     }}
-                    className="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-md"
+                    className="bg-red-600 hover:bg-secondary text-white text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-md"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -7327,14 +7327,14 @@ export default function AdminPage() {
                   </button>
                 </div>
 
-                <div className="mb-4 p-4 bg-red-600 hover:bg-red-700-50 to-yellow-50 border border-orange-200 rounded-xl">
+                <div className="mb-4 p-4 bg-red-600 hover:bg-secondary-50 to-yellow-50 border border-warning rounded-xl">
                   <div className="flex items-start gap-3">
                     <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <div>
-                      <p className="text-red-800 text-sm font-bold">Especificaciones Recomendadas</p>
-                      <p className="text-red-700 text-xs mt-1">Tamaño: 1440x480px (ratio 3:1) • Formato: JPG o PNG • Peso máximo: 4MB</p>
+                      <p className="text-secondary text-sm font-bold">Especificaciones Recomendadas</p>
+                      <p className="text-secondary text-xs mt-1">Tamaño: 1440x480px (ratio 3:1) • Formato: JPG o PNG • Peso máximo: 4MB</p>
                     </div>
                   </div>
                 </div>
@@ -7353,7 +7353,7 @@ export default function AdminPage() {
                         <div className="flex items-center justify-between">
                           <h4 className="font-bold text-white text-lg">Banner #{index + 1}</h4>
                           {isAutoSaving && (
-                            <span className="text-xs text-green-600 flex items-center gap-1">
+                            <span className="text-xs text-success flex items-center gap-1">
                               <svg className="animate-spin h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -7419,8 +7419,8 @@ export default function AdminPage() {
                           </div>
 
                           {/* Subtítulo - Mejorado */}
-                          <div className="bg-yellow-50 p-3 rounded-lg border border-orange-200">
-                            <label className="block text-sm font-bold text-red-700 mb-2 flex items-center gap-2">
+                          <div className="bg-yellow-50 p-3 rounded-lg border border-warning">
+                            <label className="block text-sm font-bold text-secondary mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                               </svg>
@@ -7438,7 +7438,7 @@ export default function AdminPage() {
 
                           {/* Tipo de Enlace - Mejorado */}
                           <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-300">
-                            <label className="block text-sm font-bold text-red-700 mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-bold text-secondary mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                               </svg>
@@ -7461,7 +7461,7 @@ export default function AdminPage() {
 
                             {banner.linkType === 'category' ? (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-red-700 mb-2">
+                                <label className="block text-xs font-semibold text-secondary mb-2">
                                   Selecciona la categoría:
                                 </label>
                                 <select
@@ -7490,7 +7490,7 @@ export default function AdminPage() {
                                   </p>
                                 )}
                                 {banner.linkValue && (
-                                  <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
+                                  <p className="text-xs text-success mt-2 flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
@@ -7500,7 +7500,7 @@ export default function AdminPage() {
                               </div>
                             ) : banner.linkType === 'filter' ? (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-red-700 mb-2">
+                                <label className="block text-xs font-semibold text-secondary mb-2">
                                   Selecciona el filtro:
                                 </label>
                                 <select
@@ -7516,7 +7516,7 @@ export default function AdminPage() {
                                   <option value="nuevos">Productos Nuevos</option>
                                 </select>
                                 {banner.linkValue && (
-                                  <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
+                                  <p className="text-xs text-success mt-2 flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
@@ -7542,7 +7542,7 @@ export default function AdminPage() {
                               </div>
                             ) : (
                               <div className="mt-3">
-                                <label className="block text-xs font-semibold text-red-700 mb-2">
+                                <label className="block text-xs font-semibold text-secondary mb-2">
                                   URL completa:
                                 </label>
                                 <input
@@ -7563,8 +7563,8 @@ export default function AdminPage() {
                           </div>
 
                           {/* Subir Imagen - Mejorado */}
-                          <div className="bg-green-50 p-3 rounded-lg border border-green-200">
-                            <label className="block text-sm font-bold text-green-700 mb-2 flex items-center gap-2">
+                          <div className="bg-success/10 p-3 rounded-lg border border-success">
+                            <label className="block text-sm font-bold text-success mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                               </svg>
@@ -7579,7 +7579,7 @@ export default function AdminPage() {
                                   handleMiddleBannerImageUpload(file, index, banner);
                                 }
                               }}
-                              className="w-full text-sm border-2 border-green-300 rounded-lg px-3 py-2 focus:border-green-500 focus:ring-2 focus:ring-green-200 focus:outline-none bg-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-green-100 file:text-green-700 hover:file:bg-green-200"
+                              className="w-full text-sm border-2 border-success rounded-lg px-3 py-2 focus:border-success focus:ring-2 focus:ring-green-200 focus:outline-none bg-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-success/20 file:text-success hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
                               <p className="text-xs text-primary mt-2 font-medium flex items-center gap-1">
@@ -7590,7 +7590,7 @@ export default function AdminPage() {
                                 Subiendo imagen...
                               </p>
                             ) : (
-                              <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
+                              <p className="text-xs text-success mt-2 flex items-center gap-1">
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                                 </svg>
@@ -7605,40 +7605,40 @@ export default function AdminPage() {
                 </div>
 
                 {/* Información de Ayuda */}
-                <div className="mt-6 bg-red-600 hover:bg-red-700-50 to-yellow-50 border-2 border-amber-300 rounded-xl p-6 shadow-md">
-                  <h4 className="font-bold text-red-800 mb-4 flex items-center gap-2 text-lg">
+                <div className="mt-6 bg-red-600 hover:bg-secondary-50 to-yellow-50 border-2 border-amber-300 rounded-xl p-6 shadow-md">
+                  <h4 className="font-bold text-secondary mb-4 flex items-center gap-2 text-lg">
                     <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                     Consejos para Banners Efectivos
                   </h4>
-                  <ul className="space-y-3 text-sm text-red-800">
+                  <ul className="space-y-3 text-sm text-secondary">
                     <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
-                      <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Título claro:</strong> Usa mensajes cortos y directos (ej: "¡Ofertas Imperdibles!")</span>
                     </li>
                     <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
-                      <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Subtítulo descriptivo:</strong> Complementa con información adicional (ej: "Hasta 50% OFF")</span>
                     </li>
                     <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
-                      <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Imágenes de calidad:</strong> Usa imágenes de alta resolución (1440x480px ideal)</span>
                     </li>
                     <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
-                      <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Destino correcto:</strong> Configura el enlace según lo que quieres promocionar</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-gradient-to-r from-green-50 to-emerald-50 p-2.5 rounded-lg border border-green-200">
-                      <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li className="flex items-start gap-3 bg-gradient-to-r from-green-50 to-emerald-50 p-2.5 rounded-lg border border-success">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       <span><strong>Auto-guardado:</strong> Los cambios se guardan automáticamente cada 2 segundos</span>
@@ -7651,7 +7651,7 @@ export default function AdminPage() {
                 <a
                   href="/"
                   target="_blank"
-                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-lg shadow-red-600/20 flex items-center gap-2"
+                  className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-secondary transition-colors font-semibold shadow-lg shadow-red-600/20 flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -7743,7 +7743,7 @@ export default function AdminPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
@@ -8238,7 +8238,7 @@ export default function AdminPage() {
                             </div>
                             <div className="space-y-1">
                               <div className="h-2 bg-gray-300 rounded w-full"></div>
-                              <div className="h-2 bg-orange-200 rounded w-2/3"></div>
+                              <div className="h-2 bg-warning/30 rounded w-2/3"></div>
                             </div>
                           </div>
                         ))}
@@ -8249,8 +8249,8 @@ export default function AdminPage() {
                       </p>
                     </div>
 
-                    <div className="mt-4 bg-yellow-50 border border-orange-200 rounded-lg p-3">
-                      <p className="text-xs text-red-700 text-center font-medium">
+                    <div className="mt-4 bg-yellow-50 border border-warning rounded-lg p-3">
+                      <p className="text-xs text-secondary text-center font-medium">
                         💡 Los productos se mostrarán en carrusel horizontal
                       </p>
                     </div>
@@ -8260,9 +8260,9 @@ export default function AdminPage() {
                 {/* Status Messages */}
                 {sectionSaveStatus !== 'idle' && (
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
-                    sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-red-700 animate-pulse' :
-                    sectionSaveStatus === 'success' ? 'bg-green-50 text-green-700' :
-                    'bg-dark-light text-red-700'
+                    sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
+                    sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
+                    'bg-dark-light text-secondary'
                   }`}>
                     {sectionSaveStatus === 'saving' && (
                       <>
@@ -8409,7 +8409,7 @@ export default function AdminPage() {
                           search: '',
                           showOnlySelected: false
                         })}
-                        className="text-sm text-primary hover:text-red-700"
+                        className="text-sm text-primary hover:text-secondary"
                       >
                         Limpiar filtros
                       </button>

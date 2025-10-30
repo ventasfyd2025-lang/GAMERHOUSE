@@ -376,7 +376,7 @@ export default function NuevoProductoPage() {
                   onFocus={(e) => e.currentTarget.style.borderColor = '#10b981'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
-                <p className="text-xs text-green-600 mt-2">📊 Para alertas de stock bajo</p>
+                <p className="text-xs text-success mt-2">📊 Para alertas de stock bajo</p>
               </div>
             </div>
           </div>
@@ -478,7 +478,7 @@ export default function NuevoProductoPage() {
                   <p className="text-sm text-pink mt-2">Debes seleccionar al menos una categoría o subcategoría</p>
                 )}
                 {productForm.categorias.length > 0 && (
-                  <p className="text-sm text-green-600 mt-2">
+                  <p className="text-sm text-success mt-2">
                     ✓ {productForm.categorias.length} seleccionada(s)
                   </p>
                 )}
@@ -516,7 +516,7 @@ export default function NuevoProductoPage() {
 
             {/* Image Specifications */}
             <div className="mb-4 p-3 bg-dark-light border border-primary-200 rounded-lg text-sm">
-              <p className="text-red-700 font-medium mb-2">📐 Especificaciones:</p>
+              <p className="text-secondary font-medium mb-2">📐 Especificaciones:</p>
               <ul className="text-primary-hover space-y-1">
                 <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                 <li>• <strong>Formato:</strong> JPG o PNG</li>
@@ -599,19 +599,19 @@ export default function NuevoProductoPage() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Etiqueta Nuevo */}
-              <div className="border-2 border-green-200 rounded-lg p-4 bg-green-50/50">
+              <div className="border-2 border-success rounded-lg p-4 bg-success/10/50">
                 <label className="flex items-center gap-2 cursor-pointer mb-3">
                   <input
                     type="checkbox"
                     checked={productForm.nuevo}
                     onChange={(e) => setProductForm({ ...productForm, nuevo: e.target.checked })}
-                    className="rounded w-5 h-5 text-green-600"
+                    className="rounded w-5 h-5 text-success"
                   />
-                  <span className="text-sm font-bold text-green-700">✨ Nuevo</span>
+                  <span className="text-sm font-bold text-success">✨ Nuevo</span>
                 </label>
                 {productForm.nuevo && (
                   <div>
-                    <label className="block text-xs font-semibold text-green-700 mb-2">
+                    <label className="block text-xs font-semibold text-success mb-2">
                       ⏱️ Duración (horas)
                     </label>
                     <input
@@ -620,10 +620,10 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, nuevoDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-500 bg-dark/80"
+                      className="w-full px-3 py-2 text-sm border-2 border-success rounded-lg focus:outline-none focus:border-success bg-dark/80"
                       placeholder="24"
                     />
-                    <p className="text-xs text-green-600 mt-1">
+                    <p className="text-xs text-success mt-1">
                       La etiqueta se quitará automáticamente después de {productForm.nuevoDuracionHoras}h
                     </p>
                   </div>
@@ -639,11 +639,11 @@ export default function NuevoProductoPage() {
                     onChange={(e) => setProductForm({ ...productForm, oferta: e.target.checked })}
                     className="rounded w-5 h-5 text-pink"
                   />
-                  <span className="text-sm font-bold text-red-700">🔥 Oferta</span>
+                  <span className="text-sm font-bold text-secondary">🔥 Oferta</span>
                 </label>
                 {productForm.oferta && (
                   <div>
-                    <label className="block text-xs font-semibold text-red-700 mb-2">
+                    <label className="block text-xs font-semibold text-secondary mb-2">
                       ⏱️ Duración (horas)
                     </label>
                     <input
@@ -652,7 +652,7 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, ofertaDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-red-300 rounded-lg focus:outline-none focus:border-pink bg-dark/80"
+                      className="w-full px-3 py-2 text-sm border-2 border-secondary rounded-lg focus:outline-none focus:border-pink bg-dark/80"
                       placeholder="24"
                     />
                     <p className="text-xs text-pink mt-1">
