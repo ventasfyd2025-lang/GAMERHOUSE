@@ -21,13 +21,13 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   const getSeverityColor = (severity: StockAlert['severity']) => {
     switch (severity) {
       case 'out':
-        return 'bg-darklight border-pink text-pink';
+        return 'bg-slate-800 border-pink text-pink';
       case 'critical':
-        return 'bg-darklight border-primary500 text-primary800';
+        return 'bg-slate-800 border-yellow-300500 text-yellow-300800';
       case 'low':
         return 'bg-yellow-100 border-yellow-500 text-yellow-800';
       default:
-        return 'bg-darklight border-gray-500 text-white';
+        return 'bg-slate-800 border-gray-500 text-white';
     }
   };
 
@@ -36,11 +36,11 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'out':
         return <NoSymbolIcon className="h-5 w-5 text-pink" />;
       case 'critical':
-        return <ExclamationTriangleIcon className="h-5 w-5 text-primary600" />;
+        return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-300600" />;
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:
-        return <BellIcon className="h-5 w-5 text-primary/80" />;
+        return <BellIcon className="h-5 w-5 text-yellow-300/80" />;
     }
   };
 
@@ -79,10 +79,10 @@ export default function StockAlerts({ className }: StockAlertsProps) {
   }
 
   return (
-    <div className={`bg-dark/80 border border-primary/30 rounded-lg shadow-sm ${className}`}>
+    <div className={`bg-slate-900/80 border border-yellow-300/30 rounded-lg shadow-sm ${className}`}>
       {/* Header */}
       <div
-        className="p-4 border-b border-primary/30 cursor-pointer"
+        className="p-4 border-b border-yellow-300/30 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center justify-between">
@@ -91,12 +91,12 @@ export default function StockAlerts({ className }: StockAlertsProps) {
             <h3 className="text-lg font-semibold text-white">
               Alertas de Stock
             </h3>
-            <span className="bg-darklight text-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
+            <span className="bg-slate-800 text-pink text-xs font-medium px-2.5 py-0.5 rounded-full">
               {stockAlerts.length}
             </span>
           </div>
           <XMarkIcon
-            className={`h-5 w-5 text-primary/50 transform transition-transform ${
+            className={`h-5 w-5 text-yellow-300/50 transform transition-transform ${
               isExpanded ? 'rotate-45' : ''
             }`}
           />
@@ -124,14 +124,14 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                     {alert.productName}
                   </h4>
 
-                  <div className="text-sm text-primary/80 space-y-1">
+                  <div className="text-sm text-yellow-300/80 space-y-1">
                     <p>
                       <span className="font-medium">Stock actual:</span> {alert.currentStock} unidades
                     </p>
                     <p>
                       <span className="font-medium">Stock mínimo:</span> {alert.minStock} unidades
                     </p>
-                    <p className="text-xs text-primary/60">
+                    <p className="text-xs text-yellow-300/60">
                       {new Date(alert.createdAt).toLocaleString('es-CL')}
                     </p>
                   </div>
@@ -140,7 +140,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                 <button
                   onClick={() => handleAcknowledge(alert.id)}
                   disabled={loading}
-                  className="ml-4 flex-shrink-0 bg-darklight hover:bg-darklight text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
+                  className="ml-4 flex-shrink-0 bg-slate-800 hover:bg-slate-800 text-white px-3 py-1 rounded text-sm font-medium transition-colors disabled:opacity-50"
                 >
                   {loading ? 'Marcando...' : 'Marcar como visto'}
                 </button>
@@ -165,8 +165,8 @@ export default function StockAlerts({ className }: StockAlertsProps) {
 
       {/* Footer with summary */}
       {!isExpanded && stockAlerts.length > 0 && (
-        <div className="p-3 bg-dark rounded-b-lg">
-          <div className="flex items-center justify-between text-sm text-primary/80">
+        <div className="p-3 bg-slate-900 rounded-b-lg">
+          <div className="flex items-center justify-between text-sm text-yellow-300/80">
             <div className="flex space-x-4">
               <span>
                 Sin stock: {stockAlerts.filter(a => a.severity === 'out').length}

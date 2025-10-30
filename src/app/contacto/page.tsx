@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -13,7 +13,7 @@ export default function ContactoPage() {
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Contáctanos
             </h1>
-            <p className="text-lg text-primary/80">
+            <p className="text-lg text-yellow-300/80">
               Estamos aquí para ayudarte. No dudes en comunicarte con nosotros.
             </p>
           </div>
@@ -25,7 +25,7 @@ export default function ContactoPage() {
               href="https://wa.me/56920265061"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
+              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -37,7 +37,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     WhatsApp
                   </h3>
-                  <p className="text-primary/80 mb-2">
+                  <p className="text-yellow-300/80 mb-2">
                     Chatea con nosotros directamente
                   </p>
                   <p className="text-green-600 font-medium">
@@ -50,22 +50,22 @@ export default function ContactoPage() {
             {/* Email */}
             <a
               href="mailto:contacto@GAMERHOUSE.cl"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
+              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-darklight rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                    <Mail className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                    <Mail className="w-6 h-6 text-yellow-300" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Email
                   </h3>
-                  <p className="text-primary/80 mb-2">
+                  <p className="text-yellow-300/80 mb-2">
                     Envíanos un correo electrónico
                   </p>
-                  <p className="text-primary font-medium">
+                  <p className="text-yellow-300 font-medium">
                     contacto@GAMERHOUSE.cl
                   </p>
                 </div>
@@ -75,7 +75,7 @@ export default function ContactoPage() {
             {/* Teléfono */}
             <a
               href="tel:+56920265061"
-              className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
+              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
@@ -87,7 +87,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Teléfono
                   </h3>
-                  <p className="text-primary/80 mb-2">
+                  <p className="text-yellow-300/80 mb-2">
                     Llámanos durante horario comercial
                   </p>
                   <p className="text-red-600 font-medium">
@@ -98,7 +98,7 @@ export default function ContactoPage() {
             </a>
 
             {/* Ubicación */}
-            <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8">
+            <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
@@ -109,7 +109,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Ubicación
                   </h3>
-                  <p className="text-primary/80 mb-2">
+                  <p className="text-yellow-300/80 mb-2">
                     Estamos en Chile
                   </p>
                   <p className="text-yellow-500 font-medium">
@@ -121,11 +121,11 @@ export default function ContactoPage() {
           </div>
 
           {/* Horarios */}
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8 mb-8">
+          <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 mb-8">
             <h2 className="text-2xl font-semibold text-white mb-4">
               Horario de Atención
             </h2>
-            <div className="space-y-2 text-primary/80">
+            <div className="space-y-2 text-yellow-300/80">
               <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
               <p>Sábado: 10:00 AM - 2:00 PM</p>
               <p>Domingo: Cerrado</p>
@@ -136,7 +136,7 @@ export default function ContactoPage() {
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
+              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400-hover transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
             >
               Volver al Inicio
             </Link>

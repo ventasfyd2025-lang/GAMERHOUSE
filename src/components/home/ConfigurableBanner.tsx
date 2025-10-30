@@ -117,7 +117,7 @@ const ConfigurableBanner: React.FC<ConfigurableBannerProps> = ({
                   <div className="mt-6">
                     <Link 
                       href={slide.linkUrl || `/producto/${slide.productId}` || '#'}
-                      className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                      className="inline-block bg-yellow-400 hover:bg-yellow-400-hover text-white font-bold py-3 px-6 rounded-lg transition-colors"
                     >
                       Ver más
                     </Link>
@@ -158,7 +158,7 @@ const ConfigurableBanner: React.FC<ConfigurableBannerProps> = ({
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === currentIndex ? 'bg-dark/80' : 'bg-dark/80 bg-opacity-50'
+                index === currentIndex ? 'bg-slate-900/80' : 'bg-slate-900/80 bg-opacity-50'
               }`}
               aria-label={`Ir a la diapositiva ${index + 1}`}
             />

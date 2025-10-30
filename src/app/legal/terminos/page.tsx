@@ -2,15 +2,15 @@ import Link from 'next/link';
 
 export default function TerminosPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 border border-primary/30 p-8">
+          <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8">
             <h1 className="text-3xl font-bold text-white mb-6">
               Términos y Condiciones
             </h1>
 
-            <div className="prose prose-orange max-w-none space-y-6 text-primary">
+            <div className="prose prose-orange max-w-none space-y-6 text-yellow-300">
               <section>
                 <h2 className="text-xl font-semibold text-white mb-3">
                   1. Aceptación de Términos
@@ -110,13 +110,13 @@ export default function TerminosPage() {
                 </h2>
                 <p>
                   Para consultas sobre estos términos:{' '}
-                  <a href="mailto:contacto@GAMERHOUSE.cl" className="text-primary hover:text-primary-hover">
+                  <a href="mailto:contacto@GAMERHOUSE.cl" className="text-yellow-300 hover:text-yellow-300-hover">
                     contacto@GAMERHOUSE.cl
                   </a>
                 </p>
               </section>
 
-              <p className="text-sm text-primary/60 mt-8">
+              <p className="text-sm text-yellow-300/60 mt-8">
                 Última actualización: {new Date().toLocaleDateString('es-CL')}
               </p>
             </div>
@@ -124,7 +124,7 @@ export default function TerminosPage() {
             <div className="mt-8 pt-6 border-t">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-primary hover:bg-primary-hover transition-colors"
+                className="inline-flex items-center justify-center py-2 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-400-hover transition-colors"
               >
                 Volver al Inicio
               </Link>

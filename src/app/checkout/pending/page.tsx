@@ -31,15 +31,15 @@ function PaymentPendingContent() {
   }, [paymentId, status, externalReference]);
 
   return (
-    <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
+        <div className="bg-slate-900/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
           <div className="text-center">
             <ClockIcon className="mx-auto h-16 w-16 text-yellow-500" />
             <h2 className="mt-6 text-3xl font-bold text-white">
               Pago Pendiente
             </h2>
-            <p className="mt-2 text-sm text-primary/80">
+            <p className="mt-2 text-sm text-yellow-300/80">
               Tu pago está siendo procesado
             </p>
           </div>
@@ -83,11 +83,11 @@ function PaymentPendingContent() {
               </div>
             </div>
 
-            <div className="bg-dark border border-primary/30 rounded-lg p-4">
+            <div className="bg-slate-900 border border-yellow-300/30 rounded-lg p-4">
               <h3 className="text-sm font-medium text-white mb-2">
                 Próximos pasos:
               </h3>
-              <ul className="text-sm text-primary space-y-1">
+              <ul className="text-sm text-yellow-300 space-y-1">
                 <li>• Te notificaremos cuando se procese el pago</li>
                 <li>• Puedes revisar el estado en &quot;Mis Pedidos&quot;</li>
                 <li>• El producto se reservará por 24 horas</li>
@@ -97,14 +97,14 @@ function PaymentPendingContent() {
             <div className="space-y-3">
               <Link
                 href="/mis-pedidos"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Ver Mis Pedidos
               </Link>
               
               <Link
                 href="/"
-                className="w-full flex justify-center py-2 px-4 border border-primary/40 rounded-md shadow-sm text-sm font-medium text-primary bg-dark/80 hover:bg-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-yellow-300/40 rounded-md shadow-sm text-sm font-medium text-yellow-300 bg-slate-900/80 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Continuar Comprando
               </Link>
@@ -113,9 +113,9 @@ function PaymentPendingContent() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-primary/60">
+          <p className="text-sm text-yellow-300/60">
             ¿Tienes dudas sobre tu pago? {' '}
-            <Link href="/contacto" className="text-primary hover:text-primary font-medium">
+            <Link href="/contacto" className="text-yellow-300 hover:text-yellow-300 font-medium">
               Contáctanos
             </Link>
           </p>

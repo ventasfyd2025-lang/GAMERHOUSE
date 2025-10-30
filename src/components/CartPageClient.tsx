@@ -27,14 +27,14 @@ export default function CartPageClient() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-darklight via-white to-darklight py-16">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-primary100 text-center">
-            <ShoppingBag className="h-24 w-24 text-primary400 mx-auto mb-6" strokeWidth={2} />
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300100 text-center">
+            <ShoppingBag className="h-24 w-24 text-yellow-300400 mx-auto mb-6" strokeWidth={2} />
             <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
             </h1>
-            <p className="text-lg text-primary/80 mb-8">
+            <p className="text-lg text-yellow-300/80 mb-8">
               ¡Agrega algunos productos para comenzar tu compra!
             </p>
             <Link
@@ -51,10 +51,10 @@ export default function CartPageClient() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-darklight via-white to-darklight py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 mb-8">
+        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">🛒</span>
@@ -63,7 +63,7 @@ export default function CartPageClient() {
               <h1 className="text-2xl font-bold text-white">
                 Carrito de compras
               </h1>
-              <p className="text-primary/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
+              <p className="text-yellow-300/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-primary100 hover:shadow-xl shadow-red-600/30 transition-all">
+              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-yellow-300100 hover:shadow-xl shadow-red-600/30 transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -85,8 +85,8 @@ export default function CartPageClient() {
                       sizes="(max-width: 640px) 64px, 80px"
                     />
                   ) : (
-                    <div className="w-full h-full bg-darklight rounded-md flex items-center justify-center">
-                      <span className="text-primary/50 text-lg sm:text-2xl">📦</span>
+                    <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center">
+                      <span className="text-yellow-300/50 text-lg sm:text-2xl">📦</span>
                     </div>
                   )}
                 </div>
@@ -100,9 +100,9 @@ export default function CartPageClient() {
                     {item.nombre}
                   </Link>
                   {item.sku && (
-                    <p className="text-xs text-primary/60">SKU: {item.sku}</p>
+                    <p className="text-xs text-yellow-300/60">SKU: {item.sku}</p>
                   )}
-                  <p className="text-primary/80 mt-1 text-sm sm:text-base">
+                  <p className="text-yellow-300/80 mt-1 text-sm sm:text-base">
                     {formatPrice(item.precio)} c/u
                   </p>
                 </div>
@@ -113,7 +113,7 @@ export default function CartPageClient() {
                   <div className="flex items-center space-x-1 sm:space-x-2">
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-darklight transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-slate-800 transition-colors"
                     >
                       <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -122,7 +122,7 @@ export default function CartPageClient() {
                     </span>
                     <button
                       onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-darklight transition-colors"
+                      className="p-1 sm:p-1.5 rounded-md hover:bg-slate-800 transition-colors"
                     >
                       <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -136,7 +136,7 @@ export default function CartPageClient() {
                   {/* Remove Button */}
                   <button
                     onClick={() => removeItem(item.productId)}
-                    className="p-2 text-pink hover:text-secondary hover:bg-darklight rounded-md transition-colors"
+                    className="p-2 text-pink hover:text-secondary hover:bg-slate-800 rounded-md transition-colors"
                   >
                     <Trash2 className="h-5 w-5" />
                   </button>
@@ -148,7 +148,7 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 sticky top-8">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
               <h2 className="text-xl font-bold text-white">
@@ -158,13 +158,13 @@ export default function CartPageClient() {
 
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2">
-                <span className="text-primary/80 font-medium">Subtotal</span>
+                <span className="text-yellow-300/80 font-medium">Subtotal</span>
                 <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
               </div>
-              <div className="border-t border-primary100 pt-4">
+              <div className="border-t border-yellow-300100 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-white">Total</span>
-                  <span className="text-2xl font-bold text-primary600">{formatPrice(getTotalPrice())}</span>
+                  <span className="text-2xl font-bold text-yellow-300600">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
             </div>
@@ -179,14 +179,14 @@ export default function CartPageClient() {
 
             <button
               onClick={clearCart}
-              className="w-full mt-3 bg-darklight hover:bg-darklight text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
+              className="w-full mt-3 bg-slate-800 hover:bg-slate-800 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
             >
               🗑️ Vaciar carrito
             </button>
 
             <Link
               href="/"
-              className="block w-full mt-3 text-center text-primary600 hover:text-primary700 font-medium transition-colors py-2"
+              className="block w-full mt-3 text-center text-yellow-300600 hover:text-yellow-300700 font-medium transition-colors py-2"
             >
               ← Seguir comprando
             </Link>

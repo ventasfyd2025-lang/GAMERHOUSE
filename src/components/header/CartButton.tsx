@@ -12,7 +12,7 @@ const CartButton = memo(function CartButton({ totalItems }: CartButtonProps) {
   return (
     <Link
       href="/carrito"
-      className="relative inline-flex items-center p-2 text-primary hover:text-primary600 transition-all duration-200 hover:scale-110"
+      className="relative inline-flex items-center p-2 text-yellow-300 hover:text-yellow-300600 transition-all duration-200 hover:scale-110"
       aria-label="Carrito de compras"
     >
       <ShoppingCart className="h-6 w-6" strokeWidth={2.5} />

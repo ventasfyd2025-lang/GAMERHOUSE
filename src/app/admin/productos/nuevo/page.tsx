@@ -222,23 +222,23 @@ export default function NuevoProductoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800">
       {/* Header */}
-      <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10 shadow-sm">
+      <div className="bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="w-10 h-10 bg-darklight hover:bg-darklight rounded-lg flex items-center justify-center transition-all duration-200"
+                className="w-10 h-10 bg-slate-800 hover:bg-slate-800 rounded-lg flex items-center justify-center transition-all duration-200"
               >
-                <svg className="w-5 h-5 text-primary/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-yellow-300/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </Link>
               <div>
                 <h1 className="text-2xl font-bold text-white">Agregar Nuevo Producto</h1>
-                <p className="text-sm text-primary/80">Completa la información del producto</p>
+                <p className="text-sm text-yellow-300/80">Completa la información del producto</p>
               </div>
             </div>
           </div>
@@ -250,16 +250,16 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-white">Información Básica</h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               <div className="md:col-span-2 lg:col-span-3">
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>📦</span> Nombre *
                 </label>
                 <input
@@ -267,7 +267,7 @@ export default function NuevoProductoPage() {
                   value={productForm.nombre}
                   onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                   required
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80"
                   style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
@@ -276,7 +276,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>🏷️</span> SKU *
                 </label>
                 <input
@@ -285,14 +285,14 @@ export default function NuevoProductoPage() {
                   onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                   required
                   placeholder="SKU-001"
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 uppercase bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 uppercase bg-slate-900/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>💰</span> Precio ($) *
                 </label>
                 <input
@@ -302,7 +302,7 @@ export default function NuevoProductoPage() {
                   required
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80"
                   style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
@@ -311,7 +311,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div className="md:col-span-2 lg:col-span-3">
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>💸</span> Precio Anterior (Opcional - para mostrar descuento)
                 </label>
                 <input
@@ -320,13 +320,13 @@ export default function NuevoProductoPage() {
                   onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80"
                   style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="Dejar vacío si no hay descuento"
                 />
-                <p className="text-xs text-primary/60 mt-2">
+                <p className="text-xs text-yellow-300/60 mt-2">
                   Si agregas un precio anterior, se mostrará tachado y el % de descuento
                 </p>
               </div>
@@ -334,16 +334,16 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">📊</span>
               </div>
               <h4 className="text-lg font-bold text-white">Control de Inventario</h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>📦</span> Stock Actual *
                 </label>
                 <input
@@ -353,7 +353,7 @@ export default function NuevoProductoPage() {
                   required
                   min="0"
                   step="1"
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = '#10b981'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                   placeholder="0"
@@ -361,7 +361,7 @@ export default function NuevoProductoPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                   <span>⚠️</span> Stock Mínimo *
                 </label>
                 <input
@@ -372,7 +372,7 @@ export default function NuevoProductoPage() {
                   min="0"
                   step="1"
                   placeholder="5"
-                  className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80"
+                  className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80"
                   onFocus={(e) => e.currentTarget.style.borderColor = '#10b981'}
                   onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
                 />
@@ -382,25 +382,25 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">📂</span>
               </div>
               <h4 className="text-lg font-bold text-white">Categorización</h4>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div className="lg:col-span-2">
-                <label className="block text-sm font-semibold text-primary mb-3 flex items-center gap-1">
+                <label className="block text-sm font-semibold text-yellow-300 mb-3 flex items-center gap-1">
                   <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                 </label>
-                <div className="border-2 border-primary/30 rounded-lg p-4 bg-dark/80 max-h-96 overflow-y-auto space-y-4">
+                <div className="border-2 border-yellow-300/30 rounded-lg p-4 bg-slate-900/80 max-h-96 overflow-y-auto space-y-4">
                   {categories.map((category) => {
                     const subcategorias = (category as any).subcategorias || [];
                     const isCategoryChecked = productForm.categorias.includes(category.id);
 
                     return (
-                      <div key={category.id} className="border-b border-primary/30 pb-4 last:border-0">
+                      <div key={category.id} className="border-b border-yellow-300/30 pb-4 last:border-0">
                         {/* Categoría principal */}
                         <label className="flex items-center gap-2 hover:bg-yellow-50 p-2 rounded cursor-pointer font-medium">
                           <input
@@ -427,7 +427,7 @@ export default function NuevoProductoPage() {
                                 categoria: newCategorias[0]?.split('-')[0] || ''
                               });
                             }}
-                            className="rounded border-primary/40 text-yellow-500 focus:ring-amber-500 w-4 h-4"
+                            className="rounded border-yellow-300/40 text-yellow-500 focus:ring-amber-500 w-4 h-4"
                           />
                           <span className="text-sm">📂 {category.name}</span>
                         </label>
@@ -462,7 +462,7 @@ export default function NuevoProductoPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-primary/40 text-red-600 focus:ring-orange-500 w-4 h-4"
+                                    className="rounded border-yellow-300/40 text-red-600 focus:ring-orange-500 w-4 h-4"
                                   />
                                   <span className="text-sm">📁 {sub.nombre}</span>
                                 </label>
@@ -487,9 +487,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-white">Descripción</h4>
@@ -498,7 +498,7 @@ export default function NuevoProductoPage() {
               value={productForm.descripcion}
               onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
               rows={4}
-              className="w-full px-4 py-3 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 resize-none bg-dark/80"
+              className="w-full px-4 py-3 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 resize-none bg-slate-900/80"
               onFocus={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
               onBlur={(e) => e.currentTarget.style.borderColor = '#d1d5db'}
               placeholder="Describe las características principales del producto..."
@@ -506,18 +506,18 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Images Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">🖼️</span>
               </div>
               <h4 className="text-lg font-bold text-white">Imágenes del Producto</h4>
             </div>
 
             {/* Image Specifications */}
-            <div className="mb-4 p-3 bg-darklight border border-primary-200 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-slate-800 border border-yellow-300-200 rounded-lg text-sm">
               <p className="text-secondary font-medium mb-2">📐 Especificaciones:</p>
-              <ul className="text-primary-hover space-y-1">
+              <ul className="text-yellow-300-hover space-y-1">
                 <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                 <li>• <strong>Formato:</strong> JPG o PNG</li>
                 <li>• <strong>Fondo:</strong> Blanco preferible</li>
@@ -526,7 +526,7 @@ export default function NuevoProductoPage() {
             </div>
 
             {/* Image Upload Area */}
-            <div className="border-2 border-dashed border-primary-200 rounded-lg p-6 text-center bg-darklight/50 hover:bg-darklight transition-colors">
+            <div className="border-2 border-dashed border-yellow-300-200 rounded-lg p-6 text-center bg-slate-800/50 hover:bg-slate-800 transition-colors">
               <input
                 type="file"
                 multiple
@@ -559,7 +559,7 @@ export default function NuevoProductoPage() {
             {/* Image Previews */}
             {productImagePreviews.length > 0 && (
               <div className="mt-4">
-                <p className="text-sm font-medium text-primary/80 mb-3">✨ Nuevas imágenes a agregar:</p>
+                <p className="text-sm font-medium text-yellow-300/80 mb-3">✨ Nuevas imágenes a agregar:</p>
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
                   {productImagePreviews.map((preview, index) => (
                     <div key={`new-${index}`} className="relative group">
@@ -590,9 +590,9 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-slate-700">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-yellow-400">
                 <span className="text-white">🏷️</span>
               </div>
               <h4 className="text-lg font-bold text-white">Etiquetas con Duración</h4>
@@ -620,7 +620,7 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, nuevoDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-success rounded-lg focus:outline-none focus:border-success bg-dark/80"
+                      className="w-full px-3 py-2 text-sm border-2 border-success rounded-lg focus:outline-none focus:border-success bg-slate-900/80"
                       placeholder="24"
                     />
                     <p className="text-xs text-success mt-1">
@@ -631,7 +631,7 @@ export default function NuevoProductoPage() {
               </div>
 
               {/* Etiqueta Oferta */}
-              <div className="border-2 border-darklight rounded-lg p-4 bg-darklight/50">
+              <div className="border-2 border-slate-700 rounded-lg p-4 bg-slate-800/50">
                 <label className="flex items-center gap-2 cursor-pointer mb-3">
                   <input
                     type="checkbox"
@@ -652,7 +652,7 @@ export default function NuevoProductoPage() {
                       onChange={(e) => setProductForm({ ...productForm, ofertaDuracionHoras: Number(e.target.value) })}
                       min="1"
                       step="1"
-                      className="w-full px-3 py-2 text-sm border-2 border-secondary rounded-lg focus:outline-none focus:border-pink bg-dark/80"
+                      className="w-full px-3 py-2 text-sm border-2 border-secondary rounded-lg focus:outline-none focus:border-pink bg-slate-900/80"
                       placeholder="24"
                     />
                     <p className="text-xs text-pink mt-1">
@@ -665,7 +665,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Bottom Actions */}
-          <div className="bg-dark/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-red-600/20 border border-primary/30 sticky bottom-0 z-10">
+          <div className="bg-slate-900/80/95 backdrop-blur-sm rounded-xl p-5 shadow-lg shadow-red-600/20 border border-yellow-300/30 sticky bottom-0 z-10">
             <div className="flex gap-4">
               <Link
                 href="/admin"

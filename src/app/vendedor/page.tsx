@@ -68,13 +68,13 @@ function VendedorLogin() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
               Panel de Vendedor
             </h2>
-            <p className="mt-2 text-center text-sm text-primary/80">
+            <p className="mt-2 text-center text-sm text-yellow-300/80">
               Inicia sesión para acceder al panel
             </p>
           </div>
@@ -90,7 +90,7 @@ function VendedorLogin() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="relative block w-full px-3 py-2 border border-primary/40 placeholder-gray-500 text-white rounded-t-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
+                  className="relative block w-full px-3 py-2 border border-yellow-300/40 placeholder-gray-500 text-white rounded-t-md focus:outline-none focus:ring-primary focus:border-yellow-300 focus:z-10 sm:text-sm"
                   placeholder="Dirección de email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +106,7 @@ function VendedorLogin() {
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   required
-                  className="relative block w-full px-3 py-2 pr-10 border border-primary/40 placeholder-gray-500 text-white rounded-b-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
+                  className="relative block w-full px-3 py-2 pr-10 border border-yellow-300/40 placeholder-gray-500 text-white rounded-b-md focus:outline-none focus:ring-primary focus:border-yellow-300 focus:z-10 sm:text-sm"
                   placeholder="Contraseña"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -117,9 +117,9 @@ function VendedorLogin() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-primary/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-yellow-300/50" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-primary/50" />
+                    <EyeIcon className="h-5 w-5 text-yellow-300/50" />
                   )}
                 </button>
               </div>
@@ -133,7 +133,7 @@ function VendedorLogin() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-bold rounded-md text-white bg-yellow-400 hover:bg-yellow-400-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
               </button>
@@ -225,18 +225,18 @@ export default function VendedorPage() {
   if (userProfile && !isAdmin && !isVendedor) {
     return (
       <Layout>
-        <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4">
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full text-center space-y-4">
             <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
-            <p className="text-primary/80">
+            <p className="text-yellow-300/80">
               No tienes permisos para acceder al panel de vendedor.
             </p>
-            <p className="text-sm text-primary/60">
+            <p className="text-sm text-yellow-300/60">
               Tu rol actual es: <span className="font-medium">{userProfile.role}</span>
             </p>
             <button
               onClick={() => router.push('/')}
-              className="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary-hover transition-colors"
+              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-400-hover transition-colors"
             >
               Volver al Inicio
             </button>
@@ -268,9 +268,9 @@ export default function VendedorPage() {
       case 'confirmed': return 'text-green-600 bg-green-50 border-green-200';
       case 'shipped': return 'text-red-600 bg-yellow-50 border-orange-200';
       case 'delivered': return 'text-yellow-500 bg-yellow-50 border-yellow-300';
-      case 'cancelled': return 'text-pink bg-darklight border-darklight';
-      case 'pending_verification': return 'text-primary bg-darklight border-primary-200';
-      default: return 'text-primary/80 bg-dark border-primary/30';
+      case 'cancelled': return 'text-pink bg-slate-800 border-slate-700';
+      case 'pending_verification': return 'text-yellow-300 bg-slate-800 border-yellow-300-200';
+      default: return 'text-yellow-300/80 bg-slate-900 border-yellow-300/30';
     }
   };
 
@@ -302,51 +302,51 @@ export default function VendedorPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-dark py-8">
+      <div className="min-h-screen bg-slate-900 py-8">
         <div className="max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Panel de Vendedor</h1>
-            <p className="text-primary/80">Gestiona pedidos y atiende a los clientes</p>
+            <p className="text-yellow-300/80">Gestiona pedidos y atiende a los clientes</p>
           </div>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-dark/80 rounded-lg shadow p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <ClockIcon className="h-8 w-8 text-yellow-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-primary/80">Pedidos Pendientes</p>
+                  <p className="text-lg font-bold text-yellow-300/80">Pedidos Pendientes</p>
                   <p className="text-2xl font-bold text-white">{stats.pendingOrders}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <ShoppingBagIcon className="h-8 w-8 text-red-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-primary/80">Pedidos Hoy</p>
+                  <p className="text-lg font-bold text-yellow-300/80">Pedidos Hoy</p>
                   <p className="text-2xl font-bold text-white">{stats.todayOrders}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <CurrencyDollarIcon className="h-8 w-8 text-green-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-primary/80">Ingresos Totales</p>
+                  <p className="text-lg font-bold text-yellow-300/80">Ingresos Totales</p>
                   <p className="text-2xl font-bold text-white">${stats.totalRevenue.toLocaleString('es-CL')}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <UsersIcon className="h-8 w-8 text-amber-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-primary/80">Clientes Únicos</p>
+                  <p className="text-lg font-bold text-yellow-300/80">Clientes Únicos</p>
                   <p className="text-2xl font-bold text-white">{stats.totalCustomers}</p>
                 </div>
               </div>
@@ -354,16 +354,16 @@ export default function VendedorPage() {
           </div>
 
           {/* Main Content */}
-          <div className="bg-dark/80 rounded-lg shadow">
+          <div className="bg-slate-900/80 rounded-lg shadow">
             {/* Tabs */}
-            <div className="border-b border-primary/30">
+            <div className="border-b border-yellow-300/30">
               <nav className="-mb-px flex space-x-8 px-6">
                 <button
                   onClick={() => setActiveTab('orders')}
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === 'orders'
-                      ? 'border-primary text-primary'
-                      : 'border-transparent text-primary/60 hover:text-primary hover:border-primary/40'
+                      ? 'border-yellow-300 text-yellow-300'
+                      : 'border-transparent text-yellow-300/60 hover:text-yellow-300 hover:border-yellow-300/40'
                   }`}
                 >
                   Gestión de Pedidos
@@ -375,43 +375,43 @@ export default function VendedorPage() {
             <div className="p-6">
               <div className="mb-4">
                 <h2 className="text-lg font-medium text-white">Pedidos Recientes</h2>
-                <p className="text-sm text-primary/60">Gestiona el estado de los pedidos</p>
+                <p className="text-sm text-yellow-300/60">Gestiona el estado de los pedidos</p>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-dark">
+                  <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Fecha
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                     {orders.slice(0, 20).map((order) => (
-                      <tr key={order.id} className="hover:bg-dark">
+                      <tr key={order.id} className="hover:bg-slate-900">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">#{order.id.slice(-8)}</div>
-                          <div className="text-sm text-primary/60">{order.paymentMethod}</div>
+                          <div className="text-sm text-yellow-300/60">{order.paymentMethod}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">{order.customerName}</div>
-                          <div className="text-sm text-primary/60">{order.customerEmail}</div>
+                          <div className="text-sm text-yellow-300/60">{order.customerEmail}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">
@@ -423,7 +423,7 @@ export default function VendedorPage() {
                             {getStatusText(order.status)}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-primary/60">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
                           {(() => {
                             try {
                               const date = order.createdAt?.toDate ?
@@ -439,7 +439,7 @@ export default function VendedorPage() {
                           <select
                             value={order.status}
                             onChange={(e) => updateOrderStatus(order.id, e.target.value)}
-                            className="text-xs border border-primary/40 rounded px-2 py-1"
+                            className="text-xs border border-yellow-300/40 rounded px-2 py-1"
                           >
                             <option value="pending">Pendiente</option>
                             <option value="confirmed">Confirmado</option>

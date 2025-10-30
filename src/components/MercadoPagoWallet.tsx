@@ -168,9 +168,9 @@ export default function MercadoPagoWallet({
 
   if (error) {
     return (
-      <div className={`p-6 bg-darklight border border-darklight rounded-lg ${className}`}>
+      <div className={`p-6 bg-slate-800 border border-slate-700 rounded-lg ${className}`}>
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-darklight rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center">
             <span className="text-pink font-bold">!</span>
           </div>
           <div>
@@ -185,10 +185,10 @@ export default function MercadoPagoWallet({
   return (
     <div className={`mercadopago-wallet ${className}`}>
       {isLoading && (
-        <div className="p-8 bg-dark border border-primary/30 rounded-lg">
+        <div className="p-8 bg-slate-900 border border-yellow-300/30 rounded-lg">
           <div className="flex items-center justify-center space-x-3">
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
-            <span className="text-primary/80">Cargando opciones de pago...</span>
+            <span className="text-yellow-300/80">Cargando opciones de pago...</span>
           </div>
         </div>
       )}

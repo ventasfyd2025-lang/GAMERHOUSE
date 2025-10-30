@@ -33,29 +33,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white">
             Iniciar Sesión
           </h2>
-          <p className="mt-2 text-sm text-primary/80">
+          <p className="mt-2 text-sm text-yellow-300/80">
             Accede a tu cuenta para continuar
           </p>
         </div>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-dark/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
+        <div className="bg-slate-900/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-darklight border border-darklight text-secondary px-4 py-3 rounded">
+              <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded">
                 {error}
               </div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-primary">
+              <label htmlFor="email" className="block text-sm font-medium text-yellow-300">
                 Email
               </label>
               <div className="mt-1">
@@ -67,14 +67,14 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-yellow-300/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-yellow-300 sm:text-sm"
                   placeholder="tu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-primary">
+              <label htmlFor="password" className="block text-sm font-medium text-yellow-300">
                 Contraseña
               </label>
               <div className="mt-1 relative">
@@ -86,7 +86,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-primary/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 pr-10 border border-yellow-300/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-yellow-300 sm:text-sm"
                   placeholder="••••••••"
                 />
                 <button
@@ -95,9 +95,9 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-primary/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-yellow-300/50" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-primary/50" />
+                    <EyeIcon className="h-5 w-5 text-yellow-300/50" />
                   )}
                 </button>
               </div>
@@ -107,7 +107,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center">
@@ -125,10 +125,10 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-primary/40" />
+                <div className="w-full border-t border-yellow-300/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-dark/80 text-primary/60">O continúa con</span>
+                <span className="px-2 bg-slate-900/80 text-yellow-300/60">O continúa con</span>
               </div>
             </div>
 
@@ -146,24 +146,24 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-primary/40" />
+                <div className="w-full border-t border-yellow-300/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-dark/80 text-primary/60">¿No tienes cuenta?</span>
+                <span className="px-2 bg-slate-900/80 text-yellow-300/60">¿No tienes cuenta?</span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <Link
                 href="/registro"
-                className="w-full flex justify-center py-2 px-4 border border-primary rounded-md shadow-sm bg-dark/80 text-sm font-medium text-primary hover:bg-darklight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-yellow-300 rounded-md shadow-sm bg-slate-900/80 text-sm font-medium text-yellow-300 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
               >
                 Crear Nueva Cuenta
               </Link>
               
               <Link
                 href="/checkout?guest=true"
-                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-primary/80 hover:text-white"
+                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-yellow-300/80 hover:text-white"
               >
                 Continuar como invitado
               </Link>
@@ -172,7 +172,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-primary hover:text-primary font-medium">
+          <Link href="/" className="text-yellow-300 hover:text-yellow-300 font-medium">
             ← Volver a la tienda
           </Link>
         </div>

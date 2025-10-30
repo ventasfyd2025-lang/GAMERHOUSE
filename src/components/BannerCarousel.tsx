@@ -114,7 +114,7 @@ export default function BannerCarousel({
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-primary100">
+          <p className="text-2xl md:text-3xl text-yellow-300100">
             {text}
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function BannerCarousel({
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg shadow-red-600/20">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-primary100 drop-shadow-lg shadow-red-600/20">
+          <p className="text-2xl md:text-3xl text-yellow-300100 drop-shadow-lg shadow-red-600/20">
             {text}
           </p>
         </div>
@@ -171,8 +171,8 @@ export default function BannerCarousel({
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? 'bg-dark/80'
-                  : 'bg-dark/80 bg-opacity-50 hover:bg-opacity-75'
+                  ? 'bg-slate-900/80'
+                  : 'bg-slate-900/80 bg-opacity-50 hover:bg-opacity-75'
               }`}
             />
           ))}

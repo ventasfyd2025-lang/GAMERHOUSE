@@ -88,7 +88,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-primary bg-darklight border-primary-200', 
+    color: 'text-yellow-300 bg-slate-800 border-yellow-300-200', 
     icon: TruckIcon,
     description: 'Pedido en camino'
   },
@@ -100,7 +100,7 @@ const statusConfig = {
   },
   cancelled: { 
     label: 'Cancelado', 
-    color: 'text-pink bg-darklight border-darklight', 
+    color: 'text-pink bg-slate-800 border-slate-700', 
     icon: XCircleIcon,
     description: 'Pedido cancelado'
   }
@@ -252,7 +252,7 @@ export default function AdminChatPage() {
 
   if (authLoading || orderLoading) {
     return (
-      <div className="min-h-screen bg-dark flex items-center justify-center">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600"></div>
       </div>
     );
@@ -260,7 +260,7 @@ export default function AdminChatPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-dark flex items-center justify-center">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
           <button 
@@ -277,15 +277,15 @@ export default function AdminChatPage() {
   const StatusIcon = statusConfig[order.status].icon;
 
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-slate-900">
       {/* Header */}
-      <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10">
+      <div className="bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button 
                 onClick={() => router.push('/admin')}
-                className="text-primary/60 hover:text-primary transition-colors"
+                className="text-yellow-300/60 hover:text-yellow-300 transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </button>
@@ -301,8 +301,8 @@ export default function AdminChatPage() {
             </div>
             
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-primary/80">Admin: {user?.email}</span>
-              <span className="px-3 py-1 bg-darklight text-pink text-xs font-medium rounded-full">
+              <span className="text-sm text-yellow-300/80">Admin: {user?.email}</span>
+              <span className="px-3 py-1 bg-slate-800 text-pink text-xs font-medium rounded-full">
                 Modo Administrador
               </span>
             </div>
@@ -315,31 +315,31 @@ export default function AdminChatPage() {
           {/* Order Info */}
           <div className="lg:col-span-1 space-y-6">
             {/* Customer Info */}
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               
               <div className="space-y-2">
                 <div>
-                  <span className="text-base font-semibold text-primary">Nombre:</span>
+                  <span className="text-base font-semibold text-yellow-300">Nombre:</span>
                   <p className="text-sm text-white">{order.customerName}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-primary">Email:</span>
+                  <span className="text-base font-semibold text-yellow-300">Email:</span>
                   <p className="text-sm text-white">{order.customerEmail}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-primary">Teléfono:</span>
+                  <span className="text-base font-semibold text-yellow-300">Teléfono:</span>
                   <p className="text-sm text-white">{order.customerPhone}</p>
                 </div>
                 <div>
-                  <span className="text-base font-semibold text-primary">Dirección:</span>
+                  <span className="text-base font-semibold text-yellow-300">Dirección:</span>
                   <p className="text-sm text-white">{order.shippingAddress}</p>
                 </div>
               </div>
             </div>
 
             {/* Order Summary */}
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               
               <div className="space-y-3">
@@ -356,7 +356,7 @@ export default function AdminChatPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-base font-semibold text-white">{item.nombre}</p>
-                      <p className="text-xs text-primary/80">
+                      <p className="text-xs text-yellow-300/80">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -375,12 +375,12 @@ export default function AdminChatPage() {
 
           {/* Chat */}
           <div className="lg:col-span-2">
-            <div className="bg-dark/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-slate-900/80 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header */}
               <div className="bg-gradient-to-r from-pink to-pink text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-dark/80 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-slate-900/80 rounded-full flex items-center justify-center">
                       <ShieldCheckIcon className="h-6 w-6 text-pink" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-white"></div>
@@ -396,15 +396,15 @@ export default function AdminChatPage() {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-900">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-darklight rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4">
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>
-                    <p className="text-sm text-primary/80 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
-                    <p className="text-xs text-primary/60">Responde cualquier pregunta sobre el pedido</p>
+                    <p className="text-sm text-yellow-300/80 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
+                    <p className="text-xs text-yellow-300/60">Responde cualquier pregunta sobre el pedido</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -420,21 +420,21 @@ export default function AdminChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-primary/60 mb-1 px-3">{order.customerName}</div>
+                          <div className="text-xs text-yellow-300/60 mb-1 px-3">{order.customerName}</div>
                         )}
                         
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-pink text-white'
-                              : 'bg-dark/80 text-white border border-primary/30'
+                              : 'bg-slate-900/80 text-white border border-yellow-300/30'
                           }`}
                         >
                           <p className="whitespace-pre-wrap">{message.message}</p>
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-primary/60">
+                          <span className="text-xs text-yellow-300/60">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -448,7 +448,7 @@ export default function AdminChatPage() {
                                   <CheckIcon className="h-3 w-3 text-pink -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-primary/50" />
+                                <CheckIcon className="h-3 w-3 text-yellow-300/50" />
                               )}
                             </div>
                           )}
@@ -468,7 +468,7 @@ export default function AdminChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-primary/30 p-4 bg-dark/80 rounded-b-lg">
+              <div className="border-t border-yellow-300/30 p-4 bg-slate-900/80 rounded-b-lg">
                 <div className="flex items-end space-x-3">
                   <div className="flex-1">
                     <textarea
@@ -476,7 +476,7 @@ export default function AdminChatPage() {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Responder al cliente sobre el pedido..."
-                      className="w-full resize-none border border-primary/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink focus:border-transparent max-h-24"
+                      className="w-full resize-none border border-yellow-300/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink focus:border-transparent max-h-24"
                       rows={2}
                       disabled={loading}
                     />
@@ -494,7 +494,7 @@ export default function AdminChatPage() {
                   </button>
                 </div>
                 
-                <p className="text-xs text-primary/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300/60 mt-2 text-center">
                   <span className="font-medium text-pink">Modo Admin:</span> El cliente verá tus respuestas en tiempo real
                 </p>
               </div>

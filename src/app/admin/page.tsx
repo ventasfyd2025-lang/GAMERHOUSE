@@ -1018,12 +1018,12 @@ export default function AdminPage() {
     pending_verification: 'bg-warning/20 text-secondary',
     pending_payment: 'bg-warning/20 text-amber-800',
     confirmed: 'bg-success/20 text-success',
-    preparing: 'bg-darklight text-secondary',
+    preparing: 'bg-slate-800 text-secondary',
     processing: 'bg-warning/20 text-secondary',
     shipped: 'bg-warning/20 text-amber-800',
     delivered: 'bg-success/20 text-success',
     completed: 'bg-emerald-100 text-emerald-800',
-    cancelled: 'bg-darklight text-pink'
+    cancelled: 'bg-slate-800 text-pink'
   };
 
   const ordersByCustomer = useMemo<CustomerOrderGroup[]>(() => {
@@ -1193,10 +1193,10 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-darklight text-pink border-darklight';
+      case 'admin': return 'bg-slate-800 text-pink border-slate-700';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
-      default: return 'bg-darklight text-white border-primary/30';
+      default: return 'bg-slate-800 text-white border-yellow-300/30';
     }
   };
 
@@ -2204,17 +2204,17 @@ export default function AdminPage() {
   // Bloquear acceso si no es administrador
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-dark flex items-center justify-center">
-        <div className="max-w-md w-full bg-dark/80 rounded-lg shadow-md p-8">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+        <div className="max-w-md w-full bg-slate-900/80 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
-            <p className="text-primary/80 mt-2">GAMERHOUSE</p>
+            <p className="text-yellow-300/80 mt-2">GAMERHOUSE</p>
           </div>
 
           {!user ? (
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-primary mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-yellow-300 mb-1">
                 Email
               </label>
               <input
@@ -2223,12 +2223,12 @@ export default function AdminPage() {
                 value={loginForm.email}
                 onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-primary mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-yellow-300 mb-1">
                 Contraseña
               </label>
               <input
@@ -2237,12 +2237,12 @@ export default function AdminPage() {
                 value={loginForm.password}
                 onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                 required
-                className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
               />
             </div>
 
             {loginError && (
-              <div className="text-pink text-sm bg-darklight p-3 rounded-md">
+              <div className="text-pink text-sm bg-slate-800 p-3 rounded-md">
                 {loginError}
               </div>
             )}
@@ -2250,14 +2250,14 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loggingIn}
-              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary hover:bg-yellow-400"
+              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400 hover:bg-yellow-400"
             >
               {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
           </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-darklight border border-darklight rounded-md p-4">
+              <div className="bg-slate-800 border border-slate-700 rounded-md p-4">
                 <p className="text-pink font-semibold">⛔ Acceso Denegado</p>
                 <p className="text-pink text-sm mt-2">
                   No tienes permisos de administrador para acceder a esta página.
@@ -2265,7 +2265,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => router.push('/')}
-                className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors bg-primary hover:bg-yellow-400"
+                className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors bg-yellow-400 hover:bg-yellow-400"
               >
                 Volver al Inicio
               </button>
@@ -2283,13 +2283,13 @@ export default function AdminPage() {
           font-size: 1.02em !important;
         }
       `}</style>
-      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-darklight/30 via-darklight/20 to-darklight/40">
+      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-slate-800/30 via-slate-800/20 to-slate-800/40">
 
-      <header className="bg-dark/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-darklight">
+      <header className="bg-slate-900/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-slate-700">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
                 <span className="text-white text-lg">🏪</span>
               </div>
               <h1 className="text-xl font-bold">
@@ -2298,7 +2298,7 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
               >
 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -2312,18 +2312,18 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200 bg-primary">
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-yellow-300-200 bg-yellow-400">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
+              <div className="w-10 h-10 bg-slate-900/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Panel de Administración</h1>
-                <p className="text-dark-light text-xs">Gestiona tu tienda</p>
+                <p className="text-slate-100-light text-xs">Gestiona tu tienda</p>
               </div>
             </div>
-            <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
+            <div className="bg-slate-900/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
               <span className="text-white font-semibold text-xs">🎮 GAMERHOUSE</span>
             </div>
           </div>
@@ -2350,8 +2350,8 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-dark/80 text-primary shadow-lg shadow-red-600/20 transform scale-105'
-                    : 'text-white/80 hover:text-white hover:bg-dark/80/20 backdrop-blur-sm'
+                    ? 'bg-slate-900/80 text-yellow-300 shadow-lg shadow-red-600/20 transform scale-105'
+                    : 'text-white/80 hover:text-white hover:bg-slate-900/80/20 backdrop-blur-sm'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
@@ -2371,15 +2371,15 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Dashboard & Reportes</h2>
-                    <p className="text-primary/80 text-sm">Panel principal con estadísticas y exportación</p>
+                    <p className="text-yellow-300/80 text-sm">Panel principal con estadísticas y exportación</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -2418,7 +2418,7 @@ export default function AdminPage() {
                       // Simple export alert for now (could be enhanced with actual PDF generation)
                       alert(`Reporte de ${monthName}\n\nVentas totales: ${formatPrice(reportData.totalSales)}\nPedidos: ${reportData.totalOrders}\nVenta promedio: ${formatPrice(reportData.averageOrderValue)}\n\nProducto más vendido: ${reportData.topProducts[0]?.nombre || 'N/A'}`);
                     }}
-                    className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors font-semibold text-sm"
+                    className="flex items-center gap-2 bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors font-semibold text-sm"
                   >
                     📊 Exportar Reporte
                   </button>
@@ -2427,9 +2427,9 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">📦</div>
                   <div>
                     <p className="text-sm font-semibold">Total Productos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
@@ -2437,9 +2437,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">🛒</div>
                   <div>
                     <p className="text-sm font-semibold">Total Pedidos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
@@ -2447,9 +2447,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">💰</div>
                   <div>
                     <p className="text-sm font-semibold">Ingresos Totales</p>
                     <p className="text-3xl font-bold text-white">
@@ -2459,9 +2459,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-primary">⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">⏳</div>
                   <div>
                     <p className="text-sm font-semibold">Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
@@ -2472,10 +2472,10 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-darklight">
-              <div className="p-6 border-b border-darklight">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700">
+              <div className="p-6 border-b border-slate-700">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
@@ -2483,29 +2483,29 @@ export default function AdminPage() {
               </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-dark">
+                  <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Pedidos
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Total Comprado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Último Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Estados
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                     {ordersByCustomer.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-primary/60">
+                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-yellow-300/60">
                           No hay pedidos registrados todavía.
                         </td>
                       </tr>
@@ -2517,7 +2517,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {group.customerName}
                               </div>
-                              <div className="text-sm text-primary/60">
+                              <div className="text-sm text-yellow-300/60">
                                 {group.customerEmail}
                               </div>
                             </div>
@@ -2541,7 +2541,7 @@ export default function AdminPage() {
                                 <span
                                   key={status}
                                   className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                                    statusClassMap[status as OrderStatus] || 'bg-darklight text-white'
+                                    statusClassMap[status as OrderStatus] || 'bg-slate-800 text-white'
                                   }`}
                                 >
                                   {statusLabelMap[status as OrderStatus]} · {count}
@@ -2566,7 +2566,7 @@ export default function AdminPage() {
               <h2 className="text-2xl font-bold text-white">Gestión de Productos</h2>
               <Link
                 href="/admin/productos/nuevo"
-                className="text-white px-4 py-2 rounded-md transition-colors inline-block bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                className="text-white px-4 py-2 rounded-md transition-colors inline-block bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                 >
 <span className="text-lg mr-2">➕</span>
                 Agregar Producto
@@ -2611,7 +2611,7 @@ export default function AdminPage() {
                               </span>
                             )}
                             {critical > 0 && (
-                              <span className="bg-primary-hover px-2 py-1 rounded-full text-xs font-bold">
+                              <span className="bg-yellow-400-hover px-2 py-1 rounded-full text-xs font-bold">
                                 {critical} Crítico{critical !== 1 ? 's' : ''}
                               </span>
                             )}
@@ -2634,8 +2634,8 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-dark/80 border-2 border-darklight rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
-                      <div className="bg-gradient-to-r from-darklight to-darklight p-4 border-b border-darklight">
+                    <div className="mt-4 bg-slate-900/80 border-2 border-slate-700 rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
+                      <div className="bg-gradient-to-r from-slate-800 to-slate-800 p-4 border-b border-slate-700">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
                           <span className="ml-2 text-sm text-pink">({lowStockProducts.length} productos)</span>
@@ -2645,8 +2645,8 @@ export default function AdminPage() {
                       {/* Stock List Table */}
                       <div className="max-h-96 overflow-y-auto">
                         <table className="w-full">
-                          <thead className="bg-dark sticky top-0">
-                            <tr className="text-left text-xs font-semibold text-primary/80 uppercase">
+                          <thead className="bg-slate-900 sticky top-0">
+                            <tr className="text-left text-xs font-semibold text-yellow-300/80 uppercase">
                               <th className="px-4 py-2">Producto</th>
                               <th className="px-4 py-2">Estado</th>
                               <th className="px-4 py-2">Stock</th>
@@ -2663,17 +2663,17 @@ export default function AdminPage() {
                               const stockPercentage = Math.min((product.stock / minStock) * 100, 100);
 
                               return (
-                                <tr key={product.id} className="hover:bg-dark transition-colors">
+                                <tr key={product.id} className="hover:bg-slate-900 transition-colors">
                                   <td className="px-4 py-3">
                                     <div className="font-medium text-white">{product.nombre}</div>
-                                    <div className="text-xs text-primary/60">{product.categoria}</div>
+                                    <div className="text-xs text-yellow-300/60">{product.categoria}</div>
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
                                       isOutOfStock
-                                        ? 'bg-darklight text-pink'
+                                        ? 'bg-slate-800 text-pink'
                                         : isCritical
-                                          ? 'bg-darklight text-secondary'
+                                          ? 'bg-slate-800 text-secondary'
                                           : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
@@ -2681,25 +2681,25 @@ export default function AdminPage() {
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`font-bold ${
-                                      isOutOfStock ? 'text-pink' : isCritical ? 'text-primary' : 'text-yellow-700'
+                                      isOutOfStock ? 'text-pink' : isCritical ? 'text-yellow-300' : 'text-yellow-700'
                                     }`}>
                                       {product.stock}
                                     </span>
                                   </td>
                                   <td className="px-4 py-3">
-                                    <span className="text-primary/80">{minStock}</span>
+                                    <span className="text-yellow-300/80">{minStock}</span>
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="flex items-center space-x-2">
-                                      <div className="w-16 bg-darklight rounded-full h-2">
+                                      <div className="w-16 bg-slate-800 rounded-full h-2">
                                         <div
                                           className={`h-2 rounded-full transition-all duration-300 ${
-                                            isOutOfStock ? 'bg-pink' : isCritical ? 'bg-primary' : 'bg-yellow-500'
+                                            isOutOfStock ? 'bg-pink' : isCritical ? 'bg-yellow-400' : 'bg-yellow-500'
                                           }`}
                                           style={{ width: `${stockPercentage}%` }}
                                         ></div>
                                       </div>
-                                      <span className="text-xs text-primary/80">{Math.round(stockPercentage)}%</span>
+                                      <span className="text-xs text-yellow-300/80">{Math.round(stockPercentage)}%</span>
                                     </div>
                                   </td>
                                   <td className="px-4 py-3">
@@ -2738,14 +2738,14 @@ export default function AdminPage() {
                       </div>
 
                       {/* Quick Actions Footer */}
-                      <div className="bg-dark p-4 border-t border-primary/30">
+                      <div className="bg-slate-900 p-4 border-t border-yellow-300/30">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-primary/80">
+                          <span className="text-sm text-yellow-300/80">
                             💡 Tip: Haz clic en los botones de acción para gestionar el stock rápidamente
                           </span>
                           <button
                             onClick={() => setShowStockAlert(false)}
-                            className="bg-darklight hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                            className="bg-slate-800 hover:bg-gray-300 text-yellow-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                           >
                             Cerrar Lista
                           </button>
@@ -2793,7 +2793,7 @@ export default function AdminPage() {
                     {productSearch && (
                       <button
                         onClick={() => setProductSearch('')}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary/50 hover:text-primary/80 text-lg"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-300/50 hover:text-yellow-300/80 text-lg"
                       >
                         ✕
                       </button>
@@ -2819,7 +2819,7 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-dark/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-warning/30">
+                <div className="bg-slate-900/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-warning/30">
                   <h4 className="font-semibold text-secondary flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
@@ -2827,7 +2827,7 @@ export default function AdminPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {/* Price Range */}
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         💰 Rango de Precio
                       </label>
                       <div className="flex space-x-2">
@@ -2839,7 +2839,7 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, min: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
+                          className="w-full px-2 py-2 border border-yellow-300/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
                         />
                         <input
                           type="number"
@@ -2849,14 +2849,14 @@ export default function AdminPage() {
                             ...prev,
                             priceRange: { ...prev.priceRange, max: e.target.value }
                           }))}
-                          className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
+                          className="w-full px-2 py-2 border border-yellow-300/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
                         />
                       </div>
                     </div>
 
                     {/* Stock Status */}
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         📊 Estado de Stock
                       </label>
                       <select
@@ -2865,7 +2865,7 @@ export default function AdminPage() {
                           ...prev,
                           stockStatus: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
+                        className="w-full px-2 py-2 border border-yellow-300/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="in_stock">Con Stock</option>
@@ -2876,7 +2876,7 @@ export default function AdminPage() {
 
                     {/* Status */}
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         🔘 Estado
                       </label>
                       <select
@@ -2885,7 +2885,7 @@ export default function AdminPage() {
                           ...prev,
                           status: e.target.value
                         }))}
-                        className="w-full px-2 py-2 border border-primary/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
+                        className="w-full px-2 py-2 border border-yellow-300/40 rounded-lg text-xs focus:border-red-600 focus:outline-none"
                       >
                         <option value="all">Todos</option>
                         <option value="active">Activos</option>
@@ -2895,7 +2895,7 @@ export default function AdminPage() {
 
                     {/* Tags */}
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         🏷️ Etiquetas
                       </label>
                       <div className="space-y-1">
@@ -2944,7 +2944,7 @@ export default function AdminPage() {
                           tags: []
                         });
                       }}
-                      className="bg-darklight hover:bg-gray-300 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                      className="bg-slate-800 hover:bg-gray-300 text-yellow-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     >
                       🗑️ Limpiar Filtros
                     </button>
@@ -2971,7 +2971,7 @@ export default function AdminPage() {
                         </span>
                       )}
                       {productFilters.tags.map(tag => (
-                        <span key={tag} className="bg-darklight text-secondary px-2 py-1 rounded-full text-xs">
+                        <span key={tag} className="bg-slate-800 text-secondary px-2 py-1 rounded-full text-xs">
                           {tag === 'nuevo' ? '✨ Nuevo' : '🔥 Oferta'}
                         </span>
                       ))}
@@ -2986,10 +2986,10 @@ export default function AdminPage() {
             </div>
 
             
-            <div className="bg-dark/80 rounded-lg shadow-md p-4 mb-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-primary/80">
+                  <span className="text-sm text-yellow-300/80">
                     {selectedProducts.length} producto(s) seleccionado(s)
                   </span>
                   <button
@@ -3000,7 +3000,7 @@ export default function AdminPage() {
                   </button>
                   <button
                     onClick={clearSelection}
-                    className="text-sm text-primary/80 hover:text-primary"
+                    className="text-sm text-yellow-300/80 hover:text-yellow-300"
                   >
                     Limpiar selección
                   </button>
@@ -3008,7 +3008,7 @@ export default function AdminPage() {
                 {selectedProducts.length > 0 && (
                   <button
                     onClick={deleteSelectedProducts}
-                    className="px-4 py-2 text-white rounded-md text-sm bg-primary"
+                    className="px-4 py-2 text-white rounded-md text-sm bg-yellow-400"
                   >
                     <span className="text-lg mr-2">🗑️</span>
                     Eliminar seleccionados ({selectedProducts.length})
@@ -3017,12 +3017,12 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-slate-900/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-dark">
+                  <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         <input
                           type="checkbox"
                           checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
@@ -3033,27 +3033,27 @@ export default function AdminPage() {
                               clearSelection();
                             }
                           }}
-                          className="rounded border-primary/40"
+                          className="rounded border-yellow-300/40"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Producto
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Precio
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Stock
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Categoría
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3061,7 +3061,7 @@ export default function AdminPage() {
                             type="checkbox"
                             checked={selectedProducts.includes(product.id)}
                             onChange={() => toggleProductSelection(product.id)}
-                            className="rounded border-primary/40"
+                            className="rounded border-yellow-300/40"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3076,7 +3076,7 @@ export default function AdminPage() {
                                   className="h-10 w-10 object-cover rounded"
                                 />
                               ) : (
-                                <div className="h-10 w-10 bg-darklight rounded flex items-center justify-center">
+                                <div className="h-10 w-10 bg-slate-800 rounded flex items-center justify-center">
                                   📦
                                 </div>
                               )}
@@ -3085,7 +3085,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {product.nombre}
                               </div>
-                              <div className="text-xs text-primary/60 mt-1">
+                              <div className="text-xs text-yellow-300/60 mt-1">
                                 SKU: {product.sku && product.sku.trim() ? product.sku : 'No asignado'}
                               </div>
                               <div className="flex space-x-1 mt-1">
@@ -3095,7 +3095,7 @@ export default function AdminPage() {
                                   </span>
                                 )}
                                 {product.oferta && (
-                                  <span className="bg-darklight text-pink text-xs px-2 py-1 rounded-full">
+                                  <span className="bg-slate-800 text-pink text-xs px-2 py-1 rounded-full">
                                     Oferta
                                   </span>
                                 )}
@@ -3138,9 +3138,9 @@ export default function AdminPage() {
               </div>
               
               
-              <div className="px-6 py-3 bg-dark border-t border-primary/30">
+              <div className="px-6 py-3 bg-slate-900 border-t border-yellow-300/30">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-primary">
+                  <p className="text-sm text-yellow-300">
                     Mostrando <span className="font-bold text-red-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
                     {(productSearch || selectedCategory !== 'all' || productFilters.tags.length > 0) && (
                       <span className="text-red-600 ml-1">con filtros aplicados</span>
@@ -3172,7 +3172,7 @@ export default function AdminPage() {
 
         {activeTab === 'user-management' && (
           <div className="space-y-6">
-            <div className="bg-dark/80 rounded-lg shadow p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">👥 Gestión de Usuarios</h2>
                 <button
@@ -3224,14 +3224,14 @@ export default function AdminPage() {
               {/* Modal de detalles del usuario */}
               {selectedUserDetails && (
                 <div
-                  className="fixed inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                  className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                   onClick={() => {
                     setSelectedUserDetails(null);
                     setSelectedUserOrders([]);
                   }}
                 >
                   <div
-                    className="bg-dark/80 rounded-xl border-2 border-amber-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-slate-900/80 rounded-xl border-2 border-amber-300 shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-red-600 hover:bg-secondary-500 to-yellow-500 text-white p-4 flex justify-between items-center">
@@ -3241,7 +3241,7 @@ export default function AdminPage() {
                           setSelectedUserDetails(null);
                           setSelectedUserOrders([]);
                         }}
-                        className="text-white hover:bg-dark/80/20 rounded-full p-2 transition-colors"
+                        className="text-white hover:bg-slate-900/80/20 rounded-full p-2 transition-colors"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -3252,21 +3252,21 @@ export default function AdminPage() {
                   <div className="p-6 overflow-y-auto flex-1">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Nombre Completo</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Nombre Completo</label>
                         <p className="text-lg font-medium text-white">
                           {selectedUserDetails.firstName} {selectedUserDetails.lastName}
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Correo Electrónico</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Correo Electrónico</label>
                         <p className="text-lg font-medium text-white">{selectedUserDetails.email}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Teléfono</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Teléfono</label>
                         <p className="text-lg font-medium text-white">{selectedUserDetails.phone || 'No registrado'}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Rol</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Rol</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${getRoleColor(selectedUserDetails.role || 'cliente')}`}>
                             {selectedUserDetails.role || 'cliente'}
@@ -3274,11 +3274,11 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Estado</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Estado</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-darklight text-pink border-darklight'
+                              ? 'bg-slate-800 text-pink border-slate-700'
                               : 'bg-success/20 text-success border-success'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3286,7 +3286,7 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-primary/80">Fecha de Registro</label>
+                        <label className="text-sm font-semibold text-yellow-300/80">Fecha de Registro</label>
                         <p className="text-lg font-medium text-white">
                           {selectedUserDetails.createdAt ? new Date(selectedUserDetails.createdAt.toDate()).toLocaleDateString('es-CL') : 'N/A'}
                         </p>
@@ -3300,24 +3300,24 @@ export default function AdminPage() {
                       </h4>
 
                       {selectedUserOrders.length === 0 ? (
-                        <div className="text-center py-8 bg-dark rounded-lg">
-                          <p className="text-primary/60">Este usuario no ha realizado ninguna compra</p>
+                        <div className="text-center py-8 bg-slate-900 rounded-lg">
+                          <p className="text-yellow-300/60">Este usuario no ha realizado ninguna compra</p>
                         </div>
                       ) : (
                         <div className="space-y-3">
                           {selectedUserOrders.map((order) => (
-                            <div key={order.id} className="border rounded-lg p-4 hover:bg-dark transition-colors">
+                            <div key={order.id} className="border rounded-lg p-4 hover:bg-slate-900 transition-colors">
                               <div className="flex justify-between items-start">
                                 <div className="flex-1">
                                   <div className="flex items-center gap-3 mb-2">
-                                    <span className="text-sm font-bold text-primary">
+                                    <span className="text-sm font-bold text-yellow-300">
                                       Pedido #{order.id.slice(-8).toUpperCase()}
                                     </span>
                                     <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
                                       order.status === 'delivered' || order.status === 'completed'
                                         ? 'bg-success/20 text-success'
                                         : order.status === 'cancelled'
-                                        ? 'bg-darklight text-pink'
+                                        ? 'bg-slate-800 text-pink'
                                         : 'bg-warning/20 text-yellow-800'
                                     }`}>
                                       {order.status === 'pending' && '⏳ Pendiente'}
@@ -3329,7 +3329,7 @@ export default function AdminPage() {
                                     </span>
                                   </div>
 
-                                  <div className="text-sm text-primary/80">
+                                  <div className="text-sm text-yellow-300/80">
                                     <p>Fecha: {new Date(order.createdAt).toLocaleDateString('es-CL')} - {new Date(order.createdAt).toLocaleTimeString('es-CL')}</p>
                                     <p>Total: <span className="font-bold text-white">{formatPrice(order.total)}</span></p>
                                     <p>Productos: {order.items?.length || 0} artículo(s)</p>
@@ -3363,7 +3363,7 @@ export default function AdminPage() {
                               {selectedUserOrders.filter(o => o.status === 'delivered' || o.status === 'completed').length}
                             </p>
                           </div>
-                          <div className="bg-darklight rounded-lg p-4 border border-primary-200">
+                          <div className="bg-slate-800 rounded-lg p-4 border border-yellow-300-200">
                             <p className="text-sm font-semibold text-secondary">Promedio por Pedido</p>
                             <p className="text-2xl font-bold text-secondary">
                               {formatPrice(selectedUserOrders.reduce((sum, order) => sum + order.total, 0) / selectedUserOrders.length)}
@@ -3383,9 +3383,9 @@ export default function AdminPage() {
                 </div>
               ) : users.length === 0 ? (
                 <div className="text-center py-12">
-                  <div className="text-primary/50 text-6xl mb-4">👥</div>
+                  <div className="text-yellow-300/50 text-6xl mb-4">👥</div>
                   <h3 className="text-lg font-medium text-white mb-2">No hay usuarios encontrados</h3>
-                  <p className="text-primary/80 mb-4">
+                  <p className="text-yellow-300/80 mb-4">
                     Puede que no haya usuarios registrados o que haya un problema de conexión con Firebase.
                   </p>
                   <button
@@ -3399,33 +3399,33 @@ export default function AdminPage() {
                 <>
                   {/* Admins y Vendedores - Siempre visibles */}
                   <div className="mb-6">
-                    <div className="bg-gradient-to-r from-darklight to-darklight rounded-lg p-4 mb-3">
+                    <div className="bg-gradient-to-r from-slate-800 to-slate-800 rounded-lg p-4 mb-3">
                       <h3 className="text-lg font-semibold text-white">
                         👑 Administradores y Vendedores ({users.filter(u => u.role === 'admin' || u.role === 'vendedor').length})
                       </h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-dark">
+                        <thead className="bg-slate-900">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                               Usuario
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                               Rol
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                               Estado
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                               Fecha Registro
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                               Acciones
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-dark/80 divide-y divide-gray-200">
+                        <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                           {users
                             .filter(user => user.role === 'admin' || user.role === 'vendedor')
                             .map((user) => (
@@ -3439,7 +3439,7 @@ export default function AdminPage() {
                                   <div className="text-sm font-medium text-white">
                                     {user.firstName} {user.lastName}
                                   </div>
-                                  <div className="text-sm text-primary/60">{user.email}</div>
+                                  <div className="text-sm text-yellow-300/60">{user.email}</div>
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">
@@ -3447,7 +3447,7 @@ export default function AdminPage() {
                                   <select
                                     defaultValue={user.role}
                                     onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                                    className="text-sm border border-primary/40 rounded px-2 py-1"
+                                    className="text-sm border border-yellow-300/40 rounded px-2 py-1"
                                   >
                                     <option value="cliente">Cliente</option>
                                     <option value="vendedor">Vendedor</option>
@@ -3462,20 +3462,20 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-darklight text-pink border-darklight'
+                                    ? 'bg-slate-800 text-pink border-slate-700'
                                     : 'bg-success/20 text-success border-success'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-primary/60">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
                                 {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                 {editingUser === user.uid ? (
                                   <button
                                     onClick={() => setEditingUser(null)}
-                                    className="text-primary/80 hover:text-white"
+                                    className="text-yellow-300/80 hover:text-white"
                                   >
                                     Cancelar
                                   </button>
@@ -3503,7 +3503,7 @@ export default function AdminPage() {
                                     ) : (
                                       <button
                                         onClick={() => blockUser(user.uid)}
-                                        className="text-primary hover:text-secondary"
+                                        className="text-yellow-300 hover:text-secondary"
                                       >
                                         🚫 Bloquear
                                       </button>
@@ -3537,26 +3537,26 @@ export default function AdminPage() {
                     {showClientes && (
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                          <thead className="bg-dark">
+                          <thead className="bg-slate-900">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                                 Usuario
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                                 Rol
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                                 Estado
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                                 Fecha Registro
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                                 Acciones
                               </th>
                             </tr>
                           </thead>
-                          <tbody className="bg-dark/80 divide-y divide-gray-200">
+                          <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                             {users
                               .filter(user => !user.role || user.role === 'cliente')
                               .map((user) => (
@@ -3570,7 +3570,7 @@ export default function AdminPage() {
                                     <div className="text-sm font-medium text-white">
                                       {user.firstName} {user.lastName}
                                     </div>
-                                    <div className="text-sm text-primary/60">{user.email}</div>
+                                    <div className="text-sm text-yellow-300/60">{user.email}</div>
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -3578,7 +3578,7 @@ export default function AdminPage() {
                                     <select
                                       defaultValue={user.role}
                                       onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                                      className="text-sm border border-primary/40 rounded px-2 py-1"
+                                      className="text-sm border border-yellow-300/40 rounded px-2 py-1"
                                     >
                                       <option value="cliente">Cliente</option>
                                       <option value="vendedor">Vendedor</option>
@@ -3593,20 +3593,20 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-darklight text-pink border-darklight'
+                                      ? 'bg-slate-800 text-pink border-slate-700'
                                       : 'bg-success/20 text-success border-success'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                   </span>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-primary/60">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
                                   {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                   {editingUser === user.uid ? (
                                     <button
                                       onClick={() => setEditingUser(null)}
-                                      className="text-primary/80 hover:text-white"
+                                      className="text-yellow-300/80 hover:text-white"
                                     >
                                       Cancelar
                                     </button>
@@ -3634,7 +3634,7 @@ export default function AdminPage() {
                                       ) : (
                                         <button
                                           onClick={() => blockUser(user.uid)}
-                                          className="text-primary hover:text-secondary"
+                                          className="text-yellow-300 hover:text-secondary"
                                         >
                                           🚫 Bloquear
                                         </button>
@@ -3652,7 +3652,7 @@ export default function AdminPage() {
 
                   <div className="mt-8 bg-yellow-50 rounded-lg p-6">
                     <h3 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h3>
-                    <div className="space-y-3 text-sm text-primary/80">
+                    <div className="space-y-3 text-sm text-yellow-300/80">
                       <p><strong>Opción 1 - Firebase Console:</strong></p>
                       <ol className="list-decimal list-inside space-y-1 ml-4">
                         <li>Ve a Firebase Console &gt; Authentication &gt; Users</li>
@@ -3679,15 +3679,15 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-primary">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Gestión de Pedidos</h2>
-                    <p className="text-primary/80 text-sm">Administra todos los pedidos de clientes</p>
+                    <p className="text-yellow-300/80 text-sm">Administra todos los pedidos de clientes</p>
                   </div>
                 </div>
                 <div className="flex space-x-3">
@@ -3730,7 +3730,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
                       ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-darklight text-primary/80 hover:bg-darklight hover:scale-105'
+                      : 'bg-slate-800 text-yellow-300/80 hover:bg-slate-800 hover:scale-105'
                   }`}
                 >
                   📋 Pedidos Activos
@@ -3740,7 +3740,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-darklight text-primary/80 hover:bg-darklight hover:scale-105'
+                      : 'bg-slate-800 text-yellow-300/80 hover:bg-slate-800 hover:scale-105'
                   }`}
                 >
                   ✅ Historial de Ventas
@@ -3749,11 +3749,11 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight p-6 mb-6">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
-                  <label className="block text-sm font-semibold text-primary mb-2">
+                  <label className="block text-sm font-semibold text-yellow-300 mb-2">
                     🔍 Buscar pedido
                   </label>
                   <input
@@ -3761,19 +3761,19 @@ export default function AdminPage() {
                     placeholder="Buscar por nombre, email, teléfono o ID..."
                     value={orderSearchQuery}
                     onChange={(e) => setOrderSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-primary/40 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-yellow-300/40 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
 
                 {/* Filtro por Estado */}
                 <div>
-                  <label className="block text-sm font-semibold text-primary mb-2">
+                  <label className="block text-sm font-semibold text-yellow-300 mb-2">
                     📊 Filtrar por estado
                   </label>
                   <select
                     value={orderStatusFilter}
                     onChange={(e) => setOrderStatusFilter(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-lg border border-primary/40 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-yellow-300/40 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   >
                     <option value="all">Todos los estados</option>
                     <option value="pending">⏳ Pendiente</option>
@@ -3791,7 +3791,7 @@ export default function AdminPage() {
 
               {/* Contador de resultados */}
               {(orderSearchQuery || orderStatusFilter !== 'all') && (
-                <div className="mt-4 text-sm text-primary/80">
+                <div className="mt-4 text-sm text-yellow-300/80">
                   {orders.filter(order => {
                     // Filtro base (activos/completados)
                     let passesMainFilter = false;
@@ -3825,17 +3825,17 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight overflow-hidden">
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
-                  <thead className="bg-gradient-to-r from-darklight to-darklight">
+                  <thead className="bg-gradient-to-r from-slate-800 to-slate-800">
                     <tr>
                       <th className="px-3 py-3 text-left">
                         <input
                           type="checkbox"
                           checked={selectedOrders.length === orders.length && orders.length > 0}
                           onChange={toggleSelectAllOrders}
-                          className="w-4 h-4 text-primary rounded focus:ring-primary"
+                          className="w-4 h-4 text-yellow-300 rounded focus:ring-primary"
                         />
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
@@ -3855,7 +3855,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                     {groupOrdersByUser(
                       orders.filter(order => {
                         // Filtro base (activos/completados)
@@ -3898,7 +3898,7 @@ export default function AdminPage() {
                             type="checkbox"
                             checked={selectedOrders.includes(mainOrder.id)}
                             onChange={() => toggleOrderSelection(mainOrder.id)}
-                            className="w-4 h-4 text-primary rounded focus:ring-primary"
+                            className="w-4 h-4 text-yellow-300 rounded focus:ring-primary"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3920,10 +3920,10 @@ export default function AdminPage() {
                                   </span>
                                 )}
                               </div>
-                              <div className="text-sm text-primary/60">
+                              <div className="text-sm text-yellow-300/60">
                                 {mainOrder.customerEmail}
                               </div>
-                              <div className="text-sm text-primary/60">
+                              <div className="text-sm text-yellow-300/60">
                                 {mainOrder.customerPhone}
                               </div>
                             </div>
@@ -3933,7 +3933,7 @@ export default function AdminPage() {
                           {totalUserOrders > 1 ? (
                             <div>
                               <div className="font-medium">{formatPrice(totalAmount)}</div>
-                              <div className="text-xs text-primary/60">Total {totalUserOrders} pedidos</div>
+                              <div className="text-xs text-yellow-300/60">Total {totalUserOrders} pedidos</div>
                             </div>
                           ) : (
                             formatPrice(mainOrder.total)
@@ -3941,9 +3941,9 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4">
                           {totalUserOrders > 1 ? (
-                            <div className="text-xs text-primary/80">
+                            <div className="text-xs text-yellow-300/80">
                               <div className="font-medium">Estados múltiples</div>
-                              <div className="text-xs text-primary/50">Ver detalles individuales</div>
+                              <div className="text-xs text-yellow-300/50">Ver detalles individuales</div>
                             </div>
                           ) : (
                             <div className="space-y-3">
@@ -3952,7 +3952,7 @@ export default function AdminPage() {
                                 <select
                                   value={mainOrder.status}
                                   onChange={(e) => updateOrderStatus(mainOrder.id, e.target.value)}
-                                  className="w-full text-xs border-2 border-primary-200 rounded-lg px-3 py-2 focus:border-primary focus:outline-none font-medium"
+                                  className="w-full text-xs border-2 border-yellow-300-200 rounded-lg px-3 py-2 focus:border-yellow-300 focus:outline-none font-medium"
                                 >
                                   <option value="pending">⏳ Pendiente</option>
                                   <option value="confirmed">✅ Confirmado</option>
@@ -3973,7 +3973,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-darklight text-primary/50 border-primary/40'
+                                            : 'bg-slate-800 text-yellow-300/50 border-yellow-300/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4019,13 +4019,13 @@ export default function AdminPage() {
                               type="checkbox"
                               checked={selectedOrders.includes(order.id)}
                               onChange={() => toggleOrderSelection(order.id)}
-                              className="w-4 h-4 text-primary rounded focus:ring-primary"
+                              className="w-4 h-4 text-yellow-300 rounded focus:ring-primary"
                             />
                           </td>
                           <td className="px-6 py-3 whitespace-nowrap pl-12">
-                            <div className="text-sm text-primary">
+                            <div className="text-sm text-yellow-300">
                               <div className="font-medium">Pedido #{order.id.slice(-8).toUpperCase()}</div>
-                              <div className="text-xs text-primary/60">
+                              <div className="text-xs text-yellow-300/60">
                                 {new Date(order.createdAt).toLocaleDateString()}
                               </div>
                             </div>
@@ -4040,7 +4040,7 @@ export default function AdminPage() {
                                 <select
                                   value={order.status}
                                   onChange={(e) => updateOrderStatus(order.id, e.target.value)}
-                                  className="w-full text-xs border-2 border-primary-200 rounded-lg px-3 py-2 focus:border-primary focus:outline-none font-medium"
+                                  className="w-full text-xs border-2 border-yellow-300-200 rounded-lg px-3 py-2 focus:border-yellow-300 focus:outline-none font-medium"
                                 >
                                   <option value="pending">⏳ Pendiente</option>
                                   <option value="confirmed">✅ Confirmado</option>
@@ -4061,7 +4061,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-darklight text-primary/50 border-primary/40'
+                                            : 'bg-slate-800 text-yellow-300/50 border-yellow-300/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4113,41 +4113,41 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Banner</h2>
             
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Título del Banner
                   </label>
                   <input
                     type="text"
                     value={bannerForm.title}
                     onChange={(e) => setBannerForm({ ...bannerForm, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Texto del Banner
                   </label>
                   <input
                     type="text"
                     value={bannerForm.text}
                     onChange={(e) => setBannerForm({ ...bannerForm, text: e.target.value })}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Imágenes del Carrusel
                   </label>
                   {bannerForm.images.map((image, index) => (
-                    <div key={index} className="mb-4 p-4 border border-primary/30 rounded-lg">
+                    <div key={index} className="mb-4 p-4 border border-yellow-300/30 rounded-lg">
                       <div className="flex gap-2 items-start">
                         <div className="flex-1">
-                          <label className="block text-sm text-primary/80 mb-1">
+                          <label className="block text-sm text-yellow-300/80 mb-1">
                             Imagen {index + 1}
                           </label>
                           <input
@@ -4158,7 +4158,7 @@ export default function AdminPage() {
                               newFiles[index] = file;
                               setBannerFiles(newFiles);
                             }}
-                            className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                           />
                           {image && (
                             <div className="mt-2">
@@ -4179,7 +4179,7 @@ export default function AdminPage() {
                             setBannerForm({ ...bannerForm, images: newImages });
                             setBannerFiles([...newFiles, null]);
                           }}
-                          className="px-3 py-2 text-white rounded-md mt-6 bg-primary"
+                          className="px-3 py-2 text-white rounded-md mt-6 bg-yellow-400"
                         >
                           🗑️
                         </button>
@@ -4205,7 +4205,7 @@ export default function AdminPage() {
                     onChange={(e) => setBannerForm({ ...bannerForm, active: e.target.checked })}
                     className="mr-2"
                   />
-                  <label className="text-sm font-medium text-primary">
+                  <label className="text-sm font-medium text-yellow-300">
                     Banner Activo
                   </label>
                 </div>
@@ -4262,7 +4262,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBanner}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary"
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400"
                 >
                   {updatingBanner ? 'Actualizando...' : 'Actualizar Banner'}
                 </button>
@@ -4298,7 +4298,7 @@ export default function AdminPage() {
             {/* Header Section */}
             <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-orange-700 rounded-xl shadow-xl shadow-red-600/30 p-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="bg-dark/80/20 backdrop-blur-sm rounded-lg p-3">
+                <div className="bg-slate-900/80/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
                   </svg>
@@ -4314,7 +4314,7 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4326,7 +4326,7 @@ export default function AdminPage() {
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         🏷️ Título del Popup
                       </label>
                       <input
@@ -4334,18 +4334,18 @@ export default function AdminPage() {
                         value={popupForm.title}
                         onChange={(e) => setPopupForm({ ...popupForm, title: e.target.value })}
                         placeholder="¡Oferta Especial!"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         🎨 Tipo de Popup
                       </label>
                       <select
                         value={popupForm.popupType}
                         onChange={(e) => setPopupForm({ ...popupForm, popupType: e.target.value as 'category' | 'information' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
                       >
                         <option value="category">🏷️ Categoría/Promocional</option>
                         <option value="information">ℹ️ Información</option>
@@ -4353,7 +4353,7 @@ export default function AdminPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         📄 Descripción
                       </label>
                       <textarea
@@ -4361,12 +4361,12 @@ export default function AdminPage() {
                         onChange={(e) => setPopupForm({ ...popupForm, description: e.target.value })}
                         placeholder="Descripción detallada de la oferta..."
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 resize-none"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70 resize-none"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         🔗 Texto del Botón
                       </label>
                       <input
@@ -4374,14 +4374,14 @@ export default function AdminPage() {
                         value={popupForm.buttonText}
                         onChange={(e) => setPopupForm({ ...popupForm, buttonText: e.target.value })}
                         placeholder="Ver Ofertas"
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4393,13 +4393,13 @@ export default function AdminPage() {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         📏 Tamaño del Popup
                       </label>
                       <select
                         value={popupForm.size}
                         onChange={(e) => setPopupForm({ ...popupForm, size: (isPopupSize(e.target.value) ? e.target.value : '2x2') })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
                       >
                         {Object.entries(POPUP_SIZE_PRESETS).map(([value, config]) => (
                           <option key={value} value={value}>
@@ -4410,13 +4410,13 @@ export default function AdminPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         📍 Posición en Pantalla
                       </label>
                       <select
                         value={popupForm.position}
                         onChange={(e) => setPopupForm({ ...popupForm, position: e.target.value as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' })}
-                        className="w-full px-4 py-3 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-dark/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
                       >
                         <option value="bottom-right">🔽➡️ Esquina inferior derecha</option>
                         <option value="bottom-left">🔽⬅️ Esquina inferior izquierda</option>
@@ -4429,7 +4429,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4441,7 +4441,7 @@ export default function AdminPage() {
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-3">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-3">
                         📸 Tipo de Contenido
                       </label>
                       <div className="flex items-center gap-6">
@@ -4451,9 +4451,9 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={!popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: false, mediaUrl: '' }))}
-                            className="w-4 h-4 text-red-600 border-primary/40 focus:ring-orange-500"
+                            className="w-4 h-4 text-red-600 border-yellow-300/40 focus:ring-orange-500"
                           />
-                          <span className="text-sm font-medium text-primary">🖼️ Imagen</span>
+                          <span className="text-sm font-medium text-yellow-300">🖼️ Imagen</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                           <input
@@ -4461,15 +4461,15 @@ export default function AdminPage() {
                             name="mediaType"
                             checked={popupForm.isVideo}
                             onChange={() => setPopupForm(prev => ({ ...prev, isVideo: true, mediaUrl: '' }))}
-                            className="w-4 h-4 text-red-600 border-primary/40 focus:ring-orange-500"
+                            className="w-4 h-4 text-red-600 border-yellow-300/40 focus:ring-orange-500"
                           />
-                          <span className="text-sm font-medium text-primary">🎥 Video</span>
+                          <span className="text-sm font-medium text-yellow-300">🎥 Video</span>
                         </label>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
+                      <label className="block text-sm font-semibold text-yellow-300 mb-2">
                         📤 Subir Archivo
                       </label>
                       <div className="space-y-3">
@@ -4482,7 +4482,7 @@ export default function AdminPage() {
                               handlePopupImageUpload(file);
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-dashed border-primary/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-dark/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-success/10 file:text-success hover:file:bg-success/20"
+                          className="w-full px-4 py-3 border-2 border-dashed border-yellow-300/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-success/10 file:text-success hover:file:bg-success/20"
                         />
                         {popupImageUploading && (
                           <div className="flex items-center gap-2 text-success">
@@ -4531,7 +4531,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4542,13 +4542,13 @@ export default function AdminPage() {
                   </div>
 
                   <div className="space-y-6">
-                    <div className="flex items-center gap-3 p-4 bg-dark rounded-xl">
+                    <div className="flex items-center gap-3 p-4 bg-slate-900 rounded-xl">
                       <input
                         type="checkbox"
                         id="popup-active"
                         checked={popupForm.active}
                         onChange={(e) => setPopupForm({ ...popupForm, active: e.target.checked })}
-                        className="w-5 h-5 text-red-600 border-primary/40 rounded focus:ring-orange-500"
+                        className="w-5 h-5 text-red-600 border-yellow-300/40 rounded focus:ring-orange-500"
                       />
                       <label htmlFor="popup-active" className="text-sm font-semibold text-white">
                         🎯 Popup Activo (visible en el sitio web)
@@ -4608,7 +4608,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
+                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4628,10 +4628,10 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-red-600/20"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-900/90 hover:bg-slate-900/80 transition-all cursor-default shadow-lg shadow-red-600/20"
                             aria-label="Cerrar"
                           >
-                            <XMarkIcon className="h-4 w-4 text-primary/80" />
+                            <XMarkIcon className="h-4 w-4 text-yellow-300/80" />
                           </button>
 
                           {popupForm.mediaUrl && !popupForm.isVideo && (
@@ -4673,7 +4673,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-dark/80 text-primary font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-red-600/20 transition-all"
+                              className="bg-slate-900/80 text-yellow-300 font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-red-600/20 transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4724,7 +4724,7 @@ export default function AdminPage() {
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-dark/80 border border-warning rounded-md px-3 py-2 text-sm text-secondary">
+                    <div className="mt-2 bg-slate-900/80 border border-warning rounded-md px-3 py-2 text-sm text-secondary">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4732,17 +4732,17 @@ export default function AdminPage() {
               </div>
             </div>
             
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="text-lg font-semibold text-white">Configurador de Patrones de Layout</h3>
-                      <p className="text-sm text-primary/80">
+                      <p className="text-sm text-yellow-300/80">
                         Ajusta el ritmo visual de la grilla principal. Los cambios se reflejan en la home una vez guardados.
                       </p>
                       {layoutPatternsFetched.updatedAt && (
-                        <p className="text-xs text-primary/50 mt-1">
+                        <p className="text-xs text-yellow-300/50 mt-1">
                           Última actualización: {new Date(layoutPatternsFetched.updatedAt).toLocaleString('es-CL')}
                         </p>
                       )}
@@ -4751,7 +4751,7 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={handleResetLayoutPatterns}
-                        className="px-4 py-2 text-sm font-medium rounded-md border border-primary/40 text-primary/80 hover:text-white hover:border-gray-400 transition-colors"
+                        className="px-4 py-2 text-sm font-medium rounded-md border border-yellow-300/40 text-yellow-300/80 hover:text-white hover:border-gray-400 transition-colors"
                         disabled={savingLayoutPatterns || layoutPatternsLoading}
                       >
                         Restablecer valores
@@ -4759,7 +4759,7 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={handleSaveLayoutPatterns}
-                        className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60 bg-primary" onMouseEnter={(e) => {
+                        className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60 bg-yellow-400" onMouseEnter={(e) => {
                           if (!e.currentTarget.hasAttribute('disabled')) {
                             e.currentTarget.style.backgroundColor = '#D13C1A';
                           }
@@ -4778,18 +4778,18 @@ export default function AdminPage() {
                     {orderedLayoutRules.map((rule) => {
                       const meta = LAYOUT_VARIANT_META[rule.variant];
                       return (
-                        <div key={rule.variant} className="border border-primary/30 rounded-lg p-4">
+                        <div key={rule.variant} className="border border-yellow-300/30 rounded-lg p-4">
                           <div className="flex items-start justify-between gap-3">
                             <div className="space-y-1">
                               <div className="text-2xl">{meta.icon}</div>
                               <h4 className="font-medium text-white">{meta.title}</h4>
-                              <p className="text-sm text-primary/80">{meta.description}</p>
+                              <p className="text-sm text-yellow-300/80">{meta.description}</p>
                             </div>
-                            <label className="flex items-center gap-2 text-sm text-primary/80">
+                            <label className="flex items-center gap-2 text-sm text-yellow-300/80">
                               <span>Activo</span>
                               <input
                                 type="checkbox"
-                                className="h-4 w-4 text-primary rounded"
+                                className="h-4 w-4 text-yellow-300 rounded"
                                 checked={rule.enabled}
                                 onChange={(e) => updateLayoutRule(rule.variant, (prevRule) => ({
                                   ...prevRule,
@@ -4802,7 +4802,7 @@ export default function AdminPage() {
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div>
-                              <label className="block text-xs font-semibold text-primary mb-1">
+                              <label className="block text-xs font-semibold text-yellow-300 mb-1">
                                 Intervalo (cada cuántos productos)
                               </label>
                               <input
@@ -4817,13 +4817,13 @@ export default function AdminPage() {
                                     interval: value,
                                   }));
                                 }}
-                                className="w-full px-2 py-1 border border-primary/40 rounded text-sm focus:outline-none focus:ring-1"
+                                className="w-full px-2 py-1 border border-yellow-300/40 rounded text-sm focus:outline-none focus:ring-1"
                                 style={{ '--tw-ring-color': 'var(--primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               />
                             </div>
                             <div>
-                              <label className="block text-xs font-semibold text-primary mb-1">
+                              <label className="block text-xs font-semibold text-yellow-300 mb-1">
                                 Diseño del bloque
                               </label>
                               <select
@@ -4837,7 +4837,7 @@ export default function AdminPage() {
                                     span: value,
                                   }));
                                 }}
-                                className="w-full px-2 py-1 border border-primary/40 rounded text-sm focus:outline-none focus:ring-1"
+                                className="w-full px-2 py-1 border border-yellow-300/40 rounded text-sm focus:outline-none focus:ring-1"
                                 style={{ '--tw-ring-color': 'var(--primary)' } as any}
                                 disabled={savingLayoutPatterns || layoutPatternsLoading}
                               >
@@ -4850,7 +4850,7 @@ export default function AdminPage() {
                             </div>
                           </div>
 
-                          <p className="text-xs text-primary/60 mt-3">
+                          <p className="text-xs text-yellow-300/60 mt-3">
                             {rule.enabled
                               ? `Activo: se aplica a cada ${rule.interval} producto(s).`
                               : 'Este patrón está deshabilitado temporalmente.'}
@@ -4876,7 +4876,7 @@ export default function AdminPage() {
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               📑 Secciones de Productos
             </h2>
-            <p className="text-sm text-primary/80 mt-1">
+            <p className="text-sm text-yellow-300/80 mt-1">
               Gestiona las secciones que aparecen en la página principal
             </p>
           </div>
@@ -4887,7 +4887,7 @@ export default function AdminPage() {
               setPreviewDescription('');
               setSectionsView('edit');
             }}
-            className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary transition-colors font-semibold flex items-center gap-2"
+            className="px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold flex items-center gap-2"
           >
             <span>+</span> Nueva Sección
           </button>
@@ -4897,7 +4897,7 @@ export default function AdminPage() {
         {productSections.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {productSections.map((section, index) => (
-              <div key={section.id} className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 overflow-hidden hover:shadow-md transition-shadow">
+              <div key={section.id} className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -4906,14 +4906,14 @@ export default function AdminPage() {
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
                             ? 'bg-success/20 text-success'
-                            : 'bg-darklight text-primary/60'
+                            : 'bg-slate-800 text-yellow-300/60'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
                         </span>
                       </div>
-                      <p className="text-sm text-primary/80 mb-3">{section.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-primary/60">
-                        <span className="px-2 py-1 bg-darklight text-primary rounded-md font-medium">
+                      <p className="text-sm text-yellow-300/80 mb-3">{section.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-yellow-300/60">
+                        <span className="px-2 py-1 bg-slate-800 text-yellow-300 rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
                         <span className="px-2 py-1 bg-yellow-50 text-red-600 rounded-md font-medium">
@@ -4942,7 +4942,7 @@ export default function AdminPage() {
                             console.error('Error auto-saving section enabled status:', error);
                           }
                         }}
-                        className="w-5 h-5 text-primary rounded"
+                        className="w-5 h-5 text-yellow-300 rounded"
                       />
                     </div>
                   </div>
@@ -4955,7 +4955,7 @@ export default function AdminPage() {
                         setPreviewDescription(section.description);
                         setSectionsView('edit');
                       }}
-                      className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary transition-colors text-sm font-medium"
+                      className="flex-1 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
                     >
                       ✏️ Editar
                     </button>
@@ -4994,10 +4994,10 @@ export default function AdminPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-12 text-center">
+          <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-12 text-center">
             <div className="text-6xl mb-4">📑</div>
             <h3 className="text-xl font-bold text-white mb-2">No hay secciones configuradas</h3>
-            <p className="text-primary/80 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
+            <p className="text-yellow-300/80 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
             <button
               onClick={() => {
                 setEditingSection(null);
@@ -5005,7 +5005,7 @@ export default function AdminPage() {
                 setPreviewDescription('');
                 setSectionsView('edit');
               }}
-              className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary transition-colors font-semibold"
+              className="px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold"
             >
               + Nueva Sección
             </button>
@@ -5026,13 +5026,13 @@ export default function AdminPage() {
               setPreviewDescription('');
               setSectionSaveStatus('idle');
             }}
-            className="flex items-center gap-2 text-primary/80 hover:text-white font-medium"
+            className="flex items-center gap-2 text-yellow-300/80 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
+        <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             {editingSection ? 'Editar Sección' : 'Nueva Sección'}
           </h2>
@@ -5043,7 +5043,7 @@ export default function AdminPage() {
               <h3 className="text-lg font-semibold text-white mb-4">Configuración</h3>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-2">
+                <label className="block text-sm font-medium text-yellow-300 mb-2">
                   Nombre de la Sección
                 </label>
                 <input
@@ -5052,12 +5052,12 @@ export default function AdminPage() {
                   defaultValue={editingSection?.name || ''}
                   onChange={(e) => setPreviewName(e.target.value)}
                   placeholder="Ej: Productos Destacados"
-                  className="w-full px-4 py-2 border border-primary/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-2">
+                <label className="block text-sm font-medium text-yellow-300 mb-2">
                   Descripción
                 </label>
                 <textarea
@@ -5066,18 +5066,18 @@ export default function AdminPage() {
                   onChange={(e) => setPreviewDescription(e.target.value)}
                   placeholder="Descripción de la sección"
                   rows={3}
-                  className="w-full px-4 py-2 border border-primary/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-2">
+                <label className="block text-sm font-medium text-yellow-300 mb-2">
                   Tipo de Sección
                 </label>
                 <select
                   defaultValue={editingSection?.type || 'custom'}
                   id="section-type-select"
-                  className="w-full px-4 py-2 border border-primary/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="custom">🎯 Personalizada</option>
                   <option value="featured">⭐ Destacados</option>
@@ -5092,9 +5092,9 @@ export default function AdminPage() {
                   type="checkbox"
                   id="section-enabled"
                   defaultChecked={editingSection?.enabled ?? true}
-                  className="w-5 h-5 text-primary rounded"
+                  className="w-5 h-5 text-yellow-300 rounded"
                 />
-                <label htmlFor="section-enabled" className="text-sm font-medium text-primary">
+                <label htmlFor="section-enabled" className="text-sm font-medium text-yellow-300">
                   Sección activa
                 </label>
               </div>
@@ -5104,29 +5104,29 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
 
-              <div className="bg-gradient-to-br from-darklight to-white rounded-lg p-6 border-2 border-primary-200">
-                <div className="bg-dark/80 rounded-lg p-4 shadow-sm">
-                  <div className="border-b-2 border-primary pb-3 mb-3">
+              <div className="bg-gradient-to-br from-slate-800 to-white rounded-lg p-6 border-2 border-yellow-300-200">
+                <div className="bg-slate-900/80 rounded-lg p-4 shadow-sm">
+                  <div className="border-b-2 border-yellow-300 pb-3 mb-3">
                     <h4 className="text-xl font-bold text-white">
                       {previewName || editingSection?.name || 'Nombre de Sección'}
                     </h4>
-                    <p className="text-sm text-primary/80 mt-1">
+                    <p className="text-sm text-yellow-300/80 mt-1">
                       {previewDescription || editingSection?.description || 'Descripción de la sección'}
                     </p>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-dark rounded h-20 flex items-center justify-center">
+                      <div key={i} className="bg-slate-900 rounded h-20 flex items-center justify-center">
                         <span className="text-2xl">📦</span>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between items-center mt-3 text-xs">
-                    <span className="text-primary/60">{editingSection?.selectedProducts?.length || 0} productos</span>
-                    <span className="text-primary font-semibold">Ver todos →</span>
+                    <span className="text-yellow-300/60">{editingSection?.selectedProducts?.length || 0} productos</span>
+                    <span className="text-yellow-300 font-semibold">Ver todos →</span>
                   </div>
                 </div>
-                <p className="text-xs text-center text-primary/60 mt-3">
+                <p className="text-xs text-center text-yellow-300/60 mt-3">
                   Así se verá en tu sitio web
                 </p>
               </div>
@@ -5136,12 +5136,12 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">Productos Seleccionados</h3>
 
-              <div className="bg-dark rounded-lg p-4 border border-primary/30">
+              <div className="bg-slate-900 rounded-lg p-4 border border-yellow-300/30">
                 <div className="text-center mb-4">
-                  <div className="text-3xl font-bold text-primary">
+                  <div className="text-3xl font-bold text-yellow-300">
                     {editingSection?.selectedProducts?.length || 0}
                   </div>
-                  <div className="text-sm text-primary/80">productos configurados</div>
+                  <div className="text-sm text-yellow-300/80">productos configurados</div>
                 </div>
 
                 {editingSection?.selectedProducts && editingSection.selectedProducts.length > 0 ? (
@@ -5149,7 +5149,7 @@ export default function AdminPage() {
                     {editingSection.selectedProducts.slice(0, 5).map((productId: string) => {
                       const product = products.find(p => p.id === productId);
                       return product ? (
-                        <div key={productId} className="flex items-center gap-2 bg-dark/80 rounded-lg p-2 border border-primary/30">
+                        <div key={productId} className="flex items-center gap-2 bg-slate-900/80 rounded-lg p-2 border border-yellow-300/30">
                           {product.imagen && (
                             <img
                               src={product.imagen}
@@ -5161,7 +5161,7 @@ export default function AdminPage() {
                             <div className="text-xs font-medium text-white truncate">
                               {product.nombre}
                             </div>
-                            <div className="text-xs text-primary/60">
+                            <div className="text-xs text-yellow-300/60">
                               ${product.precio?.toLocaleString()}
                             </div>
                           </div>
@@ -5169,13 +5169,13 @@ export default function AdminPage() {
                       ) : null;
                     })}
                     {editingSection.selectedProducts.length > 5 && (
-                      <div className="text-xs text-primary/60 text-center pt-2">
+                      <div className="text-xs text-yellow-300/60 text-center pt-2">
                         +{editingSection.selectedProducts.length - 5} más
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="text-center py-6 text-primary/50 text-sm">
+                  <div className="text-center py-6 text-yellow-300/50 text-sm">
                     No hay productos seleccionados.
                     <br />
                     Guarda la sección y luego agrega productos.
@@ -5190,7 +5190,7 @@ export default function AdminPage() {
             <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
               sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
               sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-              'bg-darklight text-secondary'
+              'bg-slate-800 text-secondary'
             }`}>
               {sectionSaveStatus === 'saving' && (
                 <>
@@ -5214,7 +5214,7 @@ export default function AdminPage() {
           )}
 
           {/* Action Buttons */}
-          <div className="flex gap-3 mt-6 pt-6 border-t border-primary/30">
+          <div className="flex gap-3 mt-6 pt-6 border-t border-yellow-300/30">
             <button
               onClick={() => {
                 setSectionsView('list');
@@ -5224,7 +5224,7 @@ export default function AdminPage() {
                 setSectionSaveStatus('idle');
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="px-6 py-3 bg-darklight text-primary rounded-lg hover:bg-darklight transition-colors font-medium disabled:opacity-50"
+              className="px-6 py-3 bg-slate-800 text-yellow-300 rounded-lg hover:bg-slate-800 transition-colors font-medium disabled:opacity-50"
             >
               Cancelar
             </button>
@@ -5278,7 +5278,7 @@ export default function AdminPage() {
                 }
               }}
               disabled={sectionSaveStatus === 'saving'}
-              className="flex-1 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary transition-colors font-semibold disabled:opacity-50"
+              className="flex-1 px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold disabled:opacity-50"
             >
               {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
             </button>
@@ -5296,13 +5296,13 @@ export default function AdminPage() {
               setSectionsView('list');
               setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
             }}
-            className="flex items-center gap-2 text-primary/80 hover:text-white font-medium"
+            className="flex items-center gap-2 text-yellow-300/80 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-dark/80 rounded-xl shadow-sm border border-primary/30 p-6">
+        <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             📦 Gestionar Productos de la Sección
           </h2>
@@ -5316,15 +5316,15 @@ export default function AdminPage() {
 
                 return currentSection ? (
                   <>
-                    <div className="bg-darklight rounded-lg p-4 border border-primary-200">
+                    <div className="bg-slate-800 rounded-lg p-4 border border-yellow-300-200">
                       <h3 className="text-lg font-bold text-white mb-2">
                         {currentSection.name}
                       </h3>
-                      <p className="text-sm text-primary/80 mb-4">
+                      <p className="text-sm text-yellow-300/80 mb-4">
                         {currentSection.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-dark/80 text-primary rounded-md font-medium text-xs">
+                        <span className="px-2 py-1 bg-slate-900/80 text-yellow-300 rounded-md font-medium text-xs">
                           {currentSection.type === 'custom' ? '🎯 Personalizada' :
                            currentSection.type === 'featured' ? '⭐ Destacados' :
                            currentSection.type === 'new' ? '🆕 Nuevos' :
@@ -5333,18 +5333,18 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="bg-dark rounded-lg p-4 border border-primary/30">
+                    <div className="bg-slate-900 rounded-lg p-4 border border-yellow-300/30">
                       <div className="text-center mb-4">
-                        <div className="text-3xl font-bold text-primary">
+                        <div className="text-3xl font-bold text-yellow-300">
                           {currentSection.selectedProducts?.length || 0}
                         </div>
-                        <div className="text-sm text-primary/80">productos seleccionados</div>
+                        <div className="text-sm text-yellow-300/80">productos seleccionados</div>
                       </div>
 
                       {selectedProducts.length > 0 ? (
                         <div className="space-y-2 max-h-96 overflow-y-auto">
                           {selectedProducts.map((product) => (
-                            <div key={product.id} className="flex items-center gap-2 bg-dark/80 rounded-lg p-2 border border-primary/30">
+                            <div key={product.id} className="flex items-center gap-2 bg-slate-900/80 rounded-lg p-2 border border-yellow-300/30">
                               {product.imagen && (
                                 <img
                                   src={product.imagen}
@@ -5356,7 +5356,7 @@ export default function AdminPage() {
                                 <div className="text-xs font-medium text-white truncate">
                                   {product.nombre}
                                 </div>
-                                <div className="text-xs text-primary/60">
+                                <div className="text-xs text-yellow-300/60">
                                   ${product.precio?.toLocaleString()}
                                 </div>
                               </div>
@@ -5364,14 +5364,14 @@ export default function AdminPage() {
                           ))}
                         </div>
                       ) : (
-                        <div className="text-center py-6 text-primary/50 text-sm">
+                        <div className="text-center py-6 text-yellow-300/50 text-sm">
                           No hay productos seleccionados
                         </div>
                       )}
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-6 text-primary/50">
+                  <div className="text-center py-6 text-yellow-300/50">
                     Sección no encontrada
                   </div>
                 );
@@ -5390,7 +5390,7 @@ export default function AdminPage() {
                       ...prev,
                       search: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-primary/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
                 <div className="w-48">
@@ -5400,7 +5400,7 @@ export default function AdminPage() {
                       ...prev,
                       category: e.target.value
                     }))}
-                    className="w-full px-4 py-2 border border-primary/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option value="">Todas las categorías</option>
                     {categories.map((category) => (
@@ -5421,9 +5421,9 @@ export default function AdminPage() {
                     ...prev,
                     showOnlySelected: e.target.checked
                   }))}
-                  className="w-4 h-4 text-primary rounded"
+                  className="w-4 h-4 text-yellow-300 rounded"
                 />
-                <label htmlFor="show-only-selected" className="text-sm text-primary">
+                <label htmlFor="show-only-selected" className="text-sm text-yellow-300">
                   Mostrar solo seleccionados
                 </label>
               </div>
@@ -5463,7 +5463,7 @@ export default function AdminPage() {
 
                     return (
                       <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-primary bg-darklight' : 'border-primary/30'
+                        isSelected ? 'border-yellow-300 bg-slate-800' : 'border-yellow-300/30'
                       }`}>
                         <div className="flex items-start gap-3">
                           <input
@@ -5494,7 +5494,7 @@ export default function AdminPage() {
                                 console.error('Error auto-saving product selection:', error);
                               }
                             }}
-                            className="w-5 h-5 text-primary rounded mt-1"
+                            className="w-5 h-5 text-yellow-300 rounded mt-1"
                           />
                           <div className="flex-1 min-w-0">
                             {product.imagen && (
@@ -5507,10 +5507,10 @@ export default function AdminPage() {
                             <h4 className="font-medium text-white text-sm truncate">
                               {product.nombre}
                             </h4>
-                            <p className="text-sm text-primary/80 mt-1">
+                            <p className="text-sm text-yellow-300/80 mt-1">
                               ${product.precio?.toLocaleString()}
                             </p>
-                            <p className="text-xs text-primary/60 mt-1">
+                            <p className="text-xs text-yellow-300/60 mt-1">
                               Stock: {product.stock}
                             </p>
                           </div>
@@ -5533,7 +5533,7 @@ export default function AdminPage() {
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Gestión de Banners (v2)</h2>
               {isAutoSavingBanner && (
-                <div className="flex items-center gap-2 text-sm text-primary bg-darklight px-3 py-1 rounded-full">
+                <div className="flex items-center gap-2 text-sm text-yellow-300 bg-slate-800 px-3 py-1 rounded-full">
                   <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -5543,7 +5543,7 @@ export default function AdminPage() {
               )}
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <form className="space-y-6">
                 
                 <div className="flex items-center">
@@ -5552,9 +5552,9 @@ export default function AdminPage() {
                     id="mainBannerActive"
                     checked={mainBannerForm.active}
                     onChange={(e) => setMainBannerForm({ ...mainBannerForm, active: e.target.checked })}
-                    className="h-4 w-4 border-primary/40 rounded" style={{ color: 'var(--primary)', '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                    className="h-4 w-4 border-yellow-300/40 rounded" style={{ color: 'var(--primary)', '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
-                  <label htmlFor="mainBannerActive" className="ml-2 block text-sm font-medium text-primary">
+                  <label htmlFor="mainBannerActive" className="ml-2 block text-sm font-medium text-yellow-300">
                     Banner Principal Activo
                   </label>
                 </div>
@@ -5562,10 +5562,10 @@ export default function AdminPage() {
                 
                 <div className="space-y-6">
                   <h3 className="text-lg font-semibold text-white">Banners del Carrusel</h3>
-                  <p className="text-sm text-primary/80">Selecciona los productos que aparecerán en el banner principal</p>
+                  <p className="text-sm text-yellow-300/80">Selecciona los productos que aparecerán en el banner principal</p>
                   
                   {mainBannerForm.slides.map((slide, index) => (
-                    <div key={index} className="border border-primary/30 rounded-lg p-4">
+                    <div key={index} className="border border-yellow-300/30 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-4">
                         <h4 className="font-medium text-white">Banner {index + 1}</h4>
                         {mainBannerForm.slides.length > 1 && (
@@ -5584,7 +5584,7 @@ export default function AdminPage() {
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium text-primary mb-2">
+                          <label className="block text-sm font-medium text-yellow-300 mb-2">
                             Imagen del Banner
                           </label>
                           <div className="mb-3 p-3 bg-yellow-50 border border-warning rounded-lg text-sm">
@@ -5615,9 +5615,9 @@ export default function AdminPage() {
                                 }
                               }
                             }}
-                            className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                           />
-                          <p className="text-xs text-primary/60 mt-1">Formatos soportados: JPG, PNG, GIF</p>
+                          <p className="text-xs text-yellow-300/60 mt-1">Formatos soportados: JPG, PNG, GIF</p>
                           
                           {slide.imageUrl && (
                             <div className="mt-2">
@@ -5643,8 +5643,8 @@ export default function AdminPage() {
                         </div>
 
                         {/* Título */}
-                        <div className="bg-darklight p-3 rounded-lg border border-primary-200">
-                          <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
+                        <div className="bg-slate-800 p-3 rounded-lg border border-yellow-300-200">
+                          <label className="block text-sm font-bold text-yellow-300-hover mb-2 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
@@ -5658,10 +5658,10 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], title: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-dark/80 transition-all"
+                            className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-900/80 transition-all"
                             placeholder="Ej: ¡Ofertas Especiales! 🔥"
                           />
-                          <p className="text-xs text-primary mt-1">Este texto aparece grande sobre el banner</p>
+                          <p className="text-xs text-yellow-300 mt-1">Este texto aparece grande sobre el banner</p>
                         </div>
 
                         {/* Subtítulo */}
@@ -5680,14 +5680,14 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], subtitle: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                            className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                             placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                           />
                           <p className="text-xs text-red-600 mt-1">Texto descriptivo que acompaña al título</p>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-primary mb-2">
+                          <label className="block text-sm font-medium text-yellow-300 mb-2">
                             Tipo de Enlace
                           </label>
                           <select
@@ -5703,7 +5703,7 @@ export default function AdminPage() {
                               };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 mb-4" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                           >
                             <option value="product">Producto Específico</option>
                             <option value="category">Categoría (múltiples productos en promo)</option>
@@ -5713,7 +5713,7 @@ export default function AdminPage() {
 
                         {slide.linkType === "category" && (
                           <div className="mb-4">
-                            <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-2">
+                            <label className="block text-sm font-medium text-yellow-300 mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                               </svg>
@@ -5726,7 +5726,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], categoryId: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                              className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                             >
                               <option value="">Selecciona una categoría</option>
                               {availableCategories.map((category) => (
@@ -5735,7 +5735,7 @@ export default function AdminPage() {
                                 </option>
                               ))}
                             </select>
-                            <p className="text-xs text-primary/60 mt-1 flex items-center gap-1">
+                            <p className="text-xs text-yellow-300/60 mt-1 flex items-center gap-1">
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -5746,7 +5746,7 @@ export default function AdminPage() {
 
                         {slide.linkType === "product" && (
                           <div>
-                            <label className="block text-sm font-medium text-primary mb-2">
+                            <label className="block text-sm font-medium text-yellow-300 mb-2">
                               Buscar Producto para Redirección
                             </label>
                           <input
@@ -5756,7 +5756,7 @@ export default function AdminPage() {
                             onChange={(e) => {
                               setBannerSearchTerms({ ...bannerSearchTerms, [index]: e.target.value });
                             }}
-                            className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-primary mb-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-primary mb-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                           />
                           
                           <select
@@ -5770,7 +5770,7 @@ export default function AdminPage() {
                               });
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                           >
                             <option value="">Selecciona un producto</option>
                             {products
@@ -5790,7 +5790,7 @@ export default function AdminPage() {
                           {(() => {
                             const selectedProduct = products.find(p => p.id === slide.productId);
                             return selectedProduct && (
-                              <div className="mt-3 p-3 bg-dark rounded-lg flex items-center space-x-3">
+                              <div className="mt-3 p-3 bg-slate-900 rounded-lg flex items-center space-x-3">
                                 <img
                                   loading="lazy"
                                   src={selectedProduct.imagen || ''}
@@ -5801,7 +5801,7 @@ export default function AdminPage() {
                                   <h5 className="font-medium text-white">
                                     {selectedProduct.nombre}
                                   </h5>
-                                  <p className="text-sm text-primary/80">
+                                  <p className="text-sm text-yellow-300/80">
                                     ${(selectedProduct.precio || 0).toLocaleString()}
                                   </p>
                                 </div>
@@ -5824,7 +5824,7 @@ export default function AdminPage() {
                                   {selectedCategory.name}
                                 </h5>
                               </div>
-                              <p className="text-sm text-primary/80">
+                              <p className="text-sm text-yellow-300/80">
                                 {categoryProducts.length} productos en esta categoría
                               </p>
                             </div>
@@ -5847,7 +5847,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], customUrl: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                               placeholder="Ej: https://ejemplo.com o /?category=tecnologia"
                             />
                             <p className="text-xs text-yellow-500 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
@@ -5872,7 +5872,7 @@ export default function AdminPage() {
                       }];
                       setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                     }}
-                    className="w-full py-3 border-2 border-dashed border-primary/40 rounded-lg text-primary/80 hover:border-primary hover:text-primary transition-colors"
+                    className="w-full py-3 border-2 border-dashed border-yellow-300/40 rounded-lg text-yellow-300/80 hover:border-yellow-300 hover:text-yellow-300 transition-colors"
                   >
                     + Agregar Banner
                   </button>
@@ -5901,10 +5901,10 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Logo</h2>
             
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Texto del Logo
                   </label>
                   <input
@@ -5912,12 +5912,12 @@ export default function AdminPage() {
                     value={logoForm.text}
                     onChange={(e) => setLogoForm({ ...logoForm, text: e.target.value })}
                     placeholder="GAMERHOUSE"
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Imagen del Logo
                   </label>
                   <div className="mb-3 p-3 bg-success/10 border border-success rounded-lg text-sm">
@@ -5934,9 +5934,9 @@ export default function AdminPage() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
-                  <p className="text-sm text-primary/60 mt-1">
+                  <p className="text-sm text-yellow-300/60 mt-1">
                     Si subes una imagen, se usará en lugar del emoji
                   </p>
                   {logoForm.image && (
@@ -5998,7 +5998,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingLogo}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   >
 {updatingLogo ? 'Actualizando...' : 'Actualizar Logo'}
                 </button>
@@ -6007,12 +6007,12 @@ export default function AdminPage() {
               
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
-                <div className="bg-dark/80 p-4 border rounded-lg">
+                <div className="bg-slate-900/80 p-4 border rounded-lg">
                   <div className="flex items-center space-x-2">
                     {logoForm.image ? (
                       <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
                     ) : (
-                      <div className="w-8 h-8 bg-darklight rounded flex items-center justify-center text-xs text-primary/60">
+                      <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-xs text-yellow-300/60">
                         Sin logo
                       </div>
                     )}
@@ -6034,35 +6034,35 @@ export default function AdminPage() {
                     setCategoryForm({ id: '', name: '', active: true, subcategorias: [] });
                     setShowCategoryModal(true);
                   }}
-                  className="text-white px-4 py-2 rounded-md transition-colors bg-primary"
+                  className="text-white px-4 py-2 rounded-md transition-colors bg-yellow-400"
                 >
                   ➕ Agregar Categoría
                 </button>
             </div>
 
-            <div className="bg-dark/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-slate-900/80 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-dark">
+                  <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Nombre
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Subcategorías
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-dark/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                     {categories.map((category) => (
                       <tr key={category.id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
@@ -6116,7 +6116,7 @@ export default function AdminPage() {
                                 </div>
                               ))
                             ) : (
-                              <span className="text-primary/50 text-xs">Sin subcategorías</span>
+                              <span className="text-yellow-300/50 text-xs">Sin subcategorías</span>
                             )}
                           </div>
                           <button
@@ -6133,7 +6133,7 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            category.active ? 'bg-success/20 text-success' : 'bg-darklight text-pink'
+                            category.active ? 'bg-success/20 text-success' : 'bg-slate-800 text-pink'
                           }`}>
                             {category.active ? 'Activa' : 'Inactiva'}
                           </span>
@@ -6174,7 +6174,7 @@ export default function AdminPage() {
         
         {showCategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-dark/80 rounded-lg max-w-md w-full">
+            <div className="bg-slate-900/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6182,7 +6182,7 @@ export default function AdminPage() {
                   </h3>
                   <button
                     onClick={() => setShowCategoryModal(false)}
-                    className="text-primary/50 hover:text-primary/80"
+                    className="text-yellow-300/50 hover:text-yellow-300/80"
                   >
                     ✕
                   </button>
@@ -6190,7 +6190,7 @@ export default function AdminPage() {
 
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       ID de la Categoría
                     </label>
                     <input
@@ -6198,12 +6198,12 @@ export default function AdminPage() {
                       value={categoryForm.id}
                       onChange={(e) => setCategoryForm({ ...categoryForm, id: e.target.value })}
                       placeholder="electronicos"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Nombre de la Categoría
                     </label>
                     <input
@@ -6211,7 +6211,7 @@ export default function AdminPage() {
                       value={categoryForm.name}
                       onChange={(e) => setCategoryForm({ ...categoryForm, name: e.target.value })}
                       placeholder="Electrónicos"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                     />
                   </div>
 
@@ -6222,7 +6222,7 @@ export default function AdminPage() {
                       onChange={(e) => setCategoryForm({ ...categoryForm, active: e.target.checked })}
                       className="mr-2"
                     />
-                    <label className="text-sm font-medium text-primary">
+                    <label className="text-sm font-medium text-yellow-300">
                       Categoría Activa
                     </label>
                   </div>
@@ -6231,7 +6231,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowCategoryModal(false)}
-                      className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-slate-800 hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6267,7 +6267,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-primary"
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-yellow-400"
                     >
                       Guardar
                     </button>
@@ -6281,7 +6281,7 @@ export default function AdminPage() {
         
         {showSubcategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-dark/80 rounded-lg max-w-md w-full">
+            <div className="bg-slate-900/80 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6289,7 +6289,7 @@ export default function AdminPage() {
                   </h3>
                   <button
                     onClick={() => setShowSubcategoryModal(false)}
-                    className="text-primary/50 hover:text-primary/80"
+                    className="text-yellow-300/50 hover:text-yellow-300/80"
                   >
                     ✕
                   </button>
@@ -6297,7 +6297,7 @@ export default function AdminPage() {
 
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Nombre de la Subcategoría
                     </label>
                     <input
@@ -6305,7 +6305,7 @@ export default function AdminPage() {
                       value={subcategoryForm.nombre}
                       onChange={(e) => setSubcategoryForm({ ...subcategoryForm, nombre: e.target.value })}
                       placeholder="Smartphones"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                     />
                   </div>
 
@@ -6316,7 +6316,7 @@ export default function AdminPage() {
                       onChange={(e) => setSubcategoryForm({ ...subcategoryForm, activa: e.target.checked })}
                       className="mr-2"
                     />
-                    <label className="text-sm font-medium text-primary">
+                    <label className="text-sm font-medium text-yellow-300">
                       Subcategoría Activa
                     </label>
                   </div>
@@ -6325,7 +6325,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => setShowSubcategoryModal(false)}
-                      className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
+                      className="flex-1 bg-slate-800 hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-md transition-colors"
                     >
                       Cancelar
                     </button>
@@ -6383,7 +6383,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-primary"
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors bg-yellow-400"
                     >
                       Guardar
                     </button>
@@ -6397,12 +6397,12 @@ export default function AdminPage() {
         
         {showProductModal && (
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
-            <div className="bg-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-primary/30 flex flex-col mx-auto">
+            <div className="bg-slate-900/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-yellow-300/30 flex flex-col mx-auto">
               {/* Compact Header */}
-              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white bg-primary">
+              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white bg-yellow-400">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
+                    <div className="w-10 h-10 bg-slate-900/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
@@ -6416,7 +6416,7 @@ export default function AdminPage() {
                   </div>
                   <button
                     onClick={() => setShowProductModal(false)}
-                    className="w-8 h-8 bg-dark/80/20 hover:bg-dark/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-8 h-8 bg-slate-900/80/20 hover:bg-slate-900/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6430,16 +6430,16 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Información Básica</h4>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div className="md:col-span-2 lg:col-span-3">
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>📦</span> Nombre *
                         </label>
                         <input
@@ -6447,13 +6447,13 @@ export default function AdminPage() {
                           value={productForm.nombre}
                           onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                           required
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Ej: Laptop Gaming RGB"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>🏷️</span> SKU *
                         </label>
                         <input
@@ -6462,12 +6462,12 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                           required
                           placeholder="SKU-001"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-red-600 focus:outline-none transition-all duration-200 uppercase bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-red-600 focus:outline-none transition-all duration-200 uppercase bg-slate-900/80/70"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>💰</span> Precio ($) *
                         </label>
                         <input
@@ -6477,13 +6477,13 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="0"
                         />
                       </div>
 
                       <div className="md:col-span-2 lg:col-span-3">
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>💸</span> Precio Anterior (Opcional - para mostrar descuento)
                         </label>
                         <input
@@ -6492,10 +6492,10 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:outline-none transition-all duration-200 bg-dark/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Dejar vacío si no hay descuento"
                         />
-                        <p className="text-xs text-primary/60 mt-1">
+                        <p className="text-xs text-yellow-300/60 mt-1">
                           Si agregas un precio anterior, se mostrará tachado y el % de descuento
                         </p>
                       </div>
@@ -6503,16 +6503,16 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📊</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Control de Inventario</h4>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>📦</span> Stock Actual *
                         </label>
                         <input
@@ -6522,13 +6522,13 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-900/80/70"
                           placeholder="0"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-primary mb-1 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-1 flex items-center gap-1">
                           <span>⚠️</span> Stock Mínimo *
                         </label>
                         <input
@@ -6539,7 +6539,7 @@ export default function AdminPage() {
                           min="0"
                           step="1"
                           placeholder="5"
-                          className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-dark/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-900/80/70"
                         />
                         <p className="text-xs text-success mt-1">📊 Para alertas de stock bajo</p>
                       </div>
@@ -6547,25 +6547,25 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📂</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Categorización</h4>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                       <div className="lg:col-span-2">
-                        <label className="block text-xs font-semibold text-primary mb-2 flex items-center gap-1">
+                        <label className="block text-xs font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                           <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                         </label>
-                        <div className="border-2 border-primary/30 rounded-lg p-3 bg-dark/80/70 max-h-[55vh] overflow-y-auto space-y-4">
+                        <div className="border-2 border-yellow-300/30 rounded-lg p-3 bg-slate-900/80/70 max-h-[55vh] overflow-y-auto space-y-4">
                           {categories.map((category) => {
                             const subcategorias = (category as any).subcategorias || [];
                             const isCategoryChecked = productForm.categorias.includes(category.id);
 
                             return (
-                              <div key={category.id} className="border-b border-primary/30 pb-3 last:border-0">
+                              <div key={category.id} className="border-b border-yellow-300/30 pb-3 last:border-0">
                                 {/* Categoría principal */}
                                 <label className="flex items-center gap-2 hover:bg-yellow-50 p-2 rounded cursor-pointer font-medium">
                                   <input
@@ -6592,7 +6592,7 @@ export default function AdminPage() {
                                         categoria: newCategorias[0]?.split('-')[0] || ''
                                       });
                                     }}
-                                    className="rounded border-primary/40 text-yellow-500 focus:ring-amber-500"
+                                    className="rounded border-yellow-300/40 text-yellow-500 focus:ring-amber-500"
                                   />
                                   <span className="text-sm">📂 {category.name}</span>
                                 </label>
@@ -6627,7 +6627,7 @@ export default function AdminPage() {
                                                 categoria: newCategorias[0]?.split('-')[0] || ''
                                               });
                                             }}
-                                            className="rounded border-primary/40 text-red-600 focus:ring-orange-500"
+                                            className="rounded border-yellow-300/40 text-red-600 focus:ring-orange-500"
                                           />
                                           <span className="text-xs">📁 {sub.nombre}</span>
                                         </label>
@@ -6652,9 +6652,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Descripción</h4>
@@ -6663,24 +6663,24 @@ export default function AdminPage() {
                       value={productForm.descripcion}
                       onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
                       rows={2}
-                      className="w-full px-3 py-2 text-sm border-2 border-primary/30 rounded-lg focus:border-primary focus:outline-none transition-all duration-200 resize-none bg-dark/80/70"
+                      className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-yellow-300 focus:outline-none transition-all duration-200 resize-none bg-slate-900/80/70"
                       placeholder="Describe las características principales del producto..."
                     />
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🖼️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Imágenes del Producto</h4>
                     </div>
 
                     {/* Image Specifications */}
-                    <div className="mb-3 p-2 bg-darklight border border-primary-200 rounded-lg text-xs">
+                    <div className="mb-3 p-2 bg-slate-800 border border-yellow-300-200 rounded-lg text-xs">
                       <p className="text-secondary font-medium mb-1">📐 Especificaciones:</p>
-                      <ul className="text-primary-hover space-y-0.5">
+                      <ul className="text-yellow-300-hover space-y-0.5">
                         <li>• <strong>Tamaño:</strong> 800x800px (1:1)</li>
                         <li>• <strong>Formato:</strong> JPG o PNG</li>
                         <li>• <strong>Fondo:</strong> Blanco preferible</li>
@@ -6689,7 +6689,7 @@ export default function AdminPage() {
                     </div>
 
                     {/* Compact Image Upload Area */}
-                    <div className="border-2 border-dashed border-primary-200 rounded-lg p-3 text-center bg-darklight/50 hover:bg-darklight transition-colors">
+                    <div className="border-2 border-dashed border-yellow-300-200 rounded-lg p-3 text-center bg-slate-800/50 hover:bg-slate-800 transition-colors">
                       <input
                         type="file"
                         multiple
@@ -6725,7 +6725,7 @@ export default function AdminPage() {
                         {/* Existing images from product */}
                         {productForm.imagenes && productForm.imagenes.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-primary/80 mb-2">📦 Imágenes actuales del producto:</p>
+                            <p className="text-xs font-medium text-yellow-300/80 mb-2">📦 Imágenes actuales del producto:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productForm.imagenes.map((imageUrl, index) => (
                                 <div key={`existing-${index}`} className="relative group">
@@ -6761,7 +6761,7 @@ export default function AdminPage() {
                         {/* New image previews */}
                         {productImagePreviews.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-primary/80 mb-2">✨ Nuevas imágenes a agregar:</p>
+                            <p className="text-xs font-medium text-yellow-300/80 mb-2">✨ Nuevas imágenes a agregar:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productImagePreviews.map((preview, index) => (
                                 <div key={`new-${index}`} className="relative group">
@@ -6794,15 +6794,15 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
+                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-primary">
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🏷️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Etiquetas</h4>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <label className="flex items-center gap-2 cursor-pointer bg-darklight px-3 py-2 rounded-lg hover:bg-darklight transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-slate-800 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.nuevo}
@@ -6812,7 +6812,7 @@ export default function AdminPage() {
                         <span className="text-xs font-semibold">✨ Nuevo</span>
                       </label>
 
-                      <label className="flex items-center gap-2 cursor-pointer bg-darklight px-3 py-2 rounded-lg hover:bg-darklight transition-colors">
+                      <label className="flex items-center gap-2 cursor-pointer bg-slate-800 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors">
                         <input
                           type="checkbox"
                           checked={productForm.oferta}
@@ -6827,7 +6827,7 @@ export default function AdminPage() {
               </div>
 
               {/* Modern Compact Bottom Actions - Fixed */}
-              <div className="bg-dark/80/95 backdrop-blur-sm p-4 border-t border-primary-200 flex-shrink-0">
+              <div className="bg-slate-900/80/95 backdrop-blur-sm p-4 border-t border-yellow-300-200 flex-shrink-0">
                 <div className="flex gap-3">
                   <button
                     type="button"
@@ -6904,7 +6904,7 @@ export default function AdminPage() {
             </div>
             
             
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -6934,8 +6934,8 @@ export default function AdminPage() {
                   </button>
 
                   {isAutoSaving ? (
-                    <div className="flex items-center text-primary text-sm">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary mr-2"></div>
+                    <div className="flex items-center text-yellow-300 text-sm">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-yellow-300 mr-2"></div>
                       Guardando...
                     </div>
                   ) : (
@@ -6950,7 +6950,7 @@ export default function AdminPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {(() => {                  return homepageContent.promotionalSections.map((section, index) => {                    const previewWrapperClasses = (() => {
-                      const base = 'relative w-full bg-gray-900 rounded-lg overflow-hidden border-2 border-dashed border-primary/40';
+                      const base = 'relative w-full bg-gray-900 rounded-lg overflow-hidden border-2 border-dashed border-yellow-300/40';
                       switch (section.position) {
                         case 'large':
                           return `${base} max-w-[240px] aspect-square`;
@@ -6964,9 +6964,9 @@ export default function AdminPage() {
                     })();
 
                     return (
-                  <div key={section.id} className="border border-primary/30 rounded-lg overflow-hidden hover:border-primary-300 transition-colors">
+                  <div key={section.id} className="border border-yellow-300/30 rounded-lg overflow-hidden hover:border-yellow-300-300 transition-colors">
                     
-                    <div className="bg-dark px-4 py-3 border-b">
+                    <div className="bg-slate-900 px-4 py-3 border-b">
                       <div className="flex justify-between items-center">
                         <h4 className="font-medium text-white flex items-center gap-1">
                           {section.position === 'large' ? (
@@ -6980,7 +6980,7 @@ export default function AdminPage() {
                            )}
                         </h4>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-primary/60 bg-dark/80 px-2 py-1 rounded border flex items-center gap-1">
+                          <span className="text-xs text-yellow-300/60 bg-slate-900/80 px-2 py-1 rounded border flex items-center gap-1">
                             {section.linkType === 'category' ? (
                               <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg> Categoría</>
                             ) : section.linkType === 'product' ? (
@@ -7002,7 +7002,7 @@ export default function AdminPage() {
                                 autoSaveHomepageContent(newContent);
                               }
                             }}
-                            className="text-pink hover:text-secondary hover:bg-darklight p-1 rounded transition-colors"
+                            className="text-pink hover:text-secondary hover:bg-slate-800 p-1 rounded transition-colors"
                             title="Eliminar sección"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7016,7 +7016,7 @@ export default function AdminPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
                       
                       <div className="space-y-2">
-                        <h5 className="text-sm font-semibold text-primary flex items-center gap-1">
+                        <h5 className="text-sm font-semibold text-yellow-300 flex items-center gap-1">
                           <svg className="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -7035,7 +7035,7 @@ export default function AdminPage() {
                               }}
                             />
                           ) : (
-                            <div className="absolute inset-0 flex items-center justify-center text-primary/50 bg-gray-800/60">
+                            <div className="absolute inset-0 flex items-center justify-center text-yellow-300/50 bg-gray-800/60">
                               <div className="text-center">
                                 <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -7066,8 +7066,8 @@ export default function AdminPage() {
 
                       
                       <div className="space-y-3">
-                        <h5 className="text-sm font-semibold text-primary flex items-center gap-1">
-                          <svg className="w-4 h-4 text-primary/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h5 className="text-sm font-semibold text-yellow-300 flex items-center gap-1">
+                          <svg className="w-4 h-4 text-yellow-300/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
@@ -7082,7 +7082,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, title: e.target.value });
                           }}
-                          className="w-full font-semibold text-white border-0 border-b border-primary/40 bg-transparent pb-1 focus:border-primary focus:outline-none"
+                          className="w-full font-semibold text-white border-0 border-b border-yellow-300/40 bg-transparent pb-1 focus:border-yellow-300 focus:outline-none"
                           placeholder="Título de la sección"
                         />
                         <input
@@ -7091,7 +7091,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, description: e.target.value });
                           }}
-                          className="w-full text-sm text-primary/80 mt-1 border-0 border-b border-primary/40 bg-transparent pb-1 focus:border-primary focus:outline-none"
+                          className="w-full text-sm text-yellow-300/80 mt-1 border-0 border-b border-yellow-300/40 bg-transparent pb-1 focus:border-yellow-300 focus:outline-none"
                           placeholder="Descripción de la sección"
                         />
                       </div>
@@ -7104,7 +7104,7 @@ export default function AdminPage() {
                           updateSection(index, { ...section, badgeText: e.target.value });
                         }}
                         placeholder="Texto del badge (ej: OFERTA, NUEVO)"
-                        className="w-full text-xs border rounded px-2 py-1 focus:border-primary focus:outline-none"
+                        className="w-full text-xs border rounded px-2 py-1 focus:border-yellow-300 focus:outline-none"
                       />
                       
                       
@@ -7133,11 +7133,11 @@ export default function AdminPage() {
                               handleImageUpload(file, index, section);
                             }
                           }}
-                          className="flex-1 text-xs border rounded px-2 py-1 focus:border-primary focus:outline-none"
+                          className="flex-1 text-xs border rounded px-2 py-1 focus:border-yellow-300 focus:outline-none"
                         />
                         {uploadingImages[section.id] && (
-                          <div className="flex items-center text-primary text-xs">
-                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-primary mr-1"></div>
+                          <div className="flex items-center text-yellow-300 text-xs">
+                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-yellow-300 mr-1"></div>
                             Subiendo...
                           </div>
                         )}
@@ -7145,13 +7145,13 @@ export default function AdminPage() {
                       
                       
                       <div className="space-y-2">
-                        <label className="block text-xs font-medium text-primary">Tipo de enlace</label>
+                        <label className="block text-xs font-medium text-yellow-300">Tipo de enlace</label>
                         <select
                           value={section.linkType}
                           onChange={(e) => {
                             updateSection(index, { ...section, linkType: e.target.value as any, linkValue: '' });
                           }}
-                          className="w-full text-xs border rounded px-2 py-1.5 focus:border-primary focus:outline-none"
+                          className="w-full text-xs border rounded px-2 py-1.5 focus:border-yellow-300 focus:outline-none"
                         >
                           <option value="category">Categoría</option>
                           <option value="product">Producto</option>
@@ -7161,13 +7161,13 @@ export default function AdminPage() {
 
                         {section.linkType === 'category' ? (
                           <div>
-                            <label className="block text-xs font-medium text-primary mb-1">Seleccionar categoría</label>
+                            <label className="block text-xs font-medium text-yellow-300 mb-1">Seleccionar categoría</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-primary focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-yellow-300 focus:outline-none"
                             >
                               <option value="">-- Selecciona una categoría --</option>
                               {availableCategories.map((cat) => (
@@ -7179,13 +7179,13 @@ export default function AdminPage() {
                           </div>
                         ) : section.linkType === 'product' ? (
                           <div>
-                            <label className="block text-xs font-medium text-primary mb-1">Seleccionar producto</label>
+                            <label className="block text-xs font-medium text-yellow-300 mb-1">Seleccionar producto</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-primary focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-yellow-300 focus:outline-none"
                             >
                               <option value="">-- Selecciona un producto --</option>
                               {products.map(product => (
@@ -7197,13 +7197,13 @@ export default function AdminPage() {
                           </div>
                         ) : section.linkType === 'filter' ? (
                           <div>
-                            <label className="block text-xs font-medium text-primary mb-1">Seleccionar filtro</label>
+                            <label className="block text-xs font-medium text-yellow-300 mb-1">Seleccionar filtro</label>
                             <select
                               value={section.linkValue}
                               onChange={(e) => {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-primary focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-yellow-300 focus:outline-none"
                             >
                               <option value="">-- Selecciona un filtro --</option>
                               <option value="ofertas">Ofertas</option>
@@ -7212,7 +7212,7 @@ export default function AdminPage() {
                           </div>
                         ) : (
                           <div>
-                            <label className="block text-xs font-medium text-primary mb-1">URL personalizada</label>
+                            <label className="block text-xs font-medium text-yellow-300 mb-1">URL personalizada</label>
                             <input
                               type="text"
                               value={section.linkValue}
@@ -7220,7 +7220,7 @@ export default function AdminPage() {
                                 updateSection(index, { ...section, linkValue: e.target.value });
                               }}
                               placeholder="https://ejemplo.com"
-                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-primary focus:outline-none"
+                              className="w-full text-xs border rounded px-2 py-1.5 focus:border-yellow-300 focus:outline-none"
                             />
                           </div>
                         )}
@@ -7232,7 +7232,7 @@ export default function AdminPage() {
                         onChange={(e) => {
                           updateSection(index, { ...section, position: e.target.value as "large" | "tall" | "normal" | "wide" });
                         }}
-                        className="w-full text-xs border rounded px-2 py-1 focus:border-primary focus:outline-none"
+                        className="w-full text-xs border rounded px-2 py-1 focus:border-yellow-300 focus:outline-none"
                       >
                         <option value="large">Grande (2x2)</option>
                         <option value="tall">Alto (1x2)</option>
@@ -7281,16 +7281,16 @@ export default function AdminPage() {
               </div>
 
 
-              <div className="mt-10 border-t border-primary/30 pt-6">
+              <div className="mt-10 border-t border-yellow-300/30 pt-6">
                 <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                       Banners Intermedios
                     </h3>
-                    <p className="text-sm text-primary/80">
+                    <p className="text-sm text-yellow-300/80">
                       Banners que aparecen entre secciones de la página principal.
                     </p>
                   </div>
@@ -7333,7 +7333,7 @@ export default function AdminPage() {
                     const stateKey = `middle-${banner.id}`;
 
                     return (
-                      <div key={banner.id || `middle-${index}`} className="border-2 border-primary/40 rounded-xl p-5 flex flex-col gap-4 bg-dark/80 shadow-sm hover:shadow-md transition-shadow">
+                      <div key={banner.id || `middle-${index}`} className="border-2 border-yellow-300/40 rounded-xl p-5 flex flex-col gap-4 bg-slate-900/80 shadow-sm hover:shadow-md transition-shadow">
                         <div className="flex items-center justify-between">
                           <h4 className="font-bold text-white text-lg">Banner #{index + 1}</h4>
                           {isAutoSaving && (
@@ -7346,7 +7346,7 @@ export default function AdminPage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-primary/60 -mt-2">{placementLabel}</p>
+                        <p className="text-xs text-yellow-300/60 -mt-2">{placementLabel}</p>
 
                         <div className="space-y-4">
                           {/* Preview Mejorada */}
@@ -7357,7 +7357,7 @@ export default function AdminPage() {
                               </span>
                             </div>
                             {banner.imageUrl ? (
-                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-primary/40 shadow-lg shadow-red-600/20">
+                              <div className="relative h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl overflow-hidden border-2 border-yellow-300/40 shadow-lg shadow-red-600/20">
                                 <img
                                   src={banner.imageUrl}
                                   alt={banner.title}
@@ -7367,14 +7367,14 @@ export default function AdminPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
                                   <h3 className="font-black text-lg text-center drop-shadow-lg shadow-red-600/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
-                                  <button className="mt-3 bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
+                                  <button className="mt-3 bg-slate-900/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden border-2 border-dashed border-gray-400 flex items-center justify-center">
-                                <div className="text-center text-primary/60">
+                                <div className="text-center text-yellow-300/60">
                                   <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                   </svg>
@@ -7385,8 +7385,8 @@ export default function AdminPage() {
                           </div>
 
                           {/* Título - Mejorado */}
-                          <div className="bg-darklight p-3 rounded-lg border border-primary-200">
-                            <label className="block text-sm font-bold text-primary-hover mb-2 flex items-center gap-2">
+                          <div className="bg-slate-800 p-3 rounded-lg border border-yellow-300-200">
+                            <label className="block text-sm font-bold text-yellow-300-hover mb-2 flex items-center gap-2">
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                               </svg>
@@ -7396,10 +7396,10 @@ export default function AdminPage() {
                               type="text"
                               value={banner.title}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, title: e.target.value })}
-                              className="w-full text-sm border-2 border-primary-300 rounded-lg px-3 py-2 focus:border-primary focus:ring-2 focus:ring-primary-200 focus:outline-none bg-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-900/80 transition-all"
                               placeholder="Ej: ¡Ofertas Especiales! 🔥"
                             />
-                            <p className="text-xs text-primary mt-1">Este texto aparece grande en el banner</p>
+                            <p className="text-xs text-yellow-300 mt-1">Este texto aparece grande en el banner</p>
                           </div>
 
                           {/* Subtítulo - Mejorado */}
@@ -7414,7 +7414,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.subtitle}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, subtitle: e.target.value })}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                               placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                             />
                             <p className="text-xs text-red-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -7434,7 +7434,7 @@ export default function AdminPage() {
                                 const linkType = e.target.value as 'category' | 'product' | 'filter' | 'url' | 'popup-ofertas';
                                 updateMiddleBanner(index, { ...banner, linkType, linkValue: '', ctaLink: '' });
                               }}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all font-medium"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all font-medium"
                             >
                               <option value="category">📁 Categoría</option>
                               <option value="product">📦 Producto</option>
@@ -7454,7 +7454,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?category=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                                 >
                                   <option value="">-- Selecciona una categoría --</option>
                                   {availableCategories.length === 0 ? (
@@ -7493,7 +7493,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?filter=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                                 >
                                   <option value="">-- Selecciona un filtro --</option>
                                   <option value="ofertas">Productos en Oferta</option>
@@ -7514,7 +7514,7 @@ export default function AdminPage() {
                                   type="text"
                                   value="/popup-ofertas"
                                   disabled
-                                  className="w-full text-sm border-2 border-primary/40 rounded-lg px-3 py-2 bg-darklight text-primary/80 font-medium"
+                                  className="w-full text-sm border-2 border-yellow-300/40 rounded-lg px-3 py-2 bg-slate-800 text-yellow-300/80 font-medium"
                                 />
                                 <p className="text-xs text-yellow-500 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7533,7 +7533,7 @@ export default function AdminPage() {
                                   type="text"
                                   value={banner.ctaLink}
                                   onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-dark/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
                                 <p className="text-xs text-yellow-500 mt-2 flex items-center gap-1">
@@ -7563,10 +7563,10 @@ export default function AdminPage() {
                                   handleMiddleBannerImageUpload(file, index, banner);
                                 }
                               }}
-                              className="w-full text-sm border-2 border-success rounded-lg px-3 py-2 focus:border-success focus:ring-2 focus:ring-green-200 focus:outline-none bg-dark/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-success/20 file:text-success hover:file:bg-green-200"
+                              className="w-full text-sm border-2 border-success rounded-lg px-3 py-2 focus:border-success focus:ring-2 focus:ring-green-200 focus:outline-none bg-slate-900/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-success/20 file:text-success hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
-                              <p className="text-xs text-primary mt-2 font-medium flex items-center gap-1">
+                              <p className="text-xs text-yellow-300 mt-2 font-medium flex items-center gap-1">
                                 <svg className="animate-spin h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -7597,25 +7597,25 @@ export default function AdminPage() {
                     Consejos para Banners Efectivos
                   </h4>
                   <ul className="space-y-3 text-sm text-secondary">
-                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Título claro:</strong> Usa mensajes cortos y directos (ej: "¡Ofertas Imperdibles!")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Subtítulo descriptivo:</strong> Complementa con información adicional (ej: "Hasta 50% OFF")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Imágenes de calidad:</strong> Usa imágenes de alta resolución (1440x480px ideal)</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-dark/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -7645,7 +7645,7 @@ export default function AdminPage() {
                 </a>
                 <button
                   onClick={() => saveHomepageContent()}
-                  className="px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary transition-colors flex items-center gap-2"
+                  className="px-4 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
@@ -7669,13 +7669,13 @@ export default function AdminPage() {
         
         {activeTab === 'footer' && (
           <div className="space-y-6">
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">Información del Footer</h2>
               
               <form className="space-y-6">
                 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-2">
+                  <label className="block text-sm font-medium text-yellow-300 mb-2">
                     Descripción de la Empresa
                   </label>
                   <textarea
@@ -7683,7 +7683,7 @@ export default function AdminPage() {
                     onChange={(e) => setFooterForm({ ...footerForm, companyDescription: e.target.value })}
                     placeholder="Tu tienda online de confianza con los mejores productos importados."
                     rows={3}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                     style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
                 </div>
@@ -7691,7 +7691,7 @@ export default function AdminPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2 flex items-center gap-1">
                       <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
@@ -7702,13 +7702,13 @@ export default function AdminPage() {
                       value={footerForm.phone}
                       onChange={(e) => setFooterForm({ ...footerForm, phone: e.target.value })}
                       placeholder="+1 234 567 890"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2 flex items-center gap-1">
                       <svg className="w-4 h-4 text-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -7719,14 +7719,14 @@ export default function AdminPage() {
                       value={footerForm.email}
                       onChange={(e) => setFooterForm({ ...footerForm, email: e.target.value })}
                       placeholder="info@importadorafyd.com"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-2 flex items-center gap-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-2 flex items-center gap-1">
                     <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -7738,7 +7738,7 @@ export default function AdminPage() {
                     value={footerForm.address}
                     onChange={(e) => setFooterForm({ ...footerForm, address: e.target.value })}
                     placeholder="Calle Principal 123, Ciudad"
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                     style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
                 </div>
@@ -7749,7 +7749,7 @@ export default function AdminPage() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         📘 Facebook URL
                       </label>
                       <input
@@ -7757,13 +7757,13 @@ export default function AdminPage() {
                         value={footerForm.facebookUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, facebookUrl: e.target.value })}
                         placeholder="https://facebook.com/tu-pagina"
-                        className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                       />
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         📷 Instagram URL
                       </label>
                       <input
@@ -7771,13 +7771,13 @@ export default function AdminPage() {
                         value={footerForm.instagramUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, instagramUrl: e.target.value })}
                         placeholder="https://instagram.com/tu-cuenta"
-                        className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         🎵 TikTok URL
                       </label>
                       <input
@@ -7785,13 +7785,13 @@ export default function AdminPage() {
                         value={footerForm.tiktokUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, tiktokUrl: e.target.value })}
                         placeholder="https://tiktok.com/@tu-cuenta"
-                        className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         💬 WhatsApp (número de teléfono)
                       </label>
                       <input
@@ -7799,10 +7799,10 @@ export default function AdminPage() {
                         value={footerForm.whatsappUrl}
                         onChange={(e) => setFooterForm({ ...footerForm, whatsappUrl: e.target.value })}
                         placeholder="912345678 o 56912345678"
-                        className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                        className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                       />
-                      <p className="text-xs text-primary/60 mt-1">
+                      <p className="text-xs text-yellow-300/60 mt-1">
                         Número de teléfono (se agregará automáticamente el código 56 si no lo incluyes)
                       </p>
                     </div>
@@ -7840,7 +7840,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingFooter}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   >
 {updatingFooter ? 'Actualizando...' : 'Actualizar Información'}
                 </button>
@@ -7849,7 +7849,7 @@ export default function AdminPage() {
               
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa del Footer:</h3>
-                <div className="bg-primary text-white p-6 rounded-lg">
+                <div className="bg-yellow-400 text-white p-6 rounded-lg">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <h4 className="text-lg font-semibold mb-2">GAMERHOUSE</h4>
@@ -7882,13 +7882,13 @@ export default function AdminPage() {
 
         {activeTab === 'bank-details' && (
           <div className="space-y-6">
-            <div className="bg-dark/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">🏦 Configuración de Datos Bancarios</h2>
 
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       🏛️ Nombre del Banco
                     </label>
                     <input
@@ -7896,19 +7896,19 @@ export default function AdminPage() {
                       value={bankForm.bankName}
                       onChange={(e) => setBankForm({ ...bankForm, bankName: e.target.value })}
                       placeholder="Banco de Chile"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       💳 Tipo de Cuenta
                     </label>
                     <select
                       value={bankForm.accountType}
                       onChange={(e) => setBankForm({ ...bankForm, accountType: e.target.value })}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     >
                       <option value="Cuenta Corriente">Cuenta Corriente</option>
@@ -7920,7 +7920,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       🔢 Número de Cuenta
                     </label>
                     <input
@@ -7928,13 +7928,13 @@ export default function AdminPage() {
                       value={bankForm.accountNumber}
                       onChange={(e) => setBankForm({ ...bankForm, accountNumber: e.target.value })}
                       placeholder="123-456-789-01"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       🆔 RUT del Titular
                     </label>
                     <input
@@ -7942,7 +7942,7 @@ export default function AdminPage() {
                       value={bankForm.rut}
                       onChange={(e) => setBankForm({ ...bankForm, rut: e.target.value })}
                       placeholder="12.345.678-9"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
@@ -7950,7 +7950,7 @@ export default function AdminPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       👤 Nombre del Titular
                     </label>
                     <input
@@ -7958,13 +7958,13 @@ export default function AdminPage() {
                       value={bankForm.holderName}
                       onChange={(e) => setBankForm({ ...bankForm, holderName: e.target.value })}
                       placeholder="GAMERHOUSE SpA"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       📧 Email para Confirmaciones
                     </label>
                     <input
@@ -7972,7 +7972,7 @@ export default function AdminPage() {
                       value={bankForm.email}
                       onChange={(e) => setBankForm({ ...bankForm, email: e.target.value })}
                       placeholder="pagos@importadorafyd.cl"
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                     />
                   </div>
@@ -7993,7 +7993,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBank}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   >
 {updatingBank ? 'Actualizando...' : 'Actualizar Datos Bancarios'}
                 </button>
@@ -8003,31 +8003,31 @@ export default function AdminPage() {
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa en Checkout:</h3>
                 <div className="bg-yellow-50 border border-amber-300 rounded-lg p-4">
-                  <div className="bg-dark/80 border border-primary/30 rounded-lg p-4">
+                  <div className="bg-slate-900/80 border border-yellow-300/30 rounded-lg p-4">
                     <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                       <div>
-                        <span className="font-medium text-primary">Banco:</span>
+                        <span className="font-medium text-yellow-300">Banco:</span>
                         <span className="ml-2">{bankForm.bankName}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-primary">Tipo de cuenta:</span>
+                        <span className="font-medium text-yellow-300">Tipo de cuenta:</span>
                         <span className="ml-2">{bankForm.accountType}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-primary">Número de cuenta:</span>
+                        <span className="font-medium text-yellow-300">Número de cuenta:</span>
                         <span className="ml-2">{bankForm.accountNumber}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-primary">RUT:</span>
+                        <span className="font-medium text-yellow-300">RUT:</span>
                         <span className="ml-2">{bankForm.rut}</span>
                       </div>
                       <div className="md:col-span-2">
-                        <span className="font-medium text-primary">Titular:</span>
+                        <span className="font-medium text-yellow-300">Titular:</span>
                         <span className="ml-2">{bankForm.holderName}</span>
                       </div>
                       <div className="md:col-span-2">
-                        <span className="font-medium text-primary">Email para confirmación:</span>
+                        <span className="font-medium text-yellow-300">Email para confirmación:</span>
                         <span className="ml-2">{bankForm.email}</span>
                       </div>
                     </div>
@@ -8051,15 +8051,15 @@ export default function AdminPage() {
 
       
       {showSectionModal && (
-        <div className="fixed inset-0 bg-dark/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-dark/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/30">
+        <div className="fixed inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-900/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-yellow-300/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <h3 className="text-2xl font-bold text-white">
                     {editingSection ? 'Editar Sección' : 'Nueva Sección'}
                   </h3>
-                  <p className="text-sm text-primary/60 mt-1">
+                  <p className="text-sm text-yellow-300/60 mt-1">
                     Configura cómo se verá esta sección en la página principal
                   </p>
                 </div>
@@ -8070,7 +8070,7 @@ export default function AdminPage() {
                     setPreviewName('');
                     setPreviewDescription('');
                   }}
-                  className="text-primary/50 hover:text-primary/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-darklight transition-colors"
+                  className="text-yellow-300/50 hover:text-yellow-300/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-800 transition-colors"
                 >
                   ✕
                 </button>
@@ -8127,7 +8127,7 @@ export default function AdminPage() {
                   {/* Left Column - Form */}
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         Nombre de la Sección *
                       </label>
                       <input
@@ -8136,14 +8136,14 @@ export default function AdminPage() {
                         defaultValue={editingSection?.name || ''}
                         onChange={(e) => setPreviewName(e.target.value)}
                         required
-                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
+                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
                         style={{ '--tw-ring-color': 'var(--primary)' } as any}
                         placeholder="Ej: Ofertas Especiales"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         Descripción
                       </label>
                       <textarea
@@ -8151,20 +8151,20 @@ export default function AdminPage() {
                         defaultValue={editingSection?.description || ''}
                         onChange={(e) => setPreviewDescription(e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
+                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
                         style={{ '--tw-ring-color': 'var(--primary)' } as any}
                         placeholder="Breve descripción de la sección"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-yellow-300 mb-2">
                         Tipo de Sección
                       </label>
                       <select
                         name="type"
                         defaultValue={editingSection?.type || 'custom'}
-                        className="w-full px-4 py-3 border border-primary/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
+                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
                         style={{ '--tw-ring-color': 'var(--primary)' } as any}
                       >
                         <option value="custom">🎯 Productos Personalizados</option>
@@ -8177,31 +8177,31 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-darklight via-darklight to-gray-50 rounded-xl p-6 border-2 border-primary-200">
+                  <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-gray-50 rounded-xl p-6 border-2 border-yellow-300-200">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-sm font-semibold text-primary flex items-center">
+                      <h4 className="text-sm font-semibold text-yellow-300 flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio
                       </h4>
-                      <span className="text-xs bg-darklight text-primary px-2 py-1 rounded-full font-medium">
+                      <span className="text-xs bg-slate-800 text-yellow-300 px-2 py-1 rounded-full font-medium">
                         En Vivo
                       </span>
                     </div>
 
                     {/* Preview of section as it appears on website */}
-                    <div className="bg-dark/80 rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div className="bg-slate-900/80 rounded-lg shadow-sm p-5 border border-gray-100">
                       {/* Section Header */}
-                      <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-primary">
+                      <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-yellow-300">
                         <div>
                           <h3 className="text-xl font-bold text-white">
                             {previewName || editingSection?.name || 'Nombre de Sección'}
                           </h3>
-                          <p className="text-sm text-primary/80 mt-1">
+                          <p className="text-sm text-yellow-300/80 mt-1">
                             {previewDescription || editingSection?.description || 'Descripción de la sección'}
                           </p>
                         </div>
                         <button
                           type="button"
-                          className="text-xs text-primary font-semibold hover:text-primary whitespace-nowrap"
+                          className="text-xs text-yellow-300 font-semibold hover:text-yellow-300 whitespace-nowrap"
                         >
                           Ver todos →
                         </button>
@@ -8210,8 +8210,8 @@ export default function AdminPage() {
                       {/* Product Cards Preview */}
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="bg-dark rounded-lg p-2 border border-primary/30">
-                            <div className="bg-darklight rounded h-20 mb-2 flex items-center justify-center">
+                          <div key={i} className="bg-slate-900 rounded-lg p-2 border border-yellow-300/30">
+                            <div className="bg-slate-800 rounded h-20 mb-2 flex items-center justify-center">
                               <span className="text-2xl">📦</span>
                             </div>
                             <div className="space-y-1">
@@ -8222,7 +8222,7 @@ export default function AdminPage() {
                         ))}
                       </div>
 
-                      <p className="text-xs text-primary/50 mt-3 text-center">
+                      <p className="text-xs text-yellow-300/50 mt-3 text-center">
                         {editingSection?.selectedProducts?.length || 0} productos configurados
                       </p>
                     </div>
@@ -8240,7 +8240,7 @@ export default function AdminPage() {
                   <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
                     sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
                     sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-                    'bg-darklight text-secondary'
+                    'bg-slate-800 text-secondary'
                   }`}>
                     {sectionSaveStatus === 'saving' && (
                       <>
@@ -8263,7 +8263,7 @@ export default function AdminPage() {
                   </div>
                 )}
 
-                <div className="flex space-x-3 pt-6 mt-6 border-t border-primary/30">
+                <div className="flex space-x-3 pt-6 mt-6 border-t border-yellow-300/30">
                   <button
                     type="button"
                     onClick={() => {
@@ -8273,14 +8273,14 @@ export default function AdminPage() {
                       setPreviewDescription('');
                     }}
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 bg-darklight hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 bg-slate-800 hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
                     disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-primary" onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
+                    className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-yellow-400" onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
                     >
 {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
                   </button>
@@ -8293,8 +8293,8 @@ export default function AdminPage() {
 
       
       {showProductSelector && (
-        <div className="fixed inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-dark/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-900/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-semibold text-white">
@@ -8310,18 +8310,18 @@ export default function AdminPage() {
                       showOnlySelected: false
                     });
                   }}
-                  className="text-primary/50 hover:text-primary/80"
+                  className="text-yellow-300/50 hover:text-yellow-300/80"
                 >
                   ✕
                 </button>
               </div>
 
               
-              <div className="mb-6 p-4 bg-dark rounded-lg">
+              <div className="mb-6 p-4 bg-slate-900 rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       Buscar por nombre
                     </label>
                     <input
@@ -8332,14 +8332,14 @@ export default function AdminPage() {
                         search: e.target.value
                       }))}
                       placeholder="Buscar productos..."
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as any}
                     />
                   </div>
 
                   
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       Filtrar por categoría
                     </label>
                     <select
@@ -8348,7 +8348,7 @@ export default function AdminPage() {
                         ...prev,
                         category: e.target.value
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                       style={{ '--tw-ring-color': 'var(--primary)' } as any}
                     >
                       <option value="">Todas las categorías</option>
@@ -8362,7 +8362,7 @@ export default function AdminPage() {
 
                   
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-yellow-300 mb-2">
                       Opciones de vista
                     </label>
                     <div className="flex items-center space-x-4">
@@ -8374,9 +8374,9 @@ export default function AdminPage() {
                             ...prev,
                             showOnlySelected: e.target.checked
                           }))}
-                          className="h-4 w-4 text-primary rounded mr-2"
+                          className="h-4 w-4 text-yellow-300 rounded mr-2"
                         />
-                        <span className="text-sm text-primary">Solo seleccionados</span>
+                        <span className="text-sm text-yellow-300">Solo seleccionados</span>
                       </label>
                       <button
                         onClick={() => setProductSelectorFilters({
@@ -8384,7 +8384,7 @@ export default function AdminPage() {
                           search: '',
                           showOnlySelected: false
                         })}
-                        className="text-sm text-primary hover:text-secondary"
+                        className="text-sm text-yellow-300 hover:text-secondary"
                       >
                         Limpiar filtros
                       </button>
@@ -8394,7 +8394,7 @@ export default function AdminPage() {
               </div>
 
               
-              <div className="mb-4 text-sm text-primary/80">
+              <div className="mb-4 text-sm text-yellow-300/80">
                 Mostrando {products
                   .filter((product) => {
                     const currentSection = productSections.find(s => s.id === currentSectionId);
@@ -8493,7 +8493,7 @@ export default function AdminPage() {
                               console.error('Error auto-saving product selection:', error);
                             }
                           }}
-                          className="mt-1 h-4 w-4 text-primary rounded"
+                          className="mt-1 h-4 w-4 text-yellow-300 rounded"
                         />
                         <div className="flex-1">
                           {product.imagen && (
@@ -8504,8 +8504,8 @@ export default function AdminPage() {
                             />
                           )}
                           <h4 className="font-medium text-white text-sm">{product.nombre}</h4>
-                          <p className="text-primary/80 text-xs mt-1">${product.precio?.toLocaleString()}</p>
-                          <p className="text-primary/60 text-xs">{product.categoria}</p>
+                          <p className="text-yellow-300/80 text-xs mt-1">${product.precio?.toLocaleString()}</p>
+                          <p className="text-yellow-300/60 text-xs">{product.categoria}</p>
                         </div>
                       </div>
                     </div>
@@ -8516,7 +8516,7 @@ export default function AdminPage() {
               <div className="flex justify-end pt-6">
                 <button
                   onClick={() => setShowProductSelector(false)}
-                  className="text-white font-medium py-2 px-6 rounded-md transition-colors bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
+                  className="text-white font-medium py-2 px-6 rounded-md transition-colors bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   >
 Listo
                 </button>

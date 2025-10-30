@@ -124,7 +124,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       case 'adjustment':
         return <AdjustmentsHorizontalIcon className="h-4 w-4 text-red-600" />;
       default:
-        return <ClockIcon className="h-4 w-4 text-primary/80" />;
+        return <ClockIcon className="h-4 w-4 text-yellow-300/80" />;
     }
   };
 
@@ -148,25 +148,25 @@ export default function StockManagement({ productId, className }: StockManagemen
   const getStockStatus = (stock: number) => {
     const minStock = 5; // This should come from product data
     if (stock === 0) return { color: 'text-pink', text: 'Sin Stock', icon: ExclamationTriangleIcon };
-    if (stock <= minStock / 2) return { color: 'text-primary600', text: 'Stock Crítico', icon: ExclamationTriangleIcon };
+    if (stock <= minStock / 2) return { color: 'text-yellow-300600', text: 'Stock Crítico', icon: ExclamationTriangleIcon };
     if (stock <= minStock) return { color: 'text-yellow-600', text: 'Stock Bajo', icon: ExclamationTriangleIcon };
     return { color: 'text-green-600', text: 'Stock Normal', icon: null };
   };
 
   if (productsLoading) {
     return (
-      <div className={`bg-dark/80 rounded-lg shadow p-6 ${className}`}>
+      <div className={`bg-slate-900/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-darklight rounded w-1/4"></div>
-          <div className="h-32 bg-darklight rounded"></div>
+          <div className="h-6 bg-slate-800 rounded w-1/4"></div>
+          <div className="h-32 bg-slate-800 rounded"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-dark/80 rounded-lg shadow ${className}`}>
-      <div className="p-6 border-b border-primary/30">
+    <div className={`bg-slate-900/80 rounded-lg shadow ${className}`}>
+      <div className="p-6 border-b border-yellow-300/30">
         <h2 className="text-xl font-semibold text-white mb-4">
           Gestión de Stock
         </h2>
@@ -174,7 +174,7 @@ export default function StockManagement({ productId, className }: StockManagemen
         {/* Product Selector */}
         {!productId && (
           <div className="mb-4">
-            <label className="block text-sm font-medium text-primary mb-2">
+            <label className="block text-sm font-medium text-yellow-300 mb-2">
               Seleccionar Producto
             </label>
             <select
@@ -183,7 +183,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                 const product = products.find(p => p.id === e.target.value);
                 if (product) handleProductSelect(product);
               }}
-              className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Seleccione un producto...</option>
               {products.map((product) => (
@@ -197,7 +197,7 @@ export default function StockManagement({ productId, className }: StockManagemen
 
         {/* Selected Product Info */}
         {selectedProduct && (
-          <div className="bg-dark rounded-lg p-4 mb-4">
+          <div className="bg-slate-900 rounded-lg p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-medium text-white">
                 {selectedProduct.nombre}
@@ -222,13 +222,13 @@ export default function StockManagement({ productId, className }: StockManagemen
                 <div className="text-2xl font-bold text-white">
                   {selectedProduct.stock}
                 </div>
-                <div className="text-sm text-primary/80">Stock Actual</div>
+                <div className="text-sm text-yellow-300/80">Stock Actual</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary600">
+                <div className="text-2xl font-bold text-yellow-300600">
                   5
                 </div>
-                <div className="text-sm text-primary/80">Stock Mínimo</div>
+                <div className="text-sm text-yellow-300/80">Stock Mínimo</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-red-600">
@@ -237,7 +237,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     currency: 'CLP'
                   })}
                 </div>
-                <div className="text-sm text-primary/80">Precio</div>
+                <div className="text-sm text-yellow-300/80">Precio</div>
               </div>
             </div>
 
@@ -278,7 +278,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               {transactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-3 bg-dark rounded-lg"
+                  className="flex items-center justify-between p-3 bg-slate-900 rounded-lg"
                 >
                   <div className="flex items-center space-x-3">
                     {getTransactionIcon(transaction.type)}
@@ -286,16 +286,16 @@ export default function StockManagement({ productId, className }: StockManagemen
                       <div className="text-sm font-medium text-white">
                         {getTransactionTypeText(transaction.type)}
                         {transaction.orderId && (
-                          <span className="text-xs text-primary/60 ml-2">
+                          <span className="text-xs text-yellow-300/60 ml-2">
                             (Orden: {transaction.orderId.slice(-6)})
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-primary/60">
+                      <div className="text-xs text-yellow-300/60">
                         {new Date(transaction.createdAt).toLocaleString('es-CL')}
                       </div>
                       {transaction.reason && (
-                        <div className="text-xs text-primary/80 mt-1">
+                        <div className="text-xs text-yellow-300/80 mt-1">
                           {transaction.reason}
                         </div>
                       )}
@@ -308,7 +308,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     }`}>
                       {transaction.quantity > 0 ? '+' : ''}{transaction.quantity}
                     </div>
-                    <div className="text-xs text-primary/60">
+                    <div className="text-xs text-yellow-300/60">
                       {transaction.previousStock} → {transaction.newStock}
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               ))}
             </div>
           ) : (
-            <div className="text-center py-8 text-primary/60">
+            <div className="text-center py-8 text-yellow-300/60">
               No hay movimientos registrados para este producto
             </div>
           )}
@@ -326,14 +326,14 @@ export default function StockManagement({ productId, className }: StockManagemen
       {/* Restock Modal */}
       {showRestockModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-md">
+          <div className="bg-slate-900/80 rounded-lg p-6 w-full max-w-md">
             <h3 className="text-lg font-medium text-white mb-4">
               Reabastecer Producto
             </h3>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Cantidad a agregar
                 </label>
                 <input
@@ -341,20 +341,20 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="1"
                   value={restockData.quantity}
                   onChange={(e) => setRestockData(prev => ({ ...prev, quantity: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: 50"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Motivo (opcional)
                 </label>
                 <input
                   type="text"
                   value={restockData.reason}
                   onChange={(e) => setRestockData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: Compra a proveedor"
                 />
               </div>
@@ -386,7 +386,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowRestockModal(false);
                   setRestockData({ quantity: '', reason: '' });
                 }}
-                className="flex-1 bg-gray-300 text-primary py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-yellow-300 py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>
@@ -398,14 +398,14 @@ export default function StockManagement({ productId, className }: StockManagemen
       {/* Stock Adjustment Modal */}
       {showAdjustModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-md">
+          <div className="bg-slate-900/80 rounded-lg p-6 w-full max-w-md">
             <h3 className="text-lg font-medium text-white mb-4">
               Ajustar Stock
             </h3>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Nuevo stock
                 </label>
                 <input
@@ -413,19 +413,19 @@ export default function StockManagement({ productId, className }: StockManagemen
                   min="0"
                   value={adjustmentData.newStock}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, newStock: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Motivo del ajuste
                 </label>
                 <input
                   type="text"
                   value={adjustmentData.reason}
                   onChange={(e) => setAdjustmentData(prev => ({ ...prev, reason: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   placeholder="Ej: Corrección de inventario"
                   required
                 />
@@ -464,7 +464,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                   setShowAdjustModal(false);
                   setAdjustmentData({ newStock: '', reason: '' });
                 }}
-                className="flex-1 bg-gray-300 text-primary py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-yellow-300 py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>

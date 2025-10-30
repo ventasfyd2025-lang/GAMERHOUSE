@@ -278,11 +278,11 @@ export default function MainBannerCarousel({
 
   if (slides.length === 0) {
     return (
-      <div className="relative w-full bg-darklight h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] flex items-center justify-center">
+      <div className="relative w-full bg-slate-800 h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] flex items-center justify-center">
         <div className="text-center p-8">
-          <div className="text-primary/50 text-6xl mb-4">📸</div>
-          <h3 className="text-xl font-bold text-primary mb-2">No hay banners configurados</h3>
-          <p className="text-primary/60 text-sm">
+          <div className="text-yellow-300/50 text-6xl mb-4">📸</div>
+          <h3 className="text-xl font-bold text-yellow-300 mb-2">No hay banners configurados</h3>
+          <p className="text-yellow-300/60 text-sm">
             {!config?.active && "El carrusel está desactivado. "}
             {(!config?.slides || config.slides.length === 0) && "Agrega al menos un slide para ver la vista previa."}
           </p>
@@ -341,7 +341,7 @@ export default function MainBannerCarousel({
                       {slide.subtitle}
                     </p>
                   )}
-                  <button className="mt-4 sm:mt-6 bg-dark/80 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-fade-in">
+                  <button className="mt-4 sm:mt-6 bg-slate-900/80 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold hover:scale-110 hover:shadow-2xl transition-all duration-300 animate-fade-in">
                     Ver Más
                   </button>
                 </div>
@@ -359,8 +359,8 @@ export default function MainBannerCarousel({
             onClick={() => setCurrentSlide(index)}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? 'bg-dark/80 scale-125'
-                : 'bg-dark/80 bg-opacity-50 hover:bg-opacity-75'
+                ? 'bg-slate-900/80 scale-125'
+                : 'bg-slate-900/80 bg-opacity-50 hover:bg-opacity-75'
             }`}
           />
         ))}

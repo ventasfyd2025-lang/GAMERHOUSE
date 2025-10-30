@@ -1,7 +1,13 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Instanciar Resend solo cuando sea necesario para evitar errores en build
+const getResend = () => {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not defined');
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+};
 
 const DEFAULT_RECIPIENT = 'ventas.fyd2025@gmail.com';
 
@@ -270,6 +276,7 @@ export async function POST(request: NextRequest) {
 
     const replyTo = normalizeEmail(data?.customerEmail || data?.email || null) || undefined;
 
+    const resend = getResend();
     const { data: emailData, error } = await resend.emails.send({
       from: 'GAMERHOUSE <onboarding@resend.dev>',
       to,

@@ -24,22 +24,22 @@ const UserMenu = memo(function UserMenu({
   return (
     <div
       ref={userMenuRef}
-      className="absolute right-0 mt-2 w-52 bg-dark/80 rounded-xl shadow-2xl py-2 z-50 border border-primary100"
+      className="absolute right-0 mt-2 w-52 bg-slate-900/80 rounded-xl shadow-2xl py-2 z-50 border border-yellow-300100"
     >
       {isRegistered && (
         <>
           <Link
             href="/perfil"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-darklight hover:text-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
             Mi Perfil
           </Link>
           <Link
             href="/mis-pedidos"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-darklight hover:text-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
           >
-            <ShoppingBag className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
+            <ShoppingBag className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
             Mis Pedidos
           </Link>
         </>
@@ -49,14 +49,14 @@ const UserMenu = memo(function UserMenu({
         <>
           <Link
             href="/login"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-darklight hover:text-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
           >
-            <User className="w-5 h-5 mr-3 text-primary500" strokeWidth={2.5} />
+            <User className="w-5 h-5 mr-3 text-yellow-300500" strokeWidth={2.5} />
             Iniciar Sesión
           </Link>
           <Link
             href="/registro"
-            className="flex items-center px-4 py-2.5 text-sm font-medium text-primary hover:bg-darklight hover:text-primary600 transition-colors"
+            className="flex items-center px-4 py-2.5 text-sm font-medium text-yellow-300 hover:bg-slate-800 hover:text-yellow-300600 transition-colors"
           >
             Registrarse
           </Link>
@@ -66,7 +66,7 @@ const UserMenu = memo(function UserMenu({
       {!isGuest && (
         <button
           onClick={onLogout}
-          className="flex items-center w-full text-left px-4 py-2.5 text-sm font-medium text-pink hover:bg-darklight transition-colors border-t border-gray-100 mt-1"
+          className="flex items-center w-full text-left px-4 py-2.5 text-sm font-medium text-pink hover:bg-slate-800 transition-colors border-t border-gray-100 mt-1"
         >
           <LogOut className="w-5 h-5 mr-3" strokeWidth={2.5} />
           Cerrar Sesión

@@ -66,7 +66,7 @@ export default function ProductBanner({
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             {title}
           </h1>
-          <p className="text-2xl md:text-3xl text-primary100">
+          <p className="text-2xl md:text-3xl text-yellow-300100">
             {text}
           </p>
         </div>
@@ -75,14 +75,14 @@ export default function ProductBanner({
   }
 
   return (
-    <section className="relative bg-gradient-to-r from-darklight to-darklight py-8">
+    <section className="relative bg-gradient-to-r from-slate-800 to-slate-800 py-8">
       {/* Header */}
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
             {title}
           </h2>
-          <p className="text-xl md:text-2xl text-primary/80">
+          <p className="text-xl md:text-2xl text-yellow-300/80">
             {text}
           </p>
         </div>
@@ -100,12 +100,12 @@ export default function ProductBanner({
               <div key={product.id} className="w-full flex-shrink-0">
                 <div 
                   onClick={() => handleProductClick(product.id)}
-                  className="bg-dark/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mx-2 cursor-pointer hover:shadow-xl shadow-red-600/30 transition-all duration-300 hover:scale-105"
+                  className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mx-2 cursor-pointer hover:shadow-xl shadow-red-600/30 transition-all duration-300 hover:scale-105"
                 >
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     {/* Product Image */}
                     <div className="md:w-1/2">
-                      <div className="aspect-video w-full bg-darklight rounded-lg overflow-hidden">
+                      <div className="aspect-video w-full bg-slate-800 rounded-lg overflow-hidden">
                         <img
                           src={product.imagen}
                           alt={product.nombre}
@@ -119,7 +119,7 @@ export default function ProductBanner({
                       <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#333333' }}>
                         {product.nombre}
                       </h3>
-                      <p className="text-lg text-primary/80 mb-6 line-clamp-3">
+                      <p className="text-lg text-yellow-300/80 mb-6 line-clamp-3">
                         {product.descripcion}
                       </p>
                       
@@ -133,7 +133,7 @@ export default function ProductBanner({
                         <div className="text-4xl md:text-5xl font-bold" style={{ color: '#2E7D32' }}>
                           {formatPrice(product.precio)}
                         </div>
-                        <div className="text-sm text-primary/60 mt-1">IVA incluido</div>
+                        <div className="text-sm text-yellow-300/60 mt-1">IVA incluido</div>
                       </div>
 
                       {/* CTA Button */}
@@ -160,14 +160,14 @@ export default function ProductBanner({
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-slate-900 text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-dark/80 hover:bg-dark text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-slate-900/80 hover:bg-slate-900 text-white p-3 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 hover:scale-110"
               style={{ zIndex: 10 }}
             >
               <ChevronRightIcon className="h-6 w-6" />
@@ -184,7 +184,7 @@ export default function ProductBanner({
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-primary' 
+                    ? 'bg-yellow-400' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 

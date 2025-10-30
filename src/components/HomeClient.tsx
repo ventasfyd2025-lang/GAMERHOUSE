@@ -193,12 +193,12 @@ export default function HomeClient() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-darklight via-white to-darklight py-16">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-16">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-darklight text-center">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-slate-700 text-center">
             <div className="text-pink text-6xl mb-4">❌</div>
             <h2 className="text-2xl font-bold text-white mb-2">Error al cargar productos</h2>
-            <p className="text-primary/80 text-lg">{error}</p>
+            <p className="text-yellow-300/80 text-lg">{error}</p>
           </div>
         </div>
       </div>
@@ -233,14 +233,14 @@ export default function HomeClient() {
 
       {/* PRIORIDAD 1.5: Layouts Pinterest de categorías promocionales - solo en página principal */}
       {shouldShowBanner && (
-        <section className="py-8 sm:py-12 lg:py-16 bg-dark/80">
+        <section className="py-8 sm:py-12 lg:py-16 bg-slate-900/80">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
                 <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
-                <p className="text-sm sm:text-base text-primary/80 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-yellow-300/80 max-w-2xl mx-auto">
                   Descubre selecciones rápidas con lo más deseado de cada categoría.
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function HomeClient() {
                 
                 {/* Promoción grande - Electrónicos */}
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
-                  <div className="bg-dark/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[350px]">
                       <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 h-full w-full overflow-hidden">
                         <img
@@ -271,9 +271,9 @@ export default function HomeClient() {
 
                 {/* Promoción alta - Moda */}
                 <Link href="/?category=moda" className="col-span-2 sm:col-span-1 md:row-span-2 group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[300px]">
-                      <div className="bg-gradient-to-br from-pink-50 to-darklight h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-pink-50 to-slate-800 h-full w-full overflow-hidden">
                         <Image
                           src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=700&fit=crop&crop=center"
                           alt="Moda y Ropa"
@@ -296,7 +296,7 @@ export default function HomeClient() {
 
                 {/* Promociones normales */}
                 <Link href="/?category=electrohogar" className="group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-green-50 to-emerald-100 h-full w-full overflow-hidden">
                         <img
@@ -314,9 +314,9 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?category=calzado" className="group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-yellow-50 to-darklight h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-yellow-50 to-slate-800 h-full w-full overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center"
                           alt="Calzado"
@@ -332,9 +332,9 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?category=fitness" className="group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-darklight to-rose-100 h-full w-full overflow-hidden">
+                      <div className="bg-gradient-to-br from-slate-800 to-rose-100 h-full w-full overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
                           alt="Fitness"
@@ -350,7 +350,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?filter=ofertas" className="group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-pink to-pink h-full w-full overflow-hidden flex items-center justify-center">
                         <div className="text-white text-center">
@@ -363,7 +363,7 @@ export default function HomeClient() {
                 </Link>
 
                 <Link href="/?filter=nuevos" className="group">
-                  <div className="bg-dark/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
                     <div className="relative h-32">
                       <div className="bg-gradient-to-br from-green-500 to-green-600 h-full w-full overflow-hidden flex items-center justify-center">
                         <div className="text-white text-center">
@@ -382,10 +382,10 @@ export default function HomeClient() {
       )}
 
       {/* PRIORIDAD 2: Productos cargan después en segundo plano */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-darklight via-white to-darklight">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-slate-800 via-white to-slate-800">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header - Modern Admin Style */}
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 mb-8">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300100 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
@@ -395,14 +395,14 @@ export default function HomeClient() {
                   <h2 className="text-2xl font-bold text-white">
                     {getPageTitle()}
                   </h2>
-                  <p className="text-primary/80 text-sm">Descubre nuestros productos</p>
+                  <p className="text-yellow-300/80 text-sm">Descubre nuestros productos</p>
                 </div>
               </div>
 
               {/* Filter Controls - Modern Style */}
               <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 <select
-                  className="px-4 py-2.5 border-2 border-primary/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary500 bg-dark/80 hover:border-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-yellow-300/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:border-yellow-300500 bg-slate-900/80 hover:border-yellow-300-300 transition-all shadow-sm"
                   value={sortBy}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -423,7 +423,7 @@ export default function HomeClient() {
                 </select>
 
                 <select
-                  className="px-4 py-2.5 border-2 border-primary/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary500 bg-dark/80 hover:border-primary-300 transition-all shadow-sm"
+                  className="px-4 py-2.5 border-2 border-yellow-300/30 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:border-yellow-300500 bg-slate-900/80 hover:border-yellow-300-300 transition-all shadow-sm"
                   value={priceRange}
                   onChange={(e) => {
                     const params = new URLSearchParams(searchParams.toString());
@@ -457,7 +457,7 @@ export default function HomeClient() {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
                   {[...Array(10)].map((_, i) => (
-                    <div key={i} className="bg-dark/80 rounded-lg shadow-md p-3 sm:p-4">
+                    <div key={i} className="bg-slate-900/80 rounded-lg shadow-md p-3 sm:p-4">
                       <div className="h-32 sm:h-40 lg:h-48 bg-gray-300 rounded mb-3 sm:mb-4"></div>
                       <div className="h-3 sm:h-4 bg-gray-300 rounded mb-2"></div>
                       <div className="h-4 sm:h-6 bg-gray-300 rounded w-16 sm:w-24"></div>
@@ -484,19 +484,19 @@ export default function HomeClient() {
                 <>
                   <MasonryProductGrid products={displayProducts} layoutConfig={layoutPatternsConfig} />
                   
-                  <div className="text-center mt-8 text-primary/80">
+                  <div className="text-center mt-8 text-yellow-300/80">
                     Mostrando {displayProducts.length} productos
                   </div>
                 </>
               )}
             </>
           ) : (
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-primary100 text-center">
-              <div className="text-primary400 text-6xl mb-4">🔍</div>
+            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300100 text-center">
+              <div className="text-yellow-300400 text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-white mb-2">
                 No se encontraron productos
               </h3>
-              <p className="text-primary/80 text-lg">
+              <p className="text-yellow-300/80 text-lg">
                 Intenta ajustar los filtros o buscar otro término
               </p>
             </div>

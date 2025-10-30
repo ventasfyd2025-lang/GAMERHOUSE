@@ -92,19 +92,19 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'draft': return 'bg-darklight text-white';
+      case 'draft': return 'bg-slate-800 text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'confirmed': return 'bg-orange-100 text-secondary';
       case 'processing': return 'bg-yellow-100 text-amber-800';
       case 'shipped': return 'bg-yellow-100 text-secondary';
       case 'delivered': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-darklight text-pink';
+      case 'cancelled': return 'bg-slate-800 text-pink';
       case 'sent': return 'bg-orange-100 text-secondary';
       case 'viewed': return 'bg-yellow-100 text-amber-800';
       case 'accepted': return 'bg-green-100 text-green-800';
-      case 'rejected': return 'bg-darklight text-pink';
-      case 'expired': return 'bg-darklight text-white';
-      default: return 'bg-darklight text-white';
+      case 'rejected': return 'bg-slate-800 text-pink';
+      case 'expired': return 'bg-slate-800 text-white';
+      default: return 'bg-slate-800 text-white';
     }
   };
 
@@ -240,19 +240,19 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
   if (loading) {
     return (
-      <div className={`bg-dark/80 rounded-lg shadow p-6 ${className}`}>
+      <div className={`bg-slate-900/80 rounded-lg shadow p-6 ${className}`}>
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-darklight rounded w-1/4"></div>
-          <div className="h-32 bg-darklight rounded"></div>
+          <div className="h-6 bg-slate-800 rounded w-1/4"></div>
+          <div className="h-32 bg-slate-800 rounded"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-dark/80 rounded-lg shadow ${className}`}>
+    <div className={`bg-slate-900/80 rounded-lg shadow ${className}`}>
       {/* Header */}
-      <div className="p-6 border-b border-primary/30">
+      <div className="p-6 border-b border-yellow-300/30">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-white">
             Gestión B2B
@@ -295,7 +295,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'orders'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-primary/60 hover:text-primary'
+                : 'text-yellow-300/60 hover:text-yellow-300'
             }`}
           >
             Órdenes de Compra ({purchaseOrders.length})
@@ -305,7 +305,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'quotes'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-primary/60 hover:text-primary'
+                : 'text-yellow-300/60 hover:text-yellow-300'
             }`}
           >
             Cotizaciones ({quotes.length})
@@ -315,7 +315,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'customers'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-primary/60 hover:text-primary'
+                : 'text-yellow-300/60 hover:text-yellow-300'
             }`}
           >
             Clientes B2B ({b2bCustomers.length})
@@ -329,12 +329,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'orders' && (
           <div className="space-y-4">
             {purchaseOrders.length === 0 ? (
-              <div className="text-center py-8 text-primary/60">
+              <div className="text-center py-8 text-yellow-300/60">
                 No hay órdenes de compra registradas
               </div>
             ) : (
               purchaseOrders.map((order) => (
-                <div key={order.id} className="border border-primary/30 rounded-lg p-4">
+                <div key={order.id} className="border border-yellow-300/30 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-3">
                       <h3 className="text-lg font-medium text-white">
@@ -366,21 +366,21 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <span className="font-medium text-primary">Cliente:</span>
+                      <span className="font-medium text-yellow-300">Cliente:</span>
                       <div>{order.customerInfo.companyName}</div>
-                      <div className="text-primary/60">{order.customerInfo.email}</div>
+                      <div className="text-yellow-300/60">{order.customerInfo.email}</div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Total:</span>
+                      <span className="font-medium text-yellow-300">Total:</span>
                       <div className="text-xl font-bold text-green-600">
                         {formatCurrency(order.total)}
                       </div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Fecha:</span>
+                      <span className="font-medium text-yellow-300">Fecha:</span>
                       <div>{new Date(order.createdAt).toLocaleDateString('es-CL')}</div>
                       {order.requestedDeliveryDate && (
-                        <div className="text-primary/60">
+                        <div className="text-yellow-300/60">
                           Entrega: {new Date(order.requestedDeliveryDate).toLocaleDateString('es-CL')}
                         </div>
                       )}
@@ -389,8 +389,8 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
                   {order.items.length > 0 && (
                     <div className="mt-3">
-                      <span className="font-medium text-primary">Productos:</span>
-                      <div className="mt-1 text-sm text-primary/80">
+                      <span className="font-medium text-yellow-300">Productos:</span>
+                      <div className="mt-1 text-sm text-yellow-300/80">
                         {order.items.map((item, index) => (
                           <div key={item.id}>
                             {item.productName} × {item.quantity} = {formatCurrency(item.totalPrice)}
@@ -409,12 +409,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'quotes' && (
           <div className="space-y-4">
             {quotes.length === 0 ? (
-              <div className="text-center py-8 text-primary/60">
+              <div className="text-center py-8 text-yellow-300/60">
                 No hay cotizaciones registradas
               </div>
             ) : (
               quotes.map((quote) => (
-                <div key={quote.id} className="border border-primary/30 rounded-lg p-4">
+                <div key={quote.id} className="border border-yellow-300/30 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-3">
                       <h3 className="text-lg font-medium text-white">
@@ -445,18 +445,18 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <span className="font-medium text-primary">Cliente:</span>
+                      <span className="font-medium text-yellow-300">Cliente:</span>
                       <div>{quote.customerInfo.companyName}</div>
-                      <div className="text-primary/60">{quote.customerInfo.email}</div>
+                      <div className="text-yellow-300/60">{quote.customerInfo.email}</div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Total:</span>
+                      <span className="font-medium text-yellow-300">Total:</span>
                       <div className="text-xl font-bold text-red-600">
                         {formatCurrency(quote.total)}
                       </div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Válida hasta:</span>
+                      <span className="font-medium text-yellow-300">Válida hasta:</span>
                       <div>{new Date(quote.validUntil).toLocaleDateString('es-CL')}</div>
                       {quote.convertedToPO && (
                         <div className="text-green-600 text-xs">
@@ -475,18 +475,18 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'customers' && (
           <div className="space-y-4">
             {b2bCustomers.length === 0 ? (
-              <div className="text-center py-8 text-primary/60">
+              <div className="text-center py-8 text-yellow-300/60">
                 No hay clientes B2B registrados
               </div>
             ) : (
               b2bCustomers.map((customer) => (
-                <div key={customer.id} className="border border-primary/30 rounded-lg p-4">
+                <div key={customer.id} className="border border-yellow-300/30 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-lg font-medium text-white">
                       {customer.companyName}
                     </h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-darklight text-pink'
+                      customer.isActive ? 'bg-green-100 text-green-800' : 'bg-slate-800 text-pink'
                     }`}>
                       {customer.isActive ? 'Activo' : 'Inactivo'}
                     </span>
@@ -494,23 +494,23 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
 
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
                     <div>
-                      <span className="font-medium text-primary">Contacto:</span>
+                      <span className="font-medium text-yellow-300">Contacto:</span>
                       <div>{customer.contactPerson.name}</div>
-                      <div className="text-primary/60">{customer.email}</div>
+                      <div className="text-yellow-300/60">{customer.email}</div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Crédito:</span>
+                      <span className="font-medium text-yellow-300">Crédito:</span>
                       <div>{formatCurrency(customer.creditLimit)}</div>
-                      <div className="text-primary/60">{customer.creditTerms} días</div>
+                      <div className="text-yellow-300/60">{customer.creditTerms} días</div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Descuento:</span>
+                      <span className="font-medium text-yellow-300">Descuento:</span>
                       <div>{customer.discount}%</div>
                     </div>
                     <div>
-                      <span className="font-medium text-primary">Estadísticas:</span>
+                      <span className="font-medium text-yellow-300">Estadísticas:</span>
                       <div>{customer.totalOrders} órdenes</div>
-                      <div className="text-primary/60">{formatCurrency(customer.totalValue)}</div>
+                      <div className="text-yellow-300/60">{formatCurrency(customer.totalValue)}</div>
                     </div>
                   </div>
                 </div>
@@ -523,7 +523,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
       {/* Create Order/Quote Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-slate-900/80 rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-medium text-white mb-4">
               {createMode === 'po' ? 'Nueva Orden de Compra' : 'Nueva Cotización'}
             </h3>
@@ -531,13 +531,13 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             <div className="space-y-4">
               {/* Customer Selection */}
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Cliente
                 </label>
                 <select
                   value={formData.customerId}
                   onChange={(e) => setFormData(prev => ({ ...prev, customerId: e.target.value }))}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 >
                   <option value="">Seleccionar cliente...</option>
                   {b2bCustomers.map((customer) => (
@@ -549,14 +549,14 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
               </div>
 
               {/* Add Products */}
-              <div className="border border-primary/30 rounded-lg p-4">
+              <div className="border border-yellow-300/30 rounded-lg p-4">
                 <h4 className="font-medium text-white mb-3">Agregar Productos</h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-3">
                   <select
                     value={newItem.productId}
                     onChange={(e) => setNewItem(prev => ({ ...prev, productId: e.target.value }))}
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   >
                     <option value="">Seleccionar producto...</option>
                     {products.map((product) => (
@@ -572,7 +572,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     value={newItem.quantity}
                     onChange={(e) => setNewItem(prev => ({ ...prev, quantity: parseInt(e.target.value) || 1 }))}
                     placeholder="Cantidad"
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
 
                   <input
@@ -580,7 +580,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     value={newItem.specifications}
                     onChange={(e) => setNewItem(prev => ({ ...prev, specifications: e.target.value }))}
                     placeholder="Especificaciones"
-                    className="px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
 
                   <button
@@ -595,14 +595,14 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 {formData.items.length > 0 && (
                   <div className="space-y-2">
                     {formData.items.map((item) => (
-                      <div key={item.id} className="flex items-center justify-between bg-dark p-2 rounded">
+                      <div key={item.id} className="flex items-center justify-between bg-slate-900 p-2 rounded">
                         <div className="flex-1">
                           <span className="font-medium">{item.productName}</span>
                           <span className="mx-2">×</span>
                           <span>{item.quantity}</span>
-                          <span className="ml-2 text-primary/60">= {formatCurrency(item.totalPrice)}</span>
+                          <span className="ml-2 text-yellow-300/60">= {formatCurrency(item.totalPrice)}</span>
                           {item.specifications && (
-                            <div className="text-sm text-primary/80">{item.specifications}</div>
+                            <div className="text-sm text-yellow-300/80">{item.specifications}</div>
                           )}
                         </div>
                         <button
@@ -620,19 +620,19 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
               {/* Additional Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Fecha de entrega solicitada
                   </label>
                   <input
                     type="date"
                     value={formData.requestedDeliveryDate}
                     onChange={(e) => setFormData(prev => ({ ...prev, requestedDeliveryDate: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Envío
                   </label>
                   <input
@@ -640,20 +640,20 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={formData.shipping}
                     onChange={(e) => setFormData(prev => ({ ...prev, shipping: parseFloat(e.target.value) || 0 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-primary mb-1">
+                <label className="block text-sm font-medium text-yellow-300 mb-1">
                   Notas
                 </label>
                 <textarea
                   value={formData.notes}
                   onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
                   rows={3}
-                  className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
             </div>
@@ -671,7 +671,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                   setShowCreateModal(false);
                   resetForm();
                 }}
-                className="flex-1 bg-gray-300 text-primary py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-yellow-300 py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>
@@ -683,7 +683,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
       {/* Create Customer Modal */}
       {showCustomerModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-dark/80 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-slate-900/80 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-medium text-white mb-4">
               Nuevo Cliente B2B
             </h3>
@@ -691,55 +691,55 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Nombre de la empresa
                   </label>
                   <input
                     type="text"
                     value={customerData.companyName}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, companyName: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Tipo de negocio
                   </label>
                   <input
                     type="text"
                     value={customerData.businessType}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, businessType: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     RUT
                   </label>
                   <input
                     type="text"
                     value={customerData.rut}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, rut: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Email
                   </label>
                   <input
                     type="email"
                     value={customerData.email}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Límite de crédito
                   </label>
                   <input
@@ -747,12 +747,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={customerData.creditLimit}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, creditLimit: parseFloat(e.target.value) || 0 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-primary mb-1">
+                  <label className="block text-sm font-medium text-yellow-300 mb-1">
                     Términos de crédito (días)
                   </label>
                   <input
@@ -760,7 +760,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     min="0"
                     value={customerData.creditTerms}
                     onChange={(e) => setCustomerData(prev => ({ ...prev, creditTerms: parseInt(e.target.value) || 30 }))}
-                    className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
               </div>
@@ -770,7 +770,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                 <h4 className="font-medium text-white mb-3">Persona de Contacto</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Nombre
                     </label>
                     <input
@@ -780,12 +780,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, name: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Cargo
                     </label>
                     <input
@@ -795,12 +795,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, position: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Email de contacto
                     </label>
                     <input
@@ -810,12 +810,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, email: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-primary mb-1">
+                    <label className="block text-sm font-medium text-yellow-300 mb-1">
                       Teléfono de contacto
                     </label>
                     <input
@@ -825,7 +825,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                         ...prev,
                         contactPerson: { ...prev.contactPerson, phone: e.target.value }
                       }))}
-                      className="w-full px-3 py-2 border border-primary/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
                 </div>
@@ -845,7 +845,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                   setShowCustomerModal(false);
                   resetCustomerForm();
                 }}
-                className="flex-1 bg-gray-300 text-primary py-2 px-4 rounded-md hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-yellow-300 py-2 px-4 rounded-md hover:bg-gray-400"
               >
                 Cancelar
               </button>

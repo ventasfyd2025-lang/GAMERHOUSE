@@ -46,15 +46,15 @@ export default function UsuariosAdminPage() {
   if (!currentUser || !isAdmin) {
     return (
       <Layout>
-        <div className="min-h-screen bg-dark flex items-center justify-center py-12 px-4">
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full text-center space-y-4">
             <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
-            <p className="text-primary/80">
+            <p className="text-yellow-300/80">
               Solo los administradores pueden gestionar usuarios.
             </p>
             <button
               onClick={() => router.push('/admin')}
-              className="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary-hover transition-colors"
+              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-400-hover transition-colors"
             >
               Volver al Panel Admin
             </button>
@@ -117,10 +117,10 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-darklight text-pink border-darklight';
+      case 'admin': return 'bg-slate-800 text-pink border-slate-700';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
-      default: return 'bg-darklight text-white border-primary/30';
+      default: return 'bg-slate-800 text-white border-yellow-300/30';
     }
   };
 
@@ -136,46 +136,46 @@ export default function UsuariosAdminPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-dark py-8">
+      <div className="min-h-screen bg-slate-900 py-8">
         <div className="max-w-full mx-auto px-4">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Gestión de Usuarios</h1>
-            <p className="text-primary/80">Administra roles y permisos de usuarios</p>
+            <p className="text-yellow-300/80">Administra roles y permisos de usuarios</p>
           </div>
 
           {/* Administradores y Vendedores */}
           <div className="admin-card mb-8">
-            <div className="px-6 py-4 bg-darklight border-b border-primary/30">
-              <h3 className="text-lg font-medium text-primary">👑 Administradores y Vendedores</h3>
-              <p className="text-sm text-primary/60">Personal autorizado con permisos especiales</p>
+            <div className="px-6 py-4 bg-slate-800 border-b border-yellow-300/30">
+              <h3 className="text-lg font-medium text-yellow-300">👑 Administradores y Vendedores</h3>
+              <p className="text-sm text-yellow-300/60">Personal autorizado con permisos especiales</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-dark">
+                <thead className="bg-slate-900">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Usuario
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Rol
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Fecha Registro
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Acciones
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-dark/80 divide-y divide-gray-200">
+                <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                   {users.filter(user => user.role === 'admin' || user.role === 'vendedor').map((user) => (
-                    <tr key={user.uid} className="hover:bg-dark">
+                    <tr key={user.uid} className="hover:bg-slate-900">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-lg font-bold text-white">
                             {user.firstName} {user.lastName}
                           </div>
-                          <div className="text-sm text-primary/60">{user.email}</div>
+                          <div className="text-sm text-yellow-300/60">{user.email}</div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -195,7 +195,7 @@ export default function UsuariosAdminPage() {
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-primary/60">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
                         {user.createdAt ? (() => {
                           try {
                             const date = (user.createdAt as any)?.toDate ? (user.createdAt as any).toDate() : new Date(user.createdAt);
@@ -241,37 +241,37 @@ export default function UsuariosAdminPage() {
 
           {/* Clientes */}
           <div className="admin-card">
-            <div className="px-6 py-4 bg-darklight border-b border-primary/30">
-              <h3 className="text-lg font-medium text-primary">👥 Clientes</h3>
-              <p className="text-sm text-primary/60">Usuarios registrados de la tienda</p>
+            <div className="px-6 py-4 bg-slate-800 border-b border-yellow-300/30">
+              <h3 className="text-lg font-medium text-yellow-300">👥 Clientes</h3>
+              <p className="text-sm text-yellow-300/60">Usuarios registrados de la tienda</p>
             </div>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-dark">
+                <thead className="bg-slate-900">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Usuario
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Rol
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Fecha Registro
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-primary/60 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
                       Acciones
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-dark/80 divide-y divide-gray-200">
+                <tbody className="bg-slate-900/80 divide-y divide-gray-200">
                   {users.filter(user => !user.role || user.role === 'cliente').map((user) => (
-                    <tr key={user.uid} className="hover:bg-dark">
+                    <tr key={user.uid} className="hover:bg-slate-900">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-lg font-bold text-white">
                             {user.firstName} {user.lastName}
                           </div>
-                          <div className="text-sm text-primary/60">{user.email}</div>
+                          <div className="text-sm text-yellow-300/60">{user.email}</div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -279,7 +279,7 @@ export default function UsuariosAdminPage() {
                           <select
                             defaultValue={user.role || 'cliente'}
                             onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                            className="text-sm border border-primary/40 rounded px-2 py-1"
+                            className="text-sm border border-yellow-300/40 rounded px-2 py-1"
                           >
                             <option value="cliente">Cliente</option>
                             <option value="vendedor">Vendedor</option>
@@ -291,7 +291,7 @@ export default function UsuariosAdminPage() {
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-primary/60">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
                         {user.createdAt ? (() => {
                           try {
                             const date = (user.createdAt as any)?.toDate ? (user.createdAt as any).toDate() : new Date(user.createdAt);
@@ -335,9 +335,9 @@ export default function UsuariosAdminPage() {
             </div>
           </div>
 
-          <div className="mt-8 bg-dark/80 rounded-lg shadow p-6">
+          <div className="mt-8 bg-slate-900/80 rounded-lg shadow p-6">
             <h2 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h2>
-            <div className="space-y-3 text-sm text-primary/80">
+            <div className="space-y-3 text-sm text-yellow-300/80">
               <p><strong>Opción 1 - Firebase Console:</strong></p>
               <ol className="list-decimal list-inside space-y-1 ml-4">
                 <li>Ve a Firebase Console &gt; Authentication &gt; Users</li>

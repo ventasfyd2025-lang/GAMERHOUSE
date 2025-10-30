@@ -89,19 +89,21 @@ async function validateAndRecalculatePrices(clientItems: RequestItem[]): Promise
   };
 }
 
-// Configurar MercadoPago con el access token
-const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN?.trim();
+// Lazy initialization for MercadoPago client (to avoid errors during build)
+const getMercadoPagoClient = () => {
+  const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN?.trim();
 
-if (!accessToken) {
-  throw new Error('MERCADOPAGO_ACCESS_TOKEN no está configurado');
-}
-
-const client = new MercadoPagoConfig({
-  accessToken: accessToken,
-  options: {
-    timeout: 5000,
+  if (!accessToken) {
+    throw new Error('MERCADOPAGO_ACCESS_TOKEN no está configurado');
   }
-});
+
+  return new MercadoPagoConfig({
+    accessToken: accessToken,
+    options: {
+      timeout: 5000,
+    }
+  });
+};
 
 export async function POST(request: NextRequest) {
   try {
@@ -110,8 +112,9 @@ export async function POST(request: NextRequest) {
 
     // Generate unique idempotency key for this request
     const idempotencyKey = orderId ? `order_${orderId}` : `temp_${Date.now()}_${Math.random().toString(36).substring(2)}`;
-    
+
     // Create preference instance with unique idempotency key
+    const client = getMercadoPagoClient();
     const preference = new Preference(client);
 
 

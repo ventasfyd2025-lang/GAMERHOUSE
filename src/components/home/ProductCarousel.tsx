@@ -32,7 +32,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
     : 0;
 
   return (
-    <div className="bg-dark/80 rounded-lg shadow-sm hover:shadow-lg shadow-red-600/20 transition-all duration-200 border border-primary/30 hover:border-primary-400 overflow-hidden h-full flex flex-col">
+    <div className="bg-slate-900/80 rounded-lg shadow-sm hover:shadow-lg shadow-red-600/20 transition-all duration-200 border border-yellow-300/30 hover:border-yellow-300-400 overflow-hidden h-full flex flex-col">
       {/* Badges */}
       {discountPercentage > 0 && (
         <div className="absolute top-2 left-2 z-10 bg-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
@@ -46,7 +46,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
       )}
 
       {/* Imagen cuadrada */}
-      <div className="relative w-full aspect-square bg-dark/80 p-4">
+      <div className="relative w-full aspect-square bg-slate-900/80 p-4">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -59,7 +59,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-dark">
+          <div className="w-full h-full flex items-center justify-center bg-slate-900">
             <span className="text-gray-300 text-5xl">📦</span>
           </div>
         )}
@@ -67,13 +67,13 @@ const ProductCard = memo(({ product }: { product: Product }) => {
 
       {/* Información */}
       <div className="p-2 flex flex-col flex-grow">
-        <h3 className="text-xs text-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-yellow-300 line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         <div className="mt-auto space-y-1.5">
           {product.precioOriginal && product.precioOriginal > product.precio && (
-            <div className="text-[10px] text-primary/50 line-through">
+            <div className="text-[10px] text-yellow-300/50 line-through">
               {formatPrice(product.precioOriginal)}
             </div>
           )}
@@ -303,7 +303,7 @@ const ProductCarousel = memo(({
 
   return (
     <section className="space-y-3 sm:space-y-4 lg:space-y-5">
-      <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-4 sm:p-6 border border-primary100">
+      <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-4 sm:p-6 border border-yellow-300100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
@@ -386,7 +386,7 @@ const ProductCarousel = memo(({
               onClick={() => setCurrentIndex(Math.min(index * itemsToShow, maxIndex))}
               className={`h-2 w-2 rounded-full transition-all ${
                 Math.floor(currentIndex / itemsToShow) === index
-                  ? 'bg-primary w-6'
+                  ? 'bg-yellow-400 w-6'
                   : 'bg-gray-300'
               }`}
               aria-label={`${t('carousel.goToPage')} ${index + 1} ${t('common.of')} ${Math.ceil(products.length / itemsToShow)} ${t('common.in')} ${title}`}

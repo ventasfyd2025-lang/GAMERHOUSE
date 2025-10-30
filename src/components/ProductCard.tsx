@@ -101,7 +101,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-dark/80 rounded-lg shadow-sm hover:shadow-xl hover:shadow-primary/50 shadow-red-600/20 transition-all duration-300 group border border-primary/40 hover:border-primary/80 flex flex-col ${customHeight || 'h-full'} cursor-pointer relative`}>
+      <div className={`bg-slate-900/80 rounded-lg shadow-sm hover:shadow-xl hover:shadow-yellow-300/50 shadow-red-600/20 transition-all duration-300 group border border-yellow-300/40 hover:border-yellow-300/80 flex flex-col ${customHeight || 'h-full'} cursor-pointer relative`}>
 
       {/* Badges flotantes */}
       {mostrarOferta && (
@@ -120,7 +120,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       )}
 
       {/* Contenedor de imagen */}
-      <div className="relative w-full aspect-square bg-dark/80 overflow-hidden p-3 sm:p-4 lg:p-5">
+      <div className="relative w-full aspect-square bg-slate-900/80 overflow-hidden p-3 sm:p-4 lg:p-5">
         {product.imagen ? (
           <div className="relative w-full h-full">
             <Image
@@ -133,7 +133,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-dark">
+          <div className="w-full h-full flex items-center justify-center bg-slate-900">
             <span className="text-gray-300 text-5xl">📦</span>
           </div>
         )}
@@ -150,14 +150,14 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
       {/* Información del producto */}
       <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow">
         {/* Título */}
-        <h3 className="text-xs text-primary line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
+        <h3 className="text-xs text-yellow-300 line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
           {product.nombre || 'Producto sin nombre'}
         </h3>
 
         {/* Precio */}
         <div className="mt-auto">
           {originalPrice && (
-            <div className="text-[10px] text-primary/50 line-through mb-1">
+            <div className="text-[10px] text-yellow-300/50 line-through mb-1">
               {formatPrice(originalPrice)}
             </div>
           )}
@@ -174,7 +174,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
 
           {/* Stock bajo */}
           {product.stock <= 5 && product.stock > 0 && (
-            <p className="text-[10px] text-primary600 font-medium mb-1.5">
+            <p className="text-[10px] text-yellow-300600 font-medium mb-1.5">
               Quedan {product.stock} disponibles
             </p>
           )}
@@ -197,7 +197,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
           ) : (
             <button
               disabled
-              className="w-full bg-darklight text-primary/60 font-semibold py-2.5 px-3 rounded-lg cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
+              className="w-full bg-slate-800 text-yellow-300/60 font-semibold py-2.5 px-3 rounded-lg cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

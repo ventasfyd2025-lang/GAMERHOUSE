@@ -46,7 +46,7 @@ export function OptimizedImage({
     return (
       <div
         className={cn(
-          'flex items-center justify-center bg-darklight text-primary/50',
+          'flex items-center justify-center bg-slate-800 text-yellow-300/50',
           fill ? 'absolute inset-0' : `w-[${width}px] h-[${height}px]`,
           className
         )}
@@ -73,7 +73,7 @@ export function OptimizedImage({
       {isLoading && (
         <div
           className={cn(
-            'absolute inset-0 bg-darklight animate-pulse',
+            'absolute inset-0 bg-slate-800 animate-pulse',
             fill ? '' : `w-[${width}px] h-[${height}px]`
           )}
         />

@@ -125,9 +125,9 @@ export default function OfferPopup({
 
           <button
             onClick={handleClose}
-            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/80 hover:bg-dark/80 transition-all"
+            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-900/80/80 hover:bg-slate-900/80 transition-all"
           >
-            <XMarkIcon className="h-4 w-4 text-primary/80" />
+            <XMarkIcon className="h-4 w-4 text-yellow-300/80" />
           </button>
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center text-white">
@@ -138,7 +138,7 @@ export default function OfferPopup({
             <p className="text-sm mb-4 opacity-90">{description}</p>
             <button
               onClick={handleButtonClick}
-              className="bg-dark/80 text-primary500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-red-600/20 transition-all"
+              className="bg-slate-900/80 text-yellow-300500 font-bold py-2 px-4 rounded-lg text-sm hover:shadow-lg shadow-red-600/20 transition-all"
             >
               {buttonText}
             </button>

@@ -203,14 +203,14 @@ const BannerCarousel = memo(({
                         {banner.ctaLink ? (
                           <Link
                             href={banner.ctaLink}
-                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-primary text-white font-semibold shadow-lg shadow-red-600/20 hover:bg-primary-hover transition-colors"
+                            className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-yellow-400 text-white font-semibold shadow-lg shadow-red-600/20 hover:bg-yellow-400-hover transition-colors"
                             aria-label={banner.ctaText || banner.title || `Banner ${index + 1}`}
                             tabIndex={isActive ? 0 : -1}
                           >
                             {banner.ctaText || 'Ver más'}
                           </Link>
                         ) : (
-                          <span className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-dark/80/20 text-white font-semibold shadow-lg shadow-red-600/20">
+                          <span className="inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-slate-900/80/20 text-white font-semibold shadow-lg shadow-red-600/20">
                             {banner.ctaText || 'Más información'}
                           </span>
                         )}
@@ -233,7 +233,7 @@ const BannerCarousel = memo(({
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === currentIndex ? 'bg-dark/80' : 'bg-dark/80 bg-opacity-50'
+                index === currentIndex ? 'bg-slate-900/80' : 'bg-slate-900/80 bg-opacity-50'
               }`}
               aria-label={`${t('banner.goToSlide')} ${index + 1}`}
               aria-current={index === currentIndex ? 'true' : 'false'}

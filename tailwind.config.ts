@@ -27,23 +27,9 @@ export default {
         error: '#E60012',                            /* Rojo Pikachu */
         info: '#E60012',                             /* Rojo Pikachu */
 
-        /* Alias para admin pages - sin guiones en el nombre */
-        dark: '#1a1a1a',                             /* Negro muy oscuro */
-        darklight: '#2a2a2a',                        /* Negro oscuro */
+        /* Alias para admin pages - usando colores nativos de Tailwind */
         pink: '#E60012',                             /* Rojo Pikachu */
 
-        /* Fondos Oscuros - nombres simples */
-        darkest: '#000000',                          /* Negro puro */
-        dark900: '#1a1a1a',                          /* Negro muy oscuro */
-        dark800: '#2a2a2a',                          /* Negro oscuro */
-        dark700: '#3a3a3a',                          /* Gris oscuro */
-
-        /* Texto y Bordes */
-        textprimary: '#ffffff',                      /* Blanco puro */
-        textsecondary: '#e5e5e5',                    /* Gris claro */
-        texttertiary: '#b0b0b0',                     /* Gris medio */
-        borderdefault: '#FFDE00',                    /* Amarillo Pikachu */
-        borderlight: '#FFB800',                      /* Amarillo Oscuro */
 
         /* Variantes de Amarillo - Pikachu */
         'yellow-300': '#FFED4E',     /* Amarillo Claro */

@@ -53,7 +53,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
     : 0;
 
   return (
-    <div className="bg-dark/80 rounded-lg shadow-sm hover:shadow-lg shadow-red-600/20 transition-all duration-200 overflow-hidden border border-primary/30 hover:border-primary-400 relative">
+    <div className="bg-slate-900/80 rounded-lg shadow-sm hover:shadow-lg shadow-red-600/20 transition-all duration-200 overflow-hidden border border-yellow-300/30 hover:border-yellow-300-400 relative">
       <div className="flex h-32 sm:h-36">
         {/* Badges */}
         {discountPercentage > 0 && (
@@ -68,7 +68,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         )}
 
         {/* Image Section - 35% width */}
-        <div className="relative w-[35%] bg-dark/80 p-3 flex items-center justify-center">
+        <div className="relative w-[35%] bg-slate-900/80 p-3 flex items-center justify-center">
           {product.imagen ? (
             <div className="relative w-full h-full">
               <Image
@@ -88,7 +88,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
         {/* Content Section - 65% width */}
         <div className="flex-1 p-3 flex flex-col justify-between">
           {/* Title */}
-          <h3 className="text-sm font-medium text-primary line-clamp-2 leading-tight mb-2">
+          <h3 className="text-sm font-medium text-yellow-300 line-clamp-2 leading-tight mb-2">
             {product.nombre || 'Producto sin nombre'}
           </h3>
 
@@ -96,7 +96,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
           <div className="space-y-2">
             {/* Original Price */}
             {product.precioOriginal && product.precioOriginal > (product.precio || 0) && (
-              <div className="text-xs text-primary/50 line-through">
+              <div className="text-xs text-yellow-300/50 line-through">
                 {formatPrice(product.precioOriginal)}
               </div>
             )}
@@ -115,7 +115,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
 
             {/* Stock warning */}
             {product.stock && product.stock <= 5 && product.stock > 0 && (
-              <p className="text-xs text-primary600 font-medium">
+              <p className="text-xs text-yellow-300600 font-medium">
                 Quedan {product.stock} disponibles
               </p>
             )}
@@ -126,7 +126,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
               disabled={(product.stock ?? 1) === 0}
               className={`w-full py-2.5 px-3 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-1.5 ${
                 (product.stock ?? 1) === 0
-                  ? 'bg-darklight text-primary/60 cursor-not-allowed'
+                  ? 'bg-slate-800 text-yellow-300/60 cursor-not-allowed'
                   : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md hover:shadow-lg shadow-red-600/20 hover:scale-[1.02] active:scale-[0.98] group'
               }`}
             >

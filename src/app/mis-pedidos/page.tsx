@@ -72,7 +72,7 @@ const statusConfig = {
   },
   shipped: {
     label: 'Enviado',
-    color: 'text-primary bg-darklight',
+    color: 'text-yellow-300 bg-slate-800',
     icon: Truck
   },
   delivered: {
@@ -82,7 +82,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-darklight',
+    color: 'text-pink bg-slate-800',
     icon: XCircle
   }
 };
@@ -178,10 +178,10 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
-          <p className="text-primary/80 text-lg font-medium">Cargando...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-yellow-300 mx-auto mb-4"></div>
+          <p className="text-yellow-300/80 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -192,10 +192,10 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight mb-8">
+        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700 mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
@@ -203,7 +203,7 @@ export default function OrdersPage() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
-                <p className="text-primary/80 text-sm">Historial y seguimiento de tus compras</p>
+                <p className="text-yellow-300/80 text-sm">Historial y seguimiento de tus compras</p>
               </div>
             </div>
 
@@ -222,13 +222,13 @@ export default function OrdersPage() {
 
         {loadingOrders ? (
           <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-yellow-300"></div>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-darklight text-center">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-slate-700 text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
-            <p className="text-lg text-primary/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
+            <p className="text-lg text-yellow-300/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
               className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
@@ -244,16 +244,16 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight overflow-hidden hover:shadow-2xl transition-all">
+                <div key={order.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden hover:shadow-2xl transition-all">
                   {/* Order Header */}
-                  <div className="bg-gradient-to-r from-darklight to-darklight px-6 py-4 border-b border-darklight">
+                  <div className="bg-gradient-to-r from-slate-800 to-slate-800 px-6 py-4 border-b border-slate-700">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div>
                           <h3 className="text-lg font-semibold text-white">
                             Pedido #{order.id.slice(-8).toUpperCase()}
                           </h3>
-                          <p className="text-sm text-primary/80">
+                          <p className="text-sm text-yellow-300/80">
                             {formatDateTime(order.createdAt)}
                           </p>
                         </div>
@@ -269,7 +269,7 @@ export default function OrdersPage() {
                           <p className="text-lg font-bold text-white">
                             {formatPrice(order.total)}
                           </p>
-                          <p className="text-sm text-primary/80">
+                          <p className="text-sm text-yellow-300/80">
                             {order.items.length} producto{order.items.length > 1 ? 's' : ''}
                           </p>
                         </div>
@@ -296,7 +296,7 @@ export default function OrdersPage() {
                               )}
                               <div className="flex-1">
                                 <p className="font-medium text-white">{item.nombre}</p>
-                                <p className="text-sm text-primary/80">
+                                <p className="text-sm text-yellow-300/80">
                                   Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                                 </p>
                               </div>
@@ -310,7 +310,7 @@ export default function OrdersPage() {
 
                       <div>
                         <h4 className="font-medium text-white mb-3">Información de Envío</h4>
-                        <div className="text-sm text-primary/80 space-y-1">
+                        <div className="text-sm text-yellow-300/80 space-y-1">
                           <p><span className="font-medium">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
                           <p><span className="font-medium">Email:</span> {order.shippingAddress.email}</p>
                           <p><span className="font-medium">Teléfono:</span> {order.shippingAddress.phone}</p>
@@ -325,7 +325,7 @@ export default function OrdersPage() {
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-6 pt-4 border-t border-primary/30">
+                    <div className="mt-6 pt-4 border-t border-yellow-300/30">
                       <div className="flex items-center justify-between">
                         <div className="flex space-x-3">
                           <Link
@@ -339,7 +339,7 @@ export default function OrdersPage() {
                           {order.status === 'shipped' && order.trackingNumber && (
                             <button
                               onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
-                              className="flex items-center px-4 py-2 border border-primary/40 text-primary rounded-lg hover:bg-dark transition-colors"
+                              className="flex items-center px-4 py-2 border border-yellow-300/40 text-yellow-300 rounded-lg hover:bg-slate-900 transition-colors"
                             >
                               <Truck className="h-4 w-4 mr-2" />
                               Rastrear Envío
@@ -347,7 +347,7 @@ export default function OrdersPage() {
                           )}
                         </div>
 
-                        <div className="text-sm text-primary/60">
+                        <div className="text-sm text-yellow-300/60">
                           Última actualización: {formatDate(order.updatedAt)}
                         </div>
                       </div>

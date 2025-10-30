@@ -67,10 +67,10 @@ export default function GoogleSignInButton({
   const getVariantClasses = () => {
     switch (variant) {
       case 'filled':
-        return 'bg-dark/80 text-primary border border-primary/40 hover:bg-dark shadow-sm';
+        return 'bg-slate-900/80 text-yellow-300 border border-yellow-300/40 hover:bg-slate-900 shadow-sm';
       case 'outline':
       default:
-        return 'bg-dark/80 text-primary border border-primary/40 hover:bg-dark';
+        return 'bg-slate-900/80 text-yellow-300 border border-yellow-300/40 hover:bg-slate-900';
     }
   };
 
@@ -127,7 +127,7 @@ export default function GoogleSignInButton({
       </button>
 
       {error && (
-        <div className="mt-2 text-sm text-pink bg-darklight border border-darklight rounded-md p-2">
+        <div className="mt-2 text-sm text-pink bg-slate-800 border border-slate-700 rounded-md p-2">
           {error}
         </div>
       )}

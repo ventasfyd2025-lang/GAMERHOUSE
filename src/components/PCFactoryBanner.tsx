@@ -63,7 +63,7 @@ export default function PCFactoryBanner({
   }
 
   return (
-    <section className="bg-dark/80 py-8">
+    <section className="bg-slate-900/80 py-8">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -76,15 +76,15 @@ export default function PCFactoryBanner({
             <div className="flex space-x-2">
               <button
                 onClick={() => setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
-                className="p-2 rounded-full border border-primary/40 hover:bg-dark transition-colors"
+                className="p-2 rounded-full border border-yellow-300/40 hover:bg-slate-900 transition-colors"
               >
-                <ChevronLeftIcon className="h-5 w-5 text-primary/80" />
+                <ChevronLeftIcon className="h-5 w-5 text-yellow-300/80" />
               </button>
               <button
                 onClick={() => setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
-                className="p-2 rounded-full border border-primary/40 hover:bg-dark transition-colors"
+                className="p-2 rounded-full border border-yellow-300/40 hover:bg-slate-900 transition-colors"
               >
-                <ChevronRightIcon className="h-5 w-5 text-primary/80" />
+                <ChevronRightIcon className="h-5 w-5 text-yellow-300/80" />
               </button>
             </div>
           )}
@@ -103,10 +103,10 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-dark/80 border border-primary/30 rounded-lg overflow-hidden hover:shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer group hover:border-primary-300"
+                      className="bg-slate-900/80 border border-yellow-300/30 rounded-lg overflow-hidden hover:shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer group hover:border-yellow-300-300"
                     >
                       {/* Product Image */}
-                      <div className="relative aspect-[4/3] bg-dark overflow-hidden">
+                      <div className="relative aspect-[4/3] bg-slate-900 overflow-hidden">
                         <img
                           src={product.imagen || ''}
                           alt={product.nombre || 'Producto'}
@@ -131,7 +131,7 @@ export default function PCFactoryBanner({
                       {/* Product Info */}
                       <div className="p-3">
                         {/* Product Name */}
-                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-primary600 transition-colors">
+                        <h3 className="text-sm font-medium text-white line-clamp-2 mb-2 group-hover:text-yellow-300600 transition-colors">
                           {product.nombre || 'Producto'}
                         </h3>
                         
@@ -140,7 +140,7 @@ export default function PCFactoryBanner({
                           {/* Original Price */}
                           {((product.precioOriginal && product.precioOriginal > (product.precio || 0)) || 
                             false) && (
-                            <div className="text-xs text-primary/60 line-through">
+                            <div className="text-xs text-yellow-300/60 line-through">
                               {formatPrice(product.precioOriginal || 0)}
                             </div>
                           )}
@@ -178,7 +178,7 @@ export default function PCFactoryBanner({
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-200 ${
                   index === currentSlide 
-                    ? 'bg-primary' 
+                    ? 'bg-yellow-400' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 style={{ 

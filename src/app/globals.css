@@ -9,15 +9,15 @@
   --color-accent: #FFB800;         /* Amarillo Oscuro - Acentos y jerarquía */
 
   /* Grises - Fondos y Fondos Oscuros */
-  --color-bg-darkest: #000000;     /* Negro puro */
-  --color-bg-dark-900: #1a1a1a;    /* Negro muy oscuro */
-  --color-bg-dark-800: #2a2a2a;    /* Negro oscuro */
-  --color-bg-dark-700: #3a3a3a;    /* Gris oscuro */
+  --color-bg-slate-900est: #000000;     /* Negro puro */
+  --color-bg-slate-900-900: #1a1a1a;    /* Negro muy oscuro */
+  --color-bg-slate-900-800: #2a2a2a;    /* Negro oscuro */
+  --color-bg-slate-900-700: #3a3a3a;    /* Gris oscuro */
   --color-bg-950: #0d0d0d;         /* Negro ultra oscuro */
   --color-bg-900: #0f0f0f;         /* Negro muy oscuro */
 
   /* Grises - Texto y Borde */
-  --color-text-primary: #ffffff;   /* Blanco puro - texto principal */
+  --color-text-yellow-300: #ffffff;   /* Blanco puro - texto principal */
   --color-text-secondary: #e5e5e5; /* Gris claro - texto secundario */
   --color-text-tertiary: #b0b0b0;  /* Gris medio - texto terciario */
   --color-border: #FFDE00;         /* Amarillo Pikachu - bordes principales */
@@ -140,23 +140,23 @@ body {
 
   /* Admin Components */
   .admin-card {
-    @apply bg-darklight rounded-lg shadow-md p-6 border border-darklight/50 hover:border-primary/30 transition-colors;
+    @apply bg-slate-800 rounded-lg shadow-md p-6 border border-slate-700/50 hover:border-yellow-300/30 transition-colors;
   }
 
   .admin-header {
-    @apply bg-dark/80 border-b border-primary/30 sticky top-0 z-10 shadow-sm;
+    @apply bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10 shadow-sm;
   }
 
   .admin-button {
-    @apply px-4 py-2 bg-primary text-black rounded-lg font-semibold hover:bg-yellow-400 transition-colors;
+    @apply px-4 py-2 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-400 transition-colors;
   }
 
   .admin-button-secondary {
-    @apply px-4 py-2 bg-darklight text-white rounded-lg font-semibold hover:bg-darklight/80 border border-primary/30 transition-colors;
+    @apply px-4 py-2 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-800/80 border border-yellow-300/30 transition-colors;
   }
 
   .admin-input {
-    @apply w-full px-4 py-2 bg-darklight rounded-lg text-white border border-primary/30 focus:border-primary focus:outline-none transition-colors;
+    @apply w-full px-4 py-2 bg-slate-800 rounded-lg text-white border border-yellow-300/30 focus:border-yellow-300 focus:outline-none transition-colors;
   }
 
   .admin-table {
@@ -164,7 +164,7 @@ body {
   }
 
   .admin-table thead {
-    @apply bg-darklight/50 border-b border-primary/30;
+    @apply bg-slate-800/50 border-b border-yellow-300/30;
   }
 
   .admin-table th {
@@ -172,11 +172,11 @@ body {
   }
 
   .admin-table td {
-    @apply px-4 py-3 border-b border-darklight/50;
+    @apply px-4 py-3 border-b border-slate-700/50;
   }
 
   .admin-table tbody tr {
-    @apply hover:bg-darklight/50 transition-colors;
+    @apply hover:bg-slate-800/50 transition-colors;
   }
 }
 

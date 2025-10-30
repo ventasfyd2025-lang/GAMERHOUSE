@@ -225,23 +225,23 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="bg-dark/80 rounded-2xl shadow-sm border border-darklight p-6">
+          <header className="bg-slate-900/80 rounded-2xl shadow-sm border border-slate-700 p-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-primary">Catálogo completo</p>
+                <p className="text-sm font-semibold text-yellow-300">Catálogo completo</p>
                 <h1 className="text-3xl sm:text-4xl font-bold text-white">
                   Todos los productos disponibles
                 </h1>
-                <p className="mt-2 text-sm sm:text-base text-primary/80 max-w-2xl">
+                <p className="mt-2 text-sm sm:text-base text-yellow-300/80 max-w-2xl">
                   Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
                 </p>
                 {activeSectionTitle && (
-                  <div className="mt-3 rounded-lg border border-primary-200 bg-darklight px-4 py-3 text-sm text-primary-hover">
+                  <div className="mt-3 rounded-lg border border-yellow-300-200 bg-slate-800 px-4 py-3 text-sm text-yellow-300-hover">
                     <p className="font-semibold">
                       Estás revisando la sección “{activeSectionTitle}”.
                     </p>
                     {activeSectionDescription && (
-                      <p className="mt-1 text-primary">
+                      <p className="mt-1 text-yellow-300">
                         {activeSectionDescription}
                       </p>
                     )}
@@ -250,32 +250,32 @@ function AllProductsPageContent() {
               </div>
               <button
                 onClick={() => refetch()}
-                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-darklight hover:bg-darklight transition-colors"
+                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-yellow-300 bg-slate-800 hover:bg-slate-800 transition-colors"
               >
                 ↻ Refrescar lista
               </button>
             </div>
           </header>
 
-          <section className="bg-dark/80 rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
+          <section className="bg-slate-900/80 rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
             <form className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-              <label className="flex flex-col text-sm font-medium text-primary gap-2">
+              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
                 Buscar
                 <input
                   type="search"
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Nombre, descripción o SKU"
-                  className="w-full rounded-lg border border-primary/40 px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                  className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
                 />
               </label>
 
-              <label className="flex flex-col text-sm font-medium text-primary gap-2">
+              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
                 Categoría
                 <select
                   value={selectedCategory}
                   onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="w-full rounded-lg border border-primary/40 px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                  className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
                 >
                   {categoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -286,12 +286,12 @@ function AllProductsPageContent() {
               </label>
 
               {subcategoryOptions.length > 0 && (
-                <label className="flex flex-col text-sm font-medium text-primary gap-2">
+                <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
                   Subcategoría
                   <select
                     value={selectedSubcategory}
                     onChange={(event) => setSelectedSubcategory(event.target.value)}
-                    className="w-full rounded-lg border border-primary/40 px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
                   >
                     <option value="">Todas</option>
                     {subcategoryOptions.map((option) => (
@@ -303,7 +303,7 @@ function AllProductsPageContent() {
                 </label>
               )}
 
-              <label className="flex flex-col text-sm font-medium text-primary gap-2">
+              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
                 Rango de precio (CLP)
                 <div className="grid grid-cols-2 gap-3">
                   <input
@@ -312,7 +312,7 @@ function AllProductsPageContent() {
                     value={minPrice}
                     onChange={(event) => setMinPrice(event.target.value)}
                     placeholder="Mínimo"
-                    className="w-full rounded-lg border border-primary/40 px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
                   />
                   <input
                     type="number"
@@ -320,7 +320,7 @@ function AllProductsPageContent() {
                     value={maxPrice}
                     onChange={(event) => setMaxPrice(event.target.value)}
                     placeholder="Máximo"
-                    className="w-full rounded-lg border border-primary/40 px-3 py-2 text-sm focus:border-primary focus:ring-primary"
+                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
                   />
                 </div>
               </label>
@@ -338,7 +338,7 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-darklight border border-darklight text-secondary rounded-xl p-6">
+          <section className="bg-slate-800 border border-slate-700 text-secondary rounded-xl p-6">
             <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
             <p className="text-sm mb-4">{productsError}</p>
             <button
@@ -354,16 +354,16 @@ function AllProductsPageContent() {
         {!productsLoading && !productsError && (
           <section className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div className="text-sm text-primary/80">
+              <div className="text-sm text-yellow-300/80">
                 {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'} encontrados · Página {page} de {totalPages}
               </div>
               {priceSummary && (
-              <div className="text-xs text-primary/60">Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}</div>
+              <div className="text-xs text-yellow-300/60">Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}</div>
             )}
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="bg-dark/80 rounded-2xl border border-gray-100 p-10 text-center text-primary/80">
+              <div className="bg-slate-900/80 rounded-2xl border border-gray-100 p-10 text-center text-yellow-300/80">
                 <div className="text-5xl mb-4">🔍</div>
                 <p>No encontramos resultados con los filtros actuales. Ajusta la búsqueda para ver más productos.</p>
               </div>
@@ -378,17 +378,17 @@ function AllProductsPageContent() {
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-3">
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-primary/30 text-primary/80 hover:border-primary-300 hover:text-primary disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300/80 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.max(1, prev - 1))}
                   disabled={page === 1}
                 >
                   ← Anterior
                 </button>
-                <span className="text-sm text-primary/60">
+                <span className="text-sm text-yellow-300/60">
                   Página {page} de {totalPages}
                 </span>
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-primary/30 text-primary/80 hover:border-primary-300 hover:text-primary disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300/80 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
                   disabled={page === totalPages}
                 >
@@ -398,7 +398,7 @@ function AllProductsPageContent() {
             )}
 
             {filteredProducts.length > ITEMS_PER_PAGE && (
-              <div className="text-center text-xs text-primary/50">
+              <div className="text-center text-xs text-yellow-300/50">
                 Mostrando los primeros {ITEMS_PER_PAGE} resultados. Refina los filtros para ubicar productos específicos.
               </div>
             )}
