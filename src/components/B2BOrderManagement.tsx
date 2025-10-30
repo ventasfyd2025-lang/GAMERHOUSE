@@ -295,7 +295,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'orders'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-yellow-300/60 hover:text-yellow-300'
+                : 'text-yellow-300 hover:text-yellow-300'
             }`}
           >
             Órdenes de Compra ({purchaseOrders.length})
@@ -305,7 +305,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'quotes'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-yellow-300/60 hover:text-yellow-300'
+                : 'text-yellow-300 hover:text-yellow-300'
             }`}
           >
             Cotizaciones ({quotes.length})
@@ -315,7 +315,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'customers'
                 ? 'bg-orange-100 text-secondary'
-                : 'text-yellow-300/60 hover:text-yellow-300'
+                : 'text-yellow-300 hover:text-yellow-300'
             }`}
           >
             Clientes B2B ({b2bCustomers.length})
@@ -329,7 +329,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'orders' && (
           <div className="space-y-4">
             {purchaseOrders.length === 0 ? (
-              <div className="text-center py-8 text-yellow-300/60">
+              <div className="text-center py-8 text-yellow-300">
                 No hay órdenes de compra registradas
               </div>
             ) : (
@@ -368,7 +368,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     <div>
                       <span className="font-medium text-yellow-300">Cliente:</span>
                       <div>{order.customerInfo.companyName}</div>
-                      <div className="text-yellow-300/60">{order.customerInfo.email}</div>
+                      <div className="text-yellow-300">{order.customerInfo.email}</div>
                     </div>
                     <div>
                       <span className="font-medium text-yellow-300">Total:</span>
@@ -380,7 +380,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       <span className="font-medium text-yellow-300">Fecha:</span>
                       <div>{new Date(order.createdAt).toLocaleDateString('es-CL')}</div>
                       {order.requestedDeliveryDate && (
-                        <div className="text-yellow-300/60">
+                        <div className="text-yellow-300">
                           Entrega: {new Date(order.requestedDeliveryDate).toLocaleDateString('es-CL')}
                         </div>
                       )}
@@ -390,7 +390,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                   {order.items.length > 0 && (
                     <div className="mt-3">
                       <span className="font-medium text-yellow-300">Productos:</span>
-                      <div className="mt-1 text-sm text-yellow-300/80">
+                      <div className="mt-1 text-sm text-yellow-300">
                         {order.items.map((item, index) => (
                           <div key={item.id}>
                             {item.productName} × {item.quantity} = {formatCurrency(item.totalPrice)}
@@ -409,7 +409,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'quotes' && (
           <div className="space-y-4">
             {quotes.length === 0 ? (
-              <div className="text-center py-8 text-yellow-300/60">
+              <div className="text-center py-8 text-yellow-300">
                 No hay cotizaciones registradas
               </div>
             ) : (
@@ -447,7 +447,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     <div>
                       <span className="font-medium text-yellow-300">Cliente:</span>
                       <div>{quote.customerInfo.companyName}</div>
-                      <div className="text-yellow-300/60">{quote.customerInfo.email}</div>
+                      <div className="text-yellow-300">{quote.customerInfo.email}</div>
                     </div>
                     <div>
                       <span className="font-medium text-yellow-300">Total:</span>
@@ -475,7 +475,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
         {activeTab === 'customers' && (
           <div className="space-y-4">
             {b2bCustomers.length === 0 ? (
-              <div className="text-center py-8 text-yellow-300/60">
+              <div className="text-center py-8 text-yellow-300">
                 No hay clientes B2B registrados
               </div>
             ) : (
@@ -496,12 +496,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     <div>
                       <span className="font-medium text-yellow-300">Contacto:</span>
                       <div>{customer.contactPerson.name}</div>
-                      <div className="text-yellow-300/60">{customer.email}</div>
+                      <div className="text-yellow-300">{customer.email}</div>
                     </div>
                     <div>
                       <span className="font-medium text-yellow-300">Crédito:</span>
                       <div>{formatCurrency(customer.creditLimit)}</div>
-                      <div className="text-yellow-300/60">{customer.creditTerms} días</div>
+                      <div className="text-yellow-300">{customer.creditTerms} días</div>
                     </div>
                     <div>
                       <span className="font-medium text-yellow-300">Descuento:</span>
@@ -510,7 +510,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                     <div>
                       <span className="font-medium text-yellow-300">Estadísticas:</span>
                       <div>{customer.totalOrders} órdenes</div>
-                      <div className="text-yellow-300/60">{formatCurrency(customer.totalValue)}</div>
+                      <div className="text-yellow-300">{formatCurrency(customer.totalValue)}</div>
                     </div>
                   </div>
                 </div>
@@ -600,9 +600,9 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                           <span className="font-medium">{item.productName}</span>
                           <span className="mx-2">×</span>
                           <span>{item.quantity}</span>
-                          <span className="ml-2 text-yellow-300/60">= {formatCurrency(item.totalPrice)}</span>
+                          <span className="ml-2 text-yellow-300">= {formatCurrency(item.totalPrice)}</span>
                           {item.specifications && (
-                            <div className="text-sm text-yellow-300/80">{item.specifications}</div>
+                            <div className="text-sm text-yellow-300">{item.specifications}</div>
                           )}
                         </div>
                         <button

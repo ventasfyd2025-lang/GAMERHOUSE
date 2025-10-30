@@ -127,7 +127,7 @@ export default function OfferPopup({
             onClick={handleClose}
             className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-900/80/80 hover:bg-slate-900/80 transition-all"
           >
-            <XMarkIcon className="h-4 w-4 text-yellow-300/80" />
+            <XMarkIcon className="h-4 w-4 text-yellow-300" />
           </button>
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center text-white">

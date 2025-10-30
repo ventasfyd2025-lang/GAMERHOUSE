@@ -22,7 +22,7 @@ export default function NotificationDisplay() {
             case 'info':
               return <Info className="h-5 w-5 text-red-500" strokeWidth={2.5} />;
             default:
-              return <Info className="h-5 w-5 text-yellow-300/60" strokeWidth={2.5} />;
+              return <Info className="h-5 w-5 text-yellow-300" strokeWidth={2.5} />;
           }
         };
 
@@ -55,14 +55,14 @@ export default function NotificationDisplay() {
                   {notification.title}
                 </p>
                 {notification.message && (
-                  <p className="mt-1 text-sm text-yellow-300/60">
+                  <p className="mt-1 text-sm text-yellow-300">
                     {notification.message}
                   </p>
                 )}
               </div>
               <div className="ml-4 flex-shrink-0 flex">
                 <button
-                  className="inline-flex text-yellow-300/50 hover:text-yellow-300/80 focus:outline-none"
+                  className="inline-flex text-yellow-300 hover:text-yellow-300 focus:outline-none"
                   onClick={() => removeNotification(notification.id)}
                 >
                   <X className="h-4 w-4" strokeWidth={2.5} />

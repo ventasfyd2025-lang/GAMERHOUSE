@@ -289,14 +289,14 @@ const handleMobileCategoryLinkClick = (
                         <span className="text-base">🏷️</span>
                         Todas las categorías
                       </span>
-                      <span className="text-xs font-medium text-yellow-300/60">{categories.length} disponibles</span>
+                      <span className="text-xs font-medium text-yellow-300">{categories.length} disponibles</span>
                     </div>
 
                     <div className="max-h-96 overflow-y-auto px-4 py-4 space-y-3">
                       {categories.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-8">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: 'var(--primary)' }}></div>
-                          <span className="mt-3 text-sm text-yellow-300/80">
+                          <span className="mt-3 text-sm text-yellow-300">
                             {categoriesLoadTimeout ? 'Error al cargar categorías' : 'Cargando categorías...'}
                           </span>
                           {categoriesLoadTimeout && (
@@ -360,7 +360,7 @@ const handleMobileCategoryLinkClick = (
                                       key={subcategoria.id}
                                       href={`/?category=${categorySlug}&subcategory=${encodeURIComponent(subcategoria.nombre)}`}
 
-                                      className="group block w-full text-left px-4 py-0.5 text-yellow-300/80 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-md transition-all duration-300 font-normal text-xs border border-gray-50 shadow-sm hover:shadow-md hover:border-yellow-300/30"
+                                      className="group block w-full text-left px-4 py-0.5 text-yellow-300 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-md transition-all duration-300 font-normal text-xs border border-gray-50 shadow-sm hover:shadow-md hover:border-yellow-300/30"
                                     >
                                       <div className="flex items-center justify-between">
                                         <div className="flex items-center space-x-2">
@@ -378,7 +378,7 @@ const handleMobileCategoryLinkClick = (
                           })}
 
                           <div className="pt-4 border-t border-yellow-300/30 space-y-2">
-                            <div className="text-xs font-semibold text-yellow-300/60 uppercase tracking-wide px-2">Secciones especiales</div>
+                            <div className="text-xs font-semibold text-yellow-300 uppercase tracking-wide px-2">Secciones especiales</div>
 
                             <Link
                               href="/?filter=ofertas"
@@ -501,7 +501,7 @@ const handleMobileCategoryLinkClick = (
                           <p className="font-medium text-white">
                             {currentUser.firstName} {currentUser.lastName}
                           </p>
-                          <p className="text-sm text-yellow-300/80">{currentUser.email}</p>
+                          <p className="text-sm text-yellow-300">{currentUser.email}</p>
                           {isGuest && (
                             <p className="text-xs text-yellow-300 mt-1">Usuario Invitado</p>
                           )}
@@ -627,7 +627,7 @@ const handleMobileCategoryLinkClick = (
                 {categories.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-8">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: 'var(--primary)' }}></div>
-                    <span className="ml-3 text-yellow-300/80">
+                    <span className="ml-3 text-yellow-300">
                       {categoriesLoadTimeout ? 'Error al cargar categorías' : 'Cargando categorías...'}
                     </span>
                     {categoriesLoadTimeout && (
@@ -747,7 +747,7 @@ const handleMobileCategoryLinkClick = (
                                       window.location.href = destination;
                                       handleCategoryNavigate(); // Close menu after navigation
                                     }}
-                                    className="group block w-full text-left px-4 py-1.5 text-yellow-300/80 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-md transition-all duration-300 font-normal text-sm border border-gray-50 shadow-sm hover:shadow-md hover:border-yellow-300/30"
+                                    className="group block w-full text-left px-4 py-1.5 text-yellow-300 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-md transition-all duration-300 font-normal text-sm border border-gray-50 shadow-sm hover:shadow-md hover:border-yellow-300/30"
                                   >
                                     <div className="flex items-center justify-between">
                                       <div className="flex items-center space-x-2">
@@ -766,7 +766,7 @@ const handleMobileCategoryLinkClick = (
 
                     {/* Secciones especiales */}
                     <div className="pt-4 border-t border-yellow-300/30 space-y-2">
-                      <div className="text-sm font-semibold text-yellow-300/60 uppercase tracking-wide mb-3 px-2">Secciones especiales</div>
+                      <div className="text-sm font-semibold text-yellow-300 uppercase tracking-wide mb-3 px-2">Secciones especiales</div>
 
                       <Link
                         href="/?filter=ofertas"

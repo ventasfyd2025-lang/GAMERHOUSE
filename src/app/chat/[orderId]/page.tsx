@@ -375,7 +375,7 @@ export default function ChatPage() {
             <div className="flex items-center space-x-4">
               <Link 
                 href="/mis-pedidos"
-                className="text-yellow-300/60 hover:text-yellow-300 transition-colors"
+                className="text-yellow-300 hover:text-yellow-300 transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </Link>
@@ -416,7 +416,7 @@ export default function ChatPage() {
                         ? 'bg-red-600 text-white' 
                         : step.current
                         ? 'bg-orange-100 border-2 border-red-600 text-red-500'
-                        : 'bg-slate-800 text-yellow-300/50'
+                        : 'bg-slate-800 text-yellow-300'
                     }`}>
                       {step.completed ? (
                         <CheckIcon className="h-4 w-4" />
@@ -426,7 +426,7 @@ export default function ChatPage() {
                     </div>
                     <div className="ml-4">
                       <p className={`text-sm font-medium ${
-                        step.completed || step.current ? 'text-white' : 'text-yellow-300/60'
+                        step.completed || step.current ? 'text-white' : 'text-yellow-300'
                       }`}>
                         {step.label}
                       </p>
@@ -458,7 +458,7 @@ export default function ChatPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-sm font-medium text-white">{item.nombre}</p>
-                      <p className="text-xs text-yellow-300/80">
+                      <p className="text-xs text-yellow-300">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -505,8 +505,8 @@ export default function ChatPage() {
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
-                    <p className="text-sm text-yellow-300/80 mb-1">Estamos aquí para ayudarte con tu pedido</p>
-                    <p className="text-xs text-yellow-300/60">Escríbenos cualquier pregunta o inquietud</p>
+                    <p className="text-sm text-yellow-300 mb-1">Estamos aquí para ayudarte con tu pedido</p>
+                    <p className="text-xs text-yellow-300">Escríbenos cualquier pregunta o inquietud</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -522,7 +522,7 @@ export default function ChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-2' : 'order-1'}`}>
                         {message.isAdmin && (
-                          <div className="text-xs text-yellow-300/60 mb-1 px-3">Soporte GAMERHOUSE</div>
+                          <div className="text-xs text-yellow-300 mb-1 px-3">Soporte GAMERHOUSE</div>
                         )}
                         
                         <div
@@ -554,7 +554,7 @@ export default function ChatPage() {
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-start' : 'justify-end'}`}>
-                          <span className="text-xs text-yellow-300/60">
+                          <span className="text-xs text-yellow-300">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -568,7 +568,7 @@ export default function ChatPage() {
                                   <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-yellow-300/50" />
+                                <CheckIcon className="h-3 w-3 text-yellow-300" />
                               )}
                             </div>
                           )}
@@ -605,7 +605,7 @@ export default function ChatPage() {
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-yellow-300/60 mt-1">{selectedImage?.name}</p>
+                    <p className="text-xs text-yellow-300 mt-1">{selectedImage?.name}</p>
                     {uploadingImage && (
                       <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
@@ -641,8 +641,8 @@ export default function ChatPage() {
                           htmlFor="imageUpload"
                           className={`cursor-pointer p-1 rounded-lg transition-colors ${
                             sendingMessage || uploadingImage
-                              ? 'text-yellow-300/50 cursor-not-allowed'
-                              : 'text-yellow-300/60 hover:text-red-500 hover:bg-yellow-50'
+                              ? 'text-yellow-300 cursor-not-allowed'
+                              : 'text-yellow-300 hover:text-red-500 hover:bg-yellow-50'
                           }`}
                         >
                           <PhotoIcon className="h-5 w-5" />
@@ -664,7 +664,7 @@ export default function ChatPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-yellow-300/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300 mt-2 text-center">
                   Responderemos lo antes posible durante horario laboral • Puedes enviar imágenes (máx. 5MB)
                 </p>
               </div>

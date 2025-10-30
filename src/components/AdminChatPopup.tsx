@@ -296,7 +296,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       )}
                       <div className="flex-1">
                         <p className="text-xs font-medium text-white">{item.nombre}</p>
-                        <p className="text-xs text-yellow-300/80">
+                        <p className="text-xs text-yellow-300">
                           {item.cantidad} × {formatPrice(item.precio)}
                         </p>
                       </div>
@@ -341,14 +341,14 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                           step.completed 
                             ? 'bg-green-100 text-green-600' 
-                            : 'bg-slate-800 text-yellow-300/50'
+                            : 'bg-slate-800 text-yellow-300'
                         }`}>
                           <IconComponent className="h-4 w-4" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between">
                             <p className={`text-sm font-medium ${
-                              step.completed ? 'text-white' : 'text-yellow-300/60'
+                              step.completed ? 'text-white' : 'text-yellow-300'
                             }`}>
                               {step.title}
                             </p>
@@ -356,9 +356,9 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                               <CheckCircleIcon className="h-4 w-4 text-green-500" />
                             )}
                           </div>
-                          <p className="text-xs text-yellow-300/80 mt-1">{step.description}</p>
+                          <p className="text-xs text-yellow-300 mt-1">{step.description}</p>
                           {step.date && (
-                            <p className="text-xs text-yellow-300/60 mt-1">
+                            <p className="text-xs text-yellow-300 mt-1">
                               {formatDate(step.date, {
                                 day: '2-digit',
                                 month: '2-digit',
@@ -386,7 +386,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>
-                    <p className="text-sm text-yellow-300/80">Comunícate directamente con {order.customerName}</p>
+                    <p className="text-sm text-yellow-300">Comunícate directamente con {order.customerName}</p>
                   </div>
                 ) : (
                   messages.map((message) => {
@@ -404,7 +404,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                         
                         <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                           {!message.isAdmin && (
-                            <div className="text-xs text-yellow-300/60 mb-1 px-3">{order.customerName}</div>
+                            <div className="text-xs text-yellow-300 mb-1 px-3">{order.customerName}</div>
                           )}
                           {isSystemMessage && (
                             <div className="text-xs text-red-600 mb-1 px-3 font-medium">Sistema GAMERHOUSE - Actualización Automática</div>
@@ -423,7 +423,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                           </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-yellow-300/60">
+                          <span className="text-xs text-yellow-300">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -437,7 +437,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                                   <CheckIcon className="h-3 w-3 text-pink -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-yellow-300/50" />
+                                <CheckIcon className="h-3 w-3 text-yellow-300" />
                               )}
                             </div>
                           )}
@@ -489,7 +489,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                   </button>
                 </div>
                 
-                <p className="text-xs text-yellow-300/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300 mt-2 text-center">
                   <span className="font-medium text-pink">Modo Admin:</span> El cliente verá tus respuestas instantáneamente
                 </p>
               </div>

@@ -124,7 +124,7 @@ export default function StockManagement({ productId, className }: StockManagemen
       case 'adjustment':
         return <AdjustmentsHorizontalIcon className="h-4 w-4 text-red-600" />;
       default:
-        return <ClockIcon className="h-4 w-4 text-yellow-300/80" />;
+        return <ClockIcon className="h-4 w-4 text-yellow-300" />;
     }
   };
 
@@ -222,13 +222,13 @@ export default function StockManagement({ productId, className }: StockManagemen
                 <div className="text-2xl font-bold text-white">
                   {selectedProduct.stock}
                 </div>
-                <div className="text-sm text-yellow-300/80">Stock Actual</div>
+                <div className="text-sm text-yellow-300">Stock Actual</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-400">
                   5
                 </div>
-                <div className="text-sm text-yellow-300/80">Stock Mínimo</div>
+                <div className="text-sm text-yellow-300">Stock Mínimo</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-red-600">
@@ -237,7 +237,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     currency: 'CLP'
                   })}
                 </div>
-                <div className="text-sm text-yellow-300/80">Precio</div>
+                <div className="text-sm text-yellow-300">Precio</div>
               </div>
             </div>
 
@@ -286,16 +286,16 @@ export default function StockManagement({ productId, className }: StockManagemen
                       <div className="text-sm font-medium text-white">
                         {getTransactionTypeText(transaction.type)}
                         {transaction.orderId && (
-                          <span className="text-xs text-yellow-300/60 ml-2">
+                          <span className="text-xs text-yellow-300 ml-2">
                             (Orden: {transaction.orderId.slice(-6)})
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-yellow-300/60">
+                      <div className="text-xs text-yellow-300">
                         {new Date(transaction.createdAt).toLocaleString('es-CL')}
                       </div>
                       {transaction.reason && (
-                        <div className="text-xs text-yellow-300/80 mt-1">
+                        <div className="text-xs text-yellow-300 mt-1">
                           {transaction.reason}
                         </div>
                       )}
@@ -308,7 +308,7 @@ export default function StockManagement({ productId, className }: StockManagemen
                     }`}>
                       {transaction.quantity > 0 ? '+' : ''}{transaction.quantity}
                     </div>
-                    <div className="text-xs text-yellow-300/60">
+                    <div className="text-xs text-yellow-300">
                       {transaction.previousStock} → {transaction.newStock}
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export default function StockManagement({ productId, className }: StockManagemen
               ))}
             </div>
           ) : (
-            <div className="text-center py-8 text-yellow-300/60">
+            <div className="text-center py-8 text-yellow-300">
               No hay movimientos registrados para este producto
             </div>
           )}

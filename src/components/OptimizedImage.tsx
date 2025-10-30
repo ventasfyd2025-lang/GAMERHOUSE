@@ -46,7 +46,7 @@ export function OptimizedImage({
     return (
       <div
         className={cn(
-          'flex items-center justify-center bg-slate-800 text-yellow-300/50',
+          'flex items-center justify-center bg-slate-800 text-yellow-300',
           fill ? 'absolute inset-0' : `w-[${width}px] h-[${height}px]`,
           className
         )}

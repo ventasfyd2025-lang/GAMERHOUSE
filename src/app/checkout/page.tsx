@@ -22,7 +22,7 @@ const MercadoPagoWallet = dynamic(() => import('@/components/MercadoPagoWallet')
     <div className="p-8 bg-slate-900 border border-yellow-300/30 rounded-lg">
       <div className="flex items-center justify-center space-x-3">
         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
-        <span className="text-yellow-300/80">Cargando MercadoPago...</span>
+        <span className="text-yellow-300">Cargando MercadoPago...</span>
       </div>
     </div>
   )
@@ -425,7 +425,7 @@ function CheckoutContent() {
       <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-yellow-300 mx-auto mb-4"></div>
-          <p className="text-yellow-300/80 text-lg font-medium">Cargando...</p>
+          <p className="text-yellow-300 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -443,10 +443,10 @@ function CheckoutContent() {
               </svg>
             </div>
             <h1 className="text-3xl font-bold text-white mb-4">¡Pedido Exitoso!</h1>
-            <p className="text-lg text-yellow-300/80 mb-4">
+            <p className="text-lg text-yellow-300 mb-4">
               Tu pedido <span className="font-bold text-green-600">#{successOrderId.slice(-8).toUpperCase()}</span> ha sido recibido correctamente.
             </p>
-            <p className="text-sm text-yellow-300/60 mb-6">
+            <p className="text-sm text-yellow-300 mb-6">
               Hemos recibido tu comprobante de transferencia y te contactaremos pronto para confirmar el pago.
             </p>
             <div className="space-y-3 bg-green-50 p-4 rounded-lg border border-green-200">
@@ -485,7 +485,7 @@ function CheckoutContent() {
                 <h1 className="text-2xl font-bold text-white">
                   Finalizar compra
                 </h1>
-                <p className="text-yellow-300/80 text-sm">
+                <p className="text-yellow-300 text-sm">
                   Completa los datos para procesar tu pedido
                 </p>
               </div>
@@ -639,7 +639,7 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Envío a domicilio</div>
-                        <div className="text-sm text-yellow-300/80 text-left mt-1">Recibe tu pedido en casa</div>
+                        <div className="text-sm text-yellow-300 text-left mt-1">Recibe tu pedido en casa</div>
                       </button>
 
                       <button
@@ -658,7 +658,7 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Retiro en tienda</div>
-                        <div className="text-sm text-yellow-300/80 text-left mt-1">Retira gratis en nuestra tienda</div>
+                        <div className="text-sm text-yellow-300 text-left mt-1">Retira gratis en nuestra tienda</div>
                       </button>
                     </div>
                   </div>
@@ -706,7 +706,7 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">MercadoPago</div>
-                        <div className="text-sm text-yellow-300/80 text-left mt-1">Pago online con tarjeta</div>
+                        <div className="text-sm text-yellow-300 text-left mt-1">Pago online con tarjeta</div>
                       </button>
 
                       {/* Transferencia */}
@@ -726,7 +726,7 @@ function CheckoutContent() {
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Transferencia</div>
-                        <div className="text-sm text-yellow-300/80 text-left mt-1">Transferencia bancaria</div>
+                        <div className="text-sm text-yellow-300 text-left mt-1">Transferencia bancaria</div>
                       </button>
                     </div>
 
@@ -737,7 +737,7 @@ function CheckoutContent() {
                           <span className="text-2xl mr-3">💳</span>
                           <div>
                             <div className="font-medium text-white">Pago con MercadoPago</div>
-                            <div className="text-sm text-yellow-300/80">Paga con tarjeta de crédito, débito o efectivo</div>
+                            <div className="text-sm text-yellow-300">Paga con tarjeta de crédito, débito o efectivo</div>
                           </div>
                         </div>
 
@@ -775,7 +775,7 @@ function CheckoutContent() {
                         <span className="text-2xl mr-3">🏦</span>
                         <div>
                           <div className="font-medium text-white">Transferencia Bancaria</div>
-                          <div className="text-sm text-yellow-300/80">Transfiere el monto total y sube el comprobante</div>
+                          <div className="text-sm text-yellow-300">Transfiere el monto total y sube el comprobante</div>
                         </div>
                       </div>
 
@@ -785,7 +785,7 @@ function CheckoutContent() {
                         {bankLoading ? (
                           <div className="flex items-center justify-center py-4">
                             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-yellow-300"></div>
-                            <span className="ml-2 text-yellow-300/80">Cargando datos bancarios...</span>
+                            <span className="ml-2 text-yellow-300">Cargando datos bancarios...</span>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
@@ -828,7 +828,7 @@ function CheckoutContent() {
                           required
                           className="w-full px-3 py-2 border border-yellow-300/40 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         />
-                        <p className="text-xs text-yellow-300/80 mt-2">
+                        <p className="text-xs text-yellow-300 mt-2">
                           Formatos aceptados: JPG, PNG, PDF (máx. 5MB)
                         </p>
                       </div>
@@ -884,7 +884,7 @@ function CheckoutContent() {
                           />
                         ) : (
                           <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center">
-                            <span className="text-yellow-300/50 text-lg">📦</span>
+                            <span className="text-yellow-300 text-lg">📦</span>
                           </div>
                         )}
                       </div>
@@ -893,7 +893,7 @@ function CheckoutContent() {
                         <h4 className="text-sm font-medium text-white truncate">
                           {item.nombre}
                         </h4>
-                        <p className="text-sm text-yellow-300/60">
+                        <p className="text-sm text-yellow-300">
                           Cantidad: {item.cantidad}
                         </p>
                       </div>
@@ -908,7 +908,7 @@ function CheckoutContent() {
                 {/* Totals */}
                 <div className="border-t border-slate-700 pt-4 space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-300/80 font-medium">Subtotal</span>
+                    <span className="text-yellow-300 font-medium">Subtotal</span>
                     <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
                   </div>
                   <div className="flex justify-between items-center bg-slate-800 px-4 py-3 rounded-lg border border-yellow-300-200">

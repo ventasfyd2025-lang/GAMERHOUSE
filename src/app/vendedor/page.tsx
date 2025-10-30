@@ -74,7 +74,7 @@ function VendedorLogin() {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
               Panel de Vendedor
             </h2>
-            <p className="mt-2 text-center text-sm text-yellow-300/80">
+            <p className="mt-2 text-center text-sm text-yellow-300">
               Inicia sesión para acceder al panel
             </p>
           </div>
@@ -117,9 +117,9 @@ function VendedorLogin() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-yellow-300" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeIcon className="h-5 w-5 text-yellow-300" />
                   )}
                 </button>
               </div>
@@ -228,10 +228,10 @@ export default function VendedorPage() {
         <div className="min-h-screen bg-slate-900 flex items-center justify-center py-12 px-4">
           <div className="max-w-md w-full text-center space-y-4">
             <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
-            <p className="text-yellow-300/80">
+            <p className="text-yellow-300">
               No tienes permisos para acceder al panel de vendedor.
             </p>
-            <p className="text-sm text-yellow-300/60">
+            <p className="text-sm text-yellow-300">
               Tu rol actual es: <span className="font-medium">{userProfile.role}</span>
             </p>
             <button
@@ -270,7 +270,7 @@ export default function VendedorPage() {
       case 'delivered': return 'text-yellow-500 bg-yellow-50 border-yellow-300';
       case 'cancelled': return 'text-pink bg-slate-800 border-slate-700';
       case 'pending_verification': return 'text-yellow-300 bg-slate-800 border-yellow-300-200';
-      default: return 'text-yellow-300/80 bg-slate-900 border-yellow-300/30';
+      default: return 'text-yellow-300 bg-slate-900 border-yellow-300/30';
     }
   };
 
@@ -307,7 +307,7 @@ export default function VendedorPage() {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Panel de Vendedor</h1>
-            <p className="text-yellow-300/80">Gestiona pedidos y atiende a los clientes</p>
+            <p className="text-yellow-300">Gestiona pedidos y atiende a los clientes</p>
           </div>
 
           {/* Stats Cards */}
@@ -316,7 +316,7 @@ export default function VendedorPage() {
               <div className="flex items-center">
                 <ClockIcon className="h-8 w-8 text-yellow-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-yellow-300/80">Pedidos Pendientes</p>
+                  <p className="text-lg font-bold text-yellow-300">Pedidos Pendientes</p>
                   <p className="text-2xl font-bold text-white">{stats.pendingOrders}</p>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export default function VendedorPage() {
               <div className="flex items-center">
                 <ShoppingBagIcon className="h-8 w-8 text-red-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-yellow-300/80">Pedidos Hoy</p>
+                  <p className="text-lg font-bold text-yellow-300">Pedidos Hoy</p>
                   <p className="text-2xl font-bold text-white">{stats.todayOrders}</p>
                 </div>
               </div>
@@ -336,7 +336,7 @@ export default function VendedorPage() {
               <div className="flex items-center">
                 <CurrencyDollarIcon className="h-8 w-8 text-green-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-yellow-300/80">Ingresos Totales</p>
+                  <p className="text-lg font-bold text-yellow-300">Ingresos Totales</p>
                   <p className="text-2xl font-bold text-white">${stats.totalRevenue.toLocaleString('es-CL')}</p>
                 </div>
               </div>
@@ -346,7 +346,7 @@ export default function VendedorPage() {
               <div className="flex items-center">
                 <UsersIcon className="h-8 w-8 text-amber-500" />
                 <div className="ml-4">
-                  <p className="text-lg font-bold text-yellow-300/80">Clientes Únicos</p>
+                  <p className="text-lg font-bold text-yellow-300">Clientes Únicos</p>
                   <p className="text-2xl font-bold text-white">{stats.totalCustomers}</p>
                 </div>
               </div>
@@ -363,7 +363,7 @@ export default function VendedorPage() {
                   className={`py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === 'orders'
                       ? 'border-yellow-300 text-yellow-300'
-                      : 'border-transparent text-yellow-300/60 hover:text-yellow-300 hover:border-yellow-300/40'
+                      : 'border-transparent text-yellow-300 hover:text-yellow-300 hover:border-yellow-300/40'
                   }`}
                 >
                   Gestión de Pedidos
@@ -375,29 +375,29 @@ export default function VendedorPage() {
             <div className="p-6">
               <div className="mb-4">
                 <h2 className="text-lg font-medium text-white">Pedidos Recientes</h2>
-                <p className="text-sm text-yellow-300/60">Gestiona el estado de los pedidos</p>
+                <p className="text-sm text-yellow-300">Gestiona el estado de los pedidos</p>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Total
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Fecha
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
@@ -407,11 +407,11 @@ export default function VendedorPage() {
                       <tr key={order.id} className="hover:bg-slate-900">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">#{order.id.slice(-8)}</div>
-                          <div className="text-sm text-yellow-300/60">{order.paymentMethod}</div>
+                          <div className="text-sm text-yellow-300">{order.paymentMethod}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">{order.customerName}</div>
-                          <div className="text-sm text-yellow-300/60">{order.customerEmail}</div>
+                          <div className="text-sm text-yellow-300">{order.customerEmail}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-lg font-bold text-white">
@@ -423,7 +423,7 @@ export default function VendedorPage() {
                             {getStatusText(order.status)}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
                           {(() => {
                             try {
                               const date = order.createdAt?.toDate ?

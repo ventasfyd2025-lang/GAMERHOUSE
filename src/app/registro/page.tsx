@@ -133,7 +133,7 @@ export default function RegisterPage() {
           <h2 className="text-3xl font-bold text-white">
             Crear Cuenta
           </h2>
-          <p className="mt-2 text-sm text-yellow-300/80">
+          <p className="mt-2 text-sm text-yellow-300">
             Únete a nuestra tienda y disfruta de beneficios exclusivos
           </p>
         </div>
@@ -227,9 +227,9 @@ export default function RegisterPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-yellow-300" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeIcon className="h-5 w-5 text-yellow-300" />
                   )}
                 </button>
               </div>
@@ -257,9 +257,9 @@ export default function RegisterPage() {
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeSlashIcon className="h-5 w-5 text-yellow-300" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-yellow-300/50" />
+                    <EyeIcon className="h-5 w-5 text-yellow-300" />
                   )}
                 </button>
               </div>
@@ -406,7 +406,7 @@ export default function RegisterPage() {
                 <div className="w-full border-t border-yellow-300/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-slate-900/80 text-yellow-300/60">O regístrate con</span>
+                <span className="px-2 bg-slate-900/80 text-yellow-300">O regístrate con</span>
               </div>
             </div>
 
@@ -427,7 +427,7 @@ export default function RegisterPage() {
                 <div className="w-full border-t border-yellow-300/40" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-slate-900/80 text-yellow-300/60">¿Ya tienes cuenta?</span>
+                <span className="px-2 bg-slate-900/80 text-yellow-300">¿Ya tienes cuenta?</span>
               </div>
             </div>
 
@@ -441,7 +441,7 @@ export default function RegisterPage() {
               
               <Link
                 href="/checkout?guest=true"
-                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-yellow-300/80 hover:text-white"
+                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-yellow-300 hover:text-white"
               >
                 Continuar como invitado
               </Link>

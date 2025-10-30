@@ -198,7 +198,7 @@ export default function HomeClient() {
           <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-slate-700 text-center">
             <div className="text-pink text-6xl mb-4">❌</div>
             <h2 className="text-2xl font-bold text-white mb-2">Error al cargar productos</h2>
-            <p className="text-yellow-300/80 text-lg">{error}</p>
+            <p className="text-yellow-300 text-lg">{error}</p>
           </div>
         </div>
       </div>
@@ -240,7 +240,7 @@ export default function HomeClient() {
                 <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
-                <p className="text-sm sm:text-base text-yellow-300/80 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-yellow-300 max-w-2xl mx-auto">
                   Descubre selecciones rápidas con lo más deseado de cada categoría.
                 </p>
               </div>
@@ -395,7 +395,7 @@ export default function HomeClient() {
                   <h2 className="text-2xl font-bold text-white">
                     {getPageTitle()}
                   </h2>
-                  <p className="text-yellow-300/80 text-sm">Descubre nuestros productos</p>
+                  <p className="text-yellow-300 text-sm">Descubre nuestros productos</p>
                 </div>
               </div>
 
@@ -484,7 +484,7 @@ export default function HomeClient() {
                 <>
                   <MasonryProductGrid products={displayProducts} layoutConfig={layoutPatternsConfig} />
                   
-                  <div className="text-center mt-8 text-yellow-300/80">
+                  <div className="text-center mt-8 text-yellow-300">
                     Mostrando {displayProducts.length} productos
                   </div>
                 </>
@@ -496,7 +496,7 @@ export default function HomeClient() {
               <h3 className="text-2xl font-bold text-white mb-2">
                 No se encontraron productos
               </h3>
-              <p className="text-yellow-300/80 text-lg">
+              <p className="text-yellow-300 text-lg">
                 Intenta ajustar los filtros o buscar otro término
               </p>
             </div>

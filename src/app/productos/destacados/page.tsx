@@ -63,7 +63,7 @@ export default function ProductosDestacados() {
           <h1 className="text-3xl font-bold text-white mb-2">
             ⭐ Productos Destacados
           </h1>
-          <p className="text-yellow-300/80">
+          <p className="text-yellow-300">
             Descubre nuestra selección especial de productos destacados
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function ProductosDestacados() {
             <h3 className="text-xl font-semibold text-white mb-2">
               No hay productos destacados
             </h3>
-            <p className="text-yellow-300/60 mb-6">
+            <p className="text-yellow-300 mb-6">
               Aún no se han configurado productos destacados desde el panel de administración
             </p>
             <Link
@@ -97,7 +97,7 @@ export default function ProductosDestacados() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-yellow-300/50 text-6xl">
+                    <div className="w-full h-full flex items-center justify-center text-yellow-300 text-6xl">
                       📦
                     </div>
                   )}
@@ -107,7 +107,7 @@ export default function ProductosDestacados() {
                     </span>
                   )}
                   <button className="absolute top-2 right-2 p-2 bg-slate-900/80/80 rounded-full hover:bg-slate-900/80 transition-colors">
-                    <HeartIcon className="h-5 w-5 text-yellow-300/80" />
+                    <HeartIcon className="h-5 w-5 text-yellow-300" />
                   </button>
                 </div>
                 
@@ -119,7 +119,7 @@ export default function ProductosDestacados() {
                   <h3 className="font-bold text-white line-clamp-2">
                     {product.nombre}
                   </h3>
-                  <p className="text-sm text-yellow-300/80 line-clamp-2">
+                  <p className="text-sm text-yellow-300 line-clamp-2">
                     {product.descripcion}
                   </p>
                   

@@ -116,7 +116,7 @@ export default function TerminosPage() {
                 </p>
               </section>
 
-              <p className="text-sm text-yellow-300/60 mt-8">
+              <p className="text-sm text-yellow-300 mt-8">
                 Última actualización: {new Date().toLocaleDateString('es-CL')}
               </p>
             </div>

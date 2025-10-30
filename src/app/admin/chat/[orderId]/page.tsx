@@ -279,13 +279,13 @@ export default function AdminChatPage() {
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Header */}
-      <div className="bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10">
+      <div className="bg-slate-800/70 border-b border-yellow-300/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button 
                 onClick={() => router.push('/admin')}
-                className="text-yellow-300/60 hover:text-yellow-300 transition-colors"
+                className="text-yellow-300 hover:text-yellow-300 transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </button>
@@ -301,7 +301,7 @@ export default function AdminChatPage() {
             </div>
             
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-yellow-300/80">Admin: {user?.email}</span>
+              <span className="text-sm text-yellow-300">Admin: {user?.email}</span>
               <span className="px-3 py-1 bg-slate-800 text-pink text-xs font-medium rounded-full">
                 Modo Administrador
               </span>
@@ -315,7 +315,7 @@ export default function AdminChatPage() {
           {/* Order Info */}
           <div className="lg:col-span-1 space-y-6">
             {/* Customer Info */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               
               <div className="space-y-2">
@@ -339,7 +339,7 @@ export default function AdminChatPage() {
             </div>
 
             {/* Order Summary */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               
               <div className="space-y-3">
@@ -356,7 +356,7 @@ export default function AdminChatPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-base font-semibold text-white">{item.nombre}</p>
-                      <p className="text-xs text-yellow-300/80">
+                      <p className="text-xs text-yellow-300">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -375,12 +375,12 @@ export default function AdminChatPage() {
 
           {/* Chat */}
           <div className="lg:col-span-2">
-            <div className="bg-slate-900/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-slate-800/70 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header */}
               <div className="bg-gradient-to-r from-pink to-pink text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-slate-900/80 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-slate-800/70 rounded-full flex items-center justify-center">
                       <ShieldCheckIcon className="h-6 w-6 text-pink" />
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-white"></div>
@@ -403,8 +403,8 @@ export default function AdminChatPage() {
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-pink" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">Chat con cliente</h4>
-                    <p className="text-sm text-yellow-300/80 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
-                    <p className="text-xs text-yellow-300/60">Responde cualquier pregunta sobre el pedido</p>
+                    <p className="text-sm text-yellow-300 mb-1">Aquí puedes comunicarte directamente con el cliente</p>
+                    <p className="text-xs text-yellow-300">Responde cualquier pregunta sobre el pedido</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -420,21 +420,21 @@ export default function AdminChatPage() {
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-yellow-300/60 mb-1 px-3">{order.customerName}</div>
+                          <div className="text-xs text-yellow-300 mb-1 px-3">{order.customerName}</div>
                         )}
                         
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-pink text-white'
-                              : 'bg-slate-900/80 text-white border border-yellow-300/30'
+                              : 'bg-slate-800/70 text-white border border-yellow-300/30'
                           }`}
                         >
                           <p className="whitespace-pre-wrap">{message.message}</p>
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-yellow-300/60">
+                          <span className="text-xs text-yellow-300">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -448,7 +448,7 @@ export default function AdminChatPage() {
                                   <CheckIcon className="h-3 w-3 text-pink -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-yellow-300/50" />
+                                <CheckIcon className="h-3 w-3 text-yellow-300" />
                               )}
                             </div>
                           )}
@@ -468,7 +468,7 @@ export default function AdminChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-yellow-300/30 p-4 bg-slate-900/80 rounded-b-lg">
+              <div className="border-t border-yellow-300/30 p-4 bg-slate-800/70 rounded-b-lg">
                 <div className="flex items-end space-x-3">
                   <div className="flex-1">
                     <textarea
@@ -494,7 +494,7 @@ export default function AdminChatPage() {
                   </button>
                 </div>
                 
-                <p className="text-xs text-yellow-300/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300 mt-2 text-center">
                   <span className="font-medium text-pink">Modo Admin:</span> El cliente verá tus respuestas en tiempo real
                 </p>
               </div>

@@ -127,7 +127,7 @@ export default function SalesReportsComponent() {
         <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 p-8 mb-8">
           <div className="flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-300500"></div>
-            <span className="ml-4 text-lg text-yellow-300/80">Cargando datos...</span>
+            <span className="ml-4 text-lg text-yellow-300">Cargando datos...</span>
           </div>
         </div>
       )}
@@ -153,7 +153,7 @@ export default function SalesReportsComponent() {
                   <CurrencyDollarIcon className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-yellow-300/80">Ingresos Hoy</p>
+                  <p className="text-sm font-medium text-yellow-300">Ingresos Hoy</p>
                   <p className="text-2xl font-bold text-white">
                     ${dailyReport.totalRevenue.toLocaleString('es-CL')}
                   </p>
@@ -167,7 +167,7 @@ export default function SalesReportsComponent() {
                   <ShoppingCartIcon className="h-8 w-8 text-red-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-yellow-300/80">Pedidos Hoy</p>
+                  <p className="text-sm font-medium text-yellow-300">Pedidos Hoy</p>
                   <p className="text-2xl font-bold text-white">{dailyReport.totalOrders}</p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function SalesReportsComponent() {
                   <ArrowTrendingUpIcon className="h-8 w-8 text-yellow-500" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-yellow-300/80">Ticket Promedio</p>
+                  <p className="text-sm font-medium text-yellow-300">Ticket Promedio</p>
                   <p className="text-2xl font-bold text-white">
                     ${dailyReport.totalOrders > 0 ? Math.round(dailyReport.totalRevenue / dailyReport.totalOrders).toLocaleString('es-CL') : '0'}
                   </p>
@@ -196,7 +196,7 @@ export default function SalesReportsComponent() {
                 <CalendarIcon className="h-8 w-8 text-yellow-400" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-yellow-300/80">Ingresos del Mes</p>
+                <p className="text-sm font-medium text-yellow-300">Ingresos del Mes</p>
                 <p className="text-2xl font-bold text-white">
                   ${monthlyReport.totalRevenue.toLocaleString('es-CL')}
                 </p>
@@ -209,7 +209,7 @@ export default function SalesReportsComponent() {
       {/* Controles de Fecha Simplificados */}
       <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center">
-          <ClockIcon className="h-6 w-6 mr-2 text-yellow-300/80" />
+          <ClockIcon className="h-6 w-6 mr-2 text-yellow-300" />
           Período de Análisis
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -258,7 +258,7 @@ export default function SalesReportsComponent() {
                     <div className="flex items-center">
                       <span className={`text-lg font-bold mr-2 ${
                         index === 0 ? 'text-yellow-600' :
-                        index === 1 ? 'text-yellow-300/80' :
+                        index === 1 ? 'text-yellow-300' :
                         index === 2 ? 'text-yellow-400' :
                         'text-red-600'
                       }`}>
@@ -266,7 +266,7 @@ export default function SalesReportsComponent() {
                       </span>
                       <p className="font-semibold text-white">{product.productName}</p>
                     </div>
-                    <p className="text-sm text-yellow-300/80 mt-1">
+                    <p className="text-sm text-yellow-300 mt-1">
                       {product.quantity} vendidos
                     </p>
                   </div>
@@ -297,7 +297,7 @@ export default function SalesReportsComponent() {
                   <p className="text-2xl font-bold text-green-600 mt-2">
                     ${method.amount.toLocaleString('es-CL')}
                   </p>
-                  <p className="text-sm text-yellow-300/80 mt-1">
+                  <p className="text-sm text-yellow-300 mt-1">
                     {method.count} transacciones
                   </p>
                 </div>
@@ -317,23 +317,23 @@ export default function SalesReportsComponent() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div className="text-center p-4 bg-yellow-50 rounded-lg">
-              <p className="text-sm text-yellow-300/80">Total Ingresos</p>
+              <p className="text-sm text-yellow-300">Total Ingresos</p>
               <p className="text-2xl font-bold text-red-600">
                 ${monthlyReport.totalRevenue.toLocaleString('es-CL')}
               </p>
             </div>
             <div className="text-center p-4 bg-yellow-50 rounded-lg">
-              <p className="text-sm text-yellow-300/80">Total Pedidos</p>
+              <p className="text-sm text-yellow-300">Total Pedidos</p>
               <p className="text-2xl font-bold text-red-600">{monthlyReport.totalOrders}</p>
             </div>
             <div className="text-center p-4 bg-green-50 rounded-lg">
-              <p className="text-sm text-yellow-300/80">Ticket Promedio</p>
+              <p className="text-sm text-yellow-300">Ticket Promedio</p>
               <p className="text-2xl font-bold text-green-600">
                 ${Math.round(monthlyReport.avgOrderValue).toLocaleString('es-CL')}
               </p>
             </div>
             <div className="text-center p-4 bg-yellow-50 rounded-lg">
-              <p className="text-sm text-yellow-300/80">Días con Ventas</p>
+              <p className="text-sm text-yellow-300">Días con Ventas</p>
               <p className="text-2xl font-bold text-yellow-500">{monthlyReport.dailyReports.length}</p>
             </div>
           </div>
@@ -356,7 +356,7 @@ export default function SalesReportsComponent() {
                       </span>
                       <div>
                         <p className="font-semibold text-white">{product.productName}</p>
-                        <p className="text-sm text-yellow-300/80">{product.quantity} vendidos • {product.category}</p>
+                        <p className="text-sm text-yellow-300">{product.quantity} vendidos • {product.category}</p>
                       </div>
                     </div>
                     <p className="text-lg font-bold text-white">

@@ -40,7 +40,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       case 'low':
         return <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600" />;
       default:
-        return <BellIcon className="h-5 w-5 text-yellow-300/80" />;
+        return <BellIcon className="h-5 w-5 text-yellow-300" />;
     }
   };
 
@@ -96,7 +96,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
             </span>
           </div>
           <XMarkIcon
-            className={`h-5 w-5 text-yellow-300/50 transform transition-transform ${
+            className={`h-5 w-5 text-yellow-300 transform transition-transform ${
               isExpanded ? 'rotate-45' : ''
             }`}
           />
@@ -124,14 +124,14 @@ export default function StockAlerts({ className }: StockAlertsProps) {
                     {alert.productName}
                   </h4>
 
-                  <div className="text-sm text-yellow-300/80 space-y-1">
+                  <div className="text-sm text-yellow-300 space-y-1">
                     <p>
                       <span className="font-medium">Stock actual:</span> {alert.currentStock} unidades
                     </p>
                     <p>
                       <span className="font-medium">Stock mínimo:</span> {alert.minStock} unidades
                     </p>
-                    <p className="text-xs text-yellow-300/60">
+                    <p className="text-xs text-yellow-300">
                       {new Date(alert.createdAt).toLocaleString('es-CL')}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function StockAlerts({ className }: StockAlertsProps) {
       {/* Footer with summary */}
       {!isExpanded && stockAlerts.length > 0 && (
         <div className="p-3 bg-slate-900 rounded-b-lg">
-          <div className="flex items-center justify-between text-sm text-yellow-300/80">
+          <div className="flex items-center justify-between text-sm text-yellow-300">
             <div className="flex space-x-4">
               <span>
                 Sin stock: {stockAlerts.filter(a => a.severity === 'out').length}

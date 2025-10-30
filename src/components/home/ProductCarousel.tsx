@@ -73,7 +73,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
 
         <div className="mt-auto space-y-1.5">
           {product.precioOriginal && product.precioOriginal > product.precio && (
-            <div className="text-[10px] text-yellow-300/50 line-through">
+            <div className="text-[10px] text-yellow-300 line-through">
               {formatPrice(product.precioOriginal)}
             </div>
           )}

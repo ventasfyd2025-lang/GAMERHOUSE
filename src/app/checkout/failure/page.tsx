@@ -39,7 +39,7 @@ function PaymentFailureContent() {
             <h2 className="mt-6 text-3xl font-bold text-white">
               Pago No Procesado
             </h2>
-            <p className="mt-2 text-sm text-yellow-300/80">
+            <p className="mt-2 text-sm text-yellow-300">
               Hubo un problema con tu pago
             </p>
           </div>
@@ -100,7 +100,7 @@ function PaymentFailureContent() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-yellow-300/60">
+          <p className="text-sm text-yellow-300">
             ¿Necesitas ayuda? {' '}
             <Link href="/contacto" className="text-yellow-300 hover:text-yellow-300 font-medium">
               Contáctanos

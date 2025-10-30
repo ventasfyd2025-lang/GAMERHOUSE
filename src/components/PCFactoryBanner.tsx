@@ -78,13 +78,13 @@ export default function PCFactoryBanner({
                 onClick={() => setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
                 className="p-2 rounded-full border border-yellow-300/40 hover:bg-slate-900 transition-colors"
               >
-                <ChevronLeftIcon className="h-5 w-5 text-yellow-300/80" />
+                <ChevronLeftIcon className="h-5 w-5 text-yellow-300" />
               </button>
               <button
                 onClick={() => setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
                 className="p-2 rounded-full border border-yellow-300/40 hover:bg-slate-900 transition-colors"
               >
-                <ChevronRightIcon className="h-5 w-5 text-yellow-300/80" />
+                <ChevronRightIcon className="h-5 w-5 text-yellow-300" />
               </button>
             </div>
           )}
@@ -140,7 +140,7 @@ export default function PCFactoryBanner({
                           {/* Original Price */}
                           {((product.precioOriginal && product.precioOriginal > (product.precio || 0)) || 
                             false) && (
-                            <div className="text-xs text-yellow-300/60 line-through">
+                            <div className="text-xs text-yellow-300 line-through">
                               {formatPrice(product.precioOriginal || 0)}
                             </div>
                           )}

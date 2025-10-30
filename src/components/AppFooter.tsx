@@ -7,7 +7,7 @@ export default function AppFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-dark via-slate-800 to-black border-t border-yellow-300/30 text-yellow-300/80 transition-all duration-300">
+    <footer className="bg-gradient-to-b from-dark via-slate-800 to-black border-t border-yellow-300/30 text-yellow-300 transition-all duration-300">
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -17,7 +17,7 @@ export default function AppFooter() {
               <span className="text-2xl">🎮</span>
               <span className="font-bold text-white text-lg">GAMERHOUSE</span>
             </div>
-            <p className="text-sm text-yellow-300/60">
+            <p className="text-sm text-yellow-300">
               La tienda definitiva para gamers y coleccionistas de cartas.
             </p>
           </div>
@@ -82,13 +82,13 @@ export default function AppFooter() {
                 </a>
               </li>
               <li className="flex gap-3 mt-4">
-                <a href="#" className="text-yellow-300/60 hover:text-yellow-300 transition-colors">
+                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-yellow-300/60 hover:text-yellow-300 transition-colors">
+                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-yellow-300/60 hover:text-yellow-300 transition-colors">
+                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
                   <Twitter className="h-5 w-5" />
                 </a>
               </li>

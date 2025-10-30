@@ -188,7 +188,7 @@ export default function MercadoPagoWallet({
         <div className="p-8 bg-slate-900 border border-yellow-300/30 rounded-lg">
           <div className="flex items-center justify-center space-x-3">
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
-            <span className="text-yellow-300/80">Cargando opciones de pago...</span>
+            <span className="text-yellow-300">Cargando opciones de pago...</span>
           </div>
         </div>
       )}

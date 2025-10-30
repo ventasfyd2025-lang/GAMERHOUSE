@@ -82,7 +82,7 @@ export default function ProductBanner({
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
             {title}
           </h2>
-          <p className="text-xl md:text-2xl text-yellow-300/80">
+          <p className="text-xl md:text-2xl text-yellow-300">
             {text}
           </p>
         </div>
@@ -119,7 +119,7 @@ export default function ProductBanner({
                       <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#333333' }}>
                         {product.nombre}
                       </h3>
-                      <p className="text-lg text-yellow-300/80 mb-6 line-clamp-3">
+                      <p className="text-lg text-yellow-300 mb-6 line-clamp-3">
                         {product.descripcion}
                       </p>
                       
@@ -133,7 +133,7 @@ export default function ProductBanner({
                         <div className="text-4xl md:text-5xl font-bold" style={{ color: '#2E7D32' }}>
                           {formatPrice(product.precio)}
                         </div>
-                        <div className="text-sm text-yellow-300/60 mt-1">IVA incluido</div>
+                        <div className="text-sm text-yellow-300 mt-1">IVA incluido</div>
                       </div>
 
                       {/* CTA Button */}

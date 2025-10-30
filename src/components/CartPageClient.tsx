@@ -34,7 +34,7 @@ export default function CartPageClient() {
             <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
             </h1>
-            <p className="text-lg text-yellow-300/80 mb-8">
+            <p className="text-lg text-yellow-300 mb-8">
               ¡Agrega algunos productos para comenzar tu compra!
             </p>
             <Link
@@ -63,7 +63,7 @@ export default function CartPageClient() {
               <h1 className="text-2xl font-bold text-white">
                 Carrito de compras
               </h1>
-              <p className="text-yellow-300/80 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
+              <p className="text-yellow-300 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function CartPageClient() {
                     />
                   ) : (
                     <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center">
-                      <span className="text-yellow-300/50 text-lg sm:text-2xl">📦</span>
+                      <span className="text-yellow-300 text-lg sm:text-2xl">📦</span>
                     </div>
                   )}
                 </div>
@@ -100,9 +100,9 @@ export default function CartPageClient() {
                     {item.nombre}
                   </Link>
                   {item.sku && (
-                    <p className="text-xs text-yellow-300/60">SKU: {item.sku}</p>
+                    <p className="text-xs text-yellow-300">SKU: {item.sku}</p>
                   )}
-                  <p className="text-yellow-300/80 mt-1 text-sm sm:text-base">
+                  <p className="text-yellow-300 mt-1 text-sm sm:text-base">
                     {formatPrice(item.precio)} c/u
                   </p>
                 </div>
@@ -158,7 +158,7 @@ export default function CartPageClient() {
 
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2">
-                <span className="text-yellow-300/80 font-medium">Subtotal</span>
+                <span className="text-yellow-300 font-medium">Subtotal</span>
                 <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
               </div>
               <div className="border-t border-yellow-300 pt-4">

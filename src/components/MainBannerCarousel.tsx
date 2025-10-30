@@ -280,9 +280,9 @@ export default function MainBannerCarousel({
     return (
       <div className="relative w-full bg-slate-800 h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] flex items-center justify-center">
         <div className="text-center p-8">
-          <div className="text-yellow-300/50 text-6xl mb-4">📸</div>
+          <div className="text-yellow-300 text-6xl mb-4">📸</div>
           <h3 className="text-xl font-bold text-yellow-300 mb-2">No hay banners configurados</h3>
-          <p className="text-yellow-300/60 text-sm">
+          <p className="text-yellow-300 text-sm">
             {!config?.active && "El carrusel está desactivado. "}
             {(!config?.slides || config.slides.length === 0) && "Agrega al menos un slide para ver la vista previa."}
           </p>

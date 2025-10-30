@@ -232,7 +232,7 @@ function AllProductsPageContent() {
                 <h1 className="text-3xl sm:text-4xl font-bold text-white">
                   Todos los productos disponibles
                 </h1>
-                <p className="mt-2 text-sm sm:text-base text-yellow-300/80 max-w-2xl">
+                <p className="mt-2 text-sm sm:text-base text-yellow-300 max-w-2xl">
                   Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
                 </p>
                 {activeSectionTitle && (
@@ -354,16 +354,16 @@ function AllProductsPageContent() {
         {!productsLoading && !productsError && (
           <section className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div className="text-sm text-yellow-300/80">
+              <div className="text-sm text-yellow-300">
                 {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'} encontrados · Página {page} de {totalPages}
               </div>
               {priceSummary && (
-              <div className="text-xs text-yellow-300/60">Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}</div>
+              <div className="text-xs text-yellow-300">Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}</div>
             )}
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="bg-slate-900/80 rounded-2xl border border-gray-100 p-10 text-center text-yellow-300/80">
+              <div className="bg-slate-900/80 rounded-2xl border border-gray-100 p-10 text-center text-yellow-300">
                 <div className="text-5xl mb-4">🔍</div>
                 <p>No encontramos resultados con los filtros actuales. Ajusta la búsqueda para ver más productos.</p>
               </div>
@@ -378,17 +378,17 @@ function AllProductsPageContent() {
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-3">
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300/80 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.max(1, prev - 1))}
                   disabled={page === 1}
                 >
                   ← Anterior
                 </button>
-                <span className="text-sm text-yellow-300/60">
+                <span className="text-sm text-yellow-300">
                   Página {page} de {totalPages}
                 </span>
                 <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300/80 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
+                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
                   onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
                   disabled={page === totalPages}
                 >
@@ -398,7 +398,7 @@ function AllProductsPageContent() {
             )}
 
             {filteredProducts.length > ITEMS_PER_PAGE && (
-              <div className="text-center text-xs text-yellow-300/50">
+              <div className="text-center text-xs text-yellow-300">
                 Mostrando los primeros {ITEMS_PER_PAGE} resultados. Refina los filtros para ubicar productos específicos.
               </div>
             )}

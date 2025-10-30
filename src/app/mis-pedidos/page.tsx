@@ -181,7 +181,7 @@ export default function OrdersPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-yellow-300 mx-auto mb-4"></div>
-          <p className="text-yellow-300/80 text-lg font-medium">Cargando...</p>
+          <p className="text-yellow-300 text-lg font-medium">Cargando...</p>
         </div>
       </div>
     );
@@ -203,7 +203,7 @@ export default function OrdersPage() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
-                <p className="text-yellow-300/80 text-sm">Historial y seguimiento de tus compras</p>
+                <p className="text-yellow-300 text-sm">Historial y seguimiento de tus compras</p>
               </div>
             </div>
 
@@ -228,7 +228,7 @@ export default function OrdersPage() {
           <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-slate-700 text-center">
             <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
             <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
-            <p className="text-lg text-yellow-300/80 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
+            <p className="text-lg text-yellow-300 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
               className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
@@ -253,7 +253,7 @@ export default function OrdersPage() {
                           <h3 className="text-lg font-semibold text-white">
                             Pedido #{order.id.slice(-8).toUpperCase()}
                           </h3>
-                          <p className="text-sm text-yellow-300/80">
+                          <p className="text-sm text-yellow-300">
                             {formatDateTime(order.createdAt)}
                           </p>
                         </div>
@@ -269,7 +269,7 @@ export default function OrdersPage() {
                           <p className="text-lg font-bold text-white">
                             {formatPrice(order.total)}
                           </p>
-                          <p className="text-sm text-yellow-300/80">
+                          <p className="text-sm text-yellow-300">
                             {order.items.length} producto{order.items.length > 1 ? 's' : ''}
                           </p>
                         </div>
@@ -296,7 +296,7 @@ export default function OrdersPage() {
                               )}
                               <div className="flex-1">
                                 <p className="font-medium text-white">{item.nombre}</p>
-                                <p className="text-sm text-yellow-300/80">
+                                <p className="text-sm text-yellow-300">
                                   Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                                 </p>
                               </div>
@@ -310,7 +310,7 @@ export default function OrdersPage() {
 
                       <div>
                         <h4 className="font-medium text-white mb-3">Información de Envío</h4>
-                        <div className="text-sm text-yellow-300/80 space-y-1">
+                        <div className="text-sm text-yellow-300 space-y-1">
                           <p><span className="font-medium">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
                           <p><span className="font-medium">Email:</span> {order.shippingAddress.email}</p>
                           <p><span className="font-medium">Teléfono:</span> {order.shippingAddress.phone}</p>
@@ -347,7 +347,7 @@ export default function OrdersPage() {
                           )}
                         </div>
 
-                        <div className="text-sm text-yellow-300/60">
+                        <div className="text-sm text-yellow-300">
                           Última actualización: {formatDate(order.updatedAt)}
                         </div>
                       </div>

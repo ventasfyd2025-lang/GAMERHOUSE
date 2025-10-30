@@ -40,18 +40,18 @@ const SmallProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-yellow-300/50 hover:text-pink" />
+          <HeartIcon className="h-5 w-5 text-yellow-300 hover:text-pink" />
         </button>
       </div>
       
       <div className="p-2 flex flex-col flex-1">
-        <div className="text-[10px] sm:text-xs text-yellow-300/60 uppercase tracking-wide">{product.categoria}</div>
+        <div className="text-[10px] sm:text-xs text-yellow-300 uppercase tracking-wide">{product.categoria}</div>
         <h3 className="text-xs sm:text-sm font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
         
         <div className="mt-2 flex flex-col flex-1">
           <div className="flex items-baseline gap-1">
             {discountPercentage > 0 && (
-              <span className="text-xs text-yellow-300/50 line-through">
+              <span className="text-xs text-yellow-300 line-through">
                 {formatPrice(originalPrice)}
               </span>
             )}
@@ -62,7 +62,7 @@ const SmallProductCard = ({ product }: { product: Product }) => {
           
           <div className="flex items-center mt-1">
             <StarIcon className="h-3 w-3 text-yellow-400" />
-            <span className="text-xs text-yellow-300/80 ml-1">4.5</span>
+            <span className="text-xs text-yellow-300 ml-1">4.5</span>
           </div>
           
           <button className="mt-2 w-full text-xs sm:text-sm bg-yellow-400 text-white py-1 sm:py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -94,19 +94,19 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-6 w-6 text-yellow-300/50 hover:text-pink" />
+          <HeartIcon className="h-6 w-6 text-yellow-300 hover:text-pink" />
         </button>
       </div>
       
       <div className="p-4 flex flex-col flex-1">
-        <div className="text-xs text-yellow-300/60 uppercase tracking-wide">{product.categoria}</div>
+        <div className="text-xs text-yellow-300 uppercase tracking-wide">{product.categoria}</div>
         <h3 className="text-lg font-medium text-white line-clamp-2 mt-2">{product.nombre}</h3>
-        <p className="text-sm text-yellow-300/80 mt-1 line-clamp-2">{product.descripcion}</p>
+        <p className="text-sm text-yellow-300 mt-1 line-clamp-2">{product.descripcion}</p>
         
         <div className="mt-4 flex flex-col flex-1">
           <div className="flex items-baseline gap-2">
             {discountPercentage > 0 && (
-              <span className="text-sm text-yellow-300/50 line-through">
+              <span className="text-sm text-yellow-300 line-through">
                 {formatPrice(originalPrice)}
               </span>
             )}
@@ -117,7 +117,7 @@ const LargeProductCard = ({ product }: { product: Product }) => {
           
           <div className="flex items-center mt-2">
             <StarIcon className="h-4 w-4 text-yellow-400" />
-            <span className="text-sm text-yellow-300/80 ml-1">4.5 (128)</span>
+            <span className="text-sm text-yellow-300 ml-1">4.5 (128)</span>
           </div>
           
           <div className="flex gap-2 mt-4">
@@ -155,18 +155,18 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
           </span>
         )}
         <button className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-          <HeartIcon className="h-5 w-5 text-yellow-300/50 hover:text-pink" />
+          <HeartIcon className="h-5 w-5 text-yellow-300 hover:text-pink" />
         </button>
       </div>
       
       <div className="p-3 flex flex-col flex-1">
-        <div className="text-xs text-yellow-300/60 uppercase tracking-wide">{product.categoria}</div>
+        <div className="text-xs text-yellow-300 uppercase tracking-wide">{product.categoria}</div>
         <h3 className="text-base font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
         
         <div className="mt-3 flex flex-col flex-1">
           <div className="flex items-baseline gap-1.5">
             {discountPercentage > 0 && (
-              <span className="text-xs text-yellow-300/50 line-through">
+              <span className="text-xs text-yellow-300 line-through">
                 {formatPrice(originalPrice)}
               </span>
             )}
@@ -177,7 +177,7 @@ const VerticalProductCard = ({ product }: { product: Product }) => {
           
           <div className="flex items-center mt-2">
             <StarIcon className="h-3.5 w-3.5 text-yellow-400" />
-            <span className="text-xs text-yellow-300/80 ml-1">4.5 (42)</span>
+            <span className="text-xs text-yellow-300 ml-1">4.5 (42)</span>
           </div>
           
           <button className="mt-3 w-full text-sm bg-yellow-400 text-white py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -208,20 +208,20 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
       <div className="flex-1 p-4 flex flex-col">
         <div className="flex justify-between">
           <div>
-            <div className="text-xs text-yellow-300/60 uppercase tracking-wide">{product.categoria}</div>
+            <div className="text-xs text-yellow-300 uppercase tracking-wide">{product.categoria}</div>
             <h3 className="text-base font-medium text-white line-clamp-2 mt-1">{product.nombre}</h3>
           </div>
           <button className="opacity-0 group-hover:opacity-100 transition-opacity">
-            <HeartIcon className="h-5 w-5 text-yellow-300/50 hover:text-pink" />
+            <HeartIcon className="h-5 w-5 text-yellow-300 hover:text-pink" />
           </button>
         </div>
         
-        <p className="text-sm text-yellow-300/80 mt-2 line-clamp-2">{product.descripcion}</p>
+        <p className="text-sm text-yellow-300 mt-2 line-clamp-2">{product.descripcion}</p>
         
         <div className="mt-4 flex items-center gap-3">
           <div className="flex items-baseline gap-2">
             {discountPercentage > 0 && (
-              <span className="text-sm text-yellow-300/50 line-through">
+              <span className="text-sm text-yellow-300 line-through">
                 {formatPrice(originalPrice)}
               </span>
             )}
@@ -232,7 +232,7 @@ const HorizontalProductCard = ({ product }: { product: Product }) => {
           
           <div className="flex items-center">
             <StarIcon className="h-4 w-4 text-yellow-400" />
-            <span className="text-sm text-yellow-300/80 ml-1">4.5 (89)</span>
+            <span className="text-sm text-yellow-300 ml-1">4.5 (89)</span>
           </div>
         </div>
         

@@ -205,7 +205,7 @@ export default function ProfilePage() {
               </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-white">Mi Perfil</h1>
-                <p className="text-sm sm:text-base text-yellow-300/80">Gestiona tu información personal</p>
+                <p className="text-sm sm:text-base text-yellow-300">Gestiona tu información personal</p>
               </div>
             </div>
             
@@ -250,7 +250,7 @@ export default function ProfilePage() {
           {/* Información Personal */}
           <div className="bg-slate-900/80 rounded-lg shadow-md p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6 flex items-center">
-              <UserIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-yellow-300/80" />
+              <UserIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-yellow-300" />
               Información Personal
             </h2>
 
@@ -343,7 +343,7 @@ export default function ProfilePage() {
           {/* Dirección */}
           <div className="bg-slate-900/80 rounded-lg shadow-md p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6 flex items-center">
-              <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-yellow-300/80" />
+              <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-yellow-300" />
               Dirección
             </h2>
 
@@ -449,7 +449,7 @@ export default function ProfilePage() {
               onClick={() => setShowPasswordModal(true)}
               className="flex items-center justify-center px-4 py-3 border border-yellow-300/40 rounded-lg hover:bg-slate-900 transition-colors text-sm sm:text-base"
             >
-              <KeyIcon className="h-5 w-5 mr-2 text-yellow-300/80" />
+              <KeyIcon className="h-5 w-5 mr-2 text-yellow-300" />
               <span className="text-yellow-300">Cambiar Contraseña</span>
             </button>
             <button
@@ -487,7 +487,7 @@ export default function ProfilePage() {
                     setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
                     setMessage('');
                   }}
-                  className="text-yellow-300/50 hover:text-yellow-300/80"
+                  className="text-yellow-300 hover:text-yellow-300"
                 >
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

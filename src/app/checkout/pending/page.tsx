@@ -39,7 +39,7 @@ function PaymentPendingContent() {
             <h2 className="mt-6 text-3xl font-bold text-white">
               Pago Pendiente
             </h2>
-            <p className="mt-2 text-sm text-yellow-300/80">
+            <p className="mt-2 text-sm text-yellow-300">
               Tu pago está siendo procesado
             </p>
           </div>
@@ -113,7 +113,7 @@ function PaymentPendingContent() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-yellow-300/60">
+          <p className="text-sm text-yellow-300">
             ¿Tienes dudas sobre tu pago? {' '}
             <Link href="/contacto" className="text-yellow-300 hover:text-yellow-300 font-medium">
               Contáctanos

@@ -166,7 +166,7 @@ function PaymentSuccessContent() {
                 '¡Pedido Recibido!' :
                 '¡Pago Exitoso!'}
             </h1>
-            <p className="text-lg text-yellow-300/80">
+            <p className="text-lg text-yellow-300">
               {orderInfo?.paymentMethod === 'transferencia' ?
                 'Hemos recibido tu pedido y te contactaremos pronto' :
                 'Tu pedido ha sido procesado correctamente'}
@@ -187,26 +187,26 @@ function PaymentSuccessContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-3">
                       <div>
-                        <span className="text-sm font-medium text-yellow-300/60">Número de Orden</span>
+                        <span className="text-sm font-medium text-yellow-300">Número de Orden</span>
                         <p className="text-lg font-semibold text-white">
                           #{orderInfo.orderId.slice(-8).toUpperCase()}
                         </p>
                       </div>
 
                       <div>
-                        <span className="text-sm font-medium text-yellow-300/60">Cliente</span>
+                        <span className="text-sm font-medium text-yellow-300">Cliente</span>
                         <p className="text-base text-white">{orderInfo.customerName}</p>
                       </div>
 
                       <div>
-                        <span className="text-sm font-medium text-yellow-300/60">Email</span>
+                        <span className="text-sm font-medium text-yellow-300">Email</span>
                         <p className="text-base text-white">{orderInfo.customerEmail}</p>
                       </div>
                     </div>
 
                     <div className="space-y-3">
                       <div>
-                        <span className="text-sm font-medium text-yellow-300/60">Método de Pago</span>
+                        <span className="text-sm font-medium text-yellow-300">Método de Pago</span>
                         <div className="flex items-center mt-1">
                           {orderInfo.paymentMethod === 'transferencia' ? (
                             <>
@@ -222,7 +222,7 @@ function PaymentSuccessContent() {
                       </div>
 
                       <div>
-                        <span className="text-sm font-medium text-yellow-300/60">Total</span>
+                        <span className="text-sm font-medium text-yellow-300">Total</span>
                         <p className="text-xl font-bold text-white">
                           {formatPrice(orderInfo.total)}
                         </p>
@@ -230,7 +230,7 @@ function PaymentSuccessContent() {
 
                       {orderInfo.paymentId && (
                         <div>
-                          <span className="text-sm font-medium text-yellow-300/60">ID de Pago</span>
+                          <span className="text-sm font-medium text-yellow-300">ID de Pago</span>
                           <p className="text-base text-white">{orderInfo.paymentId}</p>
                         </div>
                       )}
@@ -257,7 +257,7 @@ function PaymentSuccessContent() {
                               <p className="text-sm font-medium text-white truncate">
                                 {item.nombre}
                               </p>
-                              <p className="text-sm text-yellow-300/60">
+                              <p className="text-sm text-yellow-300">
                                 Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                               </p>
                             </div>
@@ -278,7 +278,7 @@ function PaymentSuccessContent() {
                     </div>
                   ) : (
                     <div className="mt-6 border-t pt-6">
-                      <p className="text-sm text-yellow-300/60 italic">
+                      <p className="text-sm text-yellow-300 italic">
                         Los detalles de productos se pueden ver en la sección "Mis Pedidos"
                       </p>
                     </div>
@@ -345,7 +345,7 @@ function PaymentSuccessContent() {
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-yellow-300/60">
+              <p className="text-sm text-yellow-300">
                 ¿Necesitas ayuda? {' '}
                 <Link href="/contacto" className="text-yellow-300 hover:text-yellow-300-hover font-medium">
                   Contáctanos
@@ -357,7 +357,7 @@ function PaymentSuccessContent() {
           {/* Additional info */}
           <div className="mt-12 text-center">
             <div className="inline-flex items-center px-4 py-2 bg-slate-800 rounded-full">
-              <span className="text-sm text-yellow-300/80">
+              <span className="text-sm text-yellow-300">
                 📧 Recibirás un email de confirmación en breve
               </span>
             </div>

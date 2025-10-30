@@ -347,8 +347,8 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                       <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
                     </div>
                     <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
-                    <p className="text-sm text-yellow-300/80 mb-1">Somos el equipo de soporte de FyD</p>
-                    <p className="text-xs text-yellow-300/60 mb-4">¿En qué podemos ayudarte hoy?</p>
+                    <p className="text-sm text-yellow-300 mb-1">Somos el equipo de soporte de FyD</p>
+                    <p className="text-xs text-yellow-300 mb-4">¿En qué podemos ayudarte hoy?</p>
                     
                     {/* Quick Options */}
                     <div className="space-y-2 max-w-xs mx-auto">
@@ -400,7 +400,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-2' : 'order-1'}`}>
                         {message.isAdmin && (
-                          <div className="text-xs text-yellow-300/60 mb-1 px-3">Soporte FyD</div>
+                          <div className="text-xs text-yellow-300 mb-1 px-3">Soporte FyD</div>
                         )}
                         
                         <div
@@ -414,7 +414,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-start' : 'justify-end'}`}>
-                          <span className="text-xs text-yellow-300/60">
+                          <span className="text-xs text-yellow-300">
                             {formatTime(message.timestamp)}
                           </span>
                           {!message.isAdmin && (
@@ -425,7 +425,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                                   <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-yellow-300/50" />
+                                <CheckIcon className="h-3 w-3 text-yellow-300" />
                               )}
                             </div>
                           )}
@@ -505,7 +505,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                   </button>
                 </div>
                 
-                <p className="text-xs text-yellow-300/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300 mt-2 text-center">
                   Generalmente respondemos en unos minutos
                 </p>
                 {whatsappUrl && whatsappUrl !== '#' && (

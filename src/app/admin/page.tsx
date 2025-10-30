@@ -2205,10 +2205,10 @@ export default function AdminPage() {
   if (!user || !isAdmin) {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="max-w-md w-full bg-slate-900/80 rounded-lg shadow-md p-8">
+        <div className="max-w-md w-full bg-slate-800/70 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
-            <p className="text-yellow-300/80 mt-2">GAMERHOUSE</p>
+            <p className="text-yellow-300 mt-2">GAMERHOUSE</p>
           </div>
 
           {!user ? (
@@ -2285,7 +2285,7 @@ export default function AdminPage() {
       `}</style>
       <div id="admin-container" className="min-h-screen bg-gradient-to-br from-slate-800/30 via-slate-800/20 to-slate-800/40">
 
-      <header className="bg-slate-900/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-slate-700">
+      <header className="bg-slate-800/70 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-slate-700">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
@@ -2315,7 +2315,7 @@ export default function AdminPage() {
         <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-yellow-300-200 bg-yellow-400">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-slate-900/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
+              <div className="w-10 h-10 bg-slate-800/70/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                 <span className="text-xl">⚡</span>
               </div>
               <div>
@@ -2323,7 +2323,7 @@ export default function AdminPage() {
                 <p className="text-slate-100-light text-xs">Gestiona tu tienda</p>
               </div>
             </div>
-            <div className="bg-slate-900/80/20 backdrop-blur-sm rounded-lg px-3 py-1">
+            <div className="bg-slate-800/70/20 backdrop-blur-sm rounded-lg px-3 py-1">
               <span className="text-white font-semibold text-xs">🎮 GAMERHOUSE</span>
             </div>
           </div>
@@ -2350,8 +2350,8 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
                   activeTab === tab.id
-                    ? 'bg-slate-900/80 text-yellow-300 shadow-lg shadow-red-600/20 transform scale-105'
-                    : 'text-white/80 hover:text-white hover:bg-slate-900/80/20 backdrop-blur-sm'
+                    ? 'bg-slate-800/70 text-yellow-300 shadow-lg shadow-red-600/20 transform scale-105'
+                    : 'text-white/80 hover:text-white hover:bg-slate-800/70/20 backdrop-blur-sm'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
@@ -2371,7 +2371,7 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
@@ -2379,7 +2379,7 @@ export default function AdminPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Dashboard & Reportes</h2>
-                    <p className="text-yellow-300/80 text-sm">Panel principal con estadísticas y exportación</p>
+                    <p className="text-yellow-300 text-sm">Panel principal con estadísticas y exportación</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -2427,7 +2427,7 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">📦</div>
                   <div>
@@ -2437,7 +2437,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">🛒</div>
                   <div>
@@ -2447,7 +2447,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">💰</div>
                   <div>
@@ -2459,7 +2459,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">⏳</div>
                   <div>
@@ -2472,7 +2472,7 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700">
               <div className="p-6 border-b border-slate-700">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
@@ -2485,27 +2485,27 @@ export default function AdminPage() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Pedidos
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Total Comprado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Último Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Estados
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                     {ordersByCustomer.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-yellow-300/60">
+                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-yellow-300">
                           No hay pedidos registrados todavía.
                         </td>
                       </tr>
@@ -2517,7 +2517,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {group.customerName}
                               </div>
-                              <div className="text-sm text-yellow-300/60">
+                              <div className="text-sm text-yellow-300">
                                 {group.customerEmail}
                               </div>
                             </div>
@@ -2634,7 +2634,7 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-slate-900/80 border-2 border-slate-700 rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
+                    <div className="mt-4 bg-slate-800/70 border-2 border-slate-700 rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
                       <div className="bg-gradient-to-r from-slate-800 to-slate-800 p-4 border-b border-slate-700">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
@@ -2646,7 +2646,7 @@ export default function AdminPage() {
                       <div className="max-h-96 overflow-y-auto">
                         <table className="w-full">
                           <thead className="bg-slate-900 sticky top-0">
-                            <tr className="text-left text-xs font-semibold text-yellow-300/80 uppercase">
+                            <tr className="text-left text-xs font-semibold text-yellow-300 uppercase">
                               <th className="px-4 py-2">Producto</th>
                               <th className="px-4 py-2">Estado</th>
                               <th className="px-4 py-2">Stock</th>
@@ -2666,7 +2666,7 @@ export default function AdminPage() {
                                 <tr key={product.id} className="hover:bg-slate-900 transition-colors">
                                   <td className="px-4 py-3">
                                     <div className="font-medium text-white">{product.nombre}</div>
-                                    <div className="text-xs text-yellow-300/60">{product.categoria}</div>
+                                    <div className="text-xs text-yellow-300">{product.categoria}</div>
                                   </td>
                                   <td className="px-4 py-3">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
@@ -2687,7 +2687,7 @@ export default function AdminPage() {
                                     </span>
                                   </td>
                                   <td className="px-4 py-3">
-                                    <span className="text-yellow-300/80">{minStock}</span>
+                                    <span className="text-yellow-300">{minStock}</span>
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="flex items-center space-x-2">
@@ -2699,7 +2699,7 @@ export default function AdminPage() {
                                           style={{ width: `${stockPercentage}%` }}
                                         ></div>
                                       </div>
-                                      <span className="text-xs text-yellow-300/80">{Math.round(stockPercentage)}%</span>
+                                      <span className="text-xs text-yellow-300">{Math.round(stockPercentage)}%</span>
                                     </div>
                                   </td>
                                   <td className="px-4 py-3">
@@ -2740,7 +2740,7 @@ export default function AdminPage() {
                       {/* Quick Actions Footer */}
                       <div className="bg-slate-900 p-4 border-t border-yellow-300/30">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-yellow-300/80">
+                          <span className="text-sm text-yellow-300">
                             💡 Tip: Haz clic en los botones de acción para gestionar el stock rápidamente
                           </span>
                           <button
@@ -2793,7 +2793,7 @@ export default function AdminPage() {
                     {productSearch && (
                       <button
                         onClick={() => setProductSearch('')}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-300/50 hover:text-yellow-300/80 text-lg"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-300 hover:text-yellow-300 text-lg"
                       >
                         ✕
                       </button>
@@ -2819,7 +2819,7 @@ export default function AdminPage() {
 
               {/* Advanced Filters (Collapsible) */}
               {showFilters && (
-                <div className="bg-slate-900/80 bg-opacity-80 rounded-xl p-4 space-y-4 border border-warning/30">
+                <div className="bg-slate-800/70 bg-opacity-80 rounded-xl p-4 space-y-4 border border-warning/30">
                   <h4 className="font-semibold text-secondary flex items-center">
                     🎯 Filtros Avanzados
                   </h4>
@@ -2986,10 +2986,10 @@ export default function AdminPage() {
             </div>
 
             
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-4 mb-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <span className="text-sm text-yellow-300/80">
+                  <span className="text-sm text-yellow-300">
                     {selectedProducts.length} producto(s) seleccionado(s)
                   </span>
                   <button
@@ -3000,7 +3000,7 @@ export default function AdminPage() {
                   </button>
                   <button
                     onClick={clearSelection}
-                    className="text-sm text-yellow-300/80 hover:text-yellow-300"
+                    className="text-sm text-yellow-300 hover:text-yellow-300"
                   >
                     Limpiar selección
                   </button>
@@ -3017,12 +3017,12 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-slate-900/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-slate-800/70 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         <input
                           type="checkbox"
                           checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
@@ -3036,24 +3036,24 @@ export default function AdminPage() {
                           className="rounded border-yellow-300/40"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Producto
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Precio
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Stock
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Categoría
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3085,7 +3085,7 @@ export default function AdminPage() {
                               <div className="text-sm font-medium text-white">
                                 {product.nombre}
                               </div>
-                              <div className="text-xs text-yellow-300/60 mt-1">
+                              <div className="text-xs text-yellow-300 mt-1">
                                 SKU: {product.sku && product.sku.trim() ? product.sku : 'No asignado'}
                               </div>
                               <div className="flex space-x-1 mt-1">
@@ -3172,7 +3172,7 @@ export default function AdminPage() {
 
         {activeTab === 'user-management' && (
           <div className="space-y-6">
-            <div className="bg-slate-900/80 rounded-lg shadow p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-white">👥 Gestión de Usuarios</h2>
                 <button
@@ -3224,14 +3224,14 @@ export default function AdminPage() {
               {/* Modal de detalles del usuario */}
               {selectedUserDetails && (
                 <div
-                  className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                  className="fixed inset-0 bg-slate-800/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                   onClick={() => {
                     setSelectedUserDetails(null);
                     setSelectedUserOrders([]);
                   }}
                 >
                   <div
-                    className="bg-slate-900/80 rounded-xl border-2 border-amber-300 shadow-lg max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+                    className="bg-slate-800/70 rounded-xl border-2 border-amber-300 shadow-lg max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="bg-red-600 hover:bg-secondary-500 to-yellow-500 text-white p-4 flex justify-between items-center">
@@ -3241,7 +3241,7 @@ export default function AdminPage() {
                           setSelectedUserDetails(null);
                           setSelectedUserOrders([]);
                         }}
-                        className="text-white hover:bg-slate-900/80/20 rounded-full p-2 transition-colors"
+                        className="text-white hover:bg-slate-800/70/20 rounded-full p-2 transition-colors"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -3252,21 +3252,21 @@ export default function AdminPage() {
                   <div className="p-6 overflow-y-auto flex-1">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Nombre Completo</label>
+                        <label className="text-sm font-semibold text-yellow-300">Nombre Completo</label>
                         <p className="text-lg font-medium text-white">
                           {selectedUserDetails.firstName} {selectedUserDetails.lastName}
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Correo Electrónico</label>
+                        <label className="text-sm font-semibold text-yellow-300">Correo Electrónico</label>
                         <p className="text-lg font-medium text-white">{selectedUserDetails.email}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Teléfono</label>
+                        <label className="text-sm font-semibold text-yellow-300">Teléfono</label>
                         <p className="text-lg font-medium text-white">{selectedUserDetails.phone || 'No registrado'}</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Rol</label>
+                        <label className="text-sm font-semibold text-yellow-300">Rol</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${getRoleColor(selectedUserDetails.role || 'cliente')}`}>
                             {selectedUserDetails.role || 'cliente'}
@@ -3274,7 +3274,7 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Estado</label>
+                        <label className="text-sm font-semibold text-yellow-300">Estado</label>
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
@@ -3286,7 +3286,7 @@ export default function AdminPage() {
                         </p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-yellow-300/80">Fecha de Registro</label>
+                        <label className="text-sm font-semibold text-yellow-300">Fecha de Registro</label>
                         <p className="text-lg font-medium text-white">
                           {selectedUserDetails.createdAt ? new Date(selectedUserDetails.createdAt.toDate()).toLocaleDateString('es-CL') : 'N/A'}
                         </p>
@@ -3301,7 +3301,7 @@ export default function AdminPage() {
 
                       {selectedUserOrders.length === 0 ? (
                         <div className="text-center py-8 bg-slate-900 rounded-lg">
-                          <p className="text-yellow-300/60">Este usuario no ha realizado ninguna compra</p>
+                          <p className="text-yellow-300">Este usuario no ha realizado ninguna compra</p>
                         </div>
                       ) : (
                         <div className="space-y-3">
@@ -3329,7 +3329,7 @@ export default function AdminPage() {
                                     </span>
                                   </div>
 
-                                  <div className="text-sm text-yellow-300/80">
+                                  <div className="text-sm text-yellow-300">
                                     <p>Fecha: {new Date(order.createdAt).toLocaleDateString('es-CL')} - {new Date(order.createdAt).toLocaleTimeString('es-CL')}</p>
                                     <p>Total: <span className="font-bold text-white">{formatPrice(order.total)}</span></p>
                                     <p>Productos: {order.items?.length || 0} artículo(s)</p>
@@ -3383,9 +3383,9 @@ export default function AdminPage() {
                 </div>
               ) : users.length === 0 ? (
                 <div className="text-center py-12">
-                  <div className="text-yellow-300/50 text-6xl mb-4">👥</div>
+                  <div className="text-yellow-300 text-6xl mb-4">👥</div>
                   <h3 className="text-lg font-medium text-white mb-2">No hay usuarios encontrados</h3>
-                  <p className="text-yellow-300/80 mb-4">
+                  <p className="text-yellow-300 mb-4">
                     Puede que no haya usuarios registrados o que haya un problema de conexión con Firebase.
                   </p>
                   <button
@@ -3408,24 +3408,24 @@ export default function AdminPage() {
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-slate-900">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                               Usuario
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                               Rol
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                               Estado
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                               Fecha Registro
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                               Acciones
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                        <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                           {users
                             .filter(user => user.role === 'admin' || user.role === 'vendedor')
                             .map((user) => (
@@ -3439,7 +3439,7 @@ export default function AdminPage() {
                                   <div className="text-sm font-medium text-white">
                                     {user.firstName} {user.lastName}
                                   </div>
-                                  <div className="text-sm text-yellow-300/60">{user.email}</div>
+                                  <div className="text-sm text-yellow-300">{user.email}</div>
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">
@@ -3468,14 +3468,14 @@ export default function AdminPage() {
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
                                 {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                 {editingUser === user.uid ? (
                                   <button
                                     onClick={() => setEditingUser(null)}
-                                    className="text-yellow-300/80 hover:text-white"
+                                    className="text-yellow-300 hover:text-white"
                                   >
                                     Cancelar
                                   </button>
@@ -3539,24 +3539,24 @@ export default function AdminPage() {
                         <table className="min-w-full divide-y divide-gray-200">
                           <thead className="bg-slate-900">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                                 Usuario
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                                 Rol
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                                 Estado
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                                 Fecha Registro
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                                 Acciones
                               </th>
                             </tr>
                           </thead>
-                          <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                          <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                             {users
                               .filter(user => !user.role || user.role === 'cliente')
                               .map((user) => (
@@ -3570,7 +3570,7 @@ export default function AdminPage() {
                                     <div className="text-sm font-medium text-white">
                                       {user.firstName} {user.lastName}
                                     </div>
-                                    <div className="text-sm text-yellow-300/60">{user.email}</div>
+                                    <div className="text-sm text-yellow-300">{user.email}</div>
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -3599,14 +3599,14 @@ export default function AdminPage() {
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                   </span>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300/60">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
                                   {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
                                   {editingUser === user.uid ? (
                                     <button
                                       onClick={() => setEditingUser(null)}
-                                      className="text-yellow-300/80 hover:text-white"
+                                      className="text-yellow-300 hover:text-white"
                                     >
                                       Cancelar
                                     </button>
@@ -3652,7 +3652,7 @@ export default function AdminPage() {
 
                   <div className="mt-8 bg-yellow-50 rounded-lg p-6">
                     <h3 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h3>
-                    <div className="space-y-3 text-sm text-yellow-300/80">
+                    <div className="space-y-3 text-sm text-yellow-300">
                       <p><strong>Opción 1 - Firebase Console:</strong></p>
                       <ol className="list-decimal list-inside space-y-1 ml-4">
                         <li>Ve a Firebase Console &gt; Authentication &gt; Users</li>
@@ -3679,7 +3679,7 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
@@ -3687,7 +3687,7 @@ export default function AdminPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">Gestión de Pedidos</h2>
-                    <p className="text-yellow-300/80 text-sm">Administra todos los pedidos de clientes</p>
+                    <p className="text-yellow-300 text-sm">Administra todos los pedidos de clientes</p>
                   </div>
                 </div>
                 <div className="flex space-x-3">
@@ -3730,7 +3730,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'active'
                       ? 'bg-gradient-to-r from-primary to-pink text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-slate-800 text-yellow-300/80 hover:bg-slate-800 hover:scale-105'
+                      : 'bg-slate-800 text-yellow-300 hover:bg-slate-800 hover:scale-105'
                   }`}
                 >
                   📋 Pedidos Activos
@@ -3740,7 +3740,7 @@ export default function AdminPage() {
                   className={`px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 shadow-md ${
                     ordersFilter === 'completed'
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white scale-105 shadow-lg shadow-red-600/20'
-                      : 'bg-slate-800 text-yellow-300/80 hover:bg-slate-800 hover:scale-105'
+                      : 'bg-slate-800 text-yellow-300 hover:bg-slate-800 hover:scale-105'
                   }`}
                 >
                   ✅ Historial de Ventas
@@ -3749,7 +3749,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 p-6 mb-6">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3791,7 +3791,7 @@ export default function AdminPage() {
 
               {/* Contador de resultados */}
               {(orderSearchQuery || orderStatusFilter !== 'all') && (
-                <div className="mt-4 text-sm text-yellow-300/80">
+                <div className="mt-4 text-sm text-yellow-300">
                   {orders.filter(order => {
                     // Filtro base (activos/completados)
                     let passesMainFilter = false;
@@ -3825,7 +3825,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
                   <thead className="bg-gradient-to-r from-slate-800 to-slate-800">
@@ -3855,7 +3855,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                     {groupOrdersByUser(
                       orders.filter(order => {
                         // Filtro base (activos/completados)
@@ -3920,10 +3920,10 @@ export default function AdminPage() {
                                   </span>
                                 )}
                               </div>
-                              <div className="text-sm text-yellow-300/60">
+                              <div className="text-sm text-yellow-300">
                                 {mainOrder.customerEmail}
                               </div>
-                              <div className="text-sm text-yellow-300/60">
+                              <div className="text-sm text-yellow-300">
                                 {mainOrder.customerPhone}
                               </div>
                             </div>
@@ -3933,7 +3933,7 @@ export default function AdminPage() {
                           {totalUserOrders > 1 ? (
                             <div>
                               <div className="font-medium">{formatPrice(totalAmount)}</div>
-                              <div className="text-xs text-yellow-300/60">Total {totalUserOrders} pedidos</div>
+                              <div className="text-xs text-yellow-300">Total {totalUserOrders} pedidos</div>
                             </div>
                           ) : (
                             formatPrice(mainOrder.total)
@@ -3941,9 +3941,9 @@ export default function AdminPage() {
                         </td>
                         <td className="px-6 py-4">
                           {totalUserOrders > 1 ? (
-                            <div className="text-xs text-yellow-300/80">
+                            <div className="text-xs text-yellow-300">
                               <div className="font-medium">Estados múltiples</div>
-                              <div className="text-xs text-yellow-300/50">Ver detalles individuales</div>
+                              <div className="text-xs text-yellow-300">Ver detalles individuales</div>
                             </div>
                           ) : (
                             <div className="space-y-3">
@@ -3973,7 +3973,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-slate-800 text-yellow-300/50 border-yellow-300/40'
+                                            : 'bg-slate-800 text-yellow-300 border-yellow-300/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4025,7 +4025,7 @@ export default function AdminPage() {
                           <td className="px-6 py-3 whitespace-nowrap pl-12">
                             <div className="text-sm text-yellow-300">
                               <div className="font-medium">Pedido #{order.id.slice(-8).toUpperCase()}</div>
-                              <div className="text-xs text-yellow-300/60">
+                              <div className="text-xs text-yellow-300">
                                 {new Date(order.createdAt).toLocaleDateString()}
                               </div>
                             </div>
@@ -4061,7 +4061,7 @@ export default function AdminPage() {
                                         className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
                                           step.completed
                                             ? 'bg-success/100 text-white border-green-500 shadow-md'
-                                            : 'bg-slate-800 text-yellow-300/50 border-yellow-300/40'
+                                            : 'bg-slate-800 text-yellow-300 border-yellow-300/40'
                                         }`}
                                         title={step.title}
                                       >
@@ -4113,7 +4113,7 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Banner</h2>
             
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-yellow-300 mb-1">
@@ -4147,7 +4147,7 @@ export default function AdminPage() {
                     <div key={index} className="mb-4 p-4 border border-yellow-300/30 rounded-lg">
                       <div className="flex gap-2 items-start">
                         <div className="flex-1">
-                          <label className="block text-sm text-yellow-300/80 mb-1">
+                          <label className="block text-sm text-yellow-300 mb-1">
                             Imagen {index + 1}
                           </label>
                           <input
@@ -4298,7 +4298,7 @@ export default function AdminPage() {
             {/* Header Section */}
             <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-orange-700 rounded-xl shadow-xl shadow-red-600/30 p-6 mb-8">
               <div className="flex items-center gap-3">
-                <div className="bg-slate-900/80/20 backdrop-blur-sm rounded-lg p-3">
+                <div className="bg-slate-800/70/20 backdrop-blur-sm rounded-lg p-3">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
                   </svg>
@@ -4314,7 +4314,7 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4334,7 +4334,7 @@ export default function AdminPage() {
                         value={popupForm.title}
                         onChange={(e) => setPopupForm({ ...popupForm, title: e.target.value })}
                         placeholder="¡Oferta Especial!"
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70"
                       />
                     </div>
 
@@ -4345,7 +4345,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.popupType}
                         onChange={(e) => setPopupForm({ ...popupForm, popupType: e.target.value as 'category' | 'information' })}
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70"
                       >
                         <option value="category">🏷️ Categoría/Promocional</option>
                         <option value="information">ℹ️ Información</option>
@@ -4361,7 +4361,7 @@ export default function AdminPage() {
                         onChange={(e) => setPopupForm({ ...popupForm, description: e.target.value })}
                         placeholder="Descripción detallada de la oferta..."
                         rows={3}
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70 resize-none"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70 resize-none"
                       />
                     </div>
 
@@ -4374,14 +4374,14 @@ export default function AdminPage() {
                         value={popupForm.buttonText}
                         onChange={(e) => setPopupForm({ ...popupForm, buttonText: e.target.value })}
                         placeholder="Ver Ofertas"
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4399,7 +4399,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.size}
                         onChange={(e) => setPopupForm({ ...popupForm, size: (isPopupSize(e.target.value) ? e.target.value : '2x2') })}
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70"
                       >
                         {Object.entries(POPUP_SIZE_PRESETS).map(([value, config]) => (
                           <option key={value} value={value}>
@@ -4416,7 +4416,7 @@ export default function AdminPage() {
                       <select
                         value={popupForm.position}
                         onChange={(e) => setPopupForm({ ...popupForm, position: e.target.value as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' })}
-                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70"
+                        className="w-full px-4 py-3 border-2 border-yellow-300/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70"
                       >
                         <option value="bottom-right">🔽➡️ Esquina inferior derecha</option>
                         <option value="bottom-left">🔽⬅️ Esquina inferior izquierda</option>
@@ -4429,7 +4429,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4482,7 +4482,7 @@ export default function AdminPage() {
                               handlePopupImageUpload(file);
                             }
                           }}
-                          className="w-full px-4 py-3 border-2 border-dashed border-yellow-300/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-slate-900/80/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-success/10 file:text-success hover:file:bg-success/20"
+                          className="w-full px-4 py-3 border-2 border-dashed border-yellow-300/40 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200 bg-slate-800/70/70 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-success/10 file:text-success hover:file:bg-success/20"
                         />
                         {popupImageUploading && (
                           <div className="flex items-center gap-2 text-success">
@@ -4531,7 +4531,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4608,7 +4608,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
+                <div className="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-secondary-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4628,10 +4628,10 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-900/90 hover:bg-slate-900/80 transition-all cursor-default shadow-lg shadow-red-600/20"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-slate-800/80 hover:bg-slate-800/70 transition-all cursor-default shadow-lg shadow-red-600/20"
                             aria-label="Cerrar"
                           >
-                            <XMarkIcon className="h-4 w-4 text-yellow-300/80" />
+                            <XMarkIcon className="h-4 w-4 text-yellow-300" />
                           </button>
 
                           {popupForm.mediaUrl && !popupForm.isVideo && (
@@ -4673,7 +4673,7 @@ export default function AdminPage() {
 
                             <button
                               type="button"
-                              className="bg-slate-900/80 text-yellow-300 font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-red-600/20 transition-all"
+                              className="bg-slate-800/70 text-yellow-300 font-bold py-1.5 px-3 rounded-md text-xs hover:shadow-lg shadow-red-600/20 transition-all"
                             >
                               {popupForm.buttonText || 'Ver Ofertas'}
                             </button>
@@ -4724,7 +4724,7 @@ export default function AdminPage() {
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-slate-900/80 border border-warning rounded-md px-3 py-2 text-sm text-secondary">
+                    <div className="mt-2 bg-slate-800/70 border border-warning rounded-md px-3 py-2 text-sm text-secondary">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4732,17 +4732,17 @@ export default function AdminPage() {
               </div>
             </div>
             
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h3 className="text-lg font-semibold text-white">Configurador de Patrones de Layout</h3>
-                      <p className="text-sm text-yellow-300/80">
+                      <p className="text-sm text-yellow-300">
                         Ajusta el ritmo visual de la grilla principal. Los cambios se reflejan en la home una vez guardados.
                       </p>
                       {layoutPatternsFetched.updatedAt && (
-                        <p className="text-xs text-yellow-300/50 mt-1">
+                        <p className="text-xs text-yellow-300 mt-1">
                           Última actualización: {new Date(layoutPatternsFetched.updatedAt).toLocaleString('es-CL')}
                         </p>
                       )}
@@ -4751,7 +4751,7 @@ export default function AdminPage() {
                       <button
                         type="button"
                         onClick={handleResetLayoutPatterns}
-                        className="px-4 py-2 text-sm font-medium rounded-md border border-yellow-300/40 text-yellow-300/80 hover:text-white hover:border-gray-400 transition-colors"
+                        className="px-4 py-2 text-sm font-medium rounded-md border border-yellow-300/40 text-yellow-300 hover:text-white hover:border-gray-400 transition-colors"
                         disabled={savingLayoutPatterns || layoutPatternsLoading}
                       >
                         Restablecer valores
@@ -4783,9 +4783,9 @@ export default function AdminPage() {
                             <div className="space-y-1">
                               <div className="text-2xl">{meta.icon}</div>
                               <h4 className="font-medium text-white">{meta.title}</h4>
-                              <p className="text-sm text-yellow-300/80">{meta.description}</p>
+                              <p className="text-sm text-yellow-300">{meta.description}</p>
                             </div>
-                            <label className="flex items-center gap-2 text-sm text-yellow-300/80">
+                            <label className="flex items-center gap-2 text-sm text-yellow-300">
                               <span>Activo</span>
                               <input
                                 type="checkbox"
@@ -4850,7 +4850,7 @@ export default function AdminPage() {
                             </div>
                           </div>
 
-                          <p className="text-xs text-yellow-300/60 mt-3">
+                          <p className="text-xs text-yellow-300 mt-3">
                             {rule.enabled
                               ? `Activo: se aplica a cada ${rule.interval} producto(s).`
                               : 'Este patrón está deshabilitado temporalmente.'}
@@ -4876,7 +4876,7 @@ export default function AdminPage() {
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               📑 Secciones de Productos
             </h2>
-            <p className="text-sm text-yellow-300/80 mt-1">
+            <p className="text-sm text-yellow-300 mt-1">
               Gestiona las secciones que aparecen en la página principal
             </p>
           </div>
@@ -4897,7 +4897,7 @@ export default function AdminPage() {
         {productSections.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {productSections.map((section, index) => (
-              <div key={section.id} className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 overflow-hidden hover:shadow-md transition-shadow">
+              <div key={section.id} className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -4906,13 +4906,13 @@ export default function AdminPage() {
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                           section.enabled
                             ? 'bg-success/20 text-success'
-                            : 'bg-slate-800 text-yellow-300/60'
+                            : 'bg-slate-800 text-yellow-300'
                         }`}>
                           {section.enabled ? '✓ Activa' : '○ Inactiva'}
                         </span>
                       </div>
-                      <p className="text-sm text-yellow-300/80 mb-3">{section.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-yellow-300/60">
+                      <p className="text-sm text-yellow-300 mb-3">{section.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-yellow-300">
                         <span className="px-2 py-1 bg-slate-800 text-yellow-300 rounded-md font-medium">
                           {section.selectedProducts?.length || 0} productos
                         </span>
@@ -4994,10 +4994,10 @@ export default function AdminPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-12 text-center">
+          <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-12 text-center">
             <div className="text-6xl mb-4">📑</div>
             <h3 className="text-xl font-bold text-white mb-2">No hay secciones configuradas</h3>
-            <p className="text-yellow-300/80 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
+            <p className="text-yellow-300 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
             <button
               onClick={() => {
                 setEditingSection(null);
@@ -5026,13 +5026,13 @@ export default function AdminPage() {
               setPreviewDescription('');
               setSectionSaveStatus('idle');
             }}
-            className="flex items-center gap-2 text-yellow-300/80 hover:text-white font-medium"
+            className="flex items-center gap-2 text-yellow-300 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-6">
+        <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             {editingSection ? 'Editar Sección' : 'Nueva Sección'}
           </h2>
@@ -5105,12 +5105,12 @@ export default function AdminPage() {
               <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
 
               <div className="bg-gradient-to-br from-slate-800 to-white rounded-lg p-6 border-2 border-yellow-300-200">
-                <div className="bg-slate-900/80 rounded-lg p-4 shadow-sm">
+                <div className="bg-slate-800/70 rounded-lg p-4 shadow-sm">
                   <div className="border-b-2 border-yellow-300 pb-3 mb-3">
                     <h4 className="text-xl font-bold text-white">
                       {previewName || editingSection?.name || 'Nombre de Sección'}
                     </h4>
-                    <p className="text-sm text-yellow-300/80 mt-1">
+                    <p className="text-sm text-yellow-300 mt-1">
                       {previewDescription || editingSection?.description || 'Descripción de la sección'}
                     </p>
                   </div>
@@ -5122,11 +5122,11 @@ export default function AdminPage() {
                     ))}
                   </div>
                   <div className="flex justify-between items-center mt-3 text-xs">
-                    <span className="text-yellow-300/60">{editingSection?.selectedProducts?.length || 0} productos</span>
+                    <span className="text-yellow-300">{editingSection?.selectedProducts?.length || 0} productos</span>
                     <span className="text-yellow-300 font-semibold">Ver todos →</span>
                   </div>
                 </div>
-                <p className="text-xs text-center text-yellow-300/60 mt-3">
+                <p className="text-xs text-center text-yellow-300 mt-3">
                   Así se verá en tu sitio web
                 </p>
               </div>
@@ -5141,7 +5141,7 @@ export default function AdminPage() {
                   <div className="text-3xl font-bold text-yellow-300">
                     {editingSection?.selectedProducts?.length || 0}
                   </div>
-                  <div className="text-sm text-yellow-300/80">productos configurados</div>
+                  <div className="text-sm text-yellow-300">productos configurados</div>
                 </div>
 
                 {editingSection?.selectedProducts && editingSection.selectedProducts.length > 0 ? (
@@ -5149,7 +5149,7 @@ export default function AdminPage() {
                     {editingSection.selectedProducts.slice(0, 5).map((productId: string) => {
                       const product = products.find(p => p.id === productId);
                       return product ? (
-                        <div key={productId} className="flex items-center gap-2 bg-slate-900/80 rounded-lg p-2 border border-yellow-300/30">
+                        <div key={productId} className="flex items-center gap-2 bg-slate-800/70 rounded-lg p-2 border border-yellow-300/30">
                           {product.imagen && (
                             <img
                               src={product.imagen}
@@ -5161,7 +5161,7 @@ export default function AdminPage() {
                             <div className="text-xs font-medium text-white truncate">
                               {product.nombre}
                             </div>
-                            <div className="text-xs text-yellow-300/60">
+                            <div className="text-xs text-yellow-300">
                               ${product.precio?.toLocaleString()}
                             </div>
                           </div>
@@ -5169,13 +5169,13 @@ export default function AdminPage() {
                       ) : null;
                     })}
                     {editingSection.selectedProducts.length > 5 && (
-                      <div className="text-xs text-yellow-300/60 text-center pt-2">
+                      <div className="text-xs text-yellow-300 text-center pt-2">
                         +{editingSection.selectedProducts.length - 5} más
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="text-center py-6 text-yellow-300/50 text-sm">
+                  <div className="text-center py-6 text-yellow-300 text-sm">
                     No hay productos seleccionados.
                     <br />
                     Guarda la sección y luego agrega productos.
@@ -5296,13 +5296,13 @@ export default function AdminPage() {
               setSectionsView('list');
               setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
             }}
-            className="flex items-center gap-2 text-yellow-300/80 hover:text-white font-medium"
+            className="flex items-center gap-2 text-yellow-300 hover:text-white font-medium"
           >
             <span>←</span> Volver a la lista
           </button>
         </div>
 
-        <div className="bg-slate-900/80 rounded-xl shadow-sm border border-yellow-300/30 p-6">
+        <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-6">
           <h2 className="text-2xl font-bold text-white mb-6">
             📦 Gestionar Productos de la Sección
           </h2>
@@ -5320,11 +5320,11 @@ export default function AdminPage() {
                       <h3 className="text-lg font-bold text-white mb-2">
                         {currentSection.name}
                       </h3>
-                      <p className="text-sm text-yellow-300/80 mb-4">
+                      <p className="text-sm text-yellow-300 mb-4">
                         {currentSection.description}
                       </p>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-slate-900/80 text-yellow-300 rounded-md font-medium text-xs">
+                        <span className="px-2 py-1 bg-slate-800/70 text-yellow-300 rounded-md font-medium text-xs">
                           {currentSection.type === 'custom' ? '🎯 Personalizada' :
                            currentSection.type === 'featured' ? '⭐ Destacados' :
                            currentSection.type === 'new' ? '🆕 Nuevos' :
@@ -5338,13 +5338,13 @@ export default function AdminPage() {
                         <div className="text-3xl font-bold text-yellow-300">
                           {currentSection.selectedProducts?.length || 0}
                         </div>
-                        <div className="text-sm text-yellow-300/80">productos seleccionados</div>
+                        <div className="text-sm text-yellow-300">productos seleccionados</div>
                       </div>
 
                       {selectedProducts.length > 0 ? (
                         <div className="space-y-2 max-h-96 overflow-y-auto">
                           {selectedProducts.map((product) => (
-                            <div key={product.id} className="flex items-center gap-2 bg-slate-900/80 rounded-lg p-2 border border-yellow-300/30">
+                            <div key={product.id} className="flex items-center gap-2 bg-slate-800/70 rounded-lg p-2 border border-yellow-300/30">
                               {product.imagen && (
                                 <img
                                   src={product.imagen}
@@ -5356,7 +5356,7 @@ export default function AdminPage() {
                                 <div className="text-xs font-medium text-white truncate">
                                   {product.nombre}
                                 </div>
-                                <div className="text-xs text-yellow-300/60">
+                                <div className="text-xs text-yellow-300">
                                   ${product.precio?.toLocaleString()}
                                 </div>
                               </div>
@@ -5364,14 +5364,14 @@ export default function AdminPage() {
                           ))}
                         </div>
                       ) : (
-                        <div className="text-center py-6 text-yellow-300/50 text-sm">
+                        <div className="text-center py-6 text-yellow-300 text-sm">
                           No hay productos seleccionados
                         </div>
                       )}
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-6 text-yellow-300/50">
+                  <div className="text-center py-6 text-yellow-300">
                     Sección no encontrada
                   </div>
                 );
@@ -5507,10 +5507,10 @@ export default function AdminPage() {
                             <h4 className="font-medium text-white text-sm truncate">
                               {product.nombre}
                             </h4>
-                            <p className="text-sm text-yellow-300/80 mt-1">
+                            <p className="text-sm text-yellow-300 mt-1">
                               ${product.precio?.toLocaleString()}
                             </p>
-                            <p className="text-xs text-yellow-300/60 mt-1">
+                            <p className="text-xs text-yellow-300 mt-1">
                               Stock: {product.stock}
                             </p>
                           </div>
@@ -5543,7 +5543,7 @@ export default function AdminPage() {
               )}
             </div>
 
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <form className="space-y-6">
                 
                 <div className="flex items-center">
@@ -5562,7 +5562,7 @@ export default function AdminPage() {
                 
                 <div className="space-y-6">
                   <h3 className="text-lg font-semibold text-white">Banners del Carrusel</h3>
-                  <p className="text-sm text-yellow-300/80">Selecciona los productos que aparecerán en el banner principal</p>
+                  <p className="text-sm text-yellow-300">Selecciona los productos que aparecerán en el banner principal</p>
                   
                   {mainBannerForm.slides.map((slide, index) => (
                     <div key={index} className="border border-yellow-300/30 rounded-lg p-4">
@@ -5617,7 +5617,7 @@ export default function AdminPage() {
                             }}
                             className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
                           />
-                          <p className="text-xs text-yellow-300/60 mt-1">Formatos soportados: JPG, PNG, GIF</p>
+                          <p className="text-xs text-yellow-300 mt-1">Formatos soportados: JPG, PNG, GIF</p>
                           
                           {slide.imageUrl && (
                             <div className="mt-2">
@@ -5658,7 +5658,7 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], title: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-900/80 transition-all"
+                            className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-800/70 transition-all"
                             placeholder="Ej: ¡Ofertas Especiales! 🔥"
                           />
                           <p className="text-xs text-yellow-300 mt-1">Este texto aparece grande sobre el banner</p>
@@ -5680,7 +5680,7 @@ export default function AdminPage() {
                               newSlides[index] = { ...newSlides[index], subtitle: e.target.value };
                               setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                             }}
-                            className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                            className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                             placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                           />
                           <p className="text-xs text-red-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -5735,7 +5735,7 @@ export default function AdminPage() {
                                 </option>
                               ))}
                             </select>
-                            <p className="text-xs text-yellow-300/60 mt-1 flex items-center gap-1">
+                            <p className="text-xs text-yellow-300 mt-1 flex items-center gap-1">
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -5801,7 +5801,7 @@ export default function AdminPage() {
                                   <h5 className="font-medium text-white">
                                     {selectedProduct.nombre}
                                   </h5>
-                                  <p className="text-sm text-yellow-300/80">
+                                  <p className="text-sm text-yellow-300">
                                     ${(selectedProduct.precio || 0).toLocaleString()}
                                   </p>
                                 </div>
@@ -5824,7 +5824,7 @@ export default function AdminPage() {
                                   {selectedCategory.name}
                                 </h5>
                               </div>
-                              <p className="text-sm text-yellow-300/80">
+                              <p className="text-sm text-yellow-300">
                                 {categoryProducts.length} productos en esta categoría
                               </p>
                             </div>
@@ -5847,7 +5847,7 @@ export default function AdminPage() {
                                 newSlides[index] = { ...newSlides[index], customUrl: e.target.value };
                                 setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                               }}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                               placeholder="Ej: https://ejemplo.com o /?category=tecnologia"
                             />
                             <p className="text-xs text-yellow-500 mt-1">URL completa o ruta relativa (/?filter=ofertas)</p>
@@ -5872,7 +5872,7 @@ export default function AdminPage() {
                       }];
                       setMainBannerForm({ ...mainBannerForm, slides: newSlides });
                     }}
-                    className="w-full py-3 border-2 border-dashed border-yellow-300/40 rounded-lg text-yellow-300/80 hover:border-yellow-300 hover:text-yellow-300 transition-colors"
+                    className="w-full py-3 border-2 border-dashed border-yellow-300/40 rounded-lg text-yellow-300 hover:border-yellow-300 hover:text-yellow-300 transition-colors"
                   >
                     + Agregar Banner
                   </button>
@@ -5901,7 +5901,7 @@ export default function AdminPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white">Gestión del Logo</h2>
             
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-yellow-300 mb-1">
@@ -5936,7 +5936,7 @@ export default function AdminPage() {
                     onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
                     className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   />
-                  <p className="text-sm text-yellow-300/60 mt-1">
+                  <p className="text-sm text-yellow-300 mt-1">
                     Si subes una imagen, se usará en lugar del emoji
                   </p>
                   {logoForm.image && (
@@ -6007,12 +6007,12 @@ export default function AdminPage() {
               
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
-                <div className="bg-slate-900/80 p-4 border rounded-lg">
+                <div className="bg-slate-800/70 p-4 border rounded-lg">
                   <div className="flex items-center space-x-2">
                     {logoForm.image ? (
                       <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
                     ) : (
-                      <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-xs text-yellow-300/60">
+                      <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-xs text-yellow-300">
                         Sin logo
                       </div>
                     )}
@@ -6040,29 +6040,29 @@ export default function AdminPage() {
                 </button>
             </div>
 
-            <div className="bg-slate-900/80 rounded-lg shadow-md overflow-hidden">
+            <div className="bg-slate-800/70 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-slate-900">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Nombre
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Subcategorías
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300/60 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-900/80 divide-y divide-gray-200">
+                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
                     {categories.map((category) => (
                       <tr key={category.id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
@@ -6116,7 +6116,7 @@ export default function AdminPage() {
                                 </div>
                               ))
                             ) : (
-                              <span className="text-yellow-300/50 text-xs">Sin subcategorías</span>
+                              <span className="text-yellow-300 text-xs">Sin subcategorías</span>
                             )}
                           </div>
                           <button
@@ -6174,7 +6174,7 @@ export default function AdminPage() {
         
         {showCategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-slate-900/80 rounded-lg max-w-md w-full">
+            <div className="bg-slate-800/70 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6182,7 +6182,7 @@ export default function AdminPage() {
                   </h3>
                   <button
                     onClick={() => setShowCategoryModal(false)}
-                    className="text-yellow-300/50 hover:text-yellow-300/80"
+                    className="text-yellow-300 hover:text-yellow-300"
                   >
                     ✕
                   </button>
@@ -6281,7 +6281,7 @@ export default function AdminPage() {
         
         {showSubcategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-slate-900/80 rounded-lg max-w-md w-full">
+            <div className="bg-slate-800/70 rounded-lg max-w-md w-full">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-xl font-semibold text-white">
@@ -6289,7 +6289,7 @@ export default function AdminPage() {
                   </h3>
                   <button
                     onClick={() => setShowSubcategoryModal(false)}
-                    className="text-yellow-300/50 hover:text-yellow-300/80"
+                    className="text-yellow-300 hover:text-yellow-300"
                   >
                     ✕
                   </button>
@@ -6397,12 +6397,12 @@ export default function AdminPage() {
         
         {showProductModal && (
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
-            <div className="bg-slate-900/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-lg border border-yellow-300/30 flex flex-col mx-auto">
+            <div className="bg-slate-800/70/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-lg border border-yellow-300/30 flex flex-col mx-auto">
               {/* Compact Header */}
               <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white bg-yellow-400">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-slate-900/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
+                    <div className="w-10 h-10 bg-slate-800/70/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
                       {productForm.id ? '📝' : '✨'}
                     </div>
                     <div>
@@ -6416,7 +6416,7 @@ export default function AdminPage() {
                   </div>
                   <button
                     onClick={() => setShowProductModal(false)}
-                    className="w-8 h-8 bg-slate-900/80/20 hover:bg-slate-900/80/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    className="w-8 h-8 bg-slate-800/70/20 hover:bg-slate-800/70/30 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -6430,7 +6430,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
@@ -6447,7 +6447,7 @@ export default function AdminPage() {
                           value={productForm.nombre}
                           onChange={(e) => setProductForm({ ...productForm, nombre: e.target.value })}
                           required
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-800/70/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Ej: Laptop Gaming RGB"
                         />
                       </div>
@@ -6462,7 +6462,7 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, sku: e.target.value.toUpperCase() })}
                           required
                           placeholder="SKU-001"
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-red-600 focus:outline-none transition-all duration-200 uppercase bg-slate-900/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-red-600 focus:outline-none transition-all duration-200 uppercase bg-slate-800/70/70"
                         />
                       </div>
 
@@ -6477,7 +6477,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-800/70/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="0"
                         />
                       </div>
@@ -6492,10 +6492,10 @@ export default function AdminPage() {
                           onChange={(e) => setProductForm({ ...productForm, precioOriginal: e.target.value ? parseFloat(e.target.value) : undefined })}
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-900/80/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:outline-none transition-all duration-200 bg-slate-800/70/70" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties} onFocus={(e) => e.target.style.borderColor = 'var(--primary)'} onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                           placeholder="Dejar vacío si no hay descuento"
                         />
-                        <p className="text-xs text-yellow-300/60 mt-1">
+                        <p className="text-xs text-yellow-300 mt-1">
                           Si agregas un precio anterior, se mostrará tachado y el % de descuento
                         </p>
                       </div>
@@ -6503,7 +6503,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📊</span>
@@ -6522,7 +6522,7 @@ export default function AdminPage() {
                           required
                           min="0"
                           step="1"
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-900/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-800/70/70"
                           placeholder="0"
                         />
                       </div>
@@ -6539,7 +6539,7 @@ export default function AdminPage() {
                           min="0"
                           step="1"
                           placeholder="5"
-                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-900/80/70"
+                          className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-success focus:outline-none transition-all duration-200 bg-slate-800/70/70"
                         />
                         <p className="text-xs text-success mt-1">📊 Para alertas de stock bajo</p>
                       </div>
@@ -6547,7 +6547,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📂</span>
@@ -6559,7 +6559,7 @@ export default function AdminPage() {
                         <label className="block text-xs font-semibold text-yellow-300 mb-2 flex items-center gap-1">
                           <span>📂</span> Categorías y Subcategorías * (selecciona todas las que apliquen)
                         </label>
-                        <div className="border-2 border-yellow-300/30 rounded-lg p-3 bg-slate-900/80/70 max-h-[55vh] overflow-y-auto space-y-4">
+                        <div className="border-2 border-yellow-300/30 rounded-lg p-3 bg-slate-800/70/70 max-h-[55vh] overflow-y-auto space-y-4">
                           {categories.map((category) => {
                             const subcategorias = (category as any).subcategorias || [];
                             const isCategoryChecked = productForm.categorias.includes(category.id);
@@ -6652,7 +6652,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
@@ -6663,13 +6663,13 @@ export default function AdminPage() {
                       value={productForm.descripcion}
                       onChange={(e) => setProductForm({ ...productForm, descripcion: e.target.value })}
                       rows={2}
-                      className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-yellow-300 focus:outline-none transition-all duration-200 resize-none bg-slate-900/80/70"
+                      className="w-full px-3 py-2 text-sm border-2 border-yellow-300/30 rounded-lg focus:border-yellow-300 focus:outline-none transition-all duration-200 resize-none bg-slate-800/70/70"
                       placeholder="Describe las características principales del producto..."
                     />
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🖼️</span>
@@ -6725,7 +6725,7 @@ export default function AdminPage() {
                         {/* Existing images from product */}
                         {productForm.imagenes && productForm.imagenes.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-yellow-300/80 mb-2">📦 Imágenes actuales del producto:</p>
+                            <p className="text-xs font-medium text-yellow-300 mb-2">📦 Imágenes actuales del producto:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productForm.imagenes.map((imageUrl, index) => (
                                 <div key={`existing-${index}`} className="relative group">
@@ -6761,7 +6761,7 @@ export default function AdminPage() {
                         {/* New image previews */}
                         {productImagePreviews.length > 0 && (
                           <div>
-                            <p className="text-xs font-medium text-yellow-300/80 mb-2">✨ Nuevas imágenes a agregar:</p>
+                            <p className="text-xs font-medium text-yellow-300 mb-2">✨ Nuevas imágenes a agregar:</p>
                             <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
                               {productImagePreviews.map((preview, index) => (
                                 <div key={`new-${index}`} className="relative group">
@@ -6794,7 +6794,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🏷️</span>
@@ -6827,7 +6827,7 @@ export default function AdminPage() {
               </div>
 
               {/* Modern Compact Bottom Actions - Fixed */}
-              <div className="bg-slate-900/80/95 backdrop-blur-sm p-4 border-t border-yellow-300-200 flex-shrink-0">
+              <div className="bg-slate-800/70/95 backdrop-blur-sm p-4 border-t border-yellow-300-200 flex-shrink-0">
                 <div className="flex gap-3">
                   <button
                     type="button"
@@ -6904,7 +6904,7 @@ export default function AdminPage() {
             </div>
             
             
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                   <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -6980,7 +6980,7 @@ export default function AdminPage() {
                            )}
                         </h4>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-yellow-300/60 bg-slate-900/80 px-2 py-1 rounded border flex items-center gap-1">
+                          <span className="text-xs text-yellow-300 bg-slate-800/70 px-2 py-1 rounded border flex items-center gap-1">
                             {section.linkType === 'category' ? (
                               <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg> Categoría</>
                             ) : section.linkType === 'product' ? (
@@ -7035,7 +7035,7 @@ export default function AdminPage() {
                               }}
                             />
                           ) : (
-                            <div className="absolute inset-0 flex items-center justify-center text-yellow-300/50 bg-gray-800/60">
+                            <div className="absolute inset-0 flex items-center justify-center text-yellow-300 bg-gray-800/60">
                               <div className="text-center">
                                 <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -7067,7 +7067,7 @@ export default function AdminPage() {
                       
                       <div className="space-y-3">
                         <h5 className="text-sm font-semibold text-yellow-300 flex items-center gap-1">
-                          <svg className="w-4 h-4 text-yellow-300/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
@@ -7091,7 +7091,7 @@ export default function AdminPage() {
                           onChange={(e) => {
                             updateSection(index, { ...section, description: e.target.value });
                           }}
-                          className="w-full text-sm text-yellow-300/80 mt-1 border-0 border-b border-yellow-300/40 bg-transparent pb-1 focus:border-yellow-300 focus:outline-none"
+                          className="w-full text-sm text-yellow-300 mt-1 border-0 border-b border-yellow-300/40 bg-transparent pb-1 focus:border-yellow-300 focus:outline-none"
                           placeholder="Descripción de la sección"
                         />
                       </div>
@@ -7290,7 +7290,7 @@ export default function AdminPage() {
                       </svg>
                       Banners Intermedios
                     </h3>
-                    <p className="text-sm text-yellow-300/80">
+                    <p className="text-sm text-yellow-300">
                       Banners que aparecen entre secciones de la página principal.
                     </p>
                   </div>
@@ -7333,7 +7333,7 @@ export default function AdminPage() {
                     const stateKey = `middle-${banner.id}`;
 
                     return (
-                      <div key={banner.id || `middle-${index}`} className="border-2 border-yellow-300/40 rounded-xl p-5 flex flex-col gap-4 bg-slate-900/80 shadow-sm hover:shadow-md transition-shadow">
+                      <div key={banner.id || `middle-${index}`} className="border-2 border-yellow-300/40 rounded-xl p-5 flex flex-col gap-4 bg-slate-800/70 shadow-sm hover:shadow-md transition-shadow">
                         <div className="flex items-center justify-between">
                           <h4 className="font-bold text-white text-lg">Banner #{index + 1}</h4>
                           {isAutoSaving && (
@@ -7346,7 +7346,7 @@ export default function AdminPage() {
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-yellow-300/60 -mt-2">{placementLabel}</p>
+                        <p className="text-xs text-yellow-300 -mt-2">{placementLabel}</p>
 
                         <div className="space-y-4">
                           {/* Preview Mejorada */}
@@ -7367,14 +7367,14 @@ export default function AdminPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center text-white p-4">
                                   <h3 className="font-black text-lg text-center drop-shadow-lg shadow-red-600/20 mb-2">{banner.title || 'Tu Título Aquí'}</h3>
                                   <p className="text-sm text-center drop-shadow-md opacity-90">{banner.subtitle || 'Tu subtítulo aquí'}</p>
-                                  <button className="mt-3 bg-slate-900/80 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
+                                  <button className="mt-3 bg-slate-800/70 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition-transform">
                                     Ver Más
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl overflow-hidden border-2 border-dashed border-gray-400 flex items-center justify-center">
-                                <div className="text-center text-yellow-300/60">
+                                <div className="text-center text-yellow-300">
                                   <svg className="w-16 h-16 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                   </svg>
@@ -7396,7 +7396,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.title}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, title: e.target.value })}
-                              className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-900/80 transition-all"
+                              className="w-full text-sm border-2 border-yellow-300-300 rounded-lg px-3 py-2 focus:border-yellow-300 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-slate-800/70 transition-all"
                               placeholder="Ej: ¡Ofertas Especiales! 🔥"
                             />
                             <p className="text-xs text-yellow-300 mt-1">Este texto aparece grande en el banner</p>
@@ -7414,7 +7414,7 @@ export default function AdminPage() {
                               type="text"
                               value={banner.subtitle}
                               onChange={(e) => updateMiddleBanner(index, { ...banner, subtitle: e.target.value })}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                               placeholder="Ej: Hasta 50% de descuento en productos seleccionados"
                             />
                             <p className="text-xs text-red-600 mt-1">Texto descriptivo que acompaña al título</p>
@@ -7434,7 +7434,7 @@ export default function AdminPage() {
                                 const linkType = e.target.value as 'category' | 'product' | 'filter' | 'url' | 'popup-ofertas';
                                 updateMiddleBanner(index, { ...banner, linkType, linkValue: '', ctaLink: '' });
                               }}
-                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all font-medium"
+                              className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all font-medium"
                             >
                               <option value="category">📁 Categoría</option>
                               <option value="product">📦 Producto</option>
@@ -7454,7 +7454,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?category=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                                 >
                                   <option value="">-- Selecciona una categoría --</option>
                                   {availableCategories.length === 0 ? (
@@ -7493,7 +7493,7 @@ export default function AdminPage() {
                                     const value = e.target.value;
                                     updateMiddleBanner(index, { ...banner, linkValue: value, ctaLink: `/?filter=${value}` });
                                   }}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                                 >
                                   <option value="">-- Selecciona un filtro --</option>
                                   <option value="ofertas">Productos en Oferta</option>
@@ -7514,7 +7514,7 @@ export default function AdminPage() {
                                   type="text"
                                   value="/popup-ofertas"
                                   disabled
-                                  className="w-full text-sm border-2 border-yellow-300/40 rounded-lg px-3 py-2 bg-slate-800 text-yellow-300/80 font-medium"
+                                  className="w-full text-sm border-2 border-yellow-300/40 rounded-lg px-3 py-2 bg-slate-800 text-yellow-300 font-medium"
                                 />
                                 <p className="text-xs text-yellow-500 mt-2 flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -7533,7 +7533,7 @@ export default function AdminPage() {
                                   type="text"
                                   value={banner.ctaLink}
                                   onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
-                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-900/80 transition-all"
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
                                 <p className="text-xs text-yellow-500 mt-2 flex items-center gap-1">
@@ -7563,7 +7563,7 @@ export default function AdminPage() {
                                   handleMiddleBannerImageUpload(file, index, banner);
                                 }
                               }}
-                              className="w-full text-sm border-2 border-success rounded-lg px-3 py-2 focus:border-success focus:ring-2 focus:ring-green-200 focus:outline-none bg-slate-900/80 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-success/20 file:text-success hover:file:bg-green-200"
+                              className="w-full text-sm border-2 border-success rounded-lg px-3 py-2 focus:border-success focus:ring-2 focus:ring-green-200 focus:outline-none bg-slate-800/70 transition-all file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-success/20 file:text-success hover:file:bg-green-200"
                             />
                             {uploadingImages[stateKey] ? (
                               <p className="text-xs text-yellow-300 mt-2 font-medium flex items-center gap-1">
@@ -7597,25 +7597,25 @@ export default function AdminPage() {
                     Consejos para Banners Efectivos
                   </h4>
                   <ul className="space-y-3 text-sm text-secondary">
-                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-800/70/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Título claro:</strong> Usa mensajes cortos y directos (ej: "¡Ofertas Imperdibles!")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-800/70/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Subtítulo descriptivo:</strong> Complementa con información adicional (ej: "Hasta 50% OFF")</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-800/70/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span><strong>Imágenes de calidad:</strong> Usa imágenes de alta resolución (1440x480px ideal)</span>
                     </li>
-                    <li className="flex items-start gap-3 bg-slate-900/80/50 p-2.5 rounded-lg">
+                    <li className="flex items-start gap-3 bg-slate-800/70/50 p-2.5 rounded-lg">
                       <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -7669,7 +7669,7 @@ export default function AdminPage() {
         
         {activeTab === 'footer' && (
           <div className="space-y-6">
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">Información del Footer</h2>
               
               <form className="space-y-6">
@@ -7802,7 +7802,7 @@ export default function AdminPage() {
                         className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
                         style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                       />
-                      <p className="text-xs text-yellow-300/60 mt-1">
+                      <p className="text-xs text-yellow-300 mt-1">
                         Número de teléfono (se agregará automáticamente el código 56 si no lo incluyes)
                       </p>
                     </div>
@@ -7882,7 +7882,7 @@ export default function AdminPage() {
 
         {activeTab === 'bank-details' && (
           <div className="space-y-6">
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-white mb-6">🏦 Configuración de Datos Bancarios</h2>
 
               <form className="space-y-6">
@@ -8003,7 +8003,7 @@ export default function AdminPage() {
               <div className="mt-8">
                 <h3 className="text-lg font-semibold text-white mb-4">Vista Previa en Checkout:</h3>
                 <div className="bg-yellow-50 border border-amber-300 rounded-lg p-4">
-                  <div className="bg-slate-900/80 border border-yellow-300/30 rounded-lg p-4">
+                  <div className="bg-slate-800/70 border border-yellow-300/30 rounded-lg p-4">
                     <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                       <div>
@@ -8051,15 +8051,15 @@ export default function AdminPage() {
 
       
       {showSectionModal && (
-        <div className="fixed inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-lg border border-yellow-300/30">
+        <div className="fixed inset-0 bg-slate-800/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-800/70 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-lg border border-yellow-300/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <h3 className="text-2xl font-bold text-white">
                     {editingSection ? 'Editar Sección' : 'Nueva Sección'}
                   </h3>
-                  <p className="text-sm text-yellow-300/60 mt-1">
+                  <p className="text-sm text-yellow-300 mt-1">
                     Configura cómo se verá esta sección en la página principal
                   </p>
                 </div>
@@ -8070,7 +8070,7 @@ export default function AdminPage() {
                     setPreviewName('');
                     setPreviewDescription('');
                   }}
-                  className="text-yellow-300/50 hover:text-yellow-300/80 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-800 transition-colors"
+                  className="text-yellow-300 hover:text-yellow-300 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-800 transition-colors"
                 >
                   ✕
                 </button>
@@ -8188,14 +8188,14 @@ export default function AdminPage() {
                     </div>
 
                     {/* Preview of section as it appears on website */}
-                    <div className="bg-slate-900/80 rounded-lg shadow-sm p-5 border border-gray-100">
+                    <div className="bg-slate-800/70 rounded-lg shadow-sm p-5 border border-gray-100">
                       {/* Section Header */}
                       <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-yellow-300">
                         <div>
                           <h3 className="text-xl font-bold text-white">
                             {previewName || editingSection?.name || 'Nombre de Sección'}
                           </h3>
-                          <p className="text-sm text-yellow-300/80 mt-1">
+                          <p className="text-sm text-yellow-300 mt-1">
                             {previewDescription || editingSection?.description || 'Descripción de la sección'}
                           </p>
                         </div>
@@ -8222,7 +8222,7 @@ export default function AdminPage() {
                         ))}
                       </div>
 
-                      <p className="text-xs text-yellow-300/50 mt-3 text-center">
+                      <p className="text-xs text-yellow-300 mt-3 text-center">
                         {editingSection?.selectedProducts?.length || 0} productos configurados
                       </p>
                     </div>
@@ -8293,8 +8293,8 @@ export default function AdminPage() {
 
       
       {showProductSelector && (
-        <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-slate-800/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-800/70 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-semibold text-white">
@@ -8310,7 +8310,7 @@ export default function AdminPage() {
                       showOnlySelected: false
                     });
                   }}
-                  className="text-yellow-300/50 hover:text-yellow-300/80"
+                  className="text-yellow-300 hover:text-yellow-300"
                 >
                   ✕
                 </button>
@@ -8394,7 +8394,7 @@ export default function AdminPage() {
               </div>
 
               
-              <div className="mb-4 text-sm text-yellow-300/80">
+              <div className="mb-4 text-sm text-yellow-300">
                 Mostrando {products
                   .filter((product) => {
                     const currentSection = productSections.find(s => s.id === currentSectionId);
@@ -8504,8 +8504,8 @@ export default function AdminPage() {
                             />
                           )}
                           <h4 className="font-medium text-white text-sm">{product.nombre}</h4>
-                          <p className="text-yellow-300/80 text-xs mt-1">${product.precio?.toLocaleString()}</p>
-                          <p className="text-yellow-300/60 text-xs">{product.categoria}</p>
+                          <p className="text-yellow-300 text-xs mt-1">${product.precio?.toLocaleString()}</p>
+                          <p className="text-yellow-300 text-xs">{product.categoria}</p>
                         </div>
                       </div>
                     </div>

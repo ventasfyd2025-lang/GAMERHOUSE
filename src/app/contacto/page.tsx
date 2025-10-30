@@ -13,7 +13,7 @@ export default function ContactoPage() {
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Contáctanos
             </h1>
-            <p className="text-lg text-yellow-300/80">
+            <p className="text-lg text-yellow-300">
               Estamos aquí para ayudarte. No dudes en comunicarte con nosotros.
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     WhatsApp
                   </h3>
-                  <p className="text-yellow-300/80 mb-2">
+                  <p className="text-yellow-300 mb-2">
                     Chatea con nosotros directamente
                   </p>
                   <p className="text-green-600 font-medium">
@@ -62,7 +62,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Email
                   </h3>
-                  <p className="text-yellow-300/80 mb-2">
+                  <p className="text-yellow-300 mb-2">
                     Envíanos un correo electrónico
                   </p>
                   <p className="text-yellow-300 font-medium">
@@ -87,7 +87,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Teléfono
                   </h3>
-                  <p className="text-yellow-300/80 mb-2">
+                  <p className="text-yellow-300 mb-2">
                     Llámanos durante horario comercial
                   </p>
                   <p className="text-red-600 font-medium">
@@ -109,7 +109,7 @@ export default function ContactoPage() {
                   <h3 className="text-xl font-semibold text-white mb-2">
                     Ubicación
                   </h3>
-                  <p className="text-yellow-300/80 mb-2">
+                  <p className="text-yellow-300 mb-2">
                     Estamos en Chile
                   </p>
                   <p className="text-yellow-500 font-medium">
@@ -125,7 +125,7 @@ export default function ContactoPage() {
             <h2 className="text-2xl font-semibold text-white mb-4">
               Horario de Atención
             </h2>
-            <div className="space-y-2 text-yellow-300/80">
+            <div className="space-y-2 text-yellow-300">
               <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
               <p>Sábado: 10:00 AM - 2:00 PM</p>
               <p>Domingo: Cerrado</p>

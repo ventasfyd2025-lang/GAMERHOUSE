@@ -156,7 +156,7 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-700"></div>
-            <span className="ml-3 text-yellow-300/80">Cargando producto...</span>
+            <span className="ml-3 text-yellow-300">Cargando producto...</span>
           </div>
         </div>
       </Layout>
@@ -189,7 +189,7 @@ export default function ProductPage() {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-yellow-300/60 mb-8">
+        <nav className="flex items-center space-x-2 text-sm text-yellow-300 mb-8">
           <Link href="/" className="hover:text-yellow-300">Inicio</Link>
           <span>/</span>
           <Link href={`/?category=${product.categoria}`} className="hover:text-yellow-300 capitalize">
@@ -222,7 +222,7 @@ export default function ProductPage() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-yellow-300/50 text-8xl">📦</span>
+                    <span className="text-yellow-300 text-8xl">📦</span>
                   </div>
                 );
               })()}
@@ -316,11 +316,11 @@ export default function ProductPage() {
               <h1 className="text-3xl font-bold text-white mb-2">
                 {product.nombre}
               </h1>
-              <p className="text-lg text-yellow-300/80 capitalize">
+              <p className="text-lg text-yellow-300 capitalize">
                 Categoría: {product.categoria}
               </p>
               {product.sku && (
-                <p className="text-sm text-yellow-300/60 mt-1">
+                <p className="text-sm text-yellow-300 mt-1">
                   SKU: {product.sku}
                 </p>
               )}
@@ -329,7 +329,7 @@ export default function ProductPage() {
             <div className="space-y-2">
               {product.oferta && product.precioOriginal && product.precioOriginal > product.precio ? (
                 <>
-                  <div className="text-2xl text-yellow-300/60 line-through">
+                  <div className="text-2xl text-yellow-300 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
                   <div className="text-4xl font-bold text-pink">
@@ -349,7 +349,7 @@ export default function ProductPage() {
             {product.descripcion && (
               <div>
                 <h3 className="text-lg font-semibold text-white mb-2">Descripción</h3>
-                <p className="text-yellow-300/80 leading-relaxed">
+                <p className="text-yellow-300 leading-relaxed">
                   {product.descripcion}
                 </p>
               </div>

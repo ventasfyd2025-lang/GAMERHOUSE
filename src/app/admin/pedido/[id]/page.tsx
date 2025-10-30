@@ -278,13 +278,13 @@ export default function OrderDetailPage() {
   return (
     <div className="min-h-screen bg-slate-900">
       {/* Header igual al cliente */}
-      <div className="bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10">
+      <div className="bg-slate-800/70 border-b border-yellow-300/30 sticky top-0 z-10">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => window.close()}
-                className="text-yellow-300/60 hover:text-yellow-300 transition-colors"
+                className="text-yellow-300 hover:text-yellow-300 transition-colors"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -304,7 +304,7 @@ export default function OrderDetailPage() {
               <p className="text-lg font-bold text-white">
                 {formatPrice(order.total)}
               </p>
-              <p className="text-sm text-yellow-300/80">
+              <p className="text-sm text-yellow-300">
                 {order.items.length} producto{order.items.length > 1 ? 's' : ''}
               </p>
             </div>
@@ -317,7 +317,7 @@ export default function OrderDetailPage() {
           {/* Sidebar izquierdo - Información del Pedido */}
           <div className="lg:col-span-1 space-y-6">
             {/* Estado del Pedido - Admin Controls */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Control de Estado</h3>
 
               <div className="space-y-4">
@@ -343,29 +343,29 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Información del Cliente */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Información del Cliente</h3>
               <div className="space-y-2">
                 <div>
-                  <p className="text-base font-semibold text-yellow-300/60">Nombre</p>
+                  <p className="text-base font-semibold text-yellow-300">Nombre</p>
                   <p className="text-white">{order.customerName}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-yellow-300/60">Email</p>
+                  <p className="text-base font-semibold text-yellow-300">Email</p>
                   <p className="text-white">{order.customerEmail}</p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-yellow-300/60">Teléfono</p>
+                  <p className="text-base font-semibold text-yellow-300">Teléfono</p>
                   <p className="text-white">{order.customerPhone}</p>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <dt className="text-base font-semibold text-yellow-300/60">RUT</dt>
+                  <dt className="text-base font-semibold text-yellow-300">RUT</dt>
                   <p className="text-white">{order.customerRut || 'No proporcionado'}</p>
                 </div>
                 {order.shippingAddress && (
                   <div>
-                    <p className="text-base font-semibold text-yellow-300/60">Dirección</p>
+                    <p className="text-base font-semibold text-yellow-300">Dirección</p>
                     <p className="text-white text-sm">{order.shippingAddress}</p>
                   </div>
                 )}
@@ -373,7 +373,7 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Resumen del Pedido */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
+            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
               <div className="space-y-3">
                 {order.items.map((item, index) => (
@@ -387,7 +387,7 @@ export default function OrderDetailPage() {
                     )}
                     <div className="flex-1">
                       <p className="text-base font-semibold text-white">{item.nombre}</p>
-                      <p className="text-xs text-yellow-300/80">
+                      <p className="text-xs text-yellow-300">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -406,7 +406,7 @@ export default function OrderDetailPage() {
               <div className="mt-4 pt-3 border-t">
                 <div className="space-y-2">
                   <div>
-                    <p className="text-base font-semibold text-yellow-300/60">Método de Pago</p>
+                    <p className="text-base font-semibold text-yellow-300">Método de Pago</p>
                     <p className="text-white">{order.paymentMethod || 'No especificado'}</p>
                   </div>
                   {order.paymentProof && (
@@ -421,12 +421,12 @@ export default function OrderDetailPage() {
 
           {/* Chat Principal - Igual al cliente */}
           <div className="lg:col-span-2">
-            <div className="bg-slate-900/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-slate-800/70 rounded-lg shadow-md h-[600px] flex flex-col">
               {/* Chat Header con gradiente */}
               <div className="bg-gradient-to-r from-primary to-primary text-white p-4 rounded-t-lg">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-slate-900/80 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-slate-800/70 rounded-full flex items-center justify-center">
                       <svg className="h-6 w-6 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                       </svg>
@@ -453,8 +453,8 @@ export default function OrderDetailPage() {
                       </svg>
                     </div>
                     <h4 className="font-semibold text-white mb-2">Panel de Administración</h4>
-                    <p className="text-sm text-yellow-300/80 mb-1">Comunicación con el cliente</p>
-                    <p className="text-xs text-yellow-300/60">Los mensajes aparecerán aquí</p>
+                    <p className="text-sm text-yellow-300 mb-1">Comunicación con el cliente</p>
+                    <p className="text-xs text-yellow-300">Los mensajes aparecerán aquí</p>
                   </div>
                 ) : (
                   chatMessages.map((message) => (
@@ -472,14 +472,14 @@ export default function OrderDetailPage() {
 
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-1' : 'order-2'}`}>
                         {!message.isAdmin && (
-                          <div className="text-xs text-yellow-300/60 mb-1 px-3">{message.userName}</div>
+                          <div className="text-xs text-yellow-300 mb-1 px-3">{message.userName}</div>
                         )}
 
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
                               ? 'bg-yellow-400 text-white'
-                              : 'bg-slate-900/80 text-white border border-yellow-300/30'
+                              : 'bg-slate-800/70 text-white border border-yellow-300/30'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -504,7 +504,7 @@ export default function OrderDetailPage() {
                         </div>
 
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-end' : 'justify-start'}`}>
-                          <span className="text-xs text-yellow-300/60">
+                          <span className="text-xs text-yellow-300">
                             {message.timestamp.toLocaleString()}
                           </span>
                         </div>
@@ -523,7 +523,7 @@ export default function OrderDetailPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-yellow-300/30 p-4 bg-slate-900/80 rounded-b-lg">
+              <div className="border-t border-yellow-300/30 p-4 bg-slate-800/70 rounded-b-lg">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative">
@@ -540,7 +540,7 @@ export default function OrderDetailPage() {
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-yellow-300/60 mt-1">
+                    <p className="text-xs text-yellow-300 mt-1">
                       {selectedImage?.name}
                     </p>
                   </div>
@@ -560,7 +560,7 @@ export default function OrderDetailPage() {
                   </div>
 
                   {/* Image Upload Button */}
-                  <label className="cursor-pointer bg-slate-800 hover:bg-slate-800 text-yellow-300/80 p-3 rounded-xl transition-all duration-200 hover:scale-105">
+                  <label className="cursor-pointer bg-slate-800 hover:bg-slate-800 text-yellow-300 p-3 rounded-xl transition-all duration-200 hover:scale-105">
                     <PhotoIcon className="h-5 w-5" />
                     <input
                       type="file"
@@ -586,7 +586,7 @@ export default function OrderDetailPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-yellow-300/60 mt-2 text-center">
+                <p className="text-xs text-yellow-300 mt-2 text-center">
                   Comunicación directa con el cliente • {uploadingImage ? 'Subiendo imagen...' : 'Puedes enviar texto e imágenes'}
                 </p>
               </div>
@@ -596,7 +596,7 @@ export default function OrderDetailPage() {
 
         {/* Payment Proof estilo cliente */}
         {order.paymentProof && (
-          <div className="bg-slate-900/80 rounded-lg shadow-md overflow-hidden mt-8">
+          <div className="bg-slate-800/70 rounded-lg shadow-md overflow-hidden mt-8">
             <div className="bg-slate-900 px-6 py-4 border-b">
               <h4 className="font-medium text-white">Comprobante de Pago</h4>
             </div>
@@ -608,7 +608,7 @@ export default function OrderDetailPage() {
                 className="max-w-full h-auto mx-auto rounded-lg shadow-lg shadow-red-600/20"
                 style={{ maxHeight: '500px' }}
               />
-              <p className="mt-2 text-yellow-300/80">
+              <p className="mt-2 text-yellow-300">
                 <a
                   href={order.paymentProof}
                   target="_blank"

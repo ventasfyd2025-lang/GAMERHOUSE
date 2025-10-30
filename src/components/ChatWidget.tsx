@@ -195,7 +195,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-3">
             {messages.length === 0 ? (
-              <div className="text-center text-yellow-300/60 text-sm py-8">
+              <div className="text-center text-yellow-300 text-sm py-8">
                 <ChatBubbleLeftRightIcon className="h-8 w-8 mx-auto mb-2 text-gray-300" />
                 <p>¡Hola! ¿En qué podemos ayudarte?</p>
                 <p className="text-xs mt-1">Escríbenos tu consulta</p>
@@ -221,7 +221,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
                     )}
                     <p className="whitespace-pre-wrap">{message.message}</p>
                     <p className={`text-xs mt-1 ${
-                      message.isAdmin ? 'text-yellow-300/60' : 'text-yellow-300100'
+                      message.isAdmin ? 'text-yellow-300' : 'text-yellow-300100'
                     }`}>
                       {formatTime(message.timestamp, {
                         hour: '2-digit',
@@ -260,7 +260,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
               </button>
             </div>
             
-            <p className="text-xs text-yellow-300/60 mt-2">
+            <p className="text-xs text-yellow-300 mt-2">
               Nuestro equipo te responderá lo antes posible
             </p>
           </div>
