@@ -2250,7 +2250,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loggingIn}
-              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
             >
               {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
@@ -2266,7 +2266,7 @@ export default function AdminPage() {
               <button
                 onClick={() => router.push('/')}
                 className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors"
-                style={{ backgroundColor: 'var(--primary)' }}
+                className="bg-primary"
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
               >
@@ -2288,11 +2288,11 @@ export default function AdminPage() {
       `}</style>
       <div id="admin-container" className="min-h-screen bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40">
 
-      <header className="bg-dark/80/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-dark-light">
+      <header className="bg-dark/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-dark-light">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
                 <span className="text-white text-lg">🏪</span>
               </div>
               <h1 className="text-xl font-bold" style={{ color: 'var(--primary)' }}>
@@ -2302,7 +2302,7 @@ export default function AdminPage() {
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
-              style={{ backgroundColor: 'var(--primary)' }}
+              className="bg-primary"
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
             >
@@ -2318,7 +2318,7 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200" style={{ backgroundColor: 'var(--primary)' }}>
+        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-primary-200" className="bg-primary">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -2377,10 +2377,10 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
                     <span className="text-white text-lg">🏠</span>
                   </div>
                   <div>
@@ -2433,9 +2433,9 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>📦</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">📦</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Productos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
@@ -2443,9 +2443,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>🛒</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">🛒</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Total Pedidos</p>
                     <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
@@ -2453,9 +2453,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>💰</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">💰</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Ingresos Totales</p>
                     <p className="text-3xl font-bold text-white">
@@ -2465,9 +2465,9 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/80/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>⏳</div>
+                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">⏳</div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--primary)' }}>Pedidos Pendientes</p>
                     <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
@@ -2478,10 +2478,10 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light">
               <div className="p-6 border-b border-dark-light">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
                     <span className="text-white text-sm">📋</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
@@ -2573,7 +2573,7 @@ export default function AdminPage() {
               <Link
                 href="/admin/productos/nuevo"
                 className="text-white px-4 py-2 rounded-md transition-colors inline-block"
-                style={{ backgroundColor: 'var(--primary)' }}
+                className="bg-primary"
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
               >
@@ -3017,7 +3017,7 @@ export default function AdminPage() {
                 {selectedProducts.length > 0 && (
                   <button
                     onClick={deleteSelectedProducts}
-                    className="px-4 py-2 text-white rounded-md text-sm" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                    className="px-4 py-2 text-white rounded-md text-sm" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                   >
                     <span className="text-lg mr-2">🗑️</span>
                     Eliminar seleccionados ({selectedProducts.length})
@@ -3233,7 +3233,7 @@ export default function AdminPage() {
               {/* Modal de detalles del usuario */}
               {selectedUserDetails && (
                 <div
-                  className="fixed inset-0 bg-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                  className="fixed inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                   onClick={() => {
                     setSelectedUserDetails(null);
                     setSelectedUserOrders([]);
@@ -3688,10 +3688,10 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
                     <span className="text-white text-lg">🛒</span>
                   </div>
                   <div>
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light p-6 mb-6">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3835,7 +3835,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
                   <thead className="bg-gradient-to-r from-dark-light to-dark-light">
@@ -4189,7 +4189,7 @@ export default function AdminPage() {
                             setBannerForm({ ...bannerForm, images: newImages });
                             setBannerFiles([...newFiles, null]);
                           }}
-                          className="px-3 py-2 text-white rounded-md mt-6" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                          className="px-3 py-2 text-white rounded-md mt-6" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                         >
                           🗑️
                         </button>
@@ -4272,7 +4272,7 @@ export default function AdminPage() {
                     }
                   }}
                   disabled={updatingBanner}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >
                   {updatingBanner ? 'Actualizando...' : 'Actualizar Banner'}
                 </button>
@@ -4324,7 +4324,7 @@ export default function AdminPage() {
               {/* Configuration Panel */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Basic Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-amber-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4391,7 +4391,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Layout Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-pink-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4439,7 +4439,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Media Configuration */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4541,7 +4541,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Activation & Actions */}
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
+                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-gradient-to-r from-pink to-primary rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4618,7 +4618,7 @@ export default function AdminPage() {
 
               {/* Preview Panel */}
               <div className="lg:col-span-1">
-                <div className="bg-dark/80/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
+                <div className="bg-dark/80 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 border border-white/50 p-6 sticky top-6">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="bg-red-600 hover:bg-red-700-500 to-orange-600 rounded-lg p-2">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -4638,7 +4638,7 @@ export default function AdminPage() {
                         <div className="absolute inset-0 rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-primary to-pink">
                           <button
                             type="button"
-                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/80/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-red-600/20"
+                            className="absolute top-2 right-2 z-20 p-1 rounded-full bg-dark/90 hover:bg-dark/80 transition-all cursor-default shadow-lg shadow-red-600/20"
                             aria-label="Cerrar"
                           >
                             <XMarkIcon className="h-4 w-4 text-primary/80" />
@@ -4734,7 +4734,7 @@ export default function AdminPage() {
                     <li>• <strong>Diseño:</strong> tamaño/forma del bloque dentro de la cuadrícula.</li>
                   </ul>
                   {layoutPatternsError && (
-                    <div className="mt-2 bg-dark/80/80 border border-orange-200 rounded-md px-3 py-2 text-sm text-red-800">
+                    <div className="mt-2 bg-dark/80 border border-orange-200 rounded-md px-3 py-2 text-sm text-red-800">
                       {layoutPatternsError}
                     </div>
                   )}
@@ -4770,7 +4770,7 @@ export default function AdminPage() {
                         type="button"
                         onClick={handleSaveLayoutPatterns}
                         className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors text-base disabled:opacity-60"
-                        style={{ backgroundColor: 'var(--primary)' }}
+                        className="bg-primary"
                         onMouseEnter={(e) => {
                           if (!e.currentTarget.hasAttribute('disabled')) {
                             e.currentTarget.style.backgroundColor = '#D13C1A';
@@ -6011,7 +6011,7 @@ export default function AdminPage() {
                   }}
                   disabled={updatingLogo}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  className="bg-primary"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >
@@ -6049,7 +6049,7 @@ export default function AdminPage() {
                     setCategoryForm({ id: '', name: '', active: true, subcategorias: [] });
                     setShowCategoryModal(true);
                   }}
-                  className="text-white px-4 py-2 rounded-md transition-colors" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                  className="text-white px-4 py-2 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >
                   ➕ Agregar Categoría
                 </button>
@@ -6282,7 +6282,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                     >
                       Guardar
                     </button>
@@ -6398,7 +6398,7 @@ export default function AdminPage() {
                           }
                         }
                       }}
-                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" style={{ backgroundColor: 'var(--primary)' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                      className="flex-1 text-white font-semibold py-3 px-6 rounded-md transition-colors" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                     >
                       Guardar
                     </button>
@@ -6414,7 +6414,7 @@ export default function AdminPage() {
           <div className="fixed inset-0 bg-black/45 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-6">
             <div className="bg-dark/80/95 backdrop-blur-lg rounded-3xl w-full max-w-6xl 2xl:max-w-[90vw] max-h-[95vh] min-h-[78vh] shadow-2xl border border-primary/30 flex flex-col mx-auto">
               {/* Compact Header */}
-              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="bg-gradient-to-r from-primary to-pink px-5 py-4 sm:px-6 sm:py-5 text-white" className="bg-primary">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-dark/80/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -6445,9 +6445,9 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Información Básica</h4>
@@ -6518,9 +6518,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📊</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Control de Inventario</h4>
@@ -6562,9 +6562,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📂</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Categorización</h4>
@@ -6667,9 +6667,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📝</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Descripción</h4>
@@ -6684,9 +6684,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">🖼️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Imágenes del Producto</h4>
@@ -6809,9 +6809,9 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+                      <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">🏷️</span>
                       </div>
                       <h4 className="text-sm font-bold text-white">Etiquetas</h4>
@@ -7857,7 +7857,7 @@ export default function AdminPage() {
                   }}
                   disabled={updatingFooter}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  className="bg-primary"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >
@@ -8013,7 +8013,7 @@ export default function AdminPage() {
                   }}
                   disabled={updatingBank}
                   className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  className="bg-primary"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >
@@ -8073,7 +8073,7 @@ export default function AdminPage() {
 
       
       {showSectionModal && (
-        <div className="fixed inset-0 bg-dark/80/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-dark/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-dark/80 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/30">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
@@ -8303,7 +8303,7 @@ export default function AdminPage() {
                     type="submit"
                     disabled={sectionSaveStatus === 'saving'}
                     className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{ backgroundColor: 'var(--primary)' }}
+                    className="bg-primary"
                     onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                   >
@@ -8318,7 +8318,7 @@ export default function AdminPage() {
 
       
       {showProductSelector && (
-        <div className="fixed inset-0 bg-dark/80/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-dark/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-dark/80 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
@@ -8542,7 +8542,7 @@ export default function AdminPage() {
                 <button
                   onClick={() => setShowProductSelector(false)}
                   className="text-white font-medium py-2 px-6 rounded-md transition-colors"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  className="bg-primary"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
                 >

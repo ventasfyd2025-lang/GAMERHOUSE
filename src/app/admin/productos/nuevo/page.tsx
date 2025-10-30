@@ -252,7 +252,7 @@ export default function NuevoProductoPage() {
           {/* Basic Info Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-white">Información Básica</h4>
@@ -336,7 +336,7 @@ export default function NuevoProductoPage() {
           {/* Stock Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📊</span>
               </div>
               <h4 className="text-lg font-bold text-white">Control de Inventario</h4>
@@ -384,7 +384,7 @@ export default function NuevoProductoPage() {
           {/* Categories Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📂</span>
               </div>
               <h4 className="text-lg font-bold text-white">Categorización</h4>
@@ -489,7 +489,7 @@ export default function NuevoProductoPage() {
           {/* Description Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📝</span>
               </div>
               <h4 className="text-lg font-bold text-white">Descripción</h4>
@@ -508,7 +508,7 @@ export default function NuevoProductoPage() {
           {/* Images Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">🖼️</span>
               </div>
               <h4 className="text-lg font-bold text-white">Imágenes del Producto</h4>
@@ -592,7 +592,7 @@ export default function NuevoProductoPage() {
           {/* Tags Section */}
           <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">🏷️</span>
               </div>
               <h4 className="text-lg font-bold text-white">Etiquetas con Duración</h4>
