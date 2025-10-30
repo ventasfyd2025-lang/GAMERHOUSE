@@ -117,7 +117,7 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-darklight text-pink border-dark-light';
+      case 'admin': return 'bg-darklight text-pink border-darklight';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
       default: return 'bg-darklight text-white border-primary/30';

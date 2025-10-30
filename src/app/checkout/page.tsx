@@ -422,7 +422,7 @@ function CheckoutContent() {
   // Show processing screen while order is being processed
   if (!mounted || (items.length === 0 && !orderSuccess)) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-primary mx-auto mb-4"></div>
           <p className="text-primary/80 text-lg font-medium">Cargando...</p>
@@ -434,9 +434,9 @@ function CheckoutContent() {
   // Show success screen if order was completed
   if (orderSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 via-dark-light to-green-50 flex items-center justify-center py-16">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-darklight to-green-50 flex items-center justify-center py-16">
         <div className="max-w-md mx-auto px-4">
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-green-200 text-center">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-green-200 text-center">
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-600/20">
               <svg className="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -464,7 +464,7 @@ function CheckoutContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -476,7 +476,7 @@ function CheckoutContent() {
             Volver al carrito
           </Link>
 
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
                 <span className="text-white text-lg">💳</span>
@@ -496,7 +496,7 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight overflow-hidden">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📝 Datos de entrega
@@ -505,7 +505,7 @@ function CheckoutContent() {
 
                 <form onSubmit={handleCheckout} className="p-6 space-y-6">
                   {isGuest && (
-                    <div className="bg-gradient-to-r from-dark-light to-dark-light border-l-4 border-primary rounded-lg p-4 mb-4 shadow-sm">
+                    <div className="bg-gradient-to-r from-darklight to-darklight border-l-4 border-primary rounded-lg p-4 mb-4 shadow-sm">
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0">
                           <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-md">
@@ -863,7 +863,7 @@ function CheckoutContent() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden sticky top-8">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight overflow-hidden sticky top-8">
               <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
                 <h2 className="text-xl font-semibold text-white">
                   📦 Resumen del pedido
@@ -874,7 +874,7 @@ function CheckoutContent() {
                 {/* Cart Items */}
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-darklight rounded-lg border border-dark-light">
+                    <div key={item.id} className="flex items-center space-x-3 p-3 bg-darklight rounded-lg border border-darklight">
                       <div className="relative w-12 h-12 flex-shrink-0">
                         {item.imagen ? (
                           <img
@@ -906,7 +906,7 @@ function CheckoutContent() {
                 </div>
 
                 {/* Totals */}
-                <div className="border-t border-dark-light pt-4 space-y-3">
+                <div className="border-t border-darklight pt-4 space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-primary/80 font-medium">Subtotal</span>
                     <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>

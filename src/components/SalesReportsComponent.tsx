@@ -95,7 +95,7 @@ export default function SalesReportsComponent() {
   }, [selectedMonth, loadMonthlyReport]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light to-white">
+    <div className="min-h-screen bg-gradient-to-br from-darklight to-white">
       {/* Header Mejorado */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-xl shadow-lg shadow-red-600/20 mb-8">
         <div className="flex items-center justify-between">
@@ -133,7 +133,7 @@ export default function SalesReportsComponent() {
       )}
 
       {error && (
-        <div className="bg-darklight border-l-4 border-red-400 text-red-700 p-6 rounded-lg mb-8">
+        <div className="bg-darklight border-l-4 border-red-400 text-secondary p-6 rounded-lg mb-8">
           <div className="flex">
             <div className="ml-3">
               <h3 className="text-sm font-medium">Error al cargar reportes</h3>

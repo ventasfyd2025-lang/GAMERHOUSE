@@ -316,7 +316,7 @@ export default function AdminChatPopup({ order, isOpen, onClose }: AdminChatPopu
                 <h5 className="font-medium text-white mb-2">Estado Actual</h5>
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                   order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                  order.status === 'confirmed' ? 'bg-orange-100 text-red-700' :
+                  order.status === 'confirmed' ? 'bg-orange-100 text-secondary' :
                   order.status === 'preparing' ? 'bg-yellow-100 text-amber-800' :
                   order.status === 'shipped' ? 'bg-darklight text-primary800' :
                   order.status === 'delivered' ? 'bg-green-100 text-green-800' :

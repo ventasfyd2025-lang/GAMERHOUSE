@@ -1193,7 +1193,7 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-darklight text-pink border-dark-light';
+      case 'admin': return 'bg-darklight text-pink border-darklight';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
       default: return 'bg-darklight text-white border-primary/30';
@@ -2250,14 +2250,14 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={loggingIn}
-              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50" className="bg-primary" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-primary hover:bg-yellow-400"
             >
               {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </button>
           </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-darklight border border-dark-light rounded-md p-4">
+              <div className="bg-darklight border border-darklight rounded-md p-4">
                 <p className="text-pink font-semibold">⛔ Acceso Denegado</p>
                 <p className="text-pink text-sm mt-2">
                   No tienes permisos de administrador para acceder a esta página.
@@ -2286,9 +2286,9 @@ export default function AdminPage() {
           font-size: 1.02em !important;
         }
       `}</style>
-      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-dark-light/30 via-dark-light/20 to-dark-light/40">
+      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-darklight/30 via-darklight/20 to-darklight/40">
 
-      <header className="bg-dark/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-dark-light">
+      <header className="bg-dark/80 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-darklight">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
@@ -2377,7 +2377,7 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
@@ -2433,7 +2433,7 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">📦</div>
                   <div>
@@ -2443,7 +2443,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">🛒</div>
                   <div>
@@ -2453,7 +2453,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">💰</div>
                   <div>
@@ -2465,7 +2465,7 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-dark/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-darklight hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center">
                   <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20" className="bg-primary">⏳</div>
                   <div>
@@ -2478,8 +2478,8 @@ export default function AdminPage() {
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-dark-light">
-              <div className="p-6 border-b border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-darklight">
+              <div className="p-6 border-b border-darklight">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
                     <span className="text-white text-sm">📋</span>
@@ -2643,8 +2643,8 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-dark/80 border-2 border-dark-light rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
-                      <div className="bg-gradient-to-r from-dark-light to-dark-light p-4 border-b border-dark-light">
+                    <div className="mt-4 bg-dark/80 border-2 border-darklight rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
+                      <div className="bg-gradient-to-r from-darklight to-darklight p-4 border-b border-darklight">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
                           <span className="ml-2 text-sm text-pink">({lowStockProducts.length} productos)</span>
@@ -3287,7 +3287,7 @@ export default function AdminPage() {
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-darklight text-pink border-dark-light'
+                              ? 'bg-darklight text-pink border-darklight'
                               : 'bg-success/20 text-success border-success'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3408,7 +3408,7 @@ export default function AdminPage() {
                 <>
                   {/* Admins y Vendedores - Siempre visibles */}
                   <div className="mb-6">
-                    <div className="bg-gradient-to-r from-dark-light to-dark-light rounded-lg p-4 mb-3">
+                    <div className="bg-gradient-to-r from-darklight to-darklight rounded-lg p-4 mb-3">
                       <h3 className="text-lg font-semibold text-white">
                         👑 Administradores y Vendedores ({users.filter(u => u.role === 'admin' || u.role === 'vendedor').length})
                       </h3>
@@ -3471,7 +3471,7 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-darklight text-pink border-dark-light'
+                                    ? 'bg-darklight text-pink border-darklight'
                                     : 'bg-success/20 text-success border-success'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3602,7 +3602,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-darklight text-pink border-dark-light'
+                                      ? 'bg-darklight text-pink border-darklight'
                                       : 'bg-success/20 text-success border-success'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3688,7 +3688,7 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-dark-light">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-darklight">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" className="bg-primary">
@@ -3759,7 +3759,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light p-6 mb-6">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3835,10 +3835,10 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-dark-light overflow-hidden">
+            <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-darklight overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
-                  <thead className="bg-gradient-to-r from-dark-light to-dark-light">
+                  <thead className="bg-gradient-to-r from-darklight to-darklight">
                     <tr>
                       <th className="px-3 py-3 text-left">
                         <input
@@ -5116,7 +5116,7 @@ export default function AdminPage() {
             <div className="col-span-1 space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
 
-              <div className="bg-gradient-to-br from-dark-light to-white rounded-lg p-6 border-2 border-primary-200">
+              <div className="bg-gradient-to-br from-darklight to-white rounded-lg p-6 border-2 border-primary-200">
                 <div className="bg-dark/80 rounded-lg p-4 shadow-sm">
                   <div className="border-b-2 border-primary pb-3 mb-3">
                     <h4 className="text-xl font-bold text-white">
@@ -6445,7 +6445,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📝</span>
@@ -6518,7 +6518,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📊</span>
@@ -6562,7 +6562,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📂</span>
@@ -6667,7 +6667,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">📝</span>
@@ -6684,7 +6684,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">🖼️</span>
@@ -6809,7 +6809,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-dark-light">
+                  <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-darklight">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" className="bg-primary">
                         <span className="text-white text-xs">🏷️</span>
@@ -8199,7 +8199,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-dark-light via-dark-light to-gray-50 rounded-xl p-6 border-2 border-primary-200">
+                  <div className="bg-gradient-to-br from-darklight via-darklight to-gray-50 rounded-xl p-6 border-2 border-primary-200">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-sm font-semibold text-primary flex items-center">
                         <span className="mr-2">👁️</span> Vista Previa en el Sitio

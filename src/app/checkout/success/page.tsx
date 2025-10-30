@@ -149,7 +149,7 @@ function PaymentSuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light">
+    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
@@ -290,10 +290,10 @@ function PaymentSuccessContent() {
                       <div className="flex items-start">
                         <Clock className="w-5 h-5 text-red-600 mt-0.5 mr-3" />
                         <div>
-                          <h3 className="text-lg font-medium text-red-700 mb-2">
+                          <h3 className="text-lg font-medium text-secondary mb-2">
                             Próximos pasos
                           </h3>
-                          <ul className="text-sm text-red-700 space-y-2">
+                          <ul className="text-sm text-secondary space-y-2">
                             <li>• Recibirás un email de confirmación con tu número de orden</li>
                             <li>• Envíanos la confirmación con los datos de envío o día de retiro</li>
                             <li>• Verificaremos tu pago y procesaremos tu pedido</li>

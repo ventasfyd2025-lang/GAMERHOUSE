@@ -222,7 +222,7 @@ export default function NuevoProductoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light">
+    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
       {/* Header */}
       <div className="bg-dark/80 border-b border-primary/30 sticky top-0 z-10 shadow-sm">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -250,7 +250,7 @@ export default function NuevoProductoPage() {
         <form onSubmit={handleProductSubmit} className="space-y-6">
 
           {/* Basic Info Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📝</span>
@@ -334,7 +334,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Stock Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📊</span>
@@ -382,7 +382,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Categories Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📂</span>
@@ -487,7 +487,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Description Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">📝</span>
@@ -506,7 +506,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Images Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">🖼️</span>
@@ -590,7 +590,7 @@ export default function NuevoProductoPage() {
           </div>
 
           {/* Tags Section */}
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-dark-light">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl p-5 lg:p-6 shadow-lg shadow-red-600/20 border border-darklight">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" className="bg-primary">
                 <span className="text-white">🏷️</span>
@@ -631,7 +631,7 @@ export default function NuevoProductoPage() {
               </div>
 
               {/* Etiqueta Oferta */}
-              <div className="border-2 border-dark-light rounded-lg p-4 bg-darklight/50">
+              <div className="border-2 border-darklight rounded-lg p-4 bg-darklight/50">
                 <label className="flex items-center gap-2 cursor-pointer mb-3">
                   <input
                     type="checkbox"

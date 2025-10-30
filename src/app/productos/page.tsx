@@ -225,7 +225,7 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="bg-dark/80 rounded-2xl shadow-sm border border-dark-light p-6">
+          <header className="bg-dark/80 rounded-2xl shadow-sm border border-darklight p-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-primary">Catálogo completo</p>
@@ -338,7 +338,7 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-darklight border border-dark-light text-red-700 rounded-xl p-6">
+          <section className="bg-darklight border border-darklight text-secondary rounded-xl p-6">
             <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
             <p className="text-sm mb-4">{productsError}</p>
             <button

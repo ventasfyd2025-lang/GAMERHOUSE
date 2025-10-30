@@ -332,7 +332,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                 <div className="bg-yellow-50 border-b border-orange-100 px-4 py-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-red-600 rounded-full"></div>
-                    <span className="text-xs font-medium text-red-700">
+                    <span className="text-xs font-medium text-secondary">
                       Pedido #{orderId.slice(-8).toUpperCase()}
                     </span>
                   </div>
@@ -380,7 +380,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
                       )}
                       <button
                         onClick={() => window.location.href = '/'}
-                        className="w-full text-left p-3 bg-yellow-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors text-sm text-red-700 font-medium"
+                        className="w-full text-left p-3 bg-yellow-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors text-sm text-secondary font-medium"
                       >
                         🏠 Volver a la tienda
                       </button>

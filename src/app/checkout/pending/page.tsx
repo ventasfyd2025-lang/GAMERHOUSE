@@ -70,10 +70,10 @@ function PaymentPendingContent() {
 
           <div className="mt-8 space-y-4">
             <div className="bg-yellow-50 border border-orange-200 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-red-700 mb-2">
+              <h3 className="text-sm font-medium text-secondary mb-2">
                 ¿Qué significa esto?
               </h3>
-              <div className="text-sm text-red-700 space-y-2">
+              <div className="text-sm text-secondary space-y-2">
                 <p>Tu pago está siendo verificado. Esto puede suceder cuando:</p>
                 <ul className="space-y-1 ml-4">
                   <li>• Elegiste pagar en efectivo o transferencia bancaria</li>

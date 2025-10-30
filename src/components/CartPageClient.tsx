@@ -27,9 +27,9 @@ export default function CartPageClient() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-16">
+      <div className="min-h-screen bg-gradient-to-br from-darklight via-white to-darklight py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-primary100 text-center">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-primary100 text-center">
             <ShoppingBag className="h-24 w-24 text-primary400 mx-auto mb-6" strokeWidth={2} />
             <h1 className="text-3xl font-bold text-white mb-4">
               Tu carrito está vacío
@@ -51,10 +51,10 @@ export default function CartPageClient() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-white to-dark-light py-8">
+    <div className="min-h-screen bg-gradient-to-br from-darklight via-white to-darklight py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 mb-8">
+        <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">🛒</span>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-primary100 hover:shadow-xl shadow-red-600/30 transition-all">
+              <div key={item.id} className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-primary100 hover:shadow-xl shadow-red-600/30 transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -136,7 +136,7 @@ export default function CartPageClient() {
                   {/* Remove Button */}
                   <button
                     onClick={() => removeItem(item.productId)}
-                    className="p-2 text-pink hover:text-red-700 hover:bg-darklight rounded-md transition-colors"
+                    className="p-2 text-pink hover:text-secondary hover:bg-darklight rounded-md transition-colors"
                   >
                     <Trash2 className="h-5 w-5" />
                   </button>
@@ -148,7 +148,7 @@ export default function CartPageClient() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 sticky top-8">
+          <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-primary100 sticky top-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="text-2xl">💰</span>
               <h2 className="text-xl font-bold text-white">

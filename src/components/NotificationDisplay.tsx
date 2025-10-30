@@ -31,7 +31,7 @@ export default function NotificationDisplay() {
             case 'success':
               return 'bg-green-50 border-green-200';
             case 'error':
-              return 'bg-darklight border-dark-light';
+              return 'bg-darklight border-darklight';
             case 'warning':
               return 'bg-yellow-50 border-yellow-200';
             case 'info':

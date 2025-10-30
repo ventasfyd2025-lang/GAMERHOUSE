@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-light via-dark-light to-dark-light">
+    <div className="min-h-screen bg-gradient-to-br from-darklight via-darklight to-darklight">
       <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

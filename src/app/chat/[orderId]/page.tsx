@@ -114,7 +114,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-darklight border-dark-light',
+    color: 'text-pink bg-darklight border-darklight',
     icon: XCircleIcon,
     description: 'Este pedido ha sido cancelado'
   },

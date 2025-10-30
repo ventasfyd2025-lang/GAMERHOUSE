@@ -75,7 +75,7 @@ export default function ProductBanner({
   }
 
   return (
-    <section className="relative bg-gradient-to-r from-dark-light to-dark-light py-8">
+    <section className="relative bg-gradient-to-r from-darklight to-darklight py-8">
       {/* Header */}
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="text-center">

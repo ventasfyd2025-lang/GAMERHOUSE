@@ -303,7 +303,7 @@ const ProductCarousel = memo(({
 
   return (
     <section className="space-y-3 sm:space-y-4 lg:space-y-5">
-      <div className="bg-dark/80/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-4 sm:p-6 border border-primary100">
+      <div className="bg-dark/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-4 sm:p-6 border border-primary100">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>

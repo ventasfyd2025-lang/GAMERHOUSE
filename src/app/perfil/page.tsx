@@ -238,7 +238,7 @@ export default function ProfilePage() {
           {message && (
             <div className={`mt-4 p-3 rounded ${
               message.includes('Error') 
-                ? 'bg-darklight text-red-700 border border-dark-light' 
+                ? 'bg-darklight text-secondary border border-darklight' 
                 : 'bg-green-50 text-green-700 border border-green-200'
             }`}>
               {message}
@@ -538,7 +538,7 @@ export default function ProfilePage() {
                 {message && (
                   <div className={`p-3 rounded ${
                     message.includes('Error') || message.includes('incorrecta') || message.includes('coinciden')
-                      ? 'bg-darklight text-red-700 border border-dark-light'
+                      ? 'bg-darklight text-secondary border border-darklight'
                       : 'bg-green-50 text-green-700 border border-green-200'
                   }`}>
                     {message}

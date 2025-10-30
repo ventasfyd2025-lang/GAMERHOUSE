@@ -410,7 +410,7 @@ export default function ProductPage() {
             )}
 
             {product.stock === 0 && (
-              <div className="bg-darklight border border-dark-light rounded-md p-4">
+              <div className="bg-darklight border border-darklight rounded-md p-4">
                 <p className="text-pink font-medium">
                   Este producto no está disponible en este momento
                 </p>
@@ -420,7 +420,7 @@ export default function ProductPage() {
             {/* Back Button */}
             <Link
               href="/"
-              className="inline-flex items-center text-red-600 hover:text-red-700 transition-colors"
+              className="inline-flex items-center text-red-600 hover:text-secondary transition-colors"
             >
               <ChevronLeftIcon className="h-4 w-4 mr-1" />
               Seguir comprando

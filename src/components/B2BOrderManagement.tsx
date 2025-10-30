@@ -94,12 +94,12 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
     switch (status) {
       case 'draft': return 'bg-darklight text-white';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'confirmed': return 'bg-orange-100 text-red-700';
+      case 'confirmed': return 'bg-orange-100 text-secondary';
       case 'processing': return 'bg-yellow-100 text-amber-800';
-      case 'shipped': return 'bg-yellow-100 text-red-700';
+      case 'shipped': return 'bg-yellow-100 text-secondary';
       case 'delivered': return 'bg-green-100 text-green-800';
       case 'cancelled': return 'bg-darklight text-pink';
-      case 'sent': return 'bg-orange-100 text-red-700';
+      case 'sent': return 'bg-orange-100 text-secondary';
       case 'viewed': return 'bg-yellow-100 text-amber-800';
       case 'accepted': return 'bg-green-100 text-green-800';
       case 'rejected': return 'bg-darklight text-pink';
@@ -294,7 +294,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('orders')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'orders'
-                ? 'bg-orange-100 text-red-700'
+                ? 'bg-orange-100 text-secondary'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -304,7 +304,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('quotes')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'quotes'
-                ? 'bg-orange-100 text-red-700'
+                ? 'bg-orange-100 text-secondary'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -314,7 +314,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
             onClick={() => setActiveTab('customers')}
             className={`px-4 py-2 font-medium text-sm rounded-md ${
               activeTab === 'customers'
-                ? 'bg-orange-100 text-red-700'
+                ? 'bg-orange-100 text-secondary'
                 : 'text-primary/60 hover:text-primary'
             }`}
           >
@@ -428,7 +428,7 @@ export default function B2BOrderManagement({ className }: B2BOrderManagementProp
                       {quote.status === 'accepted' && !quote.convertedToPO && (
                         <button
                           onClick={() => convertQuoteToPO(quote.id, (currentUser as any)?.uid || currentUser?.email || '')}
-                          className="text-red-600 hover:text-red-700"
+                          className="text-red-600 hover:text-secondary"
                           title="Convertir a Orden de Compra"
                         >
                           <DocumentDuplicateIcon className="h-5 w-5" />

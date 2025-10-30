@@ -361,10 +361,10 @@ export default function StockManagement({ productId, className }: StockManagemen
 
               {selectedProduct && restockData.quantity && (
                 <div className="bg-yellow-50 p-3 rounded-md">
-                  <div className="text-sm text-red-700">
+                  <div className="text-sm text-secondary">
                     Stock actual: <span className="font-medium">{selectedProduct.stock}</span>
                   </div>
-                  <div className="text-sm text-red-700">
+                  <div className="text-sm text-secondary">
                     Nuevo stock: <span className="font-medium">
                       {selectedProduct.stock + parseInt(restockData.quantity || '0')}
                     </span>

@@ -45,22 +45,22 @@ function PaymentFailureContent() {
           </div>
 
           {paymentInfo && (
-            <div className="mt-8 bg-darklight border border-dark-light rounded-lg p-4">
+            <div className="mt-8 bg-darklight border border-darklight rounded-lg p-4">
               <h3 className="text-lg font-medium text-pink mb-2">
                 Detalles del Pago
               </h3>
               <div className="space-y-2 text-sm">
                 <div>
-                  <span className="font-medium text-red-700">ID de Pago:</span>
+                  <span className="font-medium text-secondary">ID de Pago:</span>
                   <span className="ml-2 text-pink">{paymentInfo.paymentId}</span>
                 </div>
                 <div>
-                  <span className="font-medium text-red-700">Estado:</span>
+                  <span className="font-medium text-secondary">Estado:</span>
                   <span className="ml-2 text-pink capitalize">{paymentInfo.status}</span>
                 </div>
                 {paymentInfo.externalReference && (
                   <div>
-                    <span className="font-medium text-red-700">Número de Orden:</span>
+                    <span className="font-medium text-secondary">Número de Orden:</span>
                     <span className="ml-2 text-pink">{paymentInfo.externalReference}</span>
                   </div>
                 )}
