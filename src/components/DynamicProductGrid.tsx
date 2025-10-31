@@ -69,7 +69,6 @@ export default function DynamicProductGrid({ products }: DynamicProductGridProps
               <ProductCard 
                 product={product} 
                 customHeight={heightClass}
-                isSpecial={gridClass.includes('col-span-2') || gridClass.includes('row-span-2')}
               />
             </div>
           </div>
