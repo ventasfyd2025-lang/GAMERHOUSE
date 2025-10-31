@@ -50,18 +50,26 @@ export default function UsuariosAdminPage() {
   if (!currentUser || !isAdmin) {
     return (
       <Layout>
-        <div className="min-h-screen bg-slate-900 flex items-center justify-center py-12 px-4">
-          <div className="max-w-md w-full text-center space-y-4">
-            <h2 className="text-2xl font-bold text-white">Acceso Denegado</h2>
-            <p className="text-yellow-300">
-              Solo los administradores pueden gestionar usuarios.
-            </p>
-            <button
-              onClick={() => router.push('/admin')}
-              className="bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-500 transition-colors"
-            >
-              Volver al Panel Admin
-            </button>
+        <div
+          id="admin-container"
+          className="flex min-h-screen items-center justify-center px-4 py-12 text-white"
+          style={{ background: 'var(--brand-background)' }}
+        >
+          <div className="hero-section w-full max-w-lg overflow-hidden">
+            <div className="hero-bg opacity-80" />
+            <div className="relative space-y-5 px-8 py-10 text-center">
+              <div className="text-4xl">🔒</div>
+              <h2 className="text-2xl font-bold text-white">Acceso restringido</h2>
+              <p className="text-sm text-white/70">
+                Solo los administradores pueden gestionar usuarios. Solicita permisos o regresa al panel principal.
+              </p>
+              <button
+                onClick={() => router.push('/admin')}
+                className="btn-secondary-web w-full justify-center text-sm sm:w-auto"
+              >
+                Volver al panel
+              </button>
+            </div>
           </div>
         </div>
       </Layout>
@@ -121,10 +129,14 @@ export default function UsuariosAdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-slate-800 text-pink border-slate-700';
-      case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
-      case 'cliente': return 'bg-success/20 text-success border-success';
-      default: return 'bg-slate-800 text-white border-yellow-300/30';
+      case 'admin':
+        return 'border-yellow-300/60 bg-yellow-300/15 text-yellow-100 shadow-[0_0_12px_rgba(255,232,141,0.25)]';
+      case 'vendedor':
+        return 'border-orange-400/50 bg-orange-500/15 text-orange-200 shadow-[0_0_12px_rgba(255,181,99,0.25)]';
+      case 'cliente':
+        return 'border-blue-400/40 bg-blue-500/15 text-blue-200';
+      default:
+        return 'border-white/20 bg-white/5 text-white/80';
     }
   };
 
@@ -149,65 +161,74 @@ export default function UsuariosAdminPage() {
         className="relative min-h-screen pb-24 text-white"
         style={{ background: 'var(--brand-background)' }}
       >
-        <div className="max-w-full mx-auto px-4">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-white">Gestión de Usuarios</h1>
-            <p className="text-yellow-300">Administra roles y permisos de usuarios</p>
-          </div>
+        <div className="max-w-[95%] 2xl:max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+          <section className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/25">
+            <div className="hero-bg opacity-70" />
+            <div className="relative px-8 py-10 space-y-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="space-y-3">
+                  <span className="tag-legendary inline-flex items-center gap-2">
+                    Control maestro
+                  </span>
+                  <h1 className="text-3xl sm:text-4xl font-black text-white">Gestión de usuarios</h1>
+                  <p className="text-sm text-white/70 max-w-2xl">
+                    Administra roles, permisos y accesos bajo la misma estética gamer neon que el resto del panel.
+                  </p>
+                </div>
+                <span className="chip-option chip-option-active text-[11px] uppercase tracking-[0.35em]">
+                  {users.length} perfiles
+                </span>
+              </div>
+            </div>
+          </section>
 
           {/* Administradores y Vendedores */}
-          <div className="admin-card mb-8">
-            <div className="px-6 py-4 bg-slate-800 border-b border-yellow-300/30">
-              <h3 className="text-lg font-medium text-yellow-300">👑 Administradores y Vendedores</h3>
-              <p className="text-sm text-yellow-300">Personal autorizado con permisos especiales</p>
+          <section className="card-dark p-0 overflow-hidden">
+            <div className="bg-white/10 border-b border-white/10 px-6 py-5">
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <span>👑</span> Administradores y vendedores
+              </h3>
+              <p className="text-sm text-white/60">Personal autorizado con permisos especiales.</p>
             </div>
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-slate-900">
+              <table className="min-w-full text-sm text-white/75">
+                <thead className="bg-white/5 text-[11px] uppercase tracking-[0.35em] text-yellow-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Usuario
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Rol
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Fecha Registro
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Acciones
-                    </th>
+                    <th className="px-6 py-3 text-left font-semibold">Usuario</th>
+                    <th className="px-6 py-3 text-left font-semibold">Rol</th>
+                    <th className="px-6 py-3 text-left font-semibold">Fecha registro</th>
+                    <th className="px-6 py-3 text-left font-semibold">Acciones</th>
                   </tr>
                 </thead>
-                <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                <tbody className="bg-white/5 divide-y divide-white/10">
                   {users.filter(user => user.role === 'admin' || user.role === 'vendedor').map((user) => (
-                    <tr key={user.uid} className="hover:bg-slate-900">
-                      <td className="px-6 py-4 whitespace-nowrap">
+                    <tr key={user.uid} className="transition-colors duration-200 hover:bg-yellow-300/10">
+                      <td className="px-6 py-4">
                         <div>
-                          <div className="text-lg font-bold text-white">
+                          <div className="text-base font-semibold text-white">
                             {user.firstName} {user.lastName}
                           </div>
-                          <div className="text-sm text-yellow-300">{user.email}</div>
+                          <div className="text-xs text-white/55">{user.email}</div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         {editingUser === user.uid ? (
                           <select
                             defaultValue={user.role}
                             onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                            className="admin-input text-sm py-1 px-2 max-w-xs"
+                            className="input-web text-sm max-w-xs md:w-auto"
                           >
                             <option value="cliente">Cliente</option>
                             <option value="vendedor">Vendedor</option>
                             <option value="admin">Admin</option>
                           </select>
                         ) : (
-                          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${getRoleColor(user.role || 'cliente')}`}>
+                          <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] ${getRoleColor(user.role || 'cliente')}`}>
                             {user.role || 'cliente'}
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
+                      <td className="px-6 py-4 text-xs text-white/60">
                         {user.createdAt ? (() => {
                           try {
                             const date = (user.createdAt as any)?.toDate ? (user.createdAt as any).toDate() : new Date(user.createdAt);
@@ -217,31 +238,31 @@ export default function UsuariosAdminPage() {
                           }
                         })() : 'N/A'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                      <td className="px-6 py-4">
                         {editingUser === user.uid ? (
                           <button
                             onClick={() => setEditingUser(null)}
-                            className="admin-button-secondary text-xs"
+                            className="btn-secondary-web text-xs px-4 py-2"
                           >
                             Cancelar
                           </button>
                         ) : (
-                          <>
+                          <div className="flex flex-wrap gap-2">
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="admin-button text-xs"
+                              className="btn-primary-web text-xs px-4 py-2"
                             >
                               Editar
                             </button>
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="admin-button-secondary text-xs bg-pink/20 text-pink border-pink/30 hover:bg-pink/30"
+                                className="btn-outline-web text-xs px-4 py-2 border-pink-400 text-pink-200 hover:bg-pink-500/10 hover:text-pink-100"
                               >
                                 Eliminar
                               </button>
                             )}
-                          </>
+                          </div>
                         )}
                       </td>
                     </tr>
@@ -249,61 +270,55 @@ export default function UsuariosAdminPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </section>
 
           {/* Clientes */}
-          <div className="admin-card">
-            <div className="px-6 py-4 bg-slate-800 border-b border-yellow-300/30">
-              <h3 className="text-lg font-medium text-yellow-300">👥 Clientes</h3>
-              <p className="text-sm text-yellow-300">Usuarios registrados de la tienda</p>
+          <section className="card-dark p-0 overflow-hidden">
+            <div className="bg-white/10 border-b border-white/10 px-6 py-5">
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <span>👥</span> Clientes registrados
+              </h3>
+              <p className="text-sm text-white/60">Usuarios que compran y siguen la tienda.</p>
             </div>
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-slate-900">
+              <table className="min-w-full text-sm text-white/75">
+                <thead className="bg-white/5 text-[11px] uppercase tracking-[0.35em] text-yellow-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Usuario
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Rol
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Fecha Registro
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
-                      Acciones
-                    </th>
+                    <th className="px-6 py-3 text-left font-semibold">Usuario</th>
+                    <th className="px-6 py-3 text-left font-semibold">Rol</th>
+                    <th className="px-6 py-3 text-left font-semibold">Fecha registro</th>
+                    <th className="px-6 py-3 text-left font-semibold">Acciones</th>
                   </tr>
                 </thead>
-                <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                <tbody className="bg-white/5 divide-y divide-white/10">
                   {users.filter(user => !user.role || user.role === 'cliente').map((user) => (
-                    <tr key={user.uid} className="hover:bg-slate-900">
-                      <td className="px-6 py-4 whitespace-nowrap">
+                    <tr key={user.uid} className="transition-colors duration-200 hover:bg-yellow-300/10">
+                      <td className="px-6 py-4">
                         <div>
-                          <div className="text-lg font-bold text-white">
+                          <div className="text-base font-semibold text-white">
                             {user.firstName} {user.lastName}
                           </div>
-                          <div className="text-sm text-yellow-300">{user.email}</div>
+                          <div className="text-xs text-white/55">{user.email}</div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         {editingUser === user.uid ? (
                           <select
                             defaultValue={user.role || 'cliente'}
                             onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
-                            className="text-sm border border-yellow-300/40 rounded px-2 py-1"
+                            className="input-web text-sm max-w-xs md:w-auto"
                           >
                             <option value="cliente">Cliente</option>
                             <option value="vendedor">Vendedor</option>
                             <option value="admin">Admin</option>
                           </select>
                         ) : (
-                          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${getRoleColor(user.role || 'cliente')}`}>
+                          <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] ${getRoleColor(user.role || 'cliente')}`}>
                             {user.role || 'cliente'}
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
+                      <td className="px-6 py-4 text-xs text-white/60">
                         {user.createdAt ? (() => {
                           try {
                             const date = (user.createdAt as any)?.toDate ? (user.createdAt as any).toDate() : new Date(user.createdAt);
@@ -313,31 +328,31 @@ export default function UsuariosAdminPage() {
                           }
                         })() : 'N/A'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                      <td className="px-6 py-4">
                         {editingUser === user.uid ? (
                           <button
                             onClick={() => setEditingUser(null)}
-                            className="admin-button-secondary text-xs"
+                            className="btn-secondary-web text-xs px-4 py-2"
                           >
                             Cancelar
                           </button>
                         ) : (
-                          <>
+                          <div className="flex flex-wrap gap-2">
                             <button
                               onClick={() => setEditingUser(user.uid)}
-                              className="admin-button text-xs"
+                              className="btn-primary-web text-xs px-4 py-2"
                             >
                               Editar
                             </button>
                             {user.uid !== userProfile?.uid && (
                               <button
                                 onClick={() => deleteUser(user.uid)}
-                                className="admin-button-secondary text-xs bg-pink/20 text-pink border-pink/30 hover:bg-pink/30"
+                                className="btn-outline-web text-xs px-4 py-2 border-pink-400 text-pink-200 hover:bg-pink-500/10 hover:text-pink-100"
                               >
                                 Eliminar
                               </button>
                             )}
-                          </>
+                          </div>
                         )}
                       </td>
                     </tr>
@@ -345,7 +360,7 @@ export default function UsuariosAdminPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </section>
 
           <div className="mt-8 bg-slate-800/70 rounded-lg shadow p-6">
             <h2 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h2>

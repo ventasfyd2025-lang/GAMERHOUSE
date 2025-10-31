@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import MasonryProductGrid from '@/components/MasonryProductGrid';
-import MainBannerCarousel from '@/components/MainBannerCarousel';
+import MainBanner from '@/components/home/MainBanner';
 import { useProducts } from '@/hooks/useProducts';
 import { useConfig } from '@/hooks/useConfig';
 import { useCategories } from '@/hooks/useCategories';
@@ -191,6 +191,13 @@ export default function HomeClient() {
   const noActiveFilters = !searchQuery && !filter && noCategoryFilter && !priceRange && !sortBy && noSubcategoryFilter;
   const shouldShowBanner = noActiveFilters;
 
+  const handleResetFilters = () => {
+    if (typeof window === 'undefined') return;
+    const basePath = window.location.pathname;
+    window.history.pushState(null, '', basePath);
+    window.location.reload();
+  };
+
   if (error) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-16">
@@ -209,26 +216,10 @@ export default function HomeClient() {
     <>
       {/* PRIORIDAD 1: Banner aparece INMEDIATAMENTE - como PC Factory */}
       {shouldShowBanner && (
-        <>
-          {/* Banner placeholder inmediato - Totalmente responsive */}
-          {!mainBannerConfig || !mainBannerConfig.active || !mainBannerConfig.slides?.length ? (
-            <div className="relative w-full h-[180px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px] bg-gradient-to-br from-primary via-orange-400 to-primary-hover flex items-center justify-center">
-              <div className="text-white text-center px-3 sm:px-6 lg:px-8">
-                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 sm:mb-2 md:mb-4 drop-shadow-lg" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
-                  Importadora F&D
-                </h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl font-medium drop-shadow-xl shadow-red-600/30" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.7)' }}>
-                  Los mejores productos importados
-                </p>
-              </div>
-            </div>
-          ) : (
-            <MainBannerCarousel
-              products={[]} // No esperar productos, usar config únicamente
-              config={mainBannerConfig as any}
-            />
-          )}
-        </>
+        <MainBanner
+          config={mainBannerConfig ?? {}}
+          onResetFilters={handleResetFilters}
+        />
       )}
 
       {/* PRIORIDAD 1.5: Layouts Pinterest de categorías promocionales - solo en página principal */}

@@ -21,7 +21,9 @@ const formatDescriptionHtml = (raw?: string): string => {
     return '';
   }
 
-  const normalized = raw.replace(/\r\n?/g, '\n');
+  const normalized = raw
+    .replace(/\r\n?/g, '\n')
+    .replace(/\\n/g, '\n');
   const sanitized = normalized
     .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
     .replace(/javascript:/gi, '')
