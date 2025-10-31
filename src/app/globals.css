@@ -1,58 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  /* ==================== PALETA GAMERHOUSE - MEJORADA ==================== */
+  /* ==================== PALETA GAMERHOUSE - RENOVADA ==================== */
 
-  /* Colores Primarios - Sistema Refinado */
-  --color-primary: #FFE88D;        /* Amarillo Suave - Color principal (mejorado) */
-  --color-secondary: #E74444;      /* Rojo Suave - Color secundario (mejorado) */
-  --color-accent: #FFD966;         /* Amarillo Medio - Acentos */
+  /* Base cromática actualizada */
+  --brand-background: radial-gradient(circle at 20% 20%, rgba(255, 232, 141, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(231, 68, 68, 0.12), transparent 50%),
+    linear-gradient(135deg, #070a12 0%, #0f1625 40%, #111b2c 100%);
+  --brand-surface: rgba(13, 18, 30, 0.92);
+  --brand-surface-elevated: rgba(20, 26, 41, 0.86);
+  --brand-card: rgba(21, 28, 45, 0.78);
+  --brand-border-soft: rgba(255, 232, 141, 0.14);
+  --brand-border-strong: rgba(255, 232, 141, 0.32);
+  --brand-glow: rgba(255, 232, 141, 0.45);
 
-  /* Grises - Fondos y Fondos Oscuros */
-  --color-bg-slate-900est: #000000;     /* Negro puro */
-  --color-bg-slate-900-900: #1a1a1a;    /* Negro muy oscuro */
-  --color-bg-slate-900-800: #2a2a2a;    /* Negro oscuro */
-  --color-bg-slate-900-700: #3a3a3a;    /* Gris oscuro */
-  --color-bg-950: #0d0d0d;         /* Negro ultra oscuro */
-  --color-bg-900: #0f0f0f;         /* Negro muy oscuro */
+  --brand-text: #f5f7ff;
+  --brand-text-soft: #cbd5f5;
+  --brand-text-muted: #99a5c7;
 
-  /* Grises - Texto y Borde */
-  --color-text-yellow-300: #ffffff;   /* Blanco puro - texto principal */
-  --color-text-secondary: #e5e5e5; /* Gris claro - texto secundario */
-  --color-text-tertiary: #b0b0b0;  /* Gris medio - texto terciario */
-  --color-border: #FFDE00;         /* Amarillo Pikachu - bordes principales */
-  --color-border-light: #FFB800;   /* Amarillo Oscuro - bordes secundarios */
+  /* Colores Primarios */
+  --color-primary: #ffe88d;
+  --color-secondary: #e74444;
+  --color-accent: #ffd966;
 
-  /* Estados y Componentes */
-  --color-success: #10b981;        /* Emerald - éxito */
-  --color-warning: #f59e0b;        /* Amber - advertencia */
-  --color-error: #E60012;          /* Rojo Pikachu - error */
-  --color-info: #E60012;           /* Rojo Pikachu - información importante */
+  /* Grises y fondos antiguos para compatibilidad */
+  --color-bg-slate-900est: #000000;
+  --color-bg-slate-900-900: #1a1a1a;
+  --color-bg-slate-900-800: #2a2a2a;
+  --color-bg-slate-900-700: #3a3a3a;
+  --color-bg-950: #0d0d0d;
+  --color-bg-900: #0f0f0f;
 
-  /* Variantes de Amarillo (Pikachu) */
-  --color-yellow-300: #FFED4E;     /* Amarillo Claro - detalles secundarios */
-  --color-yellow-400: #FFDE00;     /* Amarillo Pikachu - principal */
-  --color-yellow-500: #FFB800;     /* Amarillo Oscuro - acentos */
+  /* Texto y bordes heredados */
+  --color-text-yellow-300: #ffffff;
+  --color-text-secondary: #e5e5e5;
+  --color-text-tertiary: #b0b0b0;
+  --color-border: #ffde00;
+  --color-border-light: #ffb800;
 
-  /* Variantes de Rojo (Pikachu) */
-  --color-red-400: #FF6B6B;        /* Rojo Claro - hover */
-  --color-red-500: #FF4444;        /* Rojo Medio */
-  --color-red-600: #E60012;        /* Rojo Pikachu - principal */
+  /* Estados y componentes */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #e60012;
+  --color-info: #e60012;
 
-  /* Variantes de Amarillo para Distinción */
-  --color-amber-400: #FFDE00;
-  --color-amber-500: #FFB800;
-  --color-amber-600: #FF9500;
-
-  /* Backgrounds de Componentes */
-  --bg-header: linear-gradient(to right, #0a0a0a, #1a1a1a, #000000);
-  --bg-footer: linear-gradient(to bottom, #0f0f0f, #0a0a0a);
-  --bg-card: rgba(26, 26, 26, 0.8);
-  --bg-input: rgba(42, 42, 42, 0.8);
+  /* Variantes de color */
+  --color-yellow-300: #ffed4e;
+  --color-yellow-400: #ffde00;
+  --color-yellow-500: #ffb800;
+  --color-red-400: #ff6b6b;
+  --color-red-500: #ff4444;
+  --color-red-600: #e60012;
+  --color-amber-400: #ffde00;
+  --color-amber-500: #ffb800;
+  --color-amber-600: #ff9500;
 
   /* Fondos Legacy (mantener para compatibilidad) */
-  --background: #ffffff;
-  --foreground: #333333;
+  --background: #0f1117;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -69,6 +74,7 @@ html {
 
 body {
   background: var(--brand-background);
+  background-attachment: fixed;
   color: var(--brand-text);
   font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
@@ -296,77 +302,95 @@ body {
 
   /* Primary Buttons - Yellow/Warm */
   .btn-primary-web {
-    @apply px-6 py-3 bg-yellow-400 text-slate-900 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-slate-950
+      bg-gradient-to-r from-yellow-400 via-amber-300 to-red-500
+      shadow-[0_18px_40px_-20px_rgba(255,232,141,0.75)] transition-all duration-300
+      hover:shadow-[0_16px_45px_-15px_rgba(255,161,67,0.8)] hover:-translate-y-0.5
+      hover:from-yellow-300 hover:via-amber-200 hover:to-red-500 disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   .btn-secondary-web {
-    @apply px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-yellow-200
+      bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-300
+      hover:border-yellow-300/50 hover:bg-white/10 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   .btn-outline-web {
-    @apply px-6 py-3 border-2 border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400/10 transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold
+      border border-yellow-300/60 text-yellow-100 backdrop-blur-md transition-all duration-300
+      hover:bg-yellow-300/10 hover:text-white hover:border-yellow-200;
   }
 
   /* Product Cards */
   .product-card-web {
-    @apply relative overflow-hidden rounded-xl border border-yellow-300/40 bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm hover:border-yellow-300/70 transition-all duration-300 hover:shadow-xl hover:shadow-red-600/20 cursor-pointer;
+    @apply relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl
+      hover:border-yellow-300/60 transition-all duration-500 hover:-translate-y-1
+      shadow-[0_20px_60px_-35px_rgba(255,232,141,0.85)];
   }
 
   .product-badge {
-    @apply absolute top-4 right-4 bg-gradient-to-r from-red-600 to-red-700 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg;
+    @apply absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md;
   }
 
   .product-price {
-    @apply text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-yellow-300 via-yellow-400 to-red-500 bg-clip-text text-transparent;
+    @apply text-lg sm:text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_6px_12px_rgba(255,232,141,0.25)];
   }
 
   .product-title {
-    @apply text-sm sm:text-base font-bold text-white line-clamp-2 transition-colors;
+    @apply text-sm sm:text-base font-semibold text-white/90 line-clamp-2 leading-snug;
   }
 
   /* Hero Sections */
   .hero-section {
-    @apply relative rounded-2xl overflow-hidden border border-yellow-300/30;
+    @apply relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#111a2a]/90 via-[#141f32]/80 to-[#0c121f]/92 backdrop-blur-2xl;
   }
 
   .hero-bg {
-    @apply absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 opacity-60 transition-opacity duration-500;
+    @apply absolute inset-0 opacity-70 transition-opacity duration-500 bg-[radial-gradient(circle_at_20%_20%,rgba(255,232,141,0.18),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(231,68,68,0.22),transparent_60%)];
   }
 
   .hero-title {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white;
   }
 
   /* Badges y Labels */
   .badge-primary {
-    @apply inline-block px-3 py-1 bg-yellow-400 text-slate-900 rounded-full text-xs font-bold;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide text-slate-950 bg-yellow-300 shadow-[0_8px_20px_-12px_rgba(255,232,141,0.75)];
   }
 
   .badge-secondary {
-    @apply inline-block px-3 py-1 bg-red-600 text-white rounded-full text-xs font-bold;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide text-white bg-red-600/90;
   }
 
   /* Inputs para toda la web */
   .input-web {
-    @apply w-full px-4 py-2.5 bg-slate-700/50 rounded-lg text-white border border-slate-600 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-400;
+    @apply w-full px-4 py-2.5 rounded-xl text-white placeholder-white/40 border border-white/10 bg-white/5 backdrop-blur-md transition-colors duration-300 focus:outline-none focus:border-yellow-300/70 focus:bg-white/10;
   }
 
   /* Gradient Text */
   .gradient-text-primary {
-    @apply bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-yellow-200 via-amber-300 to-red-400 bg-clip-text text-transparent;
   }
 
   .gradient-text-yellow {
-    @apply bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent;
   }
 
   /* Containers */
   .container-dark {
-    @apply bg-gradient-to-b from-gray-800 via-gray-700 to-gray-900 text-white;
+    @apply bg-white/5 backdrop-blur-xl text-white border border-white/10 rounded-3xl;
   }
 
   .card-dark {
-    @apply bg-slate-800/80 rounded-lg shadow-lg p-6 border border-slate-700/80 hover:border-yellow-300/50 transition-all duration-200 backdrop-blur-sm;
+    @apply bg-white/5 rounded-2xl p-6 border border-white/10 shadow-[0_16px_40px_-30px_rgba(0,0,0,0.45)] hover:border-yellow-300/40 transition-all duration-300 backdrop-blur-xl;
+  }
+
+  .chip-option {
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium tracking-wide text-white/70 border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:text-white hover:border-yellow-300/40 hover:bg-white/10;
+  }
+
+  .chip-option-active {
+    @apply text-white border-yellow-300/60 bg-yellow-300/15 shadow-[0_12px_36px_-20px_rgba(255,232,141,0.8)];
   }
 }
 
@@ -440,19 +464,19 @@ body {
   }
 }
 
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
-  }
-}
-
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
+@keyframes glow-alert {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.85), 0 0 36px rgba(239, 68, 68, 0.6);
+  }
+}
+
 .animate-glow {
-  animation: glow 2s ease-in-out infinite;
+  animation: glow-alert 2s ease-in-out infinite;
 }

@@ -21,30 +21,31 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 border-b border-yellow-300/30 transition-all duration-300">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl transition-colors duration-300">
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex h-16 sm:h-20 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="text-2xl font-black bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 bg-clip-text text-transparent">
+          <Link href="/" className="flex items-center gap-3 rounded-full px-2 py-1 transition-colors hover:bg-white/5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-yellow-300/15 text-lg">
               🎮
             </div>
-            <span className="text-lg font-bold text-white group-hover:text-yellow-300 transition-colors">
-              GAMERHOUSE
-            </span>
+            <div className="flex flex-col leading-none">
+              <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">Store</span>
+              <span className="text-lg font-semibold gradient-text-primary">Gamerhouse</span>
+            </div>
           </Link>
 
           {/* Desktop Search */}
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 mx-8">
+          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-8">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-yellow-300 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-900/50 border border-yellow-300/30 rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-yellow-300/50 focus:outline-none focus:border-yellow-300 focus:bg-slate-900/80 transition-all"
+                className="input-web pl-10 pr-4 py-2.5 text-sm"
               />
             </div>
           </form>
@@ -53,13 +54,13 @@ export default function AppHeader() {
           <div className="flex items-center gap-4">
             {/* Desktop Links */}
             <div className="hidden sm:flex items-center gap-4">
-              <Link href="/perfil" className="text-yellow-300 hover:text-yellow-300 transition-colors p-2">
+              <Link href="/perfil" className="text-white/70 hover:text-white transition-colors">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative text-yellow-300 hover:text-yellow-300 transition-colors p-2">
+              <Link href="/carrito" className="relative text-white/70 hover:text-white transition-colors">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-yellow-300 text-slate-900 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-[0_0_12px_rgba(255,232,141,0.6)]">
                     {getTotalItems()}
                   </span>
                 )}
@@ -69,7 +70,7 @@ export default function AppHeader() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-yellow-300 hover:text-yellow-300 transition-colors p-2"
+              className="md:hidden rounded-full border border-white/10 bg-white/5 p-2 text-white/80 transition-colors hover:text-white"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -79,13 +80,13 @@ export default function AppHeader() {
         {/* Mobile Search */}
         <form onSubmit={handleSearch} className="md:hidden pb-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-yellow-300 h-5 w-5" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" />
             <input
               type="text"
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-900/50 border border-yellow-300/30 rounded-lg pl-10 pr-4 py-2 text-white placeholder-yellow-300/50 focus:outline-none focus:border-yellow-300 transition-all"
+              className="input-web pl-10 pr-4 py-2 text-sm"
             />
           </div>
         </form>
@@ -93,24 +94,24 @@ export default function AppHeader() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-yellow-300/20 bg-slate-900/80">
+        <div className="md:hidden border-t border-white/10 bg-slate-950/90 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-3">
-            <Link href="/" className="block text-yellow-300 hover:text-yellow-300 transition-colors py-2">
+            <Link href="/" className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white">
               Inicio
             </Link>
-            <Link href="/productos" className="block text-yellow-300 hover:text-yellow-300 transition-colors py-2">
+            <Link href="/productos" className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white">
               Productos
             </Link>
-            <div className="border-t border-yellow-300/20 pt-3 flex gap-4">
-              <Link href="/perfil" className="flex items-center gap-2 text-yellow-300 hover:text-yellow-300 transition-colors py-2">
+            <div className="border-t border-white/10 pt-3 flex gap-4">
+              <Link href="/perfil" className="flex items-center gap-2 text-white/80 transition-colors hover:text-white">
                 <User className="h-5 w-5" />
                 Perfil
               </Link>
-              <Link href="/carrito" className="flex items-center gap-2 text-yellow-300 hover:text-yellow-300 transition-colors py-2 relative">
+              <Link href="/carrito" className="relative flex items-center gap-2 text-white/80 transition-colors hover:text-white">
                 <ShoppingCart className="h-5 w-5" />
                 Carrito
                 {getTotalItems() > 0 && (
-                  <span className="bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="bg-yellow-300 text-slate-900 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-[0_0_12px_rgba(255,232,141,0.6)]">
                     {getTotalItems()}
                   </span>
                 )}

@@ -7,100 +7,101 @@ export default function AppFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-dark via-slate-800 to-black border-t border-yellow-300/30 text-yellow-300 transition-all duration-300">
-      {/* Main Content */}
+    <footer className="border-t border-white/10 bg-slate-950/80 text-white/70 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🎮</span>
-              <span className="font-bold text-white text-lg">GAMERHOUSE</span>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl">
+                🎮
+              </span>
+              <div className="flex flex-col leading-none">
+                <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">Store</span>
+                <span className="text-lg font-semibold gradient-text-primary">Gamerhouse</span>
+              </div>
             </div>
-            <p className="text-sm text-yellow-300">
-              La tienda definitiva para gamers y coleccionistas de cartas.
+            <p className="text-sm text-white/60">
+              Hardware, cartas coleccionables y accesorios seleccionados para potenciar tu setup gamer.
             </p>
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Productos</h3>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Productos</h3>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/productos" className="text-sm hover:text-yellow-300 transition-colors">
-                  Catálogo
+                <Link href="/productos" className="transition-colors hover:text-yellow-200">
+                  Catálogo completo
                 </Link>
               </li>
               <li>
-                <Link href="/?category=consolas" className="text-sm hover:text-yellow-300 transition-colors">
-                  Consolas
+                <Link href="/?category=consolas" className="transition-colors hover:text-yellow-200">
+                  Consolas y portátiles
                 </Link>
               </li>
               <li>
-                <Link href="/?category=pokemon" className="text-sm hover:text-yellow-300 transition-colors">
-                  Pokemon TCG
+                <Link href="/?category=pokemon" className="transition-colors hover:text-yellow-200">
+                  Pokémon TCG
                 </Link>
               </li>
               <li>
-                <Link href="/?category=accesorios" className="text-sm hover:text-yellow-300 transition-colors">
-                  Accesorios
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Empresa</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/contacto" className="text-sm hover:text-yellow-300 transition-colors">
-                  Contacto
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/privacidad" className="text-sm hover:text-yellow-300 transition-colors">
-                  Privacidad
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/terminos" className="text-sm hover:text-yellow-300 transition-colors">
-                  Términos
+                <Link href="/?category=accesorios" className="transition-colors hover:text-yellow-200">
+                  Accesorios gamer
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Contacto</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-yellow-400" />
-                <a href="mailto:info@gamerhouse.cl" className="text-sm hover:text-yellow-300 transition-colors">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Compañía</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link href="/contacto" className="transition-colors hover:text-yellow-200">
+                  Contáctanos
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/privacidad" className="transition-colors hover:text-yellow-200">
+                  Política de privacidad
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/terminos" className="transition-colors hover:text-yellow-200">
+                  Términos y condiciones
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Contacto</h3>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                  <Mail className="h-4 w-4 text-yellow-300" />
+                </span>
+                <a href="mailto:info@gamerhouse.cl" className="transition-colors hover:text-yellow-200">
                   info@gamerhouse.cl
                 </a>
               </li>
-              <li className="flex gap-3 mt-4">
-                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className="text-yellow-300 hover:text-yellow-300 transition-colors">
-                  <Twitter className="h-5 w-5" />
-                </a>
+              <li>
+                <div className="flex items-center gap-3">
+                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
+                    <Facebook className="h-4 w-4" />
+                  </a>
+                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
+                    <Instagram className="h-4 w-4" />
+                  </a>
+                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
+                    <Twitter className="h-4 w-4" />
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-yellow-300/20 pt-8">
-          <p className="text-center text-sm text-yellow-300/40">
-            © {currentYear} GAMERHOUSE. Todos los derechos reservados.
-          </p>
+        <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/50">
+          © {currentYear} Gamerhouse. Todos los derechos reservados.
         </div>
       </div>
     </footer>
