@@ -11,6 +11,7 @@ import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight } from
 import { getProductCategoryCandidates, productMatchesSubcategory } from '@/utils/category';
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
+import MainBanner from '@/components/home/MainBanner';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -249,61 +250,14 @@ export default function RetailHomepage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 lg:space-y-20">
-        <section className="relative overflow-hidden rounded-3xl border border-yellow-300/25 bg-[#05070f]/75 backdrop-blur-2xl shadow-[0_40px_120px_-60px_rgba(255,232,141,0.65)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(255,232,141,0.12),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(231,68,68,0.18),transparent_60%)] opacity-90" />
-          <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
-            <div className="flex-1 space-y-6 p-10 sm:p-12">
-              <span className="tag-legendary">
-                {heroSlide ? 'Banner destacado' : 'Temporada 2025'}
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">
-                {heroTitle}
-              </h1>
-              <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-white/75">
-                {heroSubtitle}
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <Link
-                  href={heroLink.href}
-                  target={heroLinkIsExternal ? '_blank' : undefined}
-                  rel={heroLinkIsExternal ? 'noopener noreferrer' : undefined}
-                  className="btn-primary-web w-full sm:w-auto justify-center text-sm sm:text-base"
-                >
-                  {heroLink.label}
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory('all');
-                    setSelectedSubcategory('');
-                    setExpandedCategory(null);
-                  }}
-                  className="btn-secondary-web w-full sm:w-auto justify-center text-sm sm:text-base"
-                >
-                  Ver catálogo completo
-                </button>
-              </div>
-            </div>
-
-            <div className="relative hidden lg:flex w-full max-w-xl overflow-hidden">
-              <Link
-                href={heroLink.href}
-                target={heroLinkIsExternal ? '_blank' : undefined}
-                rel={heroLinkIsExternal ? 'noopener noreferrer' : undefined}
-                className="relative h-full w-full"
-              >
-                <Image
-                  src={heroImage}
-                  alt={heroSlide?.title || 'Destacados Gamerhouse'}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-[#05070f]/85 via-[#05070f]/40 to-transparent" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <MainBanner
+          config={mainBannerConfig}
+          onResetFilters={() => {
+            setSelectedCategory('all');
+            setSelectedSubcategory('');
+            setExpandedCategory(null);
+          }}
+        />
 
         <section className="space-y-6 rounded-3xl border border-yellow-300/15 bg-[#05070f]/70 p-6 sm:p-8 backdrop-blur-xl">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
