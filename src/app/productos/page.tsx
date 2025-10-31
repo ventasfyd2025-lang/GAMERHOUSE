@@ -10,8 +10,9 @@ import { useCategories } from '@/hooks/useCategories';
 import { useProductSections } from '@/hooks/useProductSections';
 import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { productMatchesCategory, productMatchesSubcategory } from '@/utils/category';
+import { getPaginationRange } from '@/lib/pagination';
 
-const ITEMS_PER_PAGE = 50;
+const ITEMS_PER_PAGE = 20;
 
 export default function AllProductsPage() {
   return (
@@ -195,6 +196,8 @@ function AllProductsPageContent() {
     return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredProducts, page]);
 
+  const paginationSegments = useMemo(() => getPaginationRange(page, totalPages), [page, totalPages]);
+
   const priceSummary = useMemo(() => {
     if (filteredProducts.length === 0) {
       return null;
@@ -225,57 +228,70 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="bg-slate-900/80 rounded-2xl shadow-sm border border-slate-700 p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold text-yellow-300">Catálogo completo</p>
-                <h1 className="text-3xl sm:text-4xl font-bold text-white">
-                  Todos los productos disponibles
-                </h1>
-                <p className="mt-2 text-sm sm:text-base text-yellow-300 max-w-2xl">
-                  Filtra por categoría, ofertas o novedades y navega nuestro inventario. Mostramos hasta 50 artículos por página para mantener la experiencia ligera.
-                </p>
-                {activeSectionTitle && (
-                  <div className="mt-3 rounded-lg border border-yellow-300-200 bg-slate-800 px-4 py-3 text-sm text-yellow-300-hover">
-                    <p className="font-semibold">
-                      Estás revisando la sección “{activeSectionTitle}”.
-                    </p>
-                    {activeSectionDescription && (
-                      <p className="mt-1 text-yellow-300">
-                        {activeSectionDescription}
-                      </p>
-                    )}
+          <header className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/20">
+            <div className="hero-bg opacity-70" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.12),transparent_55%)]" />
+            <div className="relative px-6 sm:px-10 py-10 space-y-8">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="tag-legendary">Catálogo gamer</span>
+                    <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-yellow-100">
+                      +{filteredProducts.length} productos activos
+                    </span>
                   </div>
-                )}
+
+                  <h1 className="text-[2.5rem] sm:text-4xl font-semibold text-white leading-tight">
+                    Todos los productos disponibles
+                  </h1>
+                  <p className="max-w-2xl text-sm sm:text-base text-white/70">
+                    Filtra por categoría, poderes especiales u ofertas destacadas y construye tu mazo ideal. Mostramos hasta 20 artículos por página para mantener la experiencia ágil.
+                  </p>
+
+                  {activeSectionTitle && (
+                    <div className="card-dark px-5 py-4 text-sm">
+                      <p className="font-semibold text-white">
+                        Estás revisando la sección “{activeSectionTitle}”.
+                      </p>
+                      {activeSectionDescription && (
+                        <p className="mt-2 text-white/70">
+                          {activeSectionDescription}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  onClick={() => refetch()}
+                  className="btn-secondary-web w-full justify-center text-sm sm:text-base sm:w-auto"
+                >
+                  ↻ Refrescar lista
+                </button>
               </div>
-              <button
-                onClick={() => refetch()}
-                className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-yellow-300 bg-slate-800 hover:bg-slate-800 transition-colors"
-              >
-                ↻ Refrescar lista
-              </button>
             </div>
           </header>
 
-          <section className="bg-slate-900/80 rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
-            <form className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
+          <section className="card-dark">
+            <h2 className="text-lg font-semibold text-white/90 mb-4">Refina tu búsqueda</h2>
+            <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
                 Buscar
                 <input
                   type="search"
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Nombre, descripción o SKU"
-                  className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
+                  className="input-web"
                 />
               </label>
 
-              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
                 Categoría
                 <select
                   value={selectedCategory}
                   onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
+                  className="input-web"
                 >
                   {categoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -286,12 +302,12 @@ function AllProductsPageContent() {
               </label>
 
               {subcategoryOptions.length > 0 && (
-                <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
+                <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
                   Subcategoría
                   <select
                     value={selectedSubcategory}
                     onChange={(event) => setSelectedSubcategory(event.target.value)}
-                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
+                    className="input-web"
                   >
                     <option value="">Todas</option>
                     {subcategoryOptions.map((option) => (
@@ -303,7 +319,7 @@ function AllProductsPageContent() {
                 </label>
               )}
 
-              <label className="flex flex-col text-sm font-medium text-yellow-300 gap-2">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
                 Rango de precio (CLP)
                 <div className="grid grid-cols-2 gap-3">
                   <input
@@ -312,7 +328,7 @@ function AllProductsPageContent() {
                     value={minPrice}
                     onChange={(event) => setMinPrice(event.target.value)}
                     placeholder="Mínimo"
-                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
+                    className="input-web"
                   />
                   <input
                     type="number"
@@ -320,11 +336,24 @@ function AllProductsPageContent() {
                     value={maxPrice}
                     onChange={(event) => setMaxPrice(event.target.value)}
                     placeholder="Máximo"
-                    className="w-full rounded-lg border border-yellow-300/40 px-3 py-2 text-sm focus:border-yellow-300 focus:ring-primary"
+                    className="input-web"
                   />
                 </div>
               </label>
 
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+                Filtro especial
+                <select
+                  value={specialFilter}
+                  onChange={(event) => setSpecialFilter(event.target.value as typeof specialFilter)}
+                  className="input-web"
+                >
+                  <option value="">Todos</option>
+                  <option value="destacados">Destacados</option>
+                  <option value="ofertas">Ofertas</option>
+                  <option value="nuevos">Nuevos</option>
+                </select>
+              </label>
             </form>
           </section>
         </section>
@@ -338,37 +367,43 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="bg-slate-800 border border-slate-700 text-secondary rounded-xl p-6">
-            <h2 className="text-lg font-semibold mb-2">Error al cargar productos</h2>
-            <p className="text-sm mb-4">{productsError}</p>
+          <section className="card-dark border-yellow-300/20">
+            <h2 className="text-lg font-semibold text-white mb-2">Error al cargar productos</h2>
+            <p className="text-sm text-white/70 mb-4">{productsError}</p>
             <button
               onClick={() => refetch()}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white"
-              style={{ background: 'linear-gradient(135deg, var(--primary) 0%, #E67E22 100%)' }}
+              className="btn-secondary-web w-full justify-center sm:w-auto"
             >
-              Reintentar
+              Reintentar carga
             </button>
           </section>
         )}
 
         {!productsLoading && !productsError && (
           <section className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div className="text-sm text-yellow-300">
-                {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'} encontrados · Página {page} de {totalPages}
+            <div className="card-dark flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="text-sm text-white/70">
+                {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'} encontrados · Página {page} de {Math.max(totalPages, 1)}
               </div>
               {priceSummary && (
-              <div className="text-xs text-yellow-300">Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}</div>
-            )}
+                <div className="text-xs text-white/60">
+                  Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}
+                </div>
+              )}
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="bg-slate-900/80 rounded-2xl border border-gray-100 p-10 text-center text-yellow-300">
-                <div className="text-5xl mb-4">🔍</div>
-                <p>No encontramos resultados con los filtros actuales. Ajusta la búsqueda para ver más productos.</p>
+              <div className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/15 text-center">
+                <div className="hero-bg opacity-60" />
+                <div className="relative px-6 sm:px-10 py-12 space-y-4">
+                  <div className="text-5xl">🔍</div>
+                  <p className="text-sm sm:text-base text-white/75">
+                    No encontramos resultados con los filtros actuales. Ajusta la búsqueda para descubrir más productos.
+                  </p>
+                </div>
               </div>
             ) : (
-              <div className="grid [grid-template-columns:repeat(auto-fit,minmax(160px,1fr))] sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
                 {paginatedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -376,29 +411,53 @@ function AllProductsPageContent() {
             )}
 
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-3">
-                <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
-                  onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-                  disabled={page === 1}
-                >
-                  ← Anterior
-                </button>
-                <span className="text-sm text-yellow-300">
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    className="pagination-button h-10 px-4 font-semibold"
+                    onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+                    disabled={page === 1}
+                    aria-label="Página anterior"
+                  >
+                    ←
+                  </button>
+                  {paginationSegments.map((segment, index) => {
+                    const isEllipsis = segment === '...';
+                    return (
+                      <button
+                        type="button"
+                        key={isEllipsis ? `ellipsis-${index}` : `page-${segment}`}
+                        className={`pagination-button ${segment === page ? 'pagination-button-active' : ''}`}
+                        onClick={() => {
+                          if (!isEllipsis) {
+                            setPage(segment as number);
+                          }
+                        }}
+                        disabled={isEllipsis}
+                      >
+                        {segment}
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    className="pagination-button h-10 px-4 font-semibold"
+                    onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
+                    disabled={page === totalPages}
+                    aria-label="Página siguiente"
+                  >
+                    →
+                  </button>
+                </div>
+                <span className="text-sm text-white/60">
                   Página {page} de {totalPages}
                 </span>
-                <button
-                  className="px-4 py-2 rounded-full text-sm font-semibold border border-yellow-300/30 text-yellow-300 hover:border-yellow-300-300 hover:text-yellow-300 disabled:opacity-40"
-                  onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-                  disabled={page === totalPages}
-                >
-                  Siguiente →
-                </button>
               </div>
             )}
 
             {filteredProducts.length > ITEMS_PER_PAGE && (
-              <div className="text-center text-xs text-yellow-300">
+              <div className="text-center text-xs text-white/50">
                 Mostrando los primeros {ITEMS_PER_PAGE} resultados. Refina los filtros para ubicar productos específicos.
               </div>
             )}

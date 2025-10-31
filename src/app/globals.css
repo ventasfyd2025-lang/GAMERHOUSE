@@ -404,6 +404,14 @@ body {
   .tag-legendary {
     @apply inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-300/15 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-100 shadow-[0_0_18px_rgba(255,232,141,0.45)];
   }
+
+  .pagination-button {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-yellow-300/25 bg-white/5 text-sm font-semibold text-white/70 backdrop-blur-md transition-all duration-300 hover:border-yellow-300/60 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .pagination-button-active {
+    @apply border-yellow-300/70 bg-gradient-to-r from-yellow-300 via-amber-200 to-orange-300 text-slate-950 shadow-[0_12px_28px_-18px_rgba(255,232,141,0.8)];
+  }
 }
 
 .collectible-card {

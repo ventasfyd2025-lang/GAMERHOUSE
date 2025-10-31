@@ -9,6 +9,9 @@ import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
 import { ShoppingCart, Zap, Sparkles, ArrowUpRight } from 'lucide-react';
 import { getProductCategoryCandidates } from '@/utils/category';
+import { getPaginationRange } from '@/lib/pagination';
+
+const ITEMS_PER_PAGE = 20;
 
 export default function RetailHomepage() {
   const searchParams = useSearchParams();
@@ -17,6 +20,7 @@ export default function RetailHomepage() {
   const { addItem } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const categoryParam = searchParams.get('category') || 'all';
   const searchParam = searchParams.get('search') || '';
@@ -25,6 +29,10 @@ export default function RetailHomepage() {
     setSelectedCategory(categoryParam);
     setSearchQuery(searchParam);
   }, [categoryParam, searchParam]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery]);
 
   const filteredProducts = useMemo(() => {
     let filtered = products.filter(product => (product.stock || 0) > 0);
@@ -49,15 +57,36 @@ export default function RetailHomepage() {
     return filtered;
   }, [products, selectedCategory, searchQuery]);
 
-  const featuredProducts = useMemo(
-    () => filteredProducts.slice(0, 4),
-    [filteredProducts]
-  );
+  const featuredProducts = useMemo(() => filteredProducts.slice(0, 4), [filteredProducts]);
 
-  const bestSellers = useMemo(
-    () => filteredProducts.slice(4, 8),
-    [filteredProducts]
-  );
+  const bestSellers = useMemo(() => filteredProducts.slice(4, 8), [filteredProducts]);
+
+  const totalPages = useMemo(() => {
+    if (filteredProducts.length === 0) {
+      return 0;
+    }
+    return Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  }, [filteredProducts.length]);
+
+  useEffect(() => {
+    if (totalPages === 0 && currentPage !== 1) {
+      setCurrentPage(1);
+      return;
+    }
+
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedProducts = useMemo(() => {
+    if (filteredProducts.length === 0) {
+      return [];
+    }
+
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
 
   const activeCategoryLabel = useMemo(() => {
     if (selectedCategory === 'all') {
@@ -377,9 +406,55 @@ export default function RetailHomepage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {filteredProducts.map(product => (
+              {paginatedProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
+            </div>
+          )}
+
+          {!productsLoading && filteredProducts.length > 0 && totalPages > 1 && (
+            <div className="mt-8 flex flex-col items-center gap-4 text-sm text-white/60">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="pagination-button h-10 px-4 font-semibold"
+                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  disabled={currentPage === 1}
+                  aria-label="Página anterior"
+                >
+                  ←
+                </button>
+                {getPaginationRange(currentPage, totalPages).map((pageNumber, index) => {
+                  const isEllipsis = pageNumber === '...';
+                  return (
+                  <button
+                    type="button"
+                    key={isEllipsis ? `ellipsis-${index}` : `page-${pageNumber}`}
+                    className={`pagination-button ${pageNumber === currentPage ? 'pagination-button-active' : ''}`}
+                    onClick={() => {
+                      if (!isEllipsis) {
+                        setCurrentPage(pageNumber as number);
+                      }
+                    }}
+                    disabled={isEllipsis}
+                  >
+                    {pageNumber}
+                  </button>
+                  );
+                })}
+                <button
+                  type="button"
+                  className="pagination-button h-10 px-4 font-semibold"
+                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  disabled={currentPage === totalPages}
+                  aria-label="Página siguiente"
+                >
+                  →
+                </button>
+              </div>
+              <span>
+                Página {currentPage} de {totalPages}
+              </span>
             </div>
           )}
         </section>

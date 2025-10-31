@@ -12,10 +12,9 @@ import { useNotification } from '@/context/NotificationContext';
 interface ProductCardProps {
   product: Product;
   customHeight?: string;
-  isSpecial?: boolean;
 }
 
-const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial = false }: ProductCardProps) {
+const ProductCard = memo(function ProductCard({ product, customHeight }: ProductCardProps) {
   const { addItem } = useCart();
   const { currentUser, loading } = useUserAuth();
   const { addNotification } = useNotification();
@@ -94,119 +93,128 @@ const ProductCard = memo(function ProductCard({ product, customHeight, isSpecial
   const currentPrice = product.precio || 0;
   const originalPrice = product.precioOriginal || (product.oferta ? Math.round(currentPrice * 1.3) : null);
 
-  // Determine image height based on whether custom height is provided
-  const imageHeight = customHeight 
-    ? (isSpecial ? 'h-48 sm:h-56 lg:h-64' : 'h-36 sm:h-40 lg:h-48')
-    : 'h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56';
+  const cardHeightClass = customHeight || 'h-full';
+  const discountPercentage = originalPrice
+    ? Math.max(0, Math.round(((originalPrice - currentPrice) / originalPrice) * 100))
+    : null;
 
   return (
-    <Link href={`/producto/${product.id}`} className="block h-full">
-      <div className={`bg-slate-900/80 rounded-lg shadow-sm hover:shadow-xl hover:shadow-yellow-300/50 shadow-red-600/15 transition-all duration-300 group border border-yellow-300/40 hover:border-yellow-300/80 flex flex-col ${customHeight || 'h-full'} cursor-pointer relative`}>
+    <Link href={`/producto/${product.id}`} className="block h-full group">
+      <div
+        className={`relative ${cardHeightClass} rounded-[28px] bg-gradient-to-br from-yellow-300/40 via-amber-300/20 to-red-500/30 p-[1.5px] transition-transform duration-500 hover:scale-[1.015] hover:shadow-[0_35px_110px_-45px_rgba(255,232,141,0.9)]`}
+      >
+        <div className="product-card-web h-full overflow-hidden flex flex-col">
+          <div className="relative aspect-[4/3] overflow-hidden">
+            {product.imagen ? (
+              <Image
+                src={product.imagen}
+                alt={product.nombre || 'Producto'}
+                fill
+                className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                loading="lazy"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-slate-900/80">
+                <span className="text-4xl text-white/50">📦</span>
+              </div>
+            )}
 
-      {/* Badges flotantes */}
-      {mostrarOferta && (
-        <div className="absolute top-2 left-2 z-10">
-          <span className="bg-pink text-white text-xs font-bold px-2 py-1 rounded shadow-md">
-            OFERTA
-          </span>
-        </div>
-      )}
-      {mostrarNuevo && (
-        <div className="absolute top-2 right-2 z-10">
-          <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded shadow-md">
-            NUEVO
-          </span>
-        </div>
-      )}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05070d]/95 via-transparent to-transparent opacity-90 mix-blend-soft-light" />
 
-      {/* Contenedor de imagen */}
-      <div className="relative w-full aspect-square bg-slate-900/80 overflow-hidden p-3 sm:p-4 lg:p-5">
-        {product.imagen ? (
-          <div className="relative w-full h-full">
-            <Image
-              src={product.imagen || ''}
-              alt={product.nombre || 'Producto'}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-slate-900">
-            <span className="text-gray-300 text-5xl">📦</span>
-          </div>
-        )}
+            {mostrarOferta && (
+              <span className="product-badge left-4 right-auto bg-gradient-to-r from-red-500 to-red-600 text-white">
+                Oferta
+              </span>
+            )}
 
-        {product.stock === 0 && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-            <span className="bg-pink text-white px-4 py-2 rounded font-semibold text-sm">
-              Agotado
-            </span>
-          </div>
-        )}
-      </div>
+            {mostrarNuevo && (
+              <span className="product-badge">
+                Nuevo
+              </span>
+            )}
 
-      {/* Información del producto */}
-      <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow">
-        {/* Título */}
-        <h3 className="text-xs text-yellow-300 line-clamp-2 mb-1.5 min-h-[2rem] leading-tight">
-          {product.nombre || 'Producto sin nombre'}
-        </h3>
+            {product.stock === 0 && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+                <span className="rounded-full border border-yellow-300/50 bg-yellow-300/20 px-4 py-1 text-sm font-semibold text-yellow-100 uppercase tracking-[0.2em]">
+                  Agotado
+                </span>
+              </div>
+            )}
 
-        {/* Precio */}
-        <div className="mt-auto">
-          {originalPrice && (
-            <div className="text-[10px] text-yellow-300 line-through mb-1">
-              {formatPrice(originalPrice)}
-            </div>
-          )}
-          <div className="flex items-baseline gap-1.5 mb-2">
-            <span className="text-lg font-bold text-white">
-              {formatPrice(currentPrice)}
-            </span>
-            {originalPrice && (
-              <span className="text-[10px] font-semibold text-green-600 bg-green-50 px-1.5 py-0.5 rounded">
-                {Math.round(((originalPrice - currentPrice) / originalPrice) * 100)}% OFF
+            {product.stock > 0 && (
+              <span className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-yellow-300/35 bg-yellow-300/10 px-3 py-1 text-xs font-semibold text-yellow-100 backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-yellow-200 shadow-[0_0_12px_rgba(255,232,141,0.85)]" />
+                Stock: {product.stock}
               </span>
             )}
           </div>
 
-          {/* Stock bajo */}
-          {product.stock <= 5 && product.stock > 0 && (
-            <p className="text-[10px] text-yellow-400 font-medium mb-1.5">
-              Quedan {product.stock} disponibles
-            </p>
-          )}
+          <div className="flex flex-1 flex-col gap-3 p-5">
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.35em] text-white/45">
+              <span>Serie gamer</span>
+              <span className="text-yellow-300">
+                {mostrarNuevo ? 'Legendary' : mostrarOferta ? 'Rare' : 'Base'}
+              </span>
+            </div>
+            <div className="divider-neon" />
 
-          {/* Botón de agregar */}
-          {product.stock > 0 ? (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleAddToCart(e);
-              }}
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 hover:from-red-700 hover:to-red-800 text-white font-bold py-2 px-3 sm:py-2.5 sm:px-4 rounded-lg transition-all duration-300 text-xs sm:text-sm shadow-md hover:shadow-xl hover:shadow-red-600/30 shadow-red-600/15 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"
-            >
-              <svg className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <span>Agregar</span>
-            </button>
-          ) : (
-            <button
-              disabled
-              className="w-full bg-slate-800 text-yellow-300 font-semibold py-2.5 px-3 rounded-lg cursor-not-allowed text-sm flex items-center justify-center gap-1.5"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              <span>Agotado</span>
-            </button>
-          )}
+            <h3 className="product-title group-hover:text-white">
+              {product.nombre || 'Producto sin nombre'}
+            </h3>
+
+            {product.descripcion && (
+              <p className="hidden text-sm text-white/55 line-clamp-2 lg:block">
+                {product.descripcion}
+              </p>
+            )}
+
+            <div className="mt-auto space-y-2">
+              <div className="flex items-baseline gap-2">
+                <span className="product-price">
+                  {formatPrice(currentPrice)}
+                </span>
+                {originalPrice && (
+                  <span className="text-xs text-white/40 line-through">
+                    {formatPrice(originalPrice)}
+                  </span>
+                )}
+              </div>
+
+              {discountPercentage && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-yellow-300/20 bg-yellow-300/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-yellow-200">
+                  {discountPercentage}% OFF
+                </span>
+              )}
+
+              {product.stock > 0 && product.stock <= 5 && (
+                <p className="text-xs font-medium text-yellow-200/80">
+                  Quedan {product.stock} unidades
+                </p>
+              )}
+
+              {product.stock > 0 ? (
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    handleAddToCart(event);
+                  }}
+                  className="btn-primary-web w-full justify-center text-xs sm:text-sm py-2.5"
+                >
+                  Agregar al carrito
+                </button>
+              ) : (
+                <button
+                  disabled
+                  className="pagination-button w-full cursor-not-allowed border-yellow-300/20 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200"
+                >
+                  No disponible
+                </button>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
       </div>
     </Link>
   );
