@@ -35,8 +35,12 @@ export default function UsuariosAdminPage() {
   if (authLoading) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-xl">Cargando...</div>
+        <div
+          id="admin-container"
+          className="flex min-h-screen items-center justify-center text-white"
+          style={{ background: 'var(--brand-background)' }}
+        >
+          <div className="card-dark text-center text-xl">Cargando...</div>
         </div>
       </Layout>
     );
@@ -127,8 +131,12 @@ export default function UsuariosAdminPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-xl">Cargando usuarios...</div>
+        <div
+          id="admin-container"
+          className="flex min-h-screen items-center justify-center text-white"
+          style={{ background: 'var(--brand-background)' }}
+        >
+          <div className="card-dark text-center text-xl">Cargando usuarios...</div>
         </div>
       </Layout>
     );
@@ -136,7 +144,11 @@ export default function UsuariosAdminPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-slate-900 py-8">
+      <div
+        id="admin-container"
+        className="relative min-h-screen pb-24 text-white"
+        style={{ background: 'var(--brand-background)' }}
+      >
         <div className="max-w-full mx-auto px-4">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Gestión de Usuarios</h1>

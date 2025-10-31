@@ -11,6 +11,8 @@ import { PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import optimizeImageFile from '@/utils/imageProcessing';
 
+const adminBackgroundStyle = { background: 'var(--brand-background)' };
+
 interface ChatMessage {
   id: string;
   orderId?: string;
@@ -253,20 +255,28 @@ export default function OrderDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-yellow-300"></div>
+      <div
+        id="admin-container"
+        className="flex min-h-screen items-center justify-center"
+        style={adminBackgroundStyle}
+      >
+        <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-yellow-300"></div>
       </div>
     );
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
+      <div
+        id="admin-container"
+        className="flex min-h-screen items-center justify-center text-white"
+        style={adminBackgroundStyle}
+      >
+        <div className="card-dark max-w-md w-full text-center space-y-4">
+          <h1 className="text-2xl font-semibold gradient-text-primary">Pedido no encontrado</h1>
           <button
             onClick={() => window.close()}
-            className="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-400"
+            className="btn-secondary-web w-full justify-center"
           >
             Cerrar
           </button>
@@ -276,15 +286,19 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div
+      id="admin-container"
+      className="relative min-h-screen pb-24 text-white"
+      style={adminBackgroundStyle}
+    >
       {/* Header igual al cliente */}
-      <div className="bg-slate-800/70 border-b border-yellow-300/30 sticky top-0 z-10">
+      <div className="sticky top-0 z-10 border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-[0_18px_60px_-42px_rgba(255,232,141,0.65)]">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => window.close()}
-                className="text-yellow-300 hover:text-yellow-300 transition-colors"
+                className="chip-option p-2 text-sm"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

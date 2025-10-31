@@ -222,15 +222,19 @@ export default function NuevoProductoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800">
+    <div
+      id="admin-container"
+      className="relative min-h-screen pb-24 text-white"
+      style={{ background: 'var(--brand-background)' }}
+    >
       {/* Header */}
-      <div className="bg-slate-800/70 border-b border-yellow-300/30 sticky top-0 z-10 shadow-sm">
+      <div className="sticky top-0 z-10 border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-[0_18px_60px_-42px_rgba(255,232,141,0.65)]">
         <div className="max-w-[95%] 2xl:max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="w-10 h-10 bg-slate-800 hover:bg-slate-800 rounded-lg flex items-center justify-center transition-all duration-200"
+                className="chip-option p-2"
               >
                 <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

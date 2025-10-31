@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 export const dynamic = 'force-dynamic';
 import { useParams, useRouter } from 'next/navigation';
@@ -16,6 +16,41 @@ import OfferPopup from '@/components/OfferPopup';
 import { useOfferPopup } from '@/hooks/useOfferPopup';
 import { ChevronLeftIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
+const formatDescriptionHtml = (raw?: string): string => {
+  if (!raw) {
+    return '';
+  }
+
+  const normalized = raw.replace(/\r\n?/g, '\n');
+  const sanitized = normalized
+    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on[a-z]+="[^"]*"/gi, '');
+
+  const trimmed = sanitized.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  const hasBlockTags = /<(p|ul|ol|li|table|h\d|blockquote|img|br)/i.test(trimmed);
+  if (hasBlockTags) {
+    return trimmed.replace(/\n/g, '<br />');
+  }
+
+  const paragraphs = trimmed
+    .split(/\n{2,}/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length <= 1) {
+    return trimmed.replace(/\n/g, '<br />');
+  }
+
+  return paragraphs
+    .map((paragraph) => `<p>${paragraph.replace(/\n/g, '<br />')}</p>`)
+    .join('');
+};
+
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();
@@ -27,6 +62,10 @@ export default function ProductPage() {
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const descriptionHtml = useMemo(
+    () => formatDescriptionHtml(product?.descripcion),
+    [product?.descripcion]
+  );
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -346,12 +385,13 @@ export default function ProductPage() {
               )}
             </div>
 
-            {product.descripcion && (
+            {descriptionHtml && (
               <div>
                 <h3 className="text-lg font-semibold text-white mb-2">Descripción</h3>
-                <p className="text-yellow-300 leading-relaxed">
-                  {product.descripcion}
-                </p>
+                <div
+                  className="space-y-3 text-white/70 leading-relaxed [&>p]:mb-2 [&>ul]:list-disc [&>ul]:space-y-1 [&>ul]:pl-5 [&>strong]:text-white [&>em]:text-yellow-200"
+                  dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+                />
               </div>
             )}
 

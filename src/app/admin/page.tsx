@@ -2283,27 +2283,31 @@ export default function AdminPage() {
           font-size: 1.02em !important;
         }
       `}</style>
-      <div id="admin-container" className="min-h-screen bg-gradient-to-br from-slate-800/30 via-slate-800/20 to-slate-800/40">
+      <div
+        id="admin-container"
+        className="relative min-h-screen pb-24 text-white"
+        style={{ background: 'var(--brand-background)' }}
+      >
 
-      <header className="bg-slate-800/70 backdrop-blur-lg shadow-xl shadow-red-600/30 border-b border-slate-700">
+      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-[0_18px_60px_-42px_rgba(255,232,141,0.65)]">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
-                <span className="text-white text-lg">🏪</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl shadow-[0_0_18px_rgba(255,232,141,0.45)]">
+                🏪
               </div>
-              <h1 className="text-xl font-bold">
+              <h1 className="text-xl font-semibold gradient-text-primary">
                 F&D Admin Panel
               </h1>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-              >
-<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              className="btn-secondary-web w-full justify-center gap-2 text-sm text-white sm:w-auto sm:text-base"
+            >
+              <svg className="h-4 w-4 text-yellow-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
-              Cerrar Sesión
+              Cerrar sesión
             </button>
           </div>
         </div>
@@ -2312,24 +2316,26 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="bg-gradient-to-r from-primary to-pink rounded-xl shadow-xl shadow-red-600/30 p-4 mb-6 border border-yellow-300-200 bg-yellow-400">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-slate-800/70/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
-                <span className="text-xl">⚡</span>
+        <div className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/25 mb-6">
+          <div className="hero-bg opacity-60" />
+          <div className="relative space-y-6 p-6 sm:p-8">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl shadow-[0_0_18px_rgba(255,232,141,0.45)]">
+                  ⚡
+                </div>
+                <div>
+                  <h1 className="text-xl font-semibold text-white">Panel de Administración</h1>
+                  <p className="text-sm text-white/60">Gestiona tu tienda</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">Panel de Administración</h1>
-                <p className="text-slate-100-light text-xs">Gestiona tu tienda</p>
-              </div>
+              <span className="chip-option chip-option-active text-[10px] uppercase tracking-[0.3em] text-white/80">
+                🎮 GAMERHOUSE
+              </span>
             </div>
-            <div className="bg-slate-800/70/20 backdrop-blur-sm rounded-lg px-3 py-1">
-              <span className="text-white font-semibold text-xs">🎮 GAMERHOUSE</span>
-            </div>
-          </div>
 
-          {/* Horizontal Navigation */}
-          <nav className="flex flex-wrap gap-2">
+            {/* Horizontal Navigation */}
+            <nav className="flex flex-wrap gap-2">
                           {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
@@ -2348,22 +2354,23 @@ export default function AdminPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 relative ${
+                className={`chip-option relative transition-all duration-200 ${
                   activeTab === tab.id
-                    ? 'bg-slate-800/70 text-yellow-300 shadow-lg shadow-red-600/20 transform scale-105'
-                    : 'text-white/80 hover:text-white hover:bg-slate-800/70/20 backdrop-blur-sm'
+                    ? 'chip-option-active scale-[1.03]'
+                    : 'hover:-translate-y-0.5'
                 }`}
               >
                 <span className="text-lg">{tab.icon}</span>
-                <span className="font-semibold whitespace-nowrap">{tab.name}</span>
+                <span className="whitespace-nowrap text-sm font-semibold">{tab.name}</span>
                 {'badge' in tab && tab.badge && (
-                  <span className={`absolute -top-2 -right-2 ${tab.badgeColor || 'bg-pink'} text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold animate-pulse`}>
+                  <span className={`absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold shadow-[0_0_18px_rgba(255,232,141,0.6)] ${tab.badgeColor || 'bg-pink'}`}>
                     {tab.badge > 9 ? '9+' : tab.badge}
                   </span>
                 )}
               </button>
             ))}
-          </nav>
+            </nav>
+          </div>
         </div>
 
         
