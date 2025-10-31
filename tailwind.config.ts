@@ -12,38 +12,39 @@ export default {
         xs: '480px',
       },
       colors: {
-        /* Paleta GAMERHOUSE - Amarillo/Rojo Mejorada (menos pesada) */
+        /* Paleta GAMERHOUSE - Sistema Unificado Mejorado */
         background: '#0f1117',
         foreground: '#ffffff',
 
-        /* Colores Primarios - Más suaves */
-        primary: '#FFE88D',                          /* Amarillo Suave */
-        secondary: '#E74444',                        /* Rojo Más Suave */
-        accent: '#FFD966',                           /* Amarillo Acentos */
+        /* Colores Primarios - Refinados y Suaves */
+        primary: '#FFE88D',                          /* Amarillo Suave - Principal */
+        secondary: '#E74444',                        /* Rojo Suave - Secundario */
+        accent: '#FFD966',                           /* Amarillo Medio - Acentos */
 
         /* Estados */
         success: '#10b981',                          /* Emerald - Éxito */
         warning: '#f59e0b',                          /* Amber - Advertencia */
         error: '#E74444',                            /* Rojo Suave */
-        info: '#E74444',                             /* Rojo Suave */
+        info: '#3b82f6',                             /* Blue - Información */
 
-        /* Alias para admin pages - usando colores nativos de Tailwind */
+        /* Alias para compatibilidad */
         pink: '#E74444',                             /* Rojo Suave */
 
-        /* Variantes de Amarillo - Más Suaves */
-        'yellow-300': '#FFF3B0',     /* Amarillo Muy Claro */
-        'yellow-400': '#FFE88D',     /* Amarillo Suave - Principal */
-        'yellow-500': '#FFD966',     /* Amarillo Medio - Acentos */
-        /* Variantes de Rojo - Más Suaves */
-        'red-400': '#FF8080',        /* Rojo Muy Claro - Hover */
-        'red-500': '#E76666',        /* Rojo Claro */
-        'red-600': '#E74444',        /* Rojo Suave - Principal */
-        'red-700': '#C73636',        /* Rojo Oscuro */
+        /* Variantes de Amarillo - Sistema Completo */
+        'yellow-300': '#FFF3B0',     /* Muy Claro - Accents */
+        'yellow-400': '#FFE88D',     /* Suave - Principal */
+        'yellow-500': '#FFD966',     /* Medio - Hover/Focus */
+        /* Variantes de Rojo - Sistema Completo */
+        'red-400': '#FF8080',        /* Muy Claro - Hover */
+        'red-500': '#E76666',        /* Claro */
+        'red-600': '#E74444',        /* Suave - Principal */
+        'red-700': '#C73636',        /* Oscuro */
         /* Variantes Legacy para Compatibilidad */
         'amber-400': '#FFE88D',
         'amber-500': '#FFD966',
         'amber-600': '#FFC547',
-        /* Grises - Más Claros */
+        /* Grises - Profesionales */
+        'gray-200': '#e5e7eb',
         'gray-300': '#d1d5db',
         'gray-400': '#9ca3af',
         'gray-500': '#6b7280',
@@ -52,6 +53,7 @@ export default {
         'gray-800': '#2a3142',
         'gray-900': '#1a1f2e',
         'gray-950': '#0f1117',
+        'slate-600': '#475569',
         'slate-700': '#2d3748',
         'slate-800': '#1e293b',
         'slate-900': '#0f172a',

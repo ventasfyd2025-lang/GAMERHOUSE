@@ -159,7 +159,7 @@ export default function ChatWidget({ orderId, className = '' }: ChatWidgetProps)
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-yellow-400 hover:bg-yellow-500 text-white p-4 rounded-full shadow-lg shadow-red-600/20 transition-all duration-200 relative"
+          className="bg-yellow-400 hover:bg-yellow-500 text-white p-4 rounded-full shadow-lg shadow-red-600/15 transition-all duration-200 relative"
         >
           <ChatBubbleLeftRightIcon className="h-6 w-6" />
           {unreadCount > 0 && (

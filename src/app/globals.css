@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* ==================== PALETA GAMERHOUSE - AMARILLO/ROJO/NEGRO ALTO CONTRASTE ==================== */
+  /* ==================== PALETA GAMERHOUSE - MEJORADA ==================== */
 
-  /* Colores Primarios - Paleta Pikachu Oficial */
-  --color-primary: #FFDE00;        /* Amarillo Pikachu Brillante - Color principal */
-  --color-secondary: #E60012;      /* Rojo Pikachu - Color secundario para detalles */
-  --color-accent: #FFB800;         /* Amarillo Oscuro - Acentos y jerarquía */
+  /* Colores Primarios - Sistema Refinado */
+  --color-primary: #FFE88D;        /* Amarillo Suave - Color principal (mejorado) */
+  --color-secondary: #E74444;      /* Rojo Suave - Color secundario (mejorado) */
+  --color-accent: #FFD966;         /* Amarillo Medio - Acentos */
 
   /* Grises - Fondos y Fondos Oscuros */
   --color-bg-slate-900est: #000000;     /* Negro puro */
@@ -290,6 +290,83 @@ body {
 
   .admin-section-title {
     @apply text-xl font-bold text-white mb-4 pb-3 border-b border-slate-700;
+  }
+
+  /* ===== GLOBAL COMPONENTS - Aplicables a toda la web ===== */
+
+  /* Primary Buttons - Yellow/Warm */
+  .btn-primary-web {
+    @apply px-6 py-3 bg-yellow-400 text-slate-900 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary-web {
+    @apply px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50;
+  }
+
+  .btn-outline-web {
+    @apply px-6 py-3 border-2 border-yellow-400 text-yellow-400 rounded-lg font-semibold hover:bg-yellow-400/10 transition-all duration-200;
+  }
+
+  /* Product Cards */
+  .product-card-web {
+    @apply relative overflow-hidden rounded-xl border border-yellow-300/40 bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm hover:border-yellow-300/70 transition-all duration-300 hover:shadow-xl hover:shadow-red-600/20 cursor-pointer;
+  }
+
+  .product-badge {
+    @apply absolute top-4 right-4 bg-gradient-to-r from-red-600 to-red-700 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg;
+  }
+
+  .product-price {
+    @apply text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-yellow-300 via-yellow-400 to-red-500 bg-clip-text text-transparent;
+  }
+
+  .product-title {
+    @apply text-sm sm:text-base font-bold text-white line-clamp-2 transition-colors;
+  }
+
+  /* Hero Sections */
+  .hero-section {
+    @apply relative rounded-2xl overflow-hidden border border-yellow-300/30;
+  }
+
+  .hero-bg {
+    @apply absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 opacity-60 transition-opacity duration-500;
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent;
+  }
+
+  /* Badges y Labels */
+  .badge-primary {
+    @apply inline-block px-3 py-1 bg-yellow-400 text-slate-900 rounded-full text-xs font-bold;
+  }
+
+  .badge-secondary {
+    @apply inline-block px-3 py-1 bg-red-600 text-white rounded-full text-xs font-bold;
+  }
+
+  /* Inputs para toda la web */
+  .input-web {
+    @apply w-full px-4 py-2.5 bg-slate-700/50 rounded-lg text-white border border-slate-600 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-400;
+  }
+
+  /* Gradient Text */
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-yellow {
+    @apply bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent;
+  }
+
+  /* Containers */
+  .container-dark {
+    @apply bg-gradient-to-b from-gray-800 via-gray-700 to-gray-900 text-white;
+  }
+
+  .card-dark {
+    @apply bg-slate-800/80 rounded-lg shadow-lg p-6 border border-slate-700/80 hover:border-yellow-300/50 transition-all duration-200 backdrop-blur-sm;
   }
 }
 

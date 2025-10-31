@@ -103,7 +103,7 @@ export default function PCFactoryBanner({
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product.id)}
-                      className="bg-slate-900/80 border border-yellow-300/30 rounded-lg overflow-hidden hover:shadow-lg shadow-red-600/20 transition-all duration-300 cursor-pointer group hover:border-yellow-300-300"
+                      className="bg-slate-900/80 border border-yellow-300/30 rounded-lg overflow-hidden hover:shadow-lg shadow-red-600/15 transition-all duration-300 cursor-pointer group hover:border-yellow-300-300"
                     >
                       {/* Product Image */}
                       <div className="relative aspect-[4/3] bg-slate-900 overflow-hidden">

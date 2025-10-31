@@ -39,7 +39,7 @@ export default function CartPageClient() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
+              className="inline-flex items-center px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/15"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               🛍️ Explorar productos
@@ -56,7 +56,7 @@ export default function CartPageClient() {
         {/* Header */}
         <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/15" style={{ backgroundColor: 'var(--primary)' }}>
               <span className="text-white text-lg">🛒</span>
             </div>
             <div>
@@ -72,7 +72,7 @@ export default function CartPageClient() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/20 p-6 border border-yellow-300 hover:shadow-xl shadow-red-600/30 transition-all">
+              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/15 p-6 border border-yellow-300 hover:shadow-xl shadow-red-600/30 transition-all">
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 {/* Product Image */}
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
@@ -171,7 +171,7 @@ export default function CartPageClient() {
 
             <Link
               href="/checkout"
-              className="w-full mt-6 py-3 px-4 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 text-center block"
+              className="w-full mt-6 py-3 px-4 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/15 text-center block"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               💳 Finalizar compra

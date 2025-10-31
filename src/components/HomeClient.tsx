@@ -237,7 +237,7 @@ export default function HomeClient() {
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 bg-clip-text text-transparent">
                   ✨ Colecciones Destacadas
                 </h2>
                 <p className="text-sm sm:text-base text-yellow-300 max-w-2xl mx-auto">
@@ -248,7 +248,7 @@ export default function HomeClient() {
                 
                 {/* Promoción grande - Electrónicos */}
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
-                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/20 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
+                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/15 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
                     <div className="relative flex-1 min-h-[350px]">
                       <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 h-full w-full overflow-hidden">
                         <img
@@ -258,7 +258,7 @@ export default function HomeClient() {
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-6 left-6 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-lg font-bold px-4 py-3 rounded-full shadow-lg shadow-red-600/20">
+                      <span className="absolute top-6 left-6 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-lg font-bold px-4 py-3 rounded-full shadow-lg shadow-red-600/15">
                         HASTA 50% OFF
                       </span>
                       <div className="absolute bottom-6 left-6 text-white">
@@ -283,7 +283,7 @@ export default function HomeClient() {
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-pink text-white text-sm font-bold px-3 py-2 rounded-full shadow-lg shadow-red-600/20">
+                      <span className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-pink text-white text-sm font-bold px-3 py-2 rounded-full shadow-lg shadow-red-600/15">
                         NUEVA COLECCIÓN
                       </span>
                       <div className="absolute bottom-4 left-4 text-white">
@@ -388,7 +388,7 @@ export default function HomeClient() {
           <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/15" style={{ backgroundColor: 'var(--primary)' }}>
                   <span className="text-white text-lg">🛍️</span>
                 </div>
                 <div>
