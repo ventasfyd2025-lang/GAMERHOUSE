@@ -7,8 +7,9 @@ import { useSearchParams } from 'next/navigation';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { ShoppingCart, Zap, Sparkles, ArrowUpRight } from 'lucide-react';
-import { getProductCategoryCandidates } from '@/utils/category';
+import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight } from 'lucide-react';
+import { getProductCategoryCandidates, productMatchesSubcategory } from '@/utils/category';
+import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
 
 const ITEMS_PER_PAGE = 20;
@@ -20,19 +21,48 @@ export default function RetailHomepage() {
   const { addItem } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const { mainBannerConfig } = useConfig();
+
+  const heroSlide = useMemo(() => {
+    if (!mainBannerConfig?.active) return undefined;
+    return mainBannerConfig.slides?.find(slide => slide.imageUrl) ?? mainBannerConfig.slides?.[0];
+  }, [mainBannerConfig]);
+
+  const heroImage = heroSlide?.imageUrl || '/banner-hero-gamerhouse.jpg';
+  const heroTitle = heroSlide?.title || 'Potencia tu setup con energía coleccionable';
+  const heroSubtitle = heroSlide?.subtitle || 'Hardware competitivo, boosters exclusivos y accesorios con estética neon inspirada en cartas legendarias.';
+
+  const heroLink = useMemo(() => {
+    if (!heroSlide) return { href: '/productos', label: 'Explorar catálogo' };
+    const linkType = heroSlide.linkType || 'product';
+    if (linkType === 'product' && heroSlide.productId) {
+      return { href: `/producto/${heroSlide.productId}`, label: 'Ver producto destacado' };
+    }
+    if (linkType === 'category' && heroSlide.categoryId) {
+      return { href: `/?category=${heroSlide.categoryId}`, label: 'Ver categoría destacada' };
+    }
+    if (linkType === 'url' && heroSlide.customUrl) {
+      return { href: heroSlide.customUrl, label: 'Ver más detalles' };
+    }
+    return { href: '/productos', label: 'Explorar catálogo' };
+  }, [heroSlide]);
+
+  const heroLinkIsExternal = useMemo(() => heroLink.href.startsWith('http'), [heroLink.href]);
 
   const categoryParam = searchParams.get('category') || 'all';
   const searchParam = searchParams.get('search') || '';
 
+  const subcategoryParam = searchParams.get('subcategory') || '';
+
   useEffect(() => {
     setSelectedCategory(categoryParam);
     setSearchQuery(searchParam);
-  }, [categoryParam, searchParam]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedCategory, searchQuery]);
+    setSelectedSubcategory(subcategoryParam);
+  }, [categoryParam, searchParam, subcategoryParam]);
 
   const filteredProducts = useMemo(() => {
     let filtered = products.filter(product => (product.stock || 0) > 0);
@@ -46,6 +76,10 @@ export default function RetailHomepage() {
       });
     }
 
+    if (selectedSubcategory) {
+      filtered = filtered.filter(product => productMatchesSubcategory(product, selectedSubcategory));
+    }
+
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(product =>
@@ -55,7 +89,7 @@ export default function RetailHomepage() {
     }
 
     return filtered;
-  }, [products, selectedCategory, searchQuery]);
+  }, [products, selectedCategory, selectedSubcategory, searchQuery]);
 
   const featuredProducts = useMemo(() => filteredProducts.slice(0, 4), [filteredProducts]);
 
@@ -88,14 +122,32 @@ export default function RetailHomepage() {
     return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredProducts, currentPage]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedSubcategory, searchQuery]);
+
   const activeCategoryLabel = useMemo(() => {
     if (selectedCategory === 'all') {
       return 'Todos los productos';
     }
 
     const match = categories.find(cat => cat.id === selectedCategory);
-    return match?.name ?? selectedCategory;
-  }, [selectedCategory, categories]);
+    if (!match) {
+      return selectedCategory;
+    }
+
+    if (!selectedSubcategory) {
+      return match.name;
+    }
+
+    const subLabel = match.subcategorias?.find(sub => {
+      const value = sub.nombre || sub.id;
+      if (!value) return false;
+      return value.toLowerCase() === selectedSubcategory.toLowerCase();
+    })?.nombre;
+
+    return subLabel ? `${match.name} · ${subLabel}` : match.name;
+  }, [selectedCategory, selectedSubcategory, categories]);
 
   const handleAddToCart = (product: any) => {
     addItem(
@@ -125,19 +177,19 @@ export default function RetailHomepage() {
                 src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
                 alt={product.nombre}
                 fill
-              className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05070d]/95 via-transparent to-transparent opacity-90 mix-blend-soft-light" />
-            {descuento > 0 && (
-              <span className="product-badge">
-                -{descuento}%
+                className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05070d]/95 via-transparent to-transparent opacity-90 mix-blend-soft-light" />
+              {descuento > 0 && (
+                <span className="product-badge">
+                  -{descuento}%
+                </span>
+              )}
+              <span className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-yellow-300/35 bg-yellow-300/10 px-3 py-1 text-xs font-semibold text-yellow-100 backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-yellow-200 shadow-[0_0_12px_rgba(255,232,141,0.85)]" />
+                Stock: {product.stock}
               </span>
-            )}
-            <span className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-yellow-300/35 bg-yellow-300/10 px-3 py-1 text-xs font-semibold text-yellow-100 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-yellow-200 shadow-[0_0_12px_rgba(255,232,141,0.85)]" />
-              Stock: {product.stock}
-            </span>
             </div>
 
             <div className="flex h-full flex-col gap-3 p-5">
@@ -145,43 +197,43 @@ export default function RetailHomepage() {
                 <span>Serie gamer</span>
                 <span className="text-yellow-300">{descuento > 0 ? 'Rare' : 'Base'}</span>
               </div>
-            <div className="divider-neon" />
-            <h3 className="product-title group-hover:text-white">
-              {product.nombre}
-            </h3>
+              <div className="divider-neon" />
+              <h3 className="product-title group-hover:text-white">
+                {product.nombre}
+              </h3>
 
-            {product.descripcion && (
-              <p className="hidden text-sm text-white/55 line-clamp-2 lg:block">
-                {product.descripcion}
-              </p>
-            )}
+              {product.descripcion && (
+                <p className="hidden text-sm text-white/55 line-clamp-2 lg:block">
+                  {product.descripcion}
+                </p>
+              )}
 
-            <div className="mt-auto space-y-2">
-              <div className="flex items-baseline gap-2">
-                <span className="product-price">
-                  ${precio?.toLocaleString() || 'N/D'}
-                </span>
-                {precioOriginal && precio && precioOriginal > precio && (
-                  <span className="text-xs sm:text-sm text-white/40 line-through">
-                    ${precioOriginal.toLocaleString()}
+              <div className="mt-auto space-y-2">
+                <div className="flex items-baseline gap-2">
+                  <span className="product-price">
+                    ${precio?.toLocaleString() || 'N/D'}
                   </span>
-                )}
-              </div>
+                  {precioOriginal && precio && precioOriginal > precio && (
+                    <span className="text-xs sm:text-sm text-white/40 line-through">
+                      ${precioOriginal.toLocaleString()}
+                    </span>
+                  )}
+                </div>
 
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  handleAddToCart(product);
-                }}
-                className="btn-primary-web w-full justify-center text-xs sm:text-sm py-2.5 sm:py-3"
-              >
-                <ShoppingCart size={18} />
-                <span className="hidden sm:inline">Agregar al carrito</span>
-                <span className="sm:hidden">Agregar</span>
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    handleAddToCart(product);
+                  }}
+                  className="btn-primary-web w-full justify-center text-xs sm:text-sm py-2.5 sm:py-3"
+                >
+                  <ShoppingCart size={18} />
+                  <span className="hidden sm:inline">Agregar al carrito</span>
+                  <span className="sm:hidden">Agregar</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -197,98 +249,58 @@ export default function RetailHomepage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 lg:space-y-20">
-        <section className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/20">
-          <div className="hero-bg" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_0%,rgba(255,232,141,0.12),transparent_55%)] opacity-80" />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,232,141,0.08)_0%,rgba(255,232,141,0)_55%)]" />
-
-          <div className="relative px-6 sm:px-10 lg:px-16 py-12 sm:py-16 lg:py-20">
-            <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
-              <div className="flex-1 space-y-7">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="tag-legendary">Temporada 2025</span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/35 bg-yellow-300/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-yellow-100">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Coleccionables
-                  </span>
-                </div>
-
-                <h1 className="hero-title text-balance">
-                  Potencia tu setup y tu {''}
-                  <span className="gradient-text-primary"> colección épica</span>
-                </h1>
-
-                <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-white/75">
-                  Inspirados en cartas legendarias de Pokémon y Magic, combinamos hardware competitivo, boosters exclusivos y accesorios RGB para que cada partida se sienta única.
-                </p>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedCategory('all')}
-                    className="btn-primary-web w-full sm:w-auto justify-center text-sm sm:text-base"
-                  >
-                    Ver mazo completo
-                  </button>
-                  <Link
-                    href="/productos"
-                    className="btn-secondary-web w-full sm:w-auto justify-center text-sm sm:text-base"
-                  >
-                    Buscar reliquias
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-1 gap-4 pt-6 text-xs text-white/70 sm:grid-cols-3 sm:text-sm">
-                  <div className="flex items-center gap-3 rounded-2xl border border-yellow-300/15 bg-white/5 px-4 py-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-300 shadow-[0_0_14px_rgba(255,232,141,0.85)]" />
-                    Envíos express a todo Chile
-                  </div>
-                  <div className="flex items-center gap-3 rounded-2xl border border-yellow-300/15 bg-white/5 px-4 py-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(16,185,129,0.7)]" />
-                    Curaduría coleccionista
-                  </div>
-                  <div className="flex items-center gap-3 rounded-2xl border border-yellow-300/15 bg-white/5 px-4 py-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-red-400 shadow-[0_0_14px_rgba(231,68,68,0.7)]" />
-                    Soporte gamer 24/7
-                  </div>
-                </div>
+        <section className="relative overflow-hidden rounded-3xl border border-yellow-300/25 bg-[#05070f]/75 backdrop-blur-2xl shadow-[0_40px_120px_-60px_rgba(255,232,141,0.65)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(255,232,141,0.12),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(231,68,68,0.18),transparent_60%)] opacity-90" />
+          <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
+            <div className="flex-1 space-y-6 p-10 sm:p-12">
+              <span className="tag-legendary">
+                {heroSlide ? 'Banner destacado' : 'Temporada 2025'}
+              </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">
+                {heroTitle}
+              </h1>
+              <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-white/75">
+                {heroSubtitle}
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <Link
+                  href={heroLink.href}
+                  target={heroLinkIsExternal ? '_blank' : undefined}
+                  rel={heroLinkIsExternal ? 'noopener noreferrer' : undefined}
+                  className="btn-primary-web w-full sm:w-auto justify-center text-sm sm:text-base"
+                >
+                  {heroLink.label}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSelectedSubcategory('');
+                    setExpandedCategory(null);
+                  }}
+                  className="btn-secondary-web w-full sm:w-auto justify-center text-sm sm:text-base"
+                >
+                  Ver catálogo completo
+                </button>
               </div>
+            </div>
 
-              <div className="flex-1 lg:max-w-sm">
-                <div className="collectible-card">
-                  <div className="collectible-card__inner space-y-6">
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/45">
-                      <span>Rare drop</span>
-                      <span className="text-yellow-200">Semana 07</span>
-                    </div>
-                    <div className="divider-neon" />
-                    <div className="space-y-4 text-sm text-white/70">
-                      <div className="flex items-start gap-3">
-                        <Zap className="mt-0.5 h-5 w-5 text-yellow-300" />
-                        <div>
-                          <p className="font-semibold text-white">Starter decks temáticos</p>
-                          <p className="text-xs text-white/60">Bundles con boosters Pokémon, Magic y accesorios de protección premium.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <Sparkles className="mt-0.5 h-5 w-5 text-yellow-200" />
-                        <div>
-                          <p className="font-semibold text-white">Hardware edición especial</p>
-                          <p className="text-xs text-white/60">Teclados y controles con motivos neon y keycaps coleccionables.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <Link
-                      href="/ofertas"
-                      className="btn-outline-web justify-center text-sm"
-                    >
-                      Explorar drops activos
-                      <ArrowUpRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            <div className="relative hidden lg:flex w-full max-w-xl overflow-hidden">
+              <Link
+                href={heroLink.href}
+                target={heroLinkIsExternal ? '_blank' : undefined}
+                rel={heroLinkIsExternal ? 'noopener noreferrer' : undefined}
+                className="relative h-full w-full"
+              >
+                <Image
+                  src={heroImage}
+                  alt={heroSlide?.title || 'Destacados Gamerhouse'}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-[#05070f]/85 via-[#05070f]/40 to-transparent" />
+              </Link>
             </div>
           </div>
         </section>
@@ -304,32 +316,96 @@ export default function RetailHomepage() {
               </h2>
               <div className="divider-neon w-20" />
             </div>
-            <p className="text-sm text-white/55">Viendo: {activeCategoryLabel}</p>
+            <div className="flex flex-col items-end gap-2 text-sm text-white/60">
+              <span>Viendo: {activeCategoryLabel}</span>
+              <button
+                type="button"
+                onClick={() => setIsCategoryMenuOpen(prev => !prev)}
+                className="chip-option gap-2"
+              >
+                <Menu className="h-4 w-4" />
+                {isCategoryMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                <ChevronDown className={`h-4 w-4 transition-transform ${isCategoryMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 -mx-1 px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            <button
-              type="button"
-              onClick={() => setSelectedCategory('all')}
-              className={`chip-option ${selectedCategory === 'all' ? 'chip-option-active' : ''} shrink-0`}
-            >
-              🏠 Todos
-            </button>
-            {categories.map(
-              cat =>
-                cat.id !== 'all' && (
-                  <button
-                    type="button"
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`chip-option ${selectedCategory === cat.id ? 'chip-option-active' : ''} shrink-0`}
-                  >
-                    <span className="text-base">{cat.icon}</span>
-                    {cat.name}
-                  </button>
-                )
-            )}
-          </div>
+          {isCategoryMenuOpen && (
+            <div className="card-dark space-y-4">
+              <button
+                type="button"
+                className={`chip-option w-full justify-between ${selectedCategory === 'all' ? 'chip-option-active' : ''}`}
+                onClick={() => {
+                  setSelectedCategory('all');
+                  setSelectedSubcategory('');
+                  setExpandedCategory(null);
+                  setIsCategoryMenuOpen(false);
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  <span>🏠</span>
+                  Todos los productos
+                </span>
+              </button>
+
+              {categories.filter(cat => cat.id !== 'all').map(category => {
+                const subcategories = category.subcategorias?.filter(sub => sub.activa !== false) ?? [];
+                const isExpanded = expandedCategory === category.id;
+
+                return (
+                  <div key={category.id} className="space-y-2">
+                    <button
+                      type="button"
+                      className={`chip-option w-full justify-between ${selectedCategory === category.id && !selectedSubcategory ? 'chip-option-active' : ''}`}
+                      onClick={() => {
+                        setSelectedCategory(category.id);
+                        setSelectedSubcategory('');
+                        if (subcategories.length > 0) {
+                          setExpandedCategory(prev => (prev === category.id ? null : category.id));
+                        } else {
+                          setExpandedCategory(null);
+                          setIsCategoryMenuOpen(false);
+                        }
+                      }}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>{category.icon ?? '🎮'}</span>
+                        {category.name}
+                      </span>
+                      {subcategories.length > 0 && (
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                      )}
+                    </button>
+
+                    {isExpanded && subcategories.length > 0 && (
+                      <div className="space-y-2 pl-4">
+                        {subcategories.map(sub => {
+                          const subValue = sub.nombre || sub.id || '';
+                          return (
+                            <button
+                              type="button"
+                              key={sub.id ?? sub.nombre}
+                              className={`chip-option w-full justify-between text-sm ${selectedSubcategory && subValue.toLowerCase() === selectedSubcategory.toLowerCase() ? 'chip-option-active' : ''}`}
+                              onClick={() => {
+                                setSelectedCategory(category.id);
+                                setSelectedSubcategory(subValue);
+                                setIsCategoryMenuOpen(false);
+                              }}
+                            >
+                              <span className="flex items-center gap-2">
+                                <ChevronRight className="h-4 w-4 text-yellow-200" />
+                                {sub.nombre || sub.id}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </section>
 
         {featuredProducts.length > 0 && (
