@@ -17,8 +17,14 @@ interface BannerConfig {
   images: string[];
 }
 
+type MainBannerLinkType = 'product' | 'category' | 'url';
+
+const isMainBannerLinkType = (value: unknown): value is MainBannerLinkType => (
+  value === 'product' || value === 'category' || value === 'url'
+);
+
 interface MainBannerSlide {
-  linkType?: string;
+  linkType?: MainBannerLinkType;
   productId?: string;
   categoryId?: string;
   customUrl?: string;
@@ -48,6 +54,28 @@ const DEFAULT_BANNER: BannerConfig = {
 const DEFAULT_MAIN_BANNER: MainBannerConfig = {
   active: false,
   slides: [],
+};
+
+const sanitizeMainBannerSlides = (input: unknown): MainBannerSlide[] => {
+  if (!Array.isArray(input)) {
+    return [];
+  }
+
+  return input.map((rawSlide) => {
+    const slide = (rawSlide && typeof rawSlide === 'object') ? rawSlide as Record<string, unknown> : {};
+
+    const linkTypeValue = slide.linkType;
+
+    return {
+      title: typeof slide.title === 'string' ? slide.title : undefined,
+      subtitle: typeof slide.subtitle === 'string' ? slide.subtitle : undefined,
+      imageUrl: typeof slide.imageUrl === 'string' ? slide.imageUrl : undefined,
+      productId: typeof slide.productId === 'string' ? slide.productId : undefined,
+      categoryId: typeof slide.categoryId === 'string' ? slide.categoryId : undefined,
+      customUrl: typeof slide.customUrl === 'string' ? slide.customUrl : undefined,
+      linkType: isMainBannerLinkType(linkTypeValue) ? linkTypeValue : undefined,
+    } satisfies MainBannerSlide;
+  });
 };
 
 export function useConfig() {
@@ -92,7 +120,11 @@ export function useConfig() {
       try {
         const mainBannerDoc = await getDoc(doc(db, 'config', 'main-banner'));
         if (mainBannerDoc.exists()) {
-          setMainBannerConfig(mainBannerDoc.data() as MainBannerConfig);
+          const data = mainBannerDoc.data() as Record<string, unknown>;
+          setMainBannerConfig({
+            active: Boolean(data.active),
+            slides: sanitizeMainBannerSlides(data.slides),
+          });
         } else {
           setMainBannerConfig(DEFAULT_MAIN_BANNER);
         }
