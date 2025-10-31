@@ -4,15 +4,19 @@
   /* ==================== PALETA GAMERHOUSE - RENOVADA ==================== */
 
   /* Base cromática actualizada */
-  --brand-background: radial-gradient(circle at 20% 20%, rgba(255, 232, 141, 0.08), transparent 45%),
-    radial-gradient(circle at 80% 0%, rgba(231, 68, 68, 0.12), transparent 50%),
-    linear-gradient(135deg, #070a12 0%, #0f1625 40%, #111b2c 100%);
-  --brand-surface: rgba(13, 18, 30, 0.92);
-  --brand-surface-elevated: rgba(20, 26, 41, 0.86);
-  --brand-card: rgba(21, 28, 45, 0.78);
-  --brand-border-soft: rgba(255, 232, 141, 0.14);
-  --brand-border-strong: rgba(255, 232, 141, 0.32);
-  --brand-glow: rgba(255, 232, 141, 0.45);
+  --brand-background:
+    radial-gradient(circle at 12% 18%, rgba(255, 232, 141, 0.22), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(255, 188, 41, 0.2), transparent 52%),
+    radial-gradient(circle at 50% -10%, rgba(231, 68, 68, 0.18), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255, 232, 141, 0.07) 0, rgba(255, 232, 141, 0.07) 1px, transparent 1px, transparent 140px),
+    repeating-linear-gradient(0deg, rgba(255, 232, 141, 0.05) 0, rgba(255, 232, 141, 0.05) 1px, transparent 1px, transparent 140px),
+    linear-gradient(135deg, #030208 0%, #070914 45%, #04040a 100%);
+  --brand-surface: rgba(6, 8, 17, 0.92);
+  --brand-surface-elevated: rgba(12, 16, 30, 0.9);
+  --brand-card: rgba(10, 12, 22, 0.92);
+  --brand-border-soft: rgba(255, 232, 141, 0.22);
+  --brand-border-strong: rgba(255, 232, 141, 0.42);
+  --brand-glow: rgba(255, 232, 141, 0.6);
 
   --brand-text: #f5f7ff;
   --brand-text-soft: #cbd5f5;
@@ -323,21 +327,21 @@ body {
 
   /* Product Cards */
   .product-card-web {
-    @apply relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-2xl
+    @apply relative overflow-hidden rounded-[26px] border border-yellow-300/25 bg-[#070a17]/90 backdrop-blur-2xl
       hover:border-yellow-300/60 transition-all duration-500 hover:-translate-y-1
-      shadow-[0_20px_60px_-35px_rgba(255,232,141,0.85)];
+      shadow-[0_28px_90px_-40px_rgba(255,232,141,0.9)];
   }
 
   .product-badge {
-    @apply absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md;
+    @apply absolute top-4 right-4 bg-gradient-to-r from-yellow-300 via-amber-200 to-orange-400 text-slate-950 px-3 py-1 rounded-full text-xs font-extrabold shadow-[0_0_18px_rgba(255,232,141,0.6)];
   }
 
   .product-price {
-    @apply text-lg sm:text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_6px_12px_rgba(255,232,141,0.25)];
+    @apply text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_12px_22px_rgba(255,232,141,0.35)];
   }
 
   .product-title {
-    @apply text-sm sm:text-base font-semibold text-white/90 line-clamp-2 leading-snug;
+    @apply text-sm sm:text-base font-semibold text-white/95 line-clamp-2 leading-snug tracking-wide;
   }
 
   /* Hero Sections */
@@ -392,6 +396,56 @@ body {
   .chip-option-active {
     @apply text-white border-yellow-300/60 bg-yellow-300/15 shadow-[0_12px_36px_-20px_rgba(255,232,141,0.8)];
   }
+
+  .divider-neon {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-yellow-300/60 to-transparent;
+  }
+
+  .tag-legendary {
+    @apply inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-300/15 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-100 shadow-[0_0_18px_rgba(255,232,141,0.45)];
+  }
+}
+
+.collectible-card {
+  position: relative;
+  border-radius: 28px;
+  padding: 1.6px;
+  background: linear-gradient(135deg, rgba(255, 232, 141, 0.65), rgba(231, 68, 68, 0.4));
+  box-shadow:
+    0 25px 90px -45px rgba(255, 232, 141, 0.7),
+    inset 0 0 0 1px rgba(255, 232, 141, 0.2);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.collectible-card::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 232, 141, 0.12);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 232, 141, 0.22), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(231, 68, 68, 0.26), transparent 50%),
+    rgba(7, 10, 23, 0.96);
+  z-index: 0;
+  filter: drop-shadow(0 0 28px rgba(255, 232, 141, 0.25));
+}
+
+.collectible-card__inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+  padding: 22px 24px 26px;
+  background: rgba(5, 8, 18, 0.86);
+  border: 1px solid rgba(255, 232, 141, 0.1);
+  backdrop-filter: blur(14px);
+}
+
+.collectible-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 30px 110px -50px rgba(255, 232, 141, 0.9),
+    inset 0 0 0 1px rgba(255, 232, 141, 0.3);
 }
 
 /* Custom animations for popup */

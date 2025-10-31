@@ -21,13 +21,13 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl transition-colors duration-300">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-yellow-300/20 bg-slate-950/70 backdrop-blur-2xl transition-colors duration-300 shadow-[0_18px_60px_-42px_rgba(255,232,141,0.75)]">
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-20 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 rounded-full px-2 py-1 transition-colors hover:bg-white/5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-yellow-300/15 text-lg">
+          <Link href="/" className="flex items-center gap-3 rounded-full px-2 py-1 transition-colors hover:bg-yellow-300/5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-yellow-300/20 text-lg shadow-[0_0_18px_rgba(255,232,141,0.45)]">
               🎮
             </div>
             <div className="flex flex-col leading-none">
