@@ -127,7 +127,7 @@ export default function AppHeader() {
                   onMouseEnter={() => openMenu()}
                   onMouseLeave={scheduleCloseMenu}
                 >
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-[180px] max-h-96 overflow-y-auto pr-2">
                     <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Categorías</p>
                     <ul className="mt-2 space-y-1">
                       {activeCategories.map((category) => (
@@ -137,8 +137,7 @@ export default function AppHeader() {
                             onMouseEnter={() => setHoveredCategory(category.id)}
                             onFocus={() => setHoveredCategory(category.id)}
                             onClick={() => {
-                              router.push(`/?category=${encodeURIComponent(category.id)}`);
-                              scheduleCloseMenu();
+                              openMenu(category.id);
                             }}
                             className={`flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-semibold transition-colors ${hoveredCategory === category.id ? 'bg-yellow-300/15 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
                           >
@@ -150,18 +149,25 @@ export default function AppHeader() {
                     </ul>
                   </div>
 
-                  <div className="flex-1 border-l border-white/10 pl-4">
+                  <div className="flex-1 border-l border-white/10 pl-4 max-h-96 overflow-y-auto">
                     <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Subcategorías</p>
-                    <ul className="mt-2 space-y-1">
+                    {hoveredCategory && (
+                      <Link
+                        href={`/?category=${encodeURIComponent(hoveredCategory)}`}
+                        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:border-yellow-300/40 hover:text-yellow-100"
+                        onClick={() => scheduleCloseMenu()}
+                      >
+                        Ver todo
+                      </Link>
+                    )}
+                    <ul className="mt-3 space-y-1">
                       {hoveredSubcategories.length > 0 ? (
                         hoveredSubcategories.map((subcategory) => (
                           <li key={subcategory.id}>
                             <Link
                               href={`/?category=${encodeURIComponent(hoveredCategory ?? '')}&subcategory=${encodeURIComponent(subcategory.id)}`}
                               className="block rounded-2xl px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
-                              onClick={() => {
-                                scheduleCloseMenu();
-                              }}
+                              onClick={() => scheduleCloseMenu()}
                             >
                               {subcategory.nombre || formatLabel(subcategory.id)}
                             </Link>
