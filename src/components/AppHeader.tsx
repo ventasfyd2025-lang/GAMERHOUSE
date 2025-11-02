@@ -38,23 +38,29 @@ export default function AppHeader() {
   );
 
   const extractSubcategories = (raw: unknown) => {
-    if (Array.isArray(raw)) {
-      return raw.filter((sub) => (sub as { activa?: boolean }).activa !== false) as Array<{
-        id: string;
-        nombre?: string;
-        activa?: boolean;
-      }>;
-    }
+    if (!raw) return [];
 
-    if (raw && typeof raw === 'object') {
-      return Object.entries(raw as Record<string, unknown>).map(([key, value]) => {
-        const typedValue = (value ?? {}) as { nombre?: string; activa?: boolean };
-        return {
-          id: key,
-          nombre: typedValue.nombre,
-          activa: typedValue.activa !== false,
-        };
-      }).filter((item) => item.activa !== false);
+    if (Array.isArray(raw)) {
+      const subs = raw
+        .filter((sub) => {
+          // Filtra las subcategorías activas (por defecto son activas si no tienen el campo)
+          if (!sub || typeof sub !== 'object') return false;
+          return (sub as { activa?: boolean }).activa !== false;
+        })
+        .map((sub) => {
+          const typedSub = sub as Record<string, unknown>;
+          return {
+            id: (typedSub.id as string) || (typedSub.ID as string) || '',
+            nombre: (typedSub.nombre as string) || (typedSub.name as string) || (typedSub.NOMBRE as string) || '',
+            activa: typedSub.activa !== false && typedSub.ACTIVA !== false,
+          };
+        })
+        .filter((sub) => sub.id && sub.nombre); // Solo retorna subcategorías con id y nombre
+
+      if (process.env.NODE_ENV === 'development') {
+        console.debug('Subcategorías extraídas:', subs);
+      }
+      return subs;
     }
 
     return [];
