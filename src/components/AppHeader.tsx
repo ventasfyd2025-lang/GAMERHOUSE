@@ -37,14 +37,37 @@ export default function AppHeader() {
     [categories],
   );
 
+  const extractSubcategories = (raw: unknown) => {
+    if (Array.isArray(raw)) {
+      return raw.filter((sub) => (sub as { activa?: boolean }).activa !== false) as Array<{
+        id: string;
+        nombre?: string;
+        activa?: boolean;
+      }>;
+    }
+
+    if (raw && typeof raw === 'object') {
+      return Object.entries(raw as Record<string, unknown>).map(([key, value]) => {
+        const typedValue = (value ?? {}) as { nombre?: string; activa?: boolean };
+        return {
+          id: key,
+          nombre: typedValue.nombre,
+          activa: typedValue.activa !== false,
+        };
+      }).filter((item) => item.activa !== false);
+    }
+
+    return [];
+  };
+
   const hoveredCategoryData = useMemo(
     () => activeCategories.find((category) => category.id === hoveredCategory),
     [activeCategories, hoveredCategory],
   );
 
   const hoveredSubcategories = useMemo(
-    () => hoveredCategoryData?.subcategorias?.filter((sub) => sub.activa !== false) ?? [],
-    [hoveredCategoryData],
+    () => extractSubcategories(hoveredCategoryData?.subcategorias),
+    [hoveredCategoryData?.subcategorias],
   );
 
   const formatLabel = (label: string | undefined) => {
@@ -137,12 +160,20 @@ export default function AppHeader() {
                             onMouseEnter={() => setHoveredCategory(category.id)}
                             onFocus={() => setHoveredCategory(category.id)}
                             onClick={() => {
+                              if (hoveredCategory === category.id) {
+                                if (closeTimerRef.current) {
+                                  clearTimeout(closeTimerRef.current);
+                                  closeTimerRef.current = null;
+                                }
+                                setHoveredCategory(null);
+                                return;
+                              }
                               openMenu(category.id);
                             }}
                             className={`flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-semibold transition-colors ${hoveredCategory === category.id ? 'bg-yellow-300/15 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
                           >
                             <span>{category.name || formatLabel(category.id)}</span>
-                            <ChevronRight className="h-4 w-4" />
+                            <ChevronRight className={`h-4 w-4 transition-transform ${hoveredCategory === category.id ? 'translate-x-1' : ''}`} />
                           </button>
                         </li>
                       ))}
@@ -301,7 +332,7 @@ export default function AppHeader() {
                               >
                                 Ver todo
                               </Link>
-                              {category.subcategorias?.filter((sub) => sub.activa !== false).map((subcategory) => (
+                              {extractSubcategories(category.subcategorias).map((subcategory) => (
                                 <Link
                                   key={subcategory.id}
                                   href={`/?category=${encodeURIComponent(category.id)}&subcategory=${encodeURIComponent(subcategory.id)}`}
