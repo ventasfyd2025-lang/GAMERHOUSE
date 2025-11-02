@@ -160,20 +160,12 @@ export default function AppHeader() {
                             onMouseEnter={() => setHoveredCategory(category.id)}
                             onFocus={() => setHoveredCategory(category.id)}
                             onClick={() => {
-                              if (hoveredCategory === category.id) {
-                                if (closeTimerRef.current) {
-                                  clearTimeout(closeTimerRef.current);
-                                  closeTimerRef.current = null;
-                                }
-                                setHoveredCategory(null);
-                                return;
-                              }
-                              openMenu(category.id);
+                              setHoveredCategory(category.id);
                             }}
                             className={`flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-semibold transition-colors ${hoveredCategory === category.id ? 'bg-yellow-300/15 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
                           >
                             <span>{category.name || formatLabel(category.id)}</span>
-                            <ChevronRight className={`h-4 w-4 transition-transform ${hoveredCategory === category.id ? 'translate-x-1' : ''}`} />
+                            <ChevronRight className={`h-4 w-4 transition-transform ${hoveredCategory === category.id ? 'rotate-90' : ''}`} />
                           </button>
                         </li>
                       ))}
