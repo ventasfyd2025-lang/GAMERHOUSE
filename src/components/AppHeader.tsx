@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
@@ -12,9 +12,17 @@ export default function AppHeader() {
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [expandedCategoryId, setExpandedCategoryId] = useState<string | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
+  const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+  }, []);
 
   const isCategoryActive = (category: (typeof categories)[number]) => {
     const spanishFlag = (category as { activa?: boolean }).activa;
@@ -38,6 +46,39 @@ export default function AppHeader() {
     () => hoveredCategoryData?.subcategorias?.filter((sub) => sub.activa !== false) ?? [],
     [hoveredCategoryData],
   );
+
+  const formatLabel = (label: string | undefined) => {
+    if (!label) return '';
+    return label
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\p{L}/gu, (match) => match.toUpperCase());
+  };
+
+  const openMenu = (categoryId?: string) => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setIsCategoryMenuOpen(true);
+    if (categoryId) {
+      setHoveredCategory(categoryId);
+    } else if (!hoveredCategory && activeCategories.length > 0) {
+      setHoveredCategory(activeCategories[0].id);
+    }
+  };
+
+  const scheduleCloseMenu = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+    closeTimerRef.current = setTimeout(() => {
+      setIsCategoryMenuOpen(false);
+      setHoveredCategory(null);
+      closeTimerRef.current = null;
+    }, 150);
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,33 +108,25 @@ export default function AppHeader() {
             {/* Desktop Category Menu */}
             <div
               className="relative hidden lg:block"
-              onMouseEnter={() => {
-                setIsCategoryMenuOpen(true);
-                if (!hoveredCategory && activeCategories.length > 0) {
-                  setHoveredCategory(activeCategories[0].id);
-                }
-              }}
-              onMouseLeave={() => {
-                setIsCategoryMenuOpen(false);
-                setHoveredCategory(null);
-              }}
+              onMouseEnter={() => openMenu()}
+              onFocusCapture={() => openMenu()}
+              onMouseLeave={scheduleCloseMenu}
             >
               <button
                 type="button"
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-white/80 backdrop-blur-md transition-all duration-300 hover:border-yellow-300/40 hover:text-white"
-                onFocus={() => {
-                  setIsCategoryMenuOpen(true);
-                  if (!hoveredCategory && activeCategories.length > 0) {
-                    setHoveredCategory(activeCategories[0].id);
-                  }
-                }}
+                onFocus={() => openMenu()}
               >
                 <span>Categorías</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${isCategoryMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isCategoryMenuOpen && activeCategories.length > 0 && (
-                <div className="absolute left-0 top-full mt-3 flex min-w-[320px] gap-4 rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-[0_30px_80px_-40px_rgba(255,232,141,0.8)] backdrop-blur-2xl">
+                <div
+                  className="absolute left-0 top-full mt-3 flex min-w-[320px] gap-4 rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-[0_30px_80px_-40px_rgba(255,232,141,0.8)] backdrop-blur-2xl"
+                  onMouseEnter={() => openMenu()}
+                  onMouseLeave={scheduleCloseMenu}
+                >
                   <div className="flex-1">
                     <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Categorías</p>
                     <ul className="mt-2 space-y-1">
@@ -104,13 +137,12 @@ export default function AppHeader() {
                             onMouseEnter={() => setHoveredCategory(category.id)}
                             onFocus={() => setHoveredCategory(category.id)}
                             onClick={() => {
-                              setIsCategoryMenuOpen(false);
-                              setHoveredCategory(null);
                               router.push(`/?category=${encodeURIComponent(category.id)}`);
+                              scheduleCloseMenu();
                             }}
                             className={`flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-semibold transition-colors ${hoveredCategory === category.id ? 'bg-yellow-300/15 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
                           >
-                            <span>{category.name}</span>
+                            <span>{category.name || formatLabel(category.id)}</span>
                             <ChevronRight className="h-4 w-4" />
                           </button>
                         </li>
@@ -128,11 +160,10 @@ export default function AppHeader() {
                               href={`/?category=${encodeURIComponent(hoveredCategory ?? '')}&subcategory=${encodeURIComponent(subcategory.id)}`}
                               className="block rounded-2xl px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
                               onClick={() => {
-                                setIsCategoryMenuOpen(false);
-                                setHoveredCategory(null);
+                                scheduleCloseMenu();
                               }}
                             >
-                              {subcategory.nombre}
+                              {subcategory.nombre || formatLabel(subcategory.id)}
                             </Link>
                           </li>
                         ))
@@ -181,7 +212,14 @@ export default function AppHeader() {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {
+                setIsMobileMenuOpen((prev) => {
+                  if (prev) {
+                    setExpandedCategoryId(null);
+                  }
+                  return !prev;
+                });
+              }}
               className="md:hidden rounded-full border border-white/10 bg-white/5 p-2 text-white/80 transition-colors hover:text-white"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -208,34 +246,97 @@ export default function AppHeader() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-slate-950/90 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-3">
-            <Link href="/" className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white">
+            <Link
+              href="/"
+              className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setExpandedCategoryId(null);
+              }}
+            >
               Inicio
             </Link>
-            <Link href="/productos" className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white">
+            <Link
+              href="/productos"
+              className="block rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setExpandedCategoryId(null);
+              }}
+            >
               Productos
             </Link>
             {activeCategories.length > 0 && (
               <div className="space-y-2 border-t border-white/10 pt-3">
                 <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Categorías</p>
-                <div className="grid grid-cols-1 gap-1">
-                  {activeCategories.map((category) => (
-                    <Link
-                      key={category.id}
-                      href={`/?category=${encodeURIComponent(category.id)}`}
-                      className="rounded-lg px-3 py-2 text-sm text-white/75 transition-colors hover:bg-white/5 hover:text-white"
-                    >
-                      {category.name}
-                    </Link>
-                  ))}
+                <div className="grid grid-cols-1 gap-2">
+                  {activeCategories.map((category) => {
+                    const isExpanded = expandedCategoryId === category.id;
+                    return (
+                      <div key={category.id} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+                        <button
+                          type="button"
+                          onClick={() => setExpandedCategoryId(isExpanded ? null : category.id)}
+                          className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold text-white/80 transition-colors hover:bg-white/10"
+                        >
+                          <span>{category.name || formatLabel(category.id)}</span>
+                          <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                        </button>
+                        {isExpanded && (
+                          <div className="border-t border-white/10 bg-slate-950/80 px-3 py-2">
+                            <div className="flex flex-col gap-1">
+                              <Link
+                                href={`/?category=${encodeURIComponent(category.id)}`}
+                                className="rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setExpandedCategoryId(null);
+                                }}
+                              >
+                                Ver todo
+                              </Link>
+                              {category.subcategorias?.filter((sub) => sub.activa !== false).map((subcategory) => (
+                                <Link
+                                  key={subcategory.id}
+                                  href={`/?category=${encodeURIComponent(category.id)}&subcategory=${encodeURIComponent(subcategory.id)}`}
+                                  className="rounded-lg px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                  onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    setExpandedCategoryId(null);
+                                  }}
+                                >
+                                  {subcategory.nombre || formatLabel(subcategory.id)}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
             <div className="border-t border-white/10 pt-3 flex gap-4">
-              <Link href="/perfil" className="flex items-center gap-2 text-white/80 transition-colors hover:text-white">
+              <Link
+                href="/perfil"
+                className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setExpandedCategoryId(null);
+                }}
+              >
                 <User className="h-5 w-5" />
                 Perfil
               </Link>
-              <Link href="/carrito" className="relative flex items-center gap-2 text-white/80 transition-colors hover:text-white">
+              <Link
+                href="/carrito"
+                className="relative flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setExpandedCategoryId(null);
+                }}
+              >
                 <ShoppingCart className="h-5 w-5" />
                 Carrito
                 {getTotalItems() > 0 && (
