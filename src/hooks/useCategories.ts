@@ -73,18 +73,22 @@ const subcategoriesByCategory: Record<string, Array<{ id: string; nombre: string
   ]
 };
 
-// Generate categories from mock products
+// Generate categories from unique product categories (fallback only)
 const generateCategoriesFromProducts = (): Category[] => {
   const uniqueCategories = [...new Set(mockProducts.map(p => p.categoria))];
   const productCategories: Category[] = uniqueCategories
     .filter(cat => cat)
-    .map((category, index) => ({
-      id: category.toLowerCase().replace(/\s+/g, '-'),
-      name: category,
-      active: true,
-      icon: categoryIcons[category.toLowerCase()] || '📦'
-    }));
-  
+    .map((category) => {
+      const categoryId = category.toLowerCase().replace(/\s+/g, '-');
+      return {
+        id: categoryId,
+        name: category,
+        active: true,
+        icon: categoryIcons[categoryId] || '📦',
+        subcategorias: [] // Empty, will be populated from Firebase if available
+      };
+    });
+
   return [
     defaultCategories[0], // "Todos los productos"
     ...productCategories
@@ -110,23 +114,50 @@ export function useCategories() {
             if (!snapshot.empty) {
               const firebaseCategories: Category[] = [];
               
+              // First, collect all category names
+              const allCategoryNames: Set<string> = new Set();
+              snapshot.forEach((doc) => {
+                const name = doc.data().name || doc.id;
+                const mainCategory = name.split('>')[0].trim();
+                allCategoryNames.add(mainCategory);
+              });
+
+              // Now process categories with their subcategories
               snapshot.forEach((doc) => {
                 const data = doc.data();
-                const categoryId = doc.id.toLowerCase().replace(/\s+/g, '-');
-                const firebaseSubcategorias = data.subcategorias || [];
+                const fullName = data.name || doc.id;
 
-                // Use Firebase subcategorías if available, otherwise use the mapping
-                const subcategorias = firebaseSubcategorias.length > 0
-                  ? firebaseSubcategorias
-                  : (subcategoriesByCategory[categoryId] || []);
+                // Check if this is a main category (no ">") or subcategory
+                if (!fullName.includes('>')) {
+                  // This is a main category
+                  const categoryId = fullName.toLowerCase().replace(/\s+/g, '-');
 
-                firebaseCategories.push({
-                  id: doc.id,
-                  name: data.name || data.nombre || doc.id,
-                  active: data.active !== undefined ? data.active : true,
-                  icon: categoryIcons[doc.id.toLowerCase()] || '📦',
-                  subcategorias
-                });
+                  // Find all subcategories for this main category
+                  const subcategorias: Array<{ id: string; nombre: string; activa: boolean }> = [];
+                  snapshot.forEach((subDoc) => {
+                    const subName = subDoc.data().name || subDoc.id;
+                    if (subName.includes('>')) {
+                      const parts = subName.split('>').map((s: string) => s.trim());
+                      const mainCat = parts[0];
+                      const subCat = parts[1];
+                      if (mainCat === fullName) {
+                        subcategorias.push({
+                          id: subCat.toLowerCase().replace(/\s+/g, '-'),
+                          nombre: subCat,
+                          activa: true
+                        });
+                      }
+                    }
+                  });
+
+                  firebaseCategories.push({
+                    id: categoryId,
+                    name: fullName,
+                    active: data.active !== undefined ? data.active : true,
+                    icon: categoryIcons[categoryId] || '📦',
+                    subcategorias
+                  });
+                }
               });
 
               // Filter only active categories and sort them
@@ -189,24 +220,43 @@ export function useCategories() {
       // If we have categories in Firebase, use them
       if (!snapshot.empty) {
         const firebaseCategories: Category[] = [];
-        
+
+        // Process categories with their subcategories
         snapshot.forEach((doc) => {
           const data = doc.data();
-          const categoryId = doc.id.toLowerCase().replace(/\s+/g, '-');
-          const firebaseSubcategorias = data.subcategorias || [];
+          const fullName = data.name || doc.id;
 
-          // Use Firebase subcategorías if available, otherwise use the mapping
-          const subcategorias = firebaseSubcategorias.length > 0
-            ? firebaseSubcategorias
-            : (subcategoriesByCategory[categoryId] || []);
+          // Check if this is a main category (no ">") or subcategory
+          if (!fullName.includes('>')) {
+            // This is a main category
+            const categoryId = fullName.toLowerCase().replace(/\s+/g, '-');
 
-          firebaseCategories.push({
-            id: doc.id,
-            name: data.name || data.nombre || doc.id,
-            active: data.active !== undefined ? data.active : true,
-            icon: categoryIcons[doc.id.toLowerCase()] || '📦',
-            subcategorias
-          });
+            // Find all subcategories for this main category
+            const subcategorias: Array<{ id: string; nombre: string; activa: boolean }> = [];
+            snapshot.forEach((subDoc) => {
+              const subName = subDoc.data().name || subDoc.id;
+              if (subName.includes('>')) {
+                const parts = subName.split('>').map((s: string) => s.trim());
+                const mainCat = parts[0];
+                const subCat = parts[1];
+                if (mainCat === fullName) {
+                  subcategorias.push({
+                    id: subCat.toLowerCase().replace(/\s+/g, '-'),
+                    nombre: subCat,
+                    activa: true
+                  });
+                }
+              }
+            });
+
+            firebaseCategories.push({
+              id: categoryId,
+              name: fullName,
+              active: data.active !== undefined ? data.active : true,
+              icon: categoryIcons[categoryId] || '📦',
+              subcategorias
+            });
+          }
         });
 
         const activeCategories = firebaseCategories
