@@ -106,15 +106,20 @@ export default function ContactoPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Ubicación
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    Nuestras Sucursales
                   </h3>
-                  <p className="text-yellow-300 mb-2">
-                    Estamos en Chile
-                  </p>
-                  <p className="text-yellow-500 font-medium">
-                    Región Metropolitana
-                  </p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="font-semibold text-yellow-300 mb-1">Santiago Centro</p>
+                      <p className="text-yellow-100 text-sm">Santiago, Chile</p>
+                    </div>
+                    <div className="h-px bg-yellow-300/20"></div>
+                    <div>
+                      <p className="font-semibold text-yellow-300 mb-1">Las Condes</p>
+                      <p className="text-yellow-100 text-sm">Santiago, Chile</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

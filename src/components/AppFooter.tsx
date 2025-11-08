@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
+import { Facebook, Instagram, Mail, MessageCircle } from 'lucide-react';
 
 export default function AppFooter() {
   const currentYear = new Date().getFullYear();
@@ -13,20 +13,20 @@ export default function AppFooter() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl">
-                🎮
+                🎴
               </span>
               <div className="flex flex-col leading-none">
-                <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">Store</span>
-                <span className="text-lg font-semibold gradient-text-primary">Gamerhouse</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">TCG Store</span>
+                <span className="text-lg font-semibold gradient-text-primary">HunterCard TCG</span>
               </div>
             </div>
             <p className="text-sm text-white/60">
-              Hardware, cartas coleccionables y accesorios seleccionados para potenciar tu setup gamer.
+              La mejor tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más con los mejores precios.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Productos</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Juegos TCG</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/productos" className="transition-colors hover:text-yellow-200">
@@ -34,18 +34,18 @@ export default function AppFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/?category=consolas" className="transition-colors hover:text-yellow-200">
-                  Consolas y portátiles
-                </Link>
-              </li>
-              <li>
-                <Link href="/?category=pokemon" className="transition-colors hover:text-yellow-200">
+                <Link href="/categoria/pokemon-tcg" className="transition-colors hover:text-yellow-200">
                   Pokémon TCG
                 </Link>
               </li>
               <li>
-                <Link href="/?category=accesorios" className="transition-colors hover:text-yellow-200">
-                  Accesorios gamer
+                <Link href="/categoria/one-piece-tcg" className="transition-colors hover:text-yellow-200">
+                  One Piece TCG
+                </Link>
+              </li>
+              <li>
+                <Link href="/categoria/yu-gi-oh" className="transition-colors hover:text-yellow-200">
+                  Yu-Gi-Oh!
                 </Link>
               </li>
             </ul>
@@ -73,35 +73,47 @@ export default function AppFooter() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Contacto</h3>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-center gap-3">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">Síguenos</h3>
+            <div className="space-y-3 text-sm">
+              <a href="mailto:contacto@huntercardtcg.com" className="flex items-center gap-3 transition-colors hover:text-yellow-200">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5">
                   <Mail className="h-4 w-4 text-yellow-300" />
                 </span>
-                <a href="mailto:info@gamerhouse.cl" className="transition-colors hover:text-yellow-200">
-                  info@gamerhouse.cl
+                contacto@huntercardtcg.com
+              </a>
+              <div className="flex items-center gap-2 pt-2">
+                <a href="https://www.instagram.com/huntercardtcg" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200" title="Instagram">
+                  <Instagram className="h-4 w-4" />
                 </a>
-              </li>
-              <li>
-                <div className="flex items-center gap-3">
-                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
-                    <Facebook className="h-4 w-4" />
-                  </a>
-                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                  <a href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200">
-                    <Twitter className="h-4 w-4" />
-                  </a>
-                </div>
-              </li>
-            </ul>
+                <a href="https://www.facebook.com/HunterCardTCG" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200" title="Facebook">
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a href="https://wa.me/56920265061" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-yellow-300/40 hover:text-yellow-200" title="WhatsApp">
+                  <MessageCircle className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/50">
-          © {currentYear} Gamerhouse. Todos los derechos reservados.
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-6">
+            <div className="text-xs text-white/50">
+              <p className="font-semibold text-white/70 mb-2">Métodos de Pago</p>
+              <p>Mercado Pago • Transferencia Bancaria</p>
+            </div>
+            <div className="text-xs text-white/50">
+              <p className="font-semibold text-white/70 mb-2">Políticas</p>
+              <p>
+                <Link href="/legal/privacidad" className="hover:text-yellow-200 transition-colors">Privacidad</Link>
+                {' • '}
+                <Link href="/legal/terminos" className="hover:text-yellow-200 transition-colors">Términos</Link>
+              </p>
+            </div>
+          </div>
+          <div className="text-center text-xs text-white/50">
+            © {currentYear} HunterCard TCG. Todos los derechos reservados. Santiago, Chile.
+          </div>
         </div>
       </div>
     </footer>
