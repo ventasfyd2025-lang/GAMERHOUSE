@@ -12,51 +12,54 @@ export default {
         xs: '480px',
       },
       colors: {
-        /* Paleta GAMERHOUSE - Sistema Unificado Mejorado */
-        background: '#0f1117',
-        foreground: '#ffffff',
+        /* Paleta GAMER HOUSE - Light Theme Nuevo */
+        background: '#ffffff',
+        foreground: '#000000',
 
-        /* Colores Primarios - Refinados y Suaves */
-        primary: '#FFE88D',                          /* Amarillo Suave - Principal */
-        secondary: '#E74444',                        /* Rojo Suave - Secundario */
-        accent: '#FFD966',                           /* Amarillo Medio - Acentos */
+        /* Colores Primarios - Nuevo Esquema */
+        primary: '#dc2626',                          /* Rojo Brillante - Principal */
+        secondary: '#1e3a5f',                        /* Azul Marino - Secundario */
+        accent: '#fbbf24',                           /* Oro/Amarillo - Acentos */
 
         /* Estados */
         success: '#10b981',                          /* Emerald - Éxito */
         warning: '#f59e0b',                          /* Amber - Advertencia */
-        error: '#E74444',                            /* Rojo Suave */
-        info: '#3b82f6',                             /* Blue - Información */
+        error: '#dc2626',                            /* Rojo Brillante */
+        info: '#1e3a5f',                             /* Azul Marino - Información */
 
-        /* Alias para compatibilidad */
-        pink: '#E74444',                             /* Rojo Suave */
+        /* Colores Corporativos GAMER HOUSE */
+        'gamerhouse-navy': '#1e3a5f',               /* Azul Marino */
+        'gamerhouse-red': '#dc2626',                /* Rojo Brillante */
+        'gamerhouse-gold': '#fbbf24',               /* Oro */
+        'gamerhouse-white': '#ffffff',              /* Blanco */
+        'gamerhouse-dark': '#1f2937',               /* Gris Oscuro */
 
-        /* Variantes de Amarillo - Sistema Completo */
-        'yellow-300': '#FFF3B0',     /* Muy Claro - Accents */
-        'yellow-400': '#FFE88D',     /* Suave - Principal */
-        'yellow-500': '#FFD966',     /* Medio - Hover/Focus */
-        /* Variantes de Rojo - Sistema Completo */
-        'red-400': '#FF8080',        /* Muy Claro - Hover */
-        'red-500': '#E76666',        /* Claro */
-        'red-600': '#E74444',        /* Suave - Principal */
-        'red-700': '#C73636',        /* Oscuro */
-        /* Variantes Legacy para Compatibilidad */
-        'amber-400': '#FFE88D',
-        'amber-500': '#FFD966',
-        'amber-600': '#FFC547',
-        /* Grises - Profesionales */
+        /* Variantes de Rojo */
+        'red-400': '#f87171',        /* Claro - Hover */
+        'red-500': '#ef4444',        /* Medio */
+        'red-600': '#dc2626',        /* Principal */
+        'red-700': '#b91c1c',        /* Oscuro */
+
+        /* Variantes de Azul */
+        'blue-600': '#1e3a5f',       /* Azul Marino Principal */
+        'blue-700': '#1a2e47',       /* Más Oscuro */
+
+        /* Variantes de Oro */
+        'yellow-300': '#fcd34d',     /* Claro */
+        'yellow-400': '#fbbf24',     /* Principal */
+        'yellow-500': '#f59e0b',     /* Medio */
+
+        /* Grises - Para tema claro */
+        'gray-100': '#f3f4f6',
         'gray-200': '#e5e7eb',
         'gray-300': '#d1d5db',
         'gray-400': '#9ca3af',
         'gray-500': '#6b7280',
         'gray-600': '#4b5563',
-        'gray-700': '#3a4452',
-        'gray-800': '#2a3142',
-        'gray-900': '#1a1f2e',
-        'gray-950': '#0f1117',
-        'slate-600': '#475569',
-        'slate-700': '#2d3748',
-        'slate-800': '#1e293b',
-        'slate-900': '#0f172a',
+        'gray-700': '#374151',
+        'gray-800': '#1f2937',
+        'gray-900': '#111827',
+        'gray-950': '#030712',
       },
       fontFamily: {
         sans: ['Roboto', 'Open Sans', 'Helvetica Neue', 'system-ui', 'sans-serif'],

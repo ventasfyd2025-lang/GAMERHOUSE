@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Layout from "@/components/Layout";
-import HunterCardHomepage from '@/components/home/HunterCardHomepage';
+import GamerHouseHomepage from '@/components/home/GamerHouseHomepage';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <Layout>
-      <HunterCardHomepage />
+      <GamerHouseHomepage />
     </Layout>
   );
 }
