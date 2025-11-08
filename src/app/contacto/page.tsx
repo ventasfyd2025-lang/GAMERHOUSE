@@ -49,7 +49,7 @@ export default function ContactoPage() {
 
             {/* Email */}
             <a
-              href="mailto:contacto@GAMERHOUSE.cl"
+              href="mailto:contacto@huntercardtcg.com"
               className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
             >
               <div className="flex items-start space-x-4">
@@ -66,7 +66,7 @@ export default function ContactoPage() {
                     Envíanos un correo electrónico
                   </p>
                   <p className="text-yellow-300 font-medium">
-                    contacto@GAMERHOUSE.cl
+                    contacto@huntercardtcg.com
                   </p>
                 </div>
               </div>

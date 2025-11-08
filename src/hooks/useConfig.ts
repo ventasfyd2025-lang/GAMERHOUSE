@@ -39,8 +39,8 @@ interface MainBannerConfig {
 }
 
 const DEFAULT_LOGO: LogoConfig = {
-  emoji: '🏪',
-  text: 'GAMERHOUSE',
+  emoji: '🎴',
+  text: 'HunterCard TCG',
   image: '',
 };
 

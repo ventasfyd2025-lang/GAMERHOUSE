@@ -34,8 +34,8 @@ export default function RetailHomepage() {
   }, [mainBannerConfig]);
 
   const heroImage = heroSlide?.imageUrl || '/banner-hero-gamerhouse.jpg';
-  const heroTitle = heroSlide?.title || 'Potencia tu setup con energía coleccionable';
-  const heroSubtitle = heroSlide?.subtitle || 'Hardware competitivo, boosters exclusivos y accesorios con estética neon inspirada en cartas legendarias.';
+  const heroTitle = heroSlide?.title || 'Siempre los mejores precios en TCG';
+  const heroSubtitle = heroSlide?.subtitle || 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.';
 
   const heroLink = useMemo(() => {
     if (!heroSlide) return { href: '/productos', label: 'Explorar catálogo' };

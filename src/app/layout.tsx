@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GAMERHOUSE - Tu tienda de gaming online",
-  description: "Encuentra los mejores productos importados con ofertas especiales. Electrónicos, hogar, ropa y deportes con envío a domicilio.",
+  title: "HunterCard TCG - Siempre los mejores precios en TCG",
+  description: "La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon TCG, One Piece, Star Wars Unlimited, Yu-Gi-Oh!, Dragon Ball, Digimon, Magic The Gathering y más. Envío a todo Chile.",
 };
 
 export const viewport = {

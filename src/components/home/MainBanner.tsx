@@ -33,8 +33,8 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   const slide = resolveSlide(config);
 
   const imageUrl = slide?.imageUrl || '/banner-hero-gamerhouse.jpg';
-  const title = slide?.title || 'Potencia tu setup con energía coleccionable';
-  const subtitle = slide?.subtitle || 'Hardware competitivo, boosters exclusivos y accesorios con estética neon inspirada en cartas legendarias.';
+  const title = slide?.title || 'Siempre los mejores precios en TCG';
+  const subtitle = slide?.subtitle || 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.';
 
   const primaryLink = useMemo(() => {
     if (!slide) {
@@ -46,7 +46,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
       return { href: `/producto/${slide.productId}`, label: 'Ver producto destacado', external: false };
     }
     if (linkType === 'category' && slide.categoryId) {
-      return { href: `/?category=${slide.categoryId}`, label: 'Ver categoría destacada', external: false };
+      return { href: `/categoria/${slide.categoryId}`, label: 'Ver categoría destacada', external: false };
     }
     if (linkType === 'url' && slide.customUrl) {
       return { href: slide.customUrl, label: 'Ver más detalles', external: slide.customUrl.startsWith('http') };
