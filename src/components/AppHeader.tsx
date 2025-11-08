@@ -141,7 +141,7 @@ export default function AppHeader() {
     setIsCategoryMenuOpen(true);
 
     if (!hasSubcategories) {
-      navigateAndClose(`/?category=${encodeURIComponent(categoryId)}`);
+      navigateAndClose(`/categoria/${categoryId}`);
       return;
     }
 
@@ -220,7 +220,7 @@ export default function AppHeader() {
                               <button
                                 type="button"
                                 className="mb-1 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:border-yellow-300/40 hover:text-yellow-100"
-                                onClick={() => navigateAndClose(`/?category=${encodeURIComponent(category.id)}`)}
+                                onClick={() => navigateAndClose(`/categoria/${category.id}`)}
                               >
                                 Ver todo
                               </button>
@@ -229,7 +229,7 @@ export default function AppHeader() {
                                   key={subcategory.id}
                                   type="button"
                                   className="block w-full rounded-xl px-3 py-2 text-left text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
-                                  onClick={() => navigateAndClose(`/?category=${encodeURIComponent(category.id)}&subcategory=${encodeURIComponent(subcategory.id)}`)}
+                                  onClick={() => navigateAndClose(`/categoria/${category.id}/${encodeURIComponent(subcategory.id)}`)}
                                 >
                                   {subcategory.nombre || formatLabel(subcategory.id)}
                                 </button>
@@ -360,7 +360,7 @@ export default function AppHeader() {
                           <div className="border-t border-white/10 bg-slate-950/80 px-3 py-2">
                             <div className="flex flex-col gap-1">
                               <Link
-                                href={`/?category=${encodeURIComponent(category.id)}`}
+                                href={`/categoria/${category.id}`}
                                 className="rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:bg-yellow-300/10 hover:text-white"
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
@@ -372,7 +372,7 @@ export default function AppHeader() {
                               {extractSubcategories(category.subcategorias).map((subcategory) => (
                                 <Link
                                   key={subcategory.id}
-                                  href={`/?category=${encodeURIComponent(category.id)}&subcategory=${encodeURIComponent(subcategory.id)}`}
+                                  href={`/categoria/${category.id}/${encodeURIComponent(subcategory.id)}`}
                                   className="rounded-lg px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
                                   onClick={() => {
                                     setIsMobileMenuOpen(false);
