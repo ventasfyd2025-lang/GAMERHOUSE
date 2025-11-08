@@ -15,7 +15,7 @@ type NormalizedSubcategory = {
 export default function AppHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [activeDesktopCategory, setActiveDesktopCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategoryId, setExpandedCategoryId] = useState<string | null>(null);
   const router = useRouter();
@@ -104,27 +104,12 @@ export default function AppHeader() {
     return [];
   };
 
-  const hoveredCategoryData = useMemo(
-    () => activeCategories.find((category) => category.id === hoveredCategory),
-    [activeCategories, hoveredCategory],
-  );
-
-  const hoveredSubcategories = useMemo(
-    () => extractSubcategories(hoveredCategoryData?.subcategorias),
-    [hoveredCategoryData?.subcategorias],
-  );
-
-  const openMenu = (categoryId?: string) => {
+  const openMenu = () => {
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current);
       closeTimerRef.current = null;
     }
     setIsCategoryMenuOpen(true);
-    if (categoryId) {
-      setHoveredCategory(categoryId);
-    } else if (!hoveredCategory && activeCategories.length > 0) {
-      setHoveredCategory(activeCategories[0].id);
-    }
   };
 
   const scheduleCloseMenu = () => {
@@ -133,9 +118,21 @@ export default function AppHeader() {
     }
     closeTimerRef.current = setTimeout(() => {
       setIsCategoryMenuOpen(false);
-      setHoveredCategory(null);
+      setActiveDesktopCategory(null);
       closeTimerRef.current = null;
     }, 150);
+  };
+
+  const handleDesktopCategoryClick = (categoryId: string, hasSubcategories: boolean) => {
+    setIsCategoryMenuOpen(true);
+
+    if (!hasSubcategories) {
+      router.push(`/?category=${encodeURIComponent(categoryId)}`);
+      scheduleCloseMenu();
+      return;
+    }
+
+    setActiveDesktopCategory((current) => (current === categoryId ? null : categoryId));
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -181,62 +178,60 @@ export default function AppHeader() {
 
               {isCategoryMenuOpen && activeCategories.length > 0 && (
                 <div
-                  className="absolute left-0 top-full mt-3 flex min-w-[320px] gap-4 rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-[0_30px_80px_-40px_rgba(255,232,141,0.8)] backdrop-blur-2xl"
-                  onMouseEnter={() => openMenu()}
+                  className="absolute left-0 top-full mt-3 w-[360px] max-h-[480px] overflow-y-auto rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-[0_30px_80px_-40px_rgba(255,232,141,0.8)] backdrop-blur-2xl"
+                  onMouseEnter={openMenu}
                   onMouseLeave={scheduleCloseMenu}
                 >
-                  <div className="flex-1 min-w-[180px] max-h-96 overflow-y-auto pr-2">
-                    <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Categorías</p>
-                    <ul className="mt-2 space-y-1">
-                      {activeCategories.map((category) => (
-                        <li key={category.id}>
+                  <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">
+                    Navega por categoría
+                  </p>
+                  <div className="mt-2 space-y-2">
+                    {activeCategories.map((category) => {
+                      const subcategories = extractSubcategories(category.subcategorias);
+                      const isExpanded = activeDesktopCategory === category.id;
+                      const hasSubcategories = subcategories.length > 0;
+
+                      return (
+                        <div key={category.id} className="rounded-2xl border border-white/10 bg-white/5">
                           <button
                             type="button"
-                            onMouseEnter={() => setHoveredCategory(category.id)}
-                            onFocus={() => setHoveredCategory(category.id)}
-                            onClick={() => {
-                              setHoveredCategory(category.id);
-                            }}
-                            className={`flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left text-sm font-semibold transition-colors ${hoveredCategory === category.id ? 'bg-yellow-300/15 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+                            onClick={() => handleDesktopCategoryClick(category.id, hasSubcategories)}
+                            className={`flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold transition-colors ${isExpanded ? 'text-white' : 'text-white/80 hover:text-white'}`}
                           >
                             <span>{category.name || formatLabel(category.id)}</span>
-                            <ChevronRight className={`h-4 w-4 transition-transform ${hoveredCategory === category.id ? 'rotate-90' : ''}`} />
+                            <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                           </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
-                  <div className="flex-1 border-l border-white/10 pl-4 max-h-96 overflow-y-auto">
-                    <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Subcategorías</p>
-                    {hoveredCategory && (
-                      <Link
-                        href={`/?category=${encodeURIComponent(hoveredCategory)}`}
-                        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:border-yellow-300/40 hover:text-yellow-100"
-                        onClick={() => scheduleCloseMenu()}
-                      >
-                        Ver todo
-                      </Link>
-                    )}
-                    <ul className="mt-3 space-y-1">
-                      {hoveredSubcategories.length > 0 ? (
-                        hoveredSubcategories.map((subcategory) => (
-                          <li key={subcategory.id}>
-                            <Link
-                              href={`/?category=${encodeURIComponent(hoveredCategory ?? '')}&subcategory=${encodeURIComponent(subcategory.id)}`}
-                              className="block rounded-2xl px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
-                              onClick={() => scheduleCloseMenu()}
-                            >
-                              {subcategory.nombre || formatLabel(subcategory.id)}
-                            </Link>
-                          </li>
-                        ))
-                      ) : (
-                        <li className="rounded-2xl px-3 py-4 text-center text-sm text-white/40">
-                          Selecciona una categoría
-                        </li>
-                      )}
-                    </ul>
+                          {isExpanded && hasSubcategories && (
+                            <div className="border-t border-white/10 px-3 py-2 space-y-1">
+                              <Link
+                                href={`/?category=${encodeURIComponent(category.id)}`}
+                                className="mb-1 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:border-yellow-300/40 hover:text-yellow-100"
+                                onClick={() => scheduleCloseMenu()}
+                              >
+                                Ver todo
+                              </Link>
+                              {subcategories.map((subcategory) => (
+                                <Link
+                                  key={subcategory.id}
+                                  href={`/?category=${encodeURIComponent(category.id)}&subcategory=${encodeURIComponent(subcategory.id)}`}
+                                  className="block rounded-xl px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                  onClick={() => scheduleCloseMenu()}
+                                >
+                                  {subcategory.nombre || formatLabel(subcategory.id)}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+
+                          {isExpanded && !hasSubcategories && (
+                            <div className="border-t border-white/10 px-3 py-3 text-center text-xs text-white/50">
+                              No hay subcategorías disponibles
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
