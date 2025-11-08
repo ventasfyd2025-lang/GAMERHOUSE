@@ -25,7 +25,6 @@ export default function SubcategoryPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Get category and subcategory info
   const categoryInfo = useMemo(() => {
     return categories.find(cat => cat.id === categoryId);
   }, [categoryId, categories]);
@@ -37,21 +36,17 @@ export default function SubcategoryPage() {
     });
   }, [categoryInfo, subcategoryId]);
 
-  // Filter products for this category and subcategory
   const filteredProducts = useMemo(() => {
     let filtered = products.filter(product => (product.stock || 0) > 0);
 
-    // Filter by category
     filtered = filtered.filter(product =>
       productMatchesCategory(product, categoryId)
     );
 
-    // Filter by subcategory
     filtered = filtered.filter(product =>
       productMatchesSubcategory(product, subcategoryId)
     );
 
-    // Filter by search query
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(product =>
@@ -92,7 +87,7 @@ export default function SubcategoryPage() {
     addItem(
       product.id,
       product.nombre,
-      product.precioRebajado || product.precioNormal || product.precio,
+      product.precio,
       product.imagenes?.[0] || product.imagen || '/placeholder.png',
       1,
       product.sku
@@ -100,80 +95,76 @@ export default function SubcategoryPage() {
   };
 
   const ProductCard = ({ product }: { product: any }) => {
-    const precio = product.precioRebajado || product.precioNormal || product.precio;
-    const precioOriginal = product.precioNormal || product.precio;
-    const descuento =
-      precioOriginal && precio
-        ? Math.round(((precioOriginal - precio) / precioOriginal) * 100)
-        : 0;
+    const hasDiscount = product.precioOriginal && product.precioOriginal > product.precio;
+    const discountPercent = hasDiscount
+      ? Math.round(((product.precioOriginal - product.precio) / product.precioOriginal) * 100)
+      : 0;
 
     return (
-      <Link href={`/producto/${product.id}`} className="block h-full group">
-        <div className="relative h-full rounded-[28px] bg-gradient-to-br from-yellow-300/40 via-amber-300/20 to-red-500/30 p-[1.5px] transition-transform duration-500 group-hover:scale-[1.015] group-hover:shadow-[0_35px_110px_-45px_rgba(255,232,141,0.9)]">
-          <div className="product-card-web h-full overflow-hidden">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
-                alt={product.nombre}
-                fill
-                className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05070d]/95 via-transparent to-transparent opacity-90 mix-blend-soft-light" />
-              {descuento > 0 && (
-                <span className="product-badge">
-                  -{descuento}%
+      <Link href={`/producto/${product.id}`} className="block h-full">
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+          {/* Image */}
+          <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
+            <Image
+              src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
+              alt={product.nombre}
+              fill
+              className="object-cover hover:scale-110 transition-transform"
+            />
+            {hasDiscount && (
+              <div className="absolute top-2 right-2 bg-gamerhouse-red text-white px-3 py-1 rounded-full text-sm font-bold">
+                -{discountPercent}%
+              </div>
+            )}
+            {product.stock === 0 && (
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <span className="text-white font-bold">AGOTADO</span>
+              </div>
+            )}
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col gap-3 p-4 flex-1">
+            <h3 className="font-semibold text-gray-900 line-clamp-2 text-sm">
+              {product.nombre}
+            </h3>
+
+            {/* Pricing */}
+            <div className="space-y-1">
+              <div className="flex items-baseline gap-2">
+                <span className="text-lg font-bold text-gamerhouse-red">
+                  ${product.precio?.toLocaleString() || 'N/D'}
                 </span>
-              )}
-              <span className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-yellow-300/35 bg-yellow-300/10 px-3 py-1 text-xs font-semibold text-yellow-100 backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-yellow-200 shadow-[0_0_12px_rgba(255,232,141,0.85)]" />
-                Stock: {product.stock}
-              </span>
-            </div>
-
-            <div className="flex h-full flex-col gap-3 p-5">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.35em] text-white/45">
-                <span>TCG Card</span>
-                <span className="text-yellow-300">{descuento > 0 ? 'Oferta' : 'Regular'}</span>
-              </div>
-              <div className="divider-neon" />
-              <h3 className="product-title group-hover:text-white">
-                {product.nombre}
-              </h3>
-
-              {product.descripcion && (
-                <p className="hidden text-sm text-white/55 line-clamp-2 lg:block">
-                  {product.descripcion}
-                </p>
-              )}
-
-              <div className="mt-auto space-y-2">
-                <div className="flex items-baseline gap-2">
-                  <span className="product-price">
-                    ${precio?.toLocaleString() || 'N/D'}
+                {hasDiscount && (
+                  <span className="text-sm text-gray-500 line-through">
+                    ${product.precioOriginal?.toLocaleString()}
                   </span>
-                  {precioOriginal && precio && precioOriginal > precio && (
-                    <span className="text-xs sm:text-sm text-white/40 line-through">
-                      ${precioOriginal.toLocaleString()}
-                    </span>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    handleAddToCart(product);
-                  }}
-                  className="btn-primary-web w-full justify-center text-xs sm:text-sm py-2.5 sm:py-3"
-                >
-                  <ShoppingCart size={18} />
-                  <span className="hidden sm:inline">Agregar al carrito</span>
-                  <span className="sm:hidden">Agregar</span>
-                </button>
+                )}
               </div>
             </div>
+
+            {/* Stock Info */}
+            {product.stock > 0 && (
+              <p className="text-xs text-gray-600">
+                Stock: {product.stock}
+              </p>
+            )}
+
+            {/* Button */}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddToCart(product);
+              }}
+              disabled={product.stock === 0}
+              className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-colors flex items-center justify-center gap-2 text-sm ${
+                product.stock === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-gamerhouse-red hover:bg-red-700'
+              }`}
+            >
+              <ShoppingCart className="h-4 w-4" />
+              Comprar
+            </button>
           </div>
         </div>
       </Link>
@@ -182,12 +173,12 @@ export default function SubcategoryPage() {
 
   if (!categoryInfo && !productsLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white pt-32 pb-24 px-4">
+      <div className="min-h-screen bg-white text-gray-900 pt-32 pb-24 px-4">
         <div className="max-w-7xl mx-auto text-center space-y-4">
           <h1 className="text-3xl font-bold">Categoría no encontrada</h1>
-          <p className="text-white/60">La categoría o subcategoría que buscas no existe.</p>
-          <Link href="/" className="inline-flex items-center gap-2 text-yellow-300 hover:text-yellow-200">
-            <ArrowLeft size={18} />
+          <p className="text-gray-600">La categoría o subcategoría que buscas no existe.</p>
+          <Link href="/" className="inline-flex items-center gap-2 text-gamerhouse-red hover:text-red-700 font-semibold">
+            <ArrowLeft className="h-5 w-5" />
             Volver a inicio
           </Link>
         </div>
@@ -196,66 +187,61 @@ export default function SubcategoryPage() {
   }
 
   return (
-    <div className="relative min-h-screen pb-24 text-white">
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(255,232,141,0.09),transparent_45%),radial-gradient(circle_at_88%_8%,rgba(231,68,68,0.12),transparent_55%)]" />
-        <div className="absolute inset-x-0 top-1/3 h-96 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_65%)] blur-3xl" />
-      </div>
-
+    <div className="min-h-screen bg-white text-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
-        {/* Breadcrumb y Header */}
+        {/* Breadcrumb and Header */}
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-sm text-white/60">
-            <Link href="/" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <Link href="/" className="hover:text-gamerhouse-red transition-colors">
               Inicio
             </Link>
             <span>/</span>
             <Link
               href={`/categoria/${categoryId}`}
-              className="hover:text-white transition-colors"
+              className="hover:text-gamerhouse-red transition-colors"
             >
               {categoryInfo?.name || formatCategoryLabel(categoryId)}
             </Link>
             <span>/</span>
-            <span>{subcategoryInfo?.nombre || subcategoryId}</span>
+            <span className="text-gray-900 font-medium">{subcategoryInfo?.nombre || subcategoryId}</span>
           </div>
 
           <div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gamerhouse-navy tracking-tight">
               {subcategoryInfo?.nombre || subcategoryId}
             </h1>
-            <div className="divider-neon w-20 mt-4" />
-            <p className="text-white/60 mt-2">
+            <div className="h-1 w-20 bg-gamerhouse-red mt-4"></div>
+            <p className="text-gray-600 mt-2">
               {categoryInfo?.name} / {filteredProducts.length} productos encontrados
             </p>
           </div>
         </div>
 
         {/* Search Bar */}
-        <div className="rounded-3xl border border-yellow-300/15 bg-[#05070f]/70 p-4 backdrop-blur-xl">
+        <div className="rounded-lg border border-gray-300 bg-white p-4">
           <input
             type="text"
             placeholder="Buscar en esta subcategoría..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-transparent text-white placeholder-white/40 outline-none"
+            className="w-full bg-white text-gray-900 placeholder-gray-500 outline-none"
           />
         </div>
 
         {/* Products Grid */}
-        <section className="space-y-8 rounded-3xl border border-yellow-300/15 bg-[#05070f]/70 p-6 sm:p-8 backdrop-blur-xl">
+        <section className="space-y-8">
           {productsLoading ? (
             <div className="flex h-64 items-center justify-center">
-              <div className="card-dark text-center text-white/65">
+              <div className="text-center text-gray-600">
                 Cargando productos...
               </div>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="card-dark text-center py-12">
-              <h3 className="text-lg font-semibold text-white">
+            <div className="bg-gray-50 rounded-lg border border-gray-300 text-center py-12">
+              <h3 className="text-lg font-semibold text-gray-900">
                 Sin resultados
               </h3>
-              <p className="mt-2 text-sm text-white/60">
+              <p className="mt-2 text-sm text-gray-600">
                 Ajusta tus filtros o prueba otra búsqueda.
               </p>
             </div>
@@ -269,11 +255,11 @@ export default function SubcategoryPage() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="mt-8 flex flex-col items-center gap-4 text-sm text-white/60">
+                <div className="mt-8 flex flex-col items-center gap-4 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      className="pagination-button h-10 px-4 font-semibold"
+                      className="px-4 py-2 h-10 font-semibold border border-gray-300 rounded-lg text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                       disabled={currentPage === 1}
                     >
@@ -285,7 +271,13 @@ export default function SubcategoryPage() {
                         <button
                           type="button"
                           key={isEllipsis ? `ellipsis-${index}` : `page-${pageNumber}`}
-                          className={`pagination-button ${pageNumber === currentPage ? 'pagination-button-active' : ''}`}
+                          className={`px-3 py-2 font-semibold rounded-lg ${
+                            pageNumber === currentPage
+                              ? 'bg-gamerhouse-red text-white'
+                              : isEllipsis
+                              ? 'text-gray-500 cursor-default'
+                              : 'border border-gray-300 text-gray-900 hover:bg-gray-100'
+                          }`}
                           onClick={() => {
                             if (!isEllipsis) {
                               setCurrentPage(pageNumber as number);
@@ -299,7 +291,7 @@ export default function SubcategoryPage() {
                     })}
                     <button
                       type="button"
-                      className="pagination-button h-10 px-4 font-semibold"
+                      className="px-4 py-2 h-10 font-semibold border border-gray-300 rounded-lg text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                       disabled={currentPage === totalPages}
                     >
