@@ -8,7 +8,7 @@ import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
 import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight } from 'lucide-react';
-import { getProductCategoryCandidates, productMatchesSubcategory } from '@/utils/category';
+import { productMatchesCategory, productMatchesSubcategory } from '@/utils/category';
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
 import MainBanner from '@/components/home/MainBanner';
@@ -69,12 +69,9 @@ export default function RetailHomepage() {
     let filtered = products.filter(product => (product.stock || 0) > 0);
 
     if (selectedCategory && selectedCategory !== 'all') {
-      filtered = filtered.filter(product => {
-        const cats = getProductCategoryCandidates(product);
-        return cats.some(category =>
-          category.toLowerCase().includes(selectedCategory.toLowerCase())
-        );
-      });
+      filtered = filtered.filter(product =>
+        productMatchesCategory(product, selectedCategory)
+      );
     }
 
     if (selectedSubcategory) {
