@@ -40,6 +40,34 @@ const categoryIcons: Record<string, string> = {
   'cables': '🔌'
 };
 
+// Subcategories mapping for each category
+const subcategoriesByCategory: Record<string, Array<{ id: string; nombre: string; activa: boolean }>> = {
+  'calzado': [
+    { id: 'deportivo', nombre: 'Deportivo', activa: true },
+    { id: 'casual', nombre: 'Casual', activa: true },
+    { id: 'botines', nombre: 'Botines', activa: true },
+    { id: 'botas', nombre: 'Botas', activa: true }
+  ],
+  'tecnología': [
+    { id: 'laptops', nombre: 'Laptops', activa: true },
+    { id: 'audifonos', nombre: 'Auriculares', activa: true },
+    { id: 'monitores', nombre: 'Monitores', activa: true },
+    { id: 'accesorios-tech', nombre: 'Accesorios', activa: true }
+  ],
+  'ropa': [
+    { id: 'camisetas', nombre: 'Camisetas', activa: true },
+    { id: 'sudaderas', nombre: 'Sudaderas', activa: true },
+    { id: 'pantalones', nombre: 'Pantalones', activa: true },
+    { id: 'chaquetas', nombre: 'Chaquetas', activa: true }
+  ],
+  'accesorios': [
+    { id: 'mochilas', nombre: 'Mochilas', activa: true },
+    { id: 'cinturones', nombre: 'Cinturones', activa: true },
+    { id: 'gorras', nombre: 'Gorras', activa: true },
+    { id: 'calcetines', nombre: 'Calcetines', activa: true }
+  ]
+};
+
 // Generate categories from mock products
 const generateCategoriesFromProducts = (): Category[] => {
   const uniqueCategories = [...new Set(mockProducts.map(p => p.categoria))];

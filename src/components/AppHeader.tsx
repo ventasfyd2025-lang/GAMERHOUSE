@@ -7,6 +7,11 @@ import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
 import { Search, ShoppingCart, User, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 
+type NormalizedSubcategory = {
+  id: string;
+  nombre?: string;
+};
+
 export default function AppHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
@@ -37,30 +42,63 @@ export default function AppHeader() {
     [categories],
   );
 
-  const extractSubcategories = (raw: unknown) => {
+  const formatLabel = (label: string | undefined) => {
+    if (!label) return '';
+    return label
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\p{L}/gu, (match) => match.toUpperCase());
+  };
+
+  const slugify = (value: string, fallback: string) => (
+    value?.trim()?.toLowerCase()?.replace(/[^a-z0-9]+/gi, '-')?.replace(/^-+|-+$/g, '') || fallback
+  );
+
+  const extractSubcategories = (raw: unknown): NormalizedSubcategory[] => {
     if (!raw) return [];
 
-    if (Array.isArray(raw)) {
-      const subs = raw
-        .filter((sub) => {
-          // Filtra las subcategorías activas (por defecto son activas si no tienen el campo)
-          if (!sub || typeof sub !== 'object') return false;
-          return (sub as { activa?: boolean }).activa !== false;
-        })
-        .map((sub) => {
-          const typedSub = sub as Record<string, unknown>;
-          return {
-            id: (typedSub.id as string) || (typedSub.ID as string) || '',
-            nombre: (typedSub.nombre as string) || (typedSub.name as string) || (typedSub.NOMBRE as string) || '',
-            activa: typedSub.activa !== false && typedSub.ACTIVA !== false,
-          };
-        })
-        .filter((sub) => sub.id && sub.nombre); // Solo retorna subcategorías con id y nombre
-
-      if (process.env.NODE_ENV === 'development') {
-        console.debug('Subcategorías extraídas:', subs);
+    const pushIfActive = (
+      list: NormalizedSubcategory[],
+      candidate: NormalizedSubcategory | null,
+      isActive: boolean,
+    ) => {
+      if (candidate && isActive) {
+        list.push({ id: candidate.id, nombre: candidate.nombre || formatLabel(candidate.id) });
       }
-      return subs;
+      return list;
+    };
+
+    if (Array.isArray(raw)) {
+      return raw.reduce<NormalizedSubcategory[]>((acc, entry, index) => {
+        if (typeof entry === 'string') {
+          return pushIfActive(acc, { id: slugify(entry, `sub-${index}`), nombre: entry }, true);
+        }
+
+        if (entry && typeof entry === 'object') {
+          const typed = entry as { id?: string; nombre?: string; activa?: boolean };
+          const candidateId = typed.id || slugify(typed.nombre ?? `sub-${index}`, `sub-${index}`);
+          return pushIfActive(
+            acc,
+            { id: candidateId, nombre: typed.nombre || formatLabel(candidateId) },
+            typed.activa !== false,
+          );
+        }
+
+        return acc;
+      }, []);
+    }
+
+    if (typeof raw === 'object') {
+      return Object.entries(raw as Record<string, unknown>)
+        .reduce<NormalizedSubcategory[]>((acc, [key, value]) => {
+          const typed = (value ?? {}) as { nombre?: string; activa?: boolean };
+          return pushIfActive(
+            acc,
+            { id: key, nombre: typed.nombre || formatLabel(key) },
+            typed.activa !== false,
+          );
+        }, []);
     }
 
     return [];
@@ -75,15 +113,6 @@ export default function AppHeader() {
     () => extractSubcategories(hoveredCategoryData?.subcategorias),
     [hoveredCategoryData?.subcategorias],
   );
-
-  const formatLabel = (label: string | undefined) => {
-    if (!label) return '';
-    return label
-      .replace(/[-_]+/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .replace(/\b\p{L}/gu, (match) => match.toUpperCase());
-  };
 
   const openMenu = (categoryId?: string) => {
     if (closeTimerRef.current) {
