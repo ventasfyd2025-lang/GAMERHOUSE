@@ -40,31 +40,36 @@ const categoryIcons: Record<string, string> = {
   'cables': '🔌'
 };
 
-// Subcategories mapping for each category
+// Subcategories mapping from WordPress export
 const subcategoriesByCategory: Record<string, Array<{ id: string; nombre: string; activa: boolean }>> = {
-  'calzado': [
-    { id: 'deportivo', nombre: 'Deportivo', activa: true },
-    { id: 'casual', nombre: 'Casual', activa: true },
-    { id: 'botines', nombre: 'Botines', activa: true },
-    { id: 'botas', nombre: 'Botas', activa: true }
+  'magic': [
+    { id: 'preventa-magic', nombre: 'Preventa Magic', activa: true },
+    { id: 'sellado', nombre: 'Sellado', activa: true }
   ],
-  'tecnología': [
-    { id: 'laptops', nombre: 'Laptops', activa: true },
-    { id: 'audifonos', nombre: 'Auriculares', activa: true },
-    { id: 'monitores', nombre: 'Monitores', activa: true },
-    { id: 'accesorios-tech', nombre: 'Accesorios', activa: true }
+  'nintendo': [
+    { id: 'consolas', nombre: 'Consolas', activa: true },
+    { id: 'controles', nombre: 'Controles', activa: true },
+    { id: 'portatiles', nombre: 'Portatiles', activa: true }
   ],
-  'ropa': [
-    { id: 'camisetas', nombre: 'Camisetas', activa: true },
-    { id: 'sudaderas', nombre: 'Sudaderas', activa: true },
-    { id: 'pantalones', nombre: 'Pantalones', activa: true },
-    { id: 'chaquetas', nombre: 'Chaquetas', activa: true }
+  'playstation': [
+    { id: 'ps2', nombre: 'Ps2', activa: true },
+    { id: 'ps3', nombre: 'Ps3', activa: true },
+    { id: 'ps4', nombre: 'Ps4', activa: true },
+    { id: 'ps5', nombre: 'Ps5', activa: true }
   ],
-  'accesorios': [
-    { id: 'mochilas', nombre: 'Mochilas', activa: true },
-    { id: 'cinturones', nombre: 'Cinturones', activa: true },
-    { id: 'gorras', nombre: 'Gorras', activa: true },
-    { id: 'calcetines', nombre: 'Calcetines', activa: true }
+  'pokemon-tcg': [
+    { id: 'booster-bundle', nombre: 'Booster Bundle', activa: true },
+    { id: 'combina-y-combate', nombre: 'Combina Y Combate', activa: true },
+    { id: 'elite-trainer-box', nombre: 'Elite Trainer Box', activa: true },
+    { id: 'leagle-batle-deck', nombre: 'Leagle Batle Deck', activa: true },
+    { id: 'premium-collection', nombre: 'Premium Collection', activa: true },
+    { id: 'preventa', nombre: 'Preventa', activa: true },
+    { id: 'sobres-sueltos', nombre: 'Sobres sueltos', activa: true },
+    { id: 'special-collection', nombre: 'Special Collection', activa: true },
+    { id: 'tin-y-mini-tins', nombre: 'Tin Y Mini Tins', activa: true }
+  ],
+  'singles': [
+    { id: 'accesorios', nombre: 'Accesorios', activa: true }
   ]
 };
 
@@ -107,12 +112,20 @@ export function useCategories() {
               
               snapshot.forEach((doc) => {
                 const data = doc.data();
+                const categoryId = doc.id.toLowerCase().replace(/\s+/g, '-');
+                const firebaseSubcategorias = data.subcategorias || [];
+
+                // Use Firebase subcategorías if available, otherwise use the mapping
+                const subcategorias = firebaseSubcategorias.length > 0
+                  ? firebaseSubcategorias
+                  : (subcategoriesByCategory[categoryId] || []);
+
                 firebaseCategories.push({
                   id: doc.id,
                   name: data.name || data.nombre || doc.id,
                   active: data.active !== undefined ? data.active : true,
-                  icon: categoryIcons[doc.id] || '📦',
-                  subcategorias: data.subcategorias || []
+                  icon: categoryIcons[doc.id.toLowerCase()] || '📦',
+                  subcategorias
                 });
               });
 
@@ -179,12 +192,20 @@ export function useCategories() {
         
         snapshot.forEach((doc) => {
           const data = doc.data();
+          const categoryId = doc.id.toLowerCase().replace(/\s+/g, '-');
+          const firebaseSubcategorias = data.subcategorias || [];
+
+          // Use Firebase subcategorías if available, otherwise use the mapping
+          const subcategorias = firebaseSubcategorias.length > 0
+            ? firebaseSubcategorias
+            : (subcategoriesByCategory[categoryId] || []);
+
           firebaseCategories.push({
             id: doc.id,
             name: data.name || data.nombre || doc.id,
             active: data.active !== undefined ? data.active : true,
-            icon: categoryIcons[doc.id] || '📦',
-            subcategorias: data.subcategorias || []
+            icon: categoryIcons[doc.id.toLowerCase()] || '📦',
+            subcategorias
           });
         });
 
