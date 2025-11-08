@@ -56,7 +56,11 @@ export default function AppHeader() {
   );
 
   const extractSubcategories = (raw: unknown): NormalizedSubcategory[] => {
-    if (!raw) return [];
+    console.log('extractSubcategories input:', raw);
+    if (!raw) {
+      console.log('❌ No hay datos de subcategorías');
+      return [];
+    }
 
     const pushIfActive = (
       list: NormalizedSubcategory[],
@@ -70,7 +74,8 @@ export default function AppHeader() {
     };
 
     if (Array.isArray(raw)) {
-      return raw.reduce<NormalizedSubcategory[]>((acc, entry, index) => {
+      console.log('✓ Es array, items:', raw.length);
+      const result = raw.reduce<NormalizedSubcategory[]>((acc, entry, index) => {
         if (typeof entry === 'string') {
           return pushIfActive(acc, { id: slugify(entry, `sub-${index}`), nombre: entry }, true);
         }
@@ -87,10 +92,13 @@ export default function AppHeader() {
 
         return acc;
       }, []);
+      console.log('✓ Subcategorías extraídas:', result);
+      return result;
     }
 
     if (typeof raw === 'object') {
-      return Object.entries(raw as Record<string, unknown>)
+      console.log('✓ Es objeto');
+      const result = Object.entries(raw as Record<string, unknown>)
         .reduce<NormalizedSubcategory[]>((acc, [key, value]) => {
           const typed = (value ?? {}) as { nombre?: string; activa?: boolean };
           return pushIfActive(
@@ -99,8 +107,11 @@ export default function AppHeader() {
             typed.activa !== false,
           );
         }, []);
+      console.log('✓ Del objeto extraídas:', result);
+      return result;
     }
 
+    console.log('❌ Tipo desconocido:', typeof raw);
     return [];
   };
 
@@ -124,14 +135,17 @@ export default function AppHeader() {
   };
 
   const handleDesktopCategoryClick = (categoryId: string, hasSubcategories: boolean) => {
+    console.log('Click en categoría:', categoryId, 'Has subcats:', hasSubcategories);
     setIsCategoryMenuOpen(true);
 
     if (!hasSubcategories) {
+      console.log('Sin subcategorías, navegando a:', categoryId);
       router.push(`/?category=${encodeURIComponent(categoryId)}`);
       scheduleCloseMenu();
       return;
     }
 
+    console.log('Expandiendo categoría:', categoryId);
     setActiveDesktopCategory((current) => (current === categoryId ? null : categoryId));
   };
 
@@ -187,9 +201,11 @@ export default function AppHeader() {
                   </p>
                   <div className="mt-2 space-y-2">
                     {activeCategories.map((category) => {
+                      console.log(`Categoria "${category.name}" - subcategorias data:`, category.subcategorias);
                       const subcategories = extractSubcategories(category.subcategorias);
                       const isExpanded = activeDesktopCategory === category.id;
                       const hasSubcategories = subcategories.length > 0;
+                      console.log(`Categoria "${category.name}" - subcategorias extraídas (${subcategories.length}):`, subcategories);
 
                       return (
                         <div key={category.id} className="rounded-2xl border border-white/10 bg-white/5">
