@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
 import Layout from "@/components/Layout";
-import RetailHomepage from '@/components/home/RetailHomepage';
+import HunterCardHomepage from '@/components/home/HunterCardHomepage';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "GAMERHOUSE - Tienda Gaming Online Chile",
-  description: "Compra los mejores productos gaming y electrónicos con ofertas especiales. Componentes, accesorios gaming y más con envío a domicilio en todo Chile.",
-  keywords: "gaming, tienda gaming, electrónicos, componentes pc, accesorios gaming, Chile, envío gratuito",
-  authors: [{ name: "GAMERHOUSE" }],
+  title: "HunterCard TCG - Siempre los mejores precios en TCG",
+  description: "La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon TCG, One Piece, Star Wars Unlimited, Yu-Gi-Oh!, Dragon Ball, Digimon, Magic The Gathering y más. Envío a todo Chile.",
+  keywords: "TCG, trading card games, pokémon, one piece, yu-gi-oh, magic the gathering, dragon ball, digimon, star wars, Chile, comprar cartas",
+  authors: [{ name: "HunterCard TCG" }],
   openGraph: {
-    title: "GAMERHOUSE - Tienda Gaming Online Chile",
-    description: "Compra los mejores productos gaming y electrónicos con ofertas especiales.",
-    url: "https://gamerhouse.vercel.app",
-    siteName: "GAMERHOUSE",
+    title: "HunterCard TCG - Siempre los mejores precios en TCG",
+    description: "La mejor tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.",
+    url: "https://huntercardtcg.vercel.app",
+    siteName: "HunterCard TCG",
     images: [
       {
-        url: "https://gamerhouse.vercel.app/og-image.jpg",
+        url: "https://huntercardtcg.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "GAMERHOUSE - Ofertas gaming especiales"
+        alt: "HunterCard TCG - Tienda de Trading Card Games"
       }
     ],
     locale: "es_CL",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GAMERHOUSE - Tienda Gaming Online Chile",
-    description: "Compra los mejores productos gaming con ofertas especiales.",
-    images: ["https://gamerhouse.vercel.app/og-image.jpg"],
+    title: "HunterCard TCG - Siempre los mejores precios en TCG",
+    description: "La mejor tienda de Trading Card Games en Chile",
+    images: ["https://huntercardtcg.vercel.app/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <Layout>
-      <RetailHomepage />
+      <HunterCardHomepage />
     </Layout>
   );
 }
