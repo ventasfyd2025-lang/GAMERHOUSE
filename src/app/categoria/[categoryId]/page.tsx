@@ -185,7 +185,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-gray-900">
       {/* Hero Header Section */}
       <div className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-12 sm:py-16 mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">

@@ -114,20 +114,20 @@ export default function GamerHouseHomepage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-br from-white via-blue-50 to-cyan-100 text-gray-900 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gamerhouse-navy">
               Bienvenido a GAMER HOUSE
             </h1>
-            <p className="text-lg sm:text-xl text-gray-100 mb-8">
+            <p className="text-lg sm:text-xl text-gray-700 mb-8">
               Tu tienda especializada en Trading Card Games. Los mejores precios en TCG, accesorios y más.
             </p>
             <Link
               href="/productos"
-              className="inline-flex items-center gap-2 bg-gamerhouse-gold text-gamerhouse-navy px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors hover:scale-105 transform"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all hover:shadow-lg hover:scale-105 transform"
             >
               Explorar Catálogo
               <ArrowRight className="h-5 w-5" />
@@ -137,7 +137,7 @@ export default function GamerHouseHomepage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">CATEGORÍAS</h2>
@@ -168,7 +168,7 @@ export default function GamerHouseHomepage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">DESTACADOS</h2>
