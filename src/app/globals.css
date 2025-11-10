@@ -567,3 +567,12 @@ body {
 .animate-glow {
   animation: glow-alert 2s ease-in-out infinite;
 }
+
+/* Light theme pages - Override body text color */
+.bg-white {
+  color: #111827 !important;
+}
+
+.bg-white * {
+  color: inherit;
+}
