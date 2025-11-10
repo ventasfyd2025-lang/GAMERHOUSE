@@ -47,9 +47,9 @@ export default function GamerHouseHomepage() {
       : 0;
 
     return (
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+      <div className="card-dark overflow-hidden h-full flex flex-col">
         {/* Image */}
-        <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
+        <div className="relative w-full aspect-square bg-slate-800 overflow-hidden">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
@@ -70,14 +70,14 @@ export default function GamerHouseHomepage() {
 
         {/* Content */}
         <div className="flex flex-col gap-3 p-4 flex-1">
-          <h3 className="font-semibold text-gray-800 line-clamp-2 text-sm">
+          <h3 className="font-semibold text-white line-clamp-2 text-sm">
             {product.nombre}
           </h3>
 
           {/* Pricing */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-gamerhouse-red">
+              <span className="text-lg font-bold bg-gradient-to-r from-gamerhouse-gold to-gamerhouse-red bg-clip-text text-transparent">
                 ${product.precio?.toLocaleString() || 'N/D'}
               </span>
               {hasDiscount && (
@@ -90,8 +90,8 @@ export default function GamerHouseHomepage() {
 
           {/* Stock Info */}
           {product.stock > 0 && (
-            <p className="text-xs text-gray-500">
-              Stock: {product.stock}
+            <p className="text-xs text-gamerhouse-gold font-semibold">
+              📦 Stock: {product.stock}
             </p>
           )}
 
@@ -99,10 +99,10 @@ export default function GamerHouseHomepage() {
           <button
             onClick={() => handleAddToCart(product)}
             disabled={product.stock === 0}
-            className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-colors flex items-center justify-center gap-2 text-sm ${
+            className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
               product.stock === 0
-                ? 'bg-gray-300 cursor-not-allowed'
-                : 'bg-gamerhouse-red hover:bg-red-700'
+                ? 'bg-gray-700 cursor-not-allowed opacity-50'
+                : 'bg-gradient-to-r from-gamerhouse-gold via-amber-300 to-gamerhouse-red hover:shadow-lg hover:scale-105 active:scale-95'
             }`}
           >
             <ShoppingCart className="h-4 w-4" />
@@ -114,7 +114,7 @@ export default function GamerHouseHomepage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,10 +160,10 @@ export default function GamerHouseHomepage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-12 sm:py-16 bg-gray-50">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">CATEGORÍAS</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-gold mb-2">CATEGORÍAS</h2>
             <div className="h-1 w-20 bg-gamerhouse-red"></div>
           </div>
 
@@ -191,16 +191,16 @@ export default function GamerHouseHomepage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">DESTACADOS</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-gold mb-2">DESTACADOS</h2>
             <div className="h-1 w-20 bg-gamerhouse-red"></div>
           </div>
 
           {productsLoading ? (
             <div className="text-center py-12">
-              <p className="text-gray-600">Cargando productos...</p>
+              <p className="text-gray-400">Cargando productos...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
