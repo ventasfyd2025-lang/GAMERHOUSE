@@ -97,18 +97,18 @@ export default function CategoryPage() {
       : 0;
 
     return (
-      <Link href={`/producto/${product.id}`} className="block h-full">
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+      <Link href={`/producto/${product.id}`} className="block h-full group">
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-red/50">
           {/* Image */}
-          <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
+          <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
             <Image
               src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
               alt={product.nombre}
               fill
-              className="object-cover hover:scale-110 transition-transform"
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
             {hasDiscount && (
-              <div className="absolute top-2 right-2 bg-gamerhouse-red text-white px-3 py-1 rounded-full text-sm font-bold">
+              <div className="absolute top-3 right-3 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                 -{discountPercent}%
               </div>
             )}
@@ -120,19 +120,19 @@ export default function CategoryPage() {
           </div>
 
           {/* Content */}
-          <div className="flex flex-col gap-3 p-4 flex-1">
-            <h3 className="font-semibold text-gray-900 line-clamp-2 text-sm">
+          <div className="flex flex-col gap-3 p-5 flex-1 bg-gradient-to-b from-white to-gray-50">
+            <h3 className="font-bold text-gray-900 line-clamp-2 text-sm leading-tight">
               {product.nombre}
             </h3>
 
             {/* Pricing */}
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className="text-lg font-bold text-gamerhouse-red">
+                <span className="text-xl font-black bg-gradient-to-r from-gamerhouse-red to-red-700 bg-clip-text text-transparent">
                   ${product.precio?.toLocaleString() || 'N/D'}
                 </span>
                 {hasDiscount && (
-                  <span className="text-sm text-gray-500 line-through">
+                  <span className="text-xs text-gray-400 line-through">
                     ${product.precioOriginal?.toLocaleString()}
                   </span>
                 )}
@@ -141,8 +141,8 @@ export default function CategoryPage() {
 
             {/* Stock Info */}
             {product.stock > 0 && (
-              <p className="text-xs text-gray-600">
-                Stock: {product.stock}
+              <p className="text-xs font-semibold text-gamerhouse-navy">
+                📦 Stock: {product.stock}
               </p>
             )}
 
@@ -154,8 +154,10 @@ export default function CategoryPage() {
                 handleAddToCart(product);
               }}
               disabled={product.stock === 0}
-              className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-colors flex items-center justify-center gap-2 text-sm ${
-                product.stock === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-gamerhouse-red hover:bg-red-700'
+              className={`mt-auto w-full py-3 px-3 rounded-lg font-bold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
+                product.stock === 0
+                  ? 'bg-gray-300 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-gamerhouse-red to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:scale-105 active:scale-95'
               }`}
             >
               <ShoppingCart className="h-4 w-4" />
@@ -183,53 +185,58 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white [color:rgb(17,24,39)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 [color:rgb(17,24,39)]">
-        {/* Header */}
-        <div className="space-y-4">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white [color:rgb(17,24,39)]">
+      {/* Hero Header Section */}
+      <div className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-12 sm:py-16 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-gamerhouse-red hover:text-red-700 font-semibold transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gamerhouse-gold hover:text-yellow-300 font-semibold transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Volver a inicio
           </Link>
 
           <div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gamerhouse-navy tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
               {categoryInfo?.name || formatCategoryLabel(categoryId)}
             </h1>
-            <div className="h-1 w-20 bg-gamerhouse-red mt-4"></div>
-            <p className="text-gray-600 mt-2">
+            <div className="h-1 w-20 bg-gamerhouse-gold mt-4"></div>
+            <p className="text-gray-100 mt-2 text-lg">
               {filteredProducts.length} productos encontrados
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 [color:rgb(17,24,39)]">
+        {/* Breadcrumb Link */}
+        <div></div>
 
         {/* Search Bar */}
-        <div className="rounded-lg border border-gray-300 bg-white p-4">
+        <div className="rounded-xl bg-gradient-to-r from-white to-gray-50 border border-gamerhouse-red/20 p-6 shadow-lg">
           <input
             type="text"
             placeholder="Buscar en esta categoría..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white text-gray-900 placeholder-gray-500 outline-none"
+            className="w-full bg-white text-gray-900 placeholder-gray-500 outline-none rounded-lg px-4 py-3 border border-gray-200 focus:border-gamerhouse-red focus:ring-2 focus:ring-gamerhouse-red/20 transition-all"
           />
         </div>
 
         {/* Subcategories Filter */}
         {subcategories.length > 0 && (
-          <div className="rounded-lg border border-gray-300 bg-white p-6 space-y-4">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gamerhouse-navy">
-              Subcategorías
+          <div className="rounded-xl bg-gradient-to-r from-white to-gray-50 border border-gamerhouse-navy/20 p-6 shadow-lg">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gamerhouse-navy mb-4">
+              Filtrar por Subcategoría
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setSelectedSubcategory('')}
-                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                className={`px-5 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 ${
                   !selectedSubcategory
-                    ? 'bg-gamerhouse-red text-white'
-                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+                    ? 'bg-gradient-to-r from-gamerhouse-red to-red-700 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-gray-300'
                 }`}
               >
                 Todas
@@ -238,10 +245,10 @@ export default function CategoryPage() {
                 <button
                   key={sub.id}
                   onClick={() => setSelectedSubcategory(sub.nombre || sub.id)}
-                  className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  className={`px-5 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 ${
                     selectedSubcategory === (sub.nombre || sub.id)
-                      ? 'bg-gamerhouse-red text-white'
-                      : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+                      ? 'bg-gradient-to-r from-gamerhouse-red to-red-700 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-gray-300'
                   }`}
                 >
                   {sub.nombre || sub.id}
@@ -255,22 +262,29 @@ export default function CategoryPage() {
         <section className="space-y-8">
           {productsLoading ? (
             <div className="flex h-64 items-center justify-center">
-              <div className="text-center text-gray-600">
-                Cargando productos...
+              <div className="text-center space-y-3">
+                <div className="inline-block animate-spin">
+                  <div className="h-12 w-12 border-4 border-gamerhouse-gold border-t-gamerhouse-red rounded-full"></div>
+                </div>
+                <p className="text-lg font-semibold text-gray-600">Cargando productos...</p>
               </div>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="bg-gray-50 rounded-lg border border-gray-300 text-center py-12">
-              <h3 className="text-lg font-semibold text-gray-900">
+            <div className="bg-gradient-to-r from-gamerhouse-navy/10 to-gamerhouse-red/10 rounded-xl border border-gamerhouse-navy/20 text-center py-16">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold text-gamerhouse-navy">
                 Sin resultados
               </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Ajusta tus filtros o prueba otra búsqueda.
+              <p className="mt-3 text-gray-600">
+                No encontramos productos que coincidan con tus filtros o búsqueda.
+              </p>
+              <p className="mt-2 text-sm text-gray-500">
+                Intenta ajustar tus filtros o prueba con otros términos.
               </p>
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -278,15 +292,15 @@ export default function CategoryPage() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="mt-8 flex flex-col items-center gap-4 text-sm text-gray-600">
-                  <div className="flex items-center gap-2">
+                <div className="mt-12 flex flex-col items-center gap-6">
+                  <div className="flex items-center gap-2 flex-wrap justify-center">
                     <button
                       type="button"
-                      className="px-4 py-2 h-10 font-semibold border border-gray-300 rounded-lg text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-4 py-2 h-10 font-bold border border-gamerhouse-navy rounded-lg text-gamerhouse-navy hover:bg-gamerhouse-navy hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                       disabled={currentPage === 1}
                     >
-                      ←
+                      ← Anterior
                     </button>
                     {getPaginationRange(currentPage, totalPages).map((pageNumber, index) => {
                       const isEllipsis = pageNumber === '...';
@@ -294,12 +308,12 @@ export default function CategoryPage() {
                         <button
                           type="button"
                           key={isEllipsis ? `ellipsis-${index}` : `page-${pageNumber}`}
-                          className={`px-3 py-2 font-semibold rounded-lg ${
+                          className={`px-3.5 py-2 font-bold rounded-lg transition-all ${
                             pageNumber === currentPage
-                              ? 'bg-gamerhouse-red text-white'
+                              ? 'bg-gradient-to-r from-gamerhouse-red to-red-700 text-white shadow-lg'
                               : isEllipsis
-                              ? 'text-gray-500 cursor-default'
-                              : 'border border-gray-300 text-gray-900 hover:bg-gray-100'
+                              ? 'text-gray-400 cursor-default'
+                              : 'border border-gray-300 text-gray-900 hover:border-gamerhouse-red hover:text-gamerhouse-red'
                           }`}
                           onClick={() => {
                             if (!isEllipsis) {
@@ -314,15 +328,15 @@ export default function CategoryPage() {
                     })}
                     <button
                       type="button"
-                      className="px-4 py-2 h-10 font-semibold border border-gray-300 rounded-lg text-gray-900 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-4 py-2 h-10 font-bold border border-gamerhouse-navy rounded-lg text-gamerhouse-navy hover:bg-gamerhouse-navy hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                       disabled={currentPage === totalPages}
                     >
-                      →
+                      Siguiente →
                     </button>
                   </div>
-                  <span>
-                    Página {currentPage} de {totalPages}
+                  <span className="text-sm font-semibold text-gray-600">
+                    Página <span className="text-gamerhouse-red font-bold">{currentPage}</span> de <span className="text-gamerhouse-navy font-bold">{totalPages}</span>
                   </span>
                 </div>
               )}
