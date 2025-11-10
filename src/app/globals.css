@@ -72,32 +72,17 @@
 }
 
 html {
-  font-size: 14px; /* Tamaño base reducido ~15% para vista más alejada */
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--brand-background);
-  background-attachment: fixed;
-  color: var(--brand-text);
   font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Better responsive scaling - reducidos ~15% para vista más alejada */
-@media (max-width: 640px) {
-  html {
-    font-size: 13px; /* Móvil reducido */
-  }
-}
-
-@media (min-width: 1280px) {
-  html {
-    font-size: 16px; /* Desktop reducido ~20% */
-  }
-}
 
 @layer utilities {
   .line-clamp-2 {
@@ -566,13 +551,4 @@ body {
 
 .animate-glow {
   animation: glow-alert 2s ease-in-out infinite;
-}
-
-/* Light theme pages - Override body text color */
-.bg-white {
-  color: #111827 !important;
-}
-
-.bg-white * {
-  color: inherit;
 }
