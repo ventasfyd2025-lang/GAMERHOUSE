@@ -102,9 +102,9 @@ export default function SubcategoryPage() {
 
     return (
       <Link href={`/producto/${product.id}`} className="block h-full group">
-        <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-gold/50 hover:border-white/20">
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-red/50">
           {/* Image */}
-          <div className="relative w-full aspect-square bg-gradient-to-br from-slate-800 to-slate-700 overflow-hidden">
+          <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
             <Image
               src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
               alt={product.nombre}
@@ -112,31 +112,31 @@ export default function SubcategoryPage() {
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
             {hasDiscount && (
-              <div className="absolute top-3 right-3 bg-gradient-to-r from-gamerhouse-gold to-amber-300 text-slate-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+              <div className="absolute top-3 right-3 bg-gamerhouse-red text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                 -{discountPercent}%
               </div>
             )}
             {product.stock === 0 && (
-              <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                 <span className="text-white font-bold">AGOTADO</span>
               </div>
             )}
           </div>
 
           {/* Content */}
-          <div className="flex flex-col gap-3 p-5 flex-1 bg-gradient-to-b from-white/5 to-white/10">
-            <h3 className="font-bold text-white line-clamp-2 text-sm leading-tight">
+          <div className="flex flex-col gap-3 p-5 flex-1 bg-white">
+            <h3 className="font-bold text-gray-900 line-clamp-2 text-sm leading-tight">
               {product.nombre}
             </h3>
 
             {/* Pricing */}
             <div className="space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className="text-xl font-black bg-gradient-to-r from-gamerhouse-gold to-amber-300 bg-clip-text text-transparent">
+                <span className="text-xl font-black text-gamerhouse-red">
                   ${product.precio?.toLocaleString() || 'N/D'}
                 </span>
                 {hasDiscount && (
-                  <span className="text-xs text-gray-500 line-through">
+                  <span className="text-xs text-gray-400 line-through">
                     ${product.precioOriginal?.toLocaleString()}
                   </span>
                 )}
@@ -145,7 +145,7 @@ export default function SubcategoryPage() {
 
             {/* Stock Info */}
             {product.stock > 0 && (
-              <p className="text-xs font-semibold text-gamerhouse-gold">
+              <p className="text-xs font-semibold text-gamerhouse-navy">
                 📦 Stock: {product.stock}
               </p>
             )}
@@ -160,8 +160,8 @@ export default function SubcategoryPage() {
               disabled={product.stock === 0}
               className={`mt-auto w-full py-3 px-3 rounded-lg font-bold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
                 product.stock === 0
-                  ? 'bg-gray-700 cursor-not-allowed opacity-50'
-                  : 'bg-gradient-to-r from-gamerhouse-gold via-amber-300 to-gamerhouse-red hover:shadow-lg hover:scale-105 active:scale-95'
+                  ? 'bg-gray-300 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-gamerhouse-red to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:scale-105 active:scale-95'
               }`}
             >
               <ShoppingCart className="h-4 w-4" />
@@ -189,7 +189,7 @@ export default function SubcategoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
       {/* Hero Header Section */}
       <div className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-12 sm:py-16 mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
@@ -222,13 +222,13 @@ export default function SubcategoryPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Search Bar */}
-        <div className="rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-lg">
+        <div className="rounded-xl bg-white border border-gray-200 p-6 shadow-lg">
           <input
             type="text"
             placeholder="Buscar en esta subcategoría..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="input-web"
+            className="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500 border border-gray-300 focus:border-gamerhouse-red focus:ring-2 focus:ring-gamerhouse-red/20 outline-none transition-all"
           />
         </div>
 
