@@ -1,76 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  /* ==================== PALETA GAMERHOUSE - RENOVADA ==================== */
-
-  /* Base cromática actualizada */
-  --brand-background:
-    radial-gradient(circle at 12% 18%, rgba(255, 232, 141, 0.22), transparent 45%),
-    radial-gradient(circle at 88% 12%, rgba(255, 188, 41, 0.2), transparent 52%),
-    radial-gradient(circle at 50% -10%, rgba(231, 68, 68, 0.18), transparent 60%),
-    repeating-linear-gradient(90deg, rgba(255, 232, 141, 0.07) 0, rgba(255, 232, 141, 0.07) 1px, transparent 1px, transparent 140px),
-    repeating-linear-gradient(0deg, rgba(255, 232, 141, 0.05) 0, rgba(255, 232, 141, 0.05) 1px, transparent 1px, transparent 140px),
-    linear-gradient(135deg, #030208 0%, #070914 45%, #04040a 100%);
-  --brand-surface: rgba(6, 8, 17, 0.92);
-  --brand-surface-elevated: rgba(12, 16, 30, 0.9);
-  --brand-card: rgba(10, 12, 22, 0.92);
-  --brand-border-soft: rgba(255, 232, 141, 0.22);
-  --brand-border-strong: rgba(255, 232, 141, 0.42);
-  --brand-glow: rgba(255, 232, 141, 0.6);
-
-  --brand-text: #f5f7ff;
-  --brand-text-soft: #cbd5f5;
-  --brand-text-muted: #99a5c7;
-
-  /* Colores Primarios */
-  --color-primary: #ffe88d;
-  --color-secondary: #e74444;
-  --color-accent: #ffd966;
-
-  /* Grises y fondos antiguos para compatibilidad */
-  --color-bg-slate-900est: #000000;
-  --color-bg-slate-900-900: #1a1a1a;
-  --color-bg-slate-900-800: #2a2a2a;
-  --color-bg-slate-900-700: #3a3a3a;
-  --color-bg-950: #0d0d0d;
-  --color-bg-900: #0f0f0f;
-
-  /* Texto y bordes heredados */
-  --color-text-yellow-300: #ffffff;
-  --color-text-secondary: #e5e5e5;
-  --color-text-tertiary: #b0b0b0;
-  --color-border: #ffde00;
-  --color-border-light: #ffb800;
-
-  /* Estados y componentes */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #e60012;
-  --color-info: #e60012;
-
-  /* Variantes de color */
-  --color-yellow-300: #ffed4e;
-  --color-yellow-400: #ffde00;
-  --color-yellow-500: #ffb800;
-  --color-red-400: #ff6b6b;
-  --color-red-500: #ff4444;
-  --color-red-600: #e60012;
-  --color-amber-400: #ffde00;
-  --color-amber-500: #ffb800;
-  --color-amber-600: #ff9500;
-
-  /* Fondos Legacy (mantener para compatibilidad) */
-  --background: #0f1117;
-  --foreground: #ffffff;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Roboto', 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: var(--font-geist-mono);
-}
-
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -408,31 +337,6 @@ body {
     0 25px 90px -45px rgba(255, 232, 141, 0.7),
     inset 0 0 0 1px rgba(255, 232, 141, 0.2);
   transition: transform 0.45s ease, box-shadow 0.45s ease;
-}
-
-#admin-container {
-  color: var(--brand-text);
-}
-
-#admin-container [class*="bg-slate-800"],
-#admin-container [class*="bg-slate-900"],
-#admin-container [class*="bg-gray-900"],
-#admin-container [class*="bg-gray-800"] {
-  background: rgba(7, 10, 23, 0.85) !important;
-  border-color: rgba(255, 232, 141, 0.18) !important;
-  box-shadow: 0 25px 70px -45px rgba(255, 232, 141, 0.4);
-  backdrop-filter: blur(20px);
-  color: var(--brand-text);
-}
-
-#admin-container [class*="border-slate-700"],
-#admin-container [class*="border-gray-700"],
-#admin-container [class*="border-slate-600"] {
-  border-color: rgba(255, 232, 141, 0.22) !important;
-}
-
-#admin-container [class*="text-slate-100-light"] {
-  color: rgba(255, 232, 141, 0.7) !important;
 }
 
 .collectible-card::before {
