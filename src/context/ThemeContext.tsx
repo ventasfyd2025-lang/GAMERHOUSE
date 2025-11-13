@@ -12,19 +12,18 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  // Default to 'light' theme for GAMERHOUSE (retail/light aesthetic)
   const [theme, setTheme] = useState<ThemeType>('light');
   const [mounted, setMounted] = useState(false);
 
-  // Detectar tema del sistema al montar
+  // Load saved theme preference from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem('gamerhouse-theme') as ThemeType | null;
 
     if (savedTheme) {
       setTheme(savedTheme);
-    } else if (typeof window !== 'undefined') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
     }
+    // Default remains 'light' - GAMERHOUSE is a retail/light theme by default
 
     setMounted(true);
   }, []);
