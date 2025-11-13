@@ -6,6 +6,7 @@ import CartProviderClient from "@/components/CartProviderClient";
 import ChatProvider from "@/components/ChatProvider";
 import { I18nProvider } from "@/context/I18nContext";
 import { NotificationProvider } from "@/context/NotificationContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import NotificationDisplay from "@/components/NotificationDisplay";
 
 const geistSans = Geist({
@@ -42,15 +43,17 @@ export default function RootLayout({
           src="https://sdk.mercadopago.com/js/v2"
           strategy="lazyOnload"
         />
-        <I18nProvider>
-          <NotificationProvider>
-            <CartProviderClient>
-              {children}
-              <ChatProvider />
-              <NotificationDisplay />
-            </CartProviderClient>
-          </NotificationProvider>
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <NotificationProvider>
+              <CartProviderClient>
+                {children}
+                <ChatProvider />
+                <NotificationDisplay />
+              </CartProviderClient>
+            </NotificationProvider>
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
