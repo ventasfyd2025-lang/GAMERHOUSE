@@ -6,17 +6,23 @@ import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { ShoppingCart, ArrowRight } from 'lucide-react';
+import { ShoppingCart, ArrowRight, Sparkles, Waves, Wand2, Moon, Flame, Grid3x3, Zap, Headphones } from 'lucide-react';
+import DynamicBanner from '../DynamicBanner';
 
-const CATEGORY_IMAGES: Record<string, { emoji: string; color: string }> = {
-  'pokemon-tcg': { emoji: '🎴', color: 'from-yellow-400 to-red-500' },
-  'one-piece-tcg': { emoji: '⛵', color: 'from-blue-400 to-red-500' },
-  'star-wars-unlimited': { emoji: '⚔️', color: 'from-blue-600 to-yellow-600' },
-  'yu-gi-oh': { emoji: '🌙', color: 'from-purple-500 to-blue-600' },
-  'dragon-ball': { emoji: '🔵', color: 'from-orange-400 to-red-500' },
-  'digimon': { emoji: '🟥', color: 'from-red-500 to-pink-600' },
-  'magic-the-gathering': { emoji: '✨', color: 'from-indigo-600 to-purple-800' },
-  'accesorios': { emoji: '🎧', color: 'from-gray-500 to-gray-700' },
+interface CategoryIcon {
+  Icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
+
+const CATEGORY_ICONS: Record<string, CategoryIcon> = {
+  'pokemon-tcg': { Icon: Sparkles, color: 'from-yellow-400 to-red-500' },
+  'one-piece-tcg': { Icon: Waves, color: 'from-blue-400 to-red-500' },
+  'star-wars-unlimited': { Icon: Wand2, color: 'from-blue-600 to-yellow-600' },
+  'yu-gi-oh': { Icon: Moon, color: 'from-purple-500 to-blue-600' },
+  'dragon-ball': { Icon: Flame, color: 'from-orange-400 to-red-500' },
+  'digimon': { Icon: Grid3x3, color: 'from-red-500 to-pink-600' },
+  'magic-the-gathering': { Icon: Zap, color: 'from-indigo-600 to-purple-800' },
+  'accesorios': { Icon: Headphones, color: 'from-gray-500 to-gray-700' },
 };
 
 export default function GamerHouseHomepage() {
@@ -136,6 +142,9 @@ export default function GamerHouseHomepage() {
         </div>
       </section>
 
+      {/* Dynamic Banner */}
+      <DynamicBanner />
+
       {/* Categories Section */}
       <section className="py-12 sm:py-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,7 +155,8 @@ export default function GamerHouseHomepage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {activeCategories.map((category) => {
-              const catInfo = CATEGORY_IMAGES[category.id] || { emoji: '🎮', color: 'from-gray-400 to-gray-600' };
+              const catInfo = CATEGORY_ICONS[category.id] || { Icon: Sparkles, color: 'from-gray-400 to-gray-600' };
+              const { Icon } = catInfo;
               return (
                 <Link
                   key={category.id}
@@ -155,7 +165,7 @@ export default function GamerHouseHomepage() {
                 >
                   <div className={`bg-gradient-to-br ${catInfo.color} rounded-lg p-6 h-40 flex flex-col items-center justify-center text-white hover:shadow-lg transition-shadow cursor-pointer relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
-                    <span className="text-5xl mb-2 relative z-10">{catInfo.emoji}</span>
+                    <Icon className="w-12 h-12 mb-2 relative z-10" />
                     <h3 className="font-bold text-center text-sm sm:text-base relative z-10 group-hover:underline">
                       {category.name || category.id}
                     </h3>

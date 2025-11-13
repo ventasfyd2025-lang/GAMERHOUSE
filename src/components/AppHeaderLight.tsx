@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
 import { Search, ShoppingCart, User, Menu, X, ChevronDown } from 'lucide-react';
+import DynamicLogo from './DynamicLogo';
 
 export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,13 +39,8 @@ export default function AppHeaderLight() {
       {/* Top Bar - Logo and Cart */}
       <div className="bg-white px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="flex flex-col leading-none">
-              <span className="text-2xl font-bold text-gamerhouse-red">GAMER</span>
-              <span className="text-2xl font-bold text-gamerhouse-navy">HOUSE</span>
-            </div>
-          </Link>
+          {/* Logo - Dinámico */}
+          <DynamicLogo />
 
           {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
