@@ -35,38 +35,38 @@ export default function AppHeaderLight() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b-4 border-gamerhouse-navy shadow-md">
+    <header className="sticky top-0 z-50 bg-gradient-to-b from-white to-gray-50/50 border-b border-gray-200/50 shadow-sm backdrop-blur-sm">
       {/* Top Bar - Logo and Cart */}
-      <div className="bg-white px-4 sm:px-6 lg:px-8 py-4">
+      <div className="bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo - Dinámico */}
           <DynamicLogo />
 
           {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <div className="relative w-full group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-gamerhouse-red transition-colors" />
               <input
                 type="text"
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red focus:border-transparent"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gamerhouse-red focus:border-transparent bg-white hover:border-gray-300 transition-all"
               />
             </div>
           </form>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {/* Desktop Links */}
-            <div className="hidden sm:flex items-center gap-4">
-              <Link href="/perfil" className="text-gray-700 hover:text-gamerhouse-red transition-colors">
+            <div className="hidden sm:flex items-center gap-6">
+              <Link href="/perfil" className="p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative text-gray-700 hover:text-gamerhouse-red transition-colors">
+              <Link href="/carrito" className="relative p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-gamerhouse-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
                     {getTotalItems()}
                   </span>
                 )}
@@ -76,7 +76,7 @@ export default function AppHeaderLight() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-gamerhouse-red transition-colors"
+              className="md:hidden p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -85,45 +85,46 @@ export default function AppHeaderLight() {
 
         {/* Mobile Search */}
         <form onSubmit={handleSearch} className="md:hidden mt-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <div className="relative group">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-gamerhouse-red transition-colors" />
             <input
               type="text"
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red"
+              className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white hover:border-gray-300 transition-all"
             />
           </div>
         </form>
       </div>
 
       {/* Navigation Bar - Categories */}
-      <nav className="bg-gamerhouse-navy text-white">
+      <nav className="bg-gradient-to-r from-gamerhouse-navy to-blue-900 text-white border-t border-blue-800/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-12">
+          <div className="flex items-center justify-between h-14">
             {/* Desktop Categories */}
-            <div className="hidden md:flex items-center gap-6 h-full">
+            <div className="hidden md:flex items-center gap-1 h-full">
               {activeCategories.slice(0, 6).map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleCategoryClick(category.id)}
-                  className="h-full px-3 text-sm font-semibold hover:bg-gamerhouse-red transition-colors whitespace-nowrap"
+                  className="h-full px-4 text-sm font-semibold hover:bg-red-600 transition-all duration-200 whitespace-nowrap relative group"
                 >
                   {category.name || category.id}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-gamerhouse-red to-red-500 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
               {activeCategories.length > 6 && (
                 <div className="relative group h-full">
-                  <button className="h-full px-3 text-sm font-semibold hover:bg-gamerhouse-red transition-colors flex items-center gap-1 whitespace-nowrap">
-                    Más <ChevronDown className="h-4 w-4" />
+                  <button className="h-full px-4 text-sm font-semibold hover:bg-red-600 transition-all duration-200 flex items-center gap-1 whitespace-nowrap">
+                    Más <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
                   </button>
-                  <div className="absolute left-0 mt-0 w-48 bg-white text-gray-800 shadow-lg hidden group-hover:block">
+                  <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-lg overflow-hidden hidden group-hover:block border border-gray-100">
                     {activeCategories.slice(6).map((category) => (
                       <button
                         key={category.id}
                         onClick={() => handleCategoryClick(category.id)}
-                        className="block w-full text-left px-4 py-2 hover:bg-gamerhouse-red hover:text-white transition-colors text-sm"
+                        className="block w-full text-left px-4 py-3 hover:bg-gradient-to-r hover:from-gamerhouse-red hover:to-red-600 hover:text-white transition-all duration-200 text-sm font-medium"
                       >
                         {category.name || category.id}
                       </button>
@@ -135,7 +136,7 @@ export default function AppHeaderLight() {
 
             {/* Mobile Categories Button */}
             <div className="md:hidden">
-              <span className="text-sm font-semibold">CATEGORÍAS</span>
+              <span className="text-sm font-bold tracking-wider">CATEGORÍAS</span>
             </div>
           </div>
         </div>
@@ -143,35 +144,35 @@ export default function AppHeaderLight() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gray-50 border-t border-gray-200">
-          <div className="px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="px-4 py-5 space-y-2">
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 router.push('/');
               }}
-              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gamerhouse-red hover:text-white rounded transition-colors"
+              className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
             >
-              Inicio
+              🏠 Inicio
             </button>
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 router.push('/productos');
               }}
-              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gamerhouse-red hover:text-white rounded transition-colors"
+              className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
             >
-              Todos los Productos
+              📦 Todos los Productos
             </button>
 
             {activeCategories.length > 0 && (
-              <div className="border-t border-gray-300 pt-3">
-                <p className="px-4 text-xs font-bold uppercase text-gray-500 mb-2">Categorías</p>
+              <div className="border-t border-gray-200 pt-3 mt-3">
+                <p className="px-4 text-xs font-bold uppercase text-gray-500 mb-3 tracking-wide">Categorías</p>
                 {activeCategories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => handleCategoryClick(category.id)}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gamerhouse-red hover:text-white rounded transition-colors"
+                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
                   >
                     {category.name || category.id}
                   </button>
@@ -179,20 +180,20 @@ export default function AppHeaderLight() {
               </div>
             )}
 
-            <div className="border-t border-gray-300 pt-3 flex gap-3">
+            <div className="border-t border-gray-200 pt-3 mt-3 flex gap-2">
               <Link
                 href="/perfil"
-                className="flex-1 text-center px-4 py-2 bg-gamerhouse-navy text-white rounded hover:bg-gamerhouse-red transition-colors text-sm font-semibold"
+                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-gamerhouse-navy to-blue-900 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold"
               >
-                Mi Cuenta
+                👤 Mi Cuenta
               </Link>
               <Link
                 href="/carrito"
-                className="flex-1 text-center px-4 py-2 bg-gamerhouse-red text-white rounded hover:bg-gamerhouse-navy transition-colors text-sm font-semibold relative"
+                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold relative"
               >
-                Carrito
+                🛒 Carrito
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-gamerhouse-navy text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-white text-gamerhouse-red text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
                     {getTotalItems()}
                   </span>
                 )}
