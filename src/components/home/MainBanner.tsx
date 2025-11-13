@@ -56,17 +56,17 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   }, [slide]);
 
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-yellow-300/25 bg-[#05070f]/75 backdrop-blur-2xl shadow-[0_40px_120px_-60px_rgba(255,232,141,0.65)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(255,232,141,0.12),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(231,68,68,0.18),transparent_60%)] opacity-90" />
+    <section className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(220,38,38,0.08),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(30,58,95,0.08),transparent_60%)] opacity-60" />
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
-          <span className="tag-legendary">
+          <span className="inline-block px-4 py-1 bg-red-50 text-gamerhouse-red text-sm font-semibold rounded-full border border-red-200">
             {slide ? 'Banner destacado' : 'Temporada 2025'}
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gamerhouse-navy">
             {title}
           </h1>
-          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-white/75">
+          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-gray-600">
             {subtitle}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -74,14 +74,14 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
               href={primaryLink.href}
               target={primaryLink.external ? '_blank' : undefined}
               rel={primaryLink.external ? 'noopener noreferrer' : undefined}
-              className="btn-primary-web w-full sm:w-auto justify-center text-sm sm:text-base"
+              className="bg-gradient-to-r from-gamerhouse-red to-red-700 text-white hover:from-red-700 hover:to-red-800 w-full sm:w-auto justify-center text-sm sm:text-base px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center"
             >
               {primaryLink.label}
             </Link>
             <button
               type="button"
               onClick={onResetFilters}
-              className="btn-secondary-web w-full sm:w-auto justify-center text-sm sm:text-base"
+              className="border-2 border-gamerhouse-navy text-gamerhouse-navy hover:bg-gamerhouse-navy hover:text-white w-full sm:w-auto justify-center text-sm sm:text-base px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center"
             >
               Ver catálogo completo
             </button>
