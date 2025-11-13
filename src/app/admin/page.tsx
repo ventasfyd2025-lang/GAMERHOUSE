@@ -38,6 +38,8 @@ import AdminChatPopup from '@/components/AdminChatPopup';
 import StockAlerts from '@/components/StockAlerts';
 import StockManagement from '@/components/StockManagement';
 import B2BOrderManagement from '@/components/B2BOrderManagement';
+import AdminLogoSection from '@/components/admin/AdminLogoSection';
+import AdminBannerSection from '@/components/admin/AdminBannerSection';
 // import { syncCategoriesToFirebase } from '@/utils/syncCategories'; // Unused import
 import type { LayoutPatternsConfig, LayoutPatternVariant, LayoutPatternSpan, LayoutPatternRule, Product } from '@/types';
 import type { Order } from '@/types';
@@ -440,19 +442,6 @@ export default function AdminPage() {
   const [selectedUserDetails, setSelectedUserDetails] = useState<any>(null);
   const [selectedUserOrders, setSelectedUserOrders] = useState<Order[]>([]);
 
-  // Banner management state
-  const [bannerForm, setBannerForm] = useState({
-    title: '¡Ofertas Especiales!',
-    text: 'Hasta 50% de descuento en productos seleccionados',
-    active: true,
-    images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1200&h=400&fit=crop'
-    ]
-  });
-  const [bannerFiles, setBannerFiles] = useState<(File | null)[]>([null, null, null]);
-  const [updatingBanner, setUpdatingBanner] = useState(false);
   
   // Popup management state
   const [popupForm, setPopupForm] = useState({
@@ -673,23 +662,6 @@ export default function AdminPage() {
     // Replace with actual categories from database (not merge)
     setAvailableCategories(categoryOptions);
   }, [categories]);
-
-  const loadBannerConfig = async () => {
-    try {
-      const bannerDoc = await getDoc(doc(db, 'config', 'banner'));
-      if (bannerDoc.exists()) {
-        const bannerData = bannerDoc.data();
-        setBannerForm({
-          title: bannerData.title || '',
-          text: bannerData.text || '',
-          active: bannerData.active || false,
-          images: bannerData.images || []
-        });
-      }
-    } catch (error) {
-      // Error loading banner config
-    }
-  };
 
   const loadPopupConfig = async () => {
     try {
@@ -1469,7 +1441,6 @@ export default function AdminPage() {
 
     if (user && isAdmin) {
       loadCategories();
-      loadBannerConfig();
       loadPopupConfig();
       loadMainBannerConfig();
       loadHomepageContent();
@@ -2346,6 +2317,7 @@ export default function AdminPage() {
                 { id: 'secciones', name: 'Secciones', icon: '📑' },
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
                 { id: 'logo', name: 'Logo', icon: '🏪' },
+                { id: 'banner', name: 'Banner Dinámico', icon: '📸' },
                 { id: 'categories', name: 'Categorías', icon: '🏷️' },
                 { id: 'homepage-content', name: 'Contenido Página', icon: '🎨' },
                 { id: 'footer', name: 'Información', icon: '📋' },
@@ -4117,186 +4089,7 @@ export default function AdminPage() {
 
         
         {activeTab === 'banner' && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">Gestión del Banner</h2>
-            
-            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-yellow-300 mb-1">
-                    Título del Banner
-                  </label>
-                  <input
-                    type="text"
-                    value={bannerForm.title}
-                    onChange={(e) => setBannerForm({ ...bannerForm, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-yellow-300 mb-1">
-                    Texto del Banner
-                  </label>
-                  <input
-                    type="text"
-                    value={bannerForm.text}
-                    onChange={(e) => setBannerForm({ ...bannerForm, text: e.target.value })}
-                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-yellow-300 mb-1">
-                    Imágenes del Carrusel
-                  </label>
-                  {bannerForm.images.map((image, index) => (
-                    <div key={index} className="mb-4 p-4 border border-yellow-300/30 rounded-lg">
-                      <div className="flex gap-2 items-start">
-                        <div className="flex-1">
-                          <label className="block text-sm text-yellow-300 mb-1">
-                            Imagen {index + 1}
-                          </label>
-                          <input
-                            type="file"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0] || null;
-                              const newFiles = [...bannerFiles];
-                              newFiles[index] = file;
-                              setBannerFiles(newFiles);
-                            }}
-                            className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
-                          />
-                          {image && (
-                            <div className="mt-2">
-                              <img
-                                loading="lazy"
-                                src={image}
-                                alt={`Banner ${index + 1}`}
-                                className="h-20 w-32 object-cover rounded border"
-                              />
-                            </div>
-                          )}
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const newImages = bannerForm.images.filter((_, i) => i !== index);
-                            const newFiles = bannerFiles.filter((_, i) => i !== index);
-                            setBannerForm({ ...bannerForm, images: newImages });
-                            setBannerFiles([...newFiles, null]);
-                          }}
-                          className="px-3 py-2 text-white rounded-md mt-6 bg-yellow-400"
-                        >
-                          🗑️
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setBannerForm({ ...bannerForm, images: [...bannerForm.images, ''] });
-                      setBannerFiles([...bannerFiles, null]);
-                    }}
-                    className="mt-2 px-3 py-2 bg-dark0 text-white rounded-md hover:bg-gray-600"
-                  >
-                    ➕ Agregar Imagen
-                  </button>
-                </div>
-                
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={bannerForm.active}
-                    onChange={(e) => setBannerForm({ ...bannerForm, active: e.target.checked })}
-                    className="mr-2"
-                  />
-                  <label className="text-sm font-medium text-yellow-300">
-                    Banner Activo
-                  </label>
-                </div>
-                
-                <button
-                  type="button"
-                  onClick={async () => {
-                    try {
-                      // console.log('🚀 Banner update started');
-                      setUpdatingBanner(true);
-
-                      // Upload new banner images
-                      const imageUrls = [...bannerForm.images];
-                      // console.log('📁 Banner files to upload:', bannerFiles.length);
-
-                      for (let i = 0; i < bannerFiles.length; i++) {
-                        const file = bannerFiles[i];
-                        if (file) {
-                          // console.log(`📤 Uploading banner ${i}:`, file.name);
-                          const optimizedBannerFile = await optimizeImageFile(file);
-                          // console.log(`✨ Optimized banner ${i}:`, optimizedBannerFile.size, 'bytes');
-                          const imageRef = ref(storage, `banners/banner_${i}_${Date.now()}_${optimizedBannerFile.name}`);
-                          // console.log(`☁️ Uploading to Storage:`, imageRef.fullPath);
-                          const snapshot = await uploadBytes(imageRef, optimizedBannerFile);
-                          const downloadUrl = await getDownloadURL(snapshot.ref);
-                          // console.log(`✅ Banner ${i} uploaded:`, downloadUrl);
-                          imageUrls[i] = downloadUrl;
-                        }
-                      }
-
-                      try {
-                        // Try to save banner configuration to Firebase
-                        await setDoc(doc(db, 'config', 'banner'), {
-                          title: bannerForm.title,
-                          text: bannerForm.text,
-                          active: bannerForm.active,
-                          images: imageUrls,
-                          updatedAt: new Date().toISOString()
-                        });
-                      } catch (firebaseError) {
-                        // If Firebase fails (no auth), just update local state
-                      }
-
-                      // Update local state
-                      setBannerForm({ ...bannerForm, images: imageUrls });
-                      setBannerFiles([null, null, null]);
-                      
-                      alert('Banner actualizado exitosamente (modo local)');
-                    } catch (error: unknown) {
-                      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
-                      alert(`Error al actualizar banner: ${errorMessage}`);
-                    } finally {
-                      setUpdatingBanner(false);
-                    }
-                  }}
-                  disabled={updatingBanner}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400"
-                >
-                  {updatingBanner ? 'Actualizando...' : 'Actualizar Banner'}
-                </button>
-              </form>
-              
-              
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
-                <div className="relative text-white py-12 rounded-lg overflow-hidden" style={{ background: 'linear-gradient(to right, var(--primary), var(--primary))' }}>
-                  {bannerForm.images.length > 0 && bannerForm.images[0] && (
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center opacity-30"
-                      style={{ backgroundImage: `url(${bannerForm.images[0]})` }}
-                    />
-                  )}
-                  <div className="relative text-center">
-                    <h1 className="text-2xl md:text-3xl font-bold mb-2">
-                      {bannerForm.title}
-                    </h1>
-                    <p className="text-lg opacity-90">
-                      {bannerForm.text}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <AdminBannerSection />
         )}
 
         
@@ -5905,130 +5698,7 @@ export default function AdminPage() {
 
         
         {activeTab === 'logo' && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">Gestión del Logo</h2>
-            
-            <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-yellow-300 mb-1">
-                    Texto del Logo
-                  </label>
-                  <input
-                    type="text"
-                    value={logoForm.text}
-                    onChange={(e) => setLogoForm({ ...logoForm, text: e.target.value })}
-                    placeholder="GAMERHOUSE"
-                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-yellow-300 mb-1">
-                    Imagen del Logo
-                  </label>
-                  <div className="mb-3 p-3 bg-success/10 border border-success rounded-lg text-sm">
-                    <p className="text-success font-medium mb-1">📐 Medidas recomendadas:</p>
-                    <ul className="text-success space-y-1">
-                      <li>• <strong>Tamaño:</strong> 200x60px o 300x90px</li>
-                      <li>• <strong>Formato:</strong> PNG con transparencia</li>
-                      <li>• <strong>Estilo:</strong> Logo horizontal preferible</li>
-                      <li>• <strong>Tamaño máximo:</strong> 2MB</li>
-                    </ul>
-                    <p className="text-success text-xs mt-2">💡 Tip: Usa fondo transparente para mejor integración</p>
-                  </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-                    className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
-                  />
-                  <p className="text-sm text-yellow-300 mt-1">
-                    Si subes una imagen, se usará en lugar del emoji
-                  </p>
-                  {logoForm.image && (
-                    <div className="mt-2">
-                      <img
-                        loading="lazy"
-                        src={logoForm.image}
-                        alt="Logo actual"
-                        className="h-12 w-12 object-cover rounded"
-                      />
-                    </div>
-                  )}
-                </div>
-                
-                <button
-                  type="button"
-                  onClick={async () => {
-                    try {
-                      setUpdatingLogo(true);
-                      
-                      let logoImageUrl = logoForm.image;
-                      
-                      // Upload image if selected
-                      if (logoFile) {
-                        const optimizedLogoFile = await optimizeImageFile(logoFile, {
-                          maxWidthOrHeight: 600,
-                          maxSizeMB: 0.5,
-                        });
-                        const imageRef = ref(storage, `config/logo_${Date.now()}_${optimizedLogoFile.name}`);
-                        const snapshot = await uploadBytes(imageRef, optimizedLogoFile);
-                        logoImageUrl = await getDownloadURL(snapshot.ref);
-                      }
-
-                      // Update form state with new image URL
-                      const updatedLogoForm = {
-                        ...logoForm,
-                        image: logoImageUrl
-                      };
-                      setLogoForm(updatedLogoForm);
-
-                      try {
-                        // Try to save logo configuration to Firebase
-                        await setDoc(doc(db, 'config', 'logo'), {
-                          text: updatedLogoForm.text,
-                          image: updatedLogoForm.image,
-                          updatedAt: new Date().toISOString()
-                        });
-                      } catch (firebaseError) {
-                        // If Firebase fails (no auth), just update local state
-                      }
-
-                      alert('Logo actualizado exitosamente');
-                      setLogoFile(null);
-                    } catch (error) {
-                      console.error('Error updating logo:', error);
-                      alert('Error al actualizar logo');
-                    } finally {
-                      setUpdatingLogo(false);
-                    }
-                  }}
-                  disabled={updatingLogo}
-                  className="text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  >
-{updatingLogo ? 'Actualizando...' : 'Actualizar Logo'}
-                </button>
-              </form>
-              
-              
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Vista Previa:</h3>
-                <div className="bg-slate-800/70 p-4 border rounded-lg">
-                  <div className="flex items-center space-x-2">
-                    {logoForm.image ? (
-                      <img loading="lazy" src={logoForm.image} alt="Logo" className="h-8 w-8 object-contain" />
-                    ) : (
-                      <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-xs text-yellow-300">
-                        Sin logo
-                      </div>
-                    )}
-                    <span className="text-xl font-bold text-white">{logoForm.text}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <AdminLogoSection />
         )}
 
         
