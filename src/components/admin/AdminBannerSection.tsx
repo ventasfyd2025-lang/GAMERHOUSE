@@ -116,12 +116,12 @@ export default function AdminBannerSection() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">📸 Banner Dinámico</h2>
-          <p className="text-gray-400 text-sm mt-1">Configura el banner principal de tu tienda</p>
+          <h2 className="text-3xl font-bold text-gray-900">📸 Banner Dinámico</h2>
+          <p className="text-gray-500 text-sm mt-1">Configura el banner principal de tu tienda</p>
         </div>
         {uploadingBanner && (
-          <div className="flex items-center gap-2 text-sm text-purple-300 bg-purple-950/50 px-4 py-2 rounded-lg border border-purple-500/30">
-            <svg className="animate-spin h-5 w-5 text-purple-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 text-sm text-amber-700 bg-amber-50 px-4 py-2 rounded-lg border border-amber-200">
+            <svg className="animate-spin h-5 w-5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -131,16 +131,16 @@ export default function AdminBannerSection() {
       </div>
 
       {/* Main Content */}
-      <div className="bg-gradient-to-br from-slate-800 via-slate-800/50 to-slate-900 rounded-2xl shadow-xl p-8 border border-slate-700/50 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         <div className="space-y-6">
           {/* Preview */}
           {bannerForm.images[0] && (
-            <div className="bg-gradient-to-r from-purple-950/20 to-pink-950/20 border border-purple-500/20 rounded-xl p-6 backdrop-blur">
-              <p className="text-sm font-semibold text-purple-300 mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
+            <div className="bg-gray-50 border border-gray-300 rounded-xl p-6">
+              <p className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-gamerhouse-red rounded-full"></span>
                 Vista Previa del Banner
               </p>
-              <div className="relative w-full h-56 rounded-xl overflow-hidden border border-slate-600/50 shadow-xl">
+              <div className="relative w-full h-56 rounded-xl overflow-hidden border border-gray-300 shadow-sm">
                 <Image
                   src={bannerForm.images[0]}
                   alt="Banner preview"
@@ -159,7 +159,7 @@ export default function AdminBannerSection() {
           <div className="space-y-5">
             {/* Título */}
             <div>
-              <label className="block text-sm font-semibold text-white mb-3">
+              <label className="block text-sm font-semibold text-gray-900 mb-3">
                 Título del Banner
               </label>
               <input
@@ -167,13 +167,13 @@ export default function AdminBannerSection() {
                 value={bannerForm.title}
                 onChange={(e) => setBannerForm(prev => ({ ...prev, title: e.target.value }))}
                 placeholder="ej: ¡Nuevos Productos!"
-                className="w-full px-4 py-3 border border-slate-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-900/50 text-white placeholder-gray-500 transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white text-gray-900 placeholder-gray-400 transition-all"
               />
             </div>
 
             {/* Descripción */}
             <div>
-              <label className="block text-sm font-semibold text-white mb-3">
+              <label className="block text-sm font-semibold text-gray-900 mb-3">
                 Descripción/Subtítulo
               </label>
               <textarea
@@ -181,17 +181,17 @@ export default function AdminBannerSection() {
                 onChange={(e) => setBannerForm(prev => ({ ...prev, text: e.target.value }))}
                 placeholder="ej: Descubre nuestras últimas colecciones"
                 rows={2}
-                className="w-full px-4 py-3 border border-slate-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-900/50 text-white placeholder-gray-500 resize-none transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white text-gray-900 placeholder-gray-400 resize-none transition-all"
               />
             </div>
 
             {/* Imágenes */}
             <div>
-              <label className="block text-sm font-semibold text-white mb-3">
+              <label className="block text-sm font-semibold text-gray-900 mb-3">
                 Imágenes del Banner
               </label>
-              <div className="mb-4 p-4 bg-purple-950/30 border border-purple-500/20 rounded-lg text-sm backdrop-blur">
-                <p className="text-purple-300 font-medium flex items-center gap-2">
+              <div className="mb-4 p-4 bg-gray-50 border border-gray-300 rounded-lg text-sm">
+                <p className="text-gray-700 font-medium flex items-center gap-2">
                   <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -203,16 +203,16 @@ export default function AdminBannerSection() {
                 accept="image/*"
                 onChange={handleImageChange}
                 disabled={uploadingBanner || bannerForm.images.length >= 3}
-                className="w-full px-4 py-3 border border-slate-600/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-900/50 text-gray-400 disabled:opacity-50 transition-all"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white text-gray-900 disabled:opacity-50 transition-all"
               />
-              <p className="text-xs text-gray-400 mt-2">💡 Máximo 3 imágenes</p>
+              <p className="text-xs text-gray-500 mt-2">💡 Máximo 3 imágenes</p>
 
               {/* Lista de imágenes */}
               {bannerForm.images.length > 0 && (
                 <div className="mt-5 grid grid-cols-3 gap-3">
                   {bannerForm.images.map((image, index) => (
                     <div key={index} className="relative group">
-                      <div className="relative w-full h-24 rounded-lg overflow-hidden bg-slate-800 border border-slate-600/50 shadow-lg group-hover:border-purple-500/50 transition-all">
+                      <div className="relative w-full h-24 rounded-lg overflow-hidden bg-gray-100 border border-gray-300 shadow-sm group-hover:border-gamerhouse-red transition-all">
                         <Image
                           src={image}
                           alt={`Banner ${index + 1}`}
@@ -222,7 +222,7 @@ export default function AdminBannerSection() {
                       </div>
                       <button
                         onClick={() => removeImage(index)}
-                        className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-xs font-bold shadow-lg"
+                        className="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-xs font-bold shadow-sm"
                       >
                         ✕
                       </button>
@@ -233,7 +233,7 @@ export default function AdminBannerSection() {
             </div>
 
             {/* Estado */}
-            <div className="bg-slate-900/30 border border-slate-700/30 rounded-lg p-4">
+            <div className="bg-gray-50 border border-gray-300 rounded-lg p-4">
               <label className="flex items-center gap-3 cursor-pointer">
                 <div className="relative inline-flex">
                   <input
@@ -241,10 +241,10 @@ export default function AdminBannerSection() {
                     checked={bannerForm.active}
                     onChange={(e) => setBannerForm(prev => ({ ...prev, active: e.target.checked }))}
                     className="w-5 h-5 rounded"
-                    style={{ accentColor: '#a855f7' }}
+                    style={{ accentColor: 'var(--primary)' }}
                   />
                 </div>
-                <span className="text-sm font-semibold text-white">
+                <span className="text-sm font-semibold text-gray-900">
                   Banner activo (visible en la página)
                 </span>
               </label>
@@ -254,8 +254,8 @@ export default function AdminBannerSection() {
             {message && (
               <div className={`p-4 rounded-lg text-sm font-medium transition-all ${
                 message.includes('❌')
-                  ? 'bg-red-950/40 text-red-300 border border-red-500/20'
-                  : 'bg-green-950/40 text-green-300 border border-green-500/20'
+                  ? 'bg-red-50 text-red-700 border border-red-300'
+                  : 'bg-green-50 text-green-700 border border-green-300'
               }`}>
                 {message}
               </div>
@@ -265,7 +265,7 @@ export default function AdminBannerSection() {
             <button
               onClick={handleSaveBanner}
               disabled={uploadingBanner}
-              className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white rounded-lg font-semibold disabled:opacity-50 transition-all shadow-lg shadow-purple-500/20 disabled:shadow-none"
+              className="w-full px-6 py-3 bg-gamerhouse-red hover:bg-red-700 text-white rounded-lg font-semibold disabled:opacity-50 transition-all shadow-sm disabled:shadow-none"
             >
               {uploadingBanner ? '⏳ Guardando...' : '💾 Guardar Banner'}
             </button>
