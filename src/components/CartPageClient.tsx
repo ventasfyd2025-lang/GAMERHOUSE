@@ -27,172 +27,167 @@ export default function CartPageClient() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-yellow-300 text-center">
-            <ShoppingBag className="h-24 w-24 text-yellow-300400 mx-auto mb-6" strokeWidth={2} />
-            <h1 className="text-3xl font-bold text-white mb-4">
-              Tu carrito está vacío
-            </h1>
-            <p className="text-lg text-yellow-300 mb-8">
-              ¡Agrega algunos productos para comenzar tu compra!
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/15"
-              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
-            >
-              🛍️ Explorar productos
-            </Link>
+      <div className="min-h-screen bg-[var(--surface-alt)] flex items-center justify-center px-4 py-16">
+        <div className="modern-card w-full max-w-xl p-12 text-center space-y-6">
+          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-red-50 text-red-500">
+            <ShoppingBag className="h-10 w-10" strokeWidth={1.5} />
           </div>
+          <div className="space-y-2">
+            <h1 className="text-3xl font-semibold text-slate-900">Tu carrito está vacío</h1>
+            <p className="text-base text-slate-500">
+              Explora nuestras categorías y guarda tus productos favoritos para completar la compra cuando quieras.
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(120deg, var(--primary), var(--primary-hover))', boxShadow: '0 25px 45px -35px rgba(220, 38, 38, 0.8)' }}
+          >
+            🛍️ Explorar productos
+          </Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-white to-slate-800 py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/15" style={{ backgroundColor: 'var(--primary)' }}>
-              <span className="text-white text-lg">🛒</span>
+    <div className="min-h-screen bg-[var(--surface-alt)] py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="modern-card p-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-500">
+              🛒
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">
-                Carrito de compras
-              </h1>
-              <p className="text-yellow-300 text-sm">{items.length} {items.length === 1 ? 'producto' : 'productos'} en tu carrito</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Resumen</p>
+              <h1 className="text-2xl font-semibold text-slate-900">Carrito de compras</h1>
+              <p className="text-sm text-slate-500">
+                {items.length} {items.length === 1 ? 'producto' : 'productos'} seleccionados
+              </p>
             </div>
+          </div>
+          <div className="flex items-center gap-3 text-sm text-slate-500">
+            <span className="modern-chip">Entrega en todo Chile</span>
+            <span className="modern-chip">Soporte 24/7</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-4">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <div className="space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-lg shadow-red-600/15 p-6 border border-yellow-300 hover:shadow-xl shadow-red-600/30 transition-all">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                {/* Product Image */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
-                  {item.imagen ? (
-                    <Image
-                      src={item.imagen}
-                      alt={item.nombre}
-                      fill
-                      className="object-cover rounded-md"
-                      sizes="(max-width: 640px) 64px, 80px"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center">
-                      <span className="text-yellow-300 text-lg sm:text-2xl">📦</span>
+              <div key={item.id} className="modern-card p-5">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <div className="relative h-24 w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-24 sm:w-24">
+                    {item.imagen ? (
+                      <Image
+                        src={item.imagen}
+                        alt={item.nombre}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 96px"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-3xl">📦</div>
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <Link
+                      href={`/producto/${item.productId}`}
+                      className="text-base font-semibold text-slate-900 hover:text-red-500 transition-colors"
+                    >
+                      {item.nombre}
+                    </Link>
+                    {item.sku && <p className="text-xs uppercase tracking-[0.35em] text-slate-400">SKU {item.sku}</p>}
+                    <p className="text-sm font-medium text-slate-500">{formatPrice(item.precio)} c/u</p>
+                  </div>
+
+                  <div className="flex w-full items-center justify-between gap-4 sm:w-auto">
+                    <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1">
+                      <button
+                        onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50"
+                        aria-label="Reducir cantidad"
+                      >
+                        <Minus className="h-4 w-4" />
+                      </button>
+                      <span className="w-10 text-center text-base font-semibold text-slate-900">
+                        {item.cantidad}
+                      </span>
+                      <button
+                        onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50"
+                        aria-label="Aumentar cantidad"
+                      >
+                        <Plus className="h-4 w-4" />
+                      </button>
                     </div>
-                  )}
-                </div>
-
-                {/* Product Info - Takes full width on mobile */}
-                <div className="flex-1 min-w-0 sm:order-none order-1">
-                  <Link
-                    href={`/producto/${item.productId}`}
-                    className="text-sm sm:text-base lg:text-lg font-semibold text-white hover:text-red-600 transition-colors block"
-                  >
-                    {item.nombre}
-                  </Link>
-                  {item.sku && (
-                    <p className="text-xs text-yellow-300">SKU: {item.sku}</p>
-                  )}
-                  <p className="text-yellow-300 mt-1 text-sm sm:text-base">
-                    {formatPrice(item.precio)} c/u
-                  </p>
-                </div>
-
-                {/* Mobile controls wrapper */}
-                <div className="flex sm:flex-col sm:space-y-2 items-center justify-between w-full sm:w-auto sm:order-none order-2">
-                  {/* Quantity Controls */}
-                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <div className="text-right">
+                      <p className="text-sm text-slate-400">Total</p>
+                      <p className="text-lg font-semibold text-slate-900">
+                        {formatPrice(item.precio * item.cantidad)}
+                      </p>
+                    </div>
                     <button
-                      onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-slate-800 transition-colors"
+                      onClick={() => removeItem(item.productId)}
+                      className="rounded-full border border-slate-200 p-2 text-slate-400 transition hover:border-rose-200 hover:text-rose-600"
+                      aria-label="Eliminar del carrito"
                     >
-                      <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
-                    </button>
-                    <span className="px-2 py-1 sm:px-3 sm:py-1 min-w-[40px] sm:min-w-[50px] text-center font-medium text-sm sm:text-base">
-                      {item.cantidad}
-                    </span>
-                    <button
-                      onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                      className="p-1 sm:p-1.5 rounded-md hover:bg-slate-800 transition-colors"
-                    >
-                      <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
+                      <Trash2 className="h-5 w-5" />
                     </button>
                   </div>
-
-                  {/* Item Total */}
-                  <div className="text-lg font-semibold text-white min-w-[100px] text-right">
-                    {formatPrice(item.precio * item.cantidad)}
-                  </div>
-
-                  {/* Remove Button */}
-                  <button
-                    onClick={() => removeItem(item.productId)}
-                    className="p-2 text-pink hover:text-secondary hover:bg-slate-800 rounded-md transition-colors"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Order Summary */}
-        <div className="lg:col-span-1">
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-yellow-300 sticky top-8">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-2xl">💰</span>
-              <h2 className="text-xl font-bold text-white">
-                Resumen del pedido
-              </h2>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex justify-between items-center py-2">
-                <span className="text-yellow-300 font-medium">Subtotal</span>
-                <span className="font-semibold text-white">{formatPrice(getTotalPrice())}</span>
+          <div>
+            <div className="modern-card sticky top-8 p-6 space-y-6">
+              <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Resumen</p>
+                <h2 className="text-xl font-semibold text-slate-900">Total del pedido</h2>
               </div>
-              <div className="border-t border-yellow-300 pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-white">Total</span>
-                  <span className="text-2xl font-bold text-yellow-400">{formatPrice(getTotalPrice())}</span>
+
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm text-slate-500">
+                  <span>Subtotal</span>
+                  <span className="font-semibold text-slate-900">{formatPrice(getTotalPrice())}</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-slate-500">
+                  <span>Envío estimado</span>
+                  <span className="font-semibold text-slate-900">Se calcula en checkout</span>
+                </div>
+                <div className="h-px w-full bg-slate-100" />
+                <div className="flex items-center justify-between">
+                  <span className="text-base font-semibold text-slate-900">Total</span>
+                  <span className="text-2xl font-bold text-slate-900">{formatPrice(getTotalPrice())}</span>
                 </div>
               </div>
+
+              <Link
+                href="/checkout"
+                className="inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                style={{ background: 'linear-gradient(120deg, var(--primary), var(--primary-hover))', boxShadow: '0 30px 70px -45px rgba(220, 38, 38, 0.9)' }}
+              >
+                💳 Finalizar compra
+              </Link>
+
+              <button
+                onClick={clearCart}
+                className="w-full rounded-2xl border border-slate-200 px-5 py-3 text-base font-semibold text-slate-600 transition hover:border-slate-300"
+              >
+                🗑️ Vaciar carrito
+              </button>
+
+              <Link
+                href="/"
+                className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-900"
+              >
+                ← Seguir comprando
+              </Link>
             </div>
-
-            <Link
-              href="/checkout"
-              className="w-full mt-6 py-3 px-4 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/15 text-center block"
-              style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
-            >
-              💳 Finalizar compra
-            </Link>
-
-            <button
-              onClick={clearCart}
-              className="w-full mt-3 bg-slate-800 hover:bg-slate-800 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200 hover:scale-105 shadow-md"
-            >
-              🗑️ Vaciar carrito
-            </button>
-
-            <Link
-              href="/"
-              className="block w-full mt-3 text-center text-yellow-400 hover:text-yellow-300700 font-medium transition-colors py-2"
-            >
-              ← Seguir comprando
-            </Link>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

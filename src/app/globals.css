@@ -10,16 +10,77 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--surface-alt);
+  color: var(--text-primary);
 }
 
 :root {
   /* Brand palette used across retail + admin dashboards */
   --primary: #dc2626;
   --primary-hover: #b91c1c;
+  --primary-soft: #ffe0e0;
+  --accent: #f59e0b;
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+  --surface: #ffffff;
+  --surface-alt: #f5f7fb;
+  --surface-card: rgba(255, 255, 255, 0.9);
+  --border-soft: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --shadow-soft: 0 25px 60px -45px rgba(15, 23, 42, 0.4);
+  --shadow-card: 0 20px 45px -35px rgba(15, 23, 42, 0.4);
   --brand-background:
-    radial-gradient(circle at 15% 20%, rgba(255, 232, 141, 0.08), transparent 52%),
-    radial-gradient(circle at 85% 10%, rgba(231, 68, 68, 0.12), transparent 48%),
-    #05070d;
+    radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.08), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(252, 211, 77, 0.2), transparent 50%),
+    linear-gradient(135deg, #f8fafc, #eef2ff);
+}
+
+.modern-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(20px);
+}
+
+.modern-input {
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: var(--surface);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: rgba(220, 38, 38, 0.6);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
+}
+
+.modern-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.text-pink {
+  color: #e11d48 !important;
+}
+
+.bg-pink {
+  background-color: #fdf2f8 !important;
+}
+
+.border-pink {
+  border-color: #f472b6 !important;
 }
 
 
@@ -76,58 +137,58 @@ body {
 
   /* Cards and Containers */
   .admin-card {
-    @apply bg-slate-800/80 rounded-lg shadow-lg p-6 border border-slate-700/80 hover:border-yellow-300/50 transition-all duration-200 backdrop-blur-sm;
+    @apply bg-white rounded-2xl shadow-[0_30px_70px_-50px_rgba(15,23,42,0.75)] p-6 border border-white/60 hover:border-red-200 transition-all duration-200 backdrop-blur-xl;
   }
 
   .admin-card-compact {
-    @apply bg-slate-800/60 rounded-lg p-4 border border-slate-700/50;
+    @apply bg-white/90 rounded-2xl p-5 border border-white/60 backdrop-blur-md;
   }
 
   .admin-header {
-    @apply bg-gradient-to-r from-slate-800 to-slate-900 border-b border-yellow-300/20 sticky top-0 z-10 shadow-md px-6 py-4;
+    @apply bg-white/80 border-b border-slate-200/80 sticky top-0 z-10 shadow-lg shadow-slate-900/5 px-6 py-4 backdrop-blur-xl;
   }
 
   /* Buttons - Standardized */
   .admin-button {
-    @apply px-4 py-2 bg-yellow-400 text-slate-900 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-5 py-2.5 rounded-2xl font-semibold text-white bg-gradient-to-r from-red-500 to-red-600 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .admin-button-secondary {
-    @apply px-4 py-2 bg-slate-700 text-white rounded-lg font-semibold hover:bg-slate-600 border border-slate-600 transition-all duration-200 disabled:opacity-50;
+    @apply px-5 py-2.5 rounded-2xl font-semibold text-slate-900 bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-200 disabled:opacity-50;
   }
 
   .admin-button-danger {
-    @apply px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50;
+    @apply px-5 py-2.5 rounded-2xl font-semibold text-white bg-gradient-to-r from-rose-500 to-rose-600 shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 transition-all duration-200 disabled:opacity-50;
   }
 
   .admin-button-success {
-    @apply px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50;
+    @apply px-5 py-2.5 rounded-2xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-200 disabled:opacity-50;
   }
 
   .admin-button-small {
-    @apply px-3 py-1 bg-yellow-400 text-slate-900 rounded font-semibold hover:bg-yellow-500 transition-colors text-sm;
+    @apply px-3.5 py-1.5 bg-red-50 text-red-600 rounded-full font-semibold hover:bg-red-100 transition-colors text-xs;
   }
 
   /* Inputs and Forms */
   .admin-input {
-    @apply w-full px-4 py-2.5 bg-slate-700/50 rounded-lg text-white border border-slate-600 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-400;
+    @apply w-full px-4 py-3 bg-white rounded-2xl text-slate-900 border border-slate-200 focus:border-red-400 focus:outline-none transition-all placeholder-slate-400 shadow-[0_10px_35px_-30px_rgba(15,23,42,0.9)];
   }
 
   .admin-input-error {
-    @apply border-red-600 focus:border-red-400;
+    @apply border-rose-400 focus:border-rose-400;
   }
 
   .admin-textarea {
-    @apply w-full px-4 py-2.5 bg-slate-700/50 rounded-lg text-white border border-slate-600 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-400;
+    @apply w-full px-4 py-3 bg-white rounded-2xl text-slate-900 border border-slate-200 focus:border-red-400 focus:outline-none transition-all placeholder-slate-400 shadow-[0_10px_35px_-30px_rgba(15,23,42,0.9)];
     resize: vertical;
   }
 
   .admin-select {
-    @apply w-full px-4 py-2.5 bg-slate-700/50 rounded-lg text-white border border-slate-600 focus:border-yellow-400 focus:outline-none transition-colors cursor-pointer;
+    @apply w-full px-4 py-3 bg-white rounded-2xl text-slate-900 border border-slate-200 focus:border-red-400 focus:outline-none transition-all cursor-pointer shadow-[0_10px_35px_-30px_rgba(15,23,42,0.9)];
   }
 
   .admin-label {
-    @apply block text-white font-semibold mb-2 text-sm;
+    @apply block text-slate-700 font-semibold mb-2 text-xs tracking-wide uppercase;
   }
 
   .admin-form-group {
@@ -140,19 +201,19 @@ body {
   }
 
   .admin-table thead {
-    @apply bg-slate-800/80 border-b border-slate-700;
+    @apply bg-white border-b border-slate-200;
   }
 
   .admin-table th {
-    @apply px-4 py-3 text-left text-yellow-300 font-semibold text-sm uppercase tracking-wide;
+    @apply px-4 py-3 text-left text-slate-500 font-semibold text-xs uppercase tracking-[0.25em];
   }
 
   .admin-table td {
-    @apply px-4 py-3 border-b border-slate-700/50 text-gray-200;
+    @apply px-4 py-4 border-b border-slate-100 text-slate-700;
   }
 
   .admin-table tbody tr {
-    @apply hover:bg-slate-700/30 transition-colors;
+    @apply hover:bg-slate-50 transition-colors;
   }
 
   .admin-table tbody tr:last-child td {
@@ -165,48 +226,48 @@ body {
   }
 
   .status-pending {
-    @apply bg-amber-500/20 text-amber-300;
+    @apply bg-amber-100 text-amber-700;
   }
 
   .status-confirmed {
-    @apply bg-emerald-500/20 text-emerald-300;
+    @apply bg-emerald-100 text-emerald-700;
   }
 
   .status-processing {
-    @apply bg-blue-500/20 text-blue-300;
+    @apply bg-blue-100 text-blue-700;
   }
 
   .status-shipped {
-    @apply bg-purple-500/20 text-purple-300;
+    @apply bg-purple-100 text-purple-700;
   }
 
   .status-delivered {
-    @apply bg-emerald-500/20 text-emerald-300;
+    @apply bg-emerald-100 text-emerald-700;
   }
 
   .status-cancelled {
-    @apply bg-red-500/20 text-red-300;
+    @apply bg-rose-100 text-rose-700;
   }
 
   /* Alerts */
   .admin-alert {
-    @apply px-4 py-3 rounded-lg border;
+    @apply px-5 py-4 rounded-2xl border shadow-sm;
   }
 
   .admin-alert-info {
-    @apply bg-blue-500/10 border-blue-500/30 text-blue-200;
+    @apply bg-blue-50 border-blue-100 text-blue-700;
   }
 
   .admin-alert-success {
-    @apply bg-emerald-500/10 border-emerald-500/30 text-emerald-200;
+    @apply bg-emerald-50 border-emerald-100 text-emerald-700;
   }
 
   .admin-alert-warning {
-    @apply bg-amber-500/10 border-amber-500/30 text-amber-200;
+    @apply bg-amber-50 border-amber-100 text-amber-700;
   }
 
   .admin-alert-error {
-    @apply bg-red-500/10 border-red-500/30 text-red-200;
+    @apply bg-rose-50 border-rose-100 text-rose-700;
   }
 
   /* Grid and Layout */
@@ -251,9 +312,9 @@ body {
 
   /* Product Cards */
   .product-card-web {
-    @apply relative overflow-hidden rounded-[26px] border border-yellow-300/25 bg-[#070a17]/90 backdrop-blur-2xl
-      hover:border-yellow-300/60 transition-all duration-500 hover:-translate-y-1
-      shadow-[0_28px_90px_-40px_rgba(255,232,141,0.9)];
+    @apply relative overflow-hidden rounded-[26px] border border-slate-100 bg-white backdrop-blur-xl
+      hover:border-red-200 transition-all duration-500 hover:-translate-y-1
+      shadow-[0_40px_80px_-45px_rgba(15,23,42,0.35)];
   }
 
   .product-badge {
@@ -270,11 +331,11 @@ body {
 
   /* Hero Sections */
   .hero-section {
-    @apply relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#111a2a]/90 via-[#141f32]/80 to-[#0c121f]/92 backdrop-blur-2xl;
+    @apply relative rounded-3xl overflow-hidden border border-white/70 bg-white shadow-[0_45px_95px_-60px_rgba(15,23,42,0.5)] backdrop-blur-xl;
   }
 
   .hero-bg {
-    @apply absolute inset-0 opacity-70 transition-opacity duration-500 bg-[radial-gradient(circle_at_20%_20%,rgba(255,232,141,0.18),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(231,68,68,0.22),transparent_60%)];
+    @apply absolute inset-0 opacity-80 transition-opacity duration-500 bg-[radial-gradient(circle_at_20%_20%,rgba(255,99,132,0.12),transparent_60%),radial-gradient(circle_at_80%_0%,rgba(251,191,36,0.16),transparent_65%)];
   }
 
   .hero-title {
@@ -314,27 +375,27 @@ body {
   }
 
   .chip-option {
-    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium tracking-wide text-white/70 border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:text-white hover:border-yellow-300/40 hover:bg-white/10;
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium tracking-wide text-slate-600 border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:text-slate-900 hover:border-red-200;
   }
 
   .chip-option-active {
-    @apply text-white border-yellow-300/60 bg-yellow-300/15 shadow-[0_12px_36px_-20px_rgba(255,232,141,0.8)];
+    @apply text-slate-900 border-red-200 bg-red-50 shadow-[0_20px_35px_-30px_rgba(248,113,113,0.7)];
   }
 
   .divider-neon {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-yellow-300/60 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-rose-200 to-transparent;
   }
 
   .tag-legendary {
-    @apply inline-flex items-center gap-2 rounded-full border border-yellow-300/40 bg-yellow-300/15 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-yellow-100 shadow-[0_0_18px_rgba(255,232,141,0.45)];
+    @apply inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-red-500 shadow-[0_0_18px_rgba(248,113,113,0.35)];
   }
 
   .pagination-button {
-    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-yellow-300/25 bg-white/5 text-sm font-semibold text-white/70 backdrop-blur-md transition-all duration-300 hover:border-yellow-300/60 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-500 transition-all duration-300 hover:border-red-200 hover:text-slate-900 disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   .pagination-button-active {
-    @apply border-yellow-300/70 bg-gradient-to-r from-yellow-300 via-amber-200 to-orange-300 text-slate-950 shadow-[0_12px_28px_-18px_rgba(255,232,141,0.8)];
+    @apply border-red-200 bg-gradient-to-r from-red-500 via-red-400 to-rose-300 text-white shadow-[0_20px_40px_-30px_rgba(248,113,113,0.75)];
   }
 }
 

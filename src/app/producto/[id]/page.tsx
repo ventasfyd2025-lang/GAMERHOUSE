@@ -11,6 +11,7 @@ import { db } from '@/lib/firebase';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useUserAuth } from '@/hooks/useUserAuth';
+import { useNotification } from '@/context/NotificationContext';
 import Layout from '@/components/Layout';
 import OfferPopup from '@/components/OfferPopup';
 import { useOfferPopup } from '@/hooks/useOfferPopup';
@@ -58,6 +59,7 @@ export default function ProductPage() {
   const router = useRouter();
   const { addItem } = useCart();
   const { currentUser, loading: authLoading } = useUserAuth();
+  const { addNotification } = useNotification();
   const { popupConfig } = useOfferPopup();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -68,6 +70,13 @@ export default function ProductPage() {
     () => formatDescriptionHtml(product?.descripcion),
     [product?.descripcion]
   );
+  const galleryImages = useMemo(() => {
+    if (!product) return [] as string[];
+    if (Array.isArray(product.imagenes) && product.imagenes.length > 0) {
+      return product.imagenes;
+    }
+    return product?.imagen ? [product.imagen] : [];
+  }, [product]);
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -140,6 +149,14 @@ export default function ProductPage() {
     loadProduct();
   }, [params.id]);
 
+  useEffect(() => {
+    if (galleryImages.length === 0) {
+      setSelectedImageIndex(0);
+      return;
+    }
+    setSelectedImageIndex((prev) => Math.min(prev, galleryImages.length - 1));
+  }, [galleryImages.length]);
+
   const handleQuantityChange = (delta: number) => {
     const newQuantity = quantity + delta;
     if (newQuantity >= 1 && newQuantity <= (product?.stock || 0)) {
@@ -170,18 +187,12 @@ export default function ProductPage() {
     }
 
     addItem(product.id, product.nombre, product.precio, product.imagen, quantity, product.sku);
-
-    // Show notification
-    const notification = document.createElement('div');
-    notification.textContent = currentUser 
-      ? `${quantity} ${product.nombre} agregado al carrito`
-      : `${quantity} ${product.nombre} agregado al carrito (como invitado)`;
-    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg shadow-red-600/20 z-50 transition-all duration-300';
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 3000);
+    addNotification({
+      type: 'success',
+      title: `${product.nombre} agregado`,
+      message: currentUser ? 'Revisa tu carrito cuando quieras' : 'Guardado como invitado',
+      duration: 3500,
+    });
   };
 
   const formatPrice = (price: number) => {
@@ -194,10 +205,10 @@ export default function ProductPage() {
   if (loading) {
     return (
       <Layout>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-700"></div>
-            <span className="ml-3 text-yellow-300">Cargando producto...</span>
+        <div className="flex min-h-[60vh] items-center justify-center bg-[var(--surface-alt)] px-4 py-16">
+          <div className="modern-card flex items-center gap-3 px-8 py-6 text-slate-500">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-red-200 border-t-transparent" />
+            <span className="text-sm font-medium">Cargando producto...</span>
           </div>
         </div>
       </Layout>
@@ -207,17 +218,22 @@ export default function ProductPage() {
   if (error || !product) {
     return (
       <Layout>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center py-20">
-            <div className="text-pink text-6xl mb-4">❌</div>
-            <h1 className="text-2xl font-bold text-white mb-4">
+        <div className="flex min-h-[60vh] items-center justify-center bg-[var(--surface-alt)] px-4 py-16">
+          <div className="modern-card w-full max-w-lg p-10 text-center space-y-4">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-rose-50 text-rose-500 text-3xl">
+              ❌
+            </div>
+            <h1 className="text-2xl font-semibold text-slate-900">
               {error || 'Producto no encontrado'}
             </h1>
+            <p className="text-sm text-slate-500">
+              El producto que buscas no está disponible. Revisa nuestras categorías para seguir explorando.
+            </p>
             <Link 
               href="/" 
-              className="inline-flex items-center px-4 py-2 bg-red-700 text-white rounded-md hover:bg-orange-700 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white"
             >
-              <ChevronLeftIcon className="h-4 w-4 mr-2" />
+              <ChevronLeftIcon className="h-4 w-4" />
               Volver al inicio
             </Link>
           </div>
@@ -228,23 +244,23 @@ export default function ProductPage() {
 
   return (
     <Layout>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-yellow-300 mb-8">
-          <Link href="/" className="hover:text-yellow-300">Inicio</Link>
-          <span>/</span>
-          <Link href={`/?category=${product.categoria}`} className="hover:text-yellow-300 capitalize">
-            {product.categoria}
-          </Link>
-          <span>/</span>
-          <span className="text-white">{product.nombre}</span>
-        </nav>
+      <div className="bg-[var(--surface-alt)]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+          <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+            <Link href="/" className="hover:text-slate-700">Inicio</Link>
+            <span>/</span>
+            <Link href={`/?category=${product.categoria}`} className="capitalize hover:text-slate-700">
+              {product.categoria}
+            </Link>
+            <span>/</span>
+            <span className="text-slate-600">{product.nombre}</span>
+          </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Product Image Gallery */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             {/* Main Image */}
-            <div className="relative aspect-square bg-slate-800 rounded-lg overflow-hidden">
+            <div className="relative aspect-square overflow-hidden rounded-[24px] bg-white shadow-[0_35px_90px_-55px_rgba(15,23,42,0.4)]">
               {(() => {
                 const images = product.imagenes && product.imagenes.length > 0
                   ? product.imagenes
@@ -262,23 +278,19 @@ export default function ProductPage() {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-yellow-300 text-8xl">📦</span>
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span className="text-7xl text-slate-300">📦</span>
                   </div>
                 );
               })()}
 
               {/* Badges */}
-              <div className="absolute top-4 left-4 space-y-2">
+              <div className="absolute left-5 top-5 flex flex-col gap-2">
                 {product.nuevo && (
-                  <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full font-medium">
-                    Nuevo
-                  </span>
+                  <span className="modern-chip border-green-200 bg-green-50 text-green-600">Nuevo</span>
                 )}
                 {product.oferta && (
-                  <span className="bg-pink text-white text-sm px-3 py-1 rounded-full font-medium">
-                    Oferta
-                  </span>
+                  <span className="modern-chip border-rose-200 bg-rose-50 text-rose-600">Oferta especial</span>
                 )}
               </div>
 
@@ -296,9 +308,9 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
                       )}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-900/80/80 hover:bg-slate-900/80 p-2 rounded-full shadow-lg shadow-red-600/20 transition-all"
+                      className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full border border-white/60 bg-white/90 p-2 text-slate-700 shadow-lg shadow-slate-900/10"
                     >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
@@ -306,9 +318,9 @@ export default function ProductPage() {
                       onClick={() => setSelectedImageIndex((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
                       )}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-900/80/80 hover:bg-slate-900/80 p-2 rounded-full shadow-lg shadow-red-600/20 transition-all"
+                      className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full border border-white/60 bg-white/90 p-2 text-slate-700 shadow-lg shadow-slate-900/10"
                     >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -326,23 +338,23 @@ export default function ProductPage() {
                   : [];
 
               return images.length > 1 && (
-                <div className="flex gap-3 overflow-x-auto pb-2">
+                <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
                   {images.map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
-                      className={`relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 bg-slate-900/80 rounded-md overflow-hidden border-3 transition-all ${
+                      className={`relative aspect-square overflow-hidden rounded-2xl border transition ${
                         selectedImageIndex === index
-                          ? 'border-green-500 border-4'
-                          : 'border-yellow-300/40 hover:border-gray-400'
+                          ? 'border-red-200 shadow-lg shadow-red-200/60'
+                          : 'border-transparent'
                       }`}
                     >
                       <Image
                         src={img}
                         alt={`${product.nombre} - imagen ${index + 1}`}
                         fill
-                        className="object-contain p-1"
-                        sizes="96px"
+                        className="object-cover"
+                        sizes="(max-width: 768px) 33vw, 120px"
                       />
                     </button>
                   ))}
@@ -354,14 +366,14 @@ export default function ProductPage() {
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-white mb-2">
+              <h1 className="text-3xl font-semibold text-slate-900 mb-2">
                 {product.nombre}
               </h1>
-              <p className="text-lg text-yellow-300 capitalize">
+              <p className="text-sm text-slate-500 capitalize">
                 Categoría: {product.categoria}
               </p>
               {product.sku && (
-                <p className="text-sm text-yellow-300 mt-1">
+                <p className="text-xs text-slate-400 mt-1 uppercase tracking-[0.3em]">
                   SKU: {product.sku}
                 </p>
               )}
@@ -370,39 +382,39 @@ export default function ProductPage() {
             <div className="space-y-2">
               {product.oferta && product.precioOriginal && product.precioOriginal > product.precio ? (
                 <>
-                  <div className="text-2xl text-yellow-300 line-through">
+                  <div className="text-lg text-slate-400 line-through">
                     {formatPrice(product.precioOriginal)}
                   </div>
-                  <div className="text-4xl font-bold text-pink">
+                  <div className="text-4xl font-bold text-slate-900">
                     {formatPrice(product.precio)}
                   </div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-800 text-pink">
+                  <div className="modern-chip border-rose-200 bg-rose-50 text-rose-600">
                     {Math.round(((product.precioOriginal - product.precio) / product.precioOriginal) * 100)}% OFF
                   </div>
                 </>
               ) : (
-                <div className="text-4xl font-bold text-red-600">
+                <div className="text-4xl font-bold text-slate-900">
                   {formatPrice(product.precio)}
                 </div>
               )}
             </div>
 
             {descriptionHtml && (
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2">Descripción</h3>
+              <div className="modern-card p-6">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">Descripción</h3>
                 <div
-                  className="space-y-3 text-white/70 leading-relaxed [&>p]:mb-2 [&>ul]:list-disc [&>ul]:space-y-1 [&>ul]:pl-5 [&>strong]:text-white [&>em]:text-yellow-200"
+                  className="prose prose-slate max-w-none text-slate-600 [&>p]:leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: descriptionHtml }}
                 />
               </div>
             )}
 
             {/* Stock Info */}
-            <div className="flex items-center space-x-2">
-              <span className="text-yellow-300">Stock disponible:</span>
+            <div className="flex items-center gap-2 text-sm text-slate-500">
+              <span>Stock disponible:</span>
               <span className={`font-semibold ${
-                product.stock > 10 ? 'text-green-600' : 
-                product.stock > 0 ? 'text-yellow-600' : 'text-pink'
+                product.stock > 10 ? 'text-emerald-600' : 
+                product.stock > 0 ? 'text-amber-600' : 'text-rose-600'
               }`}>
                 {product.stock > 0 ? `${product.stock} unidades` : 'Sin stock'}
               </span>
@@ -411,21 +423,21 @@ export default function ProductPage() {
             {product.stock > 0 && (
               <>
                 {/* Quantity Selector */}
-                <div className="flex items-center space-x-4">
-                  <span className="text-yellow-300">Cantidad:</span>
-                  <div className="flex items-center border border-yellow-300/40 rounded-md">
+                <div className="flex items-center gap-4">
+                  <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Cantidad</span>
+                  <div className="flex items-center rounded-full border border-slate-200 bg-white">
                     <button
                       onClick={() => handleQuantityChange(-1)}
                       disabled={quantity <= 1}
-                      className="p-2 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 disabled:opacity-30"
                     >
                       <MinusIcon className="h-4 w-4" />
                     </button>
-                    <span className="px-4 py-2 min-w-[60px] text-center">{quantity}</span>
+                    <span className="w-12 text-center text-lg font-semibold text-slate-900">{quantity}</span>
                     <button
                       onClick={() => handleQuantityChange(1)}
                       disabled={quantity >= product.stock}
-                      className="p-2 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 disabled:opacity-30"
                     >
                       <PlusIcon className="h-4 w-4" />
                     </button>
@@ -433,17 +445,17 @@ export default function ProductPage() {
                 </div>
 
                 {/* Add to Cart Button */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                    className="w-full rounded-2xl bg-gradient-to-r from-red-500 to-red-600 px-6 py-4 text-base font-semibold text-white shadow-[0_35px_80px_-45px_rgba(220,38,38,0.8)] transition-transform hover:-translate-y-0.5"
                   >
                     Agregar al carrito ({formatPrice(product.precio * quantity)})
                   </button>
                   
                   <Link
                     href="/carrito"
-                    className="block w-full text-center bg-slate-800 hover:bg-gray-300 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                    className="flex w-full items-center justify-center rounded-2xl border border-slate-200 px-6 py-4 text-base font-semibold text-slate-600 transition hover:border-slate-300"
                   >
                     Ver carrito
                   </Link>
@@ -452,24 +464,23 @@ export default function ProductPage() {
             )}
 
             {product.stock === 0 && (
-              <div className="bg-slate-800 border border-slate-700 rounded-md p-4">
-                <p className="text-pink font-medium">
-                  Este producto no está disponible en este momento
-                </p>
+              <div className="rounded-2xl border border-rose-100 bg-rose-50 p-4 text-sm text-rose-600">
+                Este producto no está disponible en este momento
               </div>
             )}
 
             {/* Back Button */}
             <Link
               href="/"
-              className="inline-flex items-center text-red-600 hover:text-secondary transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors"
             >
-              <ChevronLeftIcon className="h-4 w-4 mr-1" />
+              <ChevronLeftIcon className="h-4 w-4" />
               Seguir comprando
             </Link>
           </div>
         </div>
       </div>
+    </div>
 
       {/* Offer Popup */}
       <OfferPopup
