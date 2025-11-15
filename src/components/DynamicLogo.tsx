@@ -4,42 +4,41 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/hooks/useConfig';
 
+const FALLBACK_LOGO = { text: 'GAMER HOUSE', image: '', emoji: '🎮' };
+
 export default function DynamicLogo() {
   const { logoConfig } = useConfig();
-
-  // Si no hay config, usar default
-  const logo = logoConfig || { text: 'GAMER\nHOUSE', image: '', emoji: '' };
+  const textValue = logoConfig?.text?.trim() || FALLBACK_LOGO.text;
+  const lines = textValue.split('\n').map((line) => line.trim()).filter(Boolean);
+  const imageUrl = logoConfig?.image || FALLBACK_LOGO.image;
+  const emoji = logoConfig?.emoji || FALLBACK_LOGO.emoji;
 
   return (
-    <Link href="/" className="flex items-center gap-2 flex-shrink-0 hover:opacity-80 transition-opacity">
-      {logo.image ? (
-        <div className="relative w-10 h-10">
+    <Link href="/" className="flex items-center gap-3 flex-shrink-0 hover:opacity-85 transition-opacity">
+      {imageUrl ? (
+        <div className="relative w-10 h-10 rounded-xl bg-white shadow-inner border border-slate-200">
           <Image
-            src={logo.image}
+            src={imageUrl}
             alt="Logo"
             fill
             className="object-contain"
           />
         </div>
-      ) : null}
+      ) : (
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-2xl">
+          {emoji}
+        </div>
+      )}
 
-      <div className="flex flex-col leading-none">
-        {logo.text && (
-          <>
-            {logo.text.includes('\n') ? (
-              // Si el texto tiene saltos de línea (para formato multi-línea)
-              logo.text.split('\n').map((line, idx) => (
-                <span key={idx} className="text-sm font-bold text-gamerhouse-red">
-                  {line}
-                </span>
-              ))
-            ) : (
-              // Formato de una sola línea
-              <span className="text-xl font-bold bg-gradient-to-r from-gamerhouse-red to-gamerhouse-navy bg-clip-text text-transparent">
-                {logo.text}
-              </span>
-            )}
-          </>
+      <div className="leading-tight font-bold text-slate-900 whitespace-pre-line">
+        {lines.length > 0 ? (
+          lines.map((line, idx) => (
+            <span key={idx} className="block text-base">
+              {line}
+            </span>
+          ))
+        ) : (
+          <span className="text-base">{FALLBACK_LOGO.text}</span>
         )}
       </div>
     </Link>

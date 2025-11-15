@@ -1,13 +1,16 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
+import { useConfig } from '@/hooks/useConfig';
 import { ShoppingCart, ArrowRight, Sparkles, Waves, Wand2, Moon, Flame, Grid3x3, Zap, Headphones } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
+import MainBanner from './MainBanner';
 
 interface CategoryIcon {
   Icon: React.ComponentType<{ className?: string }>;
@@ -29,6 +32,8 @@ export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
   const { categories } = useCategories();
   const { addItem } = useCart();
+  const { mainBannerConfig } = useConfig();
+  const router = useRouter();
 
   const activeCategories = useMemo(
     () => categories.filter(cat => cat.active !== false).slice(0, 8),
@@ -127,25 +132,34 @@ export default function GamerHouseHomepage() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
-      {/* Hero Section */}
-      <section className="bg-white text-slate-900 py-20 sm:py-28">
+      {/* Hero or Configurable Banner */}
+      <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl space-y-4">
-            <span className="eyebrow-text">Gaming & collectibles</span>
-            <h1 className="text-4xl sm:text-5xl font-bold">
-              Bienvenido a GAMER HOUSE
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-600">
-              Tu tienda especializada en Trading Card Games. Los mejores precios en TCG, accesorios y más.
-            </p>
-            <Link
-              href="/productos"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 px-8 py-3 font-semibold text-white shadow-[0_30px_70px_-45px_rgba(220,38,38,0.8)] transition hover:-translate-y-0.5"
-            >
-              Explorar Catálogo
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
+          {mainBannerConfig?.active && mainBannerConfig.slides?.length ? (
+            <MainBanner
+              config={mainBannerConfig}
+              onResetFilters={() => router.push('/productos')}
+            />
+          ) : (
+            <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-[0_45px_120px_-60px_rgba(15,23,42,0.4)]">
+              <div className="max-w-2xl space-y-4">
+                <span className="eyebrow-text">Gaming & collectibles</span>
+                <h1 className="text-4xl sm:text-5xl font-bold text-slate-900">
+                  Bienvenido a GAMER HOUSE
+                </h1>
+                <p className="text-lg sm:text-xl text-slate-600">
+                  Tu tienda especializada en Trading Card Games. Los mejores precios en TCG, accesorios y más.
+                </p>
+                <Link
+                  href="/productos"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 px-8 py-3 font-semibold text-white shadow-[0_30px_70px_-45px_rgba(220,38,38,0.8)] transition hover:-translate-y-0.5"
+                >
+                  Explorar Catálogo
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
 interface LogoConfig {
@@ -78,49 +78,74 @@ const sanitizeMainBannerSlides = (input: unknown): MainBannerSlide[] => {
   });
 };
 
+const sanitizeLogoConfig = (raw: Record<string, unknown> | undefined): LogoConfig => ({
+  emoji: typeof raw?.emoji === 'string' && raw.emoji.trim() ? raw.emoji : DEFAULT_LOGO.emoji,
+  text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_LOGO.text,
+  image: typeof raw?.image === 'string' ? raw.image : '',
+});
+
+const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerConfig => ({
+  title: typeof raw?.title === 'string' && raw.title.trim() ? raw.title : DEFAULT_BANNER.title,
+  text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_BANNER.text,
+  active: raw?.active !== false,
+  images: Array.isArray(raw?.images)
+    ? raw!.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
+    : [],
+});
+
 export function useConfig() {
   const [logoConfig, setLogoConfig] = useState<LogoConfig>(DEFAULT_LOGO);
   const [bannerConfig, setBannerConfig] = useState<BannerConfig>(DEFAULT_BANNER);
   const [mainBannerConfig, setMainBannerConfig] = useState<MainBannerConfig>(DEFAULT_MAIN_BANNER);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
 
-  const loadConfig = useCallback(async () => {
+  useEffect(() => {
     setLoading(true);
     setError(null);
 
-    try {
-      // Logo configuration
-      try {
-        const logoDoc = await getDoc(doc(db, 'config', 'logo'));
-        if (logoDoc.exists()) {
-          setLogoConfig(logoDoc.data() as LogoConfig);
-        } else {
-          setLogoConfig(DEFAULT_LOGO);
-        }
-      } catch (logoErr) {
-        // console.warn('No se pudo cargar el logo, usando valores por defecto:', logoErr);
+    let loadedSegments = 0;
+    const markLoaded = () => {
+      loadedSegments += 1;
+      if (loadedSegments >= 3) {
+        setLoading(false);
+      }
+    };
+
+    const unsubLogo = onSnapshot(
+      doc(db, 'config', 'logo'),
+      (snapshot) => {
+        setLogoConfig(snapshot.exists() ? sanitizeLogoConfig(snapshot.data()) : DEFAULT_LOGO);
+        markLoaded();
+      },
+      (err) => {
+        console.error('Error cargando logo:', err);
         setLogoConfig(DEFAULT_LOGO);
+        setError('No se pudo cargar el logo, usando valores por defecto.');
+        markLoaded();
       }
+    );
 
-      // Banner configuration
-      try {
-        const bannerDoc = await getDoc(doc(db, 'config', 'banner'));
-        if (bannerDoc.exists()) {
-          setBannerConfig(bannerDoc.data() as BannerConfig);
-        } else {
-          setBannerConfig(DEFAULT_BANNER);
-        }
-      } catch (bannerErr) {
-        // console.warn('No se pudo cargar el banner, usando valores por defecto:', bannerErr);
+    const unsubBanner = onSnapshot(
+      doc(db, 'config', 'banner'),
+      (snapshot) => {
+        setBannerConfig(snapshot.exists() ? sanitizeBannerConfig(snapshot.data()) : DEFAULT_BANNER);
+        markLoaded();
+      },
+      (err) => {
+        console.error('Error cargando banner:', err);
         setBannerConfig(DEFAULT_BANNER);
+        setError('No se pudo cargar el banner, usando valores por defecto.');
+        markLoaded();
       }
+    );
 
-      // Main banner configuration
-      try {
-        const mainBannerDoc = await getDoc(doc(db, 'config', 'main-banner'));
-        if (mainBannerDoc.exists()) {
-          const data = mainBannerDoc.data() as Record<string, unknown>;
+    const unsubMainBanner = onSnapshot(
+      doc(db, 'config', 'main-banner'),
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.data() as Record<string, unknown>;
           setMainBannerConfig({
             active: Boolean(data.active),
             slides: sanitizeMainBannerSlides(data.slides),
@@ -128,25 +153,26 @@ export function useConfig() {
         } else {
           setMainBannerConfig(DEFAULT_MAIN_BANNER);
         }
-      } catch (mainBannerErr) {
-        console.error('Error cargando main-banner, usando valores por defecto:', mainBannerErr);
+        markLoaded();
+      },
+      (err) => {
+        console.error('Error cargando main-banner:', err);
         setMainBannerConfig(DEFAULT_MAIN_BANNER);
+        setError('No se pudo cargar el banner principal, usando valores por defecto.');
+        markLoaded();
       }
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Error desconocido';
-      console.error('Error general cargando configuración:', message);
-      setError('Error al cargar configuración, usando valores predeterminados');
-      setLogoConfig(DEFAULT_LOGO);
-      setBannerConfig(DEFAULT_BANNER);
-      setMainBannerConfig(DEFAULT_MAIN_BANNER);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    );
 
-  useEffect(() => {
-    loadConfig();
-  }, [loadConfig]);
+    return () => {
+      unsubLogo();
+      unsubBanner();
+      unsubMainBanner();
+    };
+  }, [reloadKey]);
+
+  const refetch = useCallback(() => {
+    setReloadKey((prev) => prev + 1);
+  }, []);
 
   return {
     logoConfig,
@@ -154,7 +180,7 @@ export function useConfig() {
     mainBannerConfig,
     loading,
     error,
-    refetch: loadConfig,
+    refetch,
   };
 }
 
