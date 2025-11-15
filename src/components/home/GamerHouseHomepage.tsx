@@ -53,7 +53,10 @@ export default function GamerHouseHomepage() {
       : 0;
 
     return (
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-red/50">
+      <Link
+        href={`/producto/${product.id}`}
+        className="block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-red/50"
+      >
         {/* Image */}
         <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
           <Image
@@ -103,7 +106,10 @@ export default function GamerHouseHomepage() {
 
           {/* Button */}
           <button
-            onClick={() => handleAddToCart(product)}
+            onClick={(event) => {
+              event.preventDefault();
+              handleAddToCart(product);
+            }}
             disabled={product.stock === 0}
             className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
               product.stock === 0
@@ -115,7 +121,7 @@ export default function GamerHouseHomepage() {
             Comprar
           </button>
         </div>
-      </div>
+      </Link>
     );
   };
 
