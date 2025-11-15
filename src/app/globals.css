@@ -48,6 +48,55 @@ p {
     linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 
+#admin-container {
+  --admin-surface: #ffffff;
+  --admin-border: rgba(148, 163, 184, 0.35);
+  --admin-muted: #475569;
+}
+
+#admin-container .bg-slate-900,
+#admin-container .bg-slate-950,
+#admin-container .bg-slate-800,
+#admin-container .bg-slate-800\/70,
+#admin-container .bg-slate-700,
+#admin-container .bg-slate-700\/50 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--admin-border) !important;
+}
+
+#admin-container .text-white,
+#admin-container .text-white\/70,
+#admin-container .text-white\/60,
+#admin-container .text-gray-200,
+#admin-container .text-gray-300 {
+  color: var(--text-primary) !important;
+}
+
+#admin-container .text-yellow-300,
+#admin-container .text-yellow-400,
+#admin-container .text-yellow-500,
+#admin-container .text-yellow-600,
+#admin-container .text-yellow-700 {
+  color: var(--admin-muted) !important;
+}
+
+#admin-container .bg-yellow-400,
+#admin-container .bg-yellow-500,
+#admin-container .bg-yellow-600 {
+  background: linear-gradient(120deg, #f97316, #dc2626) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#admin-container .border-yellow-300\/40,
+#admin-container .border-yellow-300\/30,
+#admin-container .border-yellow-300,
+#admin-container .border-yellow-200,
+#admin-container .border-yellow-100 {
+  border-color: var(--admin-border) !important;
+}
+
 .modern-card {
   background: var(--surface-card);
   border: 1px solid var(--border-soft);

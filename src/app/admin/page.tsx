@@ -2175,68 +2175,68 @@ export default function AdminPage() {
   // Bloquear acceso si no es administrador
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="max-w-md w-full bg-slate-800/70 rounded-lg shadow-md p-8">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-white">🛡️ Admin Panel</h1>
-            <p className="text-yellow-300 mt-2">GAMERHOUSE</p>
+      <div className="min-h-screen bg-[var(--surface-alt)] flex items-center justify-center px-4">
+        <div className="modern-card max-w-md w-full p-8 space-y-6">
+          <div className="text-center space-y-2">
+            <span className="eyebrow-text text-slate-500">GAMER HOUSE</span>
+            <h1 className="text-2xl font-semibold text-slate-900">🛡️ Admin Panel</h1>
           </div>
 
           {!user ? (
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-yellow-300 mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={loginForm.email}
-                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-                required
-                className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-yellow-300 mb-1">
-                Contraseña
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={loginForm.password}
-                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                required
-                className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2" style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
-              />
-            </div>
-
-            {loginError && (
-              <div className="text-pink text-sm bg-slate-800 p-3 rounded-md">
-                {loginError}
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={loginForm.email}
+                  onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+                  required
+                  className="modern-input mt-2 w-full"
+                />
               </div>
-            )}
 
-            <button
-              type="submit"
-              disabled={loggingIn}
-              className="w-full text-white font-semibold text-base py-3 px-6 rounded-md transition-colors disabled:opacity-50 bg-yellow-400 hover:bg-yellow-400"
-            >
-              {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
-            </button>
-          </form>
+              <div>
+                <label htmlFor="password" className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                  required
+                  className="modern-input mt-2 w-full"
+                />
+              </div>
+
+              {loginError && (
+                <div className="rounded-2xl border border-rose-100 bg-rose-50 p-3 text-sm text-rose-600">
+                  {loginError}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loggingIn}
+                className="w-full rounded-2xl bg-gradient-to-r from-red-500 to-red-600 py-3 text-base font-semibold text-white shadow-[0_30px_70px_-45px_rgba(220,38,38,0.85)] transition disabled:opacity-50"
+              >
+                {loggingIn ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+              </button>
+            </form>
           ) : (
             <div className="text-center space-y-4">
-              <div className="bg-slate-800 border border-slate-700 rounded-md p-4">
-                <p className="text-pink font-semibold">⛔ Acceso Denegado</p>
-                <p className="text-pink text-sm mt-2">
+              <div className="rounded-2xl border border-rose-100 bg-rose-50 p-4">
+                <p className="font-semibold text-rose-600">⛔ Acceso Denegado</p>
+                <p className="text-sm text-rose-500 mt-2">
                   No tienes permisos de administrador para acceder a esta página.
                 </p>
               </div>
               <button
                 onClick={() => router.push('/')}
-                className="w-full text-white font-semibold py-2 px-4 rounded-md transition-colors bg-yellow-400 hover:bg-yellow-400"
+                className="w-full rounded-2xl bg-slate-900 py-2.5 text-sm font-semibold text-white"
               >
                 Volver al Inicio
               </button>
