@@ -246,7 +246,7 @@ export default function ProductPage() {
     <Layout>
       <div className="bg-[var(--surface-alt)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-          <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+          <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
             <Link href="/" className="hover:text-slate-700">Inicio</Link>
             <span>/</span>
             <Link href={`/?category=${product.categoria}`} className="capitalize hover:text-slate-700">
@@ -369,11 +369,11 @@ export default function ProductPage() {
               <h1 className="text-3xl font-semibold text-slate-900 mb-2">
                 {product.nombre}
               </h1>
-              <p className="text-sm text-slate-500 capitalize">
+              <p className="text-sm text-slate-600 capitalize">
                 Categoría: {product.categoria}
               </p>
               {product.sku && (
-                <p className="text-xs text-slate-400 mt-1 uppercase tracking-[0.3em]">
+                <p className="text-xs text-slate-500 mt-1 uppercase tracking-[0.3em]">
                   SKU: {product.sku}
                 </p>
               )}
@@ -410,7 +410,7 @@ export default function ProductPage() {
             )}
 
             {/* Stock Info */}
-            <div className="flex items-center gap-2 text-sm text-slate-500">
+            <div className="flex items-center gap-2 text-sm text-slate-600">
               <span>Stock disponible:</span>
               <span className={`font-semibold ${
                 product.stock > 10 ? 'text-emerald-600' : 
@@ -424,7 +424,7 @@ export default function ProductPage() {
               <>
                 {/* Quantity Selector */}
                 <div className="flex items-center gap-4">
-                  <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Cantidad</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">Cantidad</span>
                   <div className="flex items-center rounded-full border border-slate-200 bg-white">
                     <button
                       onClick={() => handleQuantityChange(-1)}

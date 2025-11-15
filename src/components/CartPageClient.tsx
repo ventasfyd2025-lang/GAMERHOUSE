@@ -34,7 +34,7 @@ export default function CartPageClient() {
           </div>
           <div className="space-y-2">
             <h1 className="text-3xl font-semibold text-slate-900">Tu carrito está vacío</h1>
-            <p className="text-base text-slate-500">
+            <p className="text-base text-slate-600">
               Explora nuestras categorías y guarda tus productos favoritos para completar la compra cuando quieras.
             </p>
           </div>
@@ -61,12 +61,12 @@ export default function CartPageClient() {
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Resumen</p>
               <h1 className="text-2xl font-semibold text-slate-900">Carrito de compras</h1>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-600">
                 {items.length} {items.length === 1 ? 'producto' : 'productos'} seleccionados
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 text-sm text-slate-500">
+          <div className="flex items-center gap-3 text-sm text-slate-600">
             <span className="modern-chip">Entrega en todo Chile</span>
             <span className="modern-chip">Soporte 24/7</span>
           </div>
@@ -98,15 +98,15 @@ export default function CartPageClient() {
                     >
                       {item.nombre}
                     </Link>
-                    {item.sku && <p className="text-xs uppercase tracking-[0.35em] text-slate-400">SKU {item.sku}</p>}
-                    <p className="text-sm font-medium text-slate-500">{formatPrice(item.precio)} c/u</p>
+                    {item.sku && <p className="text-xs uppercase tracking-[0.35em] text-slate-500">SKU {item.sku}</p>}
+                    <p className="text-sm font-medium text-slate-600">{formatPrice(item.precio)} c/u</p>
                   </div>
 
                   <div className="flex w-full items-center justify-between gap-4 sm:w-auto">
                     <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1">
                       <button
                         onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50"
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50"
                         aria-label="Reducir cantidad"
                       >
                         <Minus className="h-4 w-4" />
@@ -116,7 +116,7 @@ export default function CartPageClient() {
                       </span>
                       <button
                         onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50"
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50"
                         aria-label="Aumentar cantidad"
                       >
                         <Plus className="h-4 w-4" />
@@ -149,11 +149,11 @@ export default function CartPageClient() {
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-sm text-slate-500">
+                <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Subtotal</span>
                   <span className="font-semibold text-slate-900">{formatPrice(getTotalPrice())}</span>
                 </div>
-                <div className="flex items-center justify-between text-sm text-slate-500">
+                <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Envío estimado</span>
                   <span className="font-semibold text-slate-900">Se calcula en checkout</span>
                 </div>
@@ -181,7 +181,7 @@ export default function CartPageClient() {
 
               <Link
                 href="/"
-                className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-900"
+                className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900"
               >
                 ← Seguir comprando
               </Link>
