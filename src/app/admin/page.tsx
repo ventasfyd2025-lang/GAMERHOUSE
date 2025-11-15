@@ -2256,24 +2256,24 @@ export default function AdminPage() {
       `}</style>
       <div
         id="admin-container"
-        className="relative min-h-screen pb-24 text-white"
-        style={{ background: 'var(--brand-background)' }}
+        className="relative min-h-screen pb-24 text-slate-900"
+        style={{ background: 'var(--surface-alt)' }}
       >
 
-      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-[0_18px_60px_-42px_rgba(255,232,141,0.65)]">
+      <header className="border-b border-slate-200 bg-white/90 backdrop-blur-xl shadow-[0_20px_60px_-45px_rgba(15,23,42,0.4)]">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl shadow-[0_0_18px_rgba(255,232,141,0.45)]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-50 text-xl text-red-500 shadow-inner">
                 🏪
               </div>
-              <h1 className="text-xl font-semibold gradient-text-primary">
+              <h1 className="text-xl font-semibold text-slate-900">
                 F&D Admin Panel
               </h1>
             </div>
             <button
               onClick={handleLogout}
-              className="btn-secondary-web w-full justify-center gap-2 text-sm text-white sm:w-auto sm:text-base"
+              className="btn-secondary-web w-full justify-center gap-2 text-sm text-slate-600 sm:w-auto sm:text-base"
             >
               <svg className="h-4 w-4 text-yellow-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -2287,20 +2287,20 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/25 mb-6">
+        <div className="hero-section overflow-hidden ring-1 ring-inset ring-red-100 mb-6">
           <div className="hero-bg opacity-60" />
           <div className="relative space-y-6 p-6 sm:p-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-300/15 text-xl shadow-[0_0_18px_rgba(255,232,141,0.45)]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-50 text-xl text-red-500">
                   ⚡
                 </div>
                 <div>
-                  <h1 className="text-xl font-semibold text-white">Panel de Administración</h1>
-                  <p className="text-sm text-white/60">Gestiona tu tienda</p>
+                  <h1 className="text-xl font-semibold text-slate-900">Panel de Administración</h1>
+                  <p className="text-sm text-slate-500">Gestiona tu tienda</p>
                 </div>
               </div>
-              <span className="chip-option chip-option-active text-[10px] uppercase tracking-[0.3em] text-white/80">
+              <span className="chip-option chip-option-active text-[10px] uppercase tracking-[0.3em]">
                 🎮 GAMERHOUSE
               </span>
             </div>

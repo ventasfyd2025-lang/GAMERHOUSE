@@ -120,20 +120,21 @@ export default function GamerHouseHomepage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white">
+    <div className="min-h-screen bg-[var(--surface-alt)]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-white via-blue-50 to-cyan-100 text-gray-900 py-20 sm:py-28">
+      <section className="bg-white text-slate-900 py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gamerhouse-navy">
+          <div className="max-w-2xl space-y-4">
+            <span className="eyebrow-text">Gaming & collectibles</span>
+            <h1 className="text-4xl sm:text-5xl font-bold">
               Bienvenido a GAMER HOUSE
             </h1>
-            <p className="text-lg sm:text-xl text-gray-700 mb-8">
+            <p className="text-lg sm:text-xl text-slate-600">
               Tu tienda especializada en Trading Card Games. Los mejores precios en TCG, accesorios y más.
             </p>
             <Link
               href="/productos"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all hover:shadow-lg hover:scale-105 transform"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 px-8 py-3 font-semibold text-white shadow-[0_30px_70px_-45px_rgba(220,38,38,0.8)] transition hover:-translate-y-0.5"
             >
               Explorar Catálogo
               <ArrowRight className="h-5 w-5" />
@@ -146,11 +147,11 @@ export default function GamerHouseHomepage() {
       <DynamicBanner />
 
       {/* Categories Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">CATEGORÍAS</h2>
-            <div className="h-1 w-20 bg-gamerhouse-red"></div>
+            <span className="eyebrow-text">Explora por categoría</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">CATEGORÍAS</h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -158,15 +159,11 @@ export default function GamerHouseHomepage() {
               const catInfo = CATEGORY_ICONS[category.id] || { Icon: Sparkles, color: 'from-gray-400 to-gray-600' };
               const { Icon } = catInfo;
               return (
-                <Link
-                  key={category.id}
-                  href={`/categoria/${category.id}`}
-                  className="group"
-                >
-                  <div className={`bg-gradient-to-br ${catInfo.color} rounded-lg p-6 h-40 flex flex-col items-center justify-center text-white hover:shadow-lg transition-shadow cursor-pointer relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                <Link key={category.id} href={`/categoria/${category.id}`} className="group">
+                  <div className={`relative rounded-2xl p-6 h-40 flex flex-col items-center justify-center text-white overflow-hidden shadow-[0_35px_85px_-55px_rgba(15,23,42,0.7)] bg-gradient-to-br ${catInfo.color}`}>
+                    <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/20" />
                     <Icon className="w-12 h-12 mb-2 relative z-10" />
-                    <h3 className="font-bold text-center text-sm sm:text-base relative z-10 group-hover:underline">
+                    <h3 className="font-bold text-center text-sm sm:text-base relative z-10">
                       {category.name || category.id}
                     </h3>
                   </div>
@@ -178,11 +175,11 @@ export default function GamerHouseHomepage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gamerhouse-navy mb-2">DESTACADOS</h2>
-            <div className="h-1 w-20 bg-gamerhouse-red"></div>
+            <span className="eyebrow-text">Selección curada</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">DESTACADOS</h2>
           </div>
 
           {productsLoading ? (

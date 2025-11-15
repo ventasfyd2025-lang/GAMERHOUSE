@@ -35,9 +35,9 @@ export default function AppHeaderLight() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-b from-white to-gray-50/50 border-b border-gray-200/50 shadow-sm backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-white/90 border-b border-slate-200 shadow-[0_10px_30px_-25px_rgba(15,23,42,0.45)] backdrop-blur-xl">
       {/* Top Bar - Logo and Cart */}
-      <div className="bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-8 py-5">
+      <div className="px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo - Dinámico */}
           <DynamicLogo />
@@ -45,13 +45,13 @@ export default function AppHeaderLight() {
           {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
             <div className="relative w-full group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-gamerhouse-red transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
               <input
                 type="text"
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gamerhouse-red focus:border-transparent bg-white hover:border-gray-300 transition-all"
+                className="modern-input w-full pl-12 pr-4"
               />
             </div>
           </form>
@@ -60,10 +60,10 @@ export default function AppHeaderLight() {
           <div className="flex items-center gap-6">
             {/* Desktop Links */}
             <div className="hidden sm:flex items-center gap-6">
-              <Link href="/perfil" className="p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200">
+              <Link href="/perfil" className="p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200">
+              <Link href="/carrito" className="relative p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
                   <span className="absolute -top-1 -right-1 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
@@ -76,7 +76,7 @@ export default function AppHeaderLight() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-gamerhouse-red hover:bg-red-50 rounded-lg transition-all duration-200"
+              className="md:hidden p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -86,20 +86,20 @@ export default function AppHeaderLight() {
         {/* Mobile Search */}
         <form onSubmit={handleSearch} className="md:hidden mt-4">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-gamerhouse-red transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
             <input
               type="text"
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white hover:border-gray-300 transition-all"
+              className="modern-input w-full pl-12 pr-4"
             />
           </div>
         </form>
       </div>
 
       {/* Navigation Bar - Categories */}
-      <nav className="bg-gradient-to-r from-gamerhouse-navy to-blue-900 text-white border-t border-blue-800/20">
+      <nav className="bg-gradient-to-r from-slate-900 to-slate-800 text-white border-t border-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Desktop Categories */}
@@ -108,10 +108,10 @@ export default function AppHeaderLight() {
                 <button
                   key={category.id}
                   onClick={() => handleCategoryClick(category.id)}
-                  className="h-full px-4 text-sm font-semibold hover:bg-red-600 transition-all duration-200 whitespace-nowrap relative group"
+                  className="h-full px-4 text-sm font-semibold hover:bg-red-500/20 transition-all duration-200 whitespace-nowrap relative group"
                 >
                   {category.name || category.id}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-gamerhouse-red to-red-500 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-400 to-red-600 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
               {activeCategories.length > 6 && (
