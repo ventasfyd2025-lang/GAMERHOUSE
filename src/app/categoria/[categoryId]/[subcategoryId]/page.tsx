@@ -10,6 +10,7 @@ import { useCategories } from '@/hooks/useCategories';
 import { ShoppingCart, ArrowLeft, Package, Search } from 'lucide-react';
 import { productMatchesCategory, productMatchesSubcategory, formatCategoryLabel } from '@/utils/category';
 import { getPaginationRange } from '@/lib/pagination';
+import Layout from '@/components/Layout';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -176,21 +177,24 @@ export default function SubcategoryPage() {
 
   if (!categoryInfo && !productsLoading) {
     return (
-      <div className="min-h-screen bg-white text-gray-900 pt-32 pb-24 px-4">
-        <div className="max-w-7xl mx-auto text-center space-y-4">
-          <h1 className="text-3xl font-bold">Categoría no encontrada</h1>
-          <p className="text-gray-600">La categoría o subcategoría que buscas no existe.</p>
-          <Link href="/" className="inline-flex items-center gap-2 text-gamerhouse-red hover:text-red-700 font-semibold">
-            <ArrowLeft className="h-5 w-5" />
-            Volver a inicio
-          </Link>
+      <Layout>
+        <div className="min-h-screen bg-white text-gray-900 pt-32 pb-24 px-4">
+          <div className="max-w-7xl mx-auto text-center space-y-4">
+            <h1 className="text-3xl font-bold">Categoría no encontrada</h1>
+            <p className="text-gray-600">La categoría o subcategoría que buscas no existe.</p>
+            <Link href="/" className="inline-flex items-center gap-2 text-gamerhouse-red hover:text-red-700 font-semibold">
+              <ArrowLeft className="h-5 w-5" />
+              Volver a inicio
+            </Link>
+          </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-gray-900">
+    <Layout>
+      <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white text-gray-900">
       {/* Hero Header Section */}
       <div className="bg-gradient-to-r from-gamerhouse-navy to-gamerhouse-red text-white py-12 sm:py-16 mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
@@ -321,6 +325,7 @@ export default function SubcategoryPage() {
           )}
         </section>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }
