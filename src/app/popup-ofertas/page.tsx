@@ -4,6 +4,7 @@ import { useOfferPopup } from '@/hooks/useOfferPopup';
 import { useProducts } from '@/hooks/useProducts';
 import ProductCard from '@/components/ProductCard';
 import Layout from '@/components/Layout';
+import { Flame, Package, Crosshair } from 'lucide-react';
 
 export default function PopupOfertasPage() {
   const { popupConfig, loading: popupLoading } = useOfferPopup();
@@ -38,8 +39,9 @@ export default function PopupOfertasPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
-            🔥 {popupConfig.title}
+          <h1 className="text-4xl font-bold mb-4 inline-flex items-center gap-3 justify-center" style={{ color: 'var(--primary)' }}>
+            <Flame className="h-8 w-8" />
+            {popupConfig.title}
           </h1>
           <p className="text-lg text-yellow-300 max-w-2xl mx-auto">
             {popupConfig.description}
@@ -61,8 +63,9 @@ export default function PopupOfertasPage() {
               
               return sortedCategories.map(category => (
                 <div key={category} className="mb-12">
-                  <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--primary)' }}>
-                    📦 {category.charAt(0).toUpperCase() + category.slice(1)}
+                  <h2 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2" style={{ color: 'var(--primary)' }}>
+                    <Package className="h-5 w-5" />
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {groupedByCategory[category].map((product) => (
@@ -79,7 +82,9 @@ export default function PopupOfertasPage() {
           </>
         ) : (
           <div className="text-center py-12">
-            <div className="text-yellow-300 text-6xl mb-4">🎯</div>
+            <div className="text-yellow-300 text-6xl mb-4 flex items-center justify-center">
+              <Crosshair className="h-12 w-12" />
+            </div>
             <h3 className="text-xl font-semibold text-white mb-2">
               No hay ofertas especiales configuradas
             </h3>

@@ -56,7 +56,7 @@ const DEFAULT_BANNER: BannerConfig = {
 };
 
 const DEFAULT_MAIN_BANNER: MainBannerConfig = {
-  active: false,
+  active: true,
   slides: [],
 };
 

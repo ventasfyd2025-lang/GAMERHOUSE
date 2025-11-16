@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { Package } from 'lucide-react';
 import { Product } from '@/types';
 import { useI18n } from '@/context/I18nContext';
 import { useCart } from '@/context/CartContext';
@@ -60,7 +61,7 @@ const ProductCard = memo(({ product }: { product: Product }) => {
           </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-slate-900">
-            <span className="text-gray-300 text-5xl">📦</span>
+            <Package className="h-8 w-8 text-gray-300" />
           </div>
         )}
       </div>

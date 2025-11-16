@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface SlideConfig {
   title?: string;
@@ -22,19 +23,54 @@ interface MainBannerProps {
   onResetFilters: () => void;
 }
 
-function resolveSlide(config: MainBannerProps['config']): SlideConfig | undefined {
-  if (!config?.active) {
-    return undefined;
-  }
-  return config.slides?.find((slide) => (slide?.imageUrl || '').trim());
-}
-
 export default function MainBanner({ config, onResetFilters }: MainBannerProps) {
-  const slide = resolveSlide(config);
+  const preparedSlides = useMemo(() => {
+    if (!config?.active) {
+      return [] as SlideConfig[];
+    }
+    return (config.slides || [])
+      .filter((slide): slide is SlideConfig => Boolean(slide))
+      .map((slide) => ({
+        ...slide,
+        title: slide.title?.trim() || undefined,
+        subtitle: slide.subtitle?.trim() || undefined,
+        imageUrl: slide.imageUrl?.trim() || undefined,
+      }))
+      .filter((slide) => slide.title || slide.subtitle || slide.imageUrl);
+  }, [config?.active, config?.slides]);
 
-  const imageUrl = slide?.imageUrl || '/banner-hero-gamerhouse.jpg';
-  const title = slide?.title || 'Siempre los mejores precios en TCG';
-  const subtitle = slide?.subtitle || 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.';
+  const fallbackSlide: SlideConfig = {
+    title: 'Siempre los mejores precios en TCG',
+    subtitle: 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.',
+    imageUrl: '/banner-hero-gamerhouse.jpg',
+    linkType: 'product',
+    productId: undefined,
+  };
+
+  const slides = preparedSlides.length > 0 ? preparedSlides : [fallbackSlide];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [slides.length]);
+
+  useEffect(() => {
+    if (slides.length <= 1) {
+      return;
+    }
+    const interval = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [slides.length]);
+
+  const slide = slides[currentIndex];
+
+  const imageUrl = slide.imageUrl || fallbackSlide.imageUrl!;
+  const title = slide.title || fallbackSlide.title!;
+  const subtitle = slide.subtitle || fallbackSlide.subtitle!;
 
   const primaryLink = useMemo(() => {
     if (!slide) {
@@ -61,7 +97,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
           <span className="inline-block px-4 py-1 bg-sky-50 text-sky-700 text-sm font-semibold rounded-full border border-sky-100">
-            {slide ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
+            {config?.active ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
             {title}
@@ -105,6 +141,40 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
             <div className="absolute inset-0 bg-gradient-to-l from-[#041321]/80 via-transparent to-transparent" />
           </Link>
         </div>
+
+        {slides.length > 1 && (
+          <div className="absolute bottom-4 left-0 right-0 flex items-center justify-between px-6 sm:px-10">
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/80 text-slate-700 shadow-lg transition hover:scale-105"
+              onClick={() => setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)}
+              aria-label="Slide anterior"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <div className="flex items-center gap-2">
+              {slides.map((_, idx) => (
+                <button
+                  key={`dot-${idx}`}
+                  type="button"
+                  aria-label={`Ir al slide ${idx + 1}`}
+                  className={`h-2.5 rounded-full transition-all ${
+                    currentIndex === idx ? 'w-6 bg-sky-500' : 'w-2.5 bg-white/60'
+                  }`}
+                  onClick={() => setCurrentIndex(idx)}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/80 text-slate-700 shadow-lg transition hover:scale-105"
+              onClick={() => setCurrentIndex((prev) => (prev + 1) % slides.length)}
+              aria-label="Siguiente slide"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { ShoppingCart, ArrowLeft } from 'lucide-react';
+import { ShoppingCart, ArrowLeft, Package, Search } from 'lucide-react';
 import { productMatchesCategory, productMatchesSubcategory, formatCategoryLabel } from '@/utils/category';
 import { getPaginationRange } from '@/lib/pagination';
 
@@ -145,8 +145,9 @@ export default function SubcategoryPage() {
 
             {/* Stock Info */}
             {product.stock > 0 && (
-              <p className="text-xs font-semibold text-gamerhouse-navy">
-                📦 Stock: {product.stock}
+              <p className="text-xs font-semibold text-gamerhouse-navy inline-flex items-center gap-1">
+                <Package className="h-4 w-4" />
+                Stock: {product.stock}
               </p>
             )}
 
@@ -244,15 +245,17 @@ export default function SubcategoryPage() {
               </div>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="bg-gradient-to-r from-gamerhouse-navy/10 to-gamerhouse-red/10 rounded-xl border border-gamerhouse-navy/20 text-center py-16">
-              <div className="text-6xl mb-4">🔍</div>
+            <div className="bg-gradient-to-r from-gamerhouse-navy/10 to-gamerhouse-red/10 rounded-xl border border-gamerhouse-navy/20 text-center py-16 space-y-3">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/70 text-gamerhouse-navy">
+                <Search className="h-6 w-6" />
+              </div>
               <h3 className="text-2xl font-bold text-gamerhouse-navy">
                 Sin resultados
               </h3>
-              <p className="mt-3 text-gray-600">
+              <p className="mt-2 text-gray-600">
                 No encontramos productos que coincidan con tus filtros o búsqueda.
               </p>
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="text-sm text-gray-500">
                 Intenta ajustar tus filtros o prueba con otros términos.
               </p>
             </div>

@@ -19,8 +19,30 @@ import {
   Search,
   ShoppingCart,
   User,
-  X
+  X,
+  Gamepad2,
+  Sparkles,
+  Ship,
+  Swords,
+  Moon,
+  Flame,
+  Gift,
+  Tag,
+  Zap
 } from 'lucide-react';
+
+const CATEGORY_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  'pokemon-tcg': Sparkles,
+  'one-piece-tcg': Ship,
+  'star-wars-unlimited': Swords,
+  'yu-gi-oh': Moon,
+  'dragon-ball': Flame,
+};
+
+const renderCategoryIcon = (categoryId: string, className = 'h-4 w-4') => {
+  const IconComponent = CATEGORY_ICON_MAP[categoryId] || Gamepad2;
+  return <IconComponent className={className} />;
+};
 
 export default function UnifiedHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -212,7 +234,9 @@ const handleMobileCategoryLinkClick = (
           {/* Top Banner - Gaming Theme */}
           <div className="text-[9px] sm:text-[10px] lg:text-[11px] uppercase tracking-[0.32em] text-white bg-gradient-to-r from-yellow-300/80 via-secondary/70 to-accent/60">
             <div className="mx-auto flex max-w-full items-center justify-between gap-2 sm:gap-4 px-4 py-2 sm:px-6 lg:px-8">
-              <span className="font-bold text-yellow-300">🎮 GAMERHOUSE - ¡Bienvenido Jugador!</span>
+              <span className="font-bold text-yellow-300 inline-flex items-center gap-2">
+                <Gamepad2 className="h-4 w-4" /> GAMERHOUSE - ¡Bienvenido Jugador!
+              </span>
 
               {/* Mobile User + Cart Icons in Top Banner */}
               <div className="flex items-center gap-2 sm:hidden">
@@ -247,11 +271,11 @@ const handleMobileCategoryLinkClick = (
               {/* Desktop Info */}
               <div className="hidden gap-6 text-[11px] font-semibold sm:flex">
                 <span className="flex items-center gap-2 text-white/90 hover:text-yellow-300 transition-colors">
-                  <span aria-hidden className="text-sm">⚡</span>
+                  <Zap className="h-4 w-4" />
                   Envío Rápido
                 </span>
                 <span className="flex items-center gap-2 text-white/90 hover:text-yellow-300 transition-colors">
-                  <span aria-hidden className="text-sm">🎁</span>
+                  <Gift className="h-4 w-4" />
                   Ofertas Exclusivas
                 </span>
               </div>
@@ -286,7 +310,7 @@ const handleMobileCategoryLinkClick = (
                   <div className="absolute left-0 top-full mt-3 w-72 sm:w-96 lg:w-[420px] rounded-2xl border border-yellow-300/40 bg-slate-900/95 shadow-[0_15px_45px_rgba(0,217,255,0.2)] backdrop-blur-lg z-50 overflow-hidden">
                     <div className="flex items-center justify-between px-5 py-3 bg-gradient-to-r from-yellow-300/20 to-secondary/20 border-b border-yellow-300/30">
                       <span className="flex items-center gap-2 text-sm font-semibold text-yellow-300">
-                        <span className="text-base">🏷️</span>
+                        <Tag className="h-4 w-4" />
                         Todas las categorías
                       </span>
                       <span className="text-xs font-medium text-yellow-300">{categories.length} disponibles</span>
@@ -328,7 +352,7 @@ const handleMobileCategoryLinkClick = (
                                   aria-controls={`desktop-subcategories-${category.id}`}
                                 >
                                   <div className="flex items-center space-x-3">
-                                    <span className="text-lg">{category.icon || '📦'}</span>
+                                    {renderCategoryIcon(category.id, 'h-4 w-4 text-white')}
                                     <span>{category.name}</span>
                                   </div>
                                   <span className="text-yellow-400 font-semibold">
@@ -343,7 +367,7 @@ const handleMobileCategoryLinkClick = (
                                 >
                                   <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-3">
-                                      <span className="text-lg">{category.icon || '📦'}</span>
+                                      {renderCategoryIcon(category.id, 'h-4 w-4 text-white')}
                                       <span>{category.name}</span>
                                     </div>
                                     <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -387,7 +411,7 @@ const handleMobileCategoryLinkClick = (
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-3">
-                                  <span className="text-lg">🔥</span>
+                                  <Flame className="h-4 w-4 text-yellow-300" />
                                   <span>Ofertas</span>
                                 </div>
                                 <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -401,7 +425,7 @@ const handleMobileCategoryLinkClick = (
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-3">
-                                  <span className="text-lg">✨</span>
+                                  <Sparkles className="h-4 w-4 text-yellow-300" />
                                   <span>Nuevos</span>
                                 </div>
                                 <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -620,7 +644,7 @@ const handleMobileCategoryLinkClick = (
               <div className="mx-auto max-w-full px-6 py-6 max-h-[calc(100vh-180px)] overflow-y-auto">
               <div className="space-y-3">
                 <div className="text-lg font-bold text-white mb-4 px-2 flex items-center gap-2">
-                  <span className="text-yellow-400">🏷️</span>
+                  <Tag className="h-4 w-4 text-yellow-400" />
                   Categorías ({categories.length} encontradas)
                 </div>
 
@@ -693,7 +717,7 @@ const handleMobileCategoryLinkClick = (
                             aria-controls={`mobile-subcategories-${category.id}`}
                           >
                             <div className="flex items-center space-x-3">
-                              <span className="text-lg">{category.icon || '📦'}</span>
+                              {renderCategoryIcon(category.id, 'h-4 w-4 text-white')}
                               <span>{category.name}</span>
                             </div>
                             <span className="text-yellow-400 font-semibold">
@@ -708,7 +732,7 @@ const handleMobileCategoryLinkClick = (
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-3">
-                                <span className="text-lg">{category.icon || '📦'}</span>
+                                {renderCategoryIcon(category.id, 'h-4 w-4 text-white')}
                                 <span>{category.name}</span>
                               </div>
                               <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -774,10 +798,10 @@ const handleMobileCategoryLinkClick = (
                         className="group block w-full text-left px-4 py-2.5 text-yellow-300 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-lg transition-all duration-300 font-medium border border-yellow-300/20 shadow-sm hover:shadow-md hover:border-yellow-300/30 hover:scale-105"
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <span className="text-lg">🔥</span>
-                            <span>Ofertas</span>
-                          </div>
+                        <div className="flex items-center space-x-3">
+                          <Flame className="h-4 w-4 text-yellow-300" />
+                          <span>Ofertas</span>
+                        </div>
                           <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>
@@ -788,10 +812,10 @@ const handleMobileCategoryLinkClick = (
                         className="group block w-full text-left px-4 py-2.5 text-yellow-300 hover:bg-gradient-to-r hover:from-yellow-300/20 hover:to-secondary/10 hover:text-yellow-300 rounded-lg transition-all duration-300 font-medium border border-yellow-300/20 shadow-sm hover:shadow-md hover:border-yellow-300/30 hover:scale-105"
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <span className="text-lg">✨</span>
-                            <span>Nuevos</span>
-                          </div>
+                        <div className="flex items-center space-x-3">
+                          <Sparkles className="h-4 w-4 text-yellow-300" />
+                          <span>Nuevos</span>
+                        </div>
                           <span className="text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                         </div>
                       </Link>

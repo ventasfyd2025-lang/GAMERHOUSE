@@ -16,6 +16,7 @@ import Layout from '@/components/Layout';
 import OfferPopup from '@/components/OfferPopup';
 import { useOfferPopup } from '@/hooks/useOfferPopup';
 import { ChevronLeftIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { Package, XCircle } from 'lucide-react';
 
 const formatDescriptionHtml = (raw?: string): string => {
   if (!raw) {
@@ -113,10 +114,10 @@ export default function ProductPage() {
               oferta: firebaseData.precioRebajado ? true : false
             };
 
-            console.log('📦 Producto cargado:', productData.nombre);
-            console.log('💰 Precios:', { normal: firebaseData.precioNormal, rebajado: firebaseData.precioRebajado });
-            console.log('📁 Categorías:', productData.categorias);
-            console.log('📸 Imágenes del producto:', {
+            console.log('Producto cargado:', productData.nombre);
+            console.log('Precios:', { normal: firebaseData.precioNormal, rebajado: firebaseData.precioRebajado });
+            console.log('Categorías:', productData.categorias);
+            console.log('Imágenes del producto:', {
               imagen: productData.imagen,
               imagenes: productData.imagenes,
               totalImagenes: productData.imagenes?.length || 0
@@ -220,8 +221,8 @@ export default function ProductPage() {
       <Layout>
         <div className="flex min-h-[60vh] items-center justify-center bg-[var(--surface-alt)] px-4 py-16">
           <div className="modern-card w-full max-w-lg p-10 text-center space-y-4">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-rose-50 text-rose-500 text-3xl">
-              ❌
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-rose-50 text-rose-500">
+              <XCircle className="h-8 w-8" />
             </div>
             <h1 className="text-2xl font-semibold text-slate-900">
               {error || 'Producto no encontrado'}
@@ -278,8 +279,8 @@ export default function ProductPage() {
                     priority
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <span className="text-7xl text-slate-300">📦</span>
+                  <div className="flex h-full w-full items-center justify-center text-slate-300">
+                    <Package className="h-12 w-12" />
                   </div>
                 );
               })()}

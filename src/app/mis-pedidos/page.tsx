@@ -15,7 +15,8 @@ import {
   XCircle,
   MessageSquare,
   Home,
-  ArrowLeft
+  ArrowLeft,
+  Package
 } from 'lucide-react';
 
 interface OrderItem {
@@ -199,7 +200,7 @@ export default function OrdersPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
-                <span className="text-white text-lg">📦</span>
+                <Package className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
@@ -231,10 +232,11 @@ export default function OrdersPage() {
             <p className="text-lg text-yellow-300 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
-              className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20"
+              className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 inline-flex items-center gap-2"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
-              🛍️ Ir a la Tienda
+              <ShoppingBag className="h-5 w-5" />
+              Ir a la Tienda
             </button>
           </div>
         ) : (

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
-import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, ShoppingCart, Package, CreditCard, Trash } from 'lucide-react';
 
 export default function CartPageClient() {
   const { items, updateQuantity, removeItem, clearCart, getTotalPrice } = useCart();
@@ -40,10 +40,11 @@ export default function CartPageClient() {
           </div>
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
             style={{ background: 'linear-gradient(120deg, var(--primary), var(--primary-hover))', boxShadow: '0 25px 45px -35px rgba(220, 38, 38, 0.8)' }}
           >
-            🛍️ Explorar productos
+            <ShoppingBag className="h-5 w-5" />
+            Explorar productos
           </Link>
         </div>
       </div>
@@ -56,7 +57,7 @@ export default function CartPageClient() {
         <div className="modern-card p-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-500">
-              🛒
+              <ShoppingCart className="h-6 w-6" />
             </div>
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Resumen</p>
@@ -87,7 +88,9 @@ export default function CartPageClient() {
                         sizes="(max-width: 640px) 100vw, 96px"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center text-3xl">📦</div>
+                      <div className="flex h-full w-full items-center justify-center text-slate-400">
+                        <Package className="h-6 w-6" />
+                      </div>
                     )}
                   </div>
 
@@ -166,17 +169,19 @@ export default function CartPageClient() {
 
               <Link
                 href="/checkout"
-                className="inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{ background: 'linear-gradient(120deg, var(--primary), var(--primary-hover))', boxShadow: '0 30px 70px -45px rgba(220, 38, 38, 0.9)' }}
               >
-                💳 Finalizar compra
+                <CreditCard className="h-5 w-5" />
+                Finalizar compra
               </Link>
 
               <button
                 onClick={clearCart}
-                className="w-full rounded-2xl border border-slate-200 px-5 py-3 text-base font-semibold text-slate-600 transition hover:border-slate-300"
+                className="w-full rounded-2xl border border-slate-200 px-5 py-3 text-base font-semibold text-slate-600 transition hover:border-slate-300 inline-flex items-center justify-center gap-2"
               >
-                🗑️ Vaciar carrito
+                <Trash className="h-4 w-4" />
+                Vaciar carrito
               </button>
 
               <Link

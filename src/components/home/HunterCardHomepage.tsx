@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
+import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight, Sparkles, Ship, Swords, Moon, Flame, Gamepad2, Shield } from 'lucide-react';
 import { productMatchesCategory, productMatchesSubcategory } from '@/utils/category';
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
@@ -17,14 +17,14 @@ const ITEMS_PER_PAGE = 20;
 
 // TCG Categories for featured sections
 const TCG_CATEGORIES = [
-  { id: 'pokemon-tcg', name: 'Pokémon TCG', emoji: '🎴', color: 'from-yellow-400 to-red-500' },
-  { id: 'one-piece-tcg', name: 'One Piece TCG', emoji: '⛵', color: 'from-blue-400 to-red-500' },
-  { id: 'star-wars-unlimited', name: 'Star Wars Unlimited', emoji: '⚔️', color: 'from-blue-600 to-yellow-600' },
-  { id: 'yu-gi-oh', name: 'Yu-Gi-Oh!', emoji: '🌙', color: 'from-purple-500 to-blue-600' },
-  { id: 'dragon-ball', name: 'Dragon Ball', emoji: '🔵', color: 'from-orange-400 to-red-500' },
-  { id: 'digimon', name: 'Digimon', emoji: '🟥', color: 'from-red-500 to-pink-600' },
-  { id: 'magic-the-gathering', name: 'Magic The Gathering', emoji: '✨', color: 'from-indigo-600 to-purple-800' },
-  { id: 'mitos-y-leyendas', name: 'Mitos y Leyendas', emoji: '🏛️', color: 'from-amber-600 to-orange-700' },
+  { id: 'pokemon-tcg', name: 'Pokémon TCG', Icon: Sparkles, color: 'from-yellow-400 to-red-500' },
+  { id: 'one-piece-tcg', name: 'One Piece TCG', Icon: Ship, color: 'from-blue-400 to-red-500' },
+  { id: 'star-wars-unlimited', name: 'Star Wars Unlimited', Icon: Swords, color: 'from-blue-600 to-yellow-600' },
+  { id: 'yu-gi-oh', name: 'Yu-Gi-Oh!', Icon: Moon, color: 'from-purple-500 to-blue-600' },
+  { id: 'dragon-ball', name: 'Dragon Ball', Icon: Flame, color: 'from-orange-400 to-red-500' },
+  { id: 'digimon', name: 'Digimon', Icon: Gamepad2, color: 'from-red-500 to-pink-600' },
+  { id: 'magic-the-gathering', name: 'Magic The Gathering', Icon: Sparkles, color: 'from-indigo-600 to-purple-800' },
+  { id: 'mitos-y-leyendas', name: 'Mitos y Leyendas', Icon: Shield, color: 'from-amber-600 to-orange-700' },
 ];
 
 export default function HunterCardHomepage() {
@@ -203,7 +203,7 @@ export default function HunterCardHomepage() {
                 <div className="absolute inset-0 bg-slate-950/40" />
                 <div className="relative h-full flex items-center justify-between px-6">
                   <div>
-                    <span className="text-4xl mb-2">{cat.emoji}</span>
+                    <cat.Icon className="h-8 w-8 text-white" />
                     <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-yellow-300 transition-colors">
                       {cat.name}
                     </h3>
@@ -276,7 +276,8 @@ export default function HunterCardHomepage() {
                   activeSinglesTab === idx ? 'chip-option-active' : ''
                 }`}
               >
-                {cat.emoji} {cat.name}
+                <cat.Icon className="h-4 w-4" />
+                {cat.name}
               </button>
             ))}
           </div>
@@ -300,7 +301,7 @@ export default function HunterCardHomepage() {
         {/* Ofertas Especiales */}
         <section className="space-y-8 rounded-3xl border border-yellow-300/15 bg-gradient-to-br from-red-900/20 via-[#05070f]/70 to-[#05070f]/70 p-6 sm:p-8 backdrop-blur-xl ring-1 ring-red-500/20">
           <div className="flex items-center gap-3">
-            <span className="text-4xl">🔥</span>
+            <Flame className="h-8 w-8 text-yellow-300" />
             <div>
               <h2 className="text-2xl sm:text-3xl font-semibold text-white">
                 Remate Final 2025

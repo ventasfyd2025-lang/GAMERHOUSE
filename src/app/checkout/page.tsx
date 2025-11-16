@@ -10,6 +10,17 @@ import { useBankConfig } from '@/hooks/useBankConfig';
 import { useMercadoPago } from '@/hooks/useMercadoPago';
 import { useEmailNotifications } from '@/hooks/useEmailNotifications';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import {
+  CreditCard,
+  ClipboardList,
+  UserRound,
+  Truck,
+  Store,
+  Banknote,
+  Paperclip,
+  Package,
+  Check
+} from 'lucide-react';
 import { addDoc, collection } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -258,14 +269,14 @@ function CheckoutContent() {
         }
       }
 
-      console.log('🔄 Iniciando proceso de transferencia...');
-      console.log('📁 Archivo del comprobante:', comprobanteFile.name, comprobanteFile.size, 'bytes');
+      console.log('Iniciando proceso de transferencia...');
+      console.log('Archivo del comprobante:', comprobanteFile.name, comprobanteFile.size, 'bytes');
 
       // Crear ID temporal para la orden
       const tempOrderId = `temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
       // PASO 1: Reservar stock antes de continuar
-      console.log('📦 Reservando stock para los productos...');
+      console.log('Reservando stock para los productos...');
       try {
         await reserveCartStock(tempOrderId);
         console.log('✅ Stock reservado exitosamente');
@@ -310,12 +321,12 @@ function CheckoutContent() {
         createdAt: new Date()
       };
 
-      console.log('📝 Creando orden en Firestore...');
+      console.log('Creando orden en Firestore...');
       const orderRef = await addDoc(collection(db, 'gamerhouse_orders'), orderData);
       console.log('✅ Orden creada exitosamente:', orderRef.id);
 
       // Enviar notificación por email
-      console.log('📧 Enviando notificación por email...');
+      console.log('Enviando notificación por email...');
       notifyNewOrder({
         orderId: orderRef.id,
         customerName: finalData.name,
@@ -334,18 +345,18 @@ function CheckoutContent() {
       }).catch(err => console.error('Error enviando email:', err));
 
       // Mensaje actualizado para transferencia
-      const paymentMessage = '\n\n💰 Método de pago: Transferencia Bancaria\n✅ Comprobante recibido exitosamente.\n🔍 Verificaremos tu pago y te confirmaremos por email.\n📧 Recibirás un email con tu número de orden.\n📦 Envíanos los datos de envío o día de retiro para coordinar la entrega.';
+      const paymentMessage = '\n\nMétodo de pago: Transferencia Bancaria\nComprobante recibido exitosamente.\nVerificaremos tu pago y te confirmaremos por email.\nRecibirás un email con tu número de orden.\nEnvíanos los datos de envío o día de retiro para coordinar la entrega.';
 
       // Crear mensaje de chat solo si el usuario está autenticado
       if (isRegistered && (currentUser as any)?.uid) {
-        console.log('💬 Creando mensaje de chat...');
+      console.log('Creando mensaje de chat para la orden...');
         try {
           await addDoc(collection(db, 'chat_messages'), {
             orderId: orderRef.id,
             userId: (currentUser as any).uid,
             userEmail: finalData.email,
             userName: 'Sistema GAMERHOUSE',
-            message: `¡Hola ${finalData.name}! 👋\n\nTu pedido #${orderRef.id.slice(-8).toUpperCase()} ha sido recibido exitosamente.${paymentMessage}\n\n📋 Puedes hacer seguimiento del estado en "Mis Pedidos".\n💬 Si tienes alguna pregunta, no dudes en escribirnos aquí.\n\n¡Gracias por elegir GAMERHOUSE!`,
+        message: `Hola ${finalData.name}!\n\nTu pedido #${orderRef.id.slice(-8).toUpperCase()} ha sido recibido exitosamente.${paymentMessage}\n\nPuedes hacer seguimiento del estado en "Mis Pedidos".\nSi tienes alguna pregunta, no dudes en escribirnos por este chat.\n\n¡Gracias por elegir GAMERHOUSE!`,
             isAdmin: true,
             timestamp: new Date(),
             read: false
@@ -392,7 +403,7 @@ function CheckoutContent() {
       setOrderSuccess(true);
 
       const successPath = `/checkout/success?${successUrl.toString()}`;
-      console.log('🎉 Redirigiendo a página de éxito:', successPath);
+      console.log('Redirigiendo a página de éxito:', successPath);
 
       // Redirigir después de 3 segundos
       setTimeout(() => {
@@ -405,7 +416,7 @@ function CheckoutContent() {
 
       // Si hubo un error después de reservar stock, intentar liberarlo
       try {
-        console.log('🔄 Intentando liberar stock reservado...');
+      console.log('Intentando liberar stock reservado...');
         await releaseCartStock();
         console.log('✅ Stock liberado exitosamente');
       } catch (releaseError) {
@@ -479,7 +490,7 @@ function CheckoutContent() {
           <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
-                <span className="text-white text-lg">💳</span>
+                <CreditCard className="h-5 w-5 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">
@@ -497,9 +508,10 @@ function CheckoutContent() {
           {/* Checkout Form */}
           <div className="lg:col-span-2">
             <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden">
-              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
+              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4 flex items-center gap-3">
+                <ClipboardList className="h-5 w-5 text-white" />
                 <h2 className="text-xl font-semibold text-white">
-                  📝 Datos de entrega
+                  Datos de entrega
                 </h2>
               </div>
 
@@ -509,7 +521,7 @@ function CheckoutContent() {
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0">
                           <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center shadow-md">
-                            <span className="text-white text-lg">👤</span>
+                            <UserRound className="h-5 w-5 text-white" />
                           </div>
                         </div>
                         <div className="flex-1">
@@ -633,9 +645,9 @@ function CheckoutContent() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-2xl">🚚</span>
+                          <Truck className="h-6 w-6 text-white" />
                           {deliveryType === 'envio' && (
-                            <span className="text-yellow-300 font-bold">✓</span>
+                            <Check className="h-4 w-4 text-yellow-300" />
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Envío a domicilio</div>
@@ -652,9 +664,9 @@ function CheckoutContent() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-2xl">🏪</span>
+                          <Store className="h-6 w-6 text-white" />
                           {deliveryType === 'retiro' && (
-                            <span className="text-green-600 font-bold">✓</span>
+                            <Check className="h-4 w-4 text-green-500" />
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Retiro en tienda</div>
@@ -700,9 +712,9 @@ function CheckoutContent() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-2xl">💳</span>
+                          <CreditCard className="h-6 w-6 text-white" />
                           {paymentMethod === 'mercadopago' && (
-                            <span className="text-red-600 font-bold">✓</span>
+                            <Check className="h-4 w-4 text-red-600" />
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">MercadoPago</div>
@@ -720,9 +732,9 @@ function CheckoutContent() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-2xl">🏦</span>
+                          <Banknote className="h-6 w-6 text-white" />
                           {paymentMethod === 'transferencia' && (
-                            <span className="text-yellow-300 font-bold">✓</span>
+                            <Check className="h-4 w-4 text-yellow-300" />
                           )}
                         </div>
                         <div className="font-semibold text-white text-left">Transferencia</div>
@@ -734,10 +746,10 @@ function CheckoutContent() {
                     {paymentMethod === 'mercadopago' && (
                       <div className="p-4 border border-amber-300 bg-yellow-50 rounded-lg">
                         <div className="flex items-center mb-4">
-                          <span className="text-2xl mr-3">💳</span>
+                          <CreditCard className="h-6 w-6 mr-3 text-slate-900" />
                           <div>
-                            <div className="font-medium text-white">Pago con MercadoPago</div>
-                            <div className="text-sm text-yellow-300">Paga con tarjeta de crédito, débito o efectivo</div>
+                            <div className="font-medium text-slate-900">Pago con MercadoPago</div>
+                            <div className="text-sm text-slate-600">Paga con tarjeta de crédito, débito o efectivo</div>
                           </div>
                         </div>
 
@@ -772,7 +784,7 @@ function CheckoutContent() {
                     {paymentMethod === 'transferencia' && (
                       <div className="p-4 border border-yellow-300-300 bg-slate-800 rounded-lg">
                       <div className="flex items-center mb-4">
-                        <span className="text-2xl mr-3">🏦</span>
+                        <Banknote className="h-6 w-6 mr-3 text-white" />
                         <div>
                           <div className="font-medium text-white">Transferencia Bancaria</div>
                           <div className="text-sm text-yellow-300">Transfiere el monto total y sube el comprobante</div>
@@ -781,7 +793,10 @@ function CheckoutContent() {
 
                       {/* Datos bancarios */}
                       <div className="bg-slate-900/80 border border-yellow-300/30 rounded-lg p-4 mb-4">
-                        <h4 className="font-semibold text-white mb-3">📋 Datos para transferencia:</h4>
+                        <h4 className="font-semibold text-white mb-3 inline-flex items-center gap-2">
+                          <ClipboardList className="h-5 w-5" />
+                          Datos para transferencia:
+                        </h4>
                         {bankLoading ? (
                           <div className="flex items-center justify-center py-4">
                             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-yellow-300"></div>
@@ -819,7 +834,10 @@ function CheckoutContent() {
 
                       {/* Upload comprobante */}
                       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-white mb-3">📎 Sube tu comprobante de transferencia:</h4>
+                        <h4 className="font-semibold text-slate-900 mb-3 inline-flex items-center gap-2">
+                          <Paperclip className="h-5 w-5" />
+                          Sube tu comprobante de transferencia:
+                        </h4>
                         <input
                           type="file"
                           id="comprobante"
@@ -864,9 +882,10 @@ function CheckoutContent() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden sticky top-8">
-              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4">
+              <div className="bg-gradient-to-r from-primary to-pink px-6 py-4 flex items-center gap-3">
+                <Package className="h-5 w-5 text-white" />
                 <h2 className="text-xl font-semibold text-white">
-                  📦 Resumen del pedido
+                  Resumen del pedido
                 </h2>
               </div>
 
@@ -883,8 +902,8 @@ function CheckoutContent() {
                             className="w-full h-full object-cover rounded-md"
                           />
                         ) : (
-                          <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center">
-                            <span className="text-yellow-300 text-lg">📦</span>
+                          <div className="w-full h-full bg-slate-800 rounded-md flex items-center justify-center text-yellow-300">
+                            <Package className="h-4 w-4" />
                           </div>
                         )}
                       </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle, Clock, Banknote } from 'lucide-react';
+import { CheckCircle, Clock, Banknote, CreditCard, ShoppingBag, Package, Mail } from 'lucide-react';
 import { useOrderNotifications } from '@/hooks/useOrderNotifications';
 import { useCart } from '@/context/CartContext';
 import { doc, getDoc } from 'firebase/firestore';
@@ -57,8 +57,8 @@ function PaymentSuccessContent() {
 
           if (orderDoc.exists()) {
             const orderData = orderDoc.data();
-            console.log('📦 Datos de la orden:', orderData);
-            console.log('🛍️ Items de la orden:', orderData.items);
+    console.log('Datos de la orden:', orderData);
+    console.log('Items de la orden:', orderData.items);
 
             // Calcular total desde items si el total guardado es 0
             const savedTotal = orderData.total || 0;
@@ -66,9 +66,9 @@ function PaymentSuccessContent() {
               sum + (item.precio * item.cantidad), 0) || 0;
             const finalTotal = savedTotal > 0 ? savedTotal : (calculatedTotal > 0 ? calculatedTotal : parseInt(total));
 
-            console.log('💰 Total guardado:', savedTotal);
-            console.log('💰 Total calculado desde items:', calculatedTotal);
-            console.log('💰 Total final:', finalTotal);
+    console.log('Total guardado:', savedTotal);
+    console.log('Total calculado desde items:', calculatedTotal);
+    console.log('Total final:', finalTotal);
 
             setOrderInfo({
               orderId,
@@ -135,7 +135,7 @@ function PaymentSuccessContent() {
 
     // Limpiar carrito después de un pedido exitoso
     if (typeof window !== 'undefined') {
-      console.log('🛒 Limpiando carrito en página de éxito...');
+    console.log('Limpiando carrito en página de éxito...');
       localStorage.removeItem('cart');
       clearCart(); // Limpiar también el contexto del carrito
     }
@@ -215,7 +215,9 @@ function PaymentSuccessContent() {
                             </>
                           ) : (
                             <>
-                              <span className="text-base text-white">💳 MercadoPago</span>
+                          <span className="text-base text-white inline-flex items-center gap-2">
+                            <CreditCard className="h-4 w-4" /> MercadoPago
+                          </span>
                             </>
                           )}
                         </div>
@@ -326,9 +328,10 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors shadow-md hover:shadow-lg shadow-red-600/20 relative"
+                className="flex items-center justify-center gap-2 py-3 px-6 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors shadow-md hover:shadow-lg shadow-red-600/20 relative"
               >
-                📦 Ver Mis Pedidos
+                <Package className="h-5 w-5" />
+                Ver Mis Pedidos
                 {unreadOrderNotifications > 0 && (
                   <span className="absolute -top-2 -right-2 bg-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
                     {unreadOrderNotifications > 9 ? '9+' : unreadOrderNotifications}
@@ -338,9 +341,10 @@ function PaymentSuccessContent() {
 
               <Link
                 href="/"
-                className="flex items-center justify-center py-3 px-6 border border-yellow-300/40 rounded-lg text-base font-medium text-yellow-300 bg-slate-900/80 hover:bg-slate-900 transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
+                className="flex items-center justify-center gap-2 py-3 px-6 border border-yellow-300/40 rounded-lg text-base font-medium text-yellow-300 bg-slate-900/80 hover:bg-slate-900 transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
               >
-                🛍️ Continuar Comprando
+                <ShoppingBag className="h-5 w-5" />
+                Continuar Comprando
               </Link>
             </div>
 
@@ -356,10 +360,9 @@ function PaymentSuccessContent() {
 
           {/* Additional info */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-slate-800 rounded-full">
-              <span className="text-sm text-yellow-300">
-                📧 Recibirás un email de confirmación en breve
-              </span>
+            <div className="inline-flex items-center px-4 py-2 bg-slate-800 rounded-full gap-2 text-sm text-yellow-300">
+              <Mail className="h-4 w-4" />
+              Recibirás un email de confirmación en breve
             </div>
           </div>
         </div>

@@ -7,13 +7,22 @@ import { useSearchParams } from 'next/navigation';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Zap, ArrowUpRight, Menu, ChevronDown, ChevronRight, Home, Gamepad2, Sword, Sparkles, Joystick } from 'lucide-react';
 import { productMatchesCategory, productMatchesSubcategory } from '@/utils/category';
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
 import MainBanner from '@/components/home/MainBanner';
 
 const ITEMS_PER_PAGE = 20;
+
+const CATEGORY_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  'pokemon-tcg': Sparkles,
+  'one-piece-tcg': Sword,
+  'yu-gi-oh': Joystick,
+  'dragon-ball': Zap,
+};
+
+const getCategoryIcon = (categoryId: string) => CATEGORY_ICON_MAP[categoryId] || Gamepad2;
 
 export default function RetailHomepage() {
   const searchParams = useSearchParams();
@@ -294,7 +303,7 @@ export default function RetailHomepage() {
                 }}
               >
                 <span className="flex items-center gap-2">
-                  <span>🏠</span>
+                  <Home className="h-4 w-4" />
                   Todos los productos
                 </span>
               </button>
@@ -302,6 +311,7 @@ export default function RetailHomepage() {
               {categories.filter(cat => cat.id !== 'all').map(category => {
                 const subcategories = category.subcategorias?.filter(sub => sub.activa !== false) ?? [];
                 const isExpanded = expandedCategory === category.id;
+                const IconComponent = getCategoryIcon(category.id);
 
                 return (
                   <div key={category.id} className="space-y-2">
@@ -320,7 +330,7 @@ export default function RetailHomepage() {
                       }}
                     >
                       <span className="flex items-center gap-2">
-                        <span>{category.icon ?? '🎮'}</span>
+                        <IconComponent className="h-4 w-4" />
                         {category.name}
                       </span>
                       {subcategories.length > 0 && (
