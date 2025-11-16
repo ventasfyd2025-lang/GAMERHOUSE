@@ -52,7 +52,7 @@ export default function AppHeaderLight() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
-  const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const megaMenuTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
