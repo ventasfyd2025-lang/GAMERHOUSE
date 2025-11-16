@@ -23,21 +23,29 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (savedTheme) {
       setTheme(savedTheme);
     }
-    // Default remains 'light' - GAMERHOUSE is a retail/light theme by default
 
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+
+    const root = document.documentElement;
+    const bodyElement = document.body;
+
+    root.dataset.theme = theme;
+    if (bodyElement) {
+      bodyElement.setAttribute('data-theme', theme);
+    }
+  }, [theme, mounted]);
 
   // Guardar tema en localStorage
   const handleSetTheme = (newTheme: ThemeType) => {
     setTheme(newTheme);
     localStorage.setItem('gamerhouse-theme', newTheme);
   };
-
-  // Evitar hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme }}>

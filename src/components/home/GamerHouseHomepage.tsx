@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -134,29 +134,51 @@ export default function GamerHouseHomepage() {
     <div className="min-h-screen bg-[var(--surface-alt)]">
       {/* Hero or Configurable Banner */}
       <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {mainBannerConfig?.active && mainBannerConfig.slides?.length ? (
             <MainBanner
               config={mainBannerConfig}
               onResetFilters={() => router.push('/productos')}
             />
           ) : (
-            <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-[0_45px_120px_-60px_rgba(15,23,42,0.4)]">
-              <div className="max-w-2xl space-y-4">
-                <span className="eyebrow-text">Gaming & collectibles</span>
-                <h1 className="text-4xl sm:text-5xl font-bold text-slate-900">
-                  Bienvenido a GAMER HOUSE
-                </h1>
-                <p className="text-lg sm:text-xl text-slate-600">
-                  Tu tienda especializada en Trading Card Games. Los mejores precios en TCG, accesorios y más.
-                </p>
-                <Link
-                  href="/productos"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 px-8 py-3 font-semibold text-white shadow-[0_30px_70px_-45px_rgba(220,38,38,0.8)] transition hover:-translate-y-0.5"
-                >
-                  Explorar Catálogo
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
+            <div className="surface-card relative overflow-hidden p-10 sm:p-12">
+              <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(236,72,153,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(248,181,0,0.25),transparent_55%)]" />
+              <div className="relative z-10 grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
+                <div className="section-heading">
+                  <span className="section-heading__eyebrow">Gaming & collectibles</span>
+                  <h1 className="section-heading__title">Bienvenido a GAMER HOUSE</h1>
+                  <p className="section-heading__description">
+                    Curamos lanzamientos oficiales y pre-orders de Pokémon, One Piece, Yu-Gi-Oh! y más. Compra seguro con envíos a todo Chile.
+                  </p>
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    <Link href="/productos" className="btn-solid">
+                      Explorar catálogo
+                      <ArrowRight className="h-5 w-5" />
+                    </Link>
+                    <Link href="/contacto" className="btn-soft">
+                      Hablar con un asesor
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="stat-pill">
+                    <span>Productos activos</span>
+                    <strong>+{products.length || 0}</strong>
+                  </div>
+                  <div className="stat-pill">
+                    <span>Pre-venta</span>
+                    <strong>{products.filter((p) => p.nuevo).length || 0}</strong>
+                  </div>
+                  <div className="stat-pill">
+                    <span>Ofertas vivas</span>
+                    <strong>{products.filter((p) => p.oferta).length || 0}</strong>
+                  </div>
+                  <div className="stat-pill">
+                    <span>Marcas</span>
+                    <strong>{activeCategories.length}</strong>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -169,23 +191,30 @@ export default function GamerHouseHomepage() {
       {/* Categories Section */}
       <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <span className="eyebrow-text">Explora por categoría</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">CATEGORÍAS</h2>
+          <div className="section-heading mb-8">
+            <span className="section-heading__eyebrow">Explora por categoría</span>
+            <h2 className="section-heading__title text-3xl sm:text-4xl">Categorías estrella</h2>
+            <p className="section-heading__description">
+              Curadas según lanzamientos recientes y colecciones populares de la comunidad.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {activeCategories.map((category) => {
               const catInfo = CATEGORY_ICONS[category.id] || { Icon: Sparkles, color: 'from-gray-400 to-gray-600' };
               const { Icon } = catInfo;
               return (
                 <Link key={category.id} href={`/categoria/${category.id}`} className="group">
-                  <div className={`relative rounded-2xl p-6 h-40 flex flex-col items-center justify-center text-white overflow-hidden shadow-[0_35px_85px_-55px_rgba(15,23,42,0.7)] bg-gradient-to-br ${catInfo.color}`}>
-                    <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/20" />
-                    <Icon className="w-12 h-12 mb-2 relative z-10" />
-                    <h3 className="font-bold text-center text-sm sm:text-base relative z-10">
-                      {category.name || category.id}
-                    </h3>
+                  <div className="surface-card relative h-40 overflow-hidden p-6 transition hover:-translate-y-1">
+                    <div className={`absolute inset-0 opacity-70 bg-gradient-to-br ${catInfo.color}`} />
+                    <div className="relative z-10 flex h-full flex-col items-start justify-between text-white">
+                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20">
+                        <Icon className="h-6 w-6" />
+                      </span>
+                      <h3 className="text-lg font-semibold">
+                        {category.name || category.id}
+                      </h3>
+                    </div>
                   </div>
                 </Link>
               );
@@ -197,9 +226,12 @@ export default function GamerHouseHomepage() {
       {/* Featured Products */}
       <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <span className="eyebrow-text">Selección curada</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">DESTACADOS</h2>
+          <div className="section-heading mb-8">
+            <span className="section-heading__eyebrow">Selección curada</span>
+            <h2 className="section-heading__title text-3xl sm:text-4xl">Destacados</h2>
+            <p className="section-heading__description">
+              Productos con stock disponible y recomendados por nuestro equipo.
+            </p>
           </div>
 
           {productsLoading ? (
@@ -221,11 +253,14 @@ export default function GamerHouseHomepage() {
 
       {/* Offers Section */}
       {products.some(p => p.precioOriginal && p.precioOriginal > p.precio) && (
-        <section className="bg-gamerhouse-red text-white py-12 sm:py-16">
+        <section className="bg-gradient-to-br from-[#0f172a] via-[#1f2035] to-[#241926] text-white py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-2">¡OFERTAS!</h2>
-              <div className="h-1 w-20 bg-gamerhouse-gold"></div>
+            <div className="section-heading mb-8">
+              <span className="section-heading__eyebrow text-yellow-200">Bonos temporales</span>
+              <h2 className="section-heading__title text-white">Ofertas activas</h2>
+              <p className="section-heading__description text-white/80">
+                Descuentos dinámicos para rotar inventario y darle aire a tus colecciones.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -238,10 +273,7 @@ export default function GamerHouseHomepage() {
             </div>
 
             <div className="text-center mt-8">
-              <Link
-                href="/productos"
-                className="inline-flex items-center gap-2 bg-gamerhouse-gold text-gamerhouse-navy px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors"
-              >
+              <Link href="/productos?filter=ofertas" className="btn-solid">
                 Ver todas las ofertas
                 <ArrowRight className="h-5 w-5" />
               </Link>

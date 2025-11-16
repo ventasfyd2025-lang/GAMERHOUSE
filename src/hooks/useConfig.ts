@@ -15,6 +15,8 @@ interface BannerConfig {
   text: string;
   active: boolean;
   images: string[];
+  ctaUrl?: string;
+  ctaLabel?: string;
 }
 
 type MainBannerLinkType = 'product' | 'category' | 'url';
@@ -49,6 +51,8 @@ const DEFAULT_BANNER: BannerConfig = {
   text: 'Hasta 50% de descuento en productos seleccionados',
   active: false,
   images: [],
+  ctaUrl: '/productos',
+  ctaLabel: 'Ver más',
 };
 
 const DEFAULT_MAIN_BANNER: MainBannerConfig = {
@@ -91,6 +95,8 @@ const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerC
   images: Array.isArray(raw?.images)
     ? raw!.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
     : [],
+  ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_BANNER.ctaUrl,
+  ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_BANNER.ctaLabel,
 });
 
 export function useConfig() {

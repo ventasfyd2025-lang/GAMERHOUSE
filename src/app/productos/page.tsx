@@ -228,70 +228,71 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
         <section className="flex flex-col gap-6">
-          <header className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/20">
-            <div className="hero-bg opacity-70" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.12),transparent_55%)]" />
-            <div className="relative px-6 sm:px-10 py-10 space-y-8">
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                <div className="space-y-4">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="tag-legendary">Catálogo gamer</span>
-                    <span className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-yellow-100">
-                      +{filteredProducts.length} productos activos
-                    </span>
-                  </div>
+          <div className="surface-card relative overflow-hidden px-6 sm:px-10 py-10">
+            <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.25),transparent_55%)]" />
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="space-y-5">
+                <span className="section-heading__eyebrow">Catálogo gamer</span>
+                <h1 className="section-heading__title text-3xl sm:text-[2.75rem]">
+                  Todos los productos disponibles
+                </h1>
+                <p className="section-heading__description">
+                  Filtra por categoría, preventa, ofertas o rango de precios para encontrar tu próxima adquisición. Mostramos 20 productos por página.
+                </p>
 
-                  <h1 className="text-[2.5rem] sm:text-4xl font-semibold text-white leading-tight">
-                    Todos los productos disponibles
-                  </h1>
-                  <p className="max-w-2xl text-sm sm:text-base text-white/70">
-                    Filtra por categoría, poderes especiales u ofertas destacadas y construye tu mazo ideal. Mostramos hasta 20 artículos por página para mantener la experiencia ágil.
-                  </p>
-
-                  {activeSectionTitle && (
-                    <div className="card-dark px-5 py-4 text-sm">
-                      <p className="font-semibold text-white">
-                        Estás revisando la sección “{activeSectionTitle}”.
-                      </p>
-                      {activeSectionDescription && (
-                        <p className="mt-2 text-white/70">
-                          {activeSectionDescription}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                <div className="flex flex-wrap gap-3">
+                  <span className="chip-pill">+{filteredProducts.length} productos activos</span>
+                  <span className="chip-pill">{products.filter((product) => product.stock > 0).length} con stock disponible</span>
                 </div>
 
-                <button
-                  onClick={() => refetch()}
-                  className="btn-secondary-web w-full justify-center text-sm sm:text-base sm:w-auto"
-                >
-                  ↻ Refrescar lista
-                </button>
+                {activeSectionTitle && (
+                  <div className="glass-panel mt-6 px-5 py-4 text-sm">
+                    <p className="font-semibold text-slate-900">
+                      Estás revisando la sección “{activeSectionTitle}”.
+                    </p>
+                    {activeSectionDescription && (
+                      <p className="mt-2 text-slate-600">
+                        {activeSectionDescription}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <button
+                onClick={() => refetch()}
+                className="btn-soft w-full justify-center text-sm sm:text-base sm:w-auto"
+              >
+                ↻ Refrescar lista
+              </button>
+            </div>
+          </div>
+
+          <section className="glass-panel p-6 sm:p-8">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
+              <div className="section-heading">
+                <span className="section-heading__eyebrow">Curar resultados</span>
+                <h2 className="text-2xl font-semibold text-slate-900">Filtra tu búsqueda</h2>
               </div>
             </div>
-          </header>
-
-          <section className="card-dark">
-            <h2 className="text-lg font-semibold text-white/90 mb-4">Refina tu búsqueda</h2>
             <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 Buscar
                 <input
                   type="search"
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Nombre, descripción o SKU"
-                  className="input-web"
+                  className="form-input"
                 />
               </label>
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 Categoría
                 <select
                   value={selectedCategory}
                   onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="input-web"
+                  className="form-input"
                 >
                   {categoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -302,12 +303,12 @@ function AllProductsPageContent() {
               </label>
 
               {subcategoryOptions.length > 0 && (
-                <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+                <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                   Subcategoría
                   <select
                     value={selectedSubcategory}
                     onChange={(event) => setSelectedSubcategory(event.target.value)}
-                    className="input-web"
+                    className="form-input"
                   >
                     <option value="">Todas</option>
                     {subcategoryOptions.map((option) => (
@@ -319,7 +320,7 @@ function AllProductsPageContent() {
                 </label>
               )}
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 Rango de precio (CLP)
                 <div className="grid grid-cols-2 gap-3">
                   <input
@@ -328,7 +329,7 @@ function AllProductsPageContent() {
                     value={minPrice}
                     onChange={(event) => setMinPrice(event.target.value)}
                     placeholder="Mínimo"
-                    className="input-web"
+                    className="form-input"
                   />
                   <input
                     type="number"
@@ -336,17 +337,17 @@ function AllProductsPageContent() {
                     value={maxPrice}
                     onChange={(event) => setMaxPrice(event.target.value)}
                     placeholder="Máximo"
-                    className="input-web"
+                    className="form-input"
                   />
                 </div>
               </label>
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                 Filtro especial
                 <select
                   value={specialFilter}
                   onChange={(event) => setSpecialFilter(event.target.value as typeof specialFilter)}
-                  className="input-web"
+                  className="form-input"
                 >
                   <option value="">Todos</option>
                   <option value="destacados">Destacados</option>
@@ -367,12 +368,12 @@ function AllProductsPageContent() {
         )}
 
         {productsError && (
-          <section className="card-dark border-yellow-300/20">
-            <h2 className="text-lg font-semibold text-white mb-2">Error al cargar productos</h2>
-            <p className="text-sm text-white/70 mb-4">{productsError}</p>
+          <section className="glass-panel border border-rose-100 bg-rose-50/60">
+            <h2 className="text-lg font-semibold text-rose-700 mb-2">Error al cargar productos</h2>
+            <p className="text-sm text-rose-600 mb-4">{productsError}</p>
             <button
               onClick={() => refetch()}
-              className="btn-secondary-web w-full justify-center sm:w-auto"
+              className="btn-solid w-full justify-center sm:w-auto"
             >
               Reintentar carga
             </button>
@@ -381,26 +382,23 @@ function AllProductsPageContent() {
 
         {!productsLoading && !productsError && (
           <section className="space-y-6">
-            <div className="card-dark flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="text-sm text-white/70">
+            <div className="surface-card flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between px-5 py-4">
+              <div className="text-sm text-slate-600">
                 {filteredProducts.length} producto{filteredProducts.length === 1 ? '' : 's'} encontrados · Página {page} de {Math.max(totalPages, 1)}
               </div>
               {priceSummary && (
-                <div className="text-xs text-white/60">
+                <div className="text-xs text-slate-500">
                   Rango de precios mostrado: {priceSummary.min.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} – {priceSummary.max.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })}
                 </div>
               )}
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="hero-section overflow-hidden ring-1 ring-inset ring-yellow-300/15 text-center">
-                <div className="hero-bg opacity-60" />
-                <div className="relative px-6 sm:px-10 py-12 space-y-4">
-                  <div className="text-5xl">🔍</div>
-                  <p className="text-sm sm:text-base text-white/75">
-                    No encontramos resultados con los filtros actuales. Ajusta la búsqueda para descubrir más productos.
-                  </p>
-                </div>
+              <div className="surface-card text-center px-6 sm:px-10 py-12 space-y-4">
+                <div className="text-5xl">🔍</div>
+                <p className="text-sm sm:text-base text-slate-600">
+                  No encontramos resultados con los filtros actuales. Ajusta la búsqueda para descubrir más productos.
+                </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">

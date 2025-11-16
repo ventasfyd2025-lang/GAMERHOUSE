@@ -5,21 +5,27 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import DynamicLogo from './DynamicLogo';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [expandedCategoryId, setExpandedCategoryId] = useState<string | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
+  const { theme, setTheme } = useTheme();
 
   const activeCategories = useMemo(
     () => categories.filter(cat => cat.active !== false),
     [categories]
   );
+
+  const isDark = theme === 'dark';
+  const handleToggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark');
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,15 +41,15 @@ export default function AppHeaderLight() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 border-b border-slate-200 shadow-[0_10px_30px_-25px_rgba(15,23,42,0.45)] backdrop-blur-xl">
-      {/* Top Bar - Logo and Cart */}
-      <div className="px-4 sm:px-6 lg:px-8 py-5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-white/30 bg-white/85 dark:bg-slate-950/70 shadow-[0_25px_70px_-45px_rgba(15,23,42,0.65)] backdrop-blur-xl">
+      {/* Top Bar - Logo and Actions */}
+      <div className="px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-4 lg:flex-nowrap">
           {/* Logo - Dinámico */}
           <DynamicLogo />
 
           {/* Desktop Search */}
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8">
+          <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-xl mx-auto">
             <div className="relative w-full group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
               <input
@@ -51,19 +57,26 @@ export default function AppHeaderLight() {
                 placeholder="Buscar productos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="modern-input w-full pl-12 pr-4"
+                className="form-input pl-12"
               />
             </div>
           </form>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-6">
-            {/* Desktop Links */}
-            <div className="hidden sm:flex items-center gap-6">
-              <Link href="/perfil" className="p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200">
+          <div className="flex items-center gap-3 ml-auto">
+            <button
+              onClick={handleToggleTheme}
+              className="hidden sm:inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 bg-white/60 text-slate-600 transition-all hover:border-red-200 hover:text-red-500 dark:bg-slate-900/60 dark:text-white/70"
+              aria-label="Cambiar tema"
+            >
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+
+            <div className="hidden sm:flex items-center gap-4">
+              <Link href="/perfil" className="p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200">
+              <Link href="/carrito" className="relative p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
                   <span className="absolute -top-1 -right-1 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
@@ -76,15 +89,15 @@ export default function AppHeaderLight() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all duration-200"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 text-slate-600 hover:text-red-500 hover:border-red-200 transition-all"
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Search */}
-        <form onSubmit={handleSearch} className="md:hidden mt-4">
+        <form onSubmit={handleSearch} className="lg:hidden mt-4">
           <div className="relative group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
             <input
@@ -92,14 +105,14 @@ export default function AppHeaderLight() {
               placeholder="Buscar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="modern-input w-full pl-12 pr-4"
+              className="form-input w-full pl-12 pr-4"
             />
           </div>
         </form>
       </div>
 
       {/* Navigation Bar - Categories */}
-      <nav className="bg-gradient-to-r from-slate-900 to-slate-800 text-white border-t border-slate-800/30">
+      <nav className="bg-white/70 dark:bg-slate-950/60 border-t border-white/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Desktop Categories */}
@@ -108,18 +121,18 @@ export default function AppHeaderLight() {
                 <button
                   key={category.id}
                   onClick={() => handleCategoryClick(category.id)}
-                  className="h-full px-4 text-sm font-semibold hover:bg-red-500/20 transition-all duration-200 whitespace-nowrap relative group"
+                  className="group relative h-full px-4 text-sm font-semibold text-slate-600 hover:text-gamerhouse-red transition-colors"
                 >
                   {category.name || category.id}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-400 to-red-600 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute bottom-2 left-4 right-4 h-[2px] scale-x-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-transform duration-200 origin-center group-hover:scale-x-100" />
                 </button>
               ))}
               {activeCategories.length > 6 && (
                 <div className="relative group h-full">
-                  <button className="h-full px-4 text-sm font-semibold hover:bg-red-600 transition-all duration-200 flex items-center gap-1 whitespace-nowrap">
+                  <button className="h-full px-4 text-sm font-semibold flex items-center gap-1 text-slate-600 hover:text-gamerhouse-red transition-colors">
                     Más <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
                   </button>
-                  <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-lg overflow-hidden hidden group-hover:block border border-gray-100">
+                  <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-2xl overflow-hidden hidden group-hover:block border border-gray-100">
                     {activeCategories.slice(6).map((category) => (
                       <button
                         key={category.id}
@@ -136,7 +149,7 @@ export default function AppHeaderLight() {
 
             {/* Mobile Categories Button */}
             <div className="md:hidden">
-              <span className="text-sm font-bold tracking-wider">CATEGORÍAS</span>
+              <span className="text-sm font-bold tracking-wider text-slate-600">CATEGORÍAS</span>
             </div>
           </div>
         </div>
@@ -146,6 +159,14 @@ export default function AppHeaderLight() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-5 space-y-2">
+            <button
+              onClick={handleToggleTheme}
+              className="w-full flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-600"
+            >
+              Tema {isDark ? 'oscuro' : 'claro'}
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
