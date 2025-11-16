@@ -56,17 +56,17 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   }, [slide]);
 
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(220,38,38,0.08),transparent_55%),radial-gradient(circle_at_90%_10%,rgba(30,58,95,0.08),transparent_60%)] opacity-60" />
+    <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white shadow-lg">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_45%,rgba(85,201,231,0.2),transparent_55%),radial-gradient(circle_at_90%_5%,rgba(174,226,246,0.3),transparent_55%)] opacity-80" />
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
-          <span className="inline-block px-4 py-1 bg-red-50 text-gamerhouse-red text-sm font-semibold rounded-full border border-red-200">
-            {slide ? 'Banner destacado' : 'Temporada 2025'}
+          <span className="inline-block px-4 py-1 bg-sky-50 text-sky-700 text-sm font-semibold rounded-full border border-sky-100">
+            {slide ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gamerhouse-navy">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
             {title}
           </h1>
-          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-gray-600">
+          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600">
             {subtitle}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -74,14 +74,14 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
               href={primaryLink.href}
               target={primaryLink.external ? '_blank' : undefined}
               rel={primaryLink.external ? 'noopener noreferrer' : undefined}
-              className="bg-gradient-to-r from-gamerhouse-red to-red-700 text-white hover:from-red-700 hover:to-red-800 w-full sm:w-auto justify-center text-sm sm:text-base px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center"
+              className="btn-solid w-full sm:w-auto justify-center text-sm sm:text-base"
             >
               {primaryLink.label}
             </Link>
             <button
               type="button"
               onClick={onResetFilters}
-              className="border-2 border-gamerhouse-navy text-gamerhouse-navy hover:bg-gamerhouse-navy hover:text-white w-full sm:w-auto justify-center text-sm sm:text-base px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center"
+              className="btn-soft w-full sm:w-auto justify-center text-sm sm:text-base"
             >
               Ver catálogo completo
             </button>
@@ -102,7 +102,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#05070f]/85 via-[#05070f]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#041321]/80 via-transparent to-transparent" />
           </Link>
         </div>
       </div>

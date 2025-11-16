@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Search } from 'lucide-react';
 import Layout from '@/components/Layout';
 import ProductCard from '@/components/ProductCard';
 import { ProductCardSkeleton } from '@/components/home/SkeletonLoader';
@@ -395,7 +396,9 @@ function AllProductsPageContent() {
 
             {filteredProducts.length === 0 ? (
               <div className="surface-card text-center px-6 sm:px-10 py-12 space-y-4">
-                <div className="text-5xl">🔍</div>
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sky-50 text-sky-600">
+                  <Search className="h-5 w-5" />
+                </div>
                 <p className="text-sm sm:text-base text-slate-600">
                   No encontramos resultados con los filtros actuales. Ajusta la búsqueda para descubrir más productos.
                 </p>

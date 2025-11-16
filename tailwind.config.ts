@@ -28,11 +28,11 @@ export default {
         info: '#1e3a5f',                             /* Azul Marino - Información */
 
         /* Colores Corporativos GAMER HOUSE */
-        'gamerhouse-navy': '#1e3a5f',               /* Azul Marino */
-        'gamerhouse-red': '#dc2626',                /* Rojo Brillante */
-        'gamerhouse-gold': '#fbbf24',               /* Oro */
-        'gamerhouse-white': '#ffffff',              /* Blanco */
-        'gamerhouse-dark': '#1f2937',               /* Gris Oscuro */
+        'gamerhouse-navy': '#0f2b3d',               /* Azul Marino Pastel */
+        'gamerhouse-red': '#39b9d6',                /* Celeste Principal */
+        'gamerhouse-gold': '#bfe9ff',               /* Acento pastel */
+        'gamerhouse-white': '#ffffff',
+        'gamerhouse-dark': '#1f2937',
 
         /* Variantes de Rojo */
         'red-400': '#f87171',        /* Claro - Hover */

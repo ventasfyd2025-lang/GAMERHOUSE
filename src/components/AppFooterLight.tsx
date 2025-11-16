@@ -24,29 +24,29 @@ export default function AppFooterLight() {
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">📂 Categorías</h3>
+            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">Categorías</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/categoria/pokemon-tcg" className="text-slate-500 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/categoria/pokemon-tcg" className="text-slate-500 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Pokémon TCG
                 </Link>
               </li>
               <li>
-                <Link href="/categoria/one-piece-tcg" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/categoria/one-piece-tcg" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   One Piece TCG
                 </Link>
               </li>
               <li>
-                <Link href="/categoria/yu-gi-oh" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/categoria/yu-gi-oh" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Yu-Gi-Oh!
                 </Link>
               </li>
               <li>
-                <Link href="/productos" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/productos" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Todos los Productos
                 </Link>
               </li>
@@ -55,23 +55,23 @@ export default function AppFooterLight() {
 
           {/* Company */}
           <div className="space-y-4">
-            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">🏢 Compañía</h3>
+            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">Compañía</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/contacto" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/contacto" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Contáctanos
                 </Link>
               </li>
               <li>
-                <Link href="/legal/privacidad" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/legal/privacidad" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Política de Privacidad
                 </Link>
               </li>
               <li>
-                <Link href="/legal/terminos" className="text-gray-600 hover:text-gamerhouse-red hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gamerhouse-red rounded-full"></span>
+                <Link href="/legal/terminos" className="text-gray-600 hover:text-sky-600 hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-2">
+                  <span className="accent-dot"></span>
                   Términos y Condiciones
                 </Link>
               </li>
@@ -80,7 +80,7 @@ export default function AppFooterLight() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">📞 Contacto</h3>
+            <h3 className="font-bold uppercase tracking-widest text-sm text-slate-900 border-b border-slate-200 pb-3">Contacto</h3>
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3 group">
                 <Mail className="h-5 w-5 text-gamerhouse-red flex-shrink-0 group-hover:scale-110 transition-transform" />
@@ -143,9 +143,9 @@ export default function AppFooterLight() {
             <div>
               <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-widest">Métodos de Pago</h4>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs rounded-lg border border-slate-200">💳 Mercado Pago</span>
-                <span className="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs rounded-lg border border-gray-300">🏦 Transferencia</span>
-                <span className="px-3 py-1.5 bg-gray-100 text-gray-700 text-xs rounded-lg border border-gray-300">💵 Efectivo</span>
+                <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs rounded-lg border border-slate-200">Mercado Pago</span>
+                <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs rounded-lg border border-slate-200">Transferencia</span>
+                <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs rounded-lg border border-slate-200">Efectivo</span>
               </div>
             </div>
           </div>

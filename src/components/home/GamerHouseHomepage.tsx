@@ -18,14 +18,14 @@ interface CategoryIcon {
 }
 
 const CATEGORY_ICONS: Record<string, CategoryIcon> = {
-  'pokemon-tcg': { Icon: Sparkles, color: 'from-yellow-400 to-red-500' },
-  'one-piece-tcg': { Icon: Waves, color: 'from-blue-400 to-red-500' },
-  'star-wars-unlimited': { Icon: Wand2, color: 'from-blue-600 to-yellow-600' },
-  'yu-gi-oh': { Icon: Moon, color: 'from-purple-500 to-blue-600' },
-  'dragon-ball': { Icon: Flame, color: 'from-orange-400 to-red-500' },
-  'digimon': { Icon: Grid3x3, color: 'from-red-500 to-pink-600' },
-  'magic-the-gathering': { Icon: Zap, color: 'from-indigo-600 to-purple-800' },
-  'accesorios': { Icon: Headphones, color: 'from-gray-500 to-gray-700' },
+  'pokemon-tcg': { Icon: Sparkles, color: 'from-sky-200 to-cyan-400' },
+  'one-piece-tcg': { Icon: Waves, color: 'from-cyan-300 to-sky-500' },
+  'star-wars-unlimited': { Icon: Wand2, color: 'from-indigo-200 to-sky-400' },
+  'yu-gi-oh': { Icon: Moon, color: 'from-purple-200 to-indigo-400' },
+  'dragon-ball': { Icon: Flame, color: 'from-amber-200 to-orange-300' },
+  'digimon': { Icon: Grid3x3, color: 'from-rose-200 to-amber-300' },
+  'magic-the-gathering': { Icon: Zap, color: 'from-violet-200 to-purple-400' },
+  'accesorios': { Icon: Headphones, color: 'from-slate-200 to-slate-400' },
 };
 
 export default function GamerHouseHomepage() {
@@ -60,7 +60,7 @@ export default function GamerHouseHomepage() {
     return (
       <Link
         href={`/producto/${product.id}`}
-        className="block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-gamerhouse-red/50"
+        className="block bg-white rounded-xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-cyan-200"
       >
         {/* Image */}
         <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
@@ -84,18 +84,18 @@ export default function GamerHouseHomepage() {
 
         {/* Content */}
         <div className="flex flex-col gap-3 p-4 flex-1">
-          <h3 className="font-semibold text-gray-800 line-clamp-2 text-sm">
+          <h3 className="font-semibold text-slate-800 line-clamp-2 text-sm">
             {product.nombre}
           </h3>
 
           {/* Pricing */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-gamerhouse-red">
+              <span className="text-lg font-bold text-sky-700">
                 ${product.precio?.toLocaleString() || 'N/D'}
               </span>
               {hasDiscount && (
-                <span className="text-sm text-gray-400 line-through">
+                <span className="text-sm text-slate-400 line-through">
                   ${product.precioOriginal?.toLocaleString()}
                 </span>
               )}
@@ -104,8 +104,8 @@ export default function GamerHouseHomepage() {
 
           {/* Stock Info */}
           {product.stock > 0 && (
-            <p className="text-xs text-gamerhouse-navy font-semibold">
-              📦 Stock: {product.stock}
+            <p className="text-xs text-slate-500 font-semibold">
+              Stock disponible: {product.stock}
             </p>
           )}
 
@@ -119,7 +119,7 @@ export default function GamerHouseHomepage() {
             className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
               product.stock === 0
                 ? 'bg-gray-300 cursor-not-allowed'
-                : 'bg-gradient-to-r from-gamerhouse-red to-red-700 hover:from-red-700 hover:to-red-800 hover:shadow-lg hover:scale-105 active:scale-95'
+                : 'bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-500 hover:brightness-110 hover:shadow-lg hover:scale-105 active:scale-95'
             }`}
           >
             <ShoppingCart className="h-4 w-4" />
@@ -135,53 +135,50 @@ export default function GamerHouseHomepage() {
       {/* Hero or Configurable Banner */}
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          {mainBannerConfig?.active && mainBannerConfig.slides?.length ? (
-            <MainBanner
-              config={mainBannerConfig}
-              onResetFilters={() => router.push('/productos')}
-            />
-          ) : (
-            <div className="surface-card relative overflow-hidden p-10 sm:p-12">
-              <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(236,72,153,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(248,181,0,0.25),transparent_55%)]" />
-              <div className="relative z-10 grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
-                <div className="section-heading">
-                  <span className="section-heading__eyebrow">Gaming & collectibles</span>
-                  <h1 className="section-heading__title">Bienvenido a GAMER HOUSE</h1>
-                  <p className="section-heading__description">
-                    Curamos lanzamientos oficiales y pre-orders de Pokémon, One Piece, Yu-Gi-Oh! y más. Compra seguro con envíos a todo Chile.
-                  </p>
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    <Link href="/productos" className="btn-solid">
-                      Explorar catálogo
-                      <ArrowRight className="h-5 w-5" />
-                    </Link>
-                    <Link href="/contacto" className="btn-soft">
-                      Hablar con un asesor
-                    </Link>
-                  </div>
+          <MainBanner
+            config={mainBannerConfig}
+            onResetFilters={() => router.push('/productos')}
+          />
+          <div className="surface-card relative overflow-hidden p-8 sm:p-10">
+            <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(62,194,218,0.18),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(180,229,255,0.35),transparent_55%)]" />
+            <div className="relative z-10 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+              <div className="section-heading">
+                <span className="section-heading__eyebrow">Lanzamientos pastel</span>
+                <h1 className="section-heading__title">Colecciona con estilo fresco</h1>
+                <p className="section-heading__description">
+                  Lanzamientos oficiales de TCG y accesorios en inventario inmediato. Administra el banner superior desde Panel Admin → Banners para destacar campañas.
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link href="/productos" className="btn-solid">
+                    Explorar catálogo
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                  <Link href="/contacto" className="btn-soft">
+                    Hablar con un asesor
+                  </Link>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div className="stat-pill">
-                    <span>Productos activos</span>
-                    <strong>+{products.length || 0}</strong>
-                  </div>
-                  <div className="stat-pill">
-                    <span>Pre-venta</span>
-                    <strong>{products.filter((p) => p.nuevo).length || 0}</strong>
-                  </div>
-                  <div className="stat-pill">
-                    <span>Ofertas vivas</span>
-                    <strong>{products.filter((p) => p.oferta).length || 0}</strong>
-                  </div>
-                  <div className="stat-pill">
-                    <span>Marcas</span>
-                    <strong>{activeCategories.length}</strong>
-                  </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="stat-pill">
+                  <span>Productos activos</span>
+                  <strong>+{products.length || 0}</strong>
+                </div>
+                <div className="stat-pill">
+                  <span>Pre-venta</span>
+                  <strong>{products.filter((p) => p.nuevo).length || 0}</strong>
+                </div>
+                <div className="stat-pill">
+                  <span>Ofertas vivas</span>
+                  <strong>{products.filter((p) => p.oferta).length || 0}</strong>
+                </div>
+                <div className="stat-pill">
+                  <span>Categorías activas</span>
+                  <strong>{activeCategories.length}</strong>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -253,12 +250,12 @@ export default function GamerHouseHomepage() {
 
       {/* Offers Section */}
       {products.some(p => p.precioOriginal && p.precioOriginal > p.precio) && (
-        <section className="bg-gradient-to-br from-[#0f172a] via-[#1f2035] to-[#241926] text-white py-12 sm:py-16">
+        <section className="bg-gradient-to-br from-[#e6f9ff] via-[#cbecff] to-[#e3f4ff] text-slate-900 py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="section-heading mb-8">
-              <span className="section-heading__eyebrow text-yellow-200">Bonos temporales</span>
-              <h2 className="section-heading__title text-white">Ofertas activas</h2>
-              <p className="section-heading__description text-white/80">
+              <span className="section-heading__eyebrow text-slate-500">Bonos temporales</span>
+              <h2 className="section-heading__title text-slate-900">Ofertas activas</h2>
+              <p className="section-heading__description text-slate-600">
                 Descuentos dinámicos para rotar inventario y darle aire a tus colecciones.
               </p>
             </div>

@@ -98,30 +98,30 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
   const isDark = theme === 'dark';
 
   const cardBgGradient = isDark
-    ? 'from-yellow-300/40 via-amber-300/20 to-red-500/30'
-    : 'from-gray-100 via-gray-50 to-white';
+    ? 'from-cyan-200/40 via-sky-200/20 to-blue-200/30'
+    : 'from-sky-50 via-white to-white';
 
   const cardBorder = isDark
-    ? 'border-yellow-300/25'
-    : 'border-gray-200';
+    ? 'border-cyan-200/30'
+    : 'border-slate-100';
 
   const cardHoverShadow = isDark
-    ? 'hover:shadow-[0_35px_110px_-45px_rgba(255,232,141,0.9)]'
-    : 'hover:shadow-xl hover:border-gamerhouse-red/50';
+    ? 'hover:shadow-[0_35px_110px_-45px_rgba(134,219,247,0.9)]'
+    : 'hover:shadow-2xl hover:border-cyan-200';
 
   const overlayGradient = isDark
-    ? 'from-[#05070d]/95'
-    : 'from-white/80';
+    ? 'from-[#030d18]/95'
+    : 'from-white/85';
 
   const textColor = isDark ? 'text-white' : 'text-gray-900';
   const textMutedColor = isDark ? 'text-white/55' : 'text-gray-600';
   const badgeBg = isDark
-    ? 'border-yellow-300/35 bg-yellow-300/10 text-yellow-100'
-    : 'border-red-300/30 bg-red-50 text-red-700';
+    ? 'border-cyan-200/35 bg-cyan-200/10 text-cyan-100'
+    : 'border-sky-200/40 bg-sky-50 text-sky-700';
 
   const buttonClass = isDark
     ? 'btn-primary-web'
-    : 'bg-gradient-to-r from-gamerhouse-red to-red-700 text-white hover:from-red-700 hover:to-red-800';
+    : 'bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-500 text-white hover:brightness-110';
 
   return (
     <Link href={`/producto/${product.id}`} className="block h-full group">
@@ -140,8 +140,8 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
                 loading="lazy"
               />
             ) : (
-              <div className={`flex h-full w-full items-center justify-center ${isDark ? 'bg-slate-900/80' : 'bg-gray-200'}`}>
-                <span className="text-4xl">{isDark ? '📦' : '🛍️'}</span>
+              <div className={`flex h-full w-full items-center justify-center ${isDark ? 'bg-slate-900/80' : 'bg-slate-100'}`}>
+                <span className="text-sm font-semibold text-slate-500">Imagen no disponible</span>
               </div>
             )}
 
@@ -168,23 +168,23 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
             )}
 
             {product.stock > 0 && (
-              <span className={`absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border ${isDark ? 'border-yellow-300/35 bg-yellow-300/10 text-yellow-100' : 'border-red-300/35 bg-red-50 text-red-700'} px-3 py-1 text-xs font-semibold backdrop-blur-md`}>
-                <span className={`h-2 w-2 rounded-full ${isDark ? 'bg-yellow-200 shadow-[0_0_12px_rgba(255,232,141,0.85)]' : 'bg-red-500'}`} />
+              <span className={`absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full border ${isDark ? 'border-cyan-200/35 bg-cyan-200/10 text-cyan-100' : 'border-sky-200/40 bg-white/90 text-sky-700'} px-3 py-1 text-xs font-semibold backdrop-blur-md`}>
+                <span className={`h-2 w-2 rounded-full ${isDark ? 'bg-cyan-200 shadow-[0_0_12px_rgba(148,231,255,0.85)]' : 'bg-sky-500'}`} />
                 Stock: {product.stock}
               </span>
             )}
           </div>
 
           <div className="flex flex-1 flex-col gap-3 p-4 md:p-5">
-            <div className={`flex items-center justify-between text-[10px] uppercase tracking-[0.35em] ${isDark ? 'text-white/45' : 'text-gray-500'}`}>
+            <div className={`flex items-center justify-between text-[10px] uppercase tracking-[0.35em] ${isDark ? 'text-white/45' : 'text-slate-500'}`}>
               <span>Serie gamer</span>
-              <span className={isDark ? 'text-yellow-300' : 'text-gamerhouse-red'}>
+              <span className={isDark ? 'text-cyan-200' : 'text-sky-600'}>
                 {mostrarNuevo ? 'Legendary' : mostrarOferta ? 'Rare' : 'Base'}
               </span>
             </div>
-            <div className={isDark ? 'divider-neon' : 'h-px bg-gray-200'} />
+            <div className={isDark ? 'divider-neon' : 'h-px bg-slate-100'} />
 
-            <h3 className={`product-title ${textColor} ${isDark ? 'group-hover:text-white' : 'group-hover:text-gamerhouse-red'}`}>
+            <h3 className={`product-title ${textColor} ${isDark ? 'group-hover:text-white' : 'group-hover:text-sky-700'}`}>
               {product.nombre || 'Producto sin nombre'}
             </h3>
 
@@ -196,7 +196,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
 
             <div className="mt-auto space-y-2">
               <div className="flex items-baseline gap-2">
-                <span className={`product-price ${isDark ? '' : 'text-gamerhouse-red'}`}>
+                <span className={`product-price ${isDark ? '' : 'text-sky-700'}`}>
                   {formatPrice(currentPrice)}
                 </span>
                 {originalPrice && (
@@ -213,7 +213,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
               )}
 
               {product.stock > 0 && product.stock <= 5 && (
-                <p className={`text-xs font-medium ${isDark ? 'text-yellow-200/80' : 'text-red-600'}`}>
+                <p className={`text-xs font-medium ${isDark ? 'text-cyan-100/80' : 'text-sky-700'}`}>
                   Quedan {product.stock} unidades
                 </p>
               )}
@@ -232,7 +232,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
               ) : (
                 <button
                   disabled
-                  className={`pagination-button w-full cursor-not-allowed text-xs font-semibold uppercase tracking-[0.2em] ${isDark ? 'border-yellow-300/20 text-yellow-200' : 'border-gray-300 text-gray-500'}`}
+                  className={`pagination-button w-full cursor-not-allowed text-xs font-semibold uppercase tracking-[0.2em] ${isDark ? 'border-cyan-200/25 text-cyan-100' : 'border-slate-200 text-slate-500'}`}
                 >
                   No disponible
                 </button>

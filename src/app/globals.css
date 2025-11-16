@@ -29,48 +29,48 @@ p {
 }
 
 :root {
-  /* Brand palette used across retail + admin dashboards */
-  --primary: #dc2626;
-  --primary-hover: #b91c1c;
-  --primary-soft: #ffe0e0;
-  --accent: #f97316;
-  --text-primary: #0b1220;
-  --text-muted: #334155;
+  /* Pastel celeste palette shared across retail and admin */
+  --primary: #3ec2da;
+  --primary-hover: #1b9dbd;
+  --primary-soft: #e1f7fb;
+  --accent: #9ed9f7;
+  --text-primary: #102335;
+  --text-muted: #536b7a;
   --surface: #ffffff;
-  --surface-alt: #eef2ff;
+  --surface-alt: #f3f9fd;
   --surface-card: #ffffff;
-  --border-soft: rgba(15, 23, 42, 0.12);
-  --border-strong: rgba(15, 23, 42, 0.2);
-  --shadow-soft: 0 35px 65px -50px rgba(15, 23, 42, 0.45);
-  --shadow-card: 0 28px 70px -55px rgba(15, 23, 42, 0.45);
+  --border-soft: rgba(16, 35, 53, 0.08);
+  --border-strong: rgba(16, 35, 53, 0.18);
+  --shadow-soft: 0 35px 65px -50px rgba(16, 35, 53, 0.35);
+  --shadow-card: 0 28px 70px -55px rgba(16, 35, 53, 0.35);
   --page-background:
-    radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.08), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(252, 211, 77, 0.12), transparent 60%),
-    linear-gradient(135deg, #f8fafc, #eef2ff);
+    radial-gradient(circle at 15% 20%, rgba(85, 201, 231, 0.15), transparent 50%),
+    radial-gradient(circle at 85% 0%, rgba(173, 226, 246, 0.25), transparent 55%),
+    linear-gradient(135deg, #fdfefe, #e8f5ff);
   --brand-background:
-    radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.08), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(252, 211, 77, 0.2), transparent 50%),
-    linear-gradient(135deg, #f8fafc, #eef2ff);
+    radial-gradient(circle at 15% 20%, rgba(85, 201, 231, 0.12), transparent 55%),
+    radial-gradient(circle at 85% 0%, rgba(173, 226, 246, 0.2), transparent 50%),
+    linear-gradient(135deg, #fdfefe, #e8f5ff);
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
-  --glass-background: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-blur: 18px;
+  --glass-background: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(62, 181, 218, 0.15);
+  --glass-blur: 22px;
 }
 
 body[data-theme='dark'] {
-  --text-primary: #f4f4f5;
-  --text-muted: #c0c5d0;
-  --surface: #0f172a;
-  --surface-alt: #05070f;
-  --surface-card: rgba(11, 17, 35, 0.9);
-  --border-soft: rgba(148, 163, 184, 0.25);
-  --border-strong: rgba(148, 163, 184, 0.5);
-  --shadow-card: 0 25px 55px -40px rgba(15, 23, 42, 0.9);
-  --page-background: linear-gradient(135deg, #04040c, #090f1f 55%, #0b1124 90%);
-  --glass-background: rgba(11, 17, 35, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4fbff;
+  --text-muted: #b8c7d4;
+  --surface: #071321;
+  --surface-alt: #050b16;
+  --surface-card: rgba(8, 20, 32, 0.92);
+  --border-soft: rgba(152, 196, 222, 0.25);
+  --border-strong: rgba(152, 196, 222, 0.45);
+  --shadow-card: 0 25px 55px -40px rgba(4, 20, 36, 0.9);
+  --page-background: linear-gradient(135deg, #020912, #031a2d 70%);
+  --glass-background: rgba(8, 18, 32, 0.85);
+  --glass-border: rgba(149, 225, 255, 0.1);
   color: var(--text-primary);
 }
 
@@ -216,8 +216,8 @@ body[data-theme='dark'] {
   gap: 0.45rem;
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(62, 194, 218, 0.2);
+  background: rgba(227, 246, 252, 0.8);
   color: var(--text-primary);
   font-size: 0.75rem;
   font-weight: 600;
@@ -228,10 +228,10 @@ body[data-theme='dark'] {
   flex-direction: column;
   padding: 0.85rem 1.2rem;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(62, 194, 218, 0.25);
   min-width: 140px;
-  box-shadow: 0 18px 45px -35px rgba(15, 23, 42, 0.7);
+  box-shadow: 0 18px 45px -35px rgba(12, 51, 73, 0.5);
 }
 
 .stat-pill span:first-child {
@@ -260,25 +260,25 @@ body[data-theme='dark'] {
 }
 
 .btn-solid {
-  background: linear-gradient(120deg, #fcd34d, #f97316 55%, #dc2626);
-  color: #0f172a;
-  box-shadow: 0 25px 45px -20px rgba(249, 115, 22, 0.35);
+  background: linear-gradient(120deg, #d4f6ff, #7ed5eb 55%, #39b9d6);
+  color: #063d52;
+  box-shadow: 0 25px 45px -20px rgba(57, 185, 214, 0.35);
 }
 
 .btn-solid:hover {
   transform: translateY(-2px);
-  box-shadow: 0 35px 55px -25px rgba(249, 115, 22, 0.45);
+  box-shadow: 0 35px 55px -25px rgba(57, 185, 214, 0.45);
 }
 
 .btn-soft {
   background: transparent;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(62, 194, 218, 0.25);
   color: var(--text-primary);
-  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(62, 194, 218, 0.08);
 }
 
 .btn-soft:hover {
-  background: rgba(15, 23, 42, 0.03);
+  background: rgba(62, 194, 218, 0.08);
 }
 
 .btn-ghost {
@@ -295,19 +295,19 @@ body[data-theme='dark'] {
 .form-input {
   width: 100%;
   border-radius: 18px;
-  border: 1px solid var(--border-soft);
+  border: 1px solid rgba(62, 194, 218, 0.25);
   padding: 0.9rem 1.1rem;
   font-size: 0.95rem;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--text-primary);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: rgba(220, 38, 38, 0.5);
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+  border-color: rgba(62, 194, 218, 0.6);
+  box-shadow: 0 0 0 4px rgba(127, 213, 235, 0.35);
 }
 
 body[data-theme='dark'] .surface-card,
@@ -318,15 +318,22 @@ body[data-theme='dark'] .glass-panel {
 
 body[data-theme='dark'] .chip-pill,
 body[data-theme='dark'] .stat-pill {
-  background: rgba(15, 23, 42, 0.9);
-  border-color: rgba(148, 163, 184, 0.3);
+  background: rgba(5, 17, 31, 0.9);
+  border-color: rgba(149, 225, 255, 0.2);
   color: var(--text-primary);
 }
 
 body[data-theme='dark'] .form-input {
-  background: rgba(15, 23, 42, 0.9);
-  border-color: rgba(148, 163, 184, 0.35);
+  background: rgba(5, 17, 31, 0.9);
+  border-color: rgba(149, 225, 255, 0.3);
   color: var(--text-primary);
+}
+
+.accent-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7ddff0, #45b9d4);
 }
 
 .text-pink {

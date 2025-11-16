@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, Sun, Moon, Home, Package } from 'lucide-react';
 import DynamicLogo from './DynamicLogo';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -41,7 +41,7 @@ export default function AppHeaderLight() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/30 bg-white/85 dark:bg-slate-950/70 shadow-[0_25px_70px_-45px_rgba(15,23,42,0.65)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/40 bg-white/85 dark:bg-slate-950/70 shadow-[0_30px_80px_-50px_rgba(8,40,70,0.5)] backdrop-blur-xl">
       {/* Top Bar - Logo and Actions */}
       <div className="px-4 sm:px-6 lg:px-8 py-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-4 lg:flex-nowrap">
@@ -73,13 +73,13 @@ export default function AppHeaderLight() {
             </button>
 
             <div className="hidden sm:flex items-center gap-4">
-              <Link href="/perfil" className="p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200">
+              <Link href="/perfil" className="p-2 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-full transition-all duration-200">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative p-2 text-slate-500 hover:text-red-500 hover:bg-red-50 rounded-full transition-all duration-200">
+              <Link href="/carrito" className="relative p-2 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-full transition-all duration-200">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-sky-400 to-cyan-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
                     {getTotalItems()}
                   </span>
                 )}
@@ -112,7 +112,7 @@ export default function AppHeaderLight() {
       </div>
 
       {/* Navigation Bar - Categories */}
-      <nav className="bg-white/70 dark:bg-slate-950/60 border-t border-white/40">
+      <nav className="bg-gradient-to-r from-[#f0fbff] via-[#e8f5ff] to-[#fefefe] dark:bg-slate-950/60 border-t border-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Desktop Categories */}
@@ -167,24 +167,22 @@ export default function AppHeaderLight() {
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
 
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                router.push('/');
-              }}
-              className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
-            >
-              🏠 Inicio
-            </button>
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                router.push('/productos');
-              }}
-              className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
-            >
-              📦 Todos los Productos
-            </button>
+            {[
+              { label: 'Inicio', href: '/', icon: Home },
+              { label: 'Todos los productos', href: '/productos', icon: Package }
+            ].map(({ label, href, icon: Icon }) => (
+              <button
+                key={href}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  router.push(href);
+                }}
+                className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 transition-all duration-200 font-medium"
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </button>
+            ))}
 
             {activeCategories.length > 0 && (
               <div className="border-t border-gray-200 pt-3 mt-3">
@@ -204,17 +202,17 @@ export default function AppHeaderLight() {
             <div className="border-t border-gray-200 pt-3 mt-3 flex gap-2">
               <Link
                 href="/perfil"
-                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-gamerhouse-navy to-blue-900 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold"
+                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold"
               >
-                👤 Mi Cuenta
+                Mi Cuenta
               </Link>
               <Link
                 href="/carrito"
-                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-gamerhouse-red to-red-700 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold relative"
+                className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-sky-400 to-cyan-500 text-white rounded-lg hover:shadow-lg transition-all duration-200 text-sm font-semibold relative"
               >
-                🛒 Carrito
+                Carrito
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-white text-gamerhouse-red text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
+                  <span className="absolute -top-2 -right-2 bg-white text-sky-600 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-lg">
                     {getTotalItems()}
                   </span>
                 )}

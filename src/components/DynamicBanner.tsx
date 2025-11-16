@@ -26,7 +26,7 @@ export default function DynamicBanner() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#032031]/80 via-[#0b3f53]/40 to-transparent" />
           <div className="relative z-10 flex h-full flex-col justify-center gap-4 p-6 md:p-12 text-white">
             <p className="uppercase tracking-[0.3em] text-xs text-white/70">Destacado</p>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
