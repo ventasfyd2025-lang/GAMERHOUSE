@@ -13,6 +13,7 @@ interface SlideConfig {
   productId?: string;
   categoryId?: string;
   customUrl?: string;
+  ctaLabel?: string;
 }
 
 interface MainBannerProps {
@@ -77,16 +78,28 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
 
     const linkType = slide.linkType || 'product';
     if (linkType === 'product' && slide.productId) {
-      return { href: `/producto/${slide.productId}`, label: 'Ver producto destacado', external: false };
+      return {
+        href: `/producto/${slide.productId}`,
+        label: slide.ctaLabel || 'Ver producto destacado',
+        external: false,
+      };
     }
     if (linkType === 'category' && slide.categoryId) {
-      return { href: `/categoria/${slide.categoryId}`, label: 'Ver categoría destacada', external: false };
+      return {
+        href: `/categoria/${slide.categoryId}`,
+        label: slide.ctaLabel || 'Ver categoría destacada',
+        external: false,
+      };
     }
     if (linkType === 'url' && slide.customUrl) {
-      return { href: slide.customUrl, label: 'Ver más detalles', external: slide.customUrl.startsWith('http') };
+      return {
+        href: slide.customUrl,
+        label: slide.ctaLabel || 'Ver más detalles',
+        external: slide.customUrl.startsWith('http'),
+      };
     }
 
-    return { href: '/productos', label: 'Explorar catálogo', external: false };
+    return { href: '/productos', label: slide.ctaLabel || 'Explorar catálogo', external: false };
   }, [slide]);
 
   return (

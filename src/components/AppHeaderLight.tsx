@@ -1,16 +1,58 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown, Home, Package } from 'lucide-react';
+import {
+  Search,
+  ShoppingCart,
+  User,
+  Menu,
+  X,
+  ChevronDown,
+  ChevronRight,
+  Home,
+  Package,
+  Sparkles,
+  Ship,
+  Swords,
+  Flame,
+  Gamepad2,
+  Shield,
+  Joystick,
+  Bot,
+  Palette,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import DynamicLogo from './DynamicLogo';
+
+const gamerPalette = ['from-sky-400/70 to-cyan-300/70', 'from-indigo-400/70 to-sky-300/70', 'from-fuchsia-400/60 to-pink-300/60', 'from-emerald-400/60 to-teal-300/60'];
+
+const quickLinks = [
+  { label: 'Ofertas', href: '/productos?filter=ofertas' },
+  { label: 'Nuevos', href: '/productos?filter=nuevos' },
+  { label: 'Preventa', href: '/productos?filter=preventa' },
+];
+
+const CATEGORY_ICON_MAP: Record<string, LucideIcon> = {
+  'pokemon-tcg': Sparkles,
+  'one-piece-tcg': Ship,
+  'star-wars-unlimited': Swords,
+  'yu-gi-oh': Shield,
+  'dragon-ball': Flame,
+  tecnologia: Bot,
+  accesorios: Palette,
+  consolas: Joystick,
+};
 
 export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
+  const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
@@ -20,10 +62,16 @@ export default function AppHeaderLight() {
     [categories]
   );
 
+  useEffect(() => {
+    if (activeCategories.length > 0 && !megaCategoryId) {
+      setMegaCategoryId(activeCategories[0].id);
+    }
+  }, [activeCategories, megaCategoryId]);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/productos?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/productos?search=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
     }
   };
@@ -33,21 +81,59 @@ export default function AppHeaderLight() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleMegaNavigate = (href: string) => {
+    setIsMegaMenuOpen(false);
+    router.push(href);
+  };
+
+  const openMegaMenu = (categoryId?: string) => {
+    if (megaMenuTimeoutRef.current) {
+      clearTimeout(megaMenuTimeoutRef.current);
+      megaMenuTimeoutRef.current = null;
+    }
+    if (categoryId) {
+      setMegaCategoryId(categoryId);
+    }
+    setIsMegaMenuOpen(true);
+  };
+
+  const closeMegaMenu = () => {
+    if (megaMenuTimeoutRef.current) {
+      clearTimeout(megaMenuTimeoutRef.current);
+    }
+    megaMenuTimeoutRef.current = window.setTimeout(() => {
+      setIsMegaMenuOpen(false);
+      megaMenuTimeoutRef.current = null;
+    }, 120);
+  };
+
+  const getCategoryIcon = (categoryId: string): LucideIcon => CATEGORY_ICON_MAP[categoryId] || Gamepad2;
+
+  const getCategorySubcategories = (category: (typeof categories)[number]) => {
+    if (!category?.subcategorias) {
+      return [] as Array<{ value: string; label: string }>;
+    }
+    return category.subcategorias
+      .filter((sub) => sub.activa !== false)
+      .map((sub, index) => ({
+        value: (sub.nombre || sub.id || `sub-${index}`).toLowerCase(),
+        label: sub.nombre || sub.id || `Subcategoría ${index + 1}`,
+      }));
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/40 bg-white/85 dark:bg-slate-950/70 shadow-[0_30px_80px_-50px_rgba(8,40,70,0.5)] backdrop-blur-xl">
-      {/* Top Bar - Logo and Actions */}
-      <div className="px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-4 lg:flex-nowrap">
-          {/* Logo - Dinámico */}
+    <header className="sticky top-0 z-50 border-b border-sky-100 bg-white/90 shadow-[0_40px_120px_-60px_rgba(56,182,255,0.4)] backdrop-blur-xl">
+      <div className="px-4 sm:px-6 lg:px-8 py-4 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(circle_at_top,rgba(99,179,237,0.15),transparent_55%)]" />
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center gap-4 lg:flex-nowrap relative">
           <DynamicLogo />
 
-          {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-xl mx-auto">
             <div className="relative w-full group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-sky-500 transition-colors" />
               <input
                 type="text"
-                placeholder="Buscar productos..."
+                placeholder="Buscar productos o sagas..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="form-input pl-12"
@@ -55,9 +141,8 @@ export default function AppHeaderLight() {
             </div>
           </form>
 
-          {/* Right Icons */}
           <div className="flex items-center gap-3 ml-auto">
-            <div className="hidden sm:flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-3">
               <Link href="/perfil" className="p-2 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-full transition-all duration-200">
                 <User className="h-5 w-5" />
               </Link>
@@ -71,68 +156,162 @@ export default function AppHeaderLight() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 text-slate-600 hover:text-red-500 hover:border-red-200 transition-all"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-all"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
-        </div>
 
-        {/* Mobile Search */}
-        <form onSubmit={handleSearch} className="lg:hidden mt-4">
-          <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-red-500 transition-colors" />
-            <input
-              type="text"
-              placeholder="Buscar..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="form-input w-full pl-12 pr-4"
-            />
-          </div>
-        </form>
+          <form onSubmit={handleSearch} className="lg:hidden w-full">
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-sky-500 transition-colors" />
+              <input
+                type="text"
+                placeholder="Buscar..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="form-input w-full pl-12 pr-4"
+              />
+            </div>
+          </form>
+        </div>
       </div>
 
-      {/* Navigation Bar - Categories */}
-      <nav className="bg-gradient-to-r from-[#f0fbff] via-[#e8f5ff] to-[#fefefe] dark:bg-slate-950/60 border-t border-white/50">
+      <nav className="bg-gradient-to-r from-[#f1fbff] via-[#e4f2ff] to-white border-t border-white/70 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
-            {/* Desktop Categories */}
-            <div className="hidden md:flex items-center gap-1 h-full">
-              {activeCategories.slice(0, 6).map((category) => (
+            <div className="flex items-center gap-3 h-full">
+              <div
+                className="hidden lg:block relative"
+                onMouseEnter={() => openMegaMenu()}
+                onMouseLeave={closeMegaMenu}
+              >
                 <button
-                  key={category.id}
-                  onClick={() => handleCategoryClick(category.id)}
-                  className="group relative h-full px-4 text-sm font-semibold text-slate-600 hover:text-gamerhouse-red transition-colors"
+                  type="button"
+                  className="flex items-center gap-2 rounded-full border border-sky-100 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-sky-200 hover:bg-white shadow-sm"
                 >
-                  {category.name || category.id}
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] scale-x-0 bg-gradient-to-r from-yellow-400 to-red-500 transition-transform duration-200 origin-center group-hover:scale-x-100" />
+                  <Gamepad2 className="h-4 w-4 text-sky-500" />
+                  Explorar catálogo
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
-              ))}
-              {activeCategories.length > 6 && (
-                <div className="relative group h-full">
-                  <button className="h-full px-4 text-sm font-semibold flex items-center gap-1 text-slate-600 hover:text-gamerhouse-red transition-colors">
-                    Más <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
-                  </button>
-                  <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-2xl overflow-hidden hidden group-hover:block border border-gray-100">
-                    {activeCategories.slice(6).map((category) => (
-                      <button
-                        key={category.id}
-                        onClick={() => handleCategoryClick(category.id)}
-                        className="block w-full text-left px-4 py-3 hover:bg-gradient-to-r hover:from-gamerhouse-red hover:to-red-600 hover:text-white transition-all duration-200 text-sm font-medium"
-                      >
-                        {category.name || category.id}
-                      </button>
-                    ))}
+
+                {isMegaMenuOpen && activeCategories.length > 0 && (
+                  <div
+                    className="absolute left-0 top-full mt-3 w-[560px] rounded-3xl border border-sky-100 bg-white p-6 shadow-[0_40px_100px_-60px_rgba(15,102,160,0.8)]"
+                    onMouseEnter={() => openMegaMenu()}
+                    onMouseLeave={closeMegaMenu}
+                  >
+                    <div className="grid grid-cols-[210px_1fr] gap-6">
+                      <div className="flex flex-col gap-2">
+                        {activeCategories.map((category, index) => {
+                          const IconComponent = getCategoryIcon(category.id);
+                          const isActive = megaCategoryId === category.id;
+                          return (
+                            <button
+                              key={category.id}
+                              type="button"
+                              className={`flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
+                                isActive ? 'border-sky-200 bg-sky-50 text-slate-900 shadow-sm' : 'border-slate-100 text-slate-500 hover:border-slate-200'
+                              }`}
+                              onMouseEnter={() => openMegaMenu(category.id)}
+                              onClick={() => handleMegaNavigate(`/categoria/${category.id}`)}
+                            >
+                              <span className="inline-flex items-center gap-2">
+                                <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${gamerPalette[index % gamerPalette.length]}`}>
+                                  <IconComponent className="h-4 w-4 text-slate-900/80" />
+                                </span>
+                                {category.name || category.id}
+                              </span>
+                              <ChevronRight className={`h-4 w-4 ${isActive ? 'text-sky-500' : 'text-slate-300'}`} />
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
+                        {(() => {
+                          const activeCategory = activeCategories.find((cat) => cat.id === (megaCategoryId || activeCategories[0]?.id));
+                          if (!activeCategory) {
+                            return <p className="text-sm text-slate-500">Selecciona una categoría para ver sus subcategorías.</p>;
+                          }
+                          const subcategories = getCategorySubcategories(activeCategory);
+                          if (subcategories.length === 0) {
+                            return (
+                              <div className="text-sm text-slate-500">
+                                No hay subcategorías configuradas para {activeCategory.name || activeCategory.id}.
+                              </div>
+                            );
+                          }
+                          return (
+                            <div className="grid grid-cols-2 gap-3">
+                              {subcategories.map((sub, index) => (
+                                <button
+                                  key={sub.value}
+                                  type="button"
+                                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 text-left transition hover:border-sky-200 hover:text-slate-900"
+                                  onClick={() => handleMegaNavigate(`/categoria/${activeCategory.id}?subcategory=${encodeURIComponent(sub.value)}`)}
+                                >
+                                  <span className="block">{sub.label}</span>
+                                  <span className="text-xs text-slate-400 font-normal">#{index + 1} en {activeCategory.name || activeCategory.id}</span>
+                                </button>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
+
+              <div className="hidden md:flex items-center gap-1 h-full">
+                {activeCategories.slice(0, 5).map((category, index) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryClick(category.id)}
+                    className="group relative h-full px-4 text-sm font-semibold text-slate-600 hover:text-sky-700 transition-colors"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      {React.createElement(getCategoryIcon(category.id), { className: 'h-4 w-4 text-slate-400' })}
+                      {category.name || category.id}
+                    </span>
+                    <span className={`absolute bottom-2 left-4 right-4 h-[3px] scale-x-0 rounded-full bg-gradient-to-r ${gamerPalette[index % gamerPalette.length]} transition-transform duration-200 origin-center group-hover:scale-x-100`} />
+                  </button>
+                ))}
+                {activeCategories.length > 5 && (
+                  <div className="relative group h-full">
+                    <button className="h-full px-4 text-sm font-semibold flex items-center gap-1 text-slate-600 hover:text-sky-700 transition-colors">
+                      Más <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
+                    </button>
+                    <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-2xl overflow-hidden hidden group-hover:block border border-gray-100">
+                      {activeCategories.slice(5).map((category) => (
+                        <button
+                          key={category.id}
+                          onClick={() => handleCategoryClick(category.id)}
+                          className="block w-full text-left px-4 py-3 hover:bg-gradient-to-r hover:from-sky-100 hover:to-cyan-100 hover:text-slate-900 transition-all duration-200 text-sm font-medium"
+                        >
+                          {category.name || category.id}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Mobile Categories Button */}
+            <div className="hidden lg:flex items-center gap-4">
+              {quickLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => router.push(link.href)}
+                  className="text-sm font-semibold text-slate-500 hover:text-sky-700 transition-colors"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+
             <div className="md:hidden">
               <span className="text-sm font-bold tracking-wider text-slate-600">CATEGORÍAS</span>
             </div>
@@ -140,7 +319,6 @@ export default function AppHeaderLight() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-5 space-y-2">
@@ -168,7 +346,7 @@ export default function AppHeaderLight() {
                   <button
                     key={category.id}
                     onClick={() => handleCategoryClick(category.id)}
-                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-gamerhouse-red rounded-lg transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-sky-700 rounded-lg transition-all duration-200 font-medium"
                   >
                     {category.name || category.id}
                   </button>

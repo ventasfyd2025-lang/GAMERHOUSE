@@ -33,6 +33,7 @@ interface MainBannerSlide {
   title?: string;
   subtitle?: string;
   imageUrl?: string;
+  ctaLabel?: string;
 }
 
 interface MainBannerConfig {
@@ -77,6 +78,7 @@ const sanitizeMainBannerSlides = (input: unknown): MainBannerSlide[] => {
       productId: typeof slide.productId === 'string' ? slide.productId : undefined,
       categoryId: typeof slide.categoryId === 'string' ? slide.categoryId : undefined,
       customUrl: typeof slide.customUrl === 'string' ? slide.customUrl : undefined,
+      ctaLabel: typeof slide.ctaLabel === 'string' ? slide.ctaLabel : undefined,
       linkType: isMainBannerLinkType(linkTypeValue) ? linkTypeValue : undefined,
     } satisfies MainBannerSlide;
   });
@@ -153,7 +155,7 @@ export function useConfig() {
         if (snapshot.exists()) {
           const data = snapshot.data() as Record<string, unknown>;
           setMainBannerConfig({
-            active: Boolean(data.active),
+            active: data.active !== false,
             slides: sanitizeMainBannerSlides(data.slides),
           });
         } else {
