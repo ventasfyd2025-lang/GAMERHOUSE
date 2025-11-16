@@ -12,9 +12,43 @@ import { useCategories } from '@/hooks/useCategories';
 import { useLayoutPatterns } from '@/hooks/useLayoutPatterns';
 import { useSearchParams } from 'next/navigation';
 import { formatCategoryLabel, normalizeCategoryValue, getProductCategoryCandidates } from '@/utils/category';
+import { ShieldCheck, Sparkles, Gamepad2, Truck, BadgeDollarSign, Cable, HandHeart, Trophy } from 'lucide-react';
 
 export default function HomeClient() {
   const searchParams = useSearchParams();
+  const perks = [
+    {
+      title: 'Despachos express',
+      description: 'Regiones V, VI y RM con entrega dentro de 24 horas.',
+      icon: Truck,
+      accent: 'from-sky-200 to-cyan-100',
+    },
+    {
+      title: 'Kits gamer',
+      description: 'Combos pastel con sleeves, tapetes y boosters.',
+      icon: Gamepad2,
+      accent: 'from-indigo-200 to-violet-100',
+    },
+    {
+      title: 'Pago protegido',
+      description: 'Mercado Pago, transferencia o retiro presencial.',
+      icon: ShieldCheck,
+      accent: 'from-emerald-200 to-teal-100',
+    },
+    {
+      title: 'Rewards & drops',
+      description: 'Puntos por compra y drops sorpresa cada semana.',
+      icon: Sparkles,
+      accent: 'from-amber-200 to-orange-100',
+    },
+  ];
+
+  const heroStats = [
+    { label: 'Lanzamientos mensuales', value: '+45', detail: 'Nuevos productos TCG', icon: Trophy },
+    { label: 'Comunidades activas', value: '8K+', detail: 'Jugadores y coleccionistas', icon: HandHeart },
+    { label: 'Eventos y torneos', value: '12', detail: 'Durante esta temporada', icon: Cable },
+    { label: 'Ofertas dinámicas', value: '24/7', detail: 'Bots cazan precios bajos', icon: BadgeDollarSign },
+  ];
   
   // PRIORIDAD 1: Banner primero - config de banner con carga inmediata
   const { mainBannerConfig } = useConfig();
@@ -216,152 +250,171 @@ export default function HomeClient() {
     <>
       {/* PRIORIDAD 1: Banner aparece INMEDIATAMENTE - como PC Factory */}
       {shouldShowBanner && (
-        <MainBanner
-          config={mainBannerConfig ?? {}}
-          onResetFilters={handleResetFilters}
-        />
+        <div className="space-y-8">
+          <MainBanner
+            config={mainBannerConfig ?? {}}
+            onResetFilters={handleResetFilters}
+          />
+          <section className="relative border border-slate-100 rounded-[32px] bg-gradient-to-br from-white via-sky-50 to-white px-4 py-6 sm:px-8">
+            <div className="max-w-6xl mx-auto grid gap-4 md:grid-cols-4">
+              {heroStats.map(({ label, value, detail, icon: Icon }) => (
+                <div key={label} className="bg-white/90 rounded-2xl border border-white shadow-[0_30px_80px_-60px_rgba(15,81,148,0.6)] p-4 flex flex-col gap-2">
+                  <div className="inline-flex items-center gap-2 text-slate-500 text-xs font-semibold uppercase tracking-wide">
+                    <Icon className="h-4 w-4 text-sky-500" />
+                    {label}
+                  </div>
+                  <p className="text-3xl font-black text-slate-900">{value}</p>
+                  <p className="text-sm text-slate-500">{detail}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {perks.map(({ title, description, icon: Icon, accent }) => (
+                <div key={title} className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-[0_30px_60px_-50px_rgba(14,65,114,0.8)]">
+                  <div className={`absolute inset-0 opacity-70 bg-gradient-to-br ${accent}`} />
+                  <div className="relative p-5 space-y-2">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-slate-600">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
+                    <p className="text-sm text-slate-600">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
       )}
 
       {/* PRIORIDAD 1.5: Layouts Pinterest de categorías promocionales - solo en página principal */}
       {shouldShowBanner && (
-        <section className="py-8 sm:py-12 lg:py-16 bg-slate-900/80">
-          <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-white via-sky-50 to-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-6">
               <div className="text-center space-y-3">
-                <h2 className="text-3xl font-bold text-white text-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 bg-clip-text text-transparent">
-                  ✨ Colecciones Destacadas
-                </h2>
-                <p className="text-sm sm:text-base text-yellow-300 max-w-2xl mx-auto">
-                  Descubre selecciones rápidas con lo más deseado de cada categoría.
+                <h2 className="text-3xl font-black text-slate-900">✨ Colecciones destacadas</h2>
+                <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto">
+                  Curadas por el equipo Gamerhouse para que armes tu setup con tonos claros, celestes y rosas.
                 </p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 grid-flow-dense">
                 
                 {/* Promoción grande - Electrónicos */}
                 <Link href="/?category=tecnologia" className="col-span-2 md:col-span-2 md:row-span-2 group">
-                  <div className="bg-slate-900/80 rounded-3xl border border-gray-100 overflow-hidden shadow-lg shadow-red-600/15 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col h-full cursor-pointer">
-                    <div className="relative flex-1 min-h-[350px]">
-                      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 h-full w-full overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800&h=600&fit=crop&crop=center"
-                          alt="Electrónicos y Tecnología"
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-6 left-6 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-lg font-bold px-4 py-3 rounded-full shadow-lg shadow-red-600/15">
-                        HASTA 50% OFF
-                      </span>
-                      <div className="absolute bottom-6 left-6 text-white">
-                        <h3 className="text-3xl font-bold mb-2">Electrónicos</h3>
-                        <p className="text-lg opacity-90">Smartphones, laptops y más</p>
-                      </div>
+                  <div className="relative rounded-3xl border border-slate-100 overflow-hidden bg-white shadow-[0_40px_80px_-60px_rgba(15,81,148,0.8)] hover:-translate-y-2 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=800&h=600&fit=crop&crop=center"
+                      alt="Electrónicos y Tecnología"
+                      width={800}
+                      height={600}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-xs font-semibold text-slate-700">
+                      <Sparkles className="h-4 w-4 text-pink" />HASTA 50% OFF
+                    </div>
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="text-3xl font-bold mb-1">Electrónicos</h3>
+                      <p className="text-sm text-white/80">Periféricos RGB, consolas y más.</p>
                     </div>
                   </div>
                 </Link>
 
                 {/* Promoción alta - Moda */}
                 <Link href="/?category=moda" className="col-span-2 sm:col-span-1 md:row-span-2 group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative flex-1 min-h-[300px]">
-                      <div className="bg-gradient-to-br from-pink-50 to-slate-800 h-full w-full overflow-hidden">
-                        <Image
-                          src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=700&fit=crop&crop=center"
-                          alt="Moda y Ropa"
-                          fill
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                      <span className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-pink text-white text-sm font-bold px-3 py-2 rounded-full shadow-lg shadow-red-600/15">
-                        NUEVA COLECCIÓN
-                      </span>
-                      <div className="absolute bottom-4 left-4 text-white">
-                        <h3 className="text-2xl font-bold mb-2">Moda</h3>
-                        <p className="text-sm opacity-90">Ropa y accesorios</p>
-                      </div>
+                  <div className="relative rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_30px_60px_-45px_rgba(193,80,146,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=700&fit=crop&crop=center"
+                      alt="Moda y Ropa"
+                      width={500}
+                      height={700}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-slate-700">
+                      <Sparkles className="h-3.5 w-3.5 text-pink" />Nueva colección
+                    </div>
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h3 className="text-2xl font-bold mb-1">Moda Geek</h3>
+                      <p className="text-sm text-white/80">Ropa y accesorios oficiales.</p>
                     </div>
                   </div>
                 </Link>
 
                 {/* Promociones normales */}
                 <Link href="/?category=electrohogar" className="group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-green-50 to-emerald-100 h-full w-full overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&crop=center"
-                          alt="Electrohogar"
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-2 left-2 text-white">
-                        <h3 className="text-lg font-bold">Electrohogar</h3>
-                      </div>
+                  <div className="relative h-32 rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_25px_40px_-35px_rgba(28,66,106,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&crop=center"
+                      alt="Electrohogar"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg font-bold">Electrohogar</h3>
                     </div>
                   </div>
                 </Link>
 
                 <Link href="/?category=calzado" className="group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-yellow-50 to-slate-800 h-full w-full overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center"
-                          alt="Calzado"
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-2 left-2 text-white">
-                        <h3 className="text-lg font-bold">Calzado</h3>
-                      </div>
+                  <div className="relative h-32 rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_25px_40px_-35px_rgba(28,66,106,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center"
+                      alt="Calzado"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg font-bold">Calzado</h3>
                     </div>
                   </div>
                 </Link>
 
                 <Link href="/?category=fitness" className="group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-slate-800 to-rose-100 h-full w-full overflow-hidden">
-                        <img
-                          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
-                          alt="Fitness"
-                          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-2 left-2 text-white">
-                        <h3 className="text-lg font-bold">Fitness</h3>
-                      </div>
+                  <div className="relative h-32 rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_25px_40px_-35px_rgba(28,66,106,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center"
+                      alt="Fitness"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg font-bold">Fitness</h3>
                     </div>
                   </div>
                 </Link>
 
                 <Link href="/?filter=ofertas" className="group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-pink to-pink h-full w-full overflow-hidden flex items-center justify-center">
-                        <div className="text-white text-center">
-                          <div className="text-4xl mb-2">🔥</div>
-                          <h3 className="text-lg font-bold">OFERTAS</h3>
-                        </div>
-                      </div>
+                  <div className="relative h-32 rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_25px_40px_-35px_rgba(28,66,106,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=300&fit=crop&crop=center"
+                      alt="Ofertas"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg font-bold">Ofertas activas</h3>
                     </div>
                   </div>
                 </Link>
 
                 <Link href="/?filter=nuevos" className="group">
-                  <div className="bg-slate-900/80 rounded-2xl border border-gray-100 overflow-hidden shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-500 hover:-translate-y-1 flex flex-col h-full cursor-pointer">
-                    <div className="relative h-32">
-                      <div className="bg-gradient-to-br from-green-500 to-green-600 h-full w-full overflow-hidden flex items-center justify-center">
-                        <div className="text-white text-center">
-                          <div className="text-4xl mb-2">✨</div>
-                          <h3 className="text-lg font-bold">NUEVOS</h3>
-                        </div>
-                      </div>
+                  <div className="relative h-32 rounded-2xl border border-slate-100 overflow-hidden bg-white shadow-[0_25px_40px_-35px_rgba(28,66,106,0.8)] hover:-translate-y-1 transition-transform">
+                    <Image
+                      src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=400&h=300&fit=crop&crop=center"
+                      alt="Nuevos"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg font-bold">Nuevos ingresos</h3>
                     </div>
                   </div>
                 </Link>

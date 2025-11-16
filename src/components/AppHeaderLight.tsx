@@ -294,22 +294,12 @@ export default function AppHeaderLight() {
                   </button>
                 ))}
                 {activeCategories.length > 5 && (
-                  <div className="relative group h-full">
-                    <button className="h-full px-4 text-sm font-semibold flex items-center gap-1 text-slate-600 hover:text-sky-700 transition-colors">
-                      Más <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform" />
-                    </button>
-                    <div className="absolute left-0 mt-0 w-56 bg-white text-gray-800 shadow-xl rounded-2xl overflow-hidden hidden group-hover:block border border-gray-100">
-                      {activeCategories.slice(5).map((category) => (
-                        <button
-                          key={category.id}
-                          onClick={() => handleCategoryClick(category.id)}
-                          className="block w-full text-left px-4 py-3 hover:bg-gradient-to-r hover:from-sky-100 hover:to-cyan-100 hover:text-slate-900 transition-all duration-200 text-sm font-medium"
-                        >
-                          {category.name || category.id}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  <Link
+                    href="/productos"
+                    className="h-full px-4 text-sm font-semibold flex items-center gap-1 text-slate-600 hover:text-sky-700 transition-colors"
+                  >
+                    Ver todo
+                  </Link>
                 )}
               </div>
             </div>
