@@ -429,6 +429,7 @@ export default function AdminPage() {
   const { notifyOrderStatusChange } = useEmailNotifications();
 
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [cleaningData, setCleaningData] = useState(false);
   const [ordersFilter, setOrdersFilter] = useState<'active' | 'completed'>('active');
   const [orderSearchQuery, setOrderSearchQuery] = useState('');
   const [orderStatusFilter, setOrderStatusFilter] = useState<string>('all');
@@ -768,6 +769,32 @@ export default function AdminPage() {
     }
   };
 
+  const handleCleanDemoData = async () => {
+    if (cleaningData) {
+      return;
+    }
+    const confirmation = typeof window !== 'undefined'
+      ? window.confirm('Esta acción eliminará pedidos y mensajes de prueba. ¿Deseas continuar?')
+      : false;
+    if (!confirmation) {
+      return;
+    }
+    try {
+      setCleaningData(true);
+      await cleanAllData();
+      if (typeof window !== 'undefined') {
+        window.alert('Datos de prueba eliminados exitosamente.');
+      }
+    } catch (error) {
+      console.error('Error limpiando datos de prueba:', error);
+      if (typeof window !== 'undefined') {
+        window.alert('No se pudieron limpiar los datos. Revisa la consola para más detalles.');
+      }
+    } finally {
+      setCleaningData(false);
+    }
+  };
+
   const autoSaveHomepageContent = useCallback((content: HomepageContentState) => {
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current);
@@ -817,6 +844,30 @@ export default function AdminPage() {
       }
     }, 1000);
   }, []);
+
+  const saveMainBannerNow = useCallback(async () => {
+    if (updatingMainBanner) {
+      return;
+    }
+    setUpdatingMainBanner(true);
+    try {
+      await setDoc(doc(db, 'config', 'main-banner'), {
+        active: mainBannerForm.active,
+        slides: mainBannerForm.slides,
+        updatedAt: new Date().toISOString(),
+      });
+      if (typeof window !== 'undefined') {
+        window.alert('Banner sincronizado correctamente.');
+      }
+    } catch (error) {
+      console.error('Error guardando banner manualmente:', error);
+      if (typeof window !== 'undefined') {
+        window.alert('Ocurrió un error al guardar el banner.');
+      }
+    } finally {
+      setUpdatingMainBanner(false);
+    }
+  }, [mainBannerForm, updatingMainBanner]);
 
   useEffect(() => {
     return () => {
@@ -2298,6 +2349,11 @@ export default function AdminPage() {
                 <div>
                   <h1 className="text-xl font-semibold text-slate-900">Panel de Administración</h1>
                   <p className="text-sm text-slate-500">Gestiona tu tienda</p>
+                  {userProfile && (
+                    <p className="text-xs text-slate-400 mt-1">
+                      Sesión iniciada como {`${userProfile.firstName || ''} ${userProfile.lastName || ''}`.trim() || userProfile.email}
+                    </p>
+                  )}
                 </div>
               </div>
               <span className="chip-option chip-option-active text-[10px] uppercase tracking-[0.3em]">
@@ -2310,7 +2366,9 @@ export default function AdminPage() {
                           {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
+                { id: 'stock-center', name: 'Alertas & Stock', icon: '🚨' },
                 { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-pink' },
+                { id: 'b2b', name: 'Clientes B2B', icon: '🏢' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'main-banner', name: 'Banners', icon: '🏆' },
                 { id: 'product-layout', name: 'Layout Productos', icon: '🔲' },
@@ -2402,6 +2460,33 @@ export default function AdminPage() {
                     📊 Exportar Reporte
                   </button>
                 </div>
+              </div>
+            </div>
+
+            <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex flex-col gap-4 shadow-sm">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                  <span className="text-red-600 text-lg">⚠️</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-red-800">Limpiar datos de prueba</h3>
+                  <p className="text-sm text-red-600">
+                    Elimina pedidos y chats generados en pruebas para comenzar desde cero.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-red-500">
+                  Esta acción no se puede deshacer. Úsala sólo en entornos de desarrollo.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleCleanDemoData}
+                  disabled={cleaningData}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-700 transition disabled:opacity-60"
+                >
+                  {cleaningData ? 'Limpiando...' : 'Eliminar pedidos y chats'}
+                </button>
               </div>
             </div>
 
@@ -3143,6 +3228,31 @@ export default function AdminPage() {
                     </button>
                   )}
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+
+        {activeTab === 'stock-center' && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  🚨 Centro de Stock
+                </h2>
+                <p className="text-sm text-yellow-300">
+                  Revisa alertas y ajusta inventario en un solo lugar.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-5">
+              <div className="lg:col-span-2">
+                <StockAlerts className="h-full" />
+              </div>
+              <div className="lg:col-span-3">
+                <StockManagement className="h-full" />
               </div>
             </div>
           </div>
@@ -4087,7 +4197,26 @@ export default function AdminPage() {
           </div>
         )}
 
-        
+
+        {activeTab === 'b2b' && (
+          <div className="space-y-6">
+            <div className="bg-slate-800/70 rounded-xl shadow p-6 border border-yellow-300/30">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                    🏢 Gestión B2B
+                  </h2>
+                  <p className="text-sm text-yellow-300">
+                    Administra clientes corporativos, cotizaciones y órdenes de compra.
+                  </p>
+                </div>
+              </div>
+              <B2BOrderManagement />
+            </div>
+          </div>
+        )}
+
+
         {activeTab === 'banner' && (
           <AdminBannerSection />
         )}
@@ -5330,17 +5459,27 @@ export default function AdminPage() {
 
         {activeTab === 'main-banner' && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="text-2xl font-bold text-white">Gestión de Banners (v2)</h2>
-              {isAutoSavingBanner && (
-                <div className="flex items-center gap-2 text-sm text-yellow-300 bg-slate-800 px-3 py-1 rounded-full">
-                  <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  <span>Guardando cambios...</span>
-                </div>
-              )}
+              <div className="flex items-center gap-3">
+                {isAutoSavingBanner && (
+                  <div className="flex items-center gap-2 text-sm text-yellow-300 bg-slate-800 px-3 py-1 rounded-full">
+                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Guardando cambios...</span>
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={saveMainBannerNow}
+                  disabled={updatingMainBanner}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-yellow-400 text-white font-semibold hover:bg-yellow-300 transition disabled:opacity-60"
+                >
+                  {updatingMainBanner ? 'Sincronizando...' : 'Guardar manualmente'}
+                </button>
+              </div>
             </div>
 
             <div className="bg-slate-800/70 rounded-lg shadow-md p-6">
@@ -7206,10 +7345,26 @@ export default function AdminPage() {
                                 <label className="block text-xs font-semibold text-secondary mb-2">
                                   URL completa:
                                 </label>
+                                <select
+                                  value={banner.ctaLink || ''}
+                                  onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (!value) {
+                                      return;
+                                    }
+                                    updateMiddleBanner(index, { ...banner, ctaLink: value, linkValue: value });
+                                  }}
+                                  className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 mb-3 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
+                                >
+                                  <option value="">-- Selecciona un destino rápido --</option>
+                                  {MIDDLE_BANNER_LINK_OPTIONS.map((option) => (
+                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                  ))}
+                                </select>
                                 <input
                                   type="text"
-                                  value={banner.ctaLink}
-                                  onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value })}
+                                  value={banner.ctaLink || ''}
+                                  onChange={(e) => updateMiddleBanner(index, { ...banner, ctaLink: e.target.value, linkValue: e.target.value })}
                                   className="w-full text-sm border-2 border-amber-300 rounded-lg px-3 py-2 focus:border-red-600 focus:ring-2 focus:ring-amber-200 focus:outline-none bg-slate-800/70 transition-all"
                                   placeholder="https://ejemplo.com o /?filter=ofertas"
                                 />
