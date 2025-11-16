@@ -25,10 +25,7 @@ interface MainBannerProps {
 
 export default function MainBanner({ config, onResetFilters }: MainBannerProps) {
   const preparedSlides = useMemo(() => {
-    if (!config?.active) {
-      return [] as SlideConfig[];
-    }
-    return (config.slides || [])
+    return (config?.slides || [])
       .filter((slide): slide is SlideConfig => Boolean(slide))
       .map((slide) => ({
         ...slide,
@@ -37,7 +34,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
         imageUrl: slide.imageUrl?.trim() || undefined,
       }))
       .filter((slide) => slide.title || slide.subtitle || slide.imageUrl);
-  }, [config?.active, config?.slides]);
+  }, [config?.slides]);
 
   const fallbackSlide: SlideConfig = {
     title: 'Siempre los mejores precios en TCG',
@@ -48,6 +45,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   };
 
   const slides = preparedSlides.length > 0 ? preparedSlides : [fallbackSlide];
+  const bannerManaged = preparedSlides.length > 0;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -97,7 +95,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
           <span className="inline-block px-4 py-1 bg-sky-50 text-sky-700 text-sm font-semibold rounded-full border border-sky-100">
-            {config?.active ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
+            {bannerManaged ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
             {title}

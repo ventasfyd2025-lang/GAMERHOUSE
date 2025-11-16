@@ -8,7 +8,6 @@ import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useUserAuth } from '@/hooks/useUserAuth';
 import { useNotification } from '@/context/NotificationContext';
-import { useTheme } from '@/context/ThemeContext';
 
 interface ProductCardProps {
   product: Product;
@@ -19,7 +18,6 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
   const { addItem } = useCart();
   const { currentUser, loading } = useUserAuth();
   const { addNotification } = useNotification();
-  const { theme } = useTheme();
   const router = useRouter();
 
   const isEtiquetaActiva = (timestamp: string | undefined, duracionHoras: number | undefined): boolean => {
@@ -95,7 +93,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
     : null;
 
   // Theme-based styles
-  const isDark = theme === 'dark';
+  const isDark = false;
 
   const cardBgGradient = isDark
     ? 'from-cyan-200/40 via-sky-200/20 to-blue-200/30'

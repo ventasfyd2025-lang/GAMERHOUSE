@@ -59,20 +59,6 @@ p {
   --glass-blur: 22px;
 }
 
-body[data-theme='dark'] {
-  --text-primary: #f4fbff;
-  --text-muted: #b8c7d4;
-  --surface: #071321;
-  --surface-alt: #050b16;
-  --surface-card: rgba(8, 20, 32, 0.92);
-  --border-soft: rgba(152, 196, 222, 0.25);
-  --border-strong: rgba(152, 196, 222, 0.45);
-  --shadow-card: 0 25px 55px -40px rgba(4, 20, 36, 0.9);
-  --page-background: linear-gradient(135deg, #020912, #031a2d 70%);
-  --glass-background: rgba(8, 18, 32, 0.85);
-  --glass-border: rgba(149, 225, 255, 0.1);
-  color: var(--text-primary);
-}
 
 #admin-container {
   --admin-surface: #ffffff;
@@ -308,25 +294,6 @@ body[data-theme='dark'] {
   outline: none;
   border-color: rgba(62, 194, 218, 0.6);
   box-shadow: 0 0 0 4px rgba(127, 213, 235, 0.35);
-}
-
-body[data-theme='dark'] .surface-card,
-body[data-theme='dark'] .glass-panel {
-  background: var(--surface-card);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-body[data-theme='dark'] .chip-pill,
-body[data-theme='dark'] .stat-pill {
-  background: rgba(5, 17, 31, 0.9);
-  border-color: rgba(149, 225, 255, 0.2);
-  color: var(--text-primary);
-}
-
-body[data-theme='dark'] .form-input {
-  background: rgba(5, 17, 31, 0.9);
-  border-color: rgba(149, 225, 255, 0.3);
-  color: var(--text-primary);
 }
 
 .accent-dot {

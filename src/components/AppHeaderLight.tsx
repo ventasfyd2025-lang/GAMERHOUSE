@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useCategories } from '@/hooks/useCategories';
-import { Search, ShoppingCart, User, Menu, X, ChevronDown, Sun, Moon, Home, Package } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, ChevronDown, Home, Package } from 'lucide-react';
 import DynamicLogo from './DynamicLogo';
-import { useTheme } from '@/context/ThemeContext';
 
 export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,17 +14,11 @@ export default function AppHeaderLight() {
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
-  const { theme, setTheme } = useTheme();
 
   const activeCategories = useMemo(
     () => categories.filter(cat => cat.active !== false),
     [categories]
   );
-
-  const isDark = theme === 'dark';
-  const handleToggleTheme = () => {
-    setTheme(isDark ? 'light' : 'dark');
-  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,14 +57,6 @@ export default function AppHeaderLight() {
 
           {/* Right Icons */}
           <div className="flex items-center gap-3 ml-auto">
-            <button
-              onClick={handleToggleTheme}
-              className="hidden sm:inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 bg-white/60 text-slate-600 transition-all hover:border-red-200 hover:text-red-500 dark:bg-slate-900/60 dark:text-white/70"
-              aria-label="Cambiar tema"
-            >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-
             <div className="hidden sm:flex items-center gap-4">
               <Link href="/perfil" className="p-2 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-full transition-all duration-200">
                 <User className="h-5 w-5" />
@@ -159,14 +144,6 @@ export default function AppHeaderLight() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="px-4 py-5 space-y-2">
-            <button
-              onClick={handleToggleTheme}
-              className="w-full flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-600"
-            >
-              Tema {isDark ? 'oscuro' : 'claro'}
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-
             {[
               { label: 'Inicio', href: '/', icon: Home },
               { label: 'Todos los productos', href: '/productos', icon: Package }
