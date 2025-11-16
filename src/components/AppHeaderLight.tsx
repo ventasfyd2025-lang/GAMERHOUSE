@@ -31,6 +31,7 @@ import DynamicLogo from './DynamicLogo';
 const gamerPalette = ['from-sky-400/70 to-cyan-300/70', 'from-indigo-400/70 to-sky-300/70', 'from-fuchsia-400/60 to-pink-300/60', 'from-emerald-400/60 to-teal-300/60'];
 
 const quickLinks = [
+  { label: 'Inicio', href: '/' },
   { label: 'Ofertas', href: '/productos?filter=ofertas' },
   { label: 'Nuevos', href: '/productos?filter=nuevos' },
   { label: 'Preventa', href: '/productos?filter=preventa' },
@@ -205,6 +206,19 @@ export default function AppHeaderLight() {
                   >
                     <div className="grid grid-cols-[210px_1fr] gap-6">
                       <div className="flex flex-col gap-2">
+                        <button
+                          type="button"
+                          className="flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200"
+                          onClick={() => handleMegaNavigate('/')}
+                        >
+                          <span className="inline-flex items-center gap-2">
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-slate-200 to-white">
+                              <Home className="h-4 w-4 text-slate-700" />
+                            </span>
+                            Inicio
+                          </span>
+                          <ChevronRight className="h-4 w-4 text-slate-300" />
+                        </button>
                         {activeCategories.map((category, index) => {
                           const IconComponent = getCategoryIcon(category.id);
                           const isActive = megaCategoryId === category.id;
@@ -304,7 +318,10 @@ export default function AppHeaderLight() {
               {quickLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => router.push(link.href)}
+                  onClick={() => {
+                    setIsMegaMenuOpen(false);
+                    router.push(link.href);
+                  }}
                   className="text-sm font-semibold text-slate-500 hover:text-sky-700 transition-colors"
                 >
                   {link.label}
