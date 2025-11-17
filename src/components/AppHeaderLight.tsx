@@ -192,10 +192,17 @@ export default function AppHeaderLight() {
               >
                 <button
                   type="button"
+                  onClick={() => {
+                    if (isMegaMenuOpen) {
+                      setIsMegaMenuOpen(false);
+                    } else {
+                      openMegaMenu();
+                    }
+                  }}
                   className="flex items-center gap-2 rounded-full border border-sky-100 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-sky-200 hover:bg-white shadow-sm"
                 >
                   <Gamepad2 className="h-4 w-4 text-sky-500" />
-                  Explorar catálogo
+                  Categorías
                   <ChevronDown className={`h-4 w-4 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -224,23 +231,39 @@ export default function AppHeaderLight() {
                           const IconComponent = getCategoryIcon(category.id);
                           const isActive = megaCategoryId === category.id;
                           return (
-                            <button
+                            <div
                               key={category.id}
-                              type="button"
-                              className={`flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
+                              className={`flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
                                 isActive ? 'border-sky-200 bg-sky-50 text-slate-900 shadow-sm' : 'border-slate-100 text-slate-500 hover:border-slate-200'
                               }`}
                               onMouseEnter={() => openMegaMenu(category.id)}
-                              onClick={() => handleMegaNavigate(`/categoria/${category.id}`)}
                             >
-                              <span className="inline-flex items-center gap-2">
+                              <button
+                                type="button"
+                                className="flex-1 inline-flex items-center gap-2 text-left"
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  setMegaCategoryId(category.id);
+                                  openMegaMenu(category.id);
+                                }}
+                              >
                                 <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${gamerPalette[index % gamerPalette.length]}`}>
                                   <IconComponent className="h-4 w-4 text-slate-900/80" />
                                 </span>
                                 {category.name || category.id}
-                              </span>
-                              <ChevronRight className={`h-4 w-4 ${isActive ? 'text-sky-500' : 'text-slate-300'}`} />
-                            </button>
+                              </button>
+                              <button
+                                type="button"
+                                aria-label="Ir a categoría"
+                                className={`p-1 rounded-full ${isActive ? 'text-sky-500' : 'text-slate-300 hover:text-sky-500'}`}
+                                onClick={(event) => {
+                                  event.stopPropagation();
+                                  handleMegaNavigate(`/categoria/${category.id}`);
+                                }}
+                              >
+                                <ChevronRight className="h-4 w-4" />
+                              </button>
+                            </div>
                           );
                         })}
                       </div>
