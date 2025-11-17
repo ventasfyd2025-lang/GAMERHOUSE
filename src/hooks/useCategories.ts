@@ -110,74 +110,39 @@ export function useCategories() {
         const unsubscribe = onSnapshot(
           collection(db, 'gamerhouse_categorias'),
           (snapshot) => {
-            // If we have categories in Firebase, use them
             if (!snapshot.empty) {
-              const firebaseCategories: Category[] = [];
-              
-              // First, collect all category names
-              const allCategoryNames: Set<string> = new Set();
-              snapshot.forEach((doc) => {
-                const name = doc.data().name || doc.id;
-                const mainCategory = name.split('>')[0].trim();
-                allCategoryNames.add(mainCategory);
-              });
-
-              // Now process categories with their subcategories
-              snapshot.forEach((doc) => {
+              const firebaseCategories: Category[] = snapshot.docs.map((doc) => {
                 const data = doc.data();
-                const fullName = data.name || doc.id;
+                const categoryId = (data.id || doc.id || '').toString();
+                const normalizedId = categoryId || (data.name || doc.id).toLowerCase().replace(/\s+/g, '-');
+                const rawSubcategorias = Array.isArray(data.subcategorias) ? data.subcategorias : [];
+                const subcategorias = rawSubcategorias
+                  .map((sub, index) => ({
+                    id: (sub?.id || sub?.nombre || `sub-${index}`).toString(),
+                    nombre: (sub?.nombre || sub?.id || `Subcategoría ${index + 1}`).toString(),
+                    activa: sub?.activa !== false,
+                  }))
+                  .filter(sub => sub.activa);
 
-                // Check if this is a main category (no ">") or subcategory
-                if (!fullName.includes('>')) {
-                  // This is a main category
-                  const categoryId = fullName.toLowerCase().replace(/\s+/g, '-');
-
-                  // Find all subcategories for this main category
-                  const subcategorias: Array<{ id: string; nombre: string; activa: boolean }> = [];
-                  snapshot.forEach((subDoc) => {
-                    const subName = subDoc.data().name || subDoc.id;
-                    if (subName.includes('>')) {
-                      const parts = subName.split('>').map((s: string) => s.trim());
-                      const mainCat = parts[0];
-                      const subCat = parts[1];
-                      if (mainCat === fullName) {
-                        subcategorias.push({
-                          id: subCat.toLowerCase().replace(/\s+/g, '-'),
-                          nombre: subCat,
-                          activa: true
-                        });
-                      }
-                    }
-                  });
-
-                  firebaseCategories.push({
-                    id: categoryId,
-                    name: fullName,
-                    active: data.active !== undefined ? data.active : true,
-                    icon: categoryIcons[categoryId] || '📦',
-                    subcategorias
-                  });
-                }
+                return {
+                  id: normalizedId,
+                  name: data.name || doc.id,
+                  active: data.active !== false,
+                  icon: categoryIcons[normalizedId] || '📦',
+                  subcategorias,
+                } satisfies Category;
               });
 
-              // Filter only active categories and sort them
               const activeCategories = firebaseCategories
-                .filter(cat => cat.active)
+                .filter((category) => category.active)
                 .sort((a, b) => a.name.localeCompare(b.name));
 
-              // Always include "Todos los productos" at the beginning
-              const allCategories = [
-                defaultCategories[0], // "Todos los productos"
-                ...activeCategories
-              ];
-
-              setCategories(allCategories);
+              setCategories([defaultCategories[0], ...activeCategories]);
             } else {
-              // If no categories in Firebase, generate from mock products
               const generatedCategories = generateCategoriesFromProducts();
               setCategories(generatedCategories);
             }
-            
+
             setLoading(false);
           },
           (error) => {
