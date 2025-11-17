@@ -49,10 +49,10 @@ export default function GamerHouseHomepage() {
     return (
       <Link
         href={`/producto/${product.id}`}
-        className="group block bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+        className="group block bg-white rounded-xl sm:rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col"
       >
         {/* Image */}
-        <div className="relative w-full aspect-[4/5] xs:aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+        <div className="relative w-full aspect-[3/4] xs:aspect-[4/5] sm:aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
@@ -73,19 +73,19 @@ export default function GamerHouseHomepage() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-3 p-4 sm:p-5 flex-1">
-          <h3 className="font-semibold text-slate-800 line-clamp-2 text-sm sm:text-base">
+        <div className="flex flex-col gap-2.5 p-3 sm:p-5 flex-1">
+          <h3 className="font-semibold text-slate-800 line-clamp-2 text-xs sm:text-base">
             {product.nombre}
           </h3>
 
           {/* Pricing */}
           <div className="space-y-1">
-            <div className="flex items-baseline gap-2">
-              <span className="text-lg sm:text-xl font-bold text-sky-700">
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-base sm:text-xl font-bold text-sky-700">
                 ${product.precio?.toLocaleString() || 'N/D'}
               </span>
               {hasDiscount && (
-                <span className="text-sm text-slate-400 line-through">
+                <span className="text-xs sm:text-sm text-slate-400 line-through">
                   ${product.precioOriginal?.toLocaleString()}
                 </span>
               )}
@@ -94,7 +94,7 @@ export default function GamerHouseHomepage() {
 
           {/* Stock Info */}
           {product.stock > 0 && (
-            <p className="text-xs text-slate-500 font-semibold">
+            <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">
               Stock disponible: {product.stock}
             </p>
           )}
@@ -106,7 +106,7 @@ export default function GamerHouseHomepage() {
               handleAddToCart(product);
             }}
             disabled={product.stock === 0}
-            className={`mt-auto w-full py-2.5 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base transform ${
+            className={`mt-auto w-full py-2 px-2.5 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-1.5 text-xs sm:text-base transform ${
               product.stock === 0
                 ? 'bg-gray-300 cursor-not-allowed'
                 : 'bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-500 hover:brightness-110 hover:shadow-lg hover:scale-[1.02] active:scale-95'
@@ -125,8 +125,8 @@ export default function GamerHouseHomepage() {
       <DynamicBanner />
 
       {/* Catálogo completo */}
-      <section className="py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="py-8 sm:py-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-8">
           <div className="section-heading">
             <span className="section-heading__eyebrow">Catálogo completo</span>
             <h2 className="section-heading__title text-3xl sm:text-4xl">Todos los productos</h2>
@@ -145,7 +145,7 @@ export default function GamerHouseHomepage() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 sm:gap-6">
                 {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
