@@ -49,14 +49,15 @@ export default function GamerHouseHomepage() {
     return (
       <Link
         href={`/producto/${product.id}`}
-        className="block bg-white rounded-xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group-hover:-translate-y-2 group-hover:border-cyan-200"
+        className="group block bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col"
       >
         {/* Image */}
-        <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+        <div className="relative w-full aspect-[4/5] xs:aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
             fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
             className="object-cover group-hover:scale-110 transition-transform"
           />
           {hasDiscount && (
@@ -72,15 +73,15 @@ export default function GamerHouseHomepage() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-3 p-4 flex-1">
-          <h3 className="font-semibold text-slate-800 line-clamp-2 text-sm">
+        <div className="flex flex-col gap-3 p-4 sm:p-5 flex-1">
+          <h3 className="font-semibold text-slate-800 line-clamp-2 text-sm sm:text-base">
             {product.nombre}
           </h3>
 
           {/* Pricing */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-lg font-bold text-sky-700">
+              <span className="text-lg sm:text-xl font-bold text-sky-700">
                 ${product.precio?.toLocaleString() || 'N/D'}
               </span>
               {hasDiscount && (
@@ -105,10 +106,10 @@ export default function GamerHouseHomepage() {
               handleAddToCart(product);
             }}
             disabled={product.stock === 0}
-            className={`mt-auto w-full py-2 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm transform ${
+            className={`mt-auto w-full py-2.5 px-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base transform ${
               product.stock === 0
                 ? 'bg-gray-300 cursor-not-allowed'
-                : 'bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-500 hover:brightness-110 hover:shadow-lg hover:scale-105 active:scale-95'
+                : 'bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-500 hover:brightness-110 hover:shadow-lg hover:scale-[1.02] active:scale-95'
             }`}
           >
             <ShoppingCart className="h-4 w-4" />
@@ -124,7 +125,7 @@ export default function GamerHouseHomepage() {
       <DynamicBanner />
 
       {/* Catálogo completo */}
-      <section className="py-12 sm:py-16">
+      <section className="py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="section-heading">
             <span className="section-heading__eyebrow">Catálogo completo</span>
@@ -144,7 +145,7 @@ export default function GamerHouseHomepage() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
                 {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}

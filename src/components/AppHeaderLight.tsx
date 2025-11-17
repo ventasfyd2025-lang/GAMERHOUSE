@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
@@ -55,7 +55,7 @@ export default function AppHeaderLight() {
   const [expandedDesktopCategory, setExpandedDesktopCategory] = useState<string | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
-  const megaMenuTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
+  const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
@@ -86,6 +86,7 @@ export default function AppHeaderLight() {
 
   const handleMegaNavigate = (href: string) => {
     setIsMegaMenuOpen(false);
+    setIsMobileMenuOpen(false);
     router.push(href);
   };
 
@@ -112,7 +113,7 @@ export default function AppHeaderLight() {
 
   const getCategoryIcon = (categoryId: string): LucideIcon => CATEGORY_ICON_MAP[categoryId] || Gamepad2;
 
-  const getCategorySubcategories = (category: (typeof categories)[number]) => {
+  const getCategorySubcategories = useCallback((category: (typeof categories)[number]) => {
     if (!category?.subcategorias) {
       return [] as Array<{ value: string; label: string }>;
     }
@@ -122,7 +123,28 @@ export default function AppHeaderLight() {
         value: sub.nombre || sub.id || `sub-${index}`,
         label: sub.nombre || sub.id || `Subcategoría ${index + 1}`,
       }));
-  };
+  }, []);
+
+  const mobileCategoryRail = useMemo(() => {
+    return activeCategories.flatMap((category) => {
+      const entries = [
+        {
+          key: category.id,
+          label: category.name || category.id,
+          href: `/categoria/${category.id}`,
+        },
+      ];
+      const subcategories = getCategorySubcategories(category).slice(0, 3);
+      subcategories.forEach((sub) => {
+        entries.push({
+          key: `${category.id}-${sub.value}`,
+          label: sub.label,
+          href: `/categoria/${category.id}/${encodeURIComponent(sub.value)}`,
+        });
+      });
+      return entries;
+    });
+  }, [activeCategories]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-sky-100 bg-white/90 shadow-[0_40px_120px_-60px_rgba(56,182,255,0.4)] backdrop-blur-xl">
@@ -327,10 +349,60 @@ export default function AppHeaderLight() {
               ))}
             </div>
 
-            <div className="md:hidden">
-              <span className="text-sm font-bold tracking-wider text-slate-600">CATEGORÍAS</span>
+            <div className="md:hidden flex w-full items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                className="inline-flex flex-1 items-center justify-between gap-2 rounded-full border border-sky-100 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm"
+                aria-expanded={isMobileMenuOpen}
+                aria-label="Abrir menú de navegación"
+              >
+                <span className="inline-flex items-center gap-2">
+                  <Gamepad2 className="h-4 w-4 text-sky-500" />
+                  Categorías
+                </span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${isMobileMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/perfil"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 text-slate-600 hover:border-sky-200 hover:text-sky-600"
+                  aria-label="Ir a mi cuenta"
+                >
+                  <User className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/carrito"
+                  className="relative flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 text-slate-600 hover:border-sky-200 hover:text-sky-600"
+                  aria-label="Ir al carrito"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-sky-400 to-cyan-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-lg">
+                      {getTotalItems()}
+                    </span>
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
+
+          {mobileCategoryRail.length > 0 && (
+            <div className="md:hidden border-t border-white/70 mt-2 pt-3">
+              <div className="flex items-center gap-3 overflow-x-auto pb-2 pl-1 pr-4" style={{ WebkitOverflowScrolling: 'touch' }}>
+                {mobileCategoryRail.map((entry) => (
+                  <button
+                    key={entry.key}
+                    type="button"
+                    onClick={() => handleMegaNavigate(entry.href)}
+                    className="flex-shrink-0 rounded-full border border-sky-100 bg-white/90 px-4 py-2 text-xs font-semibold text-slate-600 shadow-sm hover:border-sky-200"
+                  >
+                    {entry.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
