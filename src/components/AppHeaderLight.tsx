@@ -51,6 +51,7 @@ const CATEGORY_ICON_MAP: Record<string, LucideIcon> = {
 export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [expandedMobileCategory, setExpandedMobileCategory] = useState<string | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
   const megaMenuTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
@@ -349,15 +350,49 @@ export default function AppHeaderLight() {
             {activeCategories.length > 0 && (
               <div className="border-t border-gray-200 pt-3 mt-3">
                 <p className="px-4 text-xs font-bold uppercase text-gray-500 mb-3 tracking-wide">Categorías</p>
-                {activeCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => handleCategoryClick(category.id)}
-                    className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-sky-700 rounded-lg transition-all duration-200 font-medium"
-                  >
-                    {category.name || category.id}
-                  </button>
-                ))}
+                {activeCategories.map((category) => {
+                  const subcategories = getCategorySubcategories(category);
+                  const hasSubcategories = subcategories.length > 0;
+                  const isExpanded = expandedMobileCategory === category.id;
+                  return (
+                    <div key={category.id} className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleCategoryClick(category.id)}
+                          className="flex-1 text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-sky-50 hover:text-sky-700 rounded-lg transition-all duration-200 font-medium"
+                        >
+                          {category.name || category.id}
+                        </button>
+                        {hasSubcategories && (
+                          <button
+                            type="button"
+                            className="p-2 text-slate-500"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setExpandedMobileCategory(isExpanded ? null : category.id);
+                            }}
+                            aria-label="Mostrar subcategorías"
+                          >
+                            <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                          </button>
+                        )}
+                      </div>
+                      {hasSubcategories && isExpanded && (
+                        <div className="ml-4 border-l border-slate-100 pl-4 space-y-1">
+                          {subcategories.map((sub) => (
+                            <button
+                              key={`${category.id}-${sub.value}`}
+                              onClick={() => handleMegaNavigate(`/categoria/${category.id}?subcategory=${encodeURIComponent(sub.value)}`)}
+                              className="block w-full text-left px-3 py-1.5 text-sm text-slate-600 hover:text-slate-900 hover:bg-sky-50 rounded-md"
+                            >
+                              {sub.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             )}
 

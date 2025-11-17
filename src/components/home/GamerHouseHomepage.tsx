@@ -8,7 +8,6 @@ import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { useConfig } from '@/hooks/useConfig';
 import { ShoppingCart } from 'lucide-react';
-import DynamicBanner from '../DynamicBanner';
 import MainBanner from './MainBanner';
 
 export default function GamerHouseHomepage() {
@@ -138,9 +137,6 @@ export default function GamerHouseHomepage() {
           )}
         </div>
       </section>
-
-      {/* Dynamic Banner */}
-      <DynamicBanner />
 
       {/* Catálogo completo */}
       <section className="py-12 sm:py-16">
