@@ -33,6 +33,7 @@ export default function GamerHouseHomepage() {
   const { categories } = useCategories();
   const { addItem } = useCart();
   const { mainBannerConfig } = useConfig();
+  const shouldRenderMainBanner = Boolean(mainBannerConfig?.active && (mainBannerConfig?.slides?.length ?? 0) > 0);
   const router = useRouter();
 
   const activeCategories = useMemo(
@@ -135,50 +136,12 @@ export default function GamerHouseHomepage() {
       {/* Hero or Configurable Banner */}
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <MainBanner
-            config={mainBannerConfig}
-            onResetFilters={() => router.push('/productos')}
-          />
-          <div className="surface-card relative overflow-hidden p-8 sm:p-10">
-            <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_10%_20%,rgba(62,194,218,0.18),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(180,229,255,0.35),transparent_55%)]" />
-            <div className="relative z-10 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
-              <div className="section-heading">
-                <span className="section-heading__eyebrow">Lanzamientos pastel</span>
-                <h1 className="section-heading__title">Colecciona con estilo fresco</h1>
-                <p className="section-heading__description">
-                  Lanzamientos oficiales de TCG y accesorios en inventario inmediato. Administra el banner superior desde Panel Admin → Banners para destacar campañas.
-                </p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Link href="/productos" className="btn-solid">
-                    Explorar catálogo
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
-                  <Link href="/contacto" className="btn-soft">
-                    Hablar con un asesor
-                  </Link>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="stat-pill">
-                  <span>Productos activos</span>
-                  <strong>+{products.length || 0}</strong>
-                </div>
-                <div className="stat-pill">
-                  <span>Pre-venta</span>
-                  <strong>{products.filter((p) => p.nuevo).length || 0}</strong>
-                </div>
-                <div className="stat-pill">
-                  <span>Ofertas vivas</span>
-                  <strong>{products.filter((p) => p.oferta).length || 0}</strong>
-                </div>
-                <div className="stat-pill">
-                  <span>Categorías activas</span>
-                  <strong>{activeCategories.length}</strong>
-                </div>
-              </div>
-            </div>
-          </div>
+          {shouldRenderMainBanner && (
+            <MainBanner
+              config={mainBannerConfig}
+              onResetFilters={() => router.push('/productos')}
+            />
+          )}
         </div>
       </section>
 
