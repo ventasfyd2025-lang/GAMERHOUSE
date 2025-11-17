@@ -77,7 +77,7 @@ export function useProducts() {
             ofertaDesde: data.ofertaDesde,
             ofertaDuracionHoras: data.ofertaDuracionHoras
           } as Product;
-        });
+        }).filter(product => (product.stock || 0) > 0 && product.activo !== false);
 
         // Cache the data
         productCache.set(cacheKey, { data: productsList, timestamp: Date.now() });
@@ -86,21 +86,23 @@ export function useProducts() {
       } catch (firebaseError) {
         console.warn('Firebase failed, using mock fallback:', firebaseError);
         // Fallback to mock products if Firebase fails
-        const productsList = mockProducts.map(product => ({
-          id: product.id,
-          nombre: product.nombre,
-          precio: product.precio,
-          descripcion: product.descripcion,
-          imagen: product.imagen,
-          stock: product.stock,
-          categoria: product.categoria,
-          nuevo: product.nuevo,
-          oferta: product.oferta,
-          sku: product.sku || product.id,
-          activo: true,
-          envioGratis: product.precio > 50000,
-          fechaCreacion: '2024-01-15'
-        } as Product));
+        const productsList = mockProducts
+          .map(product => ({
+            id: product.id,
+            nombre: product.nombre,
+            precio: product.precio,
+            descripcion: product.descripcion,
+            imagen: product.imagen,
+            stock: product.stock,
+            categoria: product.categoria,
+            nuevo: product.nuevo,
+            oferta: product.oferta,
+            sku: product.sku || product.id,
+            activo: true,
+            envioGratis: product.precio > 50000,
+            fechaCreacion: '2024-01-15'
+          } as Product))
+          .filter(product => (product.stock || 0) > 0);
 
         productCache.set(cacheKey, { data: productsList, timestamp: Date.now() });
         setProducts(productsList);

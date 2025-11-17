@@ -2371,8 +2371,6 @@ export default function AdminPage() {
                 { id: 'b2b', name: 'Clientes B2B', icon: '🏢' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'main-banner', name: 'Banners', icon: '🏆' },
-                { id: 'product-layout', name: 'Layout Productos', icon: '🔲' },
-                { id: 'secciones', name: 'Secciones', icon: '📑' },
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
                 { id: 'logo', name: 'Logo', icon: '🏪' },
                 { id: 'banner', name: 'Banner Dinámico', icon: '📸' },
