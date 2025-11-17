@@ -159,7 +159,7 @@ export default function AppHeaderLight() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-all"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/70 text-slate-600 hover:text-sky-600 hover:border-sky-200 transition-all md:hidden"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

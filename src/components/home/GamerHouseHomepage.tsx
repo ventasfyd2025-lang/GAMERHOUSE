@@ -148,41 +148,6 @@ export default function GamerHouseHomepage() {
       {/* Dynamic Banner */}
       <DynamicBanner />
 
-      {/* Categories Section */}
-      <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="section-heading mb-8">
-            <span className="section-heading__eyebrow">Explora por categoría</span>
-            <h2 className="section-heading__title text-3xl sm:text-4xl">Categorías estrella</h2>
-            <p className="section-heading__description">
-              Curadas según lanzamientos recientes y colecciones populares de la comunidad.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {activeCategories.map((category) => {
-              const catInfo = CATEGORY_ICONS[category.id] || { Icon: Sparkles, color: 'from-gray-400 to-gray-600' };
-              const { Icon } = catInfo;
-              return (
-                <Link key={category.id} href={`/categoria/${category.id}`} className="group">
-                  <div className="surface-card relative h-40 overflow-hidden p-6 transition hover:-translate-y-1">
-                    <div className={`absolute inset-0 opacity-70 bg-gradient-to-br ${catInfo.color}`} />
-                    <div className="relative z-10 flex h-full flex-col items-start justify-between text-white">
-                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20">
-                        <Icon className="h-6 w-6" />
-                      </span>
-                      <h3 className="text-lg font-semibold">
-                        {category.name || category.id}
-                      </h3>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Featured Products */}
       <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
