@@ -55,7 +55,7 @@ export default function AppHeaderLight() {
   const [expandedDesktopCategory, setExpandedDesktopCategory] = useState<string | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
-  const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const megaMenuTimeoutRef = useRef<number | null>(null);
   const router = useRouter();
   const { getTotalItems } = useCart();
   const { categories } = useCategories();
