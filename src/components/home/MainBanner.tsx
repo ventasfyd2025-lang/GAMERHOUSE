@@ -110,9 +110,6 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_45%,rgba(85,201,231,0.2),transparent_55%),radial-gradient(circle_at_90%_5%,rgba(174,226,246,0.3),transparent_55%)] opacity-80" />
       <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
-          <span className="inline-block px-4 py-1 bg-sky-50 text-sky-700 text-sm font-semibold rounded-full border border-sky-100">
-            {bannerManaged ? 'Banner destacado' : 'Configura este banner desde Admin → Banners'}
-          </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
             {title}
           </h1>
@@ -128,13 +125,6 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
             >
               {primaryLink.label}
             </Link>
-            <button
-              type="button"
-              onClick={onResetFilters}
-              className="btn-soft w-full sm:w-auto justify-center text-sm sm:text-base"
-            >
-              Ver catálogo completo
-            </button>
           </div>
         </div>
 
