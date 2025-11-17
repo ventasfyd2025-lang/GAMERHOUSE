@@ -52,6 +52,7 @@ export default function AppHeaderLight() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedMobileCategory, setExpandedMobileCategory] = useState<string | null>(null);
+  const [expandedDesktopCategory, setExpandedDesktopCategory] = useState<string | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [megaCategoryId, setMegaCategoryId] = useState<string | null>(null);
   const megaMenuTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
@@ -208,96 +209,79 @@ export default function AppHeaderLight() {
 
                 {isMegaMenuOpen && activeCategories.length > 0 && (
                   <div
-                    className="absolute left-0 top-full mt-3 w-[560px] rounded-3xl border border-sky-100 bg-white p-6 shadow-[0_40px_100px_-60px_rgba(15,102,160,0.8)]"
+                    className="absolute left-0 top-full mt-3 w-[480px] rounded-3xl border border-sky-100 bg-white p-6 shadow-[0_40px_100px_-60px_rgba(15,102,160,0.8)] max-h-[460px] overflow-y-auto"
                     onMouseEnter={() => openMegaMenu()}
                     onMouseLeave={closeMegaMenu}
                   >
-                    <div className="grid grid-cols-[210px_1fr] gap-6">
-                      <div className="flex flex-col gap-2">
-                        <button
-                          type="button"
-                          className="flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200"
-                          onClick={() => handleMegaNavigate('/')}
-                        >
-                          <span className="inline-flex items-center gap-2">
-                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-slate-200 to-white">
-                              <Home className="h-4 w-4 text-slate-700" />
-                            </span>
-                            Inicio
+                    <div className="flex flex-col gap-3">
+                      <button
+                        type="button"
+                        className="flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200"
+                        onClick={() => handleMegaNavigate('/')}
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-slate-200 to-white">
+                            <Home className="h-4 w-4 text-slate-700" />
                           </span>
-                          <ChevronRight className="h-4 w-4 text-slate-300" />
-                        </button>
-                        {activeCategories.map((category, index) => {
-                          const IconComponent = getCategoryIcon(category.id);
-                          const isActive = megaCategoryId === category.id;
-                          return (
-                            <div
-                              key={category.id}
-                              className={`flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
-                                isActive ? 'border-sky-200 bg-sky-50 text-slate-900 shadow-sm' : 'border-slate-100 text-slate-500 hover:border-slate-200'
-                              }`}
-                              onMouseEnter={() => openMegaMenu(category.id)}
+                          Inicio
+                        </span>
+                        <ChevronRight className="h-4 w-4 text-slate-300" />
+                      </button>
+                      {activeCategories.map((category, index) => {
+                        const IconComponent = getCategoryIcon(category.id);
+                        const subcategories = getCategorySubcategories(category);
+                        const hasSubcategories = subcategories.length > 0;
+                        const isExpanded = expandedDesktopCategory === category.id;
+                        return (
+                          <div
+                            key={category.id}
+                            className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
+                              isExpanded ? 'border-sky-200 bg-sky-50 text-slate-900 shadow-sm' : 'border-slate-100 text-slate-500 hover:border-slate-200'
+                            }`}
+                          >
+                            <button
+                              type="button"
+                              className="flex w-full items-center justify-between gap-2 text-left"
+                              onClick={() => setExpandedDesktopCategory(isExpanded ? null : category.id)}
                             >
-                              <button
-                                type="button"
-                                className="flex-1 inline-flex items-center gap-2 text-left"
-                                onClick={(event) => {
-                                  event.preventDefault();
-                                  setMegaCategoryId(category.id);
-                                  openMegaMenu(category.id);
-                                }}
-                              >
+                              <span className="inline-flex items-center gap-2">
                                 <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${gamerPalette[index % gamerPalette.length]}`}>
                                   <IconComponent className="h-4 w-4 text-slate-900/80" />
                                 </span>
                                 {category.name || category.id}
-                              </button>
+                              </span>
+                              {hasSubcategories ? (
+                                <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180 text-sky-500' : 'text-slate-400'}`} />
+                              ) : (
+                                <ChevronRight className="h-4 w-4 text-slate-300" />
+                              )}
+                            </button>
+                            <div className="mt-2 flex flex-wrap gap-2">
                               <button
                                 type="button"
-                                aria-label="Ir a categoría"
-                                className={`p-1 rounded-full ${isActive ? 'text-sky-500' : 'text-slate-300 hover:text-sky-500'}`}
-                                onClick={(event) => {
-                                  event.stopPropagation();
-                                  handleMegaNavigate(`/categoria/${category.id}`);
-                                }}
+                                className="text-xs text-slate-500 underline"
+                                onClick={() => handleMegaNavigate(`/categoria/${category.id}`)}
                               >
-                                <ChevronRight className="h-4 w-4" />
+                                Ver categoría
                               </button>
                             </div>
-                          );
-                        })}
-                      </div>
-                      <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
-                        {(() => {
-                          const activeCategory = activeCategories.find((cat) => cat.id === (megaCategoryId || activeCategories[0]?.id));
-                          if (!activeCategory) {
-                            return <p className="text-sm text-slate-500">Selecciona una categoría para ver sus subcategorías.</p>;
-                          }
-                          const subcategories = getCategorySubcategories(activeCategory);
-                          if (subcategories.length === 0) {
-                            return (
-                              <div className="text-sm text-slate-500">
-                                No hay subcategorías configuradas para {activeCategory.name || activeCategory.id}.
+                            {hasSubcategories && isExpanded && (
+                              <div className="mt-3 space-y-2">
+                                {subcategories.map((sub) => (
+                                  <button
+                                    key={`${category.id}-${sub.value}`}
+                                    type="button"
+                                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 text-left transition hover:border-sky-200 hover:text-slate-900"
+                                    onClick={() => handleMegaNavigate(`/categoria/${category.id}?subcategory=${encodeURIComponent(sub.value)}`)}
+                                  >
+                                    {sub.label}
+                                  </button>
+                                ))}
                               </div>
-                            );
-                          }
-                          return (
-                            <div className="grid grid-cols-2 gap-3">
-                              {subcategories.map((sub, index) => (
-                                <button
-                                  key={sub.value}
-                                  type="button"
-                                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 text-left transition hover:border-sky-200 hover:text-slate-900"
-                                  onClick={() => handleMegaNavigate(`/categoria/${activeCategory.id}?subcategory=${encodeURIComponent(sub.value)}`)}
-                                >
-                                  <span className="block">{sub.label}</span>
-                                  <span className="text-xs text-slate-400 font-normal">#{index + 1} en {activeCategory.name || activeCategory.id}</span>
-                                </button>
-                              ))}
-                            </div>
-                          );
-                        })()}
-                      </div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
