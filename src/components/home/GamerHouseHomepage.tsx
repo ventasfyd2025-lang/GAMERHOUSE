@@ -1,45 +1,39 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
-import { useCategories } from '@/hooks/useCategories';
 import { useConfig } from '@/hooks/useConfig';
-import { ShoppingCart, ArrowRight, Sparkles, Waves, Wand2, Moon, Flame, Grid3x3, Zap, Headphones } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
 import MainBanner from './MainBanner';
 
-interface CategoryIcon {
-  Icon: React.ComponentType<{ className?: string }>;
-  color: string;
-}
-
-const CATEGORY_ICONS: Record<string, CategoryIcon> = {
-  'pokemon-tcg': { Icon: Sparkles, color: 'from-sky-200 to-cyan-400' },
-  'one-piece-tcg': { Icon: Waves, color: 'from-cyan-300 to-sky-500' },
-  'star-wars-unlimited': { Icon: Wand2, color: 'from-indigo-200 to-sky-400' },
-  'yu-gi-oh': { Icon: Moon, color: 'from-purple-200 to-indigo-400' },
-  'dragon-ball': { Icon: Flame, color: 'from-amber-200 to-orange-300' },
-  'digimon': { Icon: Grid3x3, color: 'from-rose-200 to-amber-300' },
-  'magic-the-gathering': { Icon: Zap, color: 'from-violet-200 to-purple-400' },
-  'accesorios': { Icon: Headphones, color: 'from-slate-200 to-slate-400' },
-};
-
 export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
-  const { categories } = useCategories();
   const { addItem } = useCart();
   const { mainBannerConfig } = useConfig();
   const shouldRenderMainBanner = Boolean(mainBannerConfig?.active && (mainBannerConfig?.slides?.length ?? 0) > 0);
   const router = useRouter();
+  const PAGE_SIZE = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = useMemo(() => (products.length > 0 ? Math.ceil(products.length / PAGE_SIZE) : 1), [products.length]);
 
-  const activeCategories = useMemo(
-    () => categories.filter(cat => cat.active !== false).slice(0, 8),
-    [categories]
-  );
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedProducts = useMemo(() => {
+    if (!products.length) {
+      return [];
+    }
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return products.slice(start, start + PAGE_SIZE);
+  }, [products, currentPage]);
 
   const handleAddToCart = (product: any) => {
     addItem(
@@ -148,14 +142,14 @@ export default function GamerHouseHomepage() {
       {/* Dynamic Banner */}
       <DynamicBanner />
 
-      {/* Featured Products */}
+      {/* Catálogo completo */}
       <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="section-heading mb-8">
-            <span className="section-heading__eyebrow">Selección curada</span>
-            <h2 className="section-heading__title text-3xl sm:text-4xl">Destacados</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Catálogo completo</span>
+            <h2 className="section-heading__title text-3xl sm:text-4xl">Todos los productos</h2>
             <p className="section-heading__description">
-              Productos con stock disponible y recomendados por nuestro equipo.
+              Mostramos 20 productos por página para mantener la experiencia ligera.
             </p>
           </div>
 
@@ -163,49 +157,45 @@ export default function GamerHouseHomepage() {
             <div className="text-center py-12">
               <p className="text-gray-600">Cargando productos...</p>
             </div>
+          ) : paginatedProducts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">No hay productos disponibles.</p>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products
-                .filter(p => (p.stock || 0) > 0)
-                .slice(0, 8)
-                .map(product => (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
-            </div>
+              </div>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-slate-500">
+                  Página <span className="font-semibold text-slate-800">{currentPage}</span> de{' '}
+                  <span className="font-semibold text-slate-800">{totalPages}</span>
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold text-slate-600 disabled:opacity-50"
+                  >
+                    ← Anterior
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-full border border-slate-200 text-sm font-semibold text-slate-600 disabled:opacity-50"
+                  >
+                    Siguiente →
+                  </button>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </section>
-
-      {/* Offers Section */}
-      {products.some(p => p.precioOriginal && p.precioOriginal > p.precio) && (
-        <section className="bg-gradient-to-br from-[#e6f9ff] via-[#cbecff] to-[#e3f4ff] text-slate-900 py-12 sm:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="section-heading mb-8">
-              <span className="section-heading__eyebrow text-slate-500">Bonos temporales</span>
-              <h2 className="section-heading__title text-slate-900">Ofertas activas</h2>
-              <p className="section-heading__description text-slate-600">
-                Descuentos dinámicos para rotar inventario y darle aire a tus colecciones.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products
-                .filter(p => (p.stock || 0) > 0 && p.precioOriginal && p.precioOriginal > p.precio)
-                .slice(0, 4)
-                .map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Link href="/productos?filter=ofertas" className="btn-solid">
-                Ver todas las ofertas
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 }
