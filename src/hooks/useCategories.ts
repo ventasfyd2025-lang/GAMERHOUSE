@@ -95,6 +95,17 @@ const generateCategoriesFromProducts = (): Category[] => {
   ];
 };
 
+const slugify = (value: string): string => (
+  value
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'categoria'
+);
+
 export function useCategories() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
@@ -111,29 +122,76 @@ export function useCategories() {
           collection(db, 'gamerhouse_categorias'),
           (snapshot) => {
             if (!snapshot.empty) {
-              const firebaseCategories: Category[] = snapshot.docs.map((doc) => {
-                const data = doc.data();
-                const categoryId = (data.id || doc.id || '').toString();
-                const normalizedId = categoryId || (data.name || doc.id).toLowerCase().replace(/\s+/g, '-');
-                const rawSubcategorias = Array.isArray(data.subcategorias) ? data.subcategorias : [];
-                const subcategorias = rawSubcategorias
-                  .map((sub, index) => ({
-                    id: (sub?.id || sub?.nombre || `sub-${index}`).toString(),
-                    nombre: (sub?.nombre || sub?.id || `Subcategoría ${index + 1}`).toString(),
-                    activa: sub?.activa !== false,
-                  }))
-                  .filter(sub => sub.activa);
+              const categoriesMap = new Map<string, Category>();
 
-                return {
-                  id: normalizedId,
-                  name: data.name || doc.id,
-                  active: data.active !== false,
-                  icon: categoryIcons[normalizedId] || '📦',
-                  subcategorias,
-                } satisfies Category;
+              const ensureCategory = (rawName: string, data: Record<string, unknown>) => {
+                const normalizedId = slugify((data?.id as string) || rawName);
+                if (!categoriesMap.has(normalizedId)) {
+                  categoriesMap.set(normalizedId, {
+                    id: normalizedId,
+                    name: rawName,
+                    active: data?.active !== false,
+                    icon: categoryIcons[normalizedId] || '📦',
+                    subcategorias: [],
+                  });
+                } else if (typeof rawName === 'string') {
+                  const existing = categoriesMap.get(normalizedId)!;
+                  existing.name = rawName;
+                  existing.active = data?.active !== false;
+                }
+                return categoriesMap.get(normalizedId)!;
+              };
+
+              const pushSubcategory = (
+                category: Category,
+                rawId: string | undefined,
+                rawName: string | undefined,
+                activa: boolean | undefined,
+              ) => {
+                if (!rawName && !rawId) {
+                  return;
+                }
+                const subId = slugify(rawId || rawName || 'sub');
+                if (category.subcategorias?.some((sub) => slugify(sub.id) === subId)) {
+                  return;
+                }
+                category.subcategorias = [
+                  ...(category.subcategorias ?? []),
+                  {
+                    id: rawId || subId,
+                    nombre: rawName || rawId || subId,
+                    activa: activa !== false,
+                  },
+                ];
+              };
+
+              snapshot.forEach((docSnapshot) => {
+                const data = docSnapshot.data() as Record<string, unknown>;
+                const rawName = (data.name || docSnapshot.id || '').toString();
+                const parts = rawName.split('>').map((part) => part.trim()).filter(Boolean);
+                const mainName = parts[0] || rawName;
+                const subName = parts[1];
+                const categoryEntry = ensureCategory(mainName, data);
+
+                const rawSubcategorias = Array.isArray(data.subcategorias) ? data.subcategorias : [];
+                rawSubcategorias.forEach((sub, index) => {
+                  if (sub?.activa === false) {
+                    return;
+                  }
+                  pushSubcategory(
+                    categoryEntry,
+                    (sub?.id as string) || `sub-${index}`,
+                    (sub?.nombre as string) || (sub?.id as string) || `Subcategoría ${index + 1}`,
+                    sub?.activa as boolean | undefined,
+                  );
+                });
+
+                if (subName) {
+                  pushSubcategory(categoryEntry, subName, subName, data.active !== false);
+                }
               });
 
-              const activeCategories = firebaseCategories
+              const activeCategories = Array.from(categoriesMap.values())
                 .filter((category) => category.active)
                 .sort((a, b) => a.name.localeCompare(b.name));
 
