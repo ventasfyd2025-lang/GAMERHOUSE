@@ -119,7 +119,7 @@ export default function AppHeaderLight() {
     return category.subcategorias
       .filter((sub) => sub.activa !== false)
       .map((sub, index) => ({
-        value: (sub.nombre || sub.id || `sub-${index}`).toLowerCase(),
+        value: sub.nombre || sub.id || `sub-${index}`,
         label: sub.nombre || sub.id || `Subcategoría ${index + 1}`,
       }));
   };
@@ -272,7 +272,7 @@ export default function AppHeaderLight() {
                                     key={`${category.id}-${sub.value}`}
                                     type="button"
                                     className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 text-left transition hover:border-sky-200 hover:text-slate-900"
-                                    onClick={() => handleMegaNavigate(`/categoria/${category.id}?subcategory=${encodeURIComponent(sub.value)}`)}
+                                    onClick={() => handleMegaNavigate(`/categoria/${category.id}/${encodeURIComponent(sub.value)}`)}
                                   >
                                     {sub.label}
                                   </button>
@@ -389,7 +389,7 @@ export default function AppHeaderLight() {
                           {subcategories.map((sub) => (
                             <button
                               key={`${category.id}-${sub.value}`}
-                              onClick={() => handleMegaNavigate(`/categoria/${category.id}?subcategory=${encodeURIComponent(sub.value)}`)}
+                              onClick={() => handleMegaNavigate(`/categoria/${category.id}/${encodeURIComponent(sub.value)}`)}
                               className="block w-full text-left px-3 py-1.5 text-sm text-slate-600 hover:text-slate-900 hover:bg-sky-50 rounded-md"
                             >
                               {sub.label}
