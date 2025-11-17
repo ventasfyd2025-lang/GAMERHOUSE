@@ -1,22 +1,16 @@
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
-import { useConfig } from '@/hooks/useConfig';
 import { ShoppingCart } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
-import MainBanner from './MainBanner';
 
 export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
   const { addItem } = useCart();
-  const { mainBannerConfig } = useConfig();
-  const shouldRenderMainBanner = Boolean(mainBannerConfig?.active && (mainBannerConfig?.slides?.length ?? 0) > 0);
-  const router = useRouter();
   const PAGE_SIZE = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = useMemo(() => (products.length > 0 ? Math.ceil(products.length / PAGE_SIZE) : 1), [products.length]);
@@ -127,18 +121,6 @@ export default function GamerHouseHomepage() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
-      {/* Hero or Configurable Banner */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          {shouldRenderMainBanner && (
-            <MainBanner
-              config={mainBannerConfig}
-              onResetFilters={() => router.push('/productos')}
-            />
-          )}
-        </div>
-      </section>
-
       <DynamicBanner />
 
       {/* Catálogo completo */}
