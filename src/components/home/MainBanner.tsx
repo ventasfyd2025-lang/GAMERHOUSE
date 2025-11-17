@@ -45,8 +45,11 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
     productId: undefined,
   };
 
-  const slides = preparedSlides.length > 0 ? preparedSlides : [fallbackSlide];
   const bannerManaged = preparedSlides.length > 0;
+  if (!bannerManaged) {
+    return null;
+  }
+  const slides = preparedSlides;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
