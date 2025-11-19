@@ -47,6 +47,15 @@ const defaultSections: ProductSection[] = [
     type: 'category',
     categoryId: 'electronicos',
     selectedProducts: []
+  },
+  {
+    id: 'videojuegos',
+    name: 'Videojuegos y Cartas',
+    description: 'Sección editable para consolas o TCG',
+    enabled: true,
+    type: 'category',
+    categoryId: 'videojuegos',
+    selectedProducts: []
   }
 ];
 

@@ -8,10 +8,12 @@ import { useCart } from '@/context/CartContext';
 import { ShoppingCart } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
 import BannerShowcase from '../BannerShowcase';
+import { useProductSections } from '@/hooks/useProductSections';
 
 export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
   const { addItem } = useCart();
+  const { sections: productSections } = useProductSections();
   const PAGE_SIZE = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = useMemo(() => (products.length > 0 ? Math.ceil(products.length / PAGE_SIZE) : 1), [products.length]);
@@ -30,17 +32,75 @@ export default function GamerHouseHomepage() {
     return products.slice(start, start + PAGE_SIZE);
   }, [products, currentPage]);
 
-  const offerProducts = useMemo(() => {
-    return products
-      .filter((product) => (product.precioOriginal && product.precioOriginal > product.precio) || product.oferta)
-      .slice(0, 4);
+  const productMap = useMemo(() => {
+    const map = new Map<string, any>();
+    products.forEach((product) => {
+      map.set(product.id, product);
+    });
+    return map;
   }, [products]);
 
-  const newProducts = useMemo(() => {
-    return products
-      .filter((product) => product.nuevo)
-      .slice(0, 4);
+  const normalizeValue = (value?: string | null) => value?.toString().toLowerCase().trim();
+
+  const getProductsByCategory = useMemo(() => {
+    return (categoryId?: string) => {
+      if (!categoryId) {
+        return [] as any[];
+      }
+      const normalized = normalizeValue(categoryId);
+      return products.filter((product) => {
+        const categories = [product.categoria, ...(product.categorias || [])]
+          .map((cat) => normalizeValue(typeof cat === 'string' ? cat : undefined))
+          .filter(Boolean);
+        return categories.includes(normalized);
+      });
+    };
   }, [products]);
+
+  const getSectionProducts = useMemo(() => {
+    return (section: any) => {
+      if (!products.length) {
+        return [] as any[];
+      }
+
+      if (section.selectedProducts && section.selectedProducts.length > 0) {
+        const selected = section.selectedProducts
+          .map((id: string) => productMap.get(id))
+          .filter(Boolean);
+        if (selected.length > 0) {
+          return selected;
+        }
+      }
+
+      if (section.categoryId) {
+        const categoryMatches = getProductsByCategory(section.categoryId);
+        if (categoryMatches.length > 0) {
+          return categoryMatches;
+        }
+      }
+
+      if (section.type === 'new') {
+        return products.filter((product) => product.nuevo);
+      }
+
+      if (section.type === 'bestsellers') {
+        return products.slice(0, 8);
+      }
+
+      return products;
+    };
+  }, [productMap, products, getProductsByCategory]);
+
+  const homepageSections = useMemo(() => {
+    return productSections
+      .filter((section) => section.enabled)
+      .map((section) => ({
+        ...section,
+        products: getSectionProducts(section).slice(0, 4)
+      }))
+      .filter((section) => section.products.length > 0)
+      .slice(0, 2);
+  }, [productSections, getSectionProducts]);
 
   const handleAddToCart = (product: any) => {
     addItem(
@@ -136,51 +196,30 @@ export default function GamerHouseHomepage() {
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
       <DynamicBanner />
-      <BannerShowcase className="py-6" maxItems={2} />
+      <BannerShowcase className="py-6" maxItems={1} />
 
-      {/* Ofertas destacadas */}
-      {offerProducts.length > 0 && (
-        <section className="py-8 sm:py-12">
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
-            <div className="section-heading">
-              <span className="section-heading__eyebrow">Ofertas</span>
-              <h2 className="section-heading__title text-2xl sm:text-3xl">Ofertas pastel en stock</h2>
-              <p className="section-heading__description text-sm">
-                Seleccionamos productos con precio rebajado para que armes tu setup gamer sin salirte del presupuesto.
-              </p>
+      {homepageSections.map((section, index) => (
+        <div key={section.id} className="relative">
+          <section className="py-8 sm:py-12">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
+              <div className="section-heading">
+                <span className="section-heading__eyebrow">{section.name}</span>
+                <h2 className="section-heading__title text-2xl sm:text-3xl">{section.description || section.name}</h2>
+                <p className="section-heading__description text-sm">
+                  Personaliza esta sección desde Admin → Secciones seleccionando los productos que quieres destacar.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                {section.products.map((product: any) => (
+                  <ProductCard key={`${section.id}-${product.id}`} product={product} />
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              {offerProducts.map((product) => (
-                <ProductCard key={`offer-${product.id}`} product={product} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
 
-      <BannerShowcase className="py-6" startIndex={1} maxItems={1} />
-
-      {/* Nuevos lanzamientos */}
-      {newProducts.length > 0 && (
-        <section className="py-8 sm:py-12">
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
-            <div className="section-heading">
-              <span className="section-heading__eyebrow">Novedades</span>
-              <h2 className="section-heading__title text-2xl sm:text-3xl">Lanzamientos pastel recién llegados</h2>
-              <p className="section-heading__description text-sm">
-                Productos marcados como nuevos dentro de las últimas horas para que no te pierdas ningún drop oficial.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              {newProducts.map((product) => (
-                <ProductCard key={`new-${product.id}`} product={product} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <BannerShowcase className="py-6" startIndex={2} maxItems={2} />
+          <BannerShowcase className="py-6" startIndex={index + 1} maxItems={1} />
+        </div>
+      ))}
 
       {/* Catálogo completo */}
       <section className="py-8 sm:py-16">
@@ -237,7 +276,7 @@ export default function GamerHouseHomepage() {
         </div>
       </section>
 
-      <BannerShowcase className="py-8" startIndex={4} />
+      <BannerShowcase className="py-8" startIndex={homepageSections.length + 1} />
     </div>
   );
 }

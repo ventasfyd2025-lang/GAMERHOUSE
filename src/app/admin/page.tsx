@@ -1349,6 +1349,15 @@ export default function AdminPage() {
       type: 'category',
       categoryId: 'electronicos',
       selectedProducts: []
+    },
+    {
+      id: 'videojuegos',
+      name: 'Videojuegos y Cartas',
+      description: 'Curar consolas o TCG directamente desde admin',
+      enabled: true,
+      type: 'category',
+      categoryId: 'videojuegos',
+      selectedProducts: []
     }
   ]);
   const [editingSection, setEditingSection] = useState<any>(null);
