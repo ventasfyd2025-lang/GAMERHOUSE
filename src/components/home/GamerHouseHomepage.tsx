@@ -30,6 +30,18 @@ export default function GamerHouseHomepage() {
     return products.slice(start, start + PAGE_SIZE);
   }, [products, currentPage]);
 
+  const offerProducts = useMemo(() => {
+    return products
+      .filter((product) => (product.precioOriginal && product.precioOriginal > product.precio) || product.oferta)
+      .slice(0, 4);
+  }, [products]);
+
+  const newProducts = useMemo(() => {
+    return products
+      .filter((product) => product.nuevo)
+      .slice(0, 4);
+  }, [products]);
+
   const handleAddToCart = (product: any) => {
     addItem(
       product.id,
@@ -126,6 +138,50 @@ export default function GamerHouseHomepage() {
       <DynamicBanner />
       <BannerShowcase className="py-6" maxItems={2} />
 
+      {/* Ofertas destacadas */}
+      {offerProducts.length > 0 && (
+        <section className="py-8 sm:py-12">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
+            <div className="section-heading">
+              <span className="section-heading__eyebrow">Ofertas</span>
+              <h2 className="section-heading__title text-2xl sm:text-3xl">Ofertas pastel en stock</h2>
+              <p className="section-heading__description text-sm">
+                Seleccionamos productos con precio rebajado para que armes tu setup gamer sin salirte del presupuesto.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+              {offerProducts.map((product) => (
+                <ProductCard key={`offer-${product.id}`} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <BannerShowcase className="py-6" startIndex={1} maxItems={1} />
+
+      {/* Nuevos lanzamientos */}
+      {newProducts.length > 0 && (
+        <section className="py-8 sm:py-12">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
+            <div className="section-heading">
+              <span className="section-heading__eyebrow">Novedades</span>
+              <h2 className="section-heading__title text-2xl sm:text-3xl">Lanzamientos pastel recién llegados</h2>
+              <p className="section-heading__description text-sm">
+                Productos marcados como nuevos dentro de las últimas horas para que no te pierdas ningún drop oficial.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+              {newProducts.map((product) => (
+                <ProductCard key={`new-${product.id}`} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <BannerShowcase className="py-6" startIndex={2} maxItems={2} />
+
       {/* Catálogo completo */}
       <section className="py-8 sm:py-16">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-8">
@@ -181,7 +237,7 @@ export default function GamerHouseHomepage() {
         </div>
       </section>
 
-      <BannerShowcase className="py-8" startIndex={2} />
+      <BannerShowcase className="py-8" startIndex={4} />
     </div>
   );
 }
