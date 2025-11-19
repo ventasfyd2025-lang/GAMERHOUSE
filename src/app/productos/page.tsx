@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
+import DynamicBanner from '@/components/DynamicBanner';
 import Layout from '@/components/Layout';
 import ProductCard from '@/components/ProductCard';
 import { ProductCardSkeleton } from '@/components/home/SkeletonLoader';
@@ -228,8 +229,18 @@ function AllProductsPageContent() {
   return (
     <Layout>
       <main className="w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 space-y-6 sm:space-y-8">
+        <DynamicBanner />
+
         <section className="flex flex-col gap-5 sm:gap-6">
-          <div className="surface-card relative overflow-hidden px-4 sm:px-10 py-6 sm:py-10">
+          <div className="sm:hidden space-y-3 rounded-2xl border border-slate-200 bg-white/90 px-4 py-5 shadow-sm">
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-slate-500">Catálogo</span>
+            <h1 className="text-xl font-semibold text-slate-900">Todos los productos</h1>
+            <p className="text-sm text-slate-500">
+              Usa el buscador o las categorías superiores para encontrar lo que necesitas. Mostramos 20 productos por página.
+            </p>
+          </div>
+
+          <div className="hidden sm:block surface-card relative overflow-hidden px-4 sm:px-10 py-6 sm:py-10">
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.25),transparent_55%)]" />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="space-y-4 sm:space-y-5">
