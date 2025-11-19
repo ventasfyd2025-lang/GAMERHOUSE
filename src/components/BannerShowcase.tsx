@@ -5,14 +5,16 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { useConfig } from '@/hooks/useConfig';
 
+type BannerSlotKey = 'hero' | 'middle' | 'footer';
+
 interface BannerShowcaseProps {
   className?: string;
-  slots?: Array<'middle' | 'footer'>;
+  slots?: BannerSlotKey[];
 }
 
 export default function BannerShowcase({ className, slots }: BannerShowcaseProps) {
   const { bannerConfig } = useConfig();
-  const slotOrder = slots && slots.length > 0 ? slots : ['middle', 'footer'];
+  const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
 
   const cards = useMemo(() => {
     if (!bannerConfig?.slots) {
