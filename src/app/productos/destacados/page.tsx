@@ -39,7 +39,7 @@ export default function ProductosDestacados() {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16">
           <div className="animate-pulse space-y-6">
             <div className="h-8 bg-slate-800 rounded w-1/3"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:gap-6">
               {[...Array(8)].map((_, i) => (
                 <div key={i} className="bg-slate-900/80 rounded-lg shadow-md p-4 space-y-4">
                   <div className="h-48 bg-slate-800 rounded"></div>
@@ -85,7 +85,7 @@ export default function ProductosDestacados() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 sm:gap-6">
             {featuredProducts.map((product) => (
               <div key={product.id} className="bg-slate-900/80 rounded-lg shadow-md hover:shadow-xl shadow-red-600/30 transition-all duration-300 overflow-hidden group">
                 {/* Image */}
