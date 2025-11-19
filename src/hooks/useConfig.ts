@@ -10,13 +10,19 @@ interface LogoConfig {
   image: string;
 }
 
-interface BannerConfig {
-  title: string;
-  text: string;
-  active: boolean;
-  images: string[];
+type BannerSlotKey = 'hero' | 'middle' | 'footer';
+
+interface BannerSlotConfig {
+  title?: string;
+  text?: string;
+  image?: string;
   ctaUrl?: string;
   ctaLabel?: string;
+}
+
+interface BannerConfig {
+  active: boolean;
+  slots: Record<BannerSlotKey, BannerSlotConfig>;
 }
 
 type MainBannerLinkType = 'product' | 'category' | 'url';
@@ -47,13 +53,21 @@ const DEFAULT_LOGO: LogoConfig = {
   image: '',
 };
 
-const DEFAULT_BANNER: BannerConfig = {
-  title: '¡Ofertas Especiales!',
-  text: 'Hasta 50% de descuento en productos seleccionados',
-  active: false,
-  images: [],
+const DEFAULT_SLOT: BannerSlotConfig = {
+  title: 'Campaña destacada',
+  text: 'Personaliza este banner desde el panel de administración',
+  image: '/banner-hero-gamerhouse.jpg',
   ctaUrl: '/productos',
   ctaLabel: 'Ver más',
+};
+
+const DEFAULT_BANNER: BannerConfig = {
+  active: true,
+  slots: {
+    hero: { ...DEFAULT_SLOT },
+    middle: { ...DEFAULT_SLOT },
+    footer: { ...DEFAULT_SLOT },
+  },
 };
 
 const DEFAULT_MAIN_BANNER: MainBannerConfig = {
@@ -90,16 +104,61 @@ const sanitizeLogoConfig = (raw: Record<string, unknown> | undefined): LogoConfi
   image: typeof raw?.image === 'string' ? raw.image : '',
 });
 
-const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerConfig => ({
-  title: typeof raw?.title === 'string' && raw.title.trim() ? raw.title : DEFAULT_BANNER.title,
-  text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_BANNER.text,
-  active: raw?.active !== false,
-  images: Array.isArray(raw?.images)
-    ? raw!.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
-    : [],
-  ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_BANNER.ctaUrl,
-  ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_BANNER.ctaLabel,
+const sanitizeSlot = (slot: Record<string, unknown> | undefined): BannerSlotConfig => ({
+  title: typeof slot?.title === 'string' && slot.title.trim() ? slot.title : undefined,
+  text: typeof slot?.text === 'string' && slot.text.trim() ? slot.text : undefined,
+  image: typeof slot?.image === 'string' && slot.image.trim() ? slot.image : undefined,
+  ctaUrl: typeof slot?.ctaUrl === 'string' && slot.ctaUrl.trim() ? slot.ctaUrl : undefined,
+  ctaLabel: typeof slot?.ctaLabel === 'string' && slot.ctaLabel.trim() ? slot.ctaLabel : undefined,
 });
+
+const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerConfig => {
+  const buildSlot = (slotKey: BannerSlotKey, fallback?: BannerSlotConfig): BannerSlotConfig => {
+    const slotData = rawSlots?.[slotKey];
+    const sanitized = sanitizeSlot(slotData);
+    return {
+      title: sanitized.title ?? fallback?.title ?? DEFAULT_SLOT.title,
+      text: sanitized.text ?? fallback?.text ?? DEFAULT_SLOT.text,
+      image: sanitized.image ?? fallback?.image ?? DEFAULT_SLOT.image,
+      ctaUrl: sanitized.ctaUrl ?? fallback?.ctaUrl ?? DEFAULT_SLOT.ctaUrl,
+      ctaLabel: sanitized.ctaLabel ?? fallback?.ctaLabel ?? DEFAULT_SLOT.ctaLabel,
+    };
+  };
+
+  const rawSlots = (raw?.slots && typeof raw.slots === 'object') ? raw.slots as Record<BannerSlotKey, Record<string, unknown>> : undefined;
+
+  if (rawSlots) {
+    return {
+      active: raw?.active !== false,
+      slots: {
+        hero: buildSlot('hero'),
+        middle: buildSlot('middle'),
+        footer: buildSlot('footer'),
+      },
+    };
+  }
+
+  const legacyImages = Array.isArray(raw?.images)
+    ? raw!.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
+    : [];
+
+  const fallbackSlotFromLegacy = (index: number): BannerSlotConfig => ({
+    title: typeof raw?.title === 'string' && raw.title.trim() ? raw.title : DEFAULT_SLOT.title,
+    text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_SLOT.text,
+    image: legacyImages[index] || DEFAULT_SLOT.image,
+    ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_SLOT.ctaUrl,
+    ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_SLOT.ctaLabel,
+  });
+
+  return {
+    active: raw?.active !== false,
+    slots: {
+      hero: fallbackSlotFromLegacy(0),
+      middle: fallbackSlotFromLegacy(1),
+      footer: fallbackSlotFromLegacy(2),
+    },
+  };
+};
 
 export function useConfig() {
   const [logoConfig, setLogoConfig] = useState<LogoConfig>(DEFAULT_LOGO);

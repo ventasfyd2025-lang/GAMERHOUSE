@@ -196,10 +196,10 @@ export default function GamerHouseHomepage() {
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
       <DynamicBanner />
-      <BannerShowcase className="py-6" maxItems={1} />
+      <BannerShowcase className="py-6" slots={['middle']} />
 
-      {homepageSections.map((section, index) => (
-        <div key={section.id} className="relative">
+      {homepageSections.map((section) => (
+        <div key={section.id}>
           <section className="py-8 sm:py-12">
             <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
               <div className="section-heading">
@@ -216,8 +216,6 @@ export default function GamerHouseHomepage() {
               </div>
             </div>
           </section>
-
-          <BannerShowcase className="py-6" startIndex={index + 1} maxItems={1} />
         </div>
       ))}
 
@@ -276,7 +274,7 @@ export default function GamerHouseHomepage() {
         </div>
       </section>
 
-      <BannerShowcase className="py-8" startIndex={homepageSections.length + 1} />
+      <BannerShowcase className="py-8" slots={['footer']} />
     </div>
   );
 }
