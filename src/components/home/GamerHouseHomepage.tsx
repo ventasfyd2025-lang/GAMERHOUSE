@@ -7,6 +7,7 @@ import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { ShoppingCart } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
+import BannerShowcase from '../BannerShowcase';
 
 export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
@@ -123,6 +124,7 @@ export default function GamerHouseHomepage() {
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
       <DynamicBanner />
+      <BannerShowcase className="py-6" />
 
       {/* Catálogo completo */}
       <section className="py-8 sm:py-16">

@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
 import DynamicBanner from '@/components/DynamicBanner';
+import BannerShowcase from '@/components/BannerShowcase';
 import Layout from '@/components/Layout';
 import ProductCard from '@/components/ProductCard';
 import { ProductCardSkeleton } from '@/components/home/SkeletonLoader';
@@ -230,6 +231,7 @@ function AllProductsPageContent() {
     <Layout>
       <main className="w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 space-y-6 sm:space-y-8">
         <DynamicBanner />
+        <BannerShowcase className="py-6" />
 
         <section className="flex flex-col gap-5 sm:gap-6">
           <div className="sm:hidden space-y-3 rounded-2xl border border-slate-200 bg-white/90 px-4 py-5 shadow-sm">
