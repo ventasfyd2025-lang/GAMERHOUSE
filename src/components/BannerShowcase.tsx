@@ -31,9 +31,11 @@ const buildLink = (slide: any): LinkConfig => {
 
 interface BannerShowcaseProps {
   className?: string;
+  startIndex?: number;
+  maxItems?: number;
 }
 
-export default function BannerShowcase({ className }: BannerShowcaseProps) {
+export default function BannerShowcase({ className, startIndex = 0, maxItems }: BannerShowcaseProps) {
   const { bannerConfig, mainBannerConfig } = useConfig();
 
   const cards = useMemo(() => {
@@ -61,8 +63,10 @@ export default function BannerShowcase({ className }: BannerShowcaseProps) {
         id: `${slide?.title || 'slide'}-${index}`,
       }));
 
-    return [...extraBanners, ...slideBanners];
-  }, [bannerConfig, mainBannerConfig?.slides]);
+    const merged = [...extraBanners, ...slideBanners];
+    const sliced = merged.slice(startIndex, maxItems ? startIndex + maxItems : undefined);
+    return sliced;
+  }, [bannerConfig, mainBannerConfig?.slides, startIndex, maxItems]);
 
   if (cards.length === 0) {
     return null;

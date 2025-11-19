@@ -124,7 +124,7 @@ export default function GamerHouseHomepage() {
   return (
     <div className="min-h-screen bg-[var(--surface-alt)]">
       <DynamicBanner />
-      <BannerShowcase className="py-6" />
+      <BannerShowcase className="py-6" maxItems={2} />
 
       {/* Catálogo completo */}
       <section className="py-8 sm:py-16">
@@ -180,6 +180,8 @@ export default function GamerHouseHomepage() {
           )}
         </div>
       </section>
+
+      <BannerShowcase className="py-8" startIndex={2} />
     </div>
   );
 }
