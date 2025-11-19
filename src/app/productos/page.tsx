@@ -227,27 +227,27 @@ function AllProductsPageContent() {
 
   return (
     <Layout>
-      <main className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 space-y-8">
-        <section className="flex flex-col gap-6">
-          <div className="surface-card relative overflow-hidden px-6 sm:px-10 py-10">
+      <main className="w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 space-y-6 sm:space-y-8">
+        <section className="flex flex-col gap-5 sm:gap-6">
+          <div className="surface-card relative overflow-hidden px-4 sm:px-10 py-6 sm:py-10">
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.25),transparent_55%)]" />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="space-y-5">
-                <span className="section-heading__eyebrow">Catálogo gamer</span>
-                <h1 className="section-heading__title text-3xl sm:text-[2.75rem]">
+              <div className="space-y-4 sm:space-y-5">
+                <span className="section-heading__eyebrow text-[0.55rem] sm:text-[0.65rem] tracking-[0.45em]">Catálogo gamer</span>
+                <h1 className="section-heading__title text-2xl sm:text-[2.75rem]">
                   Todos los productos disponibles
                 </h1>
-                <p className="section-heading__description">
+                <p className="section-heading__description text-sm sm:text-base">
                   Filtra por categoría, preventa, ofertas o rango de precios para encontrar tu próxima adquisición. Mostramos 20 productos por página.
                 </p>
 
-                <div className="flex flex-wrap gap-3">
-                  <span className="chip-pill">+{filteredProducts.length} productos activos</span>
-                  <span className="chip-pill">{products.filter((product) => product.stock > 0).length} con stock disponible</span>
+                <div className="flex flex-wrap gap-2.5 text-[0.7rem] sm:text-sm">
+                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">+{filteredProducts.length} productos activos</span>
+                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">{products.filter((product) => product.stock > 0).length} con stock disponible</span>
                 </div>
 
                 {activeSectionTitle && (
-                  <div className="glass-panel mt-6 px-5 py-4 text-sm">
+                  <div className="glass-panel mt-4 sm:mt-6 px-4 py-3 text-sm">
                     <p className="font-semibold text-slate-900">
                       Estás revisando la sección “{activeSectionTitle}”.
                     </p>
@@ -262,38 +262,38 @@ function AllProductsPageContent() {
 
               <button
                 onClick={() => refetch()}
-                className="btn-soft w-full justify-center text-sm sm:text-base sm:w-auto"
+                className="btn-soft w-full justify-center text-xs sm:text-base sm:w-auto"
               >
                 ↻ Refrescar lista
               </button>
             </div>
           </div>
 
-          <section className="glass-panel p-6 sm:p-8">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
+          <section className="glass-panel p-4 sm:p-8">
+            <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
               <div className="section-heading">
-                <span className="section-heading__eyebrow">Curar resultados</span>
-                <h2 className="text-2xl font-semibold text-slate-900">Filtra tu búsqueda</h2>
+                <span className="section-heading__eyebrow text-[0.55rem] sm:text-[0.65rem] tracking-[0.45em]">Curar resultados</span>
+                <h2 className="text-xl sm:text-2xl font-semibold text-slate-900">Filtra tu búsqueda</h2>
               </div>
             </div>
-            <form className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+            <form className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <label className="flex flex-col gap-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
                 Buscar
                 <input
                   type="search"
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Nombre, descripción o SKU"
-                  className="form-input"
+                  className="form-input text-sm sm:text-base"
                 />
               </label>
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              <label className="flex flex-col gap-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
                 Categoría
                 <select
                   value={selectedCategory}
                   onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="form-input"
+                  className="form-input text-sm sm:text-base"
                 >
                   {categoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -304,12 +304,12 @@ function AllProductsPageContent() {
               </label>
 
               {subcategoryOptions.length > 0 && (
-                <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <label className="flex flex-col gap-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
                   Subcategoría
                   <select
                     value={selectedSubcategory}
                     onChange={(event) => setSelectedSubcategory(event.target.value)}
-                    className="form-input"
+                    className="form-input text-sm sm:text-base"
                   >
                     <option value="">Todas</option>
                     {subcategoryOptions.map((option) => (
@@ -321,16 +321,16 @@ function AllProductsPageContent() {
                 </label>
               )}
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              <label className="flex flex-col gap-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
                 Rango de precio (CLP)
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
                   <input
                     type="number"
                     min="0"
                     value={minPrice}
                     onChange={(event) => setMinPrice(event.target.value)}
                     placeholder="Mínimo"
-                    className="form-input"
+                    className="form-input text-sm sm:text-base"
                   />
                   <input
                     type="number"
@@ -338,17 +338,17 @@ function AllProductsPageContent() {
                     value={maxPrice}
                     onChange={(event) => setMaxPrice(event.target.value)}
                     placeholder="Máximo"
-                    className="form-input"
+                    className="form-input text-sm sm:text-base"
                   />
                 </div>
               </label>
 
-              <label className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              <label className="flex flex-col gap-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
                 Filtro especial
                 <select
                   value={specialFilter}
                   onChange={(event) => setSpecialFilter(event.target.value as typeof specialFilter)}
-                  className="form-input"
+                  className="form-input text-sm"
                 >
                   <option value="">Todos</option>
                   <option value="destacados">Destacados</option>
