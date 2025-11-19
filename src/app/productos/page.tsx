@@ -269,7 +269,7 @@ function AllProductsPageContent() {
             </div>
           </div>
 
-          <section className="glass-panel p-4 sm:p-8">
+          <section className="hidden sm:block glass-panel p-4 sm:p-8">
             <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6">
               <div className="section-heading">
                 <span className="section-heading__eyebrow text-[0.55rem] sm:text-[0.65rem] tracking-[0.45em]">Curar resultados</span>
