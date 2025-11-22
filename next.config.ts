@@ -48,6 +48,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'gamerhouse.cl',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.samsung.com',
       },
       {

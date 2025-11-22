@@ -12,44 +12,25 @@ export default {
         xs: '480px',
       },
       colors: {
-        /* Paleta GAMER HOUSE - Light Theme Nuevo */
-        background: '#ffffff',
-        foreground: '#000000',
+        /* Paleta GAMER HOUSE - Pikachu Strategy */
+        background: '#000000',
+        foreground: '#FFFFFF',
 
-        /* Colores Primarios - Nuevo Esquema */
-        primary: '#dc2626',                          /* Rojo Brillante - Principal */
-        secondary: '#1e3a5f',                        /* Azul Marino - Secundario */
-        accent: '#fbbf24',                           /* Oro/Amarillo - Acentos */
+        /* Colores Primarios */
+        primary: '#FFDE00',                          /* Amarillo Pikachu - Principal */
+        secondary: '#E60012',                        /* Rojo Pikachu - Acción */
 
-        /* Estados */
-        success: '#10b981',                          /* Emerald - Éxito */
-        warning: '#f59e0b',                          /* Amber - Advertencia */
-        error: '#dc2626',                            /* Rojo Brillante */
-        info: '#1e3a5f',                             /* Azul Marino - Información */
-
-        /* Colores Corporativos GAMER HOUSE */
-        'gamerhouse-navy': '#0f2b3d',               /* Azul Marino Pastel */
-        'gamerhouse-red': '#39b9d6',                /* Celeste Principal */
-        'gamerhouse-gold': '#bfe9ff',               /* Acento pastel */
-        'gamerhouse-white': '#ffffff',
-        'gamerhouse-dark': '#1f2937',
+        /* Variantes de Amarillo */
+        'yellow-300': '#FFE533',
+        'yellow-400': '#FFDE00',     /* Principal */
+        'yellow-500': '#FFB800',     /* Oscuro */
 
         /* Variantes de Rojo */
-        'red-400': '#f87171',        /* Claro - Hover */
-        'red-500': '#ef4444',        /* Medio */
-        'red-600': '#dc2626',        /* Principal */
-        'red-700': '#b91c1c',        /* Oscuro */
+        'red-500': '#FF1A1A',
+        'red-600': '#E60012',        /* Principal */
+        'red-700': '#CC0010',
 
-        /* Variantes de Azul */
-        'blue-600': '#1e3a5f',       /* Azul Marino Principal */
-        'blue-700': '#1a2e47',       /* Más Oscuro */
-
-        /* Variantes de Oro */
-        'yellow-300': '#fcd34d',     /* Claro */
-        'yellow-400': '#fbbf24',     /* Principal */
-        'yellow-500': '#f59e0b',     /* Medio */
-
-        /* Grises - Para tema claro */
+        /* Grises - Dark Theme */
         'gray-100': '#f3f4f6',
         'gray-200': '#e5e7eb',
         'gray-300': '#d1d5db',
@@ -60,6 +41,13 @@ export default {
         'gray-800': '#1f2937',
         'gray-900': '#111827',
         'gray-950': '#030712',
+
+        /* Legacy/Compatibilidad (Mapped to new scheme) */
+        'gamerhouse-navy': '#000000',
+        'gamerhouse-red': '#E60012',
+        'gamerhouse-gold': '#FFDE00',
+        'gamerhouse-white': '#FFFFFF',
+        'gamerhouse-dark': '#111827',
       },
       fontFamily: {
         sans: ['Roboto', 'Open Sans', 'Helvetica Neue', 'system-ui', 'sans-serif'],

@@ -29,34 +29,47 @@ p {
 }
 
 :root {
-  /* Pastel celeste palette shared across retail and admin */
-  --primary: #3ec2da;
-  --primary-hover: #1b9dbd;
-  --primary-soft: #e1f7fb;
-  --accent: #9ed9f7;
-  --text-primary: #102335;
-  --text-muted: #536b7a;
-  --surface: #ffffff;
-  --surface-alt: #f3f9fd;
-  --surface-card: #ffffff;
-  --border-soft: rgba(16, 35, 53, 0.08);
-  --border-strong: rgba(16, 35, 53, 0.18);
-  --shadow-soft: 0 35px 65px -50px rgba(16, 35, 53, 0.35);
-  --shadow-card: 0 28px 70px -55px rgba(16, 35, 53, 0.35);
-  --page-background:
-    radial-gradient(circle at 15% 20%, rgba(85, 201, 231, 0.15), transparent 50%),
-    radial-gradient(circle at 85% 0%, rgba(173, 226, 246, 0.25), transparent 55%),
-    linear-gradient(135deg, #fdfefe, #e8f5ff);
-  --brand-background:
-    radial-gradient(circle at 15% 20%, rgba(85, 201, 231, 0.12), transparent 55%),
-    radial-gradient(circle at 85% 0%, rgba(173, 226, 246, 0.2), transparent 50%),
-    linear-gradient(135deg, #fdfefe, #e8f5ff);
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --glass-background: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(62, 181, 218, 0.15);
-  --glass-blur: 22px;
+  /* Pikachu Palette - Dark Theme */
+  --primary: #FFDE00;
+  --primary-hover: #FFE533;
+  --primary-soft: rgba(255, 222, 0, 0.1);
+  --secondary: #E60012;
+  --secondary-hover: #FF1A1A;
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #e5e5e5;
+  --text-muted: #a3a3a3;
+  --text-inverse: #000000;
+  
+  /* Backgrounds */
+  --page-background: #000000;
+  --surface: #111111;
+  --surface-alt: #1a1a1a;
+  --surface-card: rgba(26, 26, 26, 0.8);
+  
+  /* Borders */
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 222, 0, 0.5);
+  --border-primary: #FFDE00;
+  
+  /* Shadows */
+  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 20px rgba(255, 222, 0, 0.15);
+  
+  /* Brand Backgrounds */
+  --brand-background: radial-gradient(circle at 50% 0%, #1a1a1a, #000000);
+  
+  /* Radius */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  /* Glass Effect */
+  --glass-background: rgba(20, 20, 20, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 12px;
 }
 
 
