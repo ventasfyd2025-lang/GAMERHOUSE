@@ -2,152 +2,111 @@
 
 import Link from 'next/link';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import Layout from '@/components/Layout';
 
 export default function ContactoPage() {
+  const cards = [
+    {
+      href: 'https://wa.me/56920265061',
+      label: 'WhatsApp',
+      description: 'Chatea con nosotros directamente',
+      value: '+56 9 2026 5061',
+      icon: <MessageCircle className="w-6 h-6 text-emerald-500" />,
+      accent: 'from-emerald-100 to-teal-50'
+    },
+    {
+      href: 'mailto:contacto@huntercardtcg.com',
+      label: 'Email',
+      description: 'Envíanos un correo electrónico',
+      value: 'contacto@huntercardtcg.com',
+      icon: <Mail className="w-6 h-6 text-amber-500" />,
+      accent: 'from-amber-100 to-orange-50'
+    },
+    {
+      href: 'tel:+56920265061',
+      label: 'Teléfono',
+      description: 'Llámanos durante horario comercial',
+      value: '+56 9 2026 5061',
+      icon: <Phone className="w-6 h-6 text-rose-500" />,
+      accent: 'from-rose-100 to-pink-50'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800">
-      <div className="pt-16 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+    <Layout>
+      <div className="bg-gradient-to-b from-slate-50 via-white to-white py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12 space-y-3">
+            <h1 className="text-4xl sm:text-5xl font-black text-slate-900">
               Contáctanos
             </h1>
-            <p className="text-lg text-yellow-300">
-              Estamos aquí para ayudarte. No dudes en comunicarte con nosotros.
+            <p className="text-lg text-slate-500">
+              Estamos aquí para ayudarte. Escríbenos por el canal que prefieras.
             </p>
           </div>
 
-          {/* Contact Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/56920265061"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                    <MessageCircle className="w-6 h-6 text-green-600" />
+            {cards.map((card) => (
+              <a
+                key={card.label}
+                href={card.href}
+                target={card.href.startsWith('http') ? '_blank' : undefined}
+                rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_25px_70px_-50px_rgba(15,23,42,0.65)] transition-transform hover:-translate-y-1"
+              >
+                <div className="flex items-start gap-4">
+                  <span className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${card.accent}`}>
+                    {card.icon}
+                  </span>
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-semibold text-slate-900">{card.label}</h3>
+                    <p className="text-slate-500">{card.description}</p>
+                    <p className="text-slate-900 font-semibold">{card.value}</p>
                   </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    WhatsApp
-                  </h3>
-                  <p className="text-yellow-300 mb-2">
-                    Chatea con nosotros directamente
-                  </p>
-                  <p className="text-green-600 font-medium">
-                    +56 9 2026 5061
-                  </p>
-                </div>
-              </div>
-            </a>
+              </a>
+            ))}
 
-            {/* Email */}
-            <a
-              href="mailto:contacto@huntercardtcg.com"
-              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                    <Mail className="w-6 h-6 text-yellow-300" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Email
-                  </h3>
-                  <p className="text-yellow-300 mb-2">
-                    Envíanos un correo electrónico
-                  </p>
-                  <p className="text-yellow-300 font-medium">
-                    contacto@huntercardtcg.com
-                  </p>
-                </div>
-              </div>
-            </a>
-
-            {/* Teléfono */}
-            <a
-              href="tel:+56920265061"
-              className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 hover:shadow-xl shadow-red-600/30 transition-shadow group"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-amber-200 transition-colors">
-                    <Phone className="w-6 h-6 text-red-600" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Teléfono
-                  </h3>
-                  <p className="text-yellow-300 mb-2">
-                    Llámanos durante horario comercial
-                  </p>
-                  <p className="text-red-600 font-medium">
-                    +56 9 2026 5061
-                  </p>
-                </div>
-              </div>
-            </a>
-
-            {/* Ubicación */}
-            <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-yellow-500" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-3">
-                    Nuestras Sucursales
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <p className="font-semibold text-yellow-300 mb-1">Santiago Centro</p>
-                      <p className="text-yellow-100 text-sm">Santiago, Chile</p>
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_25px_70px_-50px_rgba(15,23,42,0.65)]">
+              <div className="flex items-start gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-100 to-rose-50">
+                  <MapPin className="w-6 h-6 text-amber-600" />
+                </span>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-slate-900">Nuestras Sucursales</h3>
+                  {[
+                    { name: 'Santiago Centro', location: 'Santiago, Chile' },
+                    { name: 'Las Condes', location: 'Santiago, Chile' }
+                  ].map((branch) => (
+                    <div key={branch.name}>
+                      <p className="font-semibold text-slate-900">{branch.name}</p>
+                      <p className="text-sm text-slate-500">{branch.location}</p>
                     </div>
-                    <div className="h-px bg-yellow-300/20"></div>
-                    <div>
-                      <p className="font-semibold text-yellow-300 mb-1">Las Condes</p>
-                      <p className="text-yellow-100 text-sm">Santiago, Chile</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Horarios */}
-          <div className="bg-slate-900/80 rounded-xl shadow-lg shadow-red-600/20 border border-yellow-300/30 p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">
-              Horario de Atención
-            </h2>
-            <div className="space-y-2 text-yellow-300">
-              <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
-              <p>Sábado: 10:00 AM - 2:00 PM</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_25px_70px_-50px_rgba(15,23,42,0.65)] mb-10">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">Horario de Atención</h2>
+            <div className="space-y-1 text-slate-600">
+              <p>Lunes a Viernes: 9:00 - 18:00</p>
+              <p>Sábado: 10:00 - 14:00</p>
               <p>Domingo: Cerrado</p>
             </div>
           </div>
 
-          {/* Back Button */}
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center py-3 px-8 border border-transparent rounded-lg text-base font-medium text-white bg-yellow-400 hover:bg-yellow-500 transition-colors shadow-md hover:shadow-lg shadow-red-600/20"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-rose-400 px-10 py-3 text-base font-semibold text-white shadow-lg hover:from-amber-300 hover:to-rose-300"
             >
               Volver al Inicio
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

@@ -1216,7 +1216,7 @@ export default function AdminPage() {
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'admin': return 'bg-slate-800 text-pink border-slate-700';
+      case 'admin': return 'bg-slate-800 text-pink border-slate-200';
       case 'vendedor': return 'bg-warning/20 text-secondary border-warning';
       case 'cliente': return 'bg-success/20 text-success border-success';
       default: return 'bg-slate-800 text-white border-yellow-300/30';
@@ -2296,7 +2296,7 @@ export default function AdminPage() {
               </div>
               <button
                 onClick={() => router.push('/')}
-                className="w-full rounded-2xl bg-slate-900 py-2.5 text-sm font-semibold text-white"
+                className="w-full rounded-2xl bg-gradient-to-r from-amber-400 to-rose-400 py-2.5 text-sm font-semibold text-white shadow-lg"
               >
                 Volver al Inicio
               </button>
@@ -2333,7 +2333,7 @@ export default function AdminPage() {
             </div>
             <button
               onClick={handleLogout}
-              className="btn-secondary-web w-full justify-center gap-2 text-sm text-slate-600 sm:w-auto sm:text-base"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:border-sky-200 hover:text-sky-700"
             >
               <svg className="h-4 w-4 text-yellow-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -2347,44 +2347,42 @@ export default function AdminPage() {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Compact Admin Header */}
-        <div className="hero-section overflow-hidden ring-1 ring-inset ring-red-100 mb-6">
-          <div className="hero-bg opacity-60" />
+        <div className="rounded-[32px] border border-slate-200 bg-white shadow-[0_45px_110px_-60px_rgba(15,23,42,0.35)] mb-6">
           <div className="relative space-y-6 p-6 sm:p-8">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-50 text-xl text-red-500">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-start gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-100 to-rose-50 text-2xl">
                   ⚡
                 </div>
                 <div>
-                  <h1 className="text-xl font-semibold text-slate-900">Panel de Administración</h1>
-                  <p className="text-sm text-slate-500">Gestiona tu tienda</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Panel</p>
+                  <h1 className="text-2xl font-black text-slate-900">Administración F&D</h1>
+                  <p className="text-sm text-slate-500">Gestiona operaciones, inventario y campañas</p>
                   {userProfile && (
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-slate-400 mt-2">
                       Sesión iniciada como {`${userProfile.firstName || ''} ${userProfile.lastName || ''}`.trim() || userProfile.email}
                     </p>
                   )}
                 </div>
               </div>
-              <span className="chip-option chip-option-active text-[10px] uppercase tracking-[0.3em]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
                 🎮 GAMERHOUSE
-              </span>
+              </div>
             </div>
 
             {/* Horizontal Navigation */}
             <nav className="flex flex-wrap gap-2">
-                          {[
+              {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
                 { id: 'stock-center', name: 'Alertas & Stock', icon: '🚨' },
                 { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-pink' },
-                { id: 'b2b', name: 'Clientes B2B', icon: '🏢' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'main-banner', name: 'Banners', icon: '🏆' },
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
                 { id: 'logo', name: 'Logo', icon: '🏪' },
                 { id: 'banner', name: 'Banner Dinámico', icon: '📸' },
                 { id: 'categories', name: 'Categorías', icon: '🏷️' },
-                { id: 'homepage-content', name: 'Contenido Página', icon: '🎨' },
                 { id: 'footer', name: 'Información', icon: '📋' },
                 { id: 'bank-details', name: 'Datos Bancarios', icon: '🏦' }
               ].map((tab) => (
@@ -2415,15 +2413,16 @@ export default function AdminPage() {
           <div className="space-y-8">
 
             {/* Dashboard & Reportes Header */}
-            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_35px_90px_-55px_rgba(15,23,42,0.3)]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
-                    <span className="text-white text-lg">🏠</span>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner bg-gradient-to-br from-amber-100 to-rose-50 text-xl">
+                    🏠
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white">Dashboard & Reportes</h2>
-                    <p className="text-yellow-300 text-sm">Panel principal con estadísticas y exportación</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Resumen</p>
+                    <h2 className="text-2xl font-bold text-slate-900">Dashboard & Reportes</h2>
+                    <p className="text-slate-500 text-sm">Panel principal con estadísticas y exportación</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -2462,7 +2461,7 @@ export default function AdminPage() {
                       // Simple export alert for now (could be enhanced with actual PDF generation)
                       alert(`Reporte de ${monthName}\n\nVentas totales: ${formatPrice(reportData.totalSales)}\nPedidos: ${reportData.totalOrders}\nVenta promedio: ${formatPrice(reportData.averageOrderValue)}\n\nProducto más vendido: ${reportData.topProducts[0]?.nombre || 'N/A'}`);
                     }}
-                    className="flex items-center gap-2 bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors font-semibold text-sm"
+                    className="flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:from-amber-300 hover:to-rose-300"
                   >
                     📊 Exportar Reporte
                   </button>
@@ -2490,7 +2489,7 @@ export default function AdminPage() {
                   type="button"
                   onClick={handleCleanDemoData}
                   disabled={cleaningData}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-700 transition disabled:opacity-60"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-red-500 px-5 py-2 text-sm font-semibold text-white shadow-lg hover:from-rose-400 hover:to-red-400 disabled:opacity-60"
                 >
                   {cleaningData ? 'Limpiando...' : 'Eliminar pedidos y chats'}
                 </button>
@@ -2498,105 +2497,86 @@ export default function AdminPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">📦</div>
-                  <div>
-                    <p className="text-sm font-semibold">Total Productos</p>
-                    <p className="text-3xl font-bold text-white">{stats.totalProducts}</p>
+              {[
+                { label: 'Total Productos', value: stats.totalProducts, icon: '📦' },
+                { label: 'Total Pedidos', value: stats.totalOrders, icon: '🛒' },
+                { label: 'Ingresos Totales', value: formatPrice(stats.totalRevenue), icon: '💰' },
+                { label: 'Pedidos Pendientes', value: stats.pendingOrders, icon: '⏳' }
+              ].map((card) => (
+                <div
+                  key={card.label}
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_25px_60px_-40px_rgba(15,23,42,0.35)] transition hover:-translate-y-1"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-2xl bg-gradient-to-br from-amber-100 to-rose-50 text-2xl">
+                      {card.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-500">{card.label}</p>
+                      <p className="text-3xl font-black text-slate-900">{card.value}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">🛒</div>
-                  <div>
-                    <p className="text-sm font-semibold">Total Pedidos</p>
-                    <p className="text-3xl font-bold text-white">{stats.totalOrders}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">💰</div>
-                  <div>
-                    <p className="text-sm font-semibold">Ingresos Totales</p>
-                    <p className="text-3xl font-bold text-white">
-                      {formatPrice(stats.totalRevenue)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-slate-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center">
-                  <div className="p-3 rounded-2xl text-white text-2xl mr-4 shadow-lg shadow-red-600/20 bg-yellow-400">⏳</div>
-                  <div>
-                    <p className="text-sm font-semibold">Pedidos Pendientes</p>
-                    <p className="text-3xl font-bold text-white">{stats.pendingOrders}</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
 
             {/* Modern Recent Orders Section */}
-            <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl shadow-red-600/30 border border-slate-700">
-              <div className="p-6 border-b border-slate-700">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
-                    <span className="text-white text-sm">📋</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white">Pedidos Recientes</h3>
+            <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_35px_90px_-55px_rgba(15,23,42,0.35)]">
+              <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-5">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 to-slate-50 text-lg">
+                  📋
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Listado</p>
+                  <h3 className="text-xl font-bold text-slate-900">Pedidos recientes</h3>
                 </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-slate-900">
+                <table className="min-w-full divide-y divide-slate-200">
+                  <thead className="bg-slate-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Cliente
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Pedidos
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Total Comprado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Último Pedido
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Estados
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-100 bg-white">
                     {ordersByCustomer.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="px-6 py-6 text-center text-sm text-yellow-300">
+                        <td colSpan={5} className="px-6 py-8 text-center text-sm text-slate-400">
                           No hay pedidos registrados todavía.
                         </td>
                       </tr>
                     ) : (
                       ordersByCustomer.slice(0, 5).map((group) => (
-                        <tr key={group.lastOrderId}>
+                        <tr key={group.lastOrderId} className="hover:bg-slate-50">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div>
-                              <div className="text-sm font-medium text-white">
+                              <div className="text-sm font-semibold text-slate-900">
                                 {group.customerName}
                               </div>
-                              <div className="text-sm text-yellow-300">
+                              <div className="text-xs text-slate-400">
                                 {group.customerEmail}
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-700">
                             {group.orderCount}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-slate-700">
                             {formatPrice(group.totalSpent)}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
@@ -2705,8 +2685,8 @@ export default function AdminPage() {
 
                   {/* Expandable Stock List */}
                   {showStockAlert && (
-                    <div className="mt-4 bg-slate-800/70 border-2 border-slate-700 rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
-                      <div className="bg-gradient-to-r from-slate-800 to-slate-800 p-4 border-b border-slate-700">
+                    <div className="mt-4 bg-slate-800/70 border-2 border-slate-200 rounded-xl shadow-lg shadow-red-600/20 overflow-hidden">
+                      <div className="bg-gradient-to-r from-slate-800 to-slate-800 p-4 border-b border-slate-200">
                         <h4 className="font-bold text-pink flex items-center">
                           📋 Lista Detallada de Productos
                           <span className="ml-2 text-sm text-pink">({lowStockProducts.length} productos)</span>
@@ -3088,12 +3068,12 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-slate-800/70 rounded-lg shadow-md overflow-hidden">
+            <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_25px_70px_-55px_rgba(15,23,42,0.35)] overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-slate-900">
+                  <thead className="bg-slate-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         <input
                           type="checkbox"
                           checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
@@ -3107,24 +3087,24 @@ export default function AdminPage() {
                           className="rounded border-yellow-300/40"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Producto
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Precio
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Stock
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Categoría
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-100 bg-white">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -3153,10 +3133,10 @@ export default function AdminPage() {
                               )}
                             </div>
                             <div>
-                              <div className="text-sm font-medium text-white">
+                              <div className="text-sm font-semibold text-slate-900">
                                 {product.nombre}
                               </div>
-                              <div className="text-xs text-yellow-300 mt-1">
+                              <div className="text-xs text-slate-400 mt-1">
                                 SKU: {product.sku && product.sku.trim() ? product.sku : 'No asignado'}
                               </div>
                               <div className="flex space-x-1 mt-1">
@@ -3374,7 +3354,7 @@ export default function AdminPage() {
                         <p>
                           <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${
                             selectedUserDetails.blocked
-                              ? 'bg-slate-800 text-pink border-slate-700'
+                              ? 'bg-slate-800 text-pink border-slate-200'
                               : 'bg-success/20 text-success border-success'
                           }`}>
                             {selectedUserDetails.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3502,26 +3482,26 @@ export default function AdminPage() {
                     </div>
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-slate-900">
+                        <thead className="bg-slate-50">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                               Usuario
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                               Rol
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                               Estado
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                               Fecha Registro
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                               Acciones
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                        <tbody className="divide-y divide-slate-100 bg-white">
                           {users
                             .filter(user => user.role === 'admin' || user.role === 'vendedor')
                             .map((user) => (
@@ -3532,7 +3512,7 @@ export default function AdminPage() {
                             >
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div>
-                                  <div className="text-sm font-medium text-white">
+                                  <div className="text-sm font-semibold text-slate-900">
                                     {user.firstName} {user.lastName}
                                   </div>
                                   <div className="text-sm text-yellow-300">{user.email}</div>
@@ -3558,7 +3538,7 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
-                                    ? 'bg-slate-800 text-pink border-slate-700'
+                                    ? 'bg-slate-800 text-pink border-slate-200'
                                     : 'bg-success/20 text-success border-success'
                                 }`}>
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3633,26 +3613,26 @@ export default function AdminPage() {
                     {showClientes && (
                       <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                          <thead className="bg-slate-900">
+                          <thead className="bg-slate-50">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                                 Usuario
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                                 Rol
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                                 Estado
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                                 Fecha Registro
                               </th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                              <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                                 Acciones
                               </th>
                             </tr>
                           </thead>
-                          <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                          <tbody className="divide-y divide-slate-100 bg-white">
                             {users
                               .filter(user => !user.role || user.role === 'cliente')
                               .map((user) => (
@@ -3663,7 +3643,7 @@ export default function AdminPage() {
                               >
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <div>
-                                    <div className="text-sm font-medium text-white">
+                                    <div className="text-sm font-semibold text-slate-900">
                                       {user.firstName} {user.lastName}
                                     </div>
                                     <div className="text-sm text-yellow-300">{user.email}</div>
@@ -3689,7 +3669,7 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
-                                      ? 'bg-slate-800 text-pink border-slate-700'
+                                      ? 'bg-slate-800 text-pink border-slate-200'
                                       : 'bg-success/20 text-success border-success'
                                   }`}>
                                     {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
@@ -3775,7 +3755,7 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             {/* Modern Orders Header */}
-            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700">
+            <div className="bg-white">
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20 bg-yellow-400">
@@ -3845,7 +3825,7 @@ export default function AdminPage() {
             </div>
 
             {/* Búsqueda y Filtros */}
-            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 p-6 mb-6">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-200 p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Búsqueda */}
                 <div>
@@ -3921,7 +3901,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modern Orders Table */}
-            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden">
+            <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-200 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-dark-light">
                   <thead className="bg-gradient-to-r from-slate-800 to-slate-800">
@@ -3951,7 +3931,7 @@ export default function AdminPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-100 bg-white">
                     {groupOrdersByUser(
                       orders.filter(order => {
                         // Filtro base (activos/completados)
@@ -4008,7 +3988,7 @@ export default function AdminPage() {
                               </button>
                             )}
                             <div>
-                              <div className="text-sm font-medium text-white">
+                              <div className="text-sm font-semibold text-slate-900">
                                 {mainOrder.customerName}
                                 {totalUserOrders > 1 && (
                                   <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/20 text-secondary">
@@ -5866,26 +5846,26 @@ export default function AdminPage() {
             <div className="bg-slate-800/70 rounded-lg shadow-md overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-slate-900">
+                  <thead className="bg-slate-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Nombre
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Subcategorías
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Estado
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-yellow-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Acciones
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-slate-800/70 divide-y divide-gray-200">
+                  <tbody className="divide-y divide-slate-100 bg-white">
                     {categories.map((category) => (
                       <tr key={category.id}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
@@ -6253,7 +6233,7 @@ export default function AdminPage() {
                 <form onSubmit={handleProductSubmit} className="px-6 py-6 lg:px-8 lg:py-7 space-y-6 lg:space-y-7">
 
                   {/* Compact Basic Info Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
@@ -6326,7 +6306,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Stock Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📊</span>
@@ -6370,7 +6350,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Categories Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📂</span>
@@ -6475,7 +6455,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Description Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">📝</span>
@@ -6492,7 +6472,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Images Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🖼️</span>
@@ -6617,7 +6597,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Compact Tags Section */}
-                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-700">
+                  <div className="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 lg:p-5 shadow-lg shadow-red-600/20 border border-slate-200">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-yellow-400">
                         <span className="text-white text-xs">🏷️</span>

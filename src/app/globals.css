@@ -75,51 +75,50 @@ p {
 
 #admin-container {
   --admin-surface: #ffffff;
-  --admin-border: rgba(148, 163, 184, 0.35);
+  --admin-border: rgba(148, 163, 184, 0.2);
   --admin-muted: #475569;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 45%, #ffffff 100%);
+  color: #0f172a;
 }
 
-#admin-container .bg-slate-900,
-#admin-container .bg-slate-950,
-#admin-container .bg-slate-800,
-#admin-container .bg-slate-800\/70,
-#admin-container .bg-slate-700,
-#admin-container .bg-slate-700\/50 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  color: var(--text-primary) !important;
+#admin-container [class*="bg-slate-9"],
+#admin-container [class*="bg-slate-8"],
+#admin-container [class*="bg-slate-7"],
+#admin-container [class*="bg-slate-6"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  color: #0f172a !important;
   border-color: var(--admin-border) !important;
+  box-shadow: 0 30px 80px -45px rgba(15, 23, 42, 0.3);
 }
 
-#admin-container .text-white,
-#admin-container .text-white\/70,
-#admin-container .text-white\/60,
-#admin-container .text-gray-200,
-#admin-container .text-gray-300 {
-  color: var(--text-primary) !important;
+#admin-container [class*="text-white"],
+#admin-container [class*="text-gray-2"],
+#admin-container [class*="text-gray-1"] {
+  color: #0f172a !important;
 }
 
-#admin-container .text-yellow-300,
-#admin-container .text-yellow-400,
-#admin-container .text-yellow-500,
-#admin-container .text-yellow-600,
-#admin-container .text-yellow-700 {
-  color: var(--admin-muted) !important;
+#admin-container [class*="text-yellow"] {
+  color: #64748b !important;
 }
 
-#admin-container .bg-yellow-400,
-#admin-container .bg-yellow-500,
-#admin-container .bg-yellow-600 {
-  background: linear-gradient(120deg, #f97316, #dc2626) !important;
+#admin-container [class*="bg-yellow-4"],
+#admin-container [class*="bg-yellow-5"],
+#admin-container [class*="bg-yellow-6"],
+#admin-container [class*="bg-red-6"] {
+  background: linear-gradient(120deg, #fbbf24, #fb7185) !important;
   color: #ffffff !important;
   border: none !important;
+  box-shadow: 0 25px 55px -30px rgba(249, 115, 22, 0.5);
 }
 
-#admin-container .border-yellow-300\/40,
-#admin-container .border-yellow-300\/30,
-#admin-container .border-yellow-300,
-#admin-container .border-yellow-200,
-#admin-container .border-yellow-100 {
+#admin-container [class*="border-yellow"],
+#admin-container [class*="border-red-6"] {
   border-color: var(--admin-border) !important;
+}
+
+#admin-container [class*="shadow-red"],
+#admin-container [class*="shadow-yellow"] {
+  box-shadow: 0 30px 60px -45px rgba(15, 23, 42, 0.3) !important;
 }
 
 .modern-card {

@@ -33,29 +33,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-white">
+        <div className="text-center space-y-2">
+          <h2 className="text-3xl font-bold text-slate-900">
             Iniciar Sesión
           </h2>
-          <p className="mt-2 text-sm text-yellow-300">
+          <p className="text-sm text-slate-500">
             Accede a tu cuenta para continuar
           </p>
         </div>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-slate-900/80 py-8 px-4 shadow-lg shadow-red-600/20 sm:rounded-lg sm:px-10">
+        <div className="bg-white py-8 px-6 shadow-[0_30px_80px_-55px_rgba(15,23,42,0.8)] border border-slate-100 rounded-2xl sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded">
+              <div className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl">
                 {error}
               </div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-yellow-300">
+              <label htmlFor="email" className="block text-sm font-semibold text-slate-600">
                 Email
               </label>
               <div className="mt-1">
@@ -67,14 +67,14 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-yellow-300/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-yellow-300 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-slate-200 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 sm:text-sm"
                   placeholder="tu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-yellow-300">
+              <label htmlFor="password" className="block text-sm font-semibold text-slate-600">
                 Contraseña
               </label>
               <div className="mt-1 relative">
@@ -86,18 +86,18 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-yellow-300/40 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-yellow-300 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 pr-10 border border-slate-200 rounded-xl placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-amber-100 sm:text-sm"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-5 w-5 text-yellow-300" />
+                    <EyeSlashIcon className="h-5 w-5" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-yellow-300" />
+                    <EyeIcon className="h-5 w-5" />
                   )}
                 </button>
               </div>
@@ -107,7 +107,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-400 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-semibold text-white bg-gradient-to-r from-amber-400 to-rose-400 hover:from-amber-300 hover:to-rose-300 focus:outline-none focus:ring-4 focus:ring-amber-100 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center">
@@ -125,10 +125,10 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-yellow-300/40" />
+                <div className="w-full border-t border-slate-200" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-slate-900/80 text-yellow-300">O continúa con</span>
+                <span className="px-2 bg-white text-slate-500">O continúa con</span>
               </div>
             </div>
 
@@ -146,24 +146,24 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-yellow-300/40" />
+                <div className="w-full border-t border-slate-200" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-slate-900/80 text-yellow-300">¿No tienes cuenta?</span>
+                <span className="px-2 bg-white text-slate-500">¿No tienes cuenta?</span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <Link
                 href="/registro"
-                className="w-full flex justify-center py-2 px-4 border border-yellow-300 rounded-md shadow-sm bg-slate-900/80 text-sm font-medium text-yellow-300 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2.5 px-4 border border-slate-200 rounded-xl shadow-sm bg-white text-sm font-semibold text-slate-700 hover:border-amber-300 hover:text-amber-600 focus:outline-none focus:ring-4 focus:ring-amber-100"
               >
                 Crear Nueva Cuenta
               </Link>
               
               <Link
                 href="/checkout?guest=true"
-                className="w-full flex justify-center py-2 px-4 text-sm font-medium text-yellow-300 hover:text-white"
+                className="w-full flex justify-center py-2 text-sm font-medium text-slate-500 hover:text-slate-900"
               >
                 Continuar como invitado
               </Link>
@@ -172,7 +172,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-yellow-300 hover:text-yellow-300 font-medium">
+          <Link href="/" className="text-slate-500 hover:text-slate-900 font-medium">
             ← Volver a la tienda
           </Link>
         </div>

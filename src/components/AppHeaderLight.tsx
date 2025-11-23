@@ -146,6 +146,7 @@ export default function AppHeaderLight() {
     });
   }, [activeCategories]);
 
+
   return (
     <header className="sticky top-0 z-50 border-b border-sky-100 bg-white/90 shadow-[0_40px_120px_-60px_rgba(56,182,255,0.4)] backdrop-blur-xl">
       <div className="px-4 sm:px-6 lg:px-8 py-4 relative overflow-hidden">
@@ -233,74 +234,65 @@ export default function AppHeaderLight() {
 
                 {isMegaMenuOpen && activeCategories.length > 0 && (
                   <div
-                    className="absolute left-0 top-full mt-3 w-[480px] rounded-3xl border border-sky-100 bg-white p-6 shadow-[0_40px_100px_-60px_rgba(15,102,160,0.8)] max-h-[460px] overflow-y-auto"
+                    className="absolute left-0 top-full mt-4 w-[460px] rounded-[28px] border border-slate-200 bg-white/95 p-4 shadow-[0_45px_90px_-50px_rgba(15,23,42,0.35)]"
                     onMouseEnter={() => openMegaMenu()}
                     onMouseLeave={closeMegaMenu}
                   >
-                    <div className="flex flex-col gap-3">
-                      <button
-                        type="button"
-                        className="flex items-center justify-between rounded-2xl border px-3 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200"
-                        onClick={() => handleMegaNavigate('/')}
-                      >
-                        <span className="inline-flex items-center gap-2">
-                          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-slate-200 to-white">
-                            <Home className="h-4 w-4 text-slate-700" />
-                          </span>
-                          Inicio
-                        </span>
-                        <ChevronRight className="h-4 w-4 text-slate-300" />
-                      </button>
+                    <div className="space-y-2 max-h-[420px] overflow-y-auto pr-2">
                       {activeCategories.map((category, index) => {
                         const IconComponent = getCategoryIcon(category.id);
                         const subcategories = getCategorySubcategories(category);
-                        const hasSubcategories = subcategories.length > 0;
                         const isExpanded = expandedDesktopCategory === category.id;
+                        const hasSubcategories = subcategories.length > 0;
                         return (
                           <div
                             key={category.id}
-                            className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition-all ${
-                              isExpanded ? 'border-sky-200 bg-sky-50 text-slate-900 shadow-sm' : 'border-slate-100 text-slate-500 hover:border-slate-200'
-                            }`}
+                            className={`rounded-2xl border transition ${isExpanded ? 'border-sky-200 bg-sky-50/80 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200'}`}
                           >
                             <button
                               type="button"
-                              className="flex w-full items-center justify-between gap-2 text-left"
+                              className="flex w-full items-center justify-between px-4 py-3 text-left"
                               onClick={() => setExpandedDesktopCategory(isExpanded ? null : category.id)}
                             >
                               <span className="inline-flex items-center gap-2">
-                                <span className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${gamerPalette[index % gamerPalette.length]}`}>
+                                <span className={`inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br ${gamerPalette[index % gamerPalette.length]}`}>
                                   <IconComponent className="h-4 w-4 text-slate-900/80" />
                                 </span>
-                                {category.name || category.id}
+                                <span>
+                                  <p className="text-sm font-semibold text-slate-900">{category.name || category.id}</p>
+                                  <p className="text-xs text-slate-400">
+                                    {hasSubcategories ? `${subcategories.length} subcategorías` : 'Sin subcategorías'}
+                                  </p>
+                                </span>
                               </span>
                               {hasSubcategories ? (
-                                <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180 text-sky-500' : 'text-slate-400'}`} />
+                                <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform ${isExpanded ? 'rotate-180 text-sky-500' : ''}`} />
                               ) : (
                                 <ChevronRight className="h-4 w-4 text-slate-300" />
                               )}
                             </button>
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className="text-xs text-slate-500 underline"
-                                onClick={() => handleMegaNavigate(`/categoria/${category.id}`)}
-                              >
-                                Ver categoría
-                              </button>
-                            </div>
                             {hasSubcategories && isExpanded && (
-                              <div className="mt-3 space-y-2">
-                                {subcategories.map((sub) => (
-                                  <button
-                                    key={`${category.id}-${sub.value}`}
-                                    type="button"
-                                    className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 text-left transition hover:border-sky-200 hover:text-slate-900"
-                                    onClick={() => handleMegaNavigate(`/categoria/${category.id}/${encodeURIComponent(sub.value)}`)}
-                                  >
-                                    {sub.label}
-                                  </button>
-                                ))}
+                              <div className="border-t border-slate-100 px-4 py-3">
+                                <div className="grid grid-cols-2 gap-2">
+                                  {subcategories.map((sub) => (
+                                    <button
+                                      key={`${category.id}-${sub.value}`}
+                                      type="button"
+                                      className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-500 text-left hover:border-sky-200 hover:text-sky-600"
+                                      onClick={() => handleMegaNavigate(`/categoria/${category.id}/${encodeURIComponent(sub.value)}`)}
+                                    >
+                                      {sub.label}
+                                    </button>
+                                  ))}
+                                </div>
+                                <button
+                                  type="button"
+                                  className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-sky-600"
+                                  onClick={() => handleMegaNavigate(`/categoria/${category.id}`)}
+                                >
+                                  Ver categoría completa
+                                  <ChevronRight className="h-3 w-3" />
+                                </button>
                               </div>
                             )}
                           </div>
