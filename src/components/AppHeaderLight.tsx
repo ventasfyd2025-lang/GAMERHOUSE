@@ -154,14 +154,15 @@ export default function AppHeaderLight() {
           <DynamicLogo />
 
           <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-xl mx-auto">
-            <div className="relative w-full group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-sky-500 transition-colors" />
+            <div className="relative w-full">
+              <Search className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Buscar productos o sagas..."
+                aria-label="Buscar productos"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="form-input pl-12"
+                className="form-input pr-12"
               />
             </div>
           </form>
@@ -190,14 +191,15 @@ export default function AppHeaderLight() {
           </div>
 
           <form onSubmit={handleSearch} className="lg:hidden w-full">
-            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-sky-500 transition-colors" />
+            <div className="relative">
+              <Search className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Buscar..."
+                aria-label="Buscar"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="form-input w-full pl-12 pr-4"
+                className="form-input w-full pr-12"
               />
             </div>
           </form>

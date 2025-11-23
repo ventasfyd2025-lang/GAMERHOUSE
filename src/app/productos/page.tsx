@@ -46,6 +46,11 @@ function AllProductsPageContent() {
   const sectionParam = searchParams.get('section');
   const filterParam = searchParams.get('filter');
   const categoryParam = searchParams.get('category');
+  const searchParam = searchParams.get('search') || '';
+
+  useEffect(() => {
+    setSearchTerm(searchParam);
+  }, [searchParam]);
 
   useEffect(() => {
     const section = sectionParam
