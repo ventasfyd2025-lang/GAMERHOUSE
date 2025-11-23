@@ -2378,7 +2378,6 @@ export default function AdminPage() {
                 { id: 'stock-center', name: 'Alertas & Stock', icon: '🚨' },
                 { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-pink' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
-                { id: 'main-banner', name: 'Banners', icon: '🏆' },
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
                 { id: 'logo', name: 'Logo', icon: '🏪' },
                 { id: 'banner', name: 'Banner Dinámico', icon: '📸' },
