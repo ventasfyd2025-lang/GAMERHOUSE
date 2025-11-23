@@ -26,9 +26,9 @@ export default function DynamicBanner() {
   return (
     <section className="w-full px-3 sm:px-6 lg:px-8 py-5 sm:py-10">
       <div className="max-w-7xl mx-auto">
-        <article className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] min-h-[200px] sm:min-h-[300px] lg:min-h-[400px] group">
+        <article className="relative overflow-hidden rounded-3xl border border-slate-200 shadow-[0_40px_90px_-50px_rgba(15,23,42,0.45)] min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] group bg-white">
           {/* Background Image */}
-          <div className="absolute inset-0 bg-gray-900">
+          <div className="absolute inset-0">
             {!imageError && (
               <Image
                 src={imageUrl}
@@ -43,21 +43,21 @@ export default function DynamicBanner() {
           </div>
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent" />
 
           {/* Content */}
-          <div className="relative z-10 flex h-full flex-col justify-center gap-3 sm:gap-5 p-6 sm:p-10 lg:p-16 text-white max-w-2xl h-full min-h-[200px] sm:min-h-[300px] lg:min-h-[400px]">
+          <div className="relative z-10 flex h-full flex-col justify-center gap-3 sm:gap-5 p-6 sm:p-10 lg:p-16 text-slate-900 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px]">
             <div className="space-y-2">
-              <span className="inline-block px-3 py-1 rounded-full bg-yellow-400/20 text-yellow-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-yellow-400/20 backdrop-blur-sm">
+              <span className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-600 text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-amber-200">
                 Destacado
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase italic tracking-tighter">
+              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight">
                 {title}
               </h2>
             </div>
 
             {text && (
-              <p className="text-sm sm:text-lg text-gray-300 max-w-lg leading-relaxed">
+              <p className="text-sm sm:text-lg text-slate-600 max-w-lg leading-relaxed">
                 {text}
               </p>
             )}
@@ -65,7 +65,7 @@ export default function DynamicBanner() {
             <div className="pt-2 sm:pt-4">
               <Link
                 href={ctaHref}
-                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-yellow-400 text-black font-black uppercase tracking-wider text-xs sm:text-sm hover:bg-yellow-300 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,222,0,0.4)]"
+                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 to-rose-400 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm hover:from-amber-300 hover:to-rose-300 hover:shadow-lg transition-all"
               >
                 {ctaLabel}
               </Link>

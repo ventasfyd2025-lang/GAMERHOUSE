@@ -29,37 +29,37 @@ p {
 }
 
 :root {
-  /* Pikachu Palette - Dark Theme */
-  --primary: #FFDE00;
-  --primary-hover: #FFE533;
-  --primary-soft: rgba(255, 222, 0, 0.1);
-  --secondary: #E60012;
-  --secondary-hover: #FF1A1A;
+  /* Light Pikachu-inspired palette */
+  --primary: #eab308;
+  --primary-hover: #facc15;
+  --primary-soft: rgba(234, 179, 8, 0.14);
+  --secondary: #dc2626;
+  --secondary-hover: #ef4444;
   
   /* Text Colors */
-  --text-primary: #FFFFFF;
-  --text-secondary: #e5e5e5;
-  --text-muted: #a3a3a3;
-  --text-inverse: #000000;
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
   
   /* Backgrounds */
-  --page-background: #000000;
-  --surface: #111111;
-  --surface-alt: #1a1a1a;
-  --surface-card: rgba(26, 26, 26, 0.8);
+  --page-background: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --surface-card: rgba(255, 255, 255, 0.9);
   
   /* Borders */
-  --border-soft: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 222, 0, 0.5);
-  --border-primary: #FFDE00;
+  --border-soft: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(234, 179, 8, 0.35);
+  --border-primary: #eab308;
   
   /* Shadows */
-  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-  --shadow-glow: 0 0 20px rgba(255, 222, 0, 0.15);
+  --shadow-soft: 0 18px 30px -22px rgba(15, 23, 42, 0.45);
+  --shadow-card: 0 25px 35px -25px rgba(15, 23, 42, 0.6);
+  --shadow-glow: 0 0 25px rgba(234, 179, 8, 0.12);
   
   /* Brand Backgrounds */
-  --brand-background: radial-gradient(circle at 50% 0%, #1a1a1a, #000000);
+  --brand-background: radial-gradient(circle at 50% 0%, #fff8e1, #f8fafc);
   
   /* Radius */
   --radius-md: 8px;
@@ -598,7 +598,7 @@ p {
 
   /* Inputs para toda la web */
   .input-web {
-    @apply w-full px-4 py-2.5 rounded-xl text-white placeholder-white/40 border border-white/10 bg-white/5 backdrop-blur-md transition-colors duration-300 focus:outline-none focus:border-yellow-300/70 focus:bg-white/10;
+    @apply w-full px-4 py-2.5 rounded-2xl text-slate-800 placeholder-slate-400 border border-slate-200 bg-white shadow-sm transition-all duration-300 focus:outline-none focus:border-amber-300 focus:ring-4 focus:ring-amber-200/60;
   }
 
   /* Gradient Text */

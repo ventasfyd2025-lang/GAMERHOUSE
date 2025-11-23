@@ -157,18 +157,18 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-yellow-300/20 bg-slate-950/70 backdrop-blur-2xl transition-colors duration-300 shadow-[0_18px_60px_-42px_rgba(255,232,141,0.75)]">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl transition-colors duration-300 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)]">
       {/* Main Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-20 items-center justify-between gap-4">
           {/* Logo + Categorías */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-3 rounded-full px-2 py-1 transition-colors hover:bg-yellow-300/5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-yellow-300/20 text-lg shadow-[0_0_18px_rgba(255,232,141,0.45)]">
+            <Link href="/" className="flex items-center gap-3 rounded-full px-2 py-1 transition-colors hover:bg-slate-100">
+              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-amber-200/60 text-lg shadow-[0_8px_18px_rgba(251,191,36,0.45)]">
                 🎮
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">Store</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Store</span>
                 <span className="text-lg font-semibold gradient-text-primary">Gamerhouse</span>
               </div>
             </Link>
@@ -182,7 +182,7 @@ export default function AppHeader() {
             >
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-white/80 backdrop-blur-md transition-all duration-300 hover:border-yellow-300/40 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 transition-all duration-300 hover:border-amber-300 hover:text-slate-900"
                 onFocus={() => openMenu()}
               >
                 <span>Categorías</span>
@@ -191,11 +191,11 @@ export default function AppHeader() {
 
               {isCategoryMenuOpen && activeCategories.length > 0 && (
                 <div
-                  className="absolute left-0 top-full mt-3 w-[360px] max-h-[480px] overflow-y-auto rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-[0_30px_80px_-40px_rgba(255,232,141,0.8)] backdrop-blur-2xl"
+                  className="absolute left-0 top-full mt-3 w-[360px] max-h-[480px] overflow-y-auto rounded-3xl border border-slate-200 bg-white p-4 shadow-2xl"
                   onMouseEnter={openMenu}
                   onMouseLeave={scheduleCloseMenu}
                 >
-                  <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">
+                  <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-400">
                     Navega por categoría
                   </p>
                   <div className="mt-2 space-y-2">
@@ -205,21 +205,21 @@ export default function AppHeader() {
                       const hasSubcategories = subcategories.length > 0;
 
                       return (
-                        <div key={category.id} className="rounded-2xl border border-white/10 bg-white/5">
+                        <div key={category.id} className="rounded-2xl border border-slate-200 bg-white shadow-sm">
                           <button
                             type="button"
                             onClick={() => handleDesktopCategoryClick(category.id, hasSubcategories)}
-                            className={`flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold transition-colors ${isExpanded ? 'text-white' : 'text-white/80 hover:text-white'}`}
+                            className={`flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold transition-colors ${isExpanded ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'}`}
                           >
                             <span>{category.name || formatLabel(category.id)}</span>
                             <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                           </button>
 
                           {isExpanded && hasSubcategories && (
-                            <div className="border-t border-white/10 px-3 py-2 space-y-1">
+                            <div className="border-t border-slate-100 px-3 py-2 space-y-1">
                               <button
                                 type="button"
-                                className="mb-1 inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:border-yellow-300/40 hover:text-yellow-100"
+                                className="mb-1 inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-500 transition-colors hover:border-amber-300 hover:text-amber-600"
                                 onClick={() => navigateAndClose(`/categoria/${category.id}`)}
                               >
                                 Ver todo
@@ -228,7 +228,7 @@ export default function AppHeader() {
                                 <button
                                   key={subcategory.id}
                                   type="button"
-                                  className="block w-full rounded-xl px-3 py-2 text-left text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                  className="block w-full rounded-xl px-3 py-2 text-left text-sm text-slate-600 transition-colors hover:bg-amber-50 hover:text-amber-600"
                                   onClick={() => navigateAndClose(`/categoria/${category.id}/${encodeURIComponent(subcategory.id)}`)}
                                 >
                                   {subcategory.nombre || formatLabel(subcategory.id)}
@@ -238,7 +238,7 @@ export default function AppHeader() {
                           )}
 
                           {isExpanded && !hasSubcategories && (
-                            <div className="border-t border-white/10 px-3 py-3 text-center text-xs text-white/50">
+                            <div className="border-t border-slate-100 px-3 py-3 text-center text-xs text-slate-400">
                               No hay subcategorías disponibles
                             </div>
                           )}
@@ -254,7 +254,7 @@ export default function AppHeader() {
           {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-8">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5" />
               <input
                 type="text"
                 placeholder="Buscar productos..."
@@ -269,10 +269,10 @@ export default function AppHeader() {
           <div className="flex items-center gap-4">
             {/* Desktop Links */}
             <div className="hidden sm:flex items-center gap-4">
-              <Link href="/perfil" className="text-white/70 hover:text-white transition-colors">
+              <Link href="/perfil" className="text-slate-500 hover:text-slate-900 transition-colors">
                 <User className="h-5 w-5" />
               </Link>
-              <Link href="/carrito" className="relative text-white/70 hover:text-white transition-colors">
+              <Link href="/carrito" className="relative text-slate-500 hover:text-slate-900 transition-colors">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
                   <span className="absolute -top-1 -right-1 bg-yellow-300 text-slate-900 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-[0_0_12px_rgba(255,232,141,0.6)]">
@@ -292,7 +292,7 @@ export default function AppHeader() {
                   return !prev;
                 });
               }}
-              className="md:hidden rounded-full border border-white/10 bg-white/5 p-2 text-white/80 transition-colors hover:text-white"
+              className="md:hidden rounded-full border border-slate-200 bg-white p-2 text-slate-600 transition-colors hover:text-slate-900"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -302,7 +302,7 @@ export default function AppHeader() {
         {/* Mobile Search */}
         <form onSubmit={handleSearch} className="md:hidden pb-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 h-5 w-5" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 h-5 w-5" />
             <input
               type="text"
               placeholder="Buscar..."
@@ -316,11 +316,11 @@ export default function AppHeader() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-slate-950/90 backdrop-blur-xl">
+        <div className="md:hidden border-t border-slate-200 bg-white">
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-3">
             <button
               type="button"
-              className="w-full rounded-lg px-3 py-2 text-left text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              className="w-full rounded-lg px-3 py-2 text-left text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 setExpandedCategoryId(null);
@@ -331,7 +331,7 @@ export default function AppHeader() {
             </button>
             <button
               type="button"
-              className="w-full rounded-lg px-3 py-2 text-left text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+              className="w-full rounded-lg px-3 py-2 text-left text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 setExpandedCategoryId(null);
@@ -341,27 +341,27 @@ export default function AppHeader() {
               Productos
             </button>
             {activeCategories.length > 0 && (
-              <div className="space-y-2 border-t border-white/10 pt-3">
-                <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/40">Categorías</p>
+              <div className="space-y-2 border-t border-slate-200 pt-3">
+                <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-400">Categorías</p>
                 <div className="grid grid-cols-1 gap-2">
                   {activeCategories.map((category) => {
                     const isExpanded = expandedCategoryId === category.id;
                     return (
-                      <div key={category.id} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+                      <div key={category.id} className="rounded-2xl border border-slate-200 bg-white shadow-sm">
                         <button
                           type="button"
                           onClick={() => setExpandedCategoryId(isExpanded ? null : category.id)}
-                          className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold text-white/80 transition-colors hover:bg-white/10"
+                          className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50"
                         >
                           <span>{category.name || formatLabel(category.id)}</span>
                           <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                         </button>
                         {isExpanded && (
-                          <div className="border-t border-white/10 bg-slate-950/80 px-3 py-2">
+                          <div className="border-t border-slate-100 bg-slate-50 px-3 py-2">
                             <div className="flex flex-col gap-1">
                               <Link
                                 href={`/categoria/${category.id}`}
-                                className="rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                className="rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 transition-colors hover:bg-amber-50 hover:text-amber-600"
                                 onClick={() => {
                                   setIsMobileMenuOpen(false);
                                   setExpandedCategoryId(null);
@@ -373,7 +373,7 @@ export default function AppHeader() {
                                 <Link
                                   key={subcategory.id}
                                   href={`/categoria/${category.id}/${encodeURIComponent(subcategory.id)}`}
-                                  className="rounded-lg px-3 py-2 text-sm text-white/70 transition-colors hover:bg-yellow-300/10 hover:text-white"
+                                  className="rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-amber-50 hover:text-amber-600"
                                   onClick={() => {
                                     setIsMobileMenuOpen(false);
                                     setExpandedCategoryId(null);
@@ -391,10 +391,10 @@ export default function AppHeader() {
                 </div>
               </div>
             )}
-            <div className="border-t border-white/10 pt-3 flex gap-4">
+            <div className="border-t border-slate-200 pt-3 flex gap-4">
               <Link
                 href="/perfil"
-                className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                className="flex items-center gap-2 text-slate-600 transition-colors hover:text-slate-900"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   setExpandedCategoryId(null);
@@ -405,7 +405,7 @@ export default function AppHeader() {
               </Link>
               <Link
                 href="/carrito"
-                className="relative flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                className="relative flex items-center gap-2 text-slate-600 transition-colors hover:text-slate-900"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   setExpandedCategoryId(null);

@@ -122,10 +122,10 @@ export default function GamerHouseHomepage() {
     return (
       <Link
         href={`/producto/${product.id}`}
-        className="group block bg-gray-900/80 rounded-xl sm:rounded-2xl border border-white/10 overflow-hidden hover:shadow-[0_0_25px_rgba(255,222,0,0.15)] hover:border-yellow-400/50 transition-all duration-300 h-full flex flex-col backdrop-blur-sm"
+        className="group block bg-white rounded-xl sm:rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-yellow-300 transition-all duration-300 h-full flex flex-col"
       >
         {/* Image */}
-        <div className="relative w-full aspect-[3/4] xs:aspect-[4/5] sm:aspect-square bg-gray-800 overflow-hidden">
+        <div className="relative w-full aspect-[3/4] xs:aspect-[4/5] sm:aspect-square bg-slate-100 overflow-hidden">
           <Image
             src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
             alt={product.nombre}
@@ -139,26 +139,26 @@ export default function GamerHouseHomepage() {
             </div>
           )}
           {product.stock === 0 && (
-            <div className="absolute inset-0 bg-black/70 flex items-center justify-center backdrop-blur-sm">
-              <span className="text-white font-bold border border-white/20 px-4 py-2 rounded-lg">AGOTADO</span>
+            <div className="absolute inset-0 bg-slate-900/60 flex items-center justify-center backdrop-blur-sm">
+              <span className="text-white font-bold border border-white/30 px-4 py-2 rounded-lg">AGOTADO</span>
             </div>
           )}
         </div>
 
         {/* Content */}
         <div className="flex flex-col gap-2.5 p-3 sm:p-5 flex-1">
-          <h3 className="font-semibold text-gray-100 line-clamp-2 text-xs sm:text-base group-hover:text-yellow-400 transition-colors">
+          <h3 className="font-semibold text-slate-900 line-clamp-2 text-xs sm:text-base group-hover:text-amber-500 transition-colors">
             {product.nombre}
           </h3>
 
           {/* Pricing */}
           <div className="space-y-1">
             <div className="flex items-baseline gap-2">
-              <span className="text-base sm:text-xl font-bold text-yellow-400">
+              <span className="text-base sm:text-xl font-bold text-amber-500">
                 ${product.precio?.toLocaleString() || 'N/D'}
               </span>
               {hasDiscount && (
-                <span className="text-xs sm:text-sm text-gray-500 line-through">
+                <span className="text-xs sm:text-sm text-slate-400 line-through">
                   ${product.precioOriginal?.toLocaleString()}
                 </span>
               )}
@@ -167,8 +167,8 @@ export default function GamerHouseHomepage() {
 
           {/* Stock Info */}
           {product.stock > 0 && (
-            <p className="text-[10px] sm:text-xs text-gray-400 font-medium flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+            <p className="text-[10px] sm:text-xs text-slate-500 font-medium flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               Stock disponible: {product.stock}
             </p>
           )}
@@ -181,8 +181,8 @@ export default function GamerHouseHomepage() {
             }}
             disabled={product.stock === 0}
             className={`mt-auto w-full py-2.5 px-3 rounded-lg font-bold text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide ${product.stock === 0
-                ? 'bg-gray-800 text-gray-500 cursor-not-allowed border border-gray-700'
-                : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 shadow-lg shadow-red-900/20 hover:shadow-red-600/30 hover:-translate-y-0.5'
+                ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-200'
+                : 'bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-400 hover:to-rose-400 shadow-lg shadow-amber-200/60 hover:-translate-y-0.5'
               }`}
           >
             <ShoppingCart className="h-4 w-4" />
@@ -194,28 +194,28 @@ export default function GamerHouseHomepage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-yellow-400 selection:text-black">
+    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-yellow-300 selection:text-slate-900">
       <DynamicBanner />
       <BannerShowcase className="py-6" slots={['middle']} />
 
       {homepageSections.map((section) => (
         <div key={section.id}>
-          <section className="py-8 sm:py-12 relative">
+          <section className="py-8 sm:py-12 relative bg-gradient-to-br from-white via-amber-50/30 to-slate-50 rounded-3xl">
             {/* Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-red-600/5 blur-[100px] rounded-full pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-amber-200/40 blur-[120px] rounded-full pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-8 relative z-10">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-4">
                 <div className="space-y-2">
-                  <span className="text-yellow-400 text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2">
+                  <span className="text-amber-500 text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-2">
                     <Zap className="w-4 h-4" />
                     {section.name}
                   </span>
-                  <h2 className="text-2xl sm:text-4xl font-black text-white uppercase italic tracking-tight">
+                  <h2 className="text-2xl sm:text-4xl font-black text-slate-900 uppercase tracking-tight">
                     {section.description || section.name}
                   </h2>
                 </div>
-                <Link href={`/categoria/${section.categoryId || 'todas'}`} className="text-sm text-gray-400 hover:text-yellow-400 transition-colors flex items-center gap-1">
+                <Link href={`/categoria/${section.categoryId || 'todas'}`} className="text-sm text-slate-500 hover:text-amber-500 transition-colors flex items-center gap-1">
                   Ver todo <span className="text-lg">›</span>
                 </Link>
               </div>
@@ -231,18 +231,18 @@ export default function GamerHouseHomepage() {
       ))}
 
       {/* Catálogo completo */}
-      <section className="py-8 sm:py-16 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent"></div>
+      <section className="py-8 sm:py-16 relative overflow-hidden bg-white">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
 
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-10 relative z-10">
           <div className="text-center space-y-3">
             <span className="inline-block px-3 py-1 rounded-full bg-yellow-400/10 text-yellow-400 text-xs font-bold tracking-wider uppercase border border-yellow-400/20">
               Explora Todo
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
-              Catálogo <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">Completo</span>
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight">
+              Catálogo <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-rose-500">Completo</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm sm:text-base">
               Encuentra las mejores cartas, accesorios y productos exclusivos para tu colección.
             </p>
           </div>
@@ -250,10 +250,10 @@ export default function GamerHouseHomepage() {
           {productsLoading ? (
             <div className="text-center py-20">
               <div className="inline-block w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-gray-500 font-medium">Cargando arsenal...</p>
+              <p className="mt-4 text-slate-500 font-medium">Cargando arsenal...</p>
             </div>
           ) : paginatedProducts.length === 0 ? (
-            <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-white/5">
+            <div className="text-center py-20 bg-slate-100 rounded-2xl border border-slate-200">
               <p className="text-gray-400">No hay productos disponibles en este momento.</p>
             </div>
           ) : (
@@ -265,17 +265,17 @@ export default function GamerHouseHomepage() {
               </div>
 
               {/* Pagination */}
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between pt-8 border-t border-white/10">
-                <p className="text-sm text-gray-500 text-center sm:text-left">
-                  Mostrando página <span className="font-bold text-white">{currentPage}</span> de{' '}
-                  <span className="font-bold text-white">{totalPages}</span>
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between pt-8 border-t border-slate-200">
+                <p className="text-sm text-slate-500 text-center sm:text-left">
+                  Mostrando página <span className="font-bold text-slate-900">{currentPage}</span> de{' '}
+                  <span className="font-bold text-slate-900">{totalPages}</span>
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <button
                     type="button"
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
-                    className="px-5 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-sm font-bold text-white hover:bg-gray-700 hover:border-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="px-5 py-2.5 rounded-lg bg-white border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
                   >
                     ← Anterior
                   </button>
@@ -283,7 +283,7 @@ export default function GamerHouseHomepage() {
                     type="button"
                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-5 py-2.5 rounded-lg bg-yellow-400 text-black border border-yellow-500 text-sm font-bold hover:bg-yellow-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_15px_rgba(255,222,0,0.2)]"
+                    className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-amber-400 to-rose-400 text-white border border-transparent text-sm font-bold hover:from-amber-300 hover:to-rose-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-amber-200/60"
                   >
                     Siguiente →
                   </button>
