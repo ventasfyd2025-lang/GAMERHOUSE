@@ -10,7 +10,7 @@ import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from 
 import { auth } from '@/lib/firebase';
 
 export default function ProfilePage() {
-  const { currentUser, userProfile, updateUserProfile, isRegistered, loading } = useUserAuth();
+  const { currentUser, userProfile, updateUserProfile, isRegistered, loading, logout } = useUserAuth();
   const unreadOrderNotifications = useOrderNotifications();
   const router = useRouter();
 
@@ -180,6 +180,15 @@ export default function ProfilePage() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.push('/login');
+    } catch (error) {
+      setMessage('Error al cerrar sesión');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[var(--surface-alt)] flex items-center justify-center">
@@ -209,30 +218,38 @@ export default function ProfilePage() {
               </div>
             </div>
             
-            {!isEditing ? (
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              {!isEditing ? (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="w-full sm:w-auto flex-1 px-4 py-2 bg-yellow-400 text-slate-900 rounded-lg hover:bg-yellow-300 transition-colors text-sm sm:text-base"
+                >
+                  Editar Perfil
+                </button>
+              ) : (
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full">
+                  <button
+                    onClick={handleCancel}
+                    className="flex-1 px-4 py-2 border border-slate-200 text-slate-500 rounded-lg hover:bg-[var(--surface-alt)] transition-colors text-sm sm:text-base"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="flex-1 px-4 py-2 bg-yellow-400 text-slate-900 rounded-lg hover:bg-yellow-300 transition-colors disabled:opacity-50 text-sm sm:text-base"
+                  >
+                    {saving ? 'Guardando...' : 'Guardar'}
+                  </button>
+                </div>
+              )}
               <button
-                onClick={() => setIsEditing(true)}
-                className="w-full sm:w-auto px-4 py-2 bg-yellow-400 text-slate-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm sm:text-base"
+                onClick={handleLogout}
+                className="w-full sm:w-auto px-4 py-2 border border-slate-200 text-slate-600 rounded-lg hover:bg-[var(--surface-alt)] transition-colors text-sm sm:text-base"
               >
-                Editar Perfil
+                Cerrar sesión
               </button>
-            ) : (
-              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
-                <button
-                  onClick={handleCancel}
-                  className="px-4 py-2 border border-slate-200 text-slate-500 rounded-lg hover:bg-[var(--surface-alt)] transition-colors text-sm sm:text-base"
-                >
-                  Cancelar
-                </button>
-                <button
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="px-4 py-2 bg-yellow-400 text-slate-900 rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50 text-sm sm:text-base"
-                >
-                  {saving ? 'Guardando...' : 'Guardar'}
-                </button>
-              </div>
-            )}
+            </div>
           </div>
           
           {message && (
