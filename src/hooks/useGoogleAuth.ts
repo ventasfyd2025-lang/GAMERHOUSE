@@ -51,8 +51,6 @@ export function useGoogleAuth() {
         phone: user.phoneNumber || '',
         photoURL: user.photoURL || '',
         provider: 'google',
-        role: 'cliente', // Default role
-        isActive: true,
         lastLogin: new Date(),
         // Only set these if user doesn't exist
         ...(userDoc.exists() ? {} : {
