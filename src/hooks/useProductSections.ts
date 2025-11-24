@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
-interface ProductSection {
+export interface ProductSection {
   id: string;
   name: string;
   description: string;
@@ -14,7 +14,7 @@ interface ProductSection {
   categoryId?: string;
 }
 
-const defaultSections: ProductSection[] = [
+export const defaultProductSections: ProductSection[] = [
   {
     id: 'destacados',
     name: 'Productos Destacados',
@@ -60,7 +60,7 @@ const defaultSections: ProductSection[] = [
 ];
 
 export function useProductSections() {
-  const [sections, setSections] = useState<ProductSection[]>(defaultSections);
+  const [sections, setSections] = useState<ProductSection[]>(defaultProductSections);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

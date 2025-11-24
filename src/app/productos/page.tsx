@@ -12,7 +12,7 @@ import { useProducts } from '@/hooks/useProducts';
 import { useCategories } from '@/hooks/useCategories';
 import { useProductSections } from '@/hooks/useProductSections';
 import { useHomepageConfig } from '@/hooks/useHomepageConfig';
-import { productMatchesCategory, productMatchesSubcategory } from '@/utils/category';
+import { productMatchesCategory, productMatchesSubcategory, formatCategoryLabel, normalizeCategoryValue } from '@/utils/category';
 import { getPaginationRange } from '@/lib/pagination';
 
 const ITEMS_PER_PAGE = 20;
@@ -232,6 +232,96 @@ function AllProductsPageContent() {
       .map((sub) => ({ value: sub.nombre, label: sub.nombre }));
   }, [categories, selectedCategory]);
 
+  const normalizedSelectedCategory = useMemo(() => normalizeCategoryValue(selectedCategory), [selectedCategory]);
+
+  const selectedCategoryName = useMemo(() => {
+    if (selectedCategory === 'all') {
+      return null;
+    }
+    const match = categories.find((cat) => {
+      const candidates = [cat.id, (cat as any)?.slug, cat.name, (cat as any)?.nombre];
+      return candidates.some((value) => typeof value === 'string' && normalizeCategoryValue(value) === normalizedSelectedCategory);
+    });
+    return match?.name || (match as any)?.nombre || formatCategoryLabel(selectedCategory);
+  }, [categories, normalizedSelectedCategory, selectedCategory]);
+
+  const selectedSubcategoryLabel = selectedSubcategory ? formatCategoryLabel(selectedSubcategory) : null;
+
+  const hasActiveFilters = Boolean(
+    selectedCategory !== 'all' ||
+    selectedSubcategory ||
+    searchTerm.trim() !== '' ||
+    specialFilter ||
+    minPrice.trim() !== '' ||
+    maxPrice.trim() !== '' ||
+    manualProductIds.length > 0 ||
+    sectionParam
+  );
+
+  const heroEyebrow = hasActiveFilters ? 'Resultados filtrados' : 'Catálogo gamer';
+
+  const heroTitle = useMemo(() => {
+    if (searchTerm.trim() !== '') {
+      return `Resultados para “${searchTerm.trim()}”`;
+    }
+    if (selectedSubcategoryLabel) {
+      return `${selectedCategoryName ? `${selectedCategoryName} · ` : ''}${selectedSubcategoryLabel}`;
+    }
+    if (selectedCategoryName) {
+      return `Categoría: ${selectedCategoryName}`;
+    }
+    if (specialFilter === 'ofertas') {
+      return 'Ofertas y promociones';
+    }
+    if (specialFilter === 'nuevos') {
+      return 'Novedades recientes';
+    }
+    if (specialFilter === 'destacados') {
+      return 'Selección destacada';
+    }
+    if (activeSectionTitle) {
+      return activeSectionTitle;
+    }
+    return 'Todos los productos disponibles';
+  }, [searchTerm, selectedSubcategoryLabel, selectedCategoryName, specialFilter, activeSectionTitle]);
+
+  const heroDescription = useMemo(() => {
+    const total = filteredProducts.length;
+    const label = total === 1 ? 'producto' : 'productos';
+    if (searchTerm.trim() !== '') {
+      return `Encontramos ${total} ${label} que coinciden con tu búsqueda. Ajusta los filtros para afinar aún más.`;
+    }
+    if (selectedSubcategoryLabel) {
+      return `${total} ${label} dentro de ${selectedCategoryName ? `${selectedCategoryName} › ` : ''}${selectedSubcategoryLabel}.`;
+    }
+    if (selectedCategoryName) {
+      return `${total} ${label} disponibles en ${selectedCategoryName}.`;
+    }
+    if (specialFilter === 'ofertas') {
+      return `${total} ${label} con precios rebajados en este momento.`;
+    }
+    if (specialFilter === 'nuevos') {
+      return `${total} ${label} recién llegados para que seas el primero en conseguirlos.`;
+    }
+    if (specialFilter === 'destacados') {
+      return `${total} ${label} seleccionados por el equipo para destacarse en la tienda.`;
+    }
+    if (manualProductIds.length > 0 && activeSectionTitle) {
+      return `${total} ${label} elegidos manualmente para esta sección.`;
+    }
+    return 'Filtra por categoría, preventa, ofertas o rango de precios para encontrar tu próxima adquisición. Mostramos 20 productos por página.';
+  }, [
+    filteredProducts.length,
+    searchTerm,
+    selectedCategoryName,
+    selectedSubcategoryLabel,
+    specialFilter,
+    manualProductIds.length,
+    activeSectionTitle,
+  ]);
+
+  const filteredInStock = useMemo(() => filteredProducts.filter((product) => product.stock > 0).length, [filteredProducts]);
+
   return (
     <Layout>
       <main className="w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 space-y-6 sm:space-y-8">
@@ -240,10 +330,10 @@ function AllProductsPageContent() {
 
         <section className="flex flex-col gap-5 sm:gap-6">
           <div className="sm:hidden space-y-3 rounded-2xl border border-slate-200 bg-white/90 px-4 py-5 shadow-sm">
-            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-slate-500">Catálogo</span>
-            <h1 className="text-xl font-semibold text-slate-900">Todos los productos</h1>
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-slate-500">{heroEyebrow}</span>
+            <h1 className="text-xl font-semibold text-slate-900">{heroTitle}</h1>
             <p className="text-sm text-slate-500">
-              Usa el buscador o las categorías superiores para encontrar lo que necesitas. Mostramos 20 productos por página.
+              {heroDescription}
             </p>
           </div>
 
@@ -251,17 +341,17 @@ function AllProductsPageContent() {
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_35%_0%,rgba(255,232,141,0.25),transparent_55%)]" />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="space-y-4 sm:space-y-5">
-                <span className="section-heading__eyebrow text-[0.55rem] sm:text-[0.65rem] tracking-[0.45em]">Catálogo gamer</span>
+                <span className="section-heading__eyebrow text-[0.55rem] sm:text-[0.65rem] tracking-[0.45em]">{heroEyebrow}</span>
                 <h1 className="section-heading__title text-2xl sm:text-[2.75rem]">
-                  Todos los productos disponibles
+                  {heroTitle}
                 </h1>
                 <p className="section-heading__description text-sm sm:text-base">
-                  Filtra por categoría, preventa, ofertas o rango de precios para encontrar tu próxima adquisición. Mostramos 20 productos por página.
+                  {heroDescription}
                 </p>
 
                 <div className="flex flex-wrap gap-2.5 text-[0.7rem] sm:text-sm">
-                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">+{filteredProducts.length} productos activos</span>
-                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">{products.filter((product) => product.stock > 0).length} con stock disponible</span>
+                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">+{filteredProducts.length} resultados</span>
+                  <span className="chip-pill px-3 py-1 sm:px-3.5 sm:py-1.5">{filteredInStock} con stock disponible</span>
                 </div>
 
                 {activeSectionTitle && (

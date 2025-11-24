@@ -14,6 +14,11 @@ import { useLayoutPatterns, DEFAULT_LAYOUT_PATTERNS } from '@/hooks/useLayoutPat
 import { useUserAuth, UserProfile } from '@/hooks/useUserAuth';
 import { useEmailNotifications } from '@/hooks/useEmailNotifications';
 import {
+  useProductSections as useHomepageSections,
+  defaultProductSections,
+  type ProductSection as HomepageProductSection,
+} from '@/hooks/useProductSections';
+import {
   collection,
   getDocs,
   doc,
@@ -172,6 +177,35 @@ type HomepageContentState = {
   offerProducts: string[];
   promotionalSections: PromotionalSectionState[];
   middleBanners: MiddleBannerState[];
+};
+
+type SectionFormState = {
+  id: string | null;
+  name: string;
+  description: string;
+  type: string;
+  enabled: boolean;
+  selectedProducts: string[];
+  categoryId?: string;
+};
+
+const DEFAULT_SECTION_FORM: SectionFormState = {
+  id: null,
+  name: 'Nueva sección',
+  description: 'Descripción breve que aparecerá bajo el título',
+  type: 'custom',
+  enabled: true,
+  selectedProducts: [],
+  categoryId: '',
+};
+
+const SECTION_TYPE_LABELS: Record<string, string> = {
+  custom: '🎯 Selección manual',
+  manual: '🎯 Selección manual',
+  featured: '⭐ Productos destacados',
+  new: '🆕 Nuevos ingresos',
+  bestsellers: '🔥 Más vendidos',
+  category: '🏷️ Categoría',
 };
 
 const clonePromotionalSection = (section: PromotionalSectionState): PromotionalSectionState => ({
@@ -517,6 +551,15 @@ export default function AdminPage() {
   // Banner product search
   const [bannerSearchTerms, setBannerSearchTerms] = useState<{[key: number]: string}>({});
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+
+  // Homepage sections synced with Firestore
+  const {
+    sections: fetchedProductSections,
+    loading: productSectionsLoading,
+    error: productSectionsError,
+    refetch: refetchProductSections,
+  } = useHomepageSections();
+
 
   // Chat management state
   interface ChatMessage {
@@ -1316,57 +1359,12 @@ export default function AdminPage() {
   }, [activeTab]);
 
   // Product sections state
-  const [productSections, setProductSections] = useState([
-    {
-      id: 'destacados',
-      name: 'Productos Destacados',
-      description: 'Primera sección en la página principal',
-      enabled: true,
-      type: 'featured',
-      selectedProducts: []
-    },
-    {
-      id: 'vendidos',
-      name: 'Los Más Vendidos',
-      description: 'Productos con mejor desempeño',
-      enabled: true,
-      type: 'bestsellers',
-      selectedProducts: []
-    },
-    {
-      id: 'novedades',
-      name: 'Novedades',
-      description: 'Productos recién llegados',
-      enabled: true,
-      type: 'new',
-      selectedProducts: []
-    },
-    {
-      id: 'electronica',
-      name: 'Electrónica',
-      description: 'Categoría de electrónicos',
-      enabled: true,
-      type: 'category',
-      categoryId: 'electronicos',
-      selectedProducts: []
-    },
-    {
-      id: 'videojuegos',
-      name: 'Videojuegos y Cartas',
-      description: 'Curar consolas o TCG directamente desde admin',
-      enabled: true,
-      type: 'category',
-      categoryId: 'videojuegos',
-      selectedProducts: []
-    }
-  ]);
-  const [editingSection, setEditingSection] = useState<any>(null);
-  const [showSectionModal, setShowSectionModal] = useState(false);
-  const [showProductSelector, setShowProductSelector] = useState(false);
+  const [productSections, setProductSections] = useState<HomepageProductSection[]>(
+    defaultProductSections
+  );
+  const [sectionForm, setSectionForm] = useState<SectionFormState | null>(null);
   const [currentSectionId, setCurrentSectionId] = useState<string>('');
   const [sectionSaveStatus, setSectionSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
-  const [previewName, setPreviewName] = useState('');
-  const [previewDescription, setPreviewDescription] = useState('');
 
   // Estado para la vista del tab Secciones (sin popups)
   const [sectionsView, setSectionsView] = useState<'list' | 'edit' | 'products'>('list');
@@ -1377,6 +1375,120 @@ export default function AdminPage() {
     search: '',
     showOnlySelected: false
   });
+
+  useEffect(() => {
+    if (productSectionsLoading) {
+      return;
+    }
+
+    const sourceSections =
+      fetchedProductSections && fetchedProductSections.length > 0
+        ? fetchedProductSections
+        : defaultProductSections;
+
+    const normalized = sourceSections.map((section) => ({
+      ...section,
+      selectedProducts: Array.isArray(section.selectedProducts)
+        ? [...section.selectedProducts]
+        : [],
+    }));
+
+    setProductSections((prev) => {
+      if (JSON.stringify(prev) === JSON.stringify(normalized)) {
+        return prev;
+      }
+      return normalized as HomepageProductSection[];
+    });
+  }, [fetchedProductSections, productSectionsLoading]);
+
+  const startSectionEditor = (section?: HomepageProductSection) => {
+    if (section) {
+      setSectionForm({
+        id: section.id,
+        name: section.name || '',
+        description: section.description || '',
+        type: section.type || 'custom',
+        enabled: section.enabled !== false,
+        selectedProducts: Array.isArray(section.selectedProducts) ? section.selectedProducts : [],
+        categoryId: section.categoryId || '',
+      });
+    } else {
+      setSectionForm({ ...DEFAULT_SECTION_FORM });
+    }
+    setSectionSaveStatus('idle');
+    setSectionsView('edit');
+  };
+
+  const handleSectionFieldChange = (field: keyof SectionFormState, value: string | boolean) => {
+    setSectionForm((prev) => (prev ? { ...prev, [field]: value } : prev));
+  };
+
+  const persistSections = useCallback(
+    async (sectionsToPersist: HomepageProductSection[]) => {
+      await setDoc(doc(db, 'config', 'productSections'), {
+        sections: sectionsToPersist,
+        updatedAt: new Date().toISOString(),
+      });
+      refetchProductSections();
+    },
+    [refetchProductSections]
+  );
+
+  const handleSectionSave = async () => {
+    if (!sectionForm) return;
+
+    setSectionSaveStatus('saving');
+
+    const sectionId = sectionForm.id || `section_${Date.now()}`;
+    const normalizedSection: HomepageProductSection = {
+      id: sectionId,
+      name: sectionForm.name.trim() || 'Sección sin título',
+      description: sectionForm.description.trim(),
+      type: sectionForm.type,
+      enabled: sectionForm.enabled,
+      selectedProducts: Array.isArray(sectionForm.selectedProducts)
+        ? sectionForm.selectedProducts
+        : [],
+      categoryId: sectionForm.categoryId,
+    };
+
+    const exists = productSections.some((section) => section.id === sectionId);
+    const updatedSections = exists
+      ? productSections.map((section) =>
+          section.id === sectionId ? normalizedSection : section
+        )
+      : [...productSections, normalizedSection];
+
+    setProductSections(updatedSections);
+
+    try {
+      await persistSections(updatedSections);
+      setSectionSaveStatus('success');
+      setTimeout(() => {
+        setSectionForm(null);
+        setSectionsView('list');
+        setSectionSaveStatus('idle');
+      }, 1200);
+    } catch (error) {
+      console.error('Error saving section:', error);
+      setSectionSaveStatus('error');
+      setTimeout(() => setSectionSaveStatus('idle'), 2500);
+    }
+  };
+
+  const previewSectionData = sectionForm?.id
+    ? productSections.find((section) => section.id === sectionForm.id)
+    : null;
+  const previewSelectedProductIds = sectionForm
+    ? (previewSectionData?.selectedProducts || sectionForm.selectedProducts || [])
+    : [];
+  const previewProducts = previewSelectedProductIds
+    .map((productId) => products.find((product) => product.id === productId))
+    .filter(Boolean) as Product[];
+  const currentSection = productSections.find((section) => section.id === currentSectionId);
+  const isEditingExistingSection = Boolean(
+    sectionForm?.id && productSections.some((section) => section.id === sectionForm.id)
+  );
 
   // Layout patterns state
   const {
@@ -1553,39 +1665,6 @@ export default function AdminPage() {
       setProductForm(prev => ({ ...prev, subcategoria: '' }));
     }
   }, [productForm.categoria]);
-
-  // Product sections functions
-  const saveProductSections = async () => {
-    try {
-      await setDoc(doc(db, 'config', 'productSections'), {
-        sections: productSections,
-        lastUpdated: new Date().toISOString()
-      });
-      alert('Configuración de secciones guardada exitosamente');
-    } catch (error) {
-      console.error('Error saving product sections:', error);
-      alert('Error al guardar la configuración');
-    }
-  };
-
-  const loadProductSections = async () => {
-    try {
-      const sectionsDoc = await getDoc(doc(db, 'config', 'productSections'));
-      if (sectionsDoc.exists()) {
-        const sectionsData = sectionsDoc.data();
-        if (sectionsData.sections) {
-          setProductSections(sectionsData.sections);
-        }
-      }
-    } catch (error) {
-      console.error('Error loading product sections:', error);
-    }
-  };
-
-  // Load product sections on component mount
-  useEffect(() => {
-    loadProductSections();
-  }, []);
 
   // Orders functions
   const loadOrders = () => {
@@ -2381,6 +2460,7 @@ export default function AdminPage() {
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
                 { id: 'logo', name: 'Logo', icon: '🏪' },
                 { id: 'banner', name: 'Banner Dinámico', icon: '📸' },
+                { id: 'home-sections', name: 'Secciones Home', icon: '🏠' },
                 { id: 'categories', name: 'Categorías', icon: '🏷️' },
                 { id: 'footer', name: 'Información', icon: '📋' },
                 { id: 'bank-details', name: 'Datos Bancarios', icon: '🏦' }
@@ -4781,668 +4861,502 @@ export default function AdminPage() {
           </div>
         )}
 
-{activeTab === 'secciones' && (
+{activeTab === 'home-sections' && (
   <div className="space-y-6">
-    {/* Vista LIST - Listado de secciones */}
     {sectionsView === 'list' && (
-      <>
-        <div className="flex items-center justify-between">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_35px_90px_-55px_rgba(15,23,42,0.3)] space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              📑 Secciones de Productos
-            </h2>
-            <p className="text-sm text-yellow-300 mt-1">
-              Gestiona las secciones que aparecen en la página principal
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">Vitrinas de la home</p>
+            <h2 className="text-2xl font-bold text-slate-900">Secciones destacadas</h2>
+            <p className="text-sm text-slate-500">Renombra cada bloque y decide qué productos muestra.</p>
           </div>
-          <button
-            onClick={() => {
-              setEditingSection(null);
-              setPreviewName('');
-              setPreviewDescription('');
-              setSectionsView('edit');
-            }}
-            className="px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold flex items-center gap-2"
-          >
-            <span>+</span> Nueva Sección
-          </button>
+          <div className="flex flex-col items-end gap-2">
+            {productSectionsLoading && (
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Sincronizando…</span>
+            )}
+            <button
+              onClick={() => startSectionEditor()}
+              className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 to-rose-400 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl"
+            >
+              <span className="text-lg">+</span> Nueva sección
+            </button>
+          </div>
         </div>
 
-        {/* Sections Grid */}
-        {productSections.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {productSections.map((section, index) => (
-              <div key={section.id} className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 overflow-hidden hover:shadow-md transition-shadow">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-white">{section.name}</h3>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          section.enabled
-                            ? 'bg-success/20 text-success'
-                            : 'bg-slate-800 text-yellow-300'
-                        }`}>
-                          {section.enabled ? '✓ Activa' : '○ Inactiva'}
-                        </span>
-                      </div>
-                      <p className="text-sm text-yellow-300 mb-3">{section.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-yellow-300">
-                        <span className="px-2 py-1 bg-slate-800 text-yellow-300 rounded-md font-medium">
-                          {section.selectedProducts?.length || 0} productos
-                        </span>
-                        <span className="px-2 py-1 bg-yellow-50 text-red-600 rounded-md font-medium">
-                          {section.type === 'custom' ? '🎯 Personalizada' :
-                           section.type === 'featured' ? '⭐ Destacados' :
-                           section.type === 'new' ? '🆕 Nuevos' :
-                           section.type === 'bestsellers' ? '🔥 Más Vendidos' : '📁 Categoría'}
-                        </span>
-                      </div>
+        <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/60 p-4 text-sm text-slate-600">
+          <p className="font-semibold text-slate-700">Cómo funciona:</p>
+          <p className="mt-1">1) Cambia título y descripción para que sean claros, 2) selecciona el tipo de contenido y 3) usa el botón "Productos" para decidir qué se muestra.</p>
+        </div>
+
+        {productSectionsError && (
+          <div className="rounded-2xl border border-rose-100 bg-rose-50 p-4 text-sm text-rose-600">
+            No pudimos cargar las secciones. {productSectionsError}
+          </div>
+        )}
+
+        {productSectionsLoading ? (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[1, 2].map((item) => (
+              <div key={item} className="h-40 rounded-2xl border border-slate-200 bg-slate-50 animate-pulse" />
+            ))}
+          </div>
+        ) : productSections.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-slate-200 p-8 text-center text-slate-500">
+            Aún no hay secciones configuradas. Crea la primera para controlar la home.
+          </div>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {productSections.map((section) => {
+              const productCount = Array.isArray(section.selectedProducts) ? section.selectedProducts.length : 0;
+              return (
+                <div
+                  key={section.id}
+                  className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                        {SECTION_TYPE_LABELS[section.type] || '🎯 Personalizada'}
+                      </p>
+                      <h3 className="text-lg font-semibold text-slate-900">{section.name || 'Sección sin título'}</h3>
+                      <p className="text-sm text-slate-500 mt-1">
+                        {section.description || 'Agrega una descripción breve para orientarte desde el admin.'}
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-slate-600">
                       <input
                         type="checkbox"
-                        checked={section.enabled}
+                        checked={section.enabled !== false}
                         onChange={async (e) => {
-                          const newSections = [...productSections];
-                          newSections[index].enabled = e.target.checked;
-                          setProductSections(newSections as any);
-
+                          const updated = productSections.map((item) =>
+                            item.id === section.id ? { ...item, enabled: e.target.checked } : item
+                          );
+                          setProductSections(updated);
                           try {
-                            await setDoc(doc(db, 'config', 'productSections'), {
-                              sections: newSections,
-                              updatedAt: new Date().toISOString()
-                            });
+                            await persistSections(updated);
                           } catch (error) {
-                            console.error('Error auto-saving section enabled status:', error);
+                            console.error('Error al actualizar la sección', error);
                           }
                         }}
-                        className="w-5 h-5 text-yellow-300 rounded"
+                        className="h-4 w-4 rounded border-slate-300 text-red-500 focus:ring-red-500"
                       />
-                    </div>
+                      {section.enabled !== false ? 'Activa' : 'Pausada'}
+                    </label>
                   </div>
 
-                  <div className="flex gap-2 pt-4 border-t border-gray-100">
+                  <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 font-semibold text-slate-700">
+                      📦 {productCount} {productCount === 1 ? 'producto' : 'productos'}
+                    </span>
+                    {section.type === 'category' && section.categoryId && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 font-semibold text-amber-600">
+                        🏷️ {section.categoryId}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-3">
                     <button
-                      onClick={() => {
-                        setEditingSection(section);
-                        setPreviewName(section.name);
-                        setPreviewDescription(section.description);
-                        setSectionsView('edit');
-                      }}
-                      className="flex-1 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+                      onClick={() => startSectionEditor(section)}
+                      className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-sky-700"
                     >
-                      ✏️ Editar
+                      ✏️ Editar texto
                     </button>
                     <button
                       onClick={() => {
                         setCurrentSectionId(section.id);
-                        setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
                         setSectionsView('products');
+                        setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
                       }}
-                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
+                      className="flex-1 rounded-2xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:text-sky-700"
                     >
                       📦 Productos
                     </button>
                     <button
                       onClick={async () => {
-                        if (confirm('¿Estás seguro de eliminar esta sección?')) {
-                          const newSections = productSections.filter(s => s.id !== section.id);
-                          setProductSections(newSections as any);
-                          try {
-                            await setDoc(doc(db, 'config', 'productSections'), {
-                              sections: newSections,
-                              updatedAt: new Date().toISOString()
-                            });
-                          } catch (error) {
-                            console.error('Error deleting section:', error);
-                          }
+                        if (!confirm('¿Seguro que deseas eliminar esta sección?')) return;
+                        const updated = productSections.filter((item) => item.id !== section.id);
+                        setProductSections(updated);
+                        if (sectionForm?.id === section.id) {
+                          setSectionForm(null);
+                        }
+                        if (currentSectionId === section.id) {
+                          setCurrentSectionId('');
+                        }
+                        try {
+                          await persistSections(updated);
+                        } catch (error) {
+                          console.error('Error al eliminar la sección', error);
                         }
                       }}
-                      className="px-4 py-2 bg-pink text-white rounded-lg hover:bg-pink transition-colors text-sm font-medium"
+                      className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-600 transition hover:bg-rose-100"
                     >
-                      🗑️
+                      🗑️ Eliminar
                     </button>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-12 text-center">
-            <div className="text-6xl mb-4">📑</div>
-            <h3 className="text-xl font-bold text-white mb-2">No hay secciones configuradas</h3>
-            <p className="text-yellow-300 mb-6">Crea tu primera sección para organizar los productos en la página principal</p>
-            <button
-              onClick={() => {
-                setEditingSection(null);
-                setPreviewName('');
-                setPreviewDescription('');
-                setSectionsView('edit');
-              }}
-              className="px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold"
-            >
-              + Nueva Sección
-            </button>
+              );
+            })}
           </div>
         )}
-      </>
+      </div>
     )}
 
-    {/* Vista EDIT - Editar/Crear sección */}
     {sectionsView === 'edit' && (
-      <>
-        <div className="mb-6">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_35px_90px_-55px_rgba(15,23,42,0.3)] space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Editor</p>
+            <h2 className="text-2xl font-bold text-slate-900">
+              {isEditingExistingSection ? 'Editar sección' : 'Nueva sección'}
+            </h2>
+            <p className="text-sm text-slate-500">Define el nombre público, describe la sección y, si aplica, escoge la categoría que alimentará el carrusel.</p>
+          </div>
           <button
             onClick={() => {
               setSectionsView('list');
-              setEditingSection(null);
-              setPreviewName('');
-              setPreviewDescription('');
+              setSectionForm(null);
               setSectionSaveStatus('idle');
             }}
-            className="flex items-center gap-2 text-yellow-300 hover:text-white font-medium"
+            className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-sky-200 hover:text-sky-700"
           >
-            <span>←</span> Volver a la lista
+            ← Volver a la lista
           </button>
         </div>
 
-        <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-6">
-          <h2 className="text-2xl font-bold text-white mb-6">
-            {editingSection ? 'Editar Sección' : 'Nueva Sección'}
-          </h2>
-
-          <div className="grid grid-cols-3 gap-6">
-            {/* Columna Izquierda: Formulario */}
-            <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Configuración</h3>
-
-              <div>
-                <label className="block text-sm font-medium text-yellow-300 mb-2">
-                  Nombre de la Sección
-                </label>
-                <input
-                  type="text"
-                  id="section-name-input"
-                  defaultValue={editingSection?.name || ''}
-                  onChange={(e) => setPreviewName(e.target.value)}
-                  placeholder="Ej: Productos Destacados"
-                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-yellow-300 mb-2">
-                  Descripción
-                </label>
-                <textarea
-                  id="section-description-input"
-                  defaultValue={editingSection?.description || ''}
-                  onChange={(e) => setPreviewDescription(e.target.value)}
-                  placeholder="Descripción de la sección"
-                  rows={3}
-                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-yellow-300 mb-2">
-                  Tipo de Sección
-                </label>
-                <select
-                  defaultValue={editingSection?.type || 'custom'}
-                  id="section-type-select"
-                  className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                >
-                  <option value="custom">🎯 Personalizada</option>
-                  <option value="featured">⭐ Destacados</option>
-                  <option value="new">🆕 Nuevos</option>
-                  <option value="bestsellers">🔥 Más Vendidos</option>
-                  <option value="category">📁 Categoría</option>
-                </select>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="section-enabled"
-                  defaultChecked={editingSection?.enabled ?? true}
-                  className="w-5 h-5 text-yellow-300 rounded"
-                />
-                <label htmlFor="section-enabled" className="text-sm font-medium text-yellow-300">
-                  Sección activa
-                </label>
-              </div>
-            </div>
-
-            {/* Columna Centro: Vista Previa */}
-            <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">👁️ Vista Previa</h3>
-
-              <div className="bg-gradient-to-br from-slate-800 to-white rounded-lg p-6 border-2 border-yellow-300-200">
-                <div className="bg-slate-800/70 rounded-lg p-4 shadow-sm">
-                  <div className="border-b-2 border-yellow-300 pb-3 mb-3">
-                    <h4 className="text-xl font-bold text-white">
-                      {previewName || editingSection?.name || 'Nombre de Sección'}
-                    </h4>
-                    <p className="text-sm text-yellow-300 mt-1">
-                      {previewDescription || editingSection?.description || 'Descripción de la sección'}
-                    </p>
+        {!sectionForm ? (
+          <div className="rounded-2xl border border-dashed border-slate-200 p-8 text-center text-slate-500">
+            Selecciona una sección desde la lista para editarla.
+          </div>
+        ) : (
+          <>
+            <div className="grid gap-6 lg:grid-cols-3">
+              <div className="space-y-4 lg:col-span-2">
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Nombre en la home</label>
+                  <input
+                    type="text"
+                    value={sectionForm.name}
+                    onChange={(e) => handleSectionFieldChange('name', e.target.value)}
+                    placeholder="Ej: Productos destacados"
+                    className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-base text-slate-900 focus:border-red-500 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Descripción corta</label>
+                  <textarea
+                    value={sectionForm.description}
+                    onChange={(e) => handleSectionFieldChange('description', e.target.value)}
+                    rows={3}
+                    placeholder="Esto se muestra debajo del título en la home"
+                    className="mt-1 w-full resize-none rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:border-red-500 focus:ring-red-500"
+                  />
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="text-sm font-semibold text-slate-700">Tipo de contenido</label>
+                    <select
+                      value={sectionForm.type}
+                      onChange={(e) => handleSectionFieldChange('type', e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:border-red-500 focus:ring-red-500"
+                    >
+                      <option value="custom">🎯 Selección manual</option>
+                      <option value="featured">⭐ Productos destacados automáticos</option>
+                      <option value="bestsellers">🔥 Más vendidos automáticos</option>
+                      <option value="new">🆕 Últimas novedades</option>
+                      <option value="category">🏷️ Mostrar una categoría</option>
+                    </select>
                   </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-slate-900 rounded h-20 flex items-center justify-center">
-                        <span className="text-2xl">📦</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex justify-between items-center mt-3 text-xs">
-                    <span className="text-yellow-300">{editingSection?.selectedProducts?.length || 0} productos</span>
-                    <span className="text-yellow-300 font-semibold">Ver todos →</span>
+                  <div>
+                    <label className="text-sm font-semibold text-slate-700">Estado</label>
+                    <div className="mt-2 flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={sectionForm.enabled}
+                        onChange={(e) => handleSectionFieldChange('enabled', e.target.checked)}
+                        className="h-4 w-4 rounded border-slate-300 text-red-500 focus:ring-red-500"
+                      />
+                      <span className="text-sm text-slate-600">{sectionForm.enabled ? 'Visible en la home' : 'Oculta temporalmente'}</span>
+                    </div>
                   </div>
                 </div>
-                <p className="text-xs text-center text-yellow-300 mt-3">
-                  Así se verá en tu sitio web
-                </p>
-              </div>
-            </div>
-
-            {/* Columna Derecha: Resumen de Productos */}
-            <div className="col-span-1 space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Productos Seleccionados</h3>
-
-              <div className="bg-slate-900 rounded-lg p-4 border border-yellow-300/30">
-                <div className="text-center mb-4">
-                  <div className="text-3xl font-bold text-yellow-300">
-                    {editingSection?.selectedProducts?.length || 0}
-                  </div>
-                  <div className="text-sm text-yellow-300">productos configurados</div>
-                </div>
-
-                {editingSection?.selectedProducts && editingSection.selectedProducts.length > 0 ? (
-                  <div className="space-y-2 max-h-64 overflow-y-auto">
-                    {editingSection.selectedProducts.slice(0, 5).map((productId: string) => {
-                      const product = products.find(p => p.id === productId);
-                      return product ? (
-                        <div key={productId} className="flex items-center gap-2 bg-slate-800/70 rounded-lg p-2 border border-yellow-300/30">
-                          {product.imagen && (
-                            <img
-                              src={product.imagen}
-                              alt={product.nombre}
-                              className="w-10 h-10 object-cover rounded"
-                            />
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <div className="text-xs font-medium text-white truncate">
-                              {product.nombre}
-                            </div>
-                            <div className="text-xs text-yellow-300">
-                              ${product.precio?.toLocaleString()}
-                            </div>
-                          </div>
-                        </div>
-                      ) : null;
-                    })}
-                    {editingSection.selectedProducts.length > 5 && (
-                      <div className="text-xs text-yellow-300 text-center pt-2">
-                        +{editingSection.selectedProducts.length - 5} más
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="text-center py-6 text-yellow-300 text-sm">
-                    No hay productos seleccionados.
-                    <br />
-                    Guarda la sección y luego agrega productos.
+                {sectionForm.type === 'category' && (
+                  <div>
+                    <label className="text-sm font-semibold text-slate-700">Categoría fuente</label>
+                    <select
+                      value={sectionForm.categoryId}
+                      onChange={(e) => handleSectionFieldChange('categoryId', e.target.value)}
+                      className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:border-red-500 focus:ring-red-500"
+                    >
+                      <option value="">Selecciona una categoría</option>
+                      {availableCategories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 )}
               </div>
+
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Vista previa</p>
+                  <h3 className="text-xl font-bold text-slate-900">{sectionForm.name || 'Nombre de sección'}</h3>
+                  <p className="text-sm text-slate-500 mt-1">{sectionForm.description || 'Escribe una descripción para mostrarla en la home.'}</p>
+                  <div className="mt-3 flex items-center justify-between text-sm text-slate-500">
+                    <span>{previewSelectedProductIds.length} {previewSelectedProductIds.length === 1 ? 'producto' : 'productos'}</span>
+                    <span>{SECTION_TYPE_LABELS[sectionForm.type] || '🎯 Personalizada'}</span>
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                  <p className="text-sm font-semibold text-slate-700">Productos configurados</p>
+                  {previewProducts.length === 0 ? (
+                    <p className="mt-2 text-sm text-slate-500">Aún no hay productos seleccionados. Usa el botón "Productos" en la lista para añadirlos.</p>
+                  ) : (
+                    <div className="mt-3 space-y-2 max-h-64 overflow-y-auto">
+                      {previewProducts.slice(0, 4).map((product) => (
+                        <div key={product.id} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3">
+                          {product.imagen && (
+                            <img src={product.imagen} alt={product.nombre} className="h-12 w-12 rounded-lg object-cover" />
+                          )}
+                          <div className="flex-1">
+                            <p className="text-sm font-semibold text-slate-900">{product.nombre}</p>
+                            <p className="text-xs text-slate-500">${product.precio?.toLocaleString()}</p>
+                          </div>
+                        </div>
+                      ))}
+                      {previewProducts.length > 4 && (
+                        <p className="text-center text-xs text-slate-500">+{previewProducts.length - 4} más</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Status Messages */}
-          {sectionSaveStatus !== 'idle' && (
-            <div className={`mt-6 px-4 py-3 rounded-lg flex items-center gap-2 ${
-              sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
-              sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-              'bg-slate-800 text-secondary'
-            }`}>
-              {sectionSaveStatus === 'saving' && (
-                <>
-                  <span className="animate-spin">⏳</span>
-                  <span>Guardando cambios...</span>
-                </>
-              )}
-              {sectionSaveStatus === 'success' && (
-                <>
-                  <span>✓</span>
-                  <span>Cambios guardados correctamente</span>
-                </>
-              )}
-              {sectionSaveStatus === 'error' && (
-                <>
-                  <span>✗</span>
-                  <span>Error al guardar los cambios</span>
-                </>
-              )}
+            {sectionSaveStatus !== 'idle' && (
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3 text-sm text-slate-600">
+                {sectionSaveStatus === 'saving' && 'Guardando cambios…'}
+                {sectionSaveStatus === 'success' && 'Cambios guardados correctamente.'}
+                {sectionSaveStatus === 'error' && 'No pudimos guardar los cambios. Inténtalo nuevamente.'}
+              </div>
+            )}
+
+            <div className="flex flex-wrap justify-end gap-3 pt-2">
+              <button
+                onClick={() => {
+                  setSectionsView('list');
+                  setSectionForm(null);
+                  setSectionSaveStatus('idle');
+                }}
+                className="rounded-2xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-600 transition hover:border-sky-200 hover:text-sky-700"
+                disabled={sectionSaveStatus === 'saving'}
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSectionSave}
+                disabled={sectionSaveStatus === 'saving'}
+                className="rounded-2xl bg-gradient-to-r from-red-500 to-amber-400 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:opacity-90 disabled:opacity-60"
+              >
+                {sectionSaveStatus === 'saving' ? 'Guardando…' : 'Guardar cambios'}
+              </button>
             </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="flex gap-3 mt-6 pt-6 border-t border-yellow-300/30">
-            <button
-              onClick={() => {
-                setSectionsView('list');
-                setEditingSection(null);
-                setPreviewName('');
-                setPreviewDescription('');
-                setSectionSaveStatus('idle');
-              }}
-              disabled={sectionSaveStatus === 'saving'}
-              className="px-6 py-3 bg-slate-800 text-yellow-300 rounded-lg hover:bg-slate-800 transition-colors font-medium disabled:opacity-50"
-            >
-              Cancelar
-            </button>
-            <button
-              onClick={async () => {
-                setSectionSaveStatus('saving');
-
-                try {
-                  const nameInput = document.querySelector<HTMLInputElement>('#section-name-input');
-                  const descriptionInput = document.querySelector<HTMLTextAreaElement>('#section-description-input');
-                  const typeSelect = document.querySelector<HTMLSelectElement>('#section-type-select');
-                  const enabledCheckbox = document.querySelector<HTMLInputElement>('#section-enabled');
-
-                  const sectionData = {
-                    id: editingSection?.id || `section_${Date.now()}`,
-                    name: nameInput?.value || previewName || 'Nueva Sección',
-                    description: descriptionInput?.value || previewDescription || '',
-                    type: typeSelect?.value || 'custom',
-                    enabled: enabledCheckbox?.checked ?? true,
-                    selectedProducts: editingSection?.selectedProducts || []
-                  };
-
-                  let newSections;
-                  if (editingSection) {
-                    newSections = productSections.map(s =>
-                      s.id === editingSection.id ? sectionData : s
-                    );
-                  } else {
-                    newSections = [...productSections, sectionData];
-                  }
-
-                  setProductSections(newSections as any);
-
-                  await setDoc(doc(db, 'config', 'productSections'), {
-                    sections: newSections,
-                    updatedAt: new Date().toISOString()
-                  });
-
-                  setSectionSaveStatus('success');
-                  setTimeout(() => {
-                    setSectionsView('list');
-                    setEditingSection(null);
-                    setPreviewName('');
-                    setPreviewDescription('');
-                    setSectionSaveStatus('idle');
-                  }, 1500);
-                } catch (error) {
-                  console.error('Error saving section:', error);
-                  setSectionSaveStatus('error');
-                  setTimeout(() => setSectionSaveStatus('idle'), 3000);
-                }
-              }}
-              disabled={sectionSaveStatus === 'saving'}
-              className="flex-1 px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-400 transition-colors font-semibold disabled:opacity-50"
-            >
-              {sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
-            </button>
-          </div>
-        </div>
-      </>
+          </>
+        )}
+      </div>
     )}
 
-    {/* Vista PRODUCTS - Selector de productos */}
     {sectionsView === 'products' && (
-      <>
-        <div className="mb-6">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_35px_90px_-55px_rgba(15,23,42,0.3)] space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           <button
             onClick={() => {
               setSectionsView('list');
               setProductSelectorFilters({ category: '', search: '', showOnlySelected: false });
             }}
-            className="flex items-center gap-2 text-yellow-300 hover:text-white font-medium"
+            className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-sky-200 hover:text-sky-700"
           >
-            <span>←</span> Volver a la lista
+            ← Volver a la lista
           </button>
-        </div>
-
-        <div className="bg-slate-800/70 rounded-xl shadow-sm border border-yellow-300/30 p-6">
-          <h2 className="text-2xl font-bold text-white mb-6">
-            📦 Gestionar Productos de la Sección
-          </h2>
-
-          <div className="grid grid-cols-3 gap-6">
-            {/* Columna Izquierda: Resumen de Sección */}
-            <div className="col-span-1 space-y-4">
-              {(() => {
-                const currentSection = productSections.find(s => s.id === currentSectionId);
-                const selectedProducts = products.filter(p => currentSection?.selectedProducts?.includes(p.id as never));
-
-                return currentSection ? (
-                  <>
-                    <div className="bg-slate-800 rounded-lg p-4 border border-yellow-300-200">
-                      <h3 className="text-lg font-bold text-white mb-2">
-                        {currentSection.name}
-                      </h3>
-                      <p className="text-sm text-yellow-300 mb-4">
-                        {currentSection.description}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm">
-                        <span className="px-2 py-1 bg-slate-800/70 text-yellow-300 rounded-md font-medium text-xs">
-                          {currentSection.type === 'custom' ? '🎯 Personalizada' :
-                           currentSection.type === 'featured' ? '⭐ Destacados' :
-                           currentSection.type === 'new' ? '🆕 Nuevos' :
-                           currentSection.type === 'bestsellers' ? '🔥 Más Vendidos' : '📁 Categoría'}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="bg-slate-900 rounded-lg p-4 border border-yellow-300/30">
-                      <div className="text-center mb-4">
-                        <div className="text-3xl font-bold text-yellow-300">
-                          {currentSection.selectedProducts?.length || 0}
-                        </div>
-                        <div className="text-sm text-yellow-300">productos seleccionados</div>
-                      </div>
-
-                      {selectedProducts.length > 0 ? (
-                        <div className="space-y-2 max-h-96 overflow-y-auto">
-                          {selectedProducts.map((product) => (
-                            <div key={product.id} className="flex items-center gap-2 bg-slate-800/70 rounded-lg p-2 border border-yellow-300/30">
-                              {product.imagen && (
-                                <img
-                                  src={product.imagen}
-                                  alt={product.nombre}
-                                  className="w-12 h-12 object-cover rounded"
-                                />
-                              )}
-                              <div className="flex-1 min-w-0">
-                                <div className="text-xs font-medium text-white truncate">
-                                  {product.nombre}
-                                </div>
-                                <div className="text-xs text-yellow-300">
-                                  ${product.precio?.toLocaleString()}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="text-center py-6 text-yellow-300 text-sm">
-                          No hay productos seleccionados
-                        </div>
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <div className="text-center py-6 text-yellow-300">
-                    Sección no encontrada
-                  </div>
-                );
-              })()}
-            </div>
-
-            {/* Columnas Derecha: Selector de Productos */}
-            <div className="col-span-2 space-y-4">
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    placeholder="Buscar productos..."
-                    value={productSelectorFilters.search}
-                    onChange={(e) => setProductSelectorFilters(prev => ({
-                      ...prev,
-                      search: e.target.value
-                    }))}
-                    className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
-                </div>
-                <div className="w-48">
-                  <select
-                    value={productSelectorFilters.category}
-                    onChange={(e) => setProductSelectorFilters(prev => ({
-                      ...prev,
-                      category: e.target.value
-                    }))}
-                    className="w-full px-4 py-2 border border-yellow-300/40 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Todas las categorías</option>
-                    {categories.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="show-only-selected"
-                  checked={productSelectorFilters.showOnlySelected}
-                  onChange={(e) => setProductSelectorFilters(prev => ({
-                    ...prev,
-                    showOnlySelected: e.target.checked
-                  }))}
-                  className="w-4 h-4 text-yellow-300 rounded"
-                />
-                <label htmlFor="show-only-selected" className="text-sm text-yellow-300">
-                  Mostrar solo seleccionados
-                </label>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 max-h-[600px] overflow-y-auto pr-2">
-                {(() => {
-                  const currentSection = productSections.find(s => s.id === currentSectionId);
-                  return products
-                    .filter(product => {
-                      const isSelected = currentSection?.selectedProducts?.includes(product.id as never) || false;
-
-                      if (productSelectorFilters.search) {
-                        const searchTerm = productSelectorFilters.search.toLowerCase();
-                        const searchableText = [
-                          product.nombre,
-                          product.descripcion || '',
-                          product.categoria,
-                          product.sku || ''
-                        ].join(' ').toLowerCase();
-
-                        if (!searchableText.includes(searchTerm)) return false;
-                      }
-
-                      if (productSelectorFilters.category) {
-                        if (!productHasCategory(product, productSelectorFilters.category)) return false;
-                      }
-
-                      if (productSelectorFilters.showOnlySelected && !isSelected) {
-                        return false;
-                      }
-
-                      return true;
-                    })
-                    .map((product) => {
-                    const currentSection = productSections.find(s => s.id === currentSectionId);
-                    const isSelected = currentSection?.selectedProducts?.includes(product.id as never) || false;
-
-                    return (
-                      <div key={product.id} className={`border-2 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${
-                        isSelected ? 'border-yellow-300 bg-slate-800' : 'border-yellow-300/30'
-                      }`}>
-                        <div className="flex items-start gap-3">
-                          <input
-                            type="checkbox"
-                            checked={isSelected}
-                            onChange={async (e) => {
-                              const newSections = productSections.map(section => {
-                                if (section.id === currentSectionId) {
-                                  const currentProducts = section.selectedProducts || [];
-                                  return {
-                                    ...section,
-                                    selectedProducts: e.target.checked
-                                      ? [...currentProducts, product.id as never]
-                                      : currentProducts.filter((id: string) => id !== product.id)
-                                  };
-                                }
-                                return section;
-                              });
-
-                              setProductSections(newSections as any);
-
-                              try {
-                                await setDoc(doc(db, 'config', 'productSections'), {
-                                  sections: newSections,
-                                  updatedAt: new Date().toISOString()
-                                });
-                              } catch (error) {
-                                console.error('Error auto-saving product selection:', error);
-                              }
-                            }}
-                            className="w-5 h-5 text-yellow-300 rounded mt-1"
-                          />
-                          <div className="flex-1 min-w-0">
-                            {product.imagen && (
-                              <img
-                                src={product.imagen}
-                                alt={product.nombre}
-                                className="w-full h-32 object-cover rounded-lg mb-2"
-                              />
-                            )}
-                            <h4 className="font-medium text-white text-sm truncate">
-                              {product.nombre}
-                            </h4>
-                            <p className="text-sm text-yellow-300 mt-1">
-                              ${product.precio?.toLocaleString()}
-                            </p>
-                            <p className="text-xs text-yellow-300 mt-1">
-                              Stock: {product.stock}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  });
-                })()}
-              </div>
-            </div>
+          <div className="text-sm text-slate-500">
+            {currentSection ? `Configurando "${currentSection.name}"` : 'Selecciona una sección para continuar'}
           </div>
         </div>
-      </>
+
+        {!currentSection ? (
+          <div className="rounded-2xl border border-dashed border-slate-200 p-8 text-center text-slate-500">
+            Elige una sección desde la vista de lista para asignarle productos.
+          </div>
+        ) : (
+          (() => {
+            const filteredProducts = products.filter((product) => {
+              const isSelected = currentSection.selectedProducts?.includes(product.id as never) || false;
+              if (productSelectorFilters.search) {
+                const term = productSelectorFilters.search.toLowerCase();
+                const matches =
+                  product.nombre.toLowerCase().includes(term) ||
+                  product.descripcion?.toLowerCase().includes(term) ||
+                  product.categoria?.toLowerCase().includes(term);
+                if (!matches) return false;
+              }
+              if (productSelectorFilters.category) {
+                if (!productHasCategory(product, productSelectorFilters.category)) return false;
+              }
+              if (productSelectorFilters.showOnlySelected && !isSelected) {
+                return false;
+              }
+              return true;
+            });
+            return (
+              <div className="grid gap-6 lg:grid-cols-[320px,1fr]">
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
+                    <p className="text-sm font-semibold text-slate-700">{currentSection.name}</p>
+                    <p className="text-xs text-slate-500">{SECTION_TYPE_LABELS[currentSection.type] || '🎯 Personalizada'}</p>
+                    <p className="mt-3 text-sm text-slate-600">
+                      {currentSection.selectedProducts?.length || 0} {currentSection.selectedProducts?.length === 1 ? 'producto' : 'productos'} configurados.
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">Recomendación: mantén máximo 12 productos para que el carrusel sea ligero.</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4">
+                    <p className="text-sm font-semibold text-slate-700">Seleccionados</p>
+                    {currentSection.selectedProducts && currentSection.selectedProducts.length > 0 ? (
+                      <div className="mt-3 space-y-2 max-h-72 overflow-y-auto">
+                        {currentSection.selectedProducts.map((productId) => {
+                          const product = products.find((item) => item.id === productId);
+                          if (!product) return null;
+                          return (
+                            <div key={productId} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3">
+                              {product.imagen && (
+                                <img src={product.imagen} alt={product.nombre} className="h-10 w-10 rounded-lg object-cover" />
+                              )}
+                              <div className="flex-1">
+                                <p className="text-sm font-semibold text-slate-900">{product.nombre}</p>
+                                <p className="text-xs text-slate-500">${product.precio?.toLocaleString()}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="mt-3 text-sm text-slate-500">Aún no seleccionas productos para esta sección.</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
+                    <div className="grid gap-4 md:grid-cols-3">
+                      <div className="md:col-span-1">
+                        <label className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Buscar</label>
+                        <input
+                          type="text"
+                          value={productSelectorFilters.search}
+                          onChange={(e) => setProductSelectorFilters((prev) => ({ ...prev, search: e.target.value }))}
+                          placeholder="Ej: Nintendo Switch"
+                          className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:ring-red-500"
+                        />
+                      </div>
+                      <div className="md:col-span-1">
+                        <label className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Categoría</label>
+                        <select
+                          value={productSelectorFilters.category}
+                          onChange={(e) => setProductSelectorFilters((prev) => ({ ...prev, category: e.target.value }))}
+                          className="mt-1 w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:ring-red-500"
+                        >
+                          <option value="">Todas</option>
+                          {availableCategories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="md:col-span-1">
+                        <label className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Filtros</label>
+                        <label className="mt-1 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+                          <input
+                            type="checkbox"
+                            checked={productSelectorFilters.showOnlySelected}
+                            onChange={(e) => setProductSelectorFilters((prev) => ({ ...prev, showOnlySelected: e.target.checked }))}
+                            className="h-4 w-4 rounded border-slate-300 text-red-500 focus:ring-red-500"
+                          />
+                          Solo seleccionados
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+                    Mostrando {filteredProducts.length} de {products.length} productos
+                    {productSelectorFilters.category && (
+                      <> en “{categories.find((cat) => cat.id === productSelectorFilters.category)?.name || productSelectorFilters.category}”</>
+                    )}
+                    {productSelectorFilters.search && (
+                      <> que coinciden con “{productSelectorFilters.search}”</>
+                    )}
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredProducts.map((product) => {
+                      const isSelected = currentSection.selectedProducts?.includes(product.id as never) || false;
+                      return (
+                        <div key={product.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                          <div className="flex items-start gap-3">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={async (e) => {
+                                if (e.target.checked && (currentSection.selectedProducts?.length || 0) >= 12) {
+                                  alert('Limita la sección a 12 productos para mantenerla ligera.');
+                                  return;
+                                }
+                                const updated = productSections.map((section) => {
+                                  if (section.id === currentSection.id) {
+                                    const unique = new Set(section.selectedProducts || []);
+                                    if (e.target.checked) {
+                                      unique.add(product.id);
+                                    } else {
+                                      unique.delete(product.id);
+                                    }
+                                    return { ...section, selectedProducts: Array.from(unique) };
+                                  }
+                                  return section;
+                                });
+                                setProductSections(updated);
+                                try {
+                                  await persistSections(updated);
+                                } catch (error) {
+                                  console.error('Error al actualizar los productos de la sección', error);
+                                }
+                              }}
+                              className="mt-1 h-4 w-4 rounded border-slate-300 text-red-500 focus:ring-red-500"
+                            />
+                            <div className="flex-1">
+                              {product.imagen && (
+                                <img src={product.imagen} alt={product.nombre} className="mb-2 h-24 w-full rounded-xl object-cover" />
+                              )}
+                              <p className="text-sm font-semibold text-slate-900">{product.nombre}</p>
+                              <p className="text-xs text-slate-500">${product.precio?.toLocaleString()}</p>
+                              <p className="text-xs text-slate-400">{product.categoria}</p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            );
+          })()
+        )}
+      </div>
     )}
   </div>
 )}
-
         {activeTab === 'main-banner' && (
           <div className="space-y-6">
             <div className="flex items-center justify-between flex-wrap gap-3">
@@ -7865,483 +7779,6 @@ export default function AdminPage() {
           isOpen={isChatPopupOpen}
           onClose={closeChatPopup}
         />
-      )}
-
-      
-      {showSectionModal && (
-        <div className="fixed inset-0 bg-slate-800/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-800/70 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-lg border border-yellow-300/30">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-white">
-                    {editingSection ? 'Editar Sección' : 'Nueva Sección'}
-                  </h3>
-                  <p className="text-sm text-yellow-300 mt-1">
-                    Configura cómo se verá esta sección en la página principal
-                  </p>
-                </div>
-                <button
-                  onClick={() => {
-                    setShowSectionModal(false);
-                    setSectionSaveStatus('idle');
-                    setPreviewName('');
-                    setPreviewDescription('');
-                  }}
-                  className="text-yellow-300 hover:text-yellow-300 text-2xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-800 transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <form
-                key={editingSection?.id || 'new'}
-                onSubmit={async (e) => {
-                e.preventDefault();
-                setSectionSaveStatus('saving');
-
-                const formData = new FormData(e.currentTarget);
-                const sectionData = {
-                  id: editingSection?.id || `section_${Date.now()}`,
-                  name: formData.get('name') as string,
-                  description: formData.get('description') as string,
-                  enabled: true,
-                  type: formData.get('type') as string,
-                  selectedProducts: editingSection?.selectedProducts || []
-                };
-
-                let newSections;
-                if (editingSection) {
-                  newSections = productSections.map(s =>
-                    s.id === editingSection.id ? sectionData : s
-                  );
-                  setProductSections(newSections);
-                } else {
-                  newSections = [...productSections, sectionData];
-                  setProductSections(newSections);
-                }
-
-                // Auto-save to Firebase
-                try {
-                  await setDoc(doc(db, 'config', 'productSections'), {
-                    sections: newSections,
-                    updatedAt: new Date().toISOString()
-                  });
-                  setSectionSaveStatus('success');
-
-                  // Close modal after a brief delay to show success message
-                  setTimeout(() => {
-                    setShowSectionModal(false);
-                    setEditingSection(null);
-                    setSectionSaveStatus('idle');
-                  }, 1500);
-                } catch (error) {
-                  console.error('Error auto-saving section:', error);
-                  setSectionSaveStatus('error');
-                  setTimeout(() => setSectionSaveStatus('idle'), 3000);
-                }
-              }}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Left Column - Form */}
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-yellow-300 mb-2">
-                        Nombre de la Sección *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        defaultValue={editingSection?.name || ''}
-                        onChange={(e) => setPreviewName(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
-                        style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                        placeholder="Ej: Ofertas Especiales"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-yellow-300 mb-2">
-                        Descripción
-                      </label>
-                      <textarea
-                        name="description"
-                        defaultValue={editingSection?.description || ''}
-                        onChange={(e) => setPreviewDescription(e.target.value)}
-                        rows={3}
-                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base resize-none"
-                        style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                        placeholder="Breve descripción de la sección"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-yellow-300 mb-2">
-                        Tipo de Sección
-                      </label>
-                      <select
-                        name="type"
-                        defaultValue={editingSection?.type || 'custom'}
-                        className="w-full px-4 py-3 border border-yellow-300/40 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent text-base"
-                        style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                      >
-                        <option value="custom">🎯 Productos Personalizados</option>
-                        <option value="featured">⭐ Productos Destacados</option>
-                        <option value="new">🆕 Productos Nuevos</option>
-                        <option value="bestsellers">🔥 Más Vendidos</option>
-                        <option value="category">📁 Por Categoría</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Right Column - Preview */}
-                  <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-gray-50 rounded-xl p-6 border-2 border-yellow-300-200">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-sm font-semibold text-yellow-300 flex items-center">
-                        <span className="mr-2">👁️</span> Vista Previa en el Sitio
-                      </h4>
-                      <span className="text-xs bg-slate-800 text-yellow-300 px-2 py-1 rounded-full font-medium">
-                        En Vivo
-                      </span>
-                    </div>
-
-                    {/* Preview of section as it appears on website */}
-                    <div className="bg-slate-800/70 rounded-lg shadow-sm p-5 border border-gray-100">
-                      {/* Section Header */}
-                      <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-yellow-300">
-                        <div>
-                          <h3 className="text-xl font-bold text-white">
-                            {previewName || editingSection?.name || 'Nombre de Sección'}
-                          </h3>
-                          <p className="text-sm text-yellow-300 mt-1">
-                            {previewDescription || editingSection?.description || 'Descripción de la sección'}
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          className="text-xs text-yellow-300 font-semibold hover:text-yellow-300 whitespace-nowrap"
-                        >
-                          Ver todos →
-                        </button>
-                      </div>
-
-                      {/* Product Cards Preview */}
-                      <div className="grid grid-cols-3 gap-2">
-                        {[1, 2, 3].map((i) => (
-                          <div key={i} className="bg-slate-900 rounded-lg p-2 border border-yellow-300/30">
-                            <div className="bg-slate-800 rounded h-20 mb-2 flex items-center justify-center">
-                              <span className="text-2xl">📦</span>
-                            </div>
-                            <div className="space-y-1">
-                              <div className="h-2 bg-gray-300 rounded w-full"></div>
-                              <div className="h-2 bg-warning/30 rounded w-2/3"></div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <p className="text-xs text-yellow-300 mt-3 text-center">
-                        {editingSection?.selectedProducts?.length || 0} productos configurados
-                      </p>
-                    </div>
-
-                    <div className="mt-4 bg-yellow-50 border border-warning rounded-lg p-3">
-                      <p className="text-xs text-secondary text-center font-medium">
-                        💡 Los productos se mostrarán en carrusel horizontal
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Status Messages */}
-                {sectionSaveStatus !== 'idle' && (
-                  <div className={`mt-6 p-4 rounded-lg flex items-center justify-center text-center font-semibold transition-all ${
-                    sectionSaveStatus === 'saving' ? 'bg-yellow-50 text-secondary animate-pulse' :
-                    sectionSaveStatus === 'success' ? 'bg-success/10 text-success' :
-                    'bg-slate-800 text-secondary'
-                  }`}>
-                    {sectionSaveStatus === 'saving' && (
-                      <>
-                        <span className="animate-spin mr-2">⏳</span>
-                        Guardando cambios...
-                      </>
-                    )}
-                    {sectionSaveStatus === 'success' && (
-                      <>
-                        <span className="mr-2">✅</span>
-                        ¡Guardado exitosamente! Los cambios ya están activos en tu sitio web.
-                      </>
-                    )}
-                    {sectionSaveStatus === 'error' && (
-                      <>
-                        <span className="mr-2">❌</span>
-                        Error al guardar. Por favor intenta nuevamente.
-                      </>
-                    )}
-                  </div>
-                )}
-
-                <div className="flex space-x-3 pt-6 mt-6 border-t border-yellow-300/30">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowSectionModal(false);
-                      setSectionSaveStatus('idle');
-                      setPreviewName('');
-                      setPreviewDescription('');
-                    }}
-                    disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 bg-slate-800 hover:bg-gray-300 text-white font-semibold text-base py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={sectionSaveStatus === 'saving'}
-                    className="flex-1 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-yellow-400" onMouseEnter={(e) => !e.currentTarget.disabled && (e.currentTarget.style.backgroundColor = '#D13C1A')}
-                    >
-{sectionSaveStatus === 'saving' ? 'Guardando...' : (editingSection ? 'Actualizar' : 'Crear') + ' Sección'}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-
-      
-      {showProductSelector && (
-        <div className="fixed inset-0 bg-slate-800/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-800/70 rounded-lg max-w-full w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-semibold text-white">
-                  Seleccionar Productos para la Sección
-                </h3>
-                <button
-                  onClick={() => {
-                    setShowProductSelector(false);
-                    // Reset filters when closing
-                    setProductSelectorFilters({
-                      category: '',
-                      search: '',
-                      showOnlySelected: false
-                    });
-                  }}
-                  className="text-yellow-300 hover:text-yellow-300"
-                >
-                  ✕
-                </button>
-              </div>
-
-              
-              <div className="mb-6 p-4 bg-slate-900 rounded-lg">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-yellow-300 mb-2">
-                      Buscar por nombre
-                    </label>
-                    <input
-                      type="text"
-                      value={productSelectorFilters.search}
-                      onChange={(e) => setProductSelectorFilters(prev => ({
-                        ...prev,
-                        search: e.target.value
-                      }))}
-                      placeholder="Buscar productos..."
-                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                    />
-                  </div>
-
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-yellow-300 mb-2">
-                      Filtrar por categoría
-                    </label>
-                    <select
-                      value={productSelectorFilters.category}
-                      onChange={(e) => setProductSelectorFilters(prev => ({
-                        ...prev,
-                        category: e.target.value
-                      }))}
-                      className="w-full px-3 py-2 border border-yellow-300/40 rounded-md focus:outline-none focus:ring-2"
-                      style={{ '--tw-ring-color': 'var(--primary)' } as any}
-                    >
-                      <option value="">Todas las categorías</option>
-                      {categories.map((category) => (
-                        <option key={category.id} value={category.id}>
-                          {category.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-yellow-300 mb-2">
-                      Opciones de vista
-                    </label>
-                    <div className="flex items-center space-x-4">
-                      <label className="flex items-center">
-                        <input
-                          type="checkbox"
-                          checked={productSelectorFilters.showOnlySelected}
-                          onChange={(e) => setProductSelectorFilters(prev => ({
-                            ...prev,
-                            showOnlySelected: e.target.checked
-                          }))}
-                          className="h-4 w-4 text-yellow-300 rounded mr-2"
-                        />
-                        <span className="text-sm text-yellow-300">Solo seleccionados</span>
-                      </label>
-                      <button
-                        onClick={() => setProductSelectorFilters({
-                          category: '',
-                          search: '',
-                          showOnlySelected: false
-                        })}
-                        className="text-sm text-yellow-300 hover:text-secondary"
-                      >
-                        Limpiar filtros
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-              <div className="mb-4 text-sm text-yellow-300">
-                Mostrando {products
-                  .filter((product) => {
-                    const currentSection = productSections.find(s => s.id === currentSectionId);
-                    const isSelected = currentSection?.selectedProducts.includes(product.id as never) || false;
-
-                    if (productSelectorFilters.search) {
-                      const searchTerm = productSelectorFilters.search.toLowerCase();
-                      const matchesSearch = product.nombre.toLowerCase().includes(searchTerm) ||
-                                          product.descripcion?.toLowerCase().includes(searchTerm) ||
-                                          product.categoria?.toLowerCase().includes(searchTerm);
-                      if (!matchesSearch) return false;
-                    }
-
-                    if (productSelectorFilters.category) {
-                      if (!productHasCategory(product, productSelectorFilters.category)) return false;
-                    }
-
-                    if (productSelectorFilters.showOnlySelected && !isSelected) {
-                      return false;
-                    }
-
-                    return true;
-                  }).length} de {products.length} productos
-                {productSelectorFilters.category && (
-                  <span className="font-medium">
-                    {' '}en categoría &quot;
-                    {categories.find(cat => cat.id === productSelectorFilters.category)?.name}
-                    &quot;
-                  </span>
-                )}
-                {productSelectorFilters.search && (
-                  <span className="font-medium">
-                    {' '}que coinciden con &quot;
-                    {productSelectorFilters.search}
-                    &quot;
-                  </span>
-                )}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {products
-                  .filter((product) => {
-                    const currentSection = productSections.find(s => s.id === currentSectionId);
-                    const isSelected = currentSection?.selectedProducts.includes(product.id as never) || false;
-
-                    // Apply search filter
-                    if (productSelectorFilters.search) {
-                      const searchTerm = productSelectorFilters.search.toLowerCase();
-                      const matchesSearch = product.nombre.toLowerCase().includes(searchTerm) ||
-                                          product.descripcion?.toLowerCase().includes(searchTerm) ||
-                                          product.categoria?.toLowerCase().includes(searchTerm);
-                      if (!matchesSearch) return false;
-                    }
-
-                    // Apply category filter
-                    if (productSelectorFilters.category) {
-                      if (!productHasCategory(product, productSelectorFilters.category)) return false;
-                    }
-
-                    // Apply "only selected" filter
-                    if (productSelectorFilters.showOnlySelected && !isSelected) {
-                      return false;
-                    }
-
-                    return true;
-                  })
-                  .map((product) => {
-                  const currentSection = productSections.find(s => s.id === currentSectionId);
-                  const isSelected = currentSection?.selectedProducts.includes(product.id as never) || false;
-
-                  return (
-                    <div key={product.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                      <div className="flex items-start space-x-3">
-                        <input
-                          type="checkbox"
-                          checked={isSelected}
-                          onChange={async (e) => {
-                            const newSections = productSections.map(section => {
-                              if (section.id === currentSectionId) {
-                                const selectedProducts = e.target.checked
-                                  ? [...section.selectedProducts, product.id]
-                                  : section.selectedProducts.filter(id => id !== product.id);
-                                return { ...section, selectedProducts };
-                              }
-                              return section;
-                            });
-                            setProductSections(newSections as any);
-
-                            // Auto-save to Firebase
-                            try {
-                              await setDoc(doc(db, 'config', 'productSections'), {
-                                sections: newSections,
-                                updatedAt: new Date().toISOString()
-                              });
-                            } catch (error) {
-                              console.error('Error auto-saving product selection:', error);
-                            }
-                          }}
-                          className="mt-1 h-4 w-4 text-yellow-300 rounded"
-                        />
-                        <div className="flex-1">
-                          {product.imagen && (
-                            <img
-                              src={product.imagen}
-                              alt={product.nombre}
-                              className="w-full h-24 object-cover rounded mb-2"
-                            />
-                          )}
-                          <h4 className="font-medium text-white text-sm">{product.nombre}</h4>
-                          <p className="text-yellow-300 text-xs mt-1">${product.precio?.toLocaleString()}</p>
-                          <p className="text-yellow-300 text-xs">{product.categoria}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="flex justify-end pt-6">
-                <button
-                  onClick={() => setShowProductSelector(false)}
-                  className="text-white font-medium py-2 px-6 rounded-md transition-colors bg-yellow-400" onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D13C1A'}
-                  >
-Listo
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       )}
     </div>
     </>

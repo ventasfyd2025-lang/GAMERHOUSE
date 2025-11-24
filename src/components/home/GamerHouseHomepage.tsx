@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
@@ -98,8 +98,7 @@ export default function GamerHouseHomepage() {
         ...section,
         products: getSectionProducts(section).slice(0, 4)
       }))
-      .filter((section) => section.products.length > 0)
-      .slice(0, 2);
+      .filter((section) => section.products.length > 0);
   }, [productSections, getSectionProducts]);
 
   const handleAddToCart = (product: any) => {
@@ -196,10 +195,9 @@ export default function GamerHouseHomepage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-yellow-300 selection:text-slate-900">
       <DynamicBanner />
-      <BannerShowcase className="py-6" slots={['middle']} />
 
-      {homepageSections.map((section) => (
-        <div key={section.id}>
+      {homepageSections.map((section, index) => (
+        <Fragment key={section.id}>
           <section className="py-8 sm:py-12 relative bg-gradient-to-br from-white via-amber-50/30 to-slate-50 rounded-3xl">
             {/* Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-amber-200/40 blur-[120px] rounded-full pointer-events-none"></div>
@@ -227,7 +225,12 @@ export default function GamerHouseHomepage() {
               </div>
             </div>
           </section>
-        </div>
+
+          {index === 0 && (
+            <BannerShowcase className="py-6" slots={['middle']} />
+          )}
+
+        </Fragment>
       ))}
 
       {/* Catálogo completo */}
@@ -295,6 +298,7 @@ export default function GamerHouseHomepage() {
       </section>
 
       <BannerShowcase className="py-8" slots={['footer']} />
+
     </div>
   );
 }

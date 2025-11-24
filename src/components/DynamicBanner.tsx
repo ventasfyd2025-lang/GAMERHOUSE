@@ -3,25 +3,96 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/hooks/useConfig';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+type ManagedSlide = {
+  title?: string;
+  subtitle?: string;
+  imageUrl?: string;
+  linkType?: 'product' | 'category' | 'url';
+  productId?: string;
+  categoryId?: string;
+  customUrl?: string;
+  ctaLabel?: string;
+};
+
+const resolveSlideLink = (slide?: ManagedSlide) => {
+  if (!slide) {
+    return { href: '/productos', label: 'Ver más' };
+  }
+
+  const label = slide.ctaLabel?.trim() || 'Ver más';
+  switch (slide.linkType) {
+    case 'product':
+      return slide.productId
+        ? { href: `/producto/${slide.productId}`, label }
+        : { href: '/productos', label };
+    case 'category':
+      return slide.categoryId
+        ? { href: `/categoria/${slide.categoryId}`, label }
+        : { href: '/productos', label };
+    case 'url':
+      return slide.customUrl
+        ? { href: slide.customUrl, label }
+        : { href: '/productos', label };
+    default:
+      return { href: '/productos', label };
+  }
+};
 
 export default function DynamicBanner() {
-  const { bannerConfig } = useConfig();
+  const { bannerConfig, mainBannerConfig } = useConfig();
   const [imageError, setImageError] = useState(false);
+
   const heroSlot = bannerConfig?.slots?.hero;
+  const heroSlide = useMemo(() => {
+    if (!mainBannerConfig?.slides || mainBannerConfig.slides.length === 0) {
+      return undefined;
+    }
+    const validSlides = mainBannerConfig.slides.filter((slide): slide is ManagedSlide => Boolean(slide));
+    return validSlides.find((slide) => slide.imageUrl?.trim()) || validSlides[0];
+  }, [mainBannerConfig?.slides]);
 
-  // Fallback image if the configured one fails or is missing
-  const fallbackImage = '/banner-placeholder.jpg'; // Ensure this exists or use a solid color div
+  const slotCandidate = bannerConfig?.active !== false && heroSlot && (
+    heroSlot.image?.trim() || heroSlot.title?.trim() || heroSlot.text?.trim()
+  )
+    ? heroSlot
+    : undefined;
 
-  if (!bannerConfig?.active || !heroSlot) {
+  const slideCandidate = !slotCandidate && mainBannerConfig?.active !== false && heroSlide
+    ? heroSlide
+    : undefined;
+
+  const sourceType = slotCandidate ? 'slot' : slideCandidate ? 'slide' : null;
+  const sourceData = slotCandidate || slideCandidate;
+
+  useEffect(() => {
+    setImageError(false);
+  }, [sourceData?.image, sourceData?.imageUrl]);
+
+  if (!sourceType || !sourceData) {
     return null;
   }
 
-  const imageUrl = imageError ? fallbackImage : (heroSlot.image || fallbackImage);
-  const ctaHref = heroSlot.ctaUrl || '/productos';
-  const ctaLabel = heroSlot.ctaLabel || 'Ver más';
-  const title = heroSlot.title || 'Campaña destacada';
-  const text = heroSlot.text;
+  const fallbackImage = '/banner-placeholder.jpg';
+  const chosenImage = (sourceType === 'slot'
+    ? slotCandidate?.image
+    : slideCandidate?.imageUrl) || fallbackImage;
+  const imageUrl = imageError ? fallbackImage : chosenImage;
+
+  const { href: ctaHref, label: ctaLabel } = sourceType === 'slide'
+    ? resolveSlideLink(slideCandidate)
+    : {
+        href: slotCandidate?.ctaUrl || '/productos',
+        label: slotCandidate?.ctaLabel || 'Ver más',
+      };
+
+  const title = sourceType === 'slide'
+    ? slideCandidate?.title || slotCandidate?.title || 'Campaña destacada'
+    : slotCandidate?.title || slideCandidate?.title || 'Campaña destacada';
+  const text = sourceType === 'slide'
+    ? slideCandidate?.subtitle || slotCandidate?.text
+    : slotCandidate?.text || slideCandidate?.subtitle;
 
   return (
     <section className="w-full px-3 sm:px-6 lg:px-8 py-5 sm:py-10">
@@ -43,7 +114,7 @@ export default function DynamicBanner() {
           </div>
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent" />
 
           {/* Content */}
           <div className="relative z-10 flex h-full flex-col justify-center gap-3 sm:gap-5 p-6 sm:p-10 lg:p-16 text-slate-900 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px]">
