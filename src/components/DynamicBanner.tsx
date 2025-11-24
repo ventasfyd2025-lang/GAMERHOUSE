@@ -67,8 +67,9 @@ export default function DynamicBanner() {
   const sourceData = slotCandidate || slideCandidate;
 
   useEffect(() => {
+    const img = sourceType === 'slot' ? slotCandidate?.image : slideCandidate?.imageUrl;
     setImageError(false);
-  }, [sourceData?.image, sourceData?.imageUrl]);
+  }, [sourceType, slotCandidate?.image, slideCandidate?.imageUrl]);
 
   if (!sourceType || !sourceData) {
     return null;
