@@ -9,7 +9,7 @@
 ## 📊 Estado Actual
 
 ### ✅ Completado
-- [x] Independencia de Importadora F&D (colecciones separadas `gamerhouse_*`)
+- [x] Independencia de Gamer House (colecciones separadas `gamerhouse_*`)
 - [x] Branding GAMERHOUSE en toda la app
 - [x] Correcciones de referencias de órdenes y productos
 - [x] Archivos backup removidos
@@ -55,17 +55,17 @@ NEXT_PUBLIC_FIREBASE_APP_ID = [PENDIENTE]
 ```
 GAMERHOUSE (Vercel: gamerhouse-mcd9si2wz-import-fyds-projects.vercel.app)
     ↓
-Firebase (Mismo proyecto que Importadora F&D)
+Firebase (Mismo proyecto que Gamer House)
     ├── gamerhouse_products (Productos GAMERHOUSE)
     ├── gamerhouse_orders (Órdenes GAMERHOUSE)
     ├── gamerhouse_categorias (Categorías GAMERHOUSE)
     ├── gamerhouse_purchase_orders (Órdenes B2B)
     └── chat_messages (Compartido)
 
-Importadora F&D (Repo/Vercel separados)
-    ├── products (Productos Importadora)
-    ├── orders (Órdenes Importadora)
-    └── categories (Categorías Importadora)
+Gamer House (Repo/Vercel separados)
+    ├── products (Productos Gamer House)
+    ├── orders (Órdenes Gamer House)
+    └── categories (Categorías Gamer House)
 ```
 
 ---
@@ -95,7 +95,7 @@ Importadora F&D (Repo/Vercel separados)
 
 ```
 37d307b - Fix: Deshabilitar linting en build para permitir deployment
-c188d85 - Branding: Cambiar todas las referencias de "Importadora F&D" a "GAMERHOUSE"
+c188d85 - Branding: Cambiar todas las referencias de "Gamer House" a "GAMERHOUSE"
 05cdfe9 - Fix: Corregir referencias de órdenes y productos para GAMERHOUSE
 ```
 
@@ -145,7 +145,7 @@ c188d85 - Branding: Cambiar todas las referencias de "Importadora F&D" a "GAMERH
 ## 📞 Información de Contacto / Configuración
 
 ### Firebase
-- **Proyecto:** importadora-fyd (compartido con Importadora F&D)
+- **Proyecto:** importadora-fyd (compartido con Gamer House)
 - **Admin SDK:** /Users/juliosilvabobadilla/Downloads/importadora-fyd-firebase-adminsdk-fbsvc-5f3a83b1f7.json
 - **Región:** nam5 (North America)
 
@@ -160,7 +160,7 @@ c188d85 - Branding: Cambiar todas las referencias de "Importadora F&D" a "GAMERH
 - **Status:** ✅ Ready
 
 ### MercadoPago (PENDIENTE)
-- **Status:** Usa credenciales de Importadora F&D
+- **Status:** Usa credenciales de Gamer House
 - **Problema:** statement_descriptor muestra "IMPORTADORA F&D"
 - **Solución:** Crear app separada en MercadoPago
 
@@ -203,7 +203,7 @@ c188d85 - Branding: Cambiar todas las referencias de "Importadora F&D" a "GAMERH
 
 ## ✨ Notas Importantes
 
-1. **Independencia garantizada:** GAMERHOUSE y Importadora F&D son completamente independientes a nivel de código y datos.
+1. **Independencia garantizada:** GAMERHOUSE y Gamer House son completamente independientes a nivel de código y datos.
 
 2. **Firebase compartido:** Mismo proyecto Firebase, pero colecciones separadas (`gamerhouse_*` vs `products`, `orders`, etc.)
 

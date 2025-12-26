@@ -1,4 +1,4 @@
-# 🔐 Plan de Pruebas de Seguridad - Importadora F&D
+# 🔐 Plan de Pruebas de Seguridad - Gamer House
 
 ## Objetivo
 Verificar que todas las protecciones de seguridad implementadas funcionan correctamente y que usuarios no autorizados no pueden acceder a recursos restringidos.

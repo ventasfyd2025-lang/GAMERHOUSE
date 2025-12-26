@@ -1,4 +1,4 @@
-# Importadora F&D - React/Next.js
+# Gamer House - React/Next.js
 
 Una tienda en línea moderna desarrollada con Next.js, React, TypeScript y Firebase.
 

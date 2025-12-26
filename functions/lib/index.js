@@ -53,7 +53,7 @@ exports.sendOrderConfirmationEmail = functions.firestore
         <body>
           <div class="header">
             <h1>¡Pedido Confirmado!</h1>
-            <p>Gracias por tu compra en Importadora FyD</p>
+            <p>Gracias por tu compra en Gamer House</p>
           </div>
 
           <div class="content">
@@ -110,7 +110,7 @@ exports.sendOrderConfirmationEmail = functions.firestore
           </div>
 
           <div class="footer">
-            <p>Importadora FyD<br>
+            <p>Gamer House<br>
             Este es un email automático, por favor no respondas a este mensaje.</p>
           </div>
         </body>
@@ -119,9 +119,9 @@ exports.sendOrderConfirmationEmail = functions.firestore
         console.log('Attempting to send email...');
         console.log(`Sending email to: ${order.customerEmail}`);
         const result = await resend.emails.send({
-            from: 'Importadora FyD <pedidos@importadora-fyd.cl>',
+            from: 'Gamer House <pedidos@importadora-fyd.cl>',
             to: [order.customerEmail],
-            subject: `Confirmación de Pedido #${orderId} - Importadora FyD`,
+            subject: `Confirmación de Pedido #${orderId} - Gamer House`,
             html: emailHtml,
             reply_to: 'contacto@importadora-fyd.cl',
         });
@@ -169,7 +169,7 @@ exports.sendManualOrderEmail = functions.https.onCall(async (data, context) => {
       <body>
         <div class="header">
           <h1>¡Pedido Confirmado!</h1>
-          <p>Gracias por tu compra en Importadora FyD</p>
+          <p>Gracias por tu compra en Gamer House</p>
         </div>
 
         <div class="content">
@@ -217,16 +217,16 @@ exports.sendManualOrderEmail = functions.https.onCall(async (data, context) => {
         </div>
 
         <div class="footer">
-          <p>Importadora FyD<br>
+          <p>Gamer House<br>
           Este es un email automático, por favor no respondas a este mensaje.</p>
         </div>
       </body>
       </html>
     `;
         await resend.emails.send({
-            from: 'Importadora FyD <pedidos@importadora-fyd.cl>',
+            from: 'Gamer House <pedidos@importadora-fyd.cl>',
             to: [email || order.customerEmail],
-            subject: `Confirmación de Pedido #${orderId} - Importadora FyD`,
+            subject: `Confirmación de Pedido #${orderId} - Gamer House`,
             html: emailHtml,
             reply_to: 'contacto@importadora-fyd.cl',
         });
@@ -329,14 +329,14 @@ exports.sendOrderStatusUpdate = functions.firestore
           </div>
 
           <div class="footer">
-            <p>Gracias por elegir Importadora FyD</p>
+            <p>Gracias por elegir Gamer House</p>
             <p>Si tienes alguna pregunta, responde a este correo o contáctanos.</p>
           </div>
         </body>
         </html>
       `;
         await resend.emails.send({
-            from: 'Importadora FyD <pedidos@importadora-fyd.cl>',
+            from: 'Gamer House <pedidos@importadora-fyd.cl>',
             to: [afterData.customerEmail],
             subject: `${statusInfo.title} - Pedido #${orderId.slice(-8).toUpperCase()}`,
             html: emailHtml,
@@ -366,7 +366,7 @@ exports.sendNewMessageNotification = functions.firestore
         <html>
         <head>
           <meta charset="utf-8">
-          <title>Nuevo Mensaje de Importadora FyD</title>
+          <title>Nuevo Mensaje de Gamer House</title>
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .header { background-color: #2196F3; color: white; padding: 20px; text-align: center; }
@@ -402,7 +402,7 @@ exports.sendNewMessageNotification = functions.firestore
             <p>Has recibido un nuevo mensaje sobre tu pedido:</p>
 
             <div class="message-box">
-              <p><strong>De:</strong> Equipo Importadora FyD</p>
+              <p><strong>De:</strong> Equipo Gamer House</p>
               <p><strong>Mensaje:</strong></p>
               <p>${message.message.replace(/\n/g, '<br>')}</p>
             </div>
@@ -417,14 +417,14 @@ exports.sendNewMessageNotification = functions.firestore
           </div>
 
           <div class="footer">
-            <p>Gracias por elegir Importadora FyD</p>
+            <p>Gracias por elegir Gamer House</p>
             <p>Puedes responder a este correo o usar el chat en nuestra web.</p>
           </div>
         </body>
         </html>
       `;
         await resend.emails.send({
-            from: 'Importadora FyD <mensajes@importadora-fyd.cl>',
+            from: 'Gamer House <mensajes@importadora-fyd.cl>',
             to: [message.userEmail],
             subject: `💬 Nuevo mensaje sobre tu pedido${message.orderId ? ` #${message.orderId.slice(-8).toUpperCase()}` : ''}`,
             html: emailHtml,

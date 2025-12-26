@@ -11,7 +11,7 @@
 **Commit:** `f8508a3`
 
 #### 2. **Branding Legacy Removal**
-**Problema:** Referencias a "Importadora F&D" aún presentes
+**Problema:** Referencias a "Gamer House" aún presentes
 **Solución:** Eliminadas de 4 archivos clave
 **Commit:** `ea3d21d`
 
@@ -65,7 +65,7 @@
 
 ### 📝 COMMITS REALIZADOS
 
-1. `ea3d21d` - Branding: Remove Importadora F&D
+1. `ea3d21d` - Branding: Remove Gamer House
 2. `f8508a3` - Fix: Categories collection mismatch
 3. `d0e0f88` - Enhancement: ProductCard borders
 4. `9bde68c` - Enhancement: Hero section colors

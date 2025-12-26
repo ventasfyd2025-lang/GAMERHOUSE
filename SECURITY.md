@@ -1,4 +1,4 @@
-# Guía de Seguridad - Importadora F&D
+# Guía de Seguridad - Gamer House
 
 ## 🔐 Configuración de Variables de Entorno
 

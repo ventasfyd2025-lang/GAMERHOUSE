@@ -2,7 +2,7 @@
 
 ## Resumen del Proyecto
 
-Esta es una aplicación web de comercio electrónico moderna para "Importadora F&D". Está construida con Next.js, React y TypeScript, y utiliza Firebase para el backend. La aplicación ofrece una experiencia de comercio electrónico completa con listados de productos, un carrito de compras y un proceso de pago. También incluye un panel de administración para gestionar productos y pedidos.
+Esta es una aplicación web de comercio electrónico moderna para "Gamer House". Está construida con Next.js, React y TypeScript, y utiliza Firebase para el backend. La aplicación ofrece una experiencia de comercio electrónico completa con listados de productos, un carrito de compras y un proceso de pago. También incluye un panel de administración para gestionar productos y pedidos.
 
 **Tecnologías Clave:**
 

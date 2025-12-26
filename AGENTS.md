@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-This project delivers the Importadora F&D storefront via Next.js 15 (App Router) plus Firebase Functions for transactional tasks.
+This project delivers the Gamer House storefront via Next.js 15 (App Router) plus Firebase Functions for transactional tasks.
 
 ## Project Structure & Module Organization
 - `importadora-fyd-react/src/app` hosts route segments; folder names map to URLs such as `/producto/[id]` and `/admin`.

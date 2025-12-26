@@ -276,14 +276,14 @@ mkdir -p cliente-entrega
 cp importadora-fyd-react/SECURITY.md cliente-entrega/
 cp importadora-fyd-react/SECURITY_AUDIT.md cliente-entrega/
 cp importadora-fyd-react/VERCEL_SETUP.md cliente-entrega/
-cp importadora-fyd-react/README.md cliente-entrega/ 2>/dev/null || echo "# Importadora F&D" > cliente-entrega/README.md
+cp importadora-fyd-react/README.md cliente-entrega/ 2>/dev/null || echo "# Gamer House" > cliente-entrega/README.md
 ```
 
 #### **Crear documento de credenciales para el cliente:**
 
 ```bash
 cat > cliente-entrega/CREDENCIALES_Y_ACCESOS.md <<'EOF'
-# 🔐 Credenciales y Accesos - Importadora F&D
+# 🔐 Credenciales y Accesos - Gamer House
 
 ## ✅ Accesos que debes tener
 
@@ -548,7 +548,7 @@ Graba un video corto mostrando:
 ## 📊 10. Plantilla de Email de Transferencia
 
 ```
-Asunto: Transferencia de Proyecto - Importadora F&D
+Asunto: Transferencia de Proyecto - Gamer House
 
 Hola [Nombre del Cliente],
 

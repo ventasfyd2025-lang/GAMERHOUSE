@@ -113,7 +113,7 @@ export default function MercadoLibreChat({ orderId, className = '' }: MercadoLib
       console.log('Constructed URL:', finalUrl);
       return finalUrl;
     }
-    // Fallback con número por defecto (número de contacto de Importadora F&D)
+    // Fallback con número por defecto (número de contacto de Gamer House)
     console.log('Using fallback URL');
     const fallbackMessage = encodeURIComponent(
       `¡Hola GAMERHOUSE! 👋\n\n` +

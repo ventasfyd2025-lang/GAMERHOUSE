@@ -1,4 +1,4 @@
-# 🔒 Auditoría de Seguridad - Importadora F&D
+# 🔒 Auditoría de Seguridad - Gamer House
 **Fecha:** 2025-10-03
 **Estado:** Protecciones implementadas ✅
 
