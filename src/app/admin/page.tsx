@@ -3585,7 +3585,8 @@ export default function AdminPage() {
                                   <div className="flex flex-wrap gap-2">
                                     <button
                                       onClick={() => setEditingUser(null)}
-                                      className="text-yellow-300 hover:text-white"
+                                      type="button"
+                                      className="inline-flex items-center gap-1 rounded-full border border-yellow-300/30 px-3 py-1 text-xs font-semibold text-yellow-300 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                     >
                                       Cancelar
                                     </button>
@@ -3597,7 +3598,8 @@ export default function AdminPage() {
                                         event.stopPropagation();
                                         setEditingUser(user.uid);
                                       }}
-                                      className="text-red-600 hover:text-secondary"
+                                      type="button"
+                                      className="inline-flex items-center gap-1 rounded-full border border-yellow-300/30 px-3 py-1 text-xs font-semibold text-slate-600 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                     >
                                       Editar Rol
                                     </button>
@@ -3606,7 +3608,8 @@ export default function AdminPage() {
                                         event.stopPropagation();
                                         deleteUser(user.uid);
                                       }}
-                                      className="text-pink hover:text-secondary/80"
+                                      type="button"
+                                      className="inline-flex items-center gap-1 rounded-full border border-pink/40 px-3 py-1 text-xs font-semibold text-pink transition-colors hover:bg-pink hover:text-white focus:outline-none focus:ring-2 focus:ring-pink/50"
                                     >
                                       Eliminar
                                     </button>
@@ -3616,7 +3619,8 @@ export default function AdminPage() {
                                           event.stopPropagation();
                                           unblockUser(user.uid);
                                         }}
-                                        className="text-success hover:text-success"
+                                        type="button"
+                                        className="inline-flex items-center gap-1 rounded-full border border-green-400/60 px-3 py-1 text-xs font-semibold text-success transition-colors hover:bg-success hover:text-white focus:outline-none focus:ring-2 focus:ring-green-200"
                                       >
                                         ✅ Desbloquear
                                       </button>
@@ -3626,7 +3630,8 @@ export default function AdminPage() {
                                           event.stopPropagation();
                                           blockUser(user.uid);
                                         }}
-                                        className="text-yellow-300 hover:text-secondary"
+                                        type="button"
+                                        className="inline-flex items-center gap-1 rounded-full border border-yellow-300/40 px-3 py-1 text-xs font-semibold text-yellow-300 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                       >
                                         🚫 Bloquear
                                       </button>
@@ -3731,7 +3736,8 @@ export default function AdminPage() {
                                     <div className="flex flex-wrap gap-2">
                                       <button
                                         onClick={() => setEditingUser(null)}
-                                        className="text-yellow-300 hover:text-white"
+                                        type="button"
+                                        className="inline-flex items-center gap-1 rounded-full border border-yellow-300/30 px-3 py-1 text-xs font-semibold text-yellow-300 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                       >
                                         Cancelar
                                       </button>
@@ -3743,7 +3749,8 @@ export default function AdminPage() {
                                           event.stopPropagation();
                                           setEditingUser(user.uid);
                                         }}
-                                        className="text-red-600 hover:text-secondary"
+                                        type="button"
+                                        className="inline-flex items-center gap-1 rounded-full border border-yellow-300/30 px-3 py-1 text-xs font-semibold text-slate-600 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                       >
                                         Editar Rol
                                       </button>
@@ -3752,7 +3759,8 @@ export default function AdminPage() {
                                           event.stopPropagation();
                                           deleteUser(user.uid);
                                         }}
-                                        className="text-pink hover:text-secondary/80"
+                                        type="button"
+                                        className="inline-flex items-center gap-1 rounded-full border border-pink/40 px-3 py-1 text-xs font-semibold text-pink transition-colors hover:bg-pink hover:text-white focus:outline-none focus:ring-2 focus:ring-pink/50"
                                       >
                                         Eliminar
                                       </button>
@@ -3762,7 +3770,8 @@ export default function AdminPage() {
                                             event.stopPropagation();
                                             unblockUser(user.uid);
                                           }}
-                                          className="text-success hover:text-success"
+                                          type="button"
+                                          className="inline-flex items-center gap-1 rounded-full border border-green-400/60 px-3 py-1 text-xs font-semibold text-success transition-colors hover:bg-success hover:text-white focus:outline-none focus:ring-2 focus:ring-green-200"
                                         >
                                           ✅ Desbloquear
                                         </button>
@@ -3772,7 +3781,8 @@ export default function AdminPage() {
                                             event.stopPropagation();
                                             blockUser(user.uid);
                                           }}
-                                          className="text-yellow-300 hover:text-secondary"
+                                          type="button"
+                                          className="inline-flex items-center gap-1 rounded-full border border-yellow-300/40 px-3 py-1 text-xs font-semibold text-yellow-300 transition-colors hover:bg-yellow-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-200"
                                         >
                                           🚫 Bloquear
                                         </button>
