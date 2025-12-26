@@ -3580,16 +3580,18 @@ export default function AdminPage() {
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
                                 {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
+                              <td className="px-6 py-4 text-sm font-medium" onClick={(e) => e.stopPropagation()}>
                                 {editingUser === user.uid ? (
-                                  <button
-                                    onClick={() => setEditingUser(null)}
-                                    className="text-yellow-300 hover:text-white"
-                                  >
-                                    Cancelar
-                                  </button>
+                                  <div className="flex flex-wrap gap-2">
+                                    <button
+                                      onClick={() => setEditingUser(null)}
+                                      className="text-yellow-300 hover:text-white"
+                                    >
+                                      Cancelar
+                                    </button>
+                                  </div>
                                 ) : (
-                                  <>
+                                  <div className="flex flex-wrap gap-3">
                                     <button
                                       onClick={(event) => {
                                         event.stopPropagation();
@@ -3629,7 +3631,7 @@ export default function AdminPage() {
                                         🚫 Bloquear
                                       </button>
                                     )}
-                                  </>
+                                  </div>
                                 )}
                               </td>
                             </tr>
@@ -3724,56 +3726,58 @@ export default function AdminPage() {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
                                   {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(e) => e.stopPropagation()}>
+                                <td className="px-6 py-4 text-sm font-medium" onClick={(e) => e.stopPropagation()}>
                                   {editingUser === user.uid ? (
-                                    <button
-                                      onClick={() => setEditingUser(null)}
-                                      className="text-yellow-300 hover:text-white"
-                                    >
-                                      Cancelar
-                                    </button>
+                                    <div className="flex flex-wrap gap-2">
+                                      <button
+                                        onClick={() => setEditingUser(null)}
+                                        className="text-yellow-300 hover:text-white"
+                                      >
+                                        Cancelar
+                                      </button>
+                                    </div>
                                   ) : (
-                                    <>
-                                  <button
-                                    onClick={(event) => {
-                                      event.stopPropagation();
-                                      setEditingUser(user.uid);
-                                    }}
-                                    className="text-red-600 hover:text-secondary"
-                                  >
-                                    Editar Rol
-                                  </button>
-                                  <button
-                                    onClick={(event) => {
-                                      event.stopPropagation();
-                                      deleteUser(user.uid);
-                                    }}
-                                    className="text-pink hover:text-secondary/80"
-                                  >
-                                    Eliminar
-                                  </button>
-                                  {user.blocked ? (
-                                    <button
-                                      onClick={(event) => {
-                                        event.stopPropagation();
-                                        unblockUser(user.uid);
-                                      }}
-                                      className="text-success hover:text-success"
-                                    >
-                                      ✅ Desbloquear
-                                    </button>
-                                  ) : (
-                                    <button
-                                      onClick={(event) => {
-                                        event.stopPropagation();
-                                        blockUser(user.uid);
-                                      }}
-                                      className="text-yellow-300 hover:text-secondary"
-                                    >
-                                      🚫 Bloquear
+                                    <div className="flex flex-wrap gap-3">
+                                      <button
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          setEditingUser(user.uid);
+                                        }}
+                                        className="text-red-600 hover:text-secondary"
+                                      >
+                                        Editar Rol
+                                      </button>
+                                      <button
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          deleteUser(user.uid);
+                                        }}
+                                        className="text-pink hover:text-secondary/80"
+                                      >
+                                        Eliminar
+                                      </button>
+                                      {user.blocked ? (
+                                        <button
+                                          onClick={(event) => {
+                                            event.stopPropagation();
+                                            unblockUser(user.uid);
+                                          }}
+                                          className="text-success hover:text-success"
+                                        >
+                                          ✅ Desbloquear
+                                        </button>
+                                      ) : (
+                                        <button
+                                          onClick={(event) => {
+                                            event.stopPropagation();
+                                            blockUser(user.uid);
+                                          }}
+                                          className="text-yellow-300 hover:text-secondary"
+                                        >
+                                          🚫 Bloquear
                                         </button>
                                       )}
-                                    </>
+                                    </div>
                                   )}
                                 </td>
                               </tr>
@@ -3784,25 +3788,6 @@ export default function AdminPage() {
                     )}
                   </div>
 
-                  <div className="mt-8 bg-yellow-50 rounded-lg p-6">
-                    <h3 className="text-lg font-medium text-white mb-4">Cómo crear usuarios vendedor</h3>
-                    <div className="space-y-3 text-sm text-yellow-300">
-                      <p><strong>Opción 1 - Firebase Console:</strong></p>
-                      <ol className="list-decimal list-inside space-y-1 ml-4">
-                        <li>Ve a Firebase Console &gt; Authentication &gt; Users</li>
-                        <li>Haz clic en "Add user"</li>
-                        <li>Ingresa email y contraseña</li>
-                        <li>Aquí cambia el rol a "Vendedor"</li>
-                      </ol>
-
-                      <p className="mt-4"><strong>Opción 2 - Desde el sitio:</strong></p>
-                      <ol className="list-decimal list-inside space-y-1 ml-4">
-                        <li>El vendedor se registra normalmente en /auth</li>
-                        <li>Por defecto tendrá rol "Cliente"</li>
-                        <li>Aquí cambias su rol a "Vendedor"</li>
-                      </ol>
-                    </div>
-                  </div>
                 </>
               )}
             </div>
