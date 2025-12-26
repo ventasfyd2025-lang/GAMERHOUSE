@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { collection, getDocs, addDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -41,8 +41,7 @@ type Category = {
 
 export default function NuevoProductoPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const editProductId = searchParams.get('id');
+  const [editProductId, setEditProductId] = useState<string | null>(null);
   const isEditing = Boolean(editProductId);
 
   // Product form state
@@ -97,6 +96,15 @@ export default function NuevoProductoPage() {
 
   useEffect(() => {
     loadCategories();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    const idParam = params.get('id');
+    setEditProductId(idParam);
   }, []);
 
   useEffect(() => {
