@@ -109,7 +109,8 @@ export default function GamerHouseHomepage() {
       product.precio,
       product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
-      product.sku
+      product.sku,
+      product.stock
     );
   };
 

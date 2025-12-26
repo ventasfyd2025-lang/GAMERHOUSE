@@ -30,6 +30,7 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
       product.imagen || undefined,
       1,
       product.sku,
+      product.stock
     );
 
     // Show notification

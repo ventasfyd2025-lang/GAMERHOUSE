@@ -6,7 +6,15 @@ import { CartItem } from '@/types';
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (productId: string, nombre: string, precio: number, imagen?: string, cantidad?: number, sku?: string) => void;
+  addItem: (
+    productId: string,
+    nombre: string,
+    precio: number,
+    imagen?: string,
+    cantidad?: number,
+    sku?: string,
+    maxStock?: number
+  ) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, cantidad: number) => void;
   clearCart: () => void;

@@ -29,7 +29,7 @@ export default function ProductosDestacados() {
     : [];
 
   const handleAddToCart = (product: any) => {
-    addItem(product.id, product.nombre, product.precio, product.imagen, 1, product.sku);
+    addItem(product.id, product.nombre, product.precio, product.imagen, 1, product.sku, product.stock);
   };
 
   if (productsLoading || homepageLoading) {

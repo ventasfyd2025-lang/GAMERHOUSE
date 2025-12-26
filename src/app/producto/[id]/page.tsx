@@ -187,7 +187,7 @@ export default function ProductPage() {
       // Si decide continuar como invitado, procede a agregar al carrito
     }
 
-    addItem(product.id, product.nombre, product.precio, product.imagen, quantity, product.sku);
+    addItem(product.id, product.nombre, product.precio, product.imagen, quantity, product.sku, product.stock);
     addNotification({
       type: 'success',
       title: `${product.nombre} agregado`,

@@ -67,6 +67,7 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
       product.imagen || '',
       1,
       product.sku,
+      product.stock
     );
 
     addNotification({

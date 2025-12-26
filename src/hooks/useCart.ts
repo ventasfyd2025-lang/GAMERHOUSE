@@ -91,49 +91,88 @@ export function useCartState() {
     imagen?: string,
     cantidad: number = 1,
     sku?: string,
+    maxStock?: number,
   ) => {
-    let isExisting = false;
+    let feedback: 'added' | 'updated' | 'limitReached' | 'partial' = 'added';
+    let appliedCantidad = cantidad;
 
     setItems(prevItems => {
       const existingItem = prevItems.find(item => item.productId === productId);
-      isExisting = !!existingItem;
+      const currentCantidad = existingItem?.cantidad ?? 0;
+      let allowedIncrease = cantidad;
+
+      if (maxStock !== undefined) {
+        const remaining = maxStock - currentCantidad;
+        if (remaining <= 0) {
+          feedback = 'limitReached';
+          appliedCantidad = 0;
+          return prevItems;
+        }
+        if (cantidad > remaining) {
+          allowedIncrease = remaining;
+          appliedCantidad = remaining;
+          feedback = 'partial';
+        }
+      }
+
+      if (allowedIncrease <= 0) {
+        return prevItems;
+      }
 
       if (existingItem) {
+        feedback = feedback === 'partial' ? 'partial' : 'updated';
         return prevItems.map(item =>
           item.productId === productId
-            ? { ...item, cantidad: item.cantidad + cantidad }
+            ? { ...item, cantidad: item.cantidad + allowedIncrease }
             : item
         );
-      } else {
-        const newItem: CartItem = {
-          id: `${Date.now()}-${productId}-${cantidad}`,
-          productId,
-          nombre,
-          precio,
-          cantidad,
-          imagen,
-          sku,
-        };
-        return [...prevItems, newItem];
       }
+
+      const newItem: CartItem = {
+        id: `${Date.now()}-${productId}-${allowedIncrease}`,
+        productId,
+        nombre,
+        precio,
+        cantidad: allowedIncrease,
+        imagen,
+        sku,
+      };
+      return [...prevItems, newItem];
     });
 
-    // Mostrar notificación después de actualizar el estado
     setTimeout(() => {
-      if (isExisting) {
-        addNotification({
-          type: 'success',
-          title: 'Producto actualizado',
-          message: `Se agregaron ${cantidad} unidad(es) más de ${nombre}`,
-          duration: 3000
-        });
-      } else {
-        addNotification({
-          type: 'success',
-          title: '¡Producto agregado!',
-          message: `${nombre} se agregó al carrito`,
-          duration: 3000
-        });
+      switch (feedback) {
+        case 'limitReached':
+          addNotification({
+            type: 'warning',
+            title: 'Sin stock disponible',
+            message: `No quedan unidades disponibles de ${nombre}.`,
+            duration: 3000,
+          });
+          break;
+        case 'partial':
+          addNotification({
+            type: 'warning',
+            title: 'Stock limitado',
+            message: `Solo se agregaron ${appliedCantidad} unidad(es) de ${nombre} por stock disponible.`,
+            duration: 3000,
+          });
+          break;
+        case 'updated':
+          addNotification({
+            type: 'success',
+            title: 'Producto actualizado',
+            message: `Se agregaron ${appliedCantidad} unidad(es) más de ${nombre}.`,
+            duration: 3000,
+          });
+          break;
+        default:
+          addNotification({
+            type: 'success',
+            title: '¡Producto agregado!',
+            message: `${nombre} se agregó al carrito`,
+            duration: 3000,
+          });
       }
     }, 0);
   }, [addNotification]);
