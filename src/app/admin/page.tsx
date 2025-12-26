@@ -3127,7 +3127,7 @@ export default function AdminPage() {
 
             <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_25px_70px_-55px_rgba(15,23,42,0.35)] overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-slate-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
@@ -3225,7 +3225,7 @@ export default function AdminPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-white capitalize">
                           {product.categoria}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(event) => event.stopPropagation()}>
                           <button
                             onClick={() => editProduct(product)}
                             className="hover:opacity-80 transition-opacity"
@@ -3554,6 +3554,7 @@ export default function AdminPage() {
                                 {editingUser === user.uid ? (
                                   <select
                                     defaultValue={user.role}
+                                    onClick={(event) => event.stopPropagation()}
                                     onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
                                     className="text-sm border border-yellow-300/40 rounded px-2 py-1"
                                   >
@@ -3590,27 +3591,39 @@ export default function AdminPage() {
                                 ) : (
                                   <>
                                     <button
-                                      onClick={() => setEditingUser(user.uid)}
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        setEditingUser(user.uid);
+                                      }}
                                       className="text-red-600 hover:text-secondary"
                                     >
                                       Editar Rol
                                     </button>
                                     <button
-                                      onClick={() => deleteUser(user.uid)}
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        deleteUser(user.uid);
+                                      }}
                                       className="text-pink hover:text-secondary/80"
                                     >
                                       Eliminar
                                     </button>
                                     {user.blocked ? (
                                       <button
-                                        onClick={() => unblockUser(user.uid)}
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          unblockUser(user.uid);
+                                        }}
                                         className="text-success hover:text-success"
                                       >
                                         ✅ Desbloquear
                                       </button>
                                     ) : (
                                       <button
-                                        onClick={() => blockUser(user.uid)}
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          blockUser(user.uid);
+                                        }}
                                         className="text-yellow-300 hover:text-secondary"
                                       >
                                         🚫 Bloquear
@@ -3681,11 +3694,12 @@ export default function AdminPage() {
                                     <div className="text-sm text-yellow-300">{user.email}</div>
                                   </div>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                  {editingUser === user.uid ? (
-                                    <select
-                                      defaultValue={user.role}
-                                      onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {editingUser === user.uid ? (
+                                  <select
+                                    defaultValue={user.role}
+                                    onClick={(event) => event.stopPropagation()}
+                                    onChange={(e) => updateUserRole(user.uid, e.target.value as any)}
                                       className="text-sm border border-yellow-300/40 rounded px-2 py-1"
                                     >
                                       <option value="cliente">Cliente</option>
@@ -3720,31 +3734,43 @@ export default function AdminPage() {
                                     </button>
                                   ) : (
                                     <>
-                                      <button
-                                        onClick={() => setEditingUser(user.uid)}
-                                        className="text-red-600 hover:text-secondary"
-                                      >
-                                        Editar Rol
-                                      </button>
-                                      <button
-                                        onClick={() => deleteUser(user.uid)}
-                                        className="text-pink hover:text-secondary/80"
-                                      >
-                                        Eliminar
-                                      </button>
-                                      {user.blocked ? (
-                                        <button
-                                          onClick={() => unblockUser(user.uid)}
-                                          className="text-success hover:text-success"
-                                        >
-                                          ✅ Desbloquear
-                                        </button>
-                                      ) : (
-                                        <button
-                                          onClick={() => blockUser(user.uid)}
-                                          className="text-yellow-300 hover:text-secondary"
-                                        >
-                                          🚫 Bloquear
+                                  <button
+                                    onClick={(event) => {
+                                      event.stopPropagation();
+                                      setEditingUser(user.uid);
+                                    }}
+                                    className="text-red-600 hover:text-secondary"
+                                  >
+                                    Editar Rol
+                                  </button>
+                                  <button
+                                    onClick={(event) => {
+                                      event.stopPropagation();
+                                      deleteUser(user.uid);
+                                    }}
+                                    className="text-pink hover:text-secondary/80"
+                                  >
+                                    Eliminar
+                                  </button>
+                                  {user.blocked ? (
+                                    <button
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        unblockUser(user.uid);
+                                      }}
+                                      className="text-success hover:text-success"
+                                    >
+                                      ✅ Desbloquear
+                                    </button>
+                                  ) : (
+                                    <button
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        blockUser(user.uid);
+                                      }}
+                                      className="text-yellow-300 hover:text-secondary"
+                                    >
+                                      🚫 Bloquear
                                         </button>
                                       )}
                                     </>
