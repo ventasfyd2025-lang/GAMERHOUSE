@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '@/lib/firebase';
 import optimizeImageFile from '@/utils/imageProcessing';
@@ -41,6 +41,9 @@ type Category = {
 
 export default function NuevoProductoPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const editProductId = searchParams.get('id');
+  const isEditing = Boolean(editProductId);
 
   // Product form state
   const [productForm, setProductForm] = useState<ProductFormState>({
@@ -66,6 +69,7 @@ export default function NuevoProductoPage() {
   const [productImages, setProductImages] = useState<File[]>([]);
   const [productImagePreviews, setProductImagePreviews] = useState<string[]>([]);
   const [uploadingProduct, setUploadingProduct] = useState(false);
+  const [loadingExistingProduct, setLoadingExistingProduct] = useState(false);
   const [categories, setCategories] = useState<Category[]>([
     { id: 'electronicos', name: 'Electrónicos', active: true },
     { id: 'hogar', name: 'Hogar', active: true },
@@ -94,6 +98,74 @@ export default function NuevoProductoPage() {
   useEffect(() => {
     loadCategories();
   }, []);
+
+  useEffect(() => {
+    if (!isEditing || !editProductId) {
+      return;
+    }
+
+    const fetchProduct = async () => {
+      setLoadingExistingProduct(true);
+      try {
+        const productRef = doc(db, 'gamerhouse_products', editProductId);
+        const snapshot = await getDoc(productRef);
+        if (!snapshot.exists()) {
+          alert('Producto no encontrado');
+          router.push('/admin');
+          return;
+        }
+
+        const data = snapshot.data() as Record<string, unknown>;
+        const categoriasArray = Array.isArray(data.categorias) && data.categorias.length > 0
+          ? (data.categorias as string[])
+          : data.categoria
+            ? [String(data.categoria)]
+            : [];
+
+        setProductForm({
+          id: snapshot.id,
+          sku: typeof data.sku === 'string' ? data.sku : '',
+          nombre: typeof data.nombre === 'string' ? data.nombre : '',
+          precio: typeof data.precio === 'number' ? data.precio : Number(data.precio ?? 0) || 0,
+          precioOriginal: typeof data.precioOriginal === 'number'
+            ? data.precioOriginal
+            : data.precioOriginal
+              ? Number(data.precioOriginal)
+              : undefined,
+          descripcion: typeof data.descripcion === 'string' ? data.descripcion : '',
+          stock: typeof data.stock === 'number' ? data.stock : Number(data.stock ?? 0) || 0,
+          minStock: typeof data.minStock === 'number' ? data.minStock : Number(data.minStock ?? 5) || 5,
+          categoria: typeof data.categoria === 'string' ? data.categoria : categoriasArray[0] || '',
+          categorias: categoriasArray,
+          subcategoria: typeof data.subcategoria === 'string' ? data.subcategoria : '',
+          nuevo: Boolean(data.nuevo),
+          oferta: Boolean(data.oferta),
+          nuevoDuracionHoras: typeof data.nuevoDuracionHoras === 'number' ? data.nuevoDuracionHoras : 24,
+          ofertaDuracionHoras: typeof data.ofertaDuracionHoras === 'number' ? data.ofertaDuracionHoras : 24,
+          imagen: typeof data.imagen === 'string'
+            ? data.imagen
+            : Array.isArray(data.imagenes) && data.imagenes.length > 0
+              ? String(data.imagenes[0])
+              : '',
+          imagenes: Array.isArray(data.imagenes)
+            ? (data.imagenes as string[])
+            : typeof data.imagen === 'string'
+              ? [data.imagen]
+              : [],
+        });
+        setProductImages([]);
+        setProductImagePreviews([]);
+      } catch (error) {
+        console.error('Error loading product: ', error);
+        alert('No se pudo cargar el producto para edición.');
+        router.push('/admin');
+      } finally {
+        setLoadingExistingProduct(false);
+      }
+    };
+
+    fetchProduct();
+  }, [isEditing, editProductId, router]);
 
   const handleProductSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,7 +230,6 @@ export default function NuevoProductoPage() {
         imagenes: imagenesUrls,
         sku: trimmedSku,
         activo: true,
-        fechaCreacion: new Date().toISOString(),
       };
 
       // Agregar timestamps y duración para etiquetas
@@ -176,43 +247,55 @@ export default function NuevoProductoPage() {
         productData.precioOriginal = productForm.precioOriginal;
       }
 
-      // Create new product
-      try {
-        const docRef = await addDoc(collection(db, 'gamerhouse_products'), productData);
-        console.log('✅ Producto creado con ID:', docRef.id);
-        console.log('📸 Imágenes guardadas en Firestore:', productData.imagenes);
-        alert('✅ Producto creado exitosamente. Puedes agregar otro producto.');
+      if (isEditing && editProductId) {
+        try {
+          await updateDoc(doc(db, 'gamerhouse_products', editProductId), {
+            ...productData,
+            fechaActualizacion: new Date().toISOString(),
+          });
+          alert('✅ Producto actualizado correctamente');
+          router.push('/admin');
+          return;
+        } catch (error) {
+          console.error('Error updating product in Firestore: ', error);
+          alert(`Error al actualizar el producto: ${error instanceof Error ? error.message : 'Error desconocido'}`);
+        }
+      } else {
+        try {
+          const docRef = await addDoc(collection(db, 'gamerhouse_products'), {
+            ...productData,
+            fechaCreacion: new Date().toISOString(),
+          });
+          console.log('✅ Producto creado con ID:', docRef.id);
+          console.log('📸 Imágenes guardadas en Firestore:', productData.imagenes);
+          alert('✅ Producto creado exitosamente. Puedes agregar otro producto.');
 
-        // Reset form to add another product
-        setProductForm({
-          id: '',
-          sku: '',
-          nombre: '',
-          precio: 0,
-          precioOriginal: undefined,
-          descripcion: '',
-          stock: 0,
-          minStock: 5,
-          categoria: '',
-          categorias: [],
-          subcategoria: '',
-          nuevo: false,
-          oferta: false,
-          nuevoDuracionHoras: 24,
-          ofertaDuracionHoras: 24,
-          imagen: '',
-          imagenes: []
-        });
-
-        // Clear images
-        setProductImages([]);
-        setProductImagePreviews([]);
-
-        // Scroll to top for better UX
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (error) {
-        console.error("Error creating product in Firestore: ", error);
-        alert(`Error al crear el producto: ${error instanceof Error ? error.message : 'Error desconocido'}`);
+          setProductForm({
+            id: '',
+            sku: '',
+            nombre: '',
+            precio: 0,
+            precioOriginal: undefined,
+            descripcion: '',
+            stock: 0,
+            minStock: 5,
+            categoria: '',
+            categorias: [],
+            subcategoria: '',
+            nuevo: false,
+            oferta: false,
+            nuevoDuracionHoras: 24,
+            ofertaDuracionHoras: 24,
+            imagen: '',
+            imagenes: []
+          });
+          setProductImages([]);
+          setProductImagePreviews([]);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+          console.error('Error creating product in Firestore: ', error);
+          alert(`Error al crear el producto: ${error instanceof Error ? error.message : 'Error desconocido'}`);
+        }
       }
     } catch (error) {
       alert('Error al guardar el producto');
@@ -220,6 +303,18 @@ export default function NuevoProductoPage() {
       setUploadingProduct(false);
     }
   };
+
+  if (isEditing && loadingExistingProduct) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
+        <p className="text-lg">Cargando producto...</p>
+      </div>
+    );
+  }
+
+  const pageTitle = isEditing ? 'Editar Producto' : 'Agregar Nuevo Producto';
+  const pageDescription = isEditing ? 'Actualiza la información del producto' : 'Completa la información del producto';
+  const submitLabel = isEditing ? 'Guardar cambios' : 'Crear Producto';
 
   return (
     <div
@@ -241,8 +336,8 @@ export default function NuevoProductoPage() {
                 </svg>
               </Link>
               <div>
-                <h1 className="text-2xl font-bold text-white">Agregar Nuevo Producto</h1>
-                <p className="text-sm text-yellow-300">Completa la información del producto</p>
+                <h1 className="text-2xl font-bold text-white">{pageTitle}</h1>
+                <p className="text-sm text-yellow-300">{pageDescription}</p>
               </div>
             </div>
           </div>
@@ -687,7 +782,6 @@ export default function NuevoProductoPage() {
                 style={{
                   backgroundColor: 'var(--primary)'
                 }}
-                
               >
                 {uploadingProduct ? (
                   <span className="flex items-center justify-center gap-2">
@@ -699,10 +793,16 @@ export default function NuevoProductoPage() {
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    Crear Producto
+                    {isEditing ? (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5h2m1 0h2a2 2 0 012 2v2m0 1v2m0 1v2a2 2 0 01-2 2h-2m-1 0h-2m-1 0H7a2 2 0 01-2-2v-2m0-1V11m0-1V8a2 2 0 012-2h2" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    )}
+                    {submitLabel}
                   </span>
                 )}
               </button>

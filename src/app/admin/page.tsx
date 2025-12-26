@@ -1879,29 +1879,10 @@ export default function AdminPage() {
   };
 
   const editProduct = (product: Product) => {
-    // Si el producto tiene categorias, las usa; si no, convierte categoria a array para compatibilidad
-    const categoriasArray = product.categorias && product.categorias.length > 0
-      ? product.categorias
-      : product.categoria ? [product.categoria] : [];
-
-    setProductForm({
-      id: product.id,
-      sku: product.sku || '',
-      nombre: product.nombre,
-      precio: product.precio,
-      precioOriginal: product.precioOriginal,
-      descripcion: product.descripcion || '',
-      stock: product.stock,
-      minStock: product.minStock || 5,
-      categoria: product.categoria,
-      categorias: categoriasArray,
-      subcategoria: product.subcategoria || '',
-      nuevo: product.nuevo || false,
-      oferta: product.oferta || false,
-      imagen: product.imagen || '',
-      imagenes: product.imagenes || []
-    });
-    setShowProductModal(true);
+    if (!product.id) {
+      return;
+    }
+    router.push(`/admin/productos/nuevo?id=${product.id}`);
   };
 
   const deleteProduct = async (id: string) => {
