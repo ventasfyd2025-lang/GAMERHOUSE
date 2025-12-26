@@ -302,9 +302,12 @@ function CheckoutContent() {
       const timestamp = Date.now();
       const fileName = `comprobantes/${timestamp}_${comprobanteFile.name}`;
       const storageRef = ref(storage, fileName);
+      const metadata = {
+        contentType: comprobanteFile.type || (comprobanteFile.name.toLowerCase().endsWith('.pdf') ? 'application/pdf' : 'image/jpeg')
+      };
 
       console.log('☁️ Subiendo comprobante a Storage...');
-      await uploadBytes(storageRef, comprobanteFile);
+      await uploadBytes(storageRef, comprobanteFile, metadata);
       const comprobanteUrl = await getDownloadURL(storageRef);
       console.log('✅ Comprobante subido exitosamente:', comprobanteUrl);
 
