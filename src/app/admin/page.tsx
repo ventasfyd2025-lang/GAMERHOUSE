@@ -40,8 +40,6 @@ import { normalizeCategoryValue } from '@/utils/category';
 import { defaultMiddleBanners } from '@/components/home/bannerData';
 import { cleanAllData } from '@/scripts/cleanData';
 import AdminChatPopup from '@/components/AdminChatPopup';
-import StockAlerts from '@/components/StockAlerts';
-import StockManagement from '@/components/StockManagement';
 import B2BOrderManagement from '@/components/B2BOrderManagement';
 import AdminLogoSection from '@/components/admin/AdminLogoSection';
 import AdminBannerSection from '@/components/admin/AdminBannerSection';
@@ -2454,7 +2452,6 @@ export default function AdminPage() {
               {[
                 { id: 'dashboard', name: 'Dashboard & Reportes', icon: '🏠' },
                 { id: 'products', name: 'Productos & Stock', icon: '📦' },
-                { id: 'stock-center', name: 'Alertas & Stock', icon: '🚨' },
                 { id: 'orders', name: 'Pedidos', icon: '🛒', badge: newOrdersCount > 0 ? newOrdersCount : null, badgeColor: 'bg-pink' },
                 { id: 'user-management', name: 'Gestión de Usuario', icon: '👥' },
                 { id: 'popup', name: 'Popup Ofertas', icon: '🎉' },
@@ -3294,31 +3291,6 @@ export default function AdminPage() {
                     </button>
                   )}
                 </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-
-        {activeTab === 'stock-center' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  🚨 Centro de Stock
-                </h2>
-                <p className="text-sm text-yellow-300">
-                  Revisa alertas y ajusta inventario en un solo lugar.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-5">
-              <div className="lg:col-span-2">
-                <StockAlerts className="h-full" />
-              </div>
-              <div className="lg:col-span-3">
-                <StockManagement className="h-full" />
               </div>
             </div>
           </div>
