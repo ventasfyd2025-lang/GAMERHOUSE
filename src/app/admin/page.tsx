@@ -3517,19 +3517,19 @@ export default function AdminPage() {
                         <thead className="bg-slate-50">
                           <tr>
                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                              Usuario
+                              <div className="text-xs font-semibold tracking-widest uppercase">Usuario</div>
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                              Rol
+                              <div className="text-xs font-semibold tracking-widest uppercase">Rol</div>
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                              Estado
+                              <div className="text-xs font-semibold tracking-widest uppercase">Estado</div>
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                              Fecha Registro
+                              <div className="text-xs font-semibold tracking-widest uppercase">Fecha Registro</div>
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                              Acciones
+                              <div className="text-xs font-semibold tracking-widest uppercase">Acciones</div>
                             </th>
                           </tr>
                         </thead>
@@ -3686,7 +3686,7 @@ export default function AdminPage() {
                                 className="hover:bg-yellow-50 cursor-pointer transition-colors"
                                 onClick={() => loadUserDetails(user)}
                               >
-                                <td className="px-6 py-4 whitespace-nowrap">
+                                <td className="px-6 py-4">
                                   <div>
                                     <div className="text-sm font-semibold text-slate-900">
                                       {user.firstName} {user.lastName}
@@ -3694,7 +3694,7 @@ export default function AdminPage() {
                                     <div className="text-sm text-yellow-300">{user.email}</div>
                                   </div>
                                 </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4">
                                 {editingUser === user.uid ? (
                                   <select
                                     defaultValue={user.role}
@@ -3712,7 +3712,7 @@ export default function AdminPage() {
                                     </span>
                                   )}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
+                                <td className="px-6 py-4">
                                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                     user.blocked
                                       ? 'bg-slate-800 text-pink border-slate-200'
@@ -4035,7 +4035,7 @@ export default function AdminPage() {
                             className="w-4 h-4 text-yellow-300 rounded focus:ring-primary"
                           />
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                                <td className="px-6 py-4">
                           <div className="flex items-center">
                             {totalUserOrders > 1 && (
                               <button
