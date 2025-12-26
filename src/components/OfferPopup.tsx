@@ -104,9 +104,15 @@ export default function OfferPopup({
   return (
     <div className={`fixed z-[100] ${positionClass}`} style={containerStyle}>
       <div className="relative w-full" style={{ paddingBottom: `${paddingPercent}%` }}>
-        <div className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary to-pink" style={bgStyle}>
+        <div
+          className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-primary to-pink"
+          style={{
+            ...bgStyle,
+            filter: mediaUrl && !isVideo ? 'none' : undefined,
+          }}
+        >
           {mediaUrl && !isVideo && (
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-black/20" />
           )}
 
           {mediaUrl && isVideo && (
