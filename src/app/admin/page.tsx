@@ -2386,7 +2386,7 @@ export default function AdminPage() {
                 🏪
               </div>
               <h1 className="text-xl font-semibold text-slate-900">
-                F&D Admin Panel
+                Gamer House Admin Panel
               </h1>
             </div>
             <button
@@ -2414,7 +2414,7 @@ export default function AdminPage() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Panel</p>
-                  <h1 className="text-2xl font-black text-slate-900">Administración F&D</h1>
+                  <h1 className="text-2xl font-black text-slate-900">Administración Gamer House</h1>
                   <p className="text-sm text-slate-500">Gestiona operaciones, inventario y campañas</p>
                   {userProfile && (
                     <p className="text-xs text-slate-400 mt-2">
