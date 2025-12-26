@@ -3516,19 +3516,19 @@ export default function AdminPage() {
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-slate-50">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                            <th className="px-6 py-3 text-left">
                               <div className="text-xs font-semibold tracking-widest uppercase">Usuario</div>
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                            <th className="px-6 py-3 text-left">
                               <div className="text-xs font-semibold tracking-widest uppercase">Rol</div>
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                            <th className="px-6 py-3 text-left">
                               <div className="text-xs font-semibold tracking-widest uppercase">Estado</div>
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                            <th className="px-6 py-3 text-left">
                               <div className="text-xs font-semibold tracking-widest uppercase">Fecha Registro</div>
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                            <th className="px-6 py-3 text-left">
                               <div className="text-xs font-semibold tracking-widest uppercase">Acciones</div>
                             </th>
                           </tr>
@@ -3542,7 +3542,7 @@ export default function AdminPage() {
                               className="hover:bg-yellow-50 cursor-pointer transition-colors"
                               onClick={() => loadUserDetails(user)}
                             >
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4">
                                 <div>
                                   <div className="text-sm font-semibold text-slate-900">
                                     {user.firstName} {user.lastName}
@@ -3550,7 +3550,7 @@ export default function AdminPage() {
                                   <div className="text-sm text-yellow-300">{user.email}</div>
                                 </div>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4">
                                 {editingUser === user.uid ? (
                                   <select
                                     defaultValue={user.role}
@@ -3568,7 +3568,7 @@ export default function AdminPage() {
                                   </span>
                                 )}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4">
                                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${
                                   user.blocked
                                     ? 'bg-slate-800 text-pink border-slate-200'
@@ -3577,7 +3577,7 @@ export default function AdminPage() {
                                   {user.blocked ? '🚫 Bloqueado' : '✅ Activo'}
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm text-yellow-300">
+                              <td className="px-6 py-4 text-sm text-yellow-300">
                                 {user.createdAt ? new Date(user.createdAt.toString()).toLocaleDateString('es-CL') : 'N/A'}
                               </td>
                               <td className="px-6 py-4 text-sm font-medium" onClick={(e) => e.stopPropagation()}>
