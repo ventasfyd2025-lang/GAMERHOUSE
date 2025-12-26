@@ -118,6 +118,19 @@ function CheckoutContent() {
     }).format(price);
   };
 
+  const ensureStorageSession = async () => {
+    if (!auth.currentUser) {
+      await signInAnonymously(auth);
+    }
+
+    try {
+      await auth.currentUser?.getIdToken(true);
+    } catch (tokenError) {
+      console.error('❌ Error renovando token de sesión:', tokenError);
+      throw tokenError;
+    }
+  };
+
   // Handler para MercadoPago
   const handleMercadoPagoCheckout = async () => {
     // Validar datos del formulario
@@ -258,15 +271,13 @@ function CheckoutContent() {
     }
 
     try {
-      if (!auth.currentUser) {
-        try {
-          await signInAnonymously(auth);
-        } catch (authError) {
-          console.error('❌ Error iniciando sesión anónima antes de la transferencia:', authError);
-          alert('No pudimos preparar la subida del comprobante. Intenta nuevamente.');
-          setIsProcessing(false);
-          return;
-        }
+      try {
+        await ensureStorageSession();
+      } catch (authError) {
+        console.error('❌ Error preparando sesión antes de transferir:', authError);
+        alert('No pudimos preparar la subida del comprobante. Intenta nuevamente.');
+        setIsProcessing(false);
+        return;
       }
 
       console.log('Iniciando proceso de transferencia...');
