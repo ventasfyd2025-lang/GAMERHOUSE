@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/hooks/useConfig';
 import { useEffect, useMemo, useState } from 'react';
+import { WIDE_BANNER_PLACEHOLDER } from '@/lib/placeholders';
 
 type ManagedSlide = {
   title?: string;
@@ -75,7 +76,7 @@ export default function DynamicBanner() {
     return null;
   }
 
-  const fallbackImage = '/banner-placeholder.jpg';
+  const fallbackImage = WIDE_BANNER_PLACEHOLDER;
   const chosenImage = (sourceType === 'slot'
     ? slotCandidate?.image
     : slideCandidate?.imageUrl) || fallbackImage;

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { WIDE_BANNER_PLACEHOLDER } from '@/lib/placeholders';
 
 interface LogoConfig {
   emoji: string;
@@ -56,7 +57,7 @@ const DEFAULT_LOGO: LogoConfig = {
 const DEFAULT_SLOT: BannerSlotConfig = {
   title: 'Campaña destacada',
   text: 'Personaliza este banner desde el panel de administración',
-  image: '/banner-hero-gamerhouse.jpg',
+  image: WIDE_BANNER_PLACEHOLDER,
   ctaUrl: '/productos',
   ctaLabel: 'Ver más',
 };

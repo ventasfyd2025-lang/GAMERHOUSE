@@ -7,6 +7,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Loader2, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { db, storage } from '@/lib/firebase';
 import optimizeImageFile from '@/utils/imageProcessing';
+import { HERO_BANNER_PLACEHOLDER } from '@/lib/placeholders';
 
 type SlotKey = 'hero' | 'middle' | 'footer';
 
@@ -187,7 +188,7 @@ export default function AdminBannerSection() {
           {
             title: hero.title || 'Campaña destacada',
             subtitle: hero.text || '',
-            imageUrl: hero.image || '/banner-hero-gamerhouse.jpg',
+            imageUrl: hero.image || HERO_BANNER_PLACEHOLDER,
             linkType: 'url',
             customUrl: hero.ctaUrl || '/productos',
             ctaLabel: hero.ctaLabel || 'Ver más',

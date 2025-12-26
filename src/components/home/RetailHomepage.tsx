@@ -12,6 +12,7 @@ import { productMatchesCategory, productMatchesSubcategory } from '@/utils/categ
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
 import MainBanner from '@/components/home/MainBanner';
+import { HERO_BANNER_PLACEHOLDER, PRODUCT_PLACEHOLDER } from '@/lib/placeholders';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -42,7 +43,7 @@ export default function RetailHomepage() {
     return mainBannerConfig.slides?.find(slide => slide.imageUrl) ?? mainBannerConfig.slides?.[0];
   }, [mainBannerConfig]);
 
-  const heroImage = heroSlide?.imageUrl || '/banner-hero-gamerhouse.jpg';
+  const heroImage = heroSlide?.imageUrl || HERO_BANNER_PLACEHOLDER;
   const heroTitle = heroSlide?.title || 'Siempre los mejores precios en TCG';
   const heroSubtitle = heroSlide?.subtitle || 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.';
 
@@ -161,7 +162,7 @@ export default function RetailHomepage() {
       product.id,
       product.nombre,
       product.precioRebajado || product.precioNormal || product.precio,
-      product.imagenes?.[0] || product.imagen || '/placeholder.png',
+      product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
       product.sku
     );
@@ -181,7 +182,7 @@ export default function RetailHomepage() {
           <div className="product-card-web h-full overflow-hidden">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
+                src={product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER}
                 alt={product.nombre}
                 fill
                 className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"

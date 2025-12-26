@@ -9,6 +9,7 @@ import { ShoppingCart, Zap } from 'lucide-react';
 import DynamicBanner from '../DynamicBanner';
 import BannerShowcase from '../BannerShowcase';
 import { useProductSections } from '@/hooks/useProductSections';
+import { PRODUCT_PLACEHOLDER } from '@/lib/placeholders';
 
 export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
@@ -106,7 +107,7 @@ export default function GamerHouseHomepage() {
       product.id,
       product.nombre,
       product.precio,
-      product.imagenes?.[0] || product.imagen || '/placeholder.png',
+      product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
       product.sku
     );
@@ -126,7 +127,7 @@ export default function GamerHouseHomepage() {
         {/* Image */}
         <div className="relative w-full aspect-[3/4] xs:aspect-[4/5] sm:aspect-square bg-slate-100 overflow-hidden">
           <Image
-            src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
+            src={product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER}
             alt={product.nombre}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"

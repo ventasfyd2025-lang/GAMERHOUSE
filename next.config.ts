@@ -39,6 +39,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -49,6 +50,18 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'gamerhouse.cl',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.gamerhouse.cl',
+      },
+      {
+        protocol: 'https',
+        hostname: 'gamer-house.cl',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.gamer-house.cl',
       },
       {
         protocol: 'https',

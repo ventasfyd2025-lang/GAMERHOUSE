@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { HERO_BANNER_PLACEHOLDER } from '@/lib/placeholders';
 
 interface SlideConfig {
   title?: string;
@@ -40,24 +41,24 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   const fallbackSlide: SlideConfig = {
     title: 'Siempre los mejores precios en TCG',
     subtitle: 'La mejor y más confiable tienda de Trading Card Games en Chile. Pokémon, One Piece, Yu-Gi-Oh! y más.',
-    imageUrl: '/banner-hero-gamerhouse.jpg',
+    imageUrl: HERO_BANNER_PLACEHOLDER,
     linkType: 'product',
     productId: undefined,
   };
 
-  const bannerManaged = preparedSlides.length > 0;
-  if (!bannerManaged) {
-    return null;
-  }
   const slides = preparedSlides;
+  const bannerManaged = slides.length > 0;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    if (!bannerManaged) {
+      return;
+    }
     setCurrentIndex(0);
-  }, [slides.length]);
+  }, [slides.length, bannerManaged]);
 
   useEffect(() => {
-    if (slides.length <= 1) {
+    if (!bannerManaged || slides.length <= 1) {
       return;
     }
     const interval = window.setInterval(() => {
@@ -66,13 +67,9 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
     return () => {
       window.clearInterval(interval);
     };
-  }, [slides.length]);
+  }, [slides.length, bannerManaged]);
 
   const slide = slides[currentIndex];
-
-  const imageUrl = slide.imageUrl || fallbackSlide.imageUrl!;
-  const title = slide.title || fallbackSlide.title!;
-  const subtitle = slide.subtitle || fallbackSlide.subtitle!;
 
   const primaryLink = useMemo(() => {
     if (!slide) {
@@ -104,6 +101,14 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
 
     return { href: '/productos', label: slide.ctaLabel || 'Explorar catálogo', external: false };
   }, [slide]);
+
+  if (!bannerManaged || !slide) {
+    return null;
+  }
+
+  const imageUrl = slide.imageUrl || fallbackSlide.imageUrl!;
+  const title = slide.title || fallbackSlide.title!;
+  const subtitle = slide.subtitle || fallbackSlide.subtitle!;
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white shadow-lg">

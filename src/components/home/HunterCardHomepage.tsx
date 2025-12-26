@@ -12,6 +12,7 @@ import { productMatchesCategory, productMatchesSubcategory } from '@/utils/categ
 import { useConfig } from '@/hooks/useConfig';
 import { getPaginationRange } from '@/lib/pagination';
 import MainBanner from '@/components/home/MainBanner';
+import { PRODUCT_PLACEHOLDER } from '@/lib/placeholders';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -75,7 +76,7 @@ export default function HunterCardHomepage() {
       product.id,
       product.nombre,
       product.precio,
-      product.imagenes?.[0] || product.imagen || '/placeholder.png',
+      product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
       product.sku
     );
@@ -95,7 +96,7 @@ export default function HunterCardHomepage() {
           <div className="product-card-web h-full overflow-hidden">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
+                src={product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER}
                 alt={product.nombre}
                 fill
                 className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"

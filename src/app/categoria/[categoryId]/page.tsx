@@ -11,6 +11,7 @@ import { ShoppingCart, ArrowLeft, ChevronDown, Package, Search } from 'lucide-re
 import { productMatchesCategory, productMatchesSubcategory, formatCategoryLabel } from '@/utils/category';
 import { getPaginationRange } from '@/lib/pagination';
 import Layout from '@/components/Layout';
+import { PRODUCT_PLACEHOLDER } from '@/lib/placeholders';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -85,7 +86,7 @@ export default function CategoryPage() {
       product.id,
       product.nombre,
       product.precio,
-      product.imagenes?.[0] || product.imagen || '/placeholder.png',
+      product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
       product.sku
     );
@@ -103,7 +104,7 @@ export default function CategoryPage() {
           {/* Image */}
           <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
             <Image
-              src={product.imagenes?.[0] || product.imagen || '/placeholder.png'}
+              src={product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER}
               alt={product.nombre}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-500"
