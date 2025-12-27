@@ -36,7 +36,8 @@ import {
   Timestamp
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage, auth } from '@/lib/firebase';
+import { db, storage, auth, app } from '@/lib/firebase';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import optimizeImageFile from '@/utils/imageProcessing';
 import { normalizeCategoryValue } from '@/utils/category';
 import { defaultMiddleBanners } from '@/components/home/bannerData';
@@ -101,6 +102,8 @@ const POPUP_PREVIEW_POSITION_CLASSES: Record<'top-left' | 'top-right' | 'bottom-
   'bottom-right': 'bottom-4 right-4',
   'center': 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
 };
+
+const functionsInstance = getFunctions(app);
 
 const LAYOUT_VARIANT_META: Record<LayoutPatternVariant, {
   title: string;
@@ -1546,31 +1549,9 @@ export default function AdminPage() {
     }
 
     try {
-      // Obtener el token del usuario actual
-      const currentUser = auth.currentUser;
-      if (!currentUser) {
-        alert('Debes estar autenticado para realizar esta acción');
-        return;
-      }
+      const callable = httpsCallable(functionsInstance, 'deleteUserAccount');
+      await callable({ userId });
 
-      const token = await currentUser.getIdToken();
-
-      // Llamar al API para eliminar el usuario
-      const response = await fetch('/api/admin/delete-user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({ userId }),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Error al eliminar usuario');
-      }
-
-      // Actualizar la lista local
       setUsers(prev => prev.filter(user => user.uid !== userId));
       alert('Usuario eliminado exitosamente');
     } catch (error: any) {

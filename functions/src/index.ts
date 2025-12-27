@@ -253,6 +253,36 @@ export const sendManualOrderEmail = functions.https.onCall(async (data, context)
   }
 });
 
+export const deleteUserAccount = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError('unauthenticated', 'Se requiere autenticación');
+  }
+
+  const isAdmin = context.auth.token?.admin === true || context.auth.token?.isAdmin === true;
+  if (!isAdmin) {
+    throw new functions.https.HttpsError('permission-denied', 'Solo administradores pueden eliminar usuarios');
+  }
+
+  const { userId } = data || {};
+  if (!userId || typeof userId !== 'string') {
+    throw new functions.https.HttpsError('invalid-argument', 'userId es requerido');
+  }
+
+  try {
+    await admin.firestore().collection('users').doc(userId).delete();
+    try {
+      await admin.auth().deleteUser(userId);
+    } catch (authError) {
+      console.warn('⚠️ No se pudo eliminar de Auth (puede que no exista):', authError);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting user account:', error);
+    throw new functions.https.HttpsError('internal', 'No se pudo eliminar el usuario');
+  }
+});
+
 // Función para notificar cambios de estado de pedidos
 export const sendOrderStatusUpdate = functions.firestore
   .document('orders/{orderId}')
