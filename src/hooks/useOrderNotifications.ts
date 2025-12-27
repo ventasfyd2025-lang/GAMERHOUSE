@@ -1,53 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { useUserAuth } from './useUserAuth';
-
-interface ChatMessage {
-  id: string;
-  orderId?: string;
-  userId: string;
-  userEmail: string;
-  userName: string;
-  message: string;
-  isAdmin: boolean;
-  timestamp: Date;
-  read: boolean;
-}
+import { useUserAuth, type UserProfile } from './useUserAuth';
 
 export function useOrderNotifications() {
   const [unreadOrderMessages, setUnreadOrderMessages] = useState(0);
-  const { currentUser } = useUserAuth();
+  const { currentUser, isRegistered } = useUserAuth();
+  const shouldListen = Boolean(currentUser && isRegistered);
 
   useEffect(() => {
-    if (!currentUser) {
-      setUnreadOrderMessages(0);
+    if (!shouldListen || !currentUser) {
       return;
     }
+
+    const registeredUser = currentUser as UserProfile;
+    const userUid = registeredUser.uid;
+    const userEmail = registeredUser.email;
 
     // Query for unread messages from admin for the current user's orders
     const messagesQuery = query(
       collection(db, 'chat_messages'),
-      where('userEmail', '==', currentUser.email),
+      where('userId', '==', userUid),
       where('isAdmin', '==', true),
       where('read', '==', false)
     );
 
     const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
       const unreadCount = snapshot.size;
-      console.log(`📧 Found ${unreadCount} unread messages for ${currentUser.email}`);
+      console.log(`📧 Found ${unreadCount} unread messages for ${userEmail}`);
       setUnreadOrderMessages(unreadCount);
     }, (error) => {
       console.error('❌ Error en notificaciones de pedidos:', error);
-      console.log('User email:', currentUser.email);
+      console.log('User email:', userEmail);
       console.log('Error code:', error.code);
       setUnreadOrderMessages(0);
     });
 
     return () => unsubscribe();
-  }, [currentUser]);
+  }, [shouldListen, currentUser, isRegistered]);
 
-  return unreadOrderMessages;
+  return shouldListen ? unreadOrderMessages : 0;
 }
