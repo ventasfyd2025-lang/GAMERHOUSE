@@ -5815,11 +5815,15 @@ export default function AdminPage() {
                           </button>
                           <button
                             onClick={async () => {
+                              const confirmed = window.confirm(`¿Seguro que deseas eliminar la categoría "${category.name}"? Esta acción no se puede deshacer.`);
+                              if (!confirmed) return;
                               try {
                                 await deleteDoc(doc(db, 'gamerhouse_categorias', category.id));
                                 setCategories(categories.filter(c => c.id !== category.id));
+                                toast.success('Categoría eliminada');
                               } catch (error) {
-                                alert('Error al eliminar categoría');
+                                console.error('Error al eliminar categoría', error);
+                                toast.error('Error al eliminar categoría');
                               }
                             }}
                             className="hover:opacity-80 transition-opacity"
