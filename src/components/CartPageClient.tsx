@@ -93,7 +93,7 @@ export default function CartPageClient() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-alt)] py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="modern-card p-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-500">
@@ -113,7 +113,7 @@ export default function CartPageClient() {
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-4">
             {items.map((item) => {
               const productDiscountTotal = discountsByProduct[item.productId] || 0;
