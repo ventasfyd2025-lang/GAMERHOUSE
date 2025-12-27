@@ -53,37 +53,37 @@ interface Order {
 const statusConfig = {
   pending: {
     label: 'Pendiente',
-    color: 'text-yellow-600 bg-yellow-50',
+    color: 'text-amber-700 bg-amber-50 border border-amber-200',
     icon: Clock
   },
   pending_verification: {
     label: 'Verificando Pago',
-    color: 'text-red-600 bg-yellow-50',
+    color: 'text-orange-700 bg-orange-50 border border-orange-200',
     icon: Clock
   },
   confirmed: {
     label: 'Confirmado',
-    color: 'text-green-600 bg-green-50',
+    color: 'text-emerald-700 bg-emerald-50 border border-emerald-200',
     icon: CheckCircle
   },
   preparing: {
     label: 'Preparando',
-    color: 'text-yellow-500 bg-yellow-50',
+    color: 'text-yellow-700 bg-yellow-50 border border-yellow-200',
     icon: ShoppingBag
   },
   shipped: {
     label: 'Enviado',
-    color: 'text-yellow-300 bg-slate-800',
+    color: 'text-sky-700 bg-sky-50 border border-sky-200',
     icon: Truck
   },
   delivered: {
     label: 'Entregado',
-    color: 'text-green-600 bg-green-50',
+    color: 'text-emerald-700 bg-emerald-50 border border-emerald-200',
     icon: CheckCircle
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-slate-800',
+    color: 'text-red-700 bg-red-50 border border-red-200',
     icon: XCircle
   }
 };
@@ -179,10 +179,10 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white flex items-center justify-center px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-4 border-yellow-300 mx-auto mb-4"></div>
-          <p className="text-yellow-300 text-lg font-medium">Cargando...</p>
+          <div className="animate-spin rounded-full h-20 w-20 border-4 border-slate-200 border-t-primary mx-auto mb-4"></div>
+          <p className="text-slate-600 text-lg font-medium">Cargando tus pedidos...</p>
         </div>
       </div>
     );
@@ -193,25 +193,25 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-800 to-slate-800 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-6 border border-slate-700 mb-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20" style={{ backgroundColor: 'var(--primary)' }}>
-                <Package className="h-5 w-5 text-white" />
+        <div className="bg-white/95 backdrop-blur rounded-2xl border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)] p-6 mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-slate-100 border border-slate-200 text-primary shadow-inner">
+                <Package className="h-5 w-5" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Mis Pedidos</h1>
-                <p className="text-yellow-300 text-sm">Historial y seguimiento de tus compras</p>
+                <h1 className="text-3xl font-bold text-slate-900">Mis Pedidos</h1>
+                <p className="text-slate-500 text-sm">Historial y seguimiento de tus compras</p>
               </div>
             </div>
 
             {/* Botón volver al home */}
             <Link
               href="/"
-              className="inline-flex items-center px-6 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold shadow-lg shadow-primary/30 transition-transform hover:-translate-y-0.5"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -222,17 +222,17 @@ export default function OrdersPage() {
         </div>
 
         {loadingOrders ? (
-          <div className="flex justify-center py-12">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-yellow-300"></div>
+          <div className="flex justify-center py-20">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-slate-200 border-t-primary"></div>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 p-12 border border-slate-700 text-center">
-            <ShoppingBag className="h-24 w-24 text-orange-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-white mb-2">No tienes pedidos aún</h3>
-            <p className="text-lg text-yellow-300 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)] p-12 text-center">
+            <ShoppingBag className="h-20 w-20 text-primary mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">No tienes pedidos aún</h3>
+            <p className="text-lg text-slate-500 mb-8">¡Explora nuestra tienda y realiza tu primera compra!</p>
             <button
               onClick={() => router.push('/')}
-              className="px-8 py-3 rounded-xl text-white font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-red-600/20 inline-flex items-center gap-2"
+              className="px-8 py-3 rounded-xl text-white font-semibold inline-flex items-center gap-2 shadow-lg shadow-primary/30 transition-transform hover:-translate-y-0.5"
               style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
             >
               <ShoppingBag className="h-5 w-5" />
@@ -246,32 +246,33 @@ export default function OrdersPage() {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={order.id} className="bg-slate-900/90 backdrop-blur-sm rounded-xl shadow-xl shadow-red-600/30 border border-slate-700 overflow-hidden hover:shadow-lg transition-all">
+                <div
+                  key={order.id}
+                  className="bg-white rounded-2xl border border-slate-200 shadow-[0_24px_60px_rgba(15,23,42,0.08)] overflow-hidden transition-shadow hover:shadow-[0_30px_80px_rgba(15,23,42,0.12)]"
+                >
                   {/* Order Header */}
-                  <div className="bg-gradient-to-r from-slate-800 to-slate-800 px-6 py-4 border-b border-slate-700">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div>
-                          <h3 className="text-lg font-semibold text-white">
-                            Pedido #{order.id.slice(-8).toUpperCase()}
-                          </h3>
-                          <p className="text-sm text-yellow-300">
-                            {formatDateTime(order.createdAt)}
-                          </p>
-                        </div>
+                  <div className="bg-gradient-to-r from-white to-slate-50 px-6 py-5 border-b border-slate-100">
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-slate-900">
+                          Pedido #{order.id.slice(-8).toUpperCase()}
+                        </h3>
+                        <p className="text-sm text-slate-500">
+                          {formatDateTime(order.createdAt)}
+                        </p>
                       </div>
-                      
-                      <div className="flex items-center space-x-4">
-                        <div className={`flex items-center px-3 py-1 rounded-full text-sm font-medium ${statusInfo.color}`}>
-                          <StatusIcon className="h-4 w-4 mr-1" />
+
+                      <div className="flex flex-wrap items-center gap-4">
+                        <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold ${statusInfo.color}`}>
+                          <StatusIcon className="h-4 w-4" />
                           {statusInfo.label}
                         </div>
-                        
+
                         <div className="text-right">
-                          <p className="text-lg font-bold text-white">
+                          <p className="text-xl font-bold text-slate-900">
                             {formatPrice(order.total)}
                           </p>
-                          <p className="text-sm text-yellow-300">
+                          <p className="text-sm text-slate-500">
                             {order.items.length} producto{order.items.length > 1 ? 's' : ''}
                           </p>
                         </div>
@@ -280,29 +281,29 @@ export default function OrdersPage() {
                   </div>
 
                   {/* Order Content */}
-                  <div className="p-6">
+                  <div className="p-6 bg-white">
                     {/* Items */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-medium text-white mb-3">Productos</h4>
-                        <div className="space-y-3">
+                        <h4 className="font-semibold text-slate-900 mb-4">Productos</h4>
+                        <div className="space-y-4">
                           {order.items.map((item, index) => (
-                            <div key={index} className="flex items-center space-x-3">
+                            <div key={index} className="flex items-center gap-4">
                               {item.imagen && (
                                 <img
                                   loading="lazy"
                                   src={item.imagen}
                                   alt={item.nombre}
-                                  className="h-12 w-12 object-cover rounded"
+                                  className="h-14 w-14 object-cover rounded-xl border border-slate-100"
                                 />
                               )}
                               <div className="flex-1">
-                                <p className="font-medium text-white">{item.nombre}</p>
-                                <p className="text-sm text-yellow-300">
+                                <p className="font-medium text-slate-900">{item.nombre}</p>
+                                <p className="text-sm text-slate-500">
                                   Cantidad: {item.cantidad} × {formatPrice(item.precio)}
                                 </p>
                               </div>
-                              <p className="font-medium text-white">
+                              <p className="font-semibold text-slate-900">
                                 {formatPrice(item.precio * item.cantidad)}
                               </p>
                             </div>
@@ -311,47 +312,46 @@ export default function OrdersPage() {
                       </div>
 
                       <div>
-                        <h4 className="font-medium text-white mb-3">Información de Envío</h4>
-                        <div className="text-sm text-yellow-300 space-y-1">
-                          <p><span className="font-medium">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
-                          <p><span className="font-medium">Email:</span> {order.shippingAddress.email}</p>
-                          <p><span className="font-medium">Teléfono:</span> {order.shippingAddress.phone}</p>
-                          <p><span className="font-medium">Dirección:</span> {order.shippingAddress.street}</p>
-                          <p><span className="font-medium">Ciudad:</span> {order.shippingAddress.city}, {order.shippingAddress.region}</p>
-                          <p><span className="font-medium">Código Postal:</span> {order.shippingAddress.postalCode}</p>
+                        <h4 className="font-semibold text-slate-900 mb-4">Información de envío</h4>
+                        <div className="text-sm text-slate-600 space-y-1">
+                          <p><span className="font-semibold text-slate-900">Nombre:</span> {order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
+                          <p><span className="font-semibold text-slate-900">Email:</span> {order.shippingAddress.email}</p>
+                          <p><span className="font-semibold text-slate-900">Teléfono:</span> {order.shippingAddress.phone}</p>
+                          <p><span className="font-semibold text-slate-900">Dirección:</span> {order.shippingAddress.street}</p>
+                          <p><span className="font-semibold text-slate-900">Ciudad:</span> {order.shippingAddress.city}, {order.shippingAddress.region}</p>
+                          <p><span className="font-semibold text-slate-900">Código Postal:</span> {order.shippingAddress.postalCode}</p>
                           {order.trackingNumber && (
-                            <p><span className="font-medium">Seguimiento:</span> {order.trackingNumber}</p>
+                            <p><span className="font-semibold text-slate-900">Seguimiento:</span> {order.trackingNumber}</p>
                           )}
                         </div>
                       </div>
                     </div>
 
                     {/* Actions */}
-                    <div className="mt-6 pt-4 border-t border-yellow-300/30">
-                      <div className="flex items-center justify-between">
-                        <div className="flex space-x-3">
-                          <Link
-                            href={`/chat/${order.id}`}
-                            className="flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                          >
-                            <MessageSquare className="h-4 w-4 mr-2" />
-                            Estado del Pedido
-                          </Link>
-                          
-                          {order.status === 'shipped' && order.trackingNumber && (
-                            <button
-                              onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
-                              className="flex items-center px-4 py-2 border border-yellow-300/40 text-yellow-300 rounded-lg hover:bg-slate-900 transition-colors"
-                            >
-                              <Truck className="h-4 w-4 mr-2" />
-                              Rastrear Envío
-                            </button>
-                          )}
-                        </div>
+                    <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                      <div className="flex flex-wrap gap-3">
+                        <Link
+                          href={`/chat/${order.id}`}
+                          className="flex items-center gap-2 px-4 py-2 rounded-xl text-white font-medium shadow-lg shadow-primary/30"
+                          style={{ background: 'linear-gradient(to right, var(--primary), var(--primary-hover))' }}
+                        >
+                          <MessageSquare className="h-4 w-4" />
+                          Estado del Pedido
+                        </Link>
 
-                        <div className="text-sm text-yellow-300">
-                          Última actualización: {formatDate(order.updatedAt)}
-                        </div>
+                        {order.status === 'shipped' && order.trackingNumber && (
+                          <button
+                            onClick={() => window.open(`https://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=${order.trackingNumber}`, '_blank')}
+                            className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-50 transition-colors"
+                          >
+                            <Truck className="h-4 w-4" />
+                            Rastrear Envío
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="text-sm text-slate-500">
+                        Última actualización: {formatDate(order.updatedAt)}
                       </div>
                     </div>
 
