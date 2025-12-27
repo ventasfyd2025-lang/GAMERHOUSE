@@ -30,7 +30,7 @@ const db = admin.firestore();
 
 async function createAdminUser() {
   try {
-    const email = 'ventas.fyd2025@gmail.com';
+    const email = 'Ventas.gamerhouse2025@gmail.com';
     const password = '80426674011';
     const firstName = 'Administrador';
     const lastName = 'GAMERHOUSE';

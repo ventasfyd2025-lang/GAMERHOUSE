@@ -9,7 +9,7 @@ const getResend = () => {
   return new Resend(process.env.RESEND_API_KEY);
 };
 
-const DEFAULT_RECIPIENT = 'ventas.fyd2025@gmail.com';
+const DEFAULT_RECIPIENT = 'Ventas.gamerhouse2025@gmail.com';
 
 // ⚠️ SEGURIDAD: Token secreto para proteger el endpoint
 // Genera uno seguro y agrégalo en .env: EMAIL_API_SECRET=tu_token_secreto_aqui

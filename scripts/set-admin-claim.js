@@ -32,8 +32,8 @@ async function setAdminClaim() {
   try {
     console.log('🔍 Buscando usuario administrador...');
 
-    // Buscar el usuario con email ventas.fyd2025@gmail.com
-    const email = 'ventas.fyd2025@gmail.com';
+    // Buscar el usuario con email Ventas.gamerhouse2025@gmail.com
+    const email = 'Ventas.gamerhouse2025@gmail.com';
     const userRecord = await auth.getUserByEmail(email);
 
     console.log(`✅ Usuario encontrado: ${userRecord.email}`);
