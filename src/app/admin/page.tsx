@@ -2725,15 +2725,15 @@ export default function AdminPage() {
 
                       {/* Stock List Table */}
                       <div className="max-h-96 overflow-y-auto">
-                        <table className="w-full">
+                        <table className="w-full table-fixed">
                           <thead className="bg-slate-900 sticky top-0">
                             <tr className="text-left text-xs font-semibold text-yellow-300 uppercase">
-                              <th className="px-4 py-2">Producto</th>
-                              <th className="px-4 py-2">Estado</th>
-                              <th className="px-4 py-2">Stock</th>
-                              <th className="px-4 py-2">Mínimo</th>
-                              <th className="px-4 py-2">Nivel</th>
-                              <th className="px-4 py-2">Acciones</th>
+                              <th className="w-2/5 px-4 py-2">Producto</th>
+                              <th className="w-1/5 px-4 py-2">Estado</th>
+                              <th className="w-1/12 px-4 py-2">Stock</th>
+                              <th className="w-1/12 px-4 py-2">Mínimo</th>
+                              <th className="w-1/5 px-4 py-2">Nivel</th>
+                              <th className="w-32 px-4 py-2">Acciones</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-gray-200">
@@ -2745,11 +2745,11 @@ export default function AdminPage() {
 
                               return (
                                 <tr key={product.id} className="hover:bg-slate-900 transition-colors">
-                                  <td className="px-4 py-3">
+                                  <td className="px-4 py-3 align-top">
                                     <div className="font-medium text-white">{product.nombre}</div>
                                     <div className="text-xs text-yellow-300">{product.categoria}</div>
                                   </td>
-                                  <td className="px-4 py-3">
+                                  <td className="px-4 py-3 align-top">
                                     <span className={`inline-flex px-2 py-1 text-xs font-bold rounded-full ${
                                       isOutOfStock
                                         ? 'bg-slate-800 text-pink'
@@ -2760,14 +2760,14 @@ export default function AdminPage() {
                                       {isOutOfStock ? '🔴 Sin Stock' : isCritical ? '🟠 Crítico' : '🟡 Bajo'}
                                     </span>
                                   </td>
-                                  <td className="px-4 py-3">
+                                  <td className="px-4 py-3 text-center">
                                     <span className={`font-bold ${
                                       isOutOfStock ? 'text-pink' : isCritical ? 'text-yellow-300' : 'text-yellow-700'
                                     }`}>
                                       {product.stock}
                                     </span>
                                   </td>
-                                  <td className="px-4 py-3">
+                                  <td className="px-4 py-3 text-center">
                                     <span className="text-yellow-300">{minStock}</span>
                                   </td>
                                   <td className="px-4 py-3">
@@ -2784,7 +2784,7 @@ export default function AdminPage() {
                                     </div>
                                   </td>
                                   <td className="px-4 py-3">
-                                    <div className="flex space-x-1">
+                                    <div className="flex flex-wrap gap-2">
                                       <button
                                         onClick={() => {
                                           const newStock = prompt(`Nuevo stock para "${product.nombre}":`, product.stock.toString());
@@ -3100,10 +3100,10 @@ export default function AdminPage() {
 
             <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_25px_70px_-55px_rgba(15,23,42,0.35)] overflow-hidden">
               <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full table-fixed divide-y divide-gray-200">
                   <thead className="bg-slate-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-12 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         <input
                           type="checkbox"
                           checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
@@ -3117,19 +3117,19 @@ export default function AdminPage() {
                           className="rounded border-yellow-300/40"
                         />
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-2/5 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Producto
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-1/6 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Precio
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-1/6 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Stock
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-1/6 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Categoría
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                      <th className="w-40 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         Acciones
                       </th>
                     </tr>
@@ -3137,7 +3137,7 @@ export default function AdminPage() {
                   <tbody className="divide-y divide-slate-100 bg-white">
                     {getFilteredProducts().map((product) => (
                       <tr key={product.id}>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-4 py-4 align-top">
                           <input
                             type="checkbox"
                             checked={selectedProducts.includes(product.id)}
@@ -3145,7 +3145,7 @@ export default function AdminPage() {
                             className="rounded border-yellow-300/40"
                           />
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-4 py-4 align-top">
                           <div className="flex items-center">
                             <div className="h-10 w-10 flex-shrink-0 mr-4">
                               {product.imagen ? (
@@ -3184,10 +3184,10 @@ export default function AdminPage() {
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
+                        <td className="px-4 py-4 text-sm text-white">
                           {formatPrice(product.precio)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-4 py-4">
                           <span className={`text-sm font-medium ${
                             product.stock > 10 ? 'text-success' :
                             product.stock > 0 ? 'text-yellow-600' : 'text-pink'
@@ -3195,22 +3195,24 @@ export default function AdminPage() {
                             {product.stock}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white capitalize">
+                        <td className="px-4 py-4 text-sm text-white capitalize">
                           {product.categoria}
                         </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2" onClick={(event) => event.stopPropagation()}>
-                          <button
-                            onClick={() => editProduct(product)}
-                            className="hover:opacity-80 transition-opacity"
-                          >
-                            Editar
-                          </button>
-                          <button
-                            onClick={() => deleteProduct(product.id)}
-                            className="hover:opacity-80 transition-opacity"
-                          >
-                            Eliminar
-                          </button>
+                              <td className="px-4 py-4 text-sm font-medium" onClick={(event) => event.stopPropagation()}>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              onClick={() => editProduct(product)}
+                              className="rounded-full border border-slate-300 px-3 py-1 text-xs hover:bg-slate-100 text-slate-800"
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={() => deleteProduct(product.id)}
+                              className="rounded-full border border-red-200 px-3 py-1 text-xs text-red-600 hover:bg-red-50"
+                            >
+                              Eliminar
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
