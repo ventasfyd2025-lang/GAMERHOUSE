@@ -1,12 +1,28 @@
 'use client';
 
+import { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
-import { Minus, Plus, Trash2, ShoppingBag, ShoppingCart, Package, CreditCard, Trash } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, ShoppingCart, Package, CreditCard, Trash, XCircle } from 'lucide-react';
 
 export default function CartPageClient() {
-  const { items, updateQuantity, removeItem, clearCart, getTotalPrice } = useCart();
+  const {
+    items,
+    updateQuantity,
+    removeItem,
+    clearCart,
+    getSubtotal,
+    getTotalDiscount,
+    getTotalPrice,
+    applyDiscount,
+    removeDiscount,
+    appliedDiscount,
+    discountsByProduct,
+    discountLoading
+  } = useCart();
+
+  const [discountCode, setDiscountCode] = useState('');
 
 
   const formatPrice = (price: number) => {
@@ -16,6 +32,11 @@ export default function CartPageClient() {
     }).format(price);
   };
 
+  const subtotal = getSubtotal();
+  const totalDiscount = getTotalDiscount();
+  const finalTotal = getTotalPrice();
+  const hasDiscount = totalDiscount > 0;
+
   const handleQuantityChange = (productId: string, newQuantity: number) => {
     if (newQuantity <= 0) {
       removeItem(productId);
@@ -23,6 +44,25 @@ export default function CartPageClient() {
       updateQuantity(productId, newQuantity);
     }
   };
+
+  const handleDiscountSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const applied = await applyDiscount(discountCode);
+    if (applied) {
+      setDiscountCode('');
+    }
+  };
+
+  const handleRemoveDiscount = () => {
+    removeDiscount();
+    setDiscountCode('');
+  };
+
+  const discountLabel = appliedDiscount
+    ? appliedDiscount.tipo === 'porcentaje'
+      ? `-${appliedDiscount.descuento}%`
+      : `-${formatPrice(appliedDiscount.descuento)}`
+    : null;
 
 
   if (items.length === 0) {
@@ -75,8 +115,16 @@ export default function CartPageClient() {
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="space-y-4">
-            {items.map((item) => (
-              <div key={item.id} className="modern-card p-5">
+            {items.map((item) => {
+              const productDiscountTotal = discountsByProduct[item.productId] || 0;
+              const quantity = Math.max(item.cantidad, 1);
+              const unitDiscount = productDiscountTotal > 0 ? productDiscountTotal / quantity : 0;
+              const finalUnitPrice = Math.max(item.precio - unitDiscount, 0);
+              const originalTotal = item.precio * item.cantidad;
+              const finalItemTotal = Math.max(originalTotal - productDiscountTotal, 0);
+
+              return (
+                <div key={item.id} className="modern-card p-5">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                   <div className="relative h-24 w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-24 sm:w-24">
                     {item.imagen ? (
@@ -102,7 +150,17 @@ export default function CartPageClient() {
                       {item.nombre}
                     </Link>
                     {item.sku && <p className="text-xs uppercase tracking-[0.35em] text-slate-500">SKU {item.sku}</p>}
-                    <p className="text-sm font-medium text-slate-600">{formatPrice(item.precio)} c/u</p>
+                    <div className="text-sm text-slate-600 space-y-1">
+                      {unitDiscount > 0 ? (
+                        <>
+                          <p className="line-through text-slate-400">{formatPrice(item.precio)} c/u</p>
+                          <p className="font-semibold text-slate-900">{formatPrice(finalUnitPrice)} c/u</p>
+                          <p className="text-emerald-600 font-medium">Ahorro {formatPrice(unitDiscount)} por unidad</p>
+                        </>
+                      ) : (
+                        <p className="font-semibold text-slate-900">{formatPrice(item.precio)} c/u</p>
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex w-full items-center justify-between gap-4 sm:w-auto">
@@ -125,11 +183,19 @@ export default function CartPageClient() {
                         <Plus className="h-4 w-4" />
                       </button>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right min-w-[120px]">
                       <p className="text-sm text-slate-400">Total</p>
-                      <p className="text-lg font-semibold text-slate-900">
-                        {formatPrice(item.precio * item.cantidad)}
-                      </p>
+                      {productDiscountTotal > 0 ? (
+                        <div className="space-y-1">
+                          <p className="text-sm line-through text-slate-400">{formatPrice(originalTotal)}</p>
+                          <p className="text-lg font-semibold text-slate-900">{formatPrice(finalItemTotal)}</p>
+                          <p className="text-xs font-medium text-emerald-600">Ahorro {formatPrice(productDiscountTotal)}</p>
+                        </div>
+                      ) : (
+                        <p className="text-lg font-semibold text-slate-900">
+                          {formatPrice(originalTotal)}
+                        </p>
+                      )}
                     </div>
                     <button
                       onClick={() => removeItem(item.productId)}
@@ -141,7 +207,8 @@ export default function CartPageClient() {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div>
@@ -151,11 +218,62 @@ export default function CartPageClient() {
                 <h2 className="text-xl font-semibold text-slate-900">Total del pedido</h2>
               </div>
 
+              <form onSubmit={handleDiscountSubmit} className="space-y-3">
+                <label className="text-sm font-medium text-slate-700">¿Tienes un cupón?</label>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="text"
+                    value={appliedDiscount ? appliedDiscount.codigo : discountCode}
+                    onChange={(e) => setDiscountCode(e.target.value.toUpperCase())}
+                    placeholder="INGRESA TU CÓDIGO"
+                    disabled={!!appliedDiscount || discountLoading}
+                    className="flex-1 rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-slate-700 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none"
+                  />
+                  {appliedDiscount ? (
+                    <button
+                      type="button"
+                      onClick={handleRemoveDiscount}
+                      className="rounded-2xl border border-rose-200 px-6 py-3 text-sm font-semibold text-rose-600 hover:bg-rose-50 flex items-center justify-center gap-2"
+                    >
+                      <XCircle className="h-4 w-4" />
+                      Quitar cupón
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={!discountCode || discountLoading}
+                      className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:opacity-60"
+                    >
+                      {discountLoading ? 'Validando...' : 'Aplicar'}
+                    </button>
+                  )}
+                </div>
+
+                {appliedDiscount && (
+                  <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <p className="font-semibold text-emerald-800">Cupón {appliedDiscount.codigo}</p>
+                      <p className="text-xs">{discountLabel} aplicado en productos seleccionados</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs uppercase tracking-widest text-emerald-600">Ahorro</p>
+                      <p className="text-base font-semibold">{formatPrice(totalDiscount)}</p>
+                    </div>
+                  </div>
+                )}
+              </form>
+
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-slate-900">{formatPrice(getTotalPrice())}</span>
+                  <span className="font-semibold text-slate-900">{formatPrice(subtotal)}</span>
                 </div>
+                {hasDiscount && (
+                  <div className="flex items-center justify-between text-sm text-emerald-600">
+                    <span>Descuento aplicado</span>
+                    <span className="font-semibold">- {formatPrice(totalDiscount)}</span>
+                  </div>
+                )}
                 <div className="flex items-center justify-between text-sm text-slate-600">
                   <span>Envío estimado</span>
                   <span className="font-semibold text-slate-900">Se calcula en checkout</span>
@@ -163,7 +281,7 @@ export default function CartPageClient() {
                 <div className="h-px w-full bg-slate-100" />
                 <div className="flex items-center justify-between">
                   <span className="text-base font-semibold text-slate-900">Total</span>
-                  <span className="text-2xl font-bold text-slate-900">{formatPrice(getTotalPrice())}</span>
+                  <span className="text-2xl font-bold text-slate-900">{formatPrice(finalTotal)}</span>
                 </div>
               </div>
 

@@ -1,20 +1,97 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { CartItem } from '@/types';
+import { CartItem, Discount } from '@/types';
 import { useStockManager } from './useStockManager';
 import { useNotification } from '@/context/NotificationContext';
 import { useUserAuth } from './useUserAuth';
 import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { useDiscounts } from './useDiscounts';
+
+const sanitizeDiscountMap = (raw: unknown): Record<string, number> => {
+  if (!raw || typeof raw !== 'object') {
+    return {};
+  }
+
+  return Object.entries(raw as Record<string, unknown>).reduce((acc, [productId, value]) => {
+    const numericValue = typeof value === 'number' ? value : Number(value);
+    if (!isNaN(numericValue)) {
+      acc[productId] = Math.round(numericValue * 100) / 100;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+};
+
+const sanitizeStoredDiscount = (raw: unknown): Discount | null => {
+  if (!raw || typeof raw !== 'object') {
+    return null;
+  }
+
+  const data = raw as Partial<Discount>;
+  if (!data.codigo || typeof data.codigo !== 'string') {
+    return null;
+  }
+
+  if (typeof data.descuento !== 'number' || !data.tipo || (data.tipo !== 'porcentaje' && data.tipo !== 'fijo')) {
+    return null;
+  }
+
+  return {
+    id: typeof data.id === 'string' ? data.id : 'local',
+    codigo: data.codigo,
+    descripcion: typeof data.descripcion === 'string' ? data.descripcion : undefined,
+    descuento: data.descuento,
+    tipo: data.tipo,
+    productosAplicables: Array.isArray(data.productosAplicables)
+      ? data.productosAplicables.filter((id): id is string => typeof id === 'string')
+      : [],
+    fechaInicio: typeof data.fechaInicio === 'string' ? data.fechaInicio : '',
+    fechaFin: typeof data.fechaFin === 'string' ? data.fechaFin : '',
+    activo: data.activo ?? true,
+    createdAt: typeof data.createdAt === 'string' ? data.createdAt : undefined,
+    updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : undefined
+  };
+};
+
+const formatCurrencyCLP = (value: number) => {
+  return new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP'
+  }).format(value);
+};
 
 export function useCartState() {
   const [items, setItems] = useState<CartItem[]>([]);
   const [reservedOrderId, setReservedOrderId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [appliedDiscount, setAppliedDiscount] = useState<Discount | null>(null);
+  const [discountsByProduct, setDiscountsByProduct] = useState<Record<string, number>>({});
   const { reserveStock, releaseStock, confirmSale, loading: stockLoading } = useStockManager();
   const { addNotification } = useNotification();
   const { currentUser } = useUserAuth();
+  const { validateDiscount, calculateDiscount, normalizeCode, loading: discountLoading } = useDiscounts();
+
+  const buildDiscountMap = useCallback((cartItems: CartItem[], discount: Discount | null) => {
+    if (!discount) {
+      return {};
+    }
+
+    return cartItems.reduce((acc, item) => {
+      const unitDiscount = calculateDiscount(item.productId, item.precio, discount);
+      if (unitDiscount > 0) {
+        const totalDiscount = Math.round(unitDiscount * item.cantidad * 100) / 100;
+        acc[item.productId] = totalDiscount;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+  }, [calculateDiscount]);
+
+  const formatDiscountLabel = useCallback((discount: Discount) => {
+    return discount.tipo === 'porcentaje'
+      ? `-${discount.descuento}%`
+      : `-${formatCurrencyCLP(discount.descuento)}`;
+  }, []);
 
   // Load cart from Firebase or localStorage
   useEffect(() => {
@@ -29,26 +106,46 @@ export function useCartState() {
           const cartDoc = await getDoc(cartRef);
 
           if (cartDoc.exists()) {
-            setItems(cartDoc.data().items || []);
+            const data = cartDoc.data();
+            setItems(data.items || []);
+            setAppliedDiscount(sanitizeStoredDiscount(data.appliedDiscount) || null);
+            setDiscountsByProduct(sanitizeDiscountMap(data.discountsByProduct));
           } else {
             setItems([]);
+            setAppliedDiscount(null);
+            setDiscountsByProduct({});
           }
         } else {
           // Usuario no autenticado o invitado - cargar desde localStorage
           const savedCart = localStorage.getItem('cart');
           if (savedCart) {
             try {
-              setItems(JSON.parse(savedCart));
-            } catch (error) {
+              const parsed = JSON.parse(savedCart);
+              if (Array.isArray(parsed)) {
+                setItems(parsed);
+                setAppliedDiscount(null);
+                setDiscountsByProduct({});
+              } else {
+                setItems(parsed.items || []);
+                setAppliedDiscount(sanitizeStoredDiscount(parsed.appliedDiscount));
+                setDiscountsByProduct(sanitizeDiscountMap(parsed.discountsByProduct));
+              }
+            } catch {
               setItems([]);
+              setAppliedDiscount(null);
+              setDiscountsByProduct({});
             }
           } else {
             setItems([]);
+            setAppliedDiscount(null);
+            setDiscountsByProduct({});
           }
         }
       } catch (error) {
         console.error('Error loading cart:', error);
         setItems([]);
+        setAppliedDiscount(null);
+        setDiscountsByProduct({});
       } finally {
         setIsLoading(false);
       }
@@ -70,11 +167,17 @@ export function useCartState() {
           const cartRef = doc(db, 'carts', userId);
           await setDoc(cartRef, {
             items,
+            appliedDiscount: appliedDiscount || null,
+            discountsByProduct,
             updatedAt: new Date()
           });
         } else {
           // Usuario no autenticado - guardar en localStorage
-          localStorage.setItem('cart', JSON.stringify(items));
+          localStorage.setItem('cart', JSON.stringify({
+            items,
+            appliedDiscount,
+            discountsByProduct
+          }));
         }
       } catch (error) {
         console.error('Error saving cart:', error);
@@ -82,7 +185,28 @@ export function useCartState() {
     };
 
     saveCart();
-  }, [items, currentUser, isLoading]);
+  }, [items, currentUser, isLoading, appliedDiscount, discountsByProduct]);
+
+  // Recalcular descuentos cuando el carrito cambia
+  useEffect(() => {
+    if (!appliedDiscount) {
+      if (Object.keys(discountsByProduct).length > 0) {
+        setDiscountsByProduct({});
+      }
+      return;
+    }
+
+    const updatedMap = buildDiscountMap(items, appliedDiscount);
+    const currentKeys = Object.keys(discountsByProduct);
+    const newKeys = Object.keys(updatedMap);
+    const sameLength = currentKeys.length === newKeys.length;
+    const hasDifferences = !sameLength
+      || currentKeys.some(key => updatedMap[key] !== discountsByProduct[key]);
+
+    if (hasDifferences) {
+      setDiscountsByProduct(updatedMap);
+    }
+  }, [items, appliedDiscount, buildDiscountMap, discountsByProduct]);
 
   const addItem = useCallback((
     productId: string,
@@ -198,6 +322,8 @@ export function useCartState() {
 
   const clearCart = useCallback(async () => {
     setItems([]);
+    setAppliedDiscount(null);
+    setDiscountsByProduct({});
 
     const userId = currentUser && 'uid' in currentUser ? currentUser.uid : null;
 
@@ -215,13 +341,119 @@ export function useCartState() {
     localStorage.removeItem('cart');
   }, [currentUser]);
 
+  const applyDiscount = useCallback(async (code: string) => {
+    if (!code) {
+      addNotification({
+        type: 'warning',
+        title: 'Ingresa un cupón',
+        message: 'Escribe el código que quieres aplicar.',
+        duration: 3000
+      });
+      return false;
+    }
+
+    if (items.length === 0) {
+      addNotification({
+        type: 'warning',
+        title: 'Carrito vacío',
+        message: 'Agrega productos antes de aplicar un cupón.',
+        duration: 3000
+      });
+      return false;
+    }
+
+    if (appliedDiscount) {
+      addNotification({
+        type: 'info',
+        title: 'Cupón ya aplicado',
+        message: 'Quita el cupón actual antes de ingresar uno nuevo.',
+        duration: 3000
+      });
+      return false;
+    }
+
+    if (discountLoading) {
+      return false;
+    }
+
+    const validation = await validateDiscount(code);
+
+    if (!validation.valido || !validation.descuento) {
+      addNotification({
+        type: 'error',
+        title: 'Cupón inválido',
+        message: validation.mensaje || 'Revisa el código e inténtalo nuevamente.',
+        duration: 3500
+      });
+      return false;
+    }
+
+    const normalizedDiscount: Discount = {
+      ...validation.descuento,
+      codigo: normalizeCode(validation.descuento.codigo)
+    };
+
+    const discountMap = buildDiscountMap(items, normalizedDiscount);
+
+    if (Object.keys(discountMap).length === 0) {
+      addNotification({
+        type: 'warning',
+        title: 'Cupón sin coincidencias',
+        message: 'El código no aplica a los productos de tu carrito.',
+        duration: 3500
+      });
+      return false;
+    }
+
+    setAppliedDiscount(normalizedDiscount);
+    setDiscountsByProduct(discountMap);
+
+    addNotification({
+      type: 'success',
+      title: 'Cupón aplicado',
+      message: `${normalizedDiscount.codigo} (${formatDiscountLabel(normalizedDiscount)}) activado correctamente.`,
+      duration: 3500
+    });
+
+    return true;
+  }, [addNotification, items, appliedDiscount, discountLoading, validateDiscount, normalizeCode, buildDiscountMap, formatDiscountLabel]);
+
+  const removeDiscount = useCallback(() => {
+    if (!appliedDiscount && Object.keys(discountsByProduct).length === 0) {
+      return;
+    }
+
+    const previousCode = appliedDiscount?.codigo;
+    setAppliedDiscount(null);
+    setDiscountsByProduct({});
+
+    addNotification({
+      type: 'info',
+      title: 'Cupón eliminado',
+      message: previousCode ? `Se quitó ${previousCode} del carrito.` : 'Se eliminaron los descuentos aplicados.',
+      duration: 3000
+    });
+  }, [appliedDiscount, discountsByProduct, addNotification]);
+
   const getTotalItems = useCallback(() => {
     return items.reduce((total, item) => total + item.cantidad, 0);
   }, [items]);
 
-  const getTotalPrice = useCallback(() => {
+  const getSubtotal = useCallback(() => {
     return items.reduce((total, item) => total + (item.precio * item.cantidad), 0);
   }, [items]);
+
+  const getTotalDiscount = useCallback(() => {
+    const total = Object.values(discountsByProduct).reduce((sum, amount) => sum + amount, 0);
+    return Math.round(total * 100) / 100;
+  }, [discountsByProduct]);
+
+  const getTotalPrice = useCallback(() => {
+    const subtotal = getSubtotal();
+    const discountTotal = getTotalDiscount();
+    const finalAmount = subtotal - discountTotal;
+    return finalAmount > 0 ? finalAmount : 0;
+  }, [getSubtotal, getTotalDiscount]);
 
   // Reserve stock during checkout
   const reserveCartStock = useCallback(async (orderId: string) => {
@@ -284,8 +516,15 @@ export function useCartState() {
     removeItem,
     updateQuantity,
     clearCart,
+    applyDiscount,
+    removeDiscount,
     getTotalItems,
+    getSubtotal,
+    getTotalDiscount,
     getTotalPrice,
+    appliedDiscount,
+    discountsByProduct,
+    discountLoading,
     reserveCartStock,
     releaseCartStock,
     confirmCartSale,

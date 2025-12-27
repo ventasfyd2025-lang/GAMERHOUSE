@@ -38,6 +38,28 @@ export interface CartItem {
   sku?: string;
 }
 
+export type DiscountType = 'porcentaje' | 'fijo';
+
+export interface Discount {
+  id: string;
+  codigo: string;
+  descripcion?: string;
+  descuento: number;
+  tipo: DiscountType;
+  productosAplicables: string[];
+  fechaInicio: string;
+  fechaFin: string;
+  activo: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface DiscountValidation {
+  valido: boolean;
+  mensaje?: string;
+  descuento?: Discount;
+}
+
 export interface Subcategory {
   id: string;
   nombre: string;

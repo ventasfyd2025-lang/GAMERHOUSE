@@ -223,6 +223,31 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
+    function validateDiscountDoc(data) {
+      return data.codigo is string
+        && data.codigo.size() > 0
+        && data.descuento is number
+        && data.descuento > 0
+        && data.tipo in ['porcentaje', 'fijo']
+        && data.productosAplicables is list
+        && data.productosAplicables.size() > 0
+        && data.productosAplicables[0] is string
+        && data.fechaInicio is timestamp
+        && data.fechaFin is timestamp
+        && data.fechaInicio < data.fechaFin
+        && data.activo is bool
+        && (!data.keys().hasAny(['createdAt']) || data.createdAt is timestamp)
+        && (!data.keys().hasAny(['updatedAt']) || data.updatedAt is timestamp)
+        && (!data.keys().hasAny(['descripcion']) || data.descripcion is string);
+    }
+
+    match /discounts/{discountId} {
+      allow read: if true;
+      allow create: if isAdmin() && validateDiscountDoc(request.resource.data);
+      allow update: if isAdmin() && validateDiscountDoc(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
