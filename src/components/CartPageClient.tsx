@@ -125,7 +125,7 @@ export default function CartPageClient() {
 
               return (
                 <div key={item.id} className="modern-card p-5">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
                   <div className="relative h-24 w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-24 sm:w-24">
                     {item.imagen ? (
                       <Image
@@ -163,8 +163,8 @@ export default function CartPageClient() {
                     </div>
                   </div>
 
-                  <div className="flex w-full items-center justify-between gap-4 sm:w-auto">
-                    <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1">
+                  <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
+                    <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1 self-start sm:self-auto">
                       <button
                         onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
                         className="flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50"
@@ -183,7 +183,7 @@ export default function CartPageClient() {
                         <Plus className="h-4 w-4" />
                       </button>
                     </div>
-                    <div className="text-right min-w-[120px]">
+                    <div className="text-right min-w-[160px]">
                       <p className="text-sm text-slate-400">Total</p>
                       {productDiscountTotal > 0 ? (
                         <div className="space-y-1">
@@ -198,8 +198,9 @@ export default function CartPageClient() {
                       )}
                     </div>
                     <button
+                      type="button"
                       onClick={() => removeItem(item.productId)}
-                      className="rounded-full border border-slate-200 p-2 text-slate-400 transition hover:border-rose-200 hover:text-rose-600"
+                      className="self-end rounded-full border border-slate-200 p-2 text-slate-400 transition hover:border-rose-200 hover:text-rose-600"
                       aria-label="Eliminar del carrito"
                     >
                       <Trash2 className="h-5 w-5" />
