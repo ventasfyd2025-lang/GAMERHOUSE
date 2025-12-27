@@ -577,7 +577,7 @@ export default function AdminPage() {
   const [discounts, setDiscounts] = useState<Discount[]>([]);
   const [discountsLoading, setDiscountsLoading] = useState(true);
   const [discountForm, setDiscountForm] = useState<DiscountFormState>(() => createEmptyDiscountForm());
-  const [showDiscountModal, setShowDiscountModal] = useState(false);
+  const [showDiscountForm, setShowDiscountForm] = useState(false);
   const [savingDiscount, setSavingDiscount] = useState(false);
   const [selectedProductOption, setSelectedProductOption] = useState('');
   const [selectedCategoryOption, setSelectedCategoryOption] = useState('');
@@ -653,15 +653,15 @@ export default function AdminPage() {
     return () => unsubscribe();
   }, [addNotification]);
 
-  const handleOpenDiscountModal = () => {
+  const handleOpenDiscountForm = () => {
     setDiscountForm(createEmptyDiscountForm());
     setSelectedProductOption('');
     setSelectedCategoryOption('');
-    setShowDiscountModal(true);
+    setShowDiscountForm(true);
   };
 
-  const handleCloseDiscountModal = () => {
-    setShowDiscountModal(false);
+  const handleCloseDiscountForm = () => {
+    setShowDiscountForm(false);
     setDiscountForm(createEmptyDiscountForm());
     setSelectedProductOption('');
     setSelectedCategoryOption('');
@@ -683,7 +683,7 @@ export default function AdminPage() {
     });
     setSelectedProductOption('');
     setSelectedCategoryOption('');
-    setShowDiscountModal(true);
+    setShowDiscountForm(true);
   };
 
   const handleSaveDiscount = async () => {
@@ -755,7 +755,7 @@ export default function AdminPage() {
         await setDoc(newDiscountRef, { ...payload, createdAt: serverTimestamp() });
         addNotification({ type: 'success', title: 'Cupón creado', message: `${codigo} quedó disponible de inmediato.` });
       }
-      handleCloseDiscountModal();
+      handleCloseDiscountForm();
     } catch (error) {
       console.error('Error saving discount:', error);
       addNotification({ type: 'error', title: 'Error al guardar', message: 'No se pudo guardar el cupón. Intenta nuevamente.' });
@@ -6225,7 +6225,7 @@ export default function AdminPage() {
                   </div>
                 </div>
                 <button
-                  onClick={handleOpenDiscountModal}
+                  onClick={handleOpenDiscountForm}
                   className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
                 >
                   + Nuevo cupón
@@ -6233,27 +6233,274 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_35px_90px_-55px_rgba(15,23,42,0.45)] p-6">
-              {discountsLoading ? (
-                <div className="p-12 text-center text-slate-500">
-                  <p className="text-sm">Cargando cupones activos...</p>
-                </div>
-              ) : discounts.length === 0 ? (
-                <div className="p-12 text-center space-y-4">
-                  <p className="text-lg font-semibold text-slate-900">No hay descuentos configurados</p>
-                  <p className="text-sm text-slate-500 max-w-md mx-auto">
-                    Crea tu primer cupón para ofrecer descuentos en productos específicos o campañas de temporada.
-                  </p>
+            {showDiscountForm && (
+              <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_35px_90px_-55px_rgba(15,23,42,0.3)] p-6">
+                <div className="flex flex-col gap-2 border-b border-slate-100 pb-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                      {discountForm.id ? 'Editar cupón' : 'Nuevo cupón'}
+                    </p>
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {discountForm.id ? `Actualizar ${discountForm.codigo}` : 'Crear cupón'}
+                    </h3>
+                  </div>
                   <button
-                    onClick={handleOpenDiscountModal}
-                    className="inline-flex items-center justify-center rounded-2xl border border-slate-900 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-900 hover:text-white"
+                    type="button"
+                    onClick={handleCloseDiscountForm}
+                    className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-slate-300"
                   >
-                    Crear cupón
+                    ← Volver a la lista
                   </button>
                 </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-slate-200">
+
+                <form
+                  className="py-6 space-y-6"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSaveDiscount();
+                  }}
+                >
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Código del cupón
+                      </label>
+                      <input
+                        type="text"
+                        value={discountForm.codigo}
+                        onChange={(e) => setDiscountForm(prev => ({ ...prev, codigo: e.target.value.toUpperCase() }))}
+                        placeholder="EJEMPLO20"
+                        className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Tipo de descuento
+                      </label>
+                      <select
+                        value={discountForm.tipo}
+                        onChange={(e) => setDiscountForm(prev => ({ ...prev, tipo: e.target.value as DiscountType }))}
+                        className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      >
+                        <option value="porcentaje">Porcentaje (%)</option>
+                        <option value="fijo">Monto fijo (CLP)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Valor
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={discountForm.descuento}
+                        onChange={(e) => setDiscountForm(prev => ({ ...prev, descuento: e.target.value }))}
+                        placeholder={discountForm.tipo === 'porcentaje' ? 'Ej: 20 para 20%' : 'Ej: 5000'}
+                        className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Vigencia (inicio)
+                      </label>
+                      <input
+                        type="datetime-local"
+                        value={discountForm.fechaInicio}
+                        onChange={(e) => setDiscountForm(prev => ({ ...prev, fechaInicio: e.target.value }))}
+                        className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Vigencia (término)
+                      </label>
+                      <input
+                        type="datetime-local"
+                        value={discountForm.fechaFin}
+                        onChange={(e) => setDiscountForm(prev => ({ ...prev, fechaFin: e.target.value }))}
+                        className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Estado
+                      </label>
+                      <label className="flex items-center gap-2 text-sm text-slate-600">
+                        <input
+                          type="checkbox"
+                          checked={discountForm.activo}
+                          onChange={(e) => setDiscountForm(prev => ({ ...prev, activo: e.target.checked }))}
+                          className="rounded border-slate-300"
+                        />
+                        Cupón activo
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                      Descripción (opcional)
+                    </label>
+                    <textarea
+                      value={discountForm.descripcion}
+                      onChange={(e) => setDiscountForm(prev => ({ ...prev, descripcion: e.target.value }))}
+                      rows={2}
+                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      placeholder="Texto breve que ayude al equipo a recordar el propósito del cupón"
+                    />
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">Agregar producto</label>
+                      <div className="flex gap-2">
+                        <select
+                          value={selectedProductOption}
+                          onChange={(e) => setSelectedProductOption(e.target.value)}
+                          className="flex-1 rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                        >
+                          <option value="">Selecciona un producto</option>
+                          {products.map(product => (
+                            <option key={product.id} value={product.id}>
+                              {product.nombre || product.id}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          onClick={handleAddProductSelection}
+                          className="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-900"
+                        >
+                          Agregar
+                        </button>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1">Se agregará el ID del producto seleccionado.</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">Agregar categoría</label>
+                      <div className="flex gap-2">
+                        <select
+                          value={selectedCategoryOption}
+                          onChange={(e) => setSelectedCategoryOption(e.target.value)}
+                          className="flex-1 rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                        >
+                          <option value="">Selecciona una categoría</option>
+                          {availableCategories.map(category => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          onClick={handleAddCategorySelection}
+                          className="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-900"
+                        >
+                          Agregar
+                        </button>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1">Se incluirán todos los productos que pertenezcan a esa categoría o subcategoría.</p>
+                    </div>
+                  </div>
+
+                  {discountForm.selectedProductIds.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 mb-2">Productos seleccionados</p>
+                      <div className="flex flex-wrap gap-2">
+                        {discountForm.selectedProductIds.map(productId => (
+                          <span key={productId} className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">
+                            {productNameMap.get(productId) || productId}
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveProductSelection(productId)}
+                              className="text-slate-400 hover:text-red-500"
+                              aria-label="Quitar producto del cupón"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {discountForm.selectedCategoryIds.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 mb-2">Categorías seleccionadas</p>
+                      <div className="flex flex-wrap gap-2">
+                        {discountForm.selectedCategoryIds.map(categoryId => (
+                          <span key={categoryId} className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">
+                            {categoryNameMap.get(categoryId) || categoryId}
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveCategorySelection(categoryId)}
+                              className="text-slate-400 hover:text-red-500"
+                              aria-label="Quitar categoría del cupón"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">IDs adicionales (opcional)</label>
+                    <textarea
+                      value={discountForm.productosAplicables}
+                      onChange={(e) => setDiscountForm(prev => ({ ...prev, productosAplicables: e.target.value }))}
+                      rows={3}
+                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
+                      placeholder="Ingresa los IDs separados por coma: prod-123, prod-456"
+                    />
+                    <p className="text-xs text-slate-500 mt-1">Útil para añadir IDs manuales o campañas externas.</p>
+                  </div>
+
+                  <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                    <button
+                      type="button"
+                      onClick={handleCloseDiscountForm}
+                      className="rounded-2xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 hover:border-slate-300"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={savingDiscount}
+                      className="rounded-2xl bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 disabled:opacity-60"
+                    >
+                      {savingDiscount ? 'Guardando...' : 'Guardar cupón'}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {!showDiscountForm && (
+              <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_35px_90px_-55px_rgba(15,23,42,0.45)] p-6">
+                {discountsLoading ? (
+                  <div className="p-12 text-center text-slate-500">
+                    <p className="text-sm">Cargando cupones activos...</p>
+                  </div>
+                ) : discounts.length === 0 ? (
+                  <div className="p-12 text-center space-y-4">
+                    <p className="text-lg font-semibold text-slate-900">No hay descuentos configurados</p>
+                    <p className="text-sm text-slate-500 max-w-md mx-auto">
+                      Crea tu primer cupón para ofrecer descuentos en productos específicos o campañas de temporada.
+                    </p>
+                    <button
+                      onClick={handleOpenDiscountForm}
+                      className="inline-flex items-center justify-center rounded-2xl border border-slate-900 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-900 hover:text-white"
+                    >
+                      Crear cupón
+                    </button>
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-slate-200">
                     <thead>
                       <tr className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                         <th className="px-6 py-3 text-left">Código</th>
@@ -6323,8 +6570,9 @@ export default function AdminPage() {
                     </tbody>
                   </table>
                 </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -6433,255 +6681,6 @@ export default function AdminPage() {
             </div>
           </div>
         )}
-
-        {showDiscountModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[60] p-4">
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl">
-              <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                    {discountForm.id ? 'Editar cupón' : 'Nuevo cupón'}
-                  </p>
-                  <h3 className="text-xl font-bold text-slate-900">
-                    {discountForm.id ? `Actualizar ${discountForm.codigo}` : 'Crear cupón' }
-                  </h3>
-                </div>
-                <button
-                  onClick={handleCloseDiscountModal}
-                  className="text-slate-400 hover:text-slate-900"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <form
-                className="px-6 py-6 space-y-6"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSaveDiscount();
-                }}
-              >
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Código del cupón
-                    </label>
-                    <input
-                      type="text"
-                      value={discountForm.codigo}
-                      onChange={(e) => setDiscountForm(prev => ({ ...prev, codigo: e.target.value.toUpperCase() }))}
-                      placeholder="EJEMPLO20"
-                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Tipo de descuento
-                    </label>
-                    <select
-                      value={discountForm.tipo}
-                      onChange={(e) => setDiscountForm(prev => ({ ...prev, tipo: e.target.value as DiscountType }))}
-                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    >
-                      <option value="porcentaje">Porcentaje (%)</option>
-                      <option value="fijo">Monto fijo (CLP)</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Valor
-                    </label>
-                    <input
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      value={discountForm.descuento}
-                      onChange={(e) => setDiscountForm(prev => ({ ...prev, descuento: e.target.value }))}
-                      placeholder={discountForm.tipo === 'porcentaje' ? 'Ej: 20 para 20%' : 'Ej: 5000'}
-                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Vigencia (inicio)
-                    </label>
-                    <input
-                      type="datetime-local"
-                      value={discountForm.fechaInicio}
-                      onChange={(e) => setDiscountForm(prev => ({ ...prev, fechaInicio: e.target.value }))}
-                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Vigencia (término)
-                    </label>
-                    <input
-                      type="datetime-local"
-                      value={discountForm.fechaFin}
-                      onChange={(e) => setDiscountForm(prev => ({ ...prev, fechaFin: e.target.value }))}
-                      className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
-                      Estado
-                    </label>
-                    <label className="flex items-center gap-2 text-sm text-slate-600">
-                      <input
-                        type="checkbox"
-                        checked={discountForm.activo}
-                        onChange={(e) => setDiscountForm(prev => ({ ...prev, activo: e.target.checked }))}
-                        className="rounded border-slate-300"
-                      />
-                      Cupón activo
-                    </label>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Descripción (opcional)
-                  </label>
-                  <textarea
-                    value={discountForm.descripcion}
-                    onChange={(e) => setDiscountForm(prev => ({ ...prev, descripcion: e.target.value }))}
-                    rows={2}
-                    className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    placeholder="Texto breve que ayude al equipo a recordar el propósito del cupón"
-                  />
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Agregar producto</label>
-                    <div className="flex gap-2">
-                      <select
-                        value={selectedProductOption}
-                        onChange={(e) => setSelectedProductOption(e.target.value)}
-                        className="flex-1 rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                      >
-                        <option value="">Selecciona un producto</option>
-                        {products.map(product => (
-                          <option key={product.id} value={product.id}>
-                            {product.nombre || product.id}
-                          </option>
-                        ))}
-                      </select>
-                      <button
-                        type="button"
-                        onClick={handleAddProductSelection}
-                        className="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-900"
-                      >
-                        Agregar
-                      </button>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">Se agregará el ID del producto seleccionado.</p>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Agregar categoría</label>
-                    <div className="flex gap-2">
-                      <select
-                        value={selectedCategoryOption}
-                        onChange={(e) => setSelectedCategoryOption(e.target.value)}
-                        className="flex-1 rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                      >
-                        <option value="">Selecciona una categoría</option>
-                        {availableCategories.map(category => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                      </select>
-                      <button
-                        type="button"
-                        onClick={handleAddCategorySelection}
-                        className="rounded-2xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-900"
-                      >
-                        Agregar
-                      </button>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">Se incluirán todos los productos que pertenezcan a esa categoría o subcategoría.</p>
-                  </div>
-                </div>
-
-                {discountForm.selectedProductIds.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 mb-2">Productos seleccionados</p>
-                    <div className="flex flex-wrap gap-2">
-                      {discountForm.selectedProductIds.map(productId => (
-                        <span key={productId} className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">
-                          {productNameMap.get(productId) || productId}
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveProductSelection(productId)}
-                            className="text-slate-400 hover:text-red-500"
-                            aria-label="Quitar producto del cupón"
-                          >
-                            ×
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {discountForm.selectedCategoryIds.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 mb-2">Categorías seleccionadas</p>
-                    <div className="flex flex-wrap gap-2">
-                      {discountForm.selectedCategoryIds.map(categoryId => (
-                        <span key={categoryId} className="flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">
-                          {categoryNameMap.get(categoryId) || categoryId}
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveCategorySelection(categoryId)}
-                            className="text-slate-400 hover:text-red-500"
-                            aria-label="Quitar categoría del cupón"
-                          >
-                            ×
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">IDs adicionales (opcional)</label>
-                  <textarea
-                    value={discountForm.productosAplicables}
-                    onChange={(e) => setDiscountForm(prev => ({ ...prev, productosAplicables: e.target.value }))}
-                    rows={3}
-                    className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none"
-                    placeholder="Ingresa los IDs separados por coma: prod-123, prod-456"
-                  />
-                  <p className="text-xs text-slate-500 mt-1">Útil para añadir IDs manuales o campañas externas.</p>
-                </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-                  <button
-                    type="button"
-                    onClick={handleCloseDiscountModal}
-                    className="rounded-2xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 hover:border-slate-300"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={savingDiscount}
-                    className="rounded-2xl bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 disabled:opacity-60"
-                  >
-                    {savingDiscount ? 'Guardando...' : 'Guardar cupón'}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
-
-        
         {showSubcategoryModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-slate-800/70 rounded-lg max-w-md w-full">
