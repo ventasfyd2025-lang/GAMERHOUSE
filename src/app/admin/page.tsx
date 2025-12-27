@@ -2526,33 +2526,6 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex flex-col gap-4 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
-                  <span className="text-red-600 text-lg">⚠️</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-red-800">Limpiar datos de prueba</h3>
-                  <p className="text-sm text-red-600">
-                    Elimina pedidos y chats generados en pruebas para comenzar desde cero.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs text-red-500">
-                  Esta acción no se puede deshacer. Úsala sólo en entornos de desarrollo.
-                </p>
-                <button
-                  type="button"
-                  onClick={handleCleanDemoData}
-                  disabled={cleaningData}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-red-500 px-5 py-2 text-sm font-semibold text-white shadow-lg hover:from-rose-400 hover:to-red-400 disabled:opacity-60"
-                >
-                  {cleaningData ? 'Limpiando...' : 'Eliminar pedidos y chats'}
-                </button>
-              </div>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { label: 'Total Productos', value: stats.totalProducts, icon: '📦' },
