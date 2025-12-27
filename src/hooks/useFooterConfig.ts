@@ -27,7 +27,7 @@ const defaultFooterConfig: FooterConfig = {
   description: 'Tu tienda online de confianza con los mejores productos importados.',
   contact: {
     phone: '+56 9 XXXX XXXX',
-    email: 'Ventas.gamerhouse2025@gmail.com',
+    email: 'contacto@importadorafyd.cl',
     address: 'Santiago, Chile'
   },
   socialMedia: {

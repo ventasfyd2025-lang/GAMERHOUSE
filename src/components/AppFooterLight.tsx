@@ -84,8 +84,8 @@ export default function AppFooterLight() {
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3 group">
                 <Mail className="h-5 w-5 text-gamerhouse-red flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <a href="mailto:Ventas.gamerhouse2025@gmail.com" className="text-slate-500 hover:text-gamerhouse-red transition-colors duration-200">
-                  Ventas.gamerhouse2025@gmail.com
+                <a href="mailto:contacto@gamerhouse.cl" className="text-slate-500 hover:text-gamerhouse-red transition-colors duration-200">
+                  contacto@gamerhouse.cl
                 </a>
               </div>
               <div className="flex items-center gap-3 group">
