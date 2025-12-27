@@ -102,7 +102,7 @@ const statusConfig = {
   },
   shipped: { 
     label: 'Enviado', 
-    color: 'text-yellow-300 bg-slate-800 border-yellow-300-200', 
+    color: 'text-sky-700 bg-sky-50 border-sky-200', 
     icon: TruckIcon,
     description: 'Tu pedido está en camino'
   },
@@ -114,7 +114,7 @@ const statusConfig = {
   },
   cancelled: {
     label: 'Cancelado',
-    color: 'text-pink bg-slate-800 border-slate-700',
+    color: 'text-rose-700 bg-rose-50 border-rose-200',
     icon: XCircleIcon,
     description: 'Este pedido ha sido cancelado'
   },
@@ -341,18 +341,23 @@ export default function ChatPage() {
 
   if (authLoading || orderLoading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600"></div>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-24 w-24 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Pedido no encontrado</h1>
-          <Link href="/mis-pedidos" className="text-red-500 hover:text-red-600">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-slate-50 to-white px-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center space-y-4 shadow-xl shadow-slate-200/60">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+            <ChatBubbleLeftRightIcon className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold text-slate-900">Pedido no encontrado</h1>
+          <p className="text-slate-600">Verifica el enlace o comunícate con soporte si crees que es un error.</p>
+          <Link href="/mis-pedidos" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-secondary transition-colors">
+            <ArrowLeftIcon className="h-4 w-4" />
             Volver a mis pedidos
           </Link>
         </div>
@@ -367,20 +372,20 @@ export default function ChatPage() {
   const StatusIcon = currentStatusConfig.icon;
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white">
       {/* Header */}
-      <div className="bg-slate-900/80 border-b border-yellow-300/30 sticky top-0 z-10">
+      <div className="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <Link 
                 href="/mis-pedidos"
-                className="text-yellow-300 hover:text-yellow-300 transition-colors"
+                className="text-primary hover:text-secondary transition-colors"
               >
                 <ArrowLeftIcon className="h-6 w-6" />
               </Link>
               <div>
-                <h1 className="text-xl font-semibold text-white">
+                <h1 className="text-xl font-semibold text-slate-900">
                   Chat - Pedido #{orderId.slice(-8).toUpperCase()}
                 </h1>
                 <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ${currentStatusConfig.color}`}>
@@ -405,18 +410,18 @@ export default function ChatPage() {
           {/* Timeline & Order Info */}
           <div className="lg:col-span-1 space-y-6">
             {/* Order Timeline */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Estado del Pedido</h3>
+            <div className="bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/60 p-6">
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">Estado del Pedido</h3>
               
               <div className="space-y-4">
                 {timelineSteps.map((step, index) => (
                   <div key={step.key} className="flex items-center">
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                       step.completed 
-                        ? 'bg-red-600 text-white' 
+                        ? 'bg-primary text-white' 
                         : step.current
-                        ? 'bg-orange-100 border-2 border-red-600 text-red-500'
-                        : 'bg-slate-800 text-yellow-300'
+                        ? 'bg-yellow-100 border-2 border-primary text-primary'
+                        : 'bg-slate-100 text-slate-400'
                     }`}>
                       {step.completed ? (
                         <CheckIcon className="h-4 w-4" />
@@ -426,7 +431,7 @@ export default function ChatPage() {
                     </div>
                     <div className="ml-4">
                       <p className={`text-sm font-medium ${
-                        step.completed || step.current ? 'text-white' : 'text-yellow-300'
+                        step.completed || step.current ? 'text-slate-900' : 'text-slate-500'
                       }`}>
                         {step.label}
                       </p>
@@ -436,13 +441,13 @@ export default function ChatPage() {
               </div>
               
               <div className={`mt-4 p-3 rounded-lg border ${currentStatusConfig.color}`}>
-                <p className="text-sm">{currentStatusConfig.description}</p>
+                <p className="text-sm text-slate-700">{currentStatusConfig.description}</p>
               </div>
             </div>
 
             {/* Order Summary */}
-            <div className="bg-slate-900/80 rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Resumen del Pedido</h3>
+            <div className="bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/60 p-6">
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">Resumen del Pedido</h3>
               
               <div className="space-y-3">
                 {order.items.map((item, index) => (
@@ -457,8 +462,8 @@ export default function ChatPage() {
                       />
                     )}
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-white">{item.nombre}</p>
-                      <p className="text-xs text-yellow-300">
+                      <p className="text-sm font-medium text-slate-900">{item.nombre}</p>
+                      <p className="text-xs text-slate-500">
                         {item.cantidad} × {formatPrice(item.precio)}
                       </p>
                     </div>
@@ -477,36 +482,37 @@ export default function ChatPage() {
 
           {/* Chat */}
           <div className="lg:col-span-2">
-            <div className="bg-slate-900/80 rounded-lg shadow-md h-[600px] flex flex-col">
+            <div className="bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/60 h-[600px] flex flex-col">
               {/* Chat Header */}
-              <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-t-lg">
+              <div className="bg-white/90 border-b border-slate-100 rounded-t-2xl p-4">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
-                    <div className="w-10 h-10 bg-slate-900/80 rounded-full flex items-center justify-center">
-                      <ShieldCheckIcon className="h-6 w-6 text-red-500" />
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-primary/10 text-primary border border-primary/20">
+                      <ShieldCheckIcon className="h-6 w-6" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white"></div>
                   </div>
                   <div>
-                    <h3 className="font-semibold">Soporte GAMERHOUSE</h3>
-                    <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <p className="text-sm opacity-90">En línea</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-semibold">Soporte Gamer House</p>
+                    <h3 className="font-semibold text-slate-900">Especialistas en pedidos</h3>
+                    <div className="flex items-center space-x-1 text-slate-500 text-sm">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                      <p>En línea</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-900">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
                 {messages.length === 0 ? (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-red-500" />
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ChatBubbleLeftRightIcon className="h-8 w-8 text-primary" />
                     </div>
-                    <h4 className="font-semibold text-white mb-2">¡Hola! 👋</h4>
-                    <p className="text-sm text-yellow-300 mb-1">Estamos aquí para ayudarte con tu pedido</p>
-                    <p className="text-xs text-yellow-300">Escríbenos cualquier pregunta o inquietud</p>
+                    <h4 className="font-semibold text-slate-900 mb-2">¡Hola! 👋</h4>
+                    <p className="text-sm text-slate-600 mb-1">Estamos aquí para ayudarte con tu pedido</p>
+                    <p className="text-xs text-slate-500">Escríbenos cualquier pregunta o inquietud</p>
                   </div>
                 ) : (
                   messages.map((message) => (
@@ -515,21 +521,21 @@ export default function ChatPage() {
                       className={`flex ${message.isAdmin ? 'justify-start' : 'justify-end'} items-end space-x-2`}
                     >
                       {message.isAdmin && (
-                        <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
-                          <ShieldCheckIcon className="h-4 w-4 text-white" />
+                        <div className="w-8 h-8 bg-primary/15 text-primary border border-primary/30 rounded-full flex items-center justify-center flex-shrink-0">
+                          <ShieldCheckIcon className="h-4 w-4" />
                         </div>
                       )}
                       
                       <div className={`max-w-xs lg:max-w-md ${message.isAdmin ? 'order-2' : 'order-1'}`}>
                         {message.isAdmin && (
-                          <div className="text-xs text-yellow-300 mb-1 px-3">Soporte GAMERHOUSE</div>
+                          <div className="text-xs text-slate-500 mb-1 px-3">Soporte Gamer House</div>
                         )}
                         
                         <div
                           className={`px-4 py-3 rounded-2xl text-sm shadow-sm ${
                             message.isAdmin
-                              ? 'bg-slate-900/80 text-white border border-yellow-300/30'
-                              : 'bg-red-600 text-white'
+                              ? 'bg-white text-slate-900 border border-slate-200'
+                              : 'bg-gradient-to-r from-primary to-secondary text-white shadow-primary/30'
                           }`}
                         >
                           {message.imageUrl ? (
@@ -554,7 +560,7 @@ export default function ChatPage() {
                         </div>
                         
                         <div className={`flex items-center mt-1 px-3 ${message.isAdmin ? 'justify-start' : 'justify-end'}`}>
-                          <span className="text-xs text-yellow-300">
+                          <span className="text-xs text-slate-400">
                             {formatTime(message.timestamp, {
                               hour: '2-digit',
                               minute: '2-digit'
@@ -564,11 +570,11 @@ export default function ChatPage() {
                             <div className="ml-2">
                               {message.read ? (
                                 <div className="flex space-x-1">
-                                  <CheckIcon className="h-3 w-3 text-red-500" />
-                                  <CheckIcon className="h-3 w-3 text-red-500 -ml-1" />
+                                  <CheckIcon className="h-3 w-3 text-primary" />
+                                  <CheckIcon className="h-3 w-3 text-primary -ml-1" />
                                 </div>
                               ) : (
-                                <CheckIcon className="h-3 w-3 text-yellow-300" />
+                                <CheckIcon className="h-3 w-3 text-slate-400" />
                               )}
                             </div>
                           )}
@@ -576,8 +582,8 @@ export default function ChatPage() {
                       </div>
                       
                       {!message.isAdmin && (
-                        <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
-                          <UserIcon className="h-4 w-4 text-white" />
+                        <div className="w-8 h-8 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center flex-shrink-0">
+                          <UserIcon className="h-4 w-4" />
                         </div>
                       )}
                     </div>
@@ -588,7 +594,7 @@ export default function ChatPage() {
               </div>
 
               {/* Input */}
-              <div className="border-t border-yellow-300/30 p-4 bg-slate-900/80 rounded-b-lg">
+              <div className="border-t border-slate-100 p-4 bg-white rounded-b-2xl">
                 {/* Image Preview */}
                 {imagePreview && (
                   <div className="mb-4 relative inline-block">
@@ -600,12 +606,12 @@ export default function ChatPage() {
                       />
                       <button
                         onClick={removeImage}
-                        className="absolute -top-2 -right-2 bg-pink text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-pink transition-colors"
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
                       >
                         <XMarkIcon className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="text-xs text-yellow-300 mt-1">{selectedImage?.name}</p>
+                    <p className="text-xs text-slate-500 mt-1">{selectedImage?.name}</p>
                     {uploadingImage && (
                       <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
@@ -622,7 +628,7 @@ export default function ChatPage() {
                         onChange={(e) => setNewMessage(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder="Escribe tu mensaje sobre el pedido..."
-                        className="w-full resize-none border border-yellow-300/40 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent max-h-24"
+                        className="w-full resize-none border border-slate-200 rounded-2xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent max-h-24"
                         rows={2}
                         disabled={sendingMessage || uploadingImage}
                       />
@@ -639,10 +645,10 @@ export default function ChatPage() {
                         />
                         <label
                           htmlFor="imageUpload"
-                          className={`cursor-pointer p-1 rounded-lg transition-colors ${
+                          className={`cursor-pointer p-1.5 rounded-full transition-colors ${
                             sendingMessage || uploadingImage
-                              ? 'text-yellow-300 cursor-not-allowed'
-                              : 'text-yellow-300 hover:text-red-500 hover:bg-yellow-50'
+                              ? 'text-slate-300 cursor-not-allowed'
+                              : 'text-slate-500 hover:text-primary hover:bg-primary/10'
                           }`}
                         >
                           <PhotoIcon className="h-5 w-5" />
@@ -654,7 +660,7 @@ export default function ChatPage() {
                   <button
                     onClick={sendMessage}
                     disabled={(!newMessage.trim() && !selectedImage) || sendingMessage || uploadingImage}
-                    className="bg-yellow-400 hover:bg-yellow-500 disabled:bg-gray-300 text-white p-3 rounded-xl transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+                    className="bg-gradient-to-r from-primary to-secondary text-slate-900 px-5 py-3 rounded-2xl font-semibold shadow-lg shadow-primary/30 transition-all duration-200 disabled:bg-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:cursor-not-allowed hover:-translate-y-0.5"
                   >
                     {sendingMessage || uploadingImage ? (
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
@@ -664,7 +670,7 @@ export default function ChatPage() {
                   </button>
                 </div>
 
-                <p className="text-xs text-yellow-300 mt-2 text-center">
+                <p className="text-xs text-slate-500 mt-3 text-center">
                   Responderemos lo antes posible durante horario laboral • Puedes enviar imágenes (máx. 5MB)
                 </p>
               </div>
