@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { doc, getDoc, collection, query, where, orderBy, onSnapshot, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, collection, query, where, orderBy, onSnapshot, addDoc, updateDoc, serverTimestamp, type DocumentData, type QueryDocumentSnapshot } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '@/lib/firebase';
 import { Order } from '@/types';
@@ -73,35 +73,88 @@ export default function OrderDetailPage() {
     loadOrder();
   }, [orderId]);
 
-  // Load chat messages
+  // Load chat messages (order-specific + general conversation fallback)
   useEffect(() => {
     if (!orderId) return;
 
-    const messagesQuery = query(
-      collection(db, 'chat_messages'),
+    const chatRef = collection(db, 'chat_messages');
+    const orderMessages = new Map<string, ChatMessage>();
+    const generalMessages = new Map<string, ChatMessage>();
+
+    const parseMessage = (docSnap: QueryDocumentSnapshot<DocumentData>): ChatMessage => {
+      const data = docSnap.data();
+      return {
+        id: docSnap.id,
+        orderId: data.orderId,
+        userId: data.userId,
+        userEmail: data.userEmail,
+        userName: data.userName,
+        message: data.message,
+        isAdmin: Boolean(data.isAdmin),
+        timestamp: data.timestamp?.toDate() || new Date(),
+        read: Boolean(data.read),
+        imageUrl: data.imageUrl,
+        imageFileName: data.imageFileName
+      };
+    };
+
+    const syncMessages = () => {
+      const merged: ChatMessage[] = [];
+      orderMessages.forEach(message => merged.push(message));
+      generalMessages.forEach(message => merged.push(message));
+      merged.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
+      setChatMessages(merged);
+    };
+
+    const orderQuery = query(
+      chatRef,
       where('orderId', '==', orderId),
       orderBy('timestamp', 'asc')
     );
 
-    const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
-      const messages: ChatMessage[] = [];
-
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        const message = {
-          id: doc.id,
-          ...data,
-          timestamp: data.timestamp?.toDate() || new Date()
-        } as ChatMessage;
-
-        messages.push(message);
-      });
-
-      setChatMessages(messages);
+    const unsubscribeOrder = onSnapshot(orderQuery, snapshot => {
+      orderMessages.clear();
+      snapshot.forEach(docSnap => orderMessages.set(docSnap.id, parseMessage(docSnap)));
+      syncMessages();
     });
 
-    return () => unsubscribe();
-  }, [orderId]);
+    let unsubscribeGeneral: (() => void) | undefined;
+
+    if (order?.customerEmail) {
+      const generalQuery = query(
+        chatRef,
+        where('userEmail', '==', order.customerEmail),
+        orderBy('timestamp', 'asc')
+      );
+
+      unsubscribeGeneral = onSnapshot(generalQuery, snapshot => {
+        generalMessages.clear();
+        snapshot.forEach(docSnap => {
+          const data = docSnap.data();
+          const relatedOrderId = data.orderId;
+
+          // Skip messages que ya se capturaron en el query principal o pertenecen a otro pedido
+          if (relatedOrderId && relatedOrderId !== orderId) {
+            return;
+          }
+          if (relatedOrderId === orderId) {
+            return;
+          }
+
+          generalMessages.set(docSnap.id, parseMessage(docSnap));
+        });
+        syncMessages();
+      });
+    } else {
+      generalMessages.clear();
+      syncMessages();
+    }
+
+    return () => {
+      unsubscribeOrder();
+      unsubscribeGeneral?.();
+    };
+  }, [orderId, order?.customerEmail]);
 
   const sendMessage = async () => {
     if ((!newMessage.trim() && !selectedImage) || !user || !order) return;
