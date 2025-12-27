@@ -23,6 +23,12 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    const gallery = product.imagenes && product.imagenes.length > 0
+      ? product.imagenes
+      : product.imagen
+        ? [product.imagen]
+        : undefined;
+
     addItem(
       product.id,
       product.nombre || 'Producto',
@@ -30,7 +36,11 @@ const HorizontalProductCard = ({ product }: { product: ProductWithExtras }) => {
       product.imagen || undefined,
       1,
       product.sku,
-      product.stock
+      product.stock,
+      {
+        descripcion: product.descripcion,
+        imagenes: gallery
+      }
     );
 
     // Show notification

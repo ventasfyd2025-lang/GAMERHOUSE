@@ -158,6 +158,11 @@ export default function RetailHomepage() {
   }, [selectedCategory, selectedSubcategory, categories]);
 
   const handleAddToCart = (product: any) => {
+    const gallery = product.imagenes && product.imagenes.length > 0
+      ? product.imagenes
+      : product.imagen
+        ? [product.imagen]
+        : undefined;
     addItem(
       product.id,
       product.nombre,
@@ -165,7 +170,11 @@ export default function RetailHomepage() {
       product.imagenes?.[0] || product.imagen || PRODUCT_PLACEHOLDER,
       1,
       product.sku,
-      product.stock
+      product.stock,
+      {
+        descripcion: product.descripcion,
+        imagenes: gallery
+      }
     );
   };
 

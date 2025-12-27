@@ -60,6 +60,12 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
       }
     }
 
+    const gallery = product.imagenes && product.imagenes.length > 0
+      ? product.imagenes
+      : product.imagen
+        ? [product.imagen]
+        : undefined;
+
     addItem(
       product.id,
       product.nombre || 'Producto',
@@ -67,7 +73,11 @@ const ProductCard = memo(function ProductCard({ product, customHeight }: Product
       product.imagen || '',
       1,
       product.sku,
-      product.stock
+      product.stock,
+      {
+        descripcion: product.descripcion,
+        imagenes: gallery
+      }
     );
 
     addNotification({

@@ -11,11 +11,14 @@ import {
   collection,
   query,
   where,
-  addDoc,
   serverTimestamp,
-  getDocs
+  getDocs,
+  getDoc
 } from 'firebase/firestore';
-import { Product } from '@/types';
+
+interface UseStockManagerOptions {
+  listenToAlerts?: boolean;
+}
 
 export interface StockAlert {
   id: string;
@@ -42,23 +45,46 @@ export interface StockTransaction {
   createdAt: string;
 }
 
-export function useStockManager() {
+export function useStockManager(options: UseStockManagerOptions = {}) {
+  const { listenToAlerts = false } = options;
   const [stockAlerts, setStockAlerts] = useState<StockAlert[]>([]);
-  const [transactions, setTransactions] = useState<StockTransaction[]>([]);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [canListenToAlerts, setCanListenToAlerts] = useState(false);
 
-  // Listen to auth state
+  // Listen to auth state only when alerts are required
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    if (!listenToAlerts) {
+      setCanListenToAlerts(false);
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (!currentUser) {
+        setCanListenToAlerts(false);
+        return;
+      }
+
+      try {
+        const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+        const data = userDoc.data() as { role?: string } | undefined;
+        setCanListenToAlerts(data?.role === 'admin');
+      } catch (error) {
+        console.error('Error verifying admin permissions for stock alerts:', error);
+        setCanListenToAlerts(false);
+      }
     });
+
     return () => unsubscribe();
-  }, []);
+  }, [listenToAlerts]);
 
   // Listen to stock alerts in real-time (only when authenticated)
   useEffect(() => {
-    if (!user) return;
+    if (!listenToAlerts || !canListenToAlerts) {
+      if (!canListenToAlerts) {
+        setStockAlerts([]);
+      }
+      return;
+    }
 
     const alertsQuery = query(
       collection(db, 'stock_alerts'),
@@ -73,11 +99,11 @@ export function useStockManager() {
 
       setStockAlerts(alerts);
     }, (error) => {
-      console.log('Stock alerts listener error (expected if not authenticated):', error.code);
+      console.log('Stock alerts listener error (expected if not authorized):', error.code);
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, [listenToAlerts, canListenToAlerts]);
 
   // Reserve stock for a cart (during checkout)
   const reserveStock = useCallback(async (items: { productId: string; quantity: number; productName: string }[], orderId: string) => {
@@ -382,7 +408,6 @@ export function useStockManager() {
 
   return {
     stockAlerts,
-    transactions,
     loading,
     reserveStock,
     releaseStock,

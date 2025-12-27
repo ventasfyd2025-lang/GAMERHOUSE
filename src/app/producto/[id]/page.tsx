@@ -187,7 +187,15 @@ export default function ProductPage() {
       // Si decide continuar como invitado, procede a agregar al carrito
     }
 
-    addItem(product.id, product.nombre, product.precio, product.imagen, quantity, product.sku, product.stock);
+    const gallery = product.imagenes && product.imagenes.length > 0
+      ? product.imagenes
+      : product.imagen
+        ? [product.imagen]
+        : undefined;
+    addItem(product.id, product.nombre, product.precio, product.imagen, quantity, product.sku, product.stock, {
+      descripcion: product.descripcion,
+      imagenes: gallery
+    });
     addNotification({
       type: 'success',
       title: `${product.nombre} agregado`,

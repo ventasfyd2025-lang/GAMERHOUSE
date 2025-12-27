@@ -29,7 +29,15 @@ export default function ProductosDestacados() {
     : [];
 
   const handleAddToCart = (product: any) => {
-    addItem(product.id, product.nombre, product.precio, product.imagen, 1, product.sku, product.stock);
+    const gallery = product.imagenes && product.imagenes.length > 0
+      ? product.imagenes
+      : product.imagen
+        ? [product.imagen]
+        : undefined;
+    addItem(product.id, product.nombre, product.precio, product.imagen, 1, product.sku, product.stock, {
+      descripcion: product.descripcion,
+      imagenes: gallery
+    });
   };
 
   if (productsLoading || homepageLoading) {

@@ -61,6 +61,70 @@ const formatCurrencyCLP = (value: number) => {
   }).format(value);
 };
 
+const normalizeStockValue = (value?: unknown) => {
+  if (value === null || value === undefined) {
+    return undefined;
+  }
+  let parsed: number;
+  if (typeof value === 'number') {
+    parsed = value;
+  } else if (typeof value === 'string' && value.trim().length > 0) {
+    parsed = Number(value);
+  } else {
+    return undefined;
+  }
+
+  if (Number.isNaN(parsed)) {
+    return undefined;
+  }
+  return Math.max(0, Math.floor(parsed));
+};
+
+const sanitizeGallery = (imagenes?: unknown, imagen?: string) => {
+  if (Array.isArray(imagenes)) {
+    const filtered = imagenes.filter((img): img is string => typeof img === 'string' && img.trim().length > 0);
+    if (filtered.length > 0) return filtered;
+  }
+  if (imagen && typeof imagen === 'string' && imagen.trim().length > 0) {
+    return [imagen];
+  }
+  return undefined;
+};
+
+const sanitizeCartItem = (raw: any): CartItem | null => {
+  if (!raw) return null;
+  if (!raw.productId) return null;
+
+  const gallery = sanitizeGallery(raw.imagenes, raw.imagen);
+  const cantidadValue = typeof raw.cantidad === 'number' ? raw.cantidad : Number(raw.cantidad);
+  const cantidad = Number.isFinite(cantidadValue) && cantidadValue > 0 ? Math.floor(cantidadValue) : 1;
+
+  return {
+    id: typeof raw.id === 'string' ? raw.id : `${Date.now()}-${raw.productId}`,
+    productId: String(raw.productId),
+    nombre: typeof raw.nombre === 'string' ? raw.nombre : 'Producto',
+    precio: typeof raw.precio === 'number' ? raw.precio : Number(raw.precio) || 0,
+    cantidad,
+    imagen: typeof raw.imagen === 'string' ? raw.imagen : gallery?.[0],
+    sku: typeof raw.sku === 'string' ? raw.sku : undefined,
+    descripcion: typeof raw.descripcion === 'string' ? raw.descripcion : undefined,
+    imagenes: gallery,
+    maxStock: normalizeStockValue(raw.maxStock)
+  };
+};
+
+const sanitizeCartItems = (rawItems: any[]): CartItem[] => {
+  if (!Array.isArray(rawItems)) return [];
+  return rawItems
+    .map(item => sanitizeCartItem(item))
+    .filter((item): item is CartItem => item !== null);
+};
+
+export interface AddItemOptions {
+  descripcion?: string;
+  imagenes?: string[];
+}
+
 export function useCartState() {
   const [items, setItems] = useState<CartItem[]>([]);
   const [reservedOrderId, setReservedOrderId] = useState<string | null>(null);
@@ -107,7 +171,7 @@ export function useCartState() {
 
           if (cartDoc.exists()) {
             const data = cartDoc.data();
-            setItems(data.items || []);
+            setItems(sanitizeCartItems(data.items || []));
             setAppliedDiscount(sanitizeStoredDiscount(data.appliedDiscount) || null);
             setDiscountsByProduct(sanitizeDiscountMap(data.discountsByProduct));
           } else {
@@ -122,11 +186,11 @@ export function useCartState() {
             try {
               const parsed = JSON.parse(savedCart);
               if (Array.isArray(parsed)) {
-                setItems(parsed);
+                setItems(sanitizeCartItems(parsed));
                 setAppliedDiscount(null);
                 setDiscountsByProduct({});
               } else {
-                setItems(parsed.items || []);
+                setItems(sanitizeCartItems(parsed.items || []));
                 setAppliedDiscount(sanitizeStoredDiscount(parsed.appliedDiscount));
                 setDiscountsByProduct(sanitizeDiscountMap(parsed.discountsByProduct));
               }
@@ -216,17 +280,19 @@ export function useCartState() {
     cantidad: number = 1,
     sku?: string,
     maxStock?: number,
+    options?: AddItemOptions,
   ) => {
     let feedback: 'added' | 'updated' | 'limitReached' | 'partial' = 'added';
     let appliedCantidad = cantidad;
+    const normalizedMaxStock = normalizeStockValue(maxStock);
 
     setItems(prevItems => {
       const existingItem = prevItems.find(item => item.productId === productId);
       const currentCantidad = existingItem?.cantidad ?? 0;
       let allowedIncrease = cantidad;
 
-      if (maxStock !== undefined) {
-        const remaining = maxStock - currentCantidad;
+      if (normalizedMaxStock !== undefined) {
+        const remaining = normalizedMaxStock - currentCantidad;
         if (remaining <= 0) {
           feedback = 'limitReached';
           appliedCantidad = 0;
@@ -247,7 +313,13 @@ export function useCartState() {
         feedback = feedback === 'partial' ? 'partial' : 'updated';
         return prevItems.map(item =>
           item.productId === productId
-            ? { ...item, cantidad: item.cantidad + allowedIncrease }
+            ? {
+                ...item,
+                cantidad: item.cantidad + allowedIncrease,
+                maxStock: normalizedMaxStock ?? item.maxStock,
+                descripcion: item.descripcion || options?.descripcion,
+                imagenes: item.imagenes?.length ? item.imagenes : options?.imagenes || (item.imagen ? [item.imagen] : undefined)
+              }
             : item
         );
       }
@@ -260,6 +332,13 @@ export function useCartState() {
         cantidad: allowedIncrease,
         imagen,
         sku,
+        descripcion: options?.descripcion,
+        imagenes: options?.imagenes?.length
+          ? options.imagenes
+          : imagen
+            ? [imagen]
+            : undefined,
+        maxStock: normalizedMaxStock,
       };
       return [...prevItems, newItem];
     });
@@ -312,11 +391,16 @@ export function useCartState() {
     }
 
     setItems(prevItems =>
-      prevItems.map(item =>
-        item.productId === productId
-          ? { ...item, cantidad }
-          : item
-      )
+      prevItems.map(item => {
+        if (item.productId !== productId) {
+          return item;
+        }
+        let nextCantidad = cantidad;
+        if (item.maxStock !== undefined && cantidad > item.maxStock) {
+          nextCantidad = item.maxStock;
+        }
+        return { ...item, cantidad: nextCantidad };
+      })
     );
   }, [removeItem]);
 

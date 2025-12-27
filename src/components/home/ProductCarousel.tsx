@@ -94,6 +94,11 @@ const ProductCard = memo(({ product }: { product: Product }) => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              const gallery = product.imagenes && product.imagenes.length > 0
+                ? product.imagenes
+                : product.imagen
+                  ? [product.imagen]
+                  : undefined;
               addItem(
                 product.id,
                 product.nombre || 'Producto',
@@ -101,7 +106,11 @@ const ProductCard = memo(({ product }: { product: Product }) => {
                 product.imagen || undefined,
                 1,
                 product.sku,
-                product.stock
+                product.stock,
+                {
+                  descripcion: product.descripcion,
+                  imagenes: gallery
+                }
               );
             }}
             className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 hover:from-red-700 hover:to-red-800 text-white font-bold py-2.5 px-3 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg shadow-red-600/15 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 group"

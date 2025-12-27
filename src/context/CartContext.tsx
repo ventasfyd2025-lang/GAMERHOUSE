@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext } from 'react';
-import { useCartState } from '@/hooks/useCart';
+import { useCartState, type AddItemOptions } from '@/hooks/useCart';
 import { CartItem, Discount } from '@/types';
 
 interface CartContextType {
@@ -13,7 +13,8 @@ interface CartContextType {
     imagen?: string,
     cantidad?: number,
     sku?: string,
-    maxStock?: number
+    maxStock?: number,
+    options?: AddItemOptions
   ) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, cantidad: number) => void;

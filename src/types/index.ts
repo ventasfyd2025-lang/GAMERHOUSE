@@ -36,6 +36,9 @@ export interface CartItem {
   cantidad: number;
   imagen?: string;
   sku?: string;
+  descripcion?: string;
+  imagenes?: string[];
+  maxStock?: number;
 }
 
 export type DiscountType = 'porcentaje' | 'fijo';

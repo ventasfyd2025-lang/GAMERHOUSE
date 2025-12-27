@@ -15,7 +15,7 @@ interface StockAlertsProps {
 }
 
 export default function StockAlerts({ className }: StockAlertsProps) {
-  const { stockAlerts, acknowledgeAlert, loading } = useStockManager();
+  const { stockAlerts, acknowledgeAlert, loading } = useStockManager({ listenToAlerts: true });
   const [isExpanded, setIsExpanded] = useState(false);
 
   const getSeverityColor = (severity: StockAlert['severity']) => {

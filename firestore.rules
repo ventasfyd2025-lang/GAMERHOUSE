@@ -6,8 +6,20 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function userRole() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+        : null;
+    }
+
     function isAdmin() {
-      return isSignedIn() && (request.auth.token.admin == true || request.auth.token.isAdmin == true);
+      return isSignedIn()
+        && (
+          request.auth.token.admin == true
+          || request.auth.token.isAdmin == true
+          || userRole() == 'admin'
+        );
     }
 
     function isOrderOwner() {
@@ -164,6 +176,13 @@ service cloud.firestore {
 
       // Borrado: solo admin
       allow delete: if isAdmin();
+    }
+
+    match /carts/{userId} {
+      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isSignedIn() && request.auth.uid == userId;
+      allow delete: if isSignedIn() && request.auth.uid == userId;
     }
 
     match /chat_messages/{messageId} {

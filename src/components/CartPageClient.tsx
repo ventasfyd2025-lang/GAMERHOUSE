@@ -122,22 +122,42 @@ export default function CartPageClient() {
               const finalUnitPrice = Math.max(item.precio - unitDiscount, 0);
               const originalTotal = item.precio * item.cantidad;
               const finalItemTotal = Math.max(originalTotal - productDiscountTotal, 0);
+              const gallery = item.imagenes && item.imagenes.length > 0
+                ? item.imagenes
+                : item.imagen
+                  ? [item.imagen]
+                  : [];
+              const mainImage = gallery[0];
+              const secondaryImages = gallery.slice(1, 4);
+              const canDecrease = item.cantidad > 1;
+              const canIncrease = item.maxStock === undefined || item.cantidad < item.maxStock;
 
               return (
                 <div key={item.id} className="modern-card p-5">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-                  <div className="relative h-24 w-full overflow-hidden rounded-2xl bg-slate-100 sm:h-24 sm:w-24">
-                    {item.imagen ? (
-                      <Image
-                        src={item.imagen}
-                        alt={item.nombre}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 96px"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center text-slate-400">
-                        <Package className="h-6 w-6" />
+                  <div className="flex flex-col gap-2 sm:w-28">
+                    <div className="relative h-28 w-full overflow-hidden rounded-2xl bg-slate-100">
+                      {mainImage ? (
+                        <Image
+                          src={mainImage}
+                          alt={item.nombre}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 120px"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-slate-400">
+                          <Package className="h-6 w-6" />
+                        </div>
+                      )}
+                    </div>
+                    {secondaryImages.length > 0 && (
+                      <div className="flex gap-2">
+                        {secondaryImages.map((thumb, index) => (
+                          <div key={`${item.id}-thumb-${index}`} className="relative h-12 w-12 overflow-hidden rounded-xl bg-slate-100">
+                            <Image src={thumb} alt={`${item.nombre} adicional`} fill className="object-cover" sizes="48px" />
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -160,28 +180,38 @@ export default function CartPageClient() {
                       ) : (
                         <p className="font-semibold text-slate-900">{formatPrice(item.precio)} c/u</p>
                       )}
+                      {item.descripcion && (
+                        <p className="text-xs text-slate-500 line-clamp-2">{item.descripcion}</p>
+                      )}
                     </div>
                   </div>
 
                   <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
-                    <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1 self-start sm:self-auto">
-                      <button
-                        onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50"
-                        aria-label="Reducir cantidad"
-                      >
-                        <Minus className="h-4 w-4" />
-                      </button>
-                      <span className="w-10 text-center text-base font-semibold text-slate-900">
-                        {item.cantidad}
-                      </span>
-                      <button
-                        onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50"
-                        aria-label="Aumentar cantidad"
-                      >
-                        <Plus className="h-4 w-4" />
-                      </button>
+                    <div className="flex flex-col items-start gap-1">
+                      <div className="flex items-center rounded-full border border-slate-200 bg-white px-2 py-1">
+                        <button
+                          onClick={() => handleQuantityChange(item.productId, item.cantidad - 1)}
+                          disabled={!canDecrease}
+                          className={`flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50 ${!canDecrease ? 'opacity-40 cursor-not-allowed' : ''}`}
+                          aria-label="Reducir cantidad"
+                        >
+                          <Minus className="h-4 w-4" />
+                        </button>
+                        <span className="w-10 text-center text-base font-semibold text-slate-900">
+                          {item.cantidad}
+                        </span>
+                        <button
+                          onClick={() => handleQuantityChange(item.productId, item.cantidad + 1)}
+                          disabled={!canIncrease}
+                          className={`flex h-8 w-8 items-center justify-center rounded-full text-slate-600 hover:bg-slate-50 ${!canIncrease ? 'opacity-40 cursor-not-allowed' : ''}`}
+                          aria-label="Aumentar cantidad"
+                        >
+                          <Plus className="h-4 w-4" />
+                        </button>
+                      </div>
+                      {item.maxStock !== undefined && (
+                        <p className="text-xs text-slate-500">Stock disponible: {item.maxStock}</p>
+                      )}
                     </div>
                     <div className="text-right min-w-[160px]">
                       <p className="text-sm text-slate-400">Total</p>

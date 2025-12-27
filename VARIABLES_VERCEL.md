@@ -13,7 +13,7 @@ El cliente debe configurar estas variables en Vercel antes de hacer deploy.
 
 ### Opción 2: Después del deploy
 
-1. Ir a: https://vercel.com/import-fyds-projects/importadora-f-d/settings/environment-variables
+1. Ir a: https://vercel.com/import-fyds-projects/gamerhouse/settings/environment-variables
 2. Agregar todas las variables
 3. Re-deploy el proyecto
 
@@ -24,25 +24,25 @@ El cliente debe configurar estas variables en Vercel antes de hacer deploy.
 ### Firebase Client (PÚBLICAS)
 
 ```bash
-NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyB-azg5UZl5y-4jyRFpbpBlGcyo1hibLpM
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=importadora-fyd.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=importadora-fyd
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=importadora-fyd.firebasestorage.app
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=790742066847
-NEXT_PUBLIC_FIREBASE_APP_ID=1:790742066847:web:f7ae71cb04c9345185e4aa
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDCPLSzaBQCbrsB5T0u9ryqcic4pcFjwaM
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=gamer-house-779ae.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=gamer-house-779ae
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=gamer-house-779ae.firebasestorage.app
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=833020610004
+NEXT_PUBLIC_FIREBASE_APP_ID=1:833020610004:web:1d9399c5c7b1eb5f9c8241
 ```
 
 ### Firebase Admin (PRIVADAS) - IMPORTANTE
 
 **El cliente debe obtener estas credenciales de Firebase Console:**
 
-1. Ir a: https://console.firebase.google.com/project/importadora-fyd/settings/serviceaccounts/adminsdk
+1. Ir a: https://console.firebase.google.com/project/gamer-house-779ae/settings/serviceaccounts/adminsdk
 2. Click en "Generate new private key"
 3. Descargar el archivo JSON
 4. Extraer estos valores del JSON:
 
 ```bash
-FIREBASE_ADMIN_PROJECT_ID=importadora-fyd
+FIREBASE_ADMIN_PROJECT_ID=gamer-house-779ae
 FIREBASE_ADMIN_CLIENT_EMAIL=[del archivo JSON: client_email]
 FIREBASE_ADMIN_PRIVATE_KEY=[del archivo JSON: private_key]
 ```
