@@ -13,6 +13,7 @@ import { useBankConfig } from '@/hooks/useBankConfig';
 import { useLayoutPatterns, DEFAULT_LAYOUT_PATTERNS } from '@/hooks/useLayoutPatterns';
 import { useUserAuth, UserProfile } from '@/hooks/useUserAuth';
 import { useEmailNotifications } from '@/hooks/useEmailNotifications';
+import { useNotification } from '@/context/NotificationContext';
 import {
   useProductSections as useHomepageSections,
   defaultProductSections,
@@ -459,6 +460,7 @@ export default function AdminPage() {
   const { footerConfig, updateFooterConfig, loading: footerLoading } = useFooterConfig();
   const { bankConfig, updateBankConfig, loading: bankLoading } = useBankConfig();
   const { notifyOrderStatusChange } = useEmailNotifications();
+  const { addNotification } = useNotification();
 
   const [activeTab, setActiveTab] = useState('dashboard');
   const [cleaningData, setCleaningData] = useState(false);
@@ -5820,10 +5822,18 @@ export default function AdminPage() {
                               try {
                                 await deleteDoc(doc(db, 'gamerhouse_categorias', category.id));
                                 setCategories(categories.filter(c => c.id !== category.id));
-                                toast.success('Categoría eliminada');
+                                addNotification({
+                                  type: 'success',
+                                  title: 'Categoría eliminada',
+                                  message: `${category.name} se eliminó correctamente.`
+                                });
                               } catch (error) {
                                 console.error('Error al eliminar categoría', error);
-                                toast.error('Error al eliminar categoría');
+                                addNotification({
+                                  type: 'error',
+                                  title: 'No se pudo eliminar',
+                                  message: 'Inténtalo nuevamente en unos segundos.'
+                                });
                               }
                             }}
                             className="hover:opacity-80 transition-opacity"
