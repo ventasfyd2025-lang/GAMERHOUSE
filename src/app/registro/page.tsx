@@ -27,6 +27,7 @@ export default function RegisterPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [emailExists, setEmailExists] = useState(false);
   
   const { register } = useUserAuth();
   const router = useRouter();
@@ -102,6 +103,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setEmailExists(false);
 
     if (!validateForm()) return;
 
@@ -119,8 +121,14 @@ export default function RegisterPage() {
         formData.address
       );
       router.push('/');
-    } catch (error) {
-      setError('Error al crear la cuenta. Inténtalo de nuevo.');
+    } catch (error: unknown) {
+      const errorCode = (error as { code?: string })?.code;
+      if (errorCode === 'auth/email-already-in-use') {
+        setEmailExists(true);
+        setError('Ya existe una cuenta con este correo.');
+      } else {
+        setError('Error al crear la cuenta. Inténtalo de nuevo.');
+      }
     } finally {
       setLoading(false);
     }
@@ -143,8 +151,13 @@ export default function RegisterPage() {
         <div className="bg-white py-8 px-6 shadow-[0_30px_80px_-55px_rgba(15,23,42,0.8)] border border-slate-100 rounded-2xl sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded">
-                {error}
+              <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded space-y-1">
+                <p>{error}</p>
+                {emailExists && (
+                  <p className="text-xs text-amber-400">
+                    Puedes <Link href="/recuperar" className="underline hover:text-amber-200">recuperar tu contraseña aquí</Link> o iniciar sesión si ya tienes acceso.
+                  </p>
+                )}
               </div>
             )}
 
