@@ -113,20 +113,19 @@ p {
 }
 
 .banner-neon-text {
-  background-image: linear-gradient(120deg, rgba(59,130,246,0.9), rgba(236,72,153,0.9), rgba(249,115,22,0.9));
+  background-image: linear-gradient(120deg, rgba(59,130,246,0.4), rgba(236,72,153,0.4), rgba(249,115,22,0.4));
   background-size: 200% 200%;
-  color: transparent;
   -webkit-background-clip: text;
+  color: #fff;
   animation: shimmerFlow 6s linear infinite, dualGlow 4s ease-in-out infinite;
 }
 
 .banner-neon-text--secondary {
-  background-image: linear-gradient(120deg, rgba(190,242,100,0.85), rgba(34,197,94,0.85), rgba(59,130,246,0.85));
+  background-image: linear-gradient(120deg, rgba(190,242,100,0.35), rgba(34,197,94,0.35), rgba(59,130,246,0.35));
   background-size: 200% 200%;
-  color: transparent;
   -webkit-background-clip: text;
+  color: #f8fafc;
   animation: shimmerFlow 8s linear infinite, dualGlow 5s ease-in-out infinite;
-  opacity: 0.85;
 }
 
 
