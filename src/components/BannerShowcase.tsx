@@ -103,12 +103,15 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                     Destacado
                   </span>
                   <h3
-                    className="banner-neon-text text-2xl font-black leading-tight text-balance"
+                    className={`banner-neon-text font-black leading-tight text-balance ${card.id === 'middle' || card.id === 'footer' ? 'text-3xl sm:text-4xl' : 'text-2xl'}`}
                   >
                     {card.title}
                   </h3>
                   {card.text && (
-                    <p className="banner-neon-text--secondary text-base" style={{ textShadow: '0 6px 16px rgba(0,0,0,0.65)' }}>
+                    <p
+                      className={`banner-neon-text--secondary ${card.id === 'middle' || card.id === 'footer' ? 'text-lg sm:text-xl' : 'text-base'}`}
+                      style={{ textShadow: '0 6px 16px rgba(0,0,0,0.65)' }}
+                    >
                       {card.text}
                     </p>
                   )}
