@@ -20,7 +20,7 @@ export default function DynamicLogo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-4 sm:gap-5 flex-shrink-0 hover:opacity-95 transition-all duration-200"
+      className="group flex items-center gap-4 sm:gap-5 flex-shrink-0 transition-transform duration-200"
     >
       {imageUrl ? (
         <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-[1.4rem] bg-gradient-to-br from-white via-yellow-50 to-amber-100 shadow-[0_12px_30px_rgba(0,0,0,0.2)] ring-2 ring-white/70 ring-offset-2 ring-offset-[#030711] overflow-hidden">
@@ -42,7 +42,7 @@ export default function DynamicLogo() {
           lines.map((line, idx) => (
             <span
               key={idx}
-              className={`block uppercase ${idx === 0 ? 'text-xl sm:text-2xl lg:text-[1.75rem] tracking-[0.2em]' : 'text-lg sm:text-xl lg:text-2xl tracking-[0.08em]'}`}
+              className={`neon-flicker block uppercase ${idx === 0 ? 'text-xl sm:text-2xl lg:text-[1.75rem] tracking-[0.2em]' : 'text-lg sm:text-xl lg:text-2xl tracking-[0.08em]'}`}
               style={idx === 0
                 ? { color: textColor, textShadow: neonShadow }
                 : { color: textColor, textShadow: neonShadow, opacity: 0.85 }}
@@ -52,7 +52,7 @@ export default function DynamicLogo() {
           ))
         ) : (
           <span
-            className="text-xl sm:text-2xl lg:text-[1.75rem] uppercase tracking-[0.2em]"
+            className="neon-flicker text-xl sm:text-2xl lg:text-[1.75rem] uppercase tracking-[0.2em]"
             style={{ color: textColor, textShadow: neonShadow }}
           >
             {FALLBACK_LOGO.text}

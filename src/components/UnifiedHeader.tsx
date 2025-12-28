@@ -448,13 +448,13 @@ const handleMobileCategoryLinkClick = (
                 {renderLogoBadge()}
                 <div className="flex flex-col leading-tight">
                   <span
-                    className="text-2xl sm:text-[1.7rem] font-black uppercase tracking-[0.22em]"
+                    className="neon-flicker text-2xl sm:text-[1.7rem] font-black uppercase tracking-[0.22em]"
                     style={{ color: logoTextColor, textShadow: neonShadow }}
                   >
                     {logoConfig?.text || 'GAMERHOUSE'}
                   </span>
                   <span
-                    className="text-[11px] sm:text-[12px] uppercase tracking-[0.35em]"
+                    className="neon-flicker text-[11px] sm:text-[12px] uppercase tracking-[0.35em]"
                     style={{ color: logoTextColor, textShadow: neonShadow, opacity: 0.8 }}
                   >
                     Tu tienda de confianza

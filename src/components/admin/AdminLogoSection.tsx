@@ -151,7 +151,7 @@ export default function AdminLogoSection() {
                 {previewLines.map((line, index) => (
                   <div
                     key={index}
-                    className={`font-black uppercase tracking-[0.2em] text-lg sm:text-2xl ${index > 0 ? 'opacity-80 text-sm sm:text-xl tracking-[0.12em]' : ''}`}
+                    className={`neon-flicker font-black uppercase tracking-[0.2em] text-lg sm:text-2xl ${index > 0 ? 'opacity-80 text-sm sm:text-xl tracking-[0.12em]' : ''}`}
                     style={{
                       color: logoForm.textColor,
                       textShadow: neonShadow,

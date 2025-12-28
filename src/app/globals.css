@@ -72,6 +72,31 @@ p {
   --glass-blur: 12px;
 }
 
+@keyframes neonPulse {
+  0%, 100% {
+    opacity: 0.95;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.65;
+  }
+}
+
+.neon-flicker {
+  animation: neonPulse 2.8s infinite ease-in-out;
+}
+
 
 #admin-container {
   --admin-surface: #ffffff;
