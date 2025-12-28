@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useUserAuth } from '@/hooks/useUserAuth';
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { EyeIcon, EyeSlashIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import GoogleSignInButton from '@/components/GoogleSignInButton';
 
 export default function RegisterPage() {
@@ -135,33 +135,29 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-2xl">
-        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-bold text-slate-900">
-            Crear Cuenta
-          </h2>
-          <p className="text-sm text-slate-500">
-            Únete a nuestra tienda y disfruta de beneficios exclusivos
-          </p>
+    <>
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-2xl">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-bold text-slate-900">
+              Crear Cuenta
+            </h2>
+            <p className="text-sm text-slate-500">
+              Únete a nuestra tienda y disfruta de beneficios exclusivos
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
-        <div className="bg-white py-8 px-6 shadow-[0_30px_80px_-55px_rgba(15,23,42,0.8)] border border-slate-100 rounded-2xl sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {error && (
-              <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded space-y-1">
-                <p>{error}</p>
-                {emailExists && (
-                  <p className="text-xs text-amber-400">
-                    Puedes <Link href="/recuperar" className="underline hover:text-amber-200">recuperar tu contraseña aquí</Link> o iniciar sesión si ya tienes acceso.
-                  </p>
-                )}
-              </div>
-            )}
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+          <div className="bg-white py-8 px-6 shadow-[0_30px_80px_-55px_rgba(15,23,42,0.8)] border border-slate-100 rounded-2xl sm:px-10">
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {error && (
+                <div className="bg-slate-800 border border-slate-700 text-secondary px-4 py-3 rounded space-y-1">
+                  <p>{error}</p>
+                </div>
+              )}
 
-            <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-slate-500">
                   Nombre
@@ -469,5 +465,67 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
+
+      {emailExists && (
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm"
+            aria-hidden="true"
+            onClick={() => setEmailExists(false)}
+          />
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="email-exists-title"
+              className="w-full max-w-md rounded-2xl bg-white shadow-2xl border border-slate-200 p-6"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-amber-500">Correo ya registrado</p>
+                  <h3 id="email-exists-title" className="text-2xl font-semibold text-slate-900">
+                    Ya tienes una cuenta con este correo
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEmailExists(false)}
+                  className="rounded-full p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+                  aria-label="Cerrar mensaje"
+                >
+                  <XMarkIcon className="h-5 w-5" />
+                </button>
+              </div>
+
+              <p className="mt-4 text-sm text-slate-600">
+                Si olvidaste tu contraseña puedes recuperarla y volver a entrar a Gamer House.
+              </p>
+
+              <div className="mt-6 space-y-3">
+                <Link
+                  href="/recuperar"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                >
+                  Recuperar contraseña
+                </Link>
+                <Link
+                  href="/login"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:border-slate-300"
+                >
+                  Ir a iniciar sesión
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setEmailExists(false)}
+                  className="w-full text-sm text-slate-400 hover:text-slate-600"
+                >
+                  Volver al registro
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 }
