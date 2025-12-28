@@ -160,6 +160,12 @@ export default function LoginPage() {
               >
                 Crear Nueva Cuenta
               </Link>
+              <Link
+                href="/recuperar"
+                className="w-full flex justify-center py-2 text-sm font-medium text-amber-500 hover:text-amber-600"
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
               
               <Link
                 href="/checkout?guest=true"

@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   onAuthStateChanged,
+  sendPasswordResetEmail,
   User
 } from 'firebase/auth';
 import { doc, setDoc, getDoc, onSnapshot } from 'firebase/firestore';
@@ -241,6 +242,16 @@ export function useUserAuth() {
     localStorage.setItem('guestUser', JSON.stringify(updatedGuest));
   };
 
+  const resetPassword = async (email: string) => {
+    try {
+      setError(null);
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      setError(getErrorMessage((error as { code?: string }).code || 'unknown'));
+      throw error;
+    }
+  };
+
   const getErrorMessage = (errorCode: string) => {
     switch (errorCode) {
       case 'auth/user-not-found':
@@ -289,6 +300,8 @@ export function useUserAuth() {
     logout,
     continueAsGuest,
     updateUserProfile,
-    updateGuestUser
+    updateGuestUser,
+    resetPassword,
+    setError
   };
 }
