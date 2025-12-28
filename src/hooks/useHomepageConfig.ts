@@ -31,7 +31,7 @@ interface MiddleBanner {
 
 const normalizeMiddleBanners = (raw: unknown): MiddleBanner[] => {
   if (!Array.isArray(raw) || raw.length === 0) {
-    return defaultMiddleBanners.map((banner) => ({ ...banner }));
+    return defaultMiddleBanners.map((banner) => ({ ...banner })) as MiddleBanner[];
   }
 
   return raw.map((entry, index) => {
