@@ -118,6 +118,17 @@ function CheckoutContent() {
     }).format(price);
   };
 
+  const serializeOrderItems = () => {
+    return items.map((item) => ({
+      productId: item.productId,
+      nombre: item.nombre,
+      precio: item.precio,
+      cantidad: item.cantidad,
+      ...(item.imagen ? { imagen: item.imagen } : {}),
+      ...(item.sku ? { sku: item.sku } : {}),
+    }));
+  };
+
   const ensureStorageSession = async () => {
     if (!auth.currentUser) {
       await signInAnonymously(auth);
@@ -152,13 +163,7 @@ function CheckoutContent() {
         deliveryType: deliveryType,
         userId: (currentUser as any)?.uid || checkoutData.email,
         paymentMethod: 'mercadopago',
-        items: items.map(item => ({
-          productId: item.productId,
-          nombre: item.nombre,
-          precio: item.precio,
-          cantidad: item.cantidad,
-          imagen: item.imagen
-        })),
+        items: serializeOrderItems(),
         total: getTotalPrice(),
         status: 'pending_payment' as const,
         createdAt: new Date()
@@ -322,13 +327,7 @@ function CheckoutContent() {
         userId: (currentUser as any)?.uid || finalData.email,
         paymentMethod: 'transferencia',
         paymentProof: comprobanteUrl, // URL del comprobante
-        items: items.map(item => ({
-          productId: item.productId,
-          nombre: item.nombre,
-          precio: item.precio,
-          cantidad: item.cantidad,
-          imagen: item.imagen
-        })),
+        items: serializeOrderItems(),
         total: getTotalPrice(),
         status: 'pending_verification' as const, // Estado: esperando verificación de pago
         stockReservedId: tempOrderId, // ID usado para reservar stock
