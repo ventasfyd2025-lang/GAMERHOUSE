@@ -12,13 +12,24 @@ interface BannerShowcaseProps {
   slots?: BannerSlotKey[];
 }
 
+interface BannerCard {
+  id: string;
+  title: string;
+  text: string;
+  image?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  emphasize?: boolean;
+  height?: 'short' | 'medium' | 'tall';
+}
+
 export default function BannerShowcase({ className, slots }: BannerShowcaseProps) {
   const { bannerConfig } = useConfig();
   const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
 
-  const cards = useMemo(() => {
+  const cards: BannerCard[] = useMemo(() => {
     if (!bannerConfig?.slots) {
-      return [] as Array<{ id: string; title: string; text: string; image?: string; ctaLabel?: string; ctaUrl?: string }>;
+      return [];
     }
 
     return slotOrder
@@ -41,8 +52,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
           emphasize: slot.emphasize || false,
           height: slot.height || 'medium',
         };
-      })
-      .filter(Boolean) as Array<{ id: string; title: string; text: string; image?: string; ctaLabel?: string; ctaUrl?: string; emphasize?: boolean; height?: string }>;
+      }).filter((card): card is BannerCard => Boolean(card));
   }, [bannerConfig.slots, slotOrder]);
 
   if (cards.length === 0 || bannerConfig.active === false) {
