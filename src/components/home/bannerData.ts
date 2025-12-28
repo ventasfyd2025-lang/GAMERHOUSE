@@ -41,7 +41,9 @@ export const defaultMiddleBanners = [
     ctaText: 'Comprar Ahora',
     ctaLink: '/?filter=ofertas',
     badgeText: 'BLACK FRIDAY',
-    badgeColor: '#000000'
+    badgeColor: '#000000',
+    height: 'medium',
+    emphasize: true
   },
   {
     id: 'middle-2',
@@ -51,7 +53,9 @@ export const defaultMiddleBanners = [
     ctaText: 'Ver Promociones',
     ctaLink: '/?filter=ofertas',
     badgeText: 'ENVÍO GRATIS',
-    badgeColor: 'var(--primary)'
+    badgeColor: 'var(--primary)',
+    height: 'short',
+    emphasize: false
   },
   {
     id: 'middle-3',
@@ -61,6 +65,8 @@ export const defaultMiddleBanners = [
     ctaText: 'Descubrir Ofertas',
     ctaLink: '/?filter=ofertas',
     badgeText: 'HASTA 60% OFF',
-    badgeColor: '#0EA5E9'
+    badgeColor: '#0EA5E9',
+    height: 'tall',
+    emphasize: false
   }
 ];
