@@ -127,8 +127,8 @@ export async function POST(request: NextRequest) {
       }
     };
 
-    // Siempre enviar copia al correo operativo
-    addRecipient(DEFAULT_RECIPIENT);
+    // Siempre enviar copia a los correos operativos
+    DEFAULT_RECIPIENTS.forEach((recipient) => addRecipient(recipient));
 
     switch (type) {
       case 'new_order':
