@@ -328,7 +328,7 @@ function PaymentSuccessContent() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 href="/mis-pedidos"
-                className="flex items-center justify-center gap-2 py-3 px-6 rounded-lg text-base font-medium text-white bg-primary hover:bg-secondary transition-colors shadow-md hover:shadow-lg shadow-primary/20 relative"
+                className="flex items-center justify-center gap-2 py-3 px-6 rounded-lg text-base font-medium text-white bg-slate-900 border border-slate-900 hover:bg-slate-800 transition-colors shadow-md hover:shadow-lg shadow-slate-200/80 relative"
               >
                 <Package className="h-5 w-5" />
                 Ver Mis Pedidos
