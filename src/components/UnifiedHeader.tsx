@@ -193,22 +193,21 @@ const handleMobileCategoryLinkClick = (
 
   const renderLogoBadge = () => {
     // Tamaños fijos para evitar layout shift - siempre el mismo tamaño independiente del contenido
-    const containerClass = "flex items-center justify-center rounded-full shadow-sm";
-    // Tamaños fijos: móvil 40px, tablet 48px, desktop 56px
-    const sizeClass = "w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14";
+    const containerClass = "flex items-center justify-center rounded-2xl shadow-lg border border-white/40 bg-white/95 overflow-hidden";
+    // Tamaños fijos: móvil 48px, tablet 56px, desktop 64px
+    const sizeClass = "w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16";
 
     // SIEMPRE mostrar placeholder del tamaño fijo mientras no tengamos la imagen cargada
     // Solo mostrar imagen si ya existe en logoConfig (viene de Firebase)
     if (logoConfig && logoConfig.image && logoConfig.image.trim() !== '') {
       return (
-        <div className={`${containerClass} ${sizeClass} overflow-hidden`}>
+        <div className={`${containerClass} ${sizeClass}`}>
           <Image
             src={logoConfig.image}
             alt={logoConfig.text || 'Logo'}
-            width={56}
-            height={56}
-            className="w-full h-full object-cover"
-            style={{ minWidth: '100%', minHeight: '100%' }}
+            width={64}
+            height={64}
+            className="w-full h-full object-contain scale-[1.08]"
           />
         </div>
       );
@@ -216,11 +215,8 @@ const handleMobileCategoryLinkClick = (
 
     // Placeholder transparente mientras carga Firebase - MISMO TAMAÑO
     return (
-      <div
-        className={`${containerClass} ${sizeClass}`}
-        style={{ backgroundColor: 'var(--primary)' }}
-      >
-        <span className="font-semibold text-white text-xs sm:text-sm lg:text-base">
+      <div className={`${containerClass} ${sizeClass}`} style={{ backgroundColor: 'var(--primary)' }}>
+        <span className="font-semibold text-white text-sm sm:text-base lg:text-lg">
           F&D
         </span>
       </div>
