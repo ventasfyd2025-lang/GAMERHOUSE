@@ -103,22 +103,25 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                     Destacado
                   </span>
                   <h3
-                    className={`banner-neon-text font-black leading-tight text-balance ${card.id === 'middle' || card.id === 'footer' ? 'text-3xl sm:text-4xl' : 'text-2xl'}`}
+                    className={`banner-neon-text font-black leading-tight text-balance ${card.id === 'middle' || card.id === 'footer' ? 'text-4xl sm:text-5xl' : 'text-2xl'}`}
                   >
                     {card.title}
                   </h3>
                   {card.text && (
                     <p
-                      className={`banner-neon-text--secondary ${card.id === 'middle' || card.id === 'footer' ? 'text-lg sm:text-xl' : 'text-base'}`}
+                      className={`banner-neon-text--secondary ${card.id === 'middle' || card.id === 'footer' ? 'text-xl sm:text-2xl leading-snug' : 'text-base'}`}
                       style={{ textShadow: '0 6px 16px rgba(0,0,0,0.65)' }}
                     >
                       {card.text}
                     </p>
                   )}
                 </div>
-                <span className="inline-flex items-center justify-center px-5 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm shadow-[0_10px_30px_rgba(249,115,22,0.35)]">
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm shadow-[0_10px_30px_rgba(249,115,22,0.35)]"
+                >
                   {card.ctaLabel || 'Ver más'}
-                </span>
+                </button>
               </div>
             </Link>
           ))}
