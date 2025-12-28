@@ -35,7 +35,7 @@ const normalizeMiddleBanners = (raw: unknown): MiddleBanner[] => {
   }
 
   return raw.map((entry, index) => {
-    const fallback = (defaultMiddleBanners[index] ?? defaultMiddleBanners[0]) as Partial<MiddleBanner>;
+    const fallback = (defaultMiddleBanners[index] ?? defaultMiddleBanners[0]) as MiddleBanner;
     const banner = (entry && typeof entry === 'object') ? entry as Record<string, unknown> : {};
 
     const getString = (value: unknown, fallbackValue: string): string => (
