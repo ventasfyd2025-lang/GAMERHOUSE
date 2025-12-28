@@ -58,25 +58,41 @@ exports.ensureUserProfile = functions.auth.user().onCreate(async (user) => {
     var _a, _b;
     const userRef = admin.firestore().collection('users').doc(user.uid);
     const existingDoc = await userRef.get();
-    if (existingDoc.exists) {
-        console.log(`Perfil ya existía para ${user.uid}, no se crea uno nuevo.`);
-        return null;
-    }
+    const existingData = existingDoc.exists ? existingDoc.data() || {} : {};
     const displayNameParts = (user.displayName || '').trim().split(/\s+/).filter(Boolean);
     const [firstName = '', ...rest] = displayNameParts;
     const lastName = rest.join(' ');
     const providerId = ((_b = (_a = user.providerData) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.providerId) || 'email';
-    await userRef.set({
+    const dataToSet = {
         uid: user.uid,
-        email: user.email || '',
-        firstName,
-        lastName,
-        phone: user.phoneNumber || '',
-        role: 'cliente',
-        createdAt: admin.firestore.FieldValue.serverTimestamp(),
-        provider: providerId,
-    });
-    console.log(`✅ Perfil creado en Firestore para ${user.email || user.uid}`);
+    };
+    if (!existingData.email && user.email) {
+        dataToSet.email = user.email;
+    }
+    if (!existingData.firstName && firstName) {
+        dataToSet.firstName = firstName;
+    }
+    if (!existingData.lastName && lastName) {
+        dataToSet.lastName = lastName;
+    }
+    if (!existingData.phone && user.phoneNumber) {
+        dataToSet.phone = user.phoneNumber;
+    }
+    if (!existingData.provider) {
+        dataToSet.provider = providerId;
+    }
+    if (!existingData.role) {
+        dataToSet.role = 'cliente';
+    }
+    if (!existingData.createdAt) {
+        dataToSet.createdAt = admin.firestore.FieldValue.serverTimestamp();
+    }
+    if (Object.keys(dataToSet).length === 1) {
+        console.log(`Perfil existente para ${user.uid}, no se requiere actualización.`);
+        return null;
+    }
+    await userRef.set(dataToSet, { merge: true });
+    console.log(`✅ Perfil sincronizado en Firestore para ${user.email || user.uid}`);
     return null;
 });
 // Función de prueba para verificar que los triggers funcionan

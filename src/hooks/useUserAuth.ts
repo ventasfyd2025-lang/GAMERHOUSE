@@ -146,19 +146,24 @@ export function useUserAuth() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
       // Crear perfil de usuario en Firestore
-      const profile: UserProfile = {
+      const profileData = {
         uid: userCredential.user.uid,
         email,
         firstName,
         lastName,
         phone,
         rut,
+        address
+      };
+
+      await setDoc(doc(db, 'users', userCredential.user.uid), profileData, { merge: true });
+
+      const profile: UserProfile = {
+        ...profileData,
         role,
-        address,
         createdAt: new Date()
       };
 
-      await setDoc(doc(db, 'users', userCredential.user.uid), profile);
       setUserProfile(profile);
 
       return userCredential.user;
