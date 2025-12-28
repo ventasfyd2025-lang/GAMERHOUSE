@@ -93,6 +93,10 @@ p {
   }
 }
 
+.banner-elegant-glow {
+  animation: neonPulse 3.2s infinite ease-in-out;
+}
+
 .neon-flicker {
   animation: neonPulse 2.8s infinite ease-in-out;
 }

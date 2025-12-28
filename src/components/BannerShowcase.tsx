@@ -100,13 +100,13 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                     Banner destacado
                   </p>
                   <h3
-                    className="text-2xl font-black leading-tight text-balance"
+                    className="banner-elegant-glow text-2xl font-black leading-tight text-balance"
                     style={{ textShadow: '0 4px 18px rgba(0,0,0,0.8)' }}
                   >
                     {card.title}
                   </h3>
                   <p
-                    className="text-base text-white/95"
+                    className="banner-elegant-glow text-base text-white/95"
                     style={{ textShadow: '0 4px 12px rgba(0,0,0,0.65)' }}
                   >
                     {card.text}

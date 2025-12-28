@@ -135,7 +135,7 @@ export default function DynamicBanner() {
                 Destacado
               </span>
               <h2
-                className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight"
+                className="banner-elegant-glow text-3xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight"
                 style={{ color: contentTextColor, textShadow: contentShadow }}
               >
                 {title}
@@ -144,7 +144,7 @@ export default function DynamicBanner() {
 
             {text && (
               <p
-                className="text-sm sm:text-lg max-w-lg leading-relaxed"
+                className="banner-elegant-glow text-sm sm:text-lg max-w-lg leading-relaxed"
                 style={{ color: contentTextColor, textShadow: contentShadow, opacity: 0.9 }}
               >
                 {text}
