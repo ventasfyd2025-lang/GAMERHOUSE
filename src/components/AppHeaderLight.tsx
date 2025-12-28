@@ -30,13 +30,6 @@ import DynamicLogo from './DynamicLogo';
 
 const gamerPalette = ['from-sky-400/70 to-cyan-300/70', 'from-indigo-400/70 to-sky-300/70', 'from-fuchsia-400/60 to-pink-300/60', 'from-emerald-400/60 to-teal-300/60'];
 
-const quickLinks = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Ofertas', href: '/productos?filter=ofertas' },
-  { label: 'Nuevos', href: '/productos?filter=nuevos' },
-  { label: 'Preventa', href: '/productos?filter=preventa' },
-];
-
 const CATEGORY_ICON_MAP: Record<string, LucideIcon> = {
   'pokemon-tcg': Sparkles,
   'one-piece-tcg': Ship,
@@ -328,20 +321,7 @@ export default function AppHeaderLight() {
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-4">
-              {quickLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => {
-                    setIsMegaMenuOpen(false);
-                    router.push(link.href);
-                  }}
-                  className="text-sm font-semibold text-slate-500 hover:text-sky-700 transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+            <div className="hidden lg:flex items-center gap-4" />
 
             <div className="md:hidden flex w-full items-center justify-between gap-3">
               <button
