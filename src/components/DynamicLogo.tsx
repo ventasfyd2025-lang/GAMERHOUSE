@@ -14,31 +14,39 @@ export default function DynamicLogo() {
   const emoji = logoConfig?.emoji || FALLBACK_LOGO.emoji;
 
   return (
-    <Link href="/" className="flex items-center gap-4 flex-shrink-0 hover:opacity-85 transition-opacity">
+    <Link
+      href="/"
+      className="flex items-center gap-4 sm:gap-5 flex-shrink-0 hover:opacity-95 transition-all duration-200"
+    >
       {imageUrl ? (
-        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/95 shadow-lg border border-white/70 overflow-hidden">
+        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-[1.4rem] bg-gradient-to-br from-white via-yellow-50 to-amber-100 shadow-[0_12px_30px_rgba(0,0,0,0.2)] ring-2 ring-white/70 ring-offset-2 ring-offset-[#030711] overflow-hidden">
           <Image
             src={imageUrl}
             alt="Logo"
             fill
-            className="object-contain scale-[1.08]"
+            className="object-contain scale-[1.15]"
           />
         </div>
       ) : (
-        <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-red-50 text-3xl shadow-lg">
+        <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-[1.4rem] bg-gradient-to-br from-rose-500 via-orange-400 to-amber-300 text-4xl shadow-2xl ring-2 ring-white/40 ring-offset-2 ring-offset-[#030711]">
           {emoji}
         </div>
       )}
 
-      <div className="leading-tight font-bold text-slate-900 whitespace-pre-line">
+      <div className="leading-tight font-black text-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.55)]">
         {lines.length > 0 ? (
           lines.map((line, idx) => (
-            <span key={idx} className="block text-lg sm:text-xl tracking-tight">
+            <span
+              key={idx}
+              className={`block uppercase ${idx === 0 ? 'text-xl sm:text-2xl lg:text-[1.75rem] tracking-[0.2em]' : 'text-lg sm:text-xl lg:text-2xl tracking-[0.08em] text-amber-200'}`}
+            >
               {line}
             </span>
           ))
         ) : (
-          <span className="text-lg sm:text-xl">{FALLBACK_LOGO.text}</span>
+          <span className="text-xl sm:text-2xl lg:text-[1.75rem] uppercase tracking-[0.2em]">
+            {FALLBACK_LOGO.text}
+          </span>
         )}
       </div>
     </Link>
