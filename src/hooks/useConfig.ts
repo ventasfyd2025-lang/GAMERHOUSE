@@ -79,7 +79,7 @@ const SLOT_DEFAULT_EMPHASIS: Record<BannerSlotKey, boolean> = {
 
 const DEFAULT_SLOT: BannerSlotConfig = {
   title: 'Campaña destacada',
-  text: SLOT_PLACEHOLDER_TEXT,
+  text: '',
   image: WIDE_BANNER_PLACEHOLDER,
   ctaUrl: '/productos',
   ctaLabel: 'Ver más',
@@ -124,10 +124,14 @@ const sanitizeMainBannerSlides = (input: unknown): MainBannerSlide[] => {
     const slide = (rawSlide && typeof rawSlide === 'object') ? rawSlide as Record<string, unknown> : {};
 
     const linkTypeValue = slide.linkType;
+    const cleanedSubtitle = typeof slide.subtitle === 'string'
+      && slide.subtitle.trim() !== SLOT_PLACEHOLDER_TEXT
+      ? slide.subtitle
+      : undefined;
 
     return {
       title: typeof slide.title === 'string' ? slide.title : undefined,
-      subtitle: typeof slide.subtitle === 'string' ? slide.subtitle : undefined,
+      subtitle: cleanedSubtitle,
       imageUrl: typeof slide.imageUrl === 'string' ? slide.imageUrl : undefined,
       productId: typeof slide.productId === 'string' ? slide.productId : undefined,
       categoryId: typeof slide.categoryId === 'string' ? slide.categoryId : undefined,

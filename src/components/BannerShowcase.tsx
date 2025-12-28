@@ -99,25 +99,22 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
               </div>
               <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_12px_28px_rgba(0,0,0,0.75)] ${heightClasses[card.height ?? 'medium']}`}>
                 <div className="space-y-3">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-white/85">
-                    Banner destacado
-                  </p>
+                  <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-[10px] sm:text-xs font-bold tracking-[0.35em] uppercase border border-white/30">
+                    Destacado
+                  </span>
                   <h3
                     className="banner-neon-text text-2xl font-black leading-tight text-balance"
                   >
                     {card.title}
                   </h3>
                   {card.text && (
-                    <p className="banner-neon-text--secondary text-base">
+                    <p className="banner-neon-text--secondary text-base" style={{ textShadow: '0 6px 16px rgba(0,0,0,0.65)' }}>
                       {card.text}
                     </p>
                   )}
                 </div>
-                <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-100">
+                <span className="inline-flex items-center justify-center px-5 py-2 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm shadow-[0_10px_30px_rgba(249,115,22,0.35)]">
                   {card.ctaLabel || 'Ver más'}
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-7-7l7 7-7 7" />
-                  </svg>
                 </span>
               </div>
             </Link>
