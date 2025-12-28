@@ -27,9 +27,9 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
   const { bannerConfig } = useConfig();
   const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
   const heightClasses: Record<NonNullable<BannerCard['height']>, string> = {
-    short: 'min-h-[220px] sm:min-h-[240px] lg:min-h-[280px]',
-    medium: 'min-h-[280px] sm:min-h-[320px] lg:min-h-[380px]',
-    tall: 'min-h-[340px] sm:min-h-[400px] lg:min-h-[480px]'
+    short: 'min-h-[260px] sm:min-h-[320px] lg:min-h-[380px]',
+    medium: 'min-h-[320px] sm:min-h-[380px] lg:min-h-[460px]',
+    tall: 'min-h-[400px] sm:min-h-[460px] lg:min-h-[540px]'
   };
 
   const cards = useMemo((): BannerCard[] => {
@@ -55,7 +55,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
         image: slot.image,
         ctaLabel: slot.ctaLabel || 'Ver más',
         ctaUrl: slot.ctaUrl || '/productos',
-        emphasize: slot.emphasize || false,
+        emphasize: slot.emphasize ?? false,
         height: slot.height || 'medium',
       });
 
@@ -70,12 +70,12 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
   return (
     <section className={`w-full ${className ?? ''}`}>
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className={`grid grid-cols-1 gap-4 ${cards.length > 1 ? 'sm:grid-cols-2' : ''} ${cards.length > 2 ? 'lg:grid-cols-3' : ''}`}>
+        <div className={`grid grid-cols-1 gap-6 ${cards.length > 1 ? 'lg:grid-cols-2' : ''} ${cards.length > 2 ? 'xl:grid-cols-3' : ''}`}>
           {cards.map((card) => (
             <Link
               key={card.id}
               href={card.ctaUrl || '/productos'}
-              className={`group relative overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-lg transition-transform duration-500 ${card.emphasize ? 'sm:col-span-2 lg:col-span-3' : ''}`}
+              className={`group relative overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-lg transition-transform duration-500 ${card.emphasize ? 'lg:col-span-2 xl:col-span-3' : ''}`}
             >
               <div className="absolute inset-0">
                 {card.image ? (
@@ -88,17 +88,17 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                 ) : (
                   <div className="absolute inset-0 bg-gradient-to-r from-sky-200 to-cyan-100" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#031624]/85 via-[#04314a]/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-black/10" />
               </div>
-              <div className={`relative flex flex-col justify-between gap-3 p-5 text-white ${heightClasses[card.height ?? 'medium']}`}>
-                <div>
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-white/70">
+              <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)] ${heightClasses[card.height ?? 'medium']}`}>
+                <div className="space-y-3">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-white/80">
                     Banner destacado
                   </p>
-                  <h3 className="text-xl font-bold leading-snug">
+                  <h3 className="text-2xl font-semibold leading-tight text-balance">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-white/85">
+                  <p className="text-base text-white/90">
                     {card.text}
                   </p>
                 </div>

@@ -56,20 +56,34 @@ const DEFAULT_LOGO: LogoConfig = {
   image: '',
 };
 
+const SLOT_DEFAULT_HEIGHT: Record<BannerSlotKey, 'short' | 'medium' | 'tall'> = {
+  hero: 'tall',
+  middle: 'tall',
+  footer: 'medium',
+};
+
+const SLOT_DEFAULT_EMPHASIS: Record<BannerSlotKey, boolean> = {
+  hero: false,
+  middle: true,
+  footer: false,
+};
+
 const DEFAULT_SLOT: BannerSlotConfig = {
   title: 'Campaña destacada',
   text: 'Personaliza este banner desde el panel de administración',
   image: WIDE_BANNER_PLACEHOLDER,
   ctaUrl: '/productos',
   ctaLabel: 'Ver más',
+  height: 'medium',
+  emphasize: false,
 };
 
 const DEFAULT_BANNER: BannerConfig = {
   active: true,
   slots: {
-    hero: { ...DEFAULT_SLOT },
-    middle: { ...DEFAULT_SLOT },
-    footer: { ...DEFAULT_SLOT },
+    hero: { ...DEFAULT_SLOT, height: SLOT_DEFAULT_HEIGHT.hero, emphasize: SLOT_DEFAULT_EMPHASIS.hero },
+    middle: { ...DEFAULT_SLOT, height: SLOT_DEFAULT_HEIGHT.middle, emphasize: SLOT_DEFAULT_EMPHASIS.middle },
+    footer: { ...DEFAULT_SLOT, height: SLOT_DEFAULT_HEIGHT.footer, emphasize: SLOT_DEFAULT_EMPHASIS.footer },
   },
 };
 
@@ -123,12 +137,17 @@ const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerC
   const buildSlot = (slotKey: BannerSlotKey, fallback?: BannerSlotConfig): BannerSlotConfig => {
     const slotData = rawSlots?.[slotKey];
     const sanitized = sanitizeSlot(slotData);
+    const defaultHeight = SLOT_DEFAULT_HEIGHT[slotKey] ?? DEFAULT_SLOT.height ?? 'medium';
+    const defaultEmphasis = SLOT_DEFAULT_EMPHASIS[slotKey] ?? DEFAULT_SLOT.emphasize ?? false;
+
     return {
       title: sanitized.title ?? fallback?.title ?? DEFAULT_SLOT.title,
       text: sanitized.text ?? fallback?.text ?? DEFAULT_SLOT.text,
       image: sanitized.image ?? fallback?.image ?? DEFAULT_SLOT.image,
       ctaUrl: sanitized.ctaUrl ?? fallback?.ctaUrl ?? DEFAULT_SLOT.ctaUrl,
       ctaLabel: sanitized.ctaLabel ?? fallback?.ctaLabel ?? DEFAULT_SLOT.ctaLabel,
+      height: sanitized.height ?? fallback?.height ?? defaultHeight,
+      emphasize: sanitized.emphasize ?? fallback?.emphasize ?? defaultEmphasis,
     };
   };
 
@@ -149,13 +168,20 @@ const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerC
     ? raw!.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
     : [];
 
-  const fallbackSlotFromLegacy = (index: number): BannerSlotConfig => ({
-    title: typeof raw?.title === 'string' && raw.title.trim() ? raw.title : DEFAULT_SLOT.title,
-    text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_SLOT.text,
-    image: legacyImages[index] || DEFAULT_SLOT.image,
-    ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_SLOT.ctaUrl,
-    ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_SLOT.ctaLabel,
-  });
+  const fallbackSlotFromLegacy = (index: number): BannerSlotConfig => {
+    const slotKeys: BannerSlotKey[] = ['hero', 'middle', 'footer'];
+    const slotKey = slotKeys[index] ?? 'middle';
+
+    return {
+      title: typeof raw?.title === 'string' && raw.title.trim() ? raw.title : DEFAULT_SLOT.title,
+      text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_SLOT.text,
+      image: legacyImages[index] || DEFAULT_SLOT.image,
+      ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_SLOT.ctaUrl,
+      ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_SLOT.ctaLabel,
+      height: SLOT_DEFAULT_HEIGHT[slotKey] ?? DEFAULT_SLOT.height,
+      emphasize: SLOT_DEFAULT_EMPHASIS[slotKey] ?? DEFAULT_SLOT.emphasize,
+    };
+  };
 
   return {
     active: raw?.active !== false,
