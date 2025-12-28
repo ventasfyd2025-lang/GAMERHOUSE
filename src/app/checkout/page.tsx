@@ -529,7 +529,11 @@ function CheckoutContent() {
                 </h2>
               </div>
 
-                <form onSubmit={handleCheckout} className="p-6 space-y-6 text-slate-900">
+                <form
+                  onSubmit={handleCheckout}
+                  encType="multipart/form-data"
+                  className="p-6 space-y-6 text-slate-900"
+                >
                   {isGuest && (
                     <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4 shadow-sm">
                       <div className="flex items-start space-x-3">
@@ -864,6 +868,7 @@ function CheckoutContent() {
                           Formatos aceptados: JPG, PNG, PDF (máx. 5MB)
                         </p>
                       </div>
+
                       </div>
                     )}
                   </div>
@@ -883,7 +888,11 @@ function CheckoutContent() {
                           disabled={isProcessing || stockLoading}
                           className="flex-1 py-3 px-6 bg-primary hover:bg-secondary text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          {isProcessing ? 'Procesando...' : stockLoading ? 'Verificando stock...' : 'Confirmar pedido'}
+                          {isProcessing
+                            ? 'Procesando...'
+                            : stockLoading
+                              ? 'Verificando stock...'
+                              : 'Enviar comprobante y confirmar pedido'}
                         </button>
                       </div>
                     </div>
