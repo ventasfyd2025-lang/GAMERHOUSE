@@ -25,6 +25,7 @@ interface BannerCard {
 
 export default function BannerShowcase({ className, slots }: BannerShowcaseProps) {
   const { bannerConfig } = useConfig();
+  const PLACEHOLDER_TEXT = 'Personaliza este banner desde el panel de administración.';
   const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
   const heightClasses: Record<NonNullable<BannerCard['height']>, string> = {
     short: 'min-h-[260px] sm:min-h-[320px] lg:min-h-[380px]',
@@ -48,10 +49,12 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
         return acc;
       }
 
+      const normalizedText = slot.text && slot.text.trim() === PLACEHOLDER_TEXT ? '' : (slot.text?.trim() ?? '');
+
       acc.push({
         id: slotKey,
         title: slot.title || 'Campaña destacada',
-        text: typeof slot.text === 'string' && slot.text.trim().length > 0 ? slot.text : '',
+        text: normalizedText,
         image: slot.image,
         ctaLabel: slot.ctaLabel || 'Ver más',
         ctaUrl: slot.ctaUrl || '/productos',

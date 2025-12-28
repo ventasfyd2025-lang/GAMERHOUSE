@@ -55,6 +55,8 @@ interface MainBannerConfig {
   slides: MainBannerSlide[];
 }
 
+const SLOT_PLACEHOLDER_TEXT = 'Personaliza este banner desde el panel de administración.';
+
 const DEFAULT_LOGO: LogoConfig = {
   emoji: '🎴',
   text: 'HunterCard TCG',
@@ -77,7 +79,7 @@ const SLOT_DEFAULT_EMPHASIS: Record<BannerSlotKey, boolean> = {
 
 const DEFAULT_SLOT: BannerSlotConfig = {
   title: 'Campaña destacada',
-  text: 'Personaliza este banner desde el panel de administración',
+  text: SLOT_PLACEHOLDER_TEXT,
   image: WIDE_BANNER_PLACEHOLDER,
   ctaUrl: '/productos',
   ctaLabel: 'Ver más',
@@ -150,7 +152,11 @@ const sanitizeLogoConfig = (raw: Record<string, unknown> | undefined): LogoConfi
 
 const sanitizeSlot = (slot: Record<string, unknown> | undefined): BannerSlotConfig => ({
   title: typeof slot?.title === 'string' && slot.title.trim() ? slot.title : undefined,
-  text: typeof slot?.text === 'string' && slot.text.trim() ? slot.text : undefined,
+  text: typeof slot?.text === 'string'
+    && slot.text.trim()
+    && slot.text.trim() !== SLOT_PLACEHOLDER_TEXT
+    ? slot.text
+    : undefined,
   image: typeof slot?.image === 'string' && slot.image.trim() ? slot.image : undefined,
   ctaUrl: typeof slot?.ctaUrl === 'string' && slot.ctaUrl.trim() ? slot.ctaUrl : undefined,
   ctaLabel: typeof slot?.ctaLabel === 'string' && slot.ctaLabel.trim() ? slot.ctaLabel : undefined,

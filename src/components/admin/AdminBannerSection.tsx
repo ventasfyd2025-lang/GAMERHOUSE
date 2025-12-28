@@ -28,6 +28,8 @@ interface BannerForm {
   slots: Record<SlotKey, BannerSlotForm>;
 }
 
+const SLOT_TEXT_PLACEHOLDER = 'Personaliza este banner desde el panel de administración.';
+
 const SLOT_LABELS: Record<SlotKey, { title: string; description: string }> = {
   hero: {
     title: 'Banner cabecera',
@@ -65,7 +67,7 @@ const getDefaultForm = (): BannerForm => ({
 
 const sanitizeSlot = (slot?: Record<string, unknown>): BannerSlotForm => ({
   title: typeof slot?.title === 'string' ? slot.title : '',
-  text: typeof slot?.text === 'string' ? slot.text : '',
+  text: typeof slot?.text === 'string' && slot.text.trim() !== SLOT_TEXT_PLACEHOLDER ? slot.text : '',
   image: typeof slot?.image === 'string' ? slot.image : '',
   ctaLabel: typeof slot?.ctaLabel === 'string' && slot.ctaLabel.trim() ? slot.ctaLabel : 'Ver más',
   ctaUrl: typeof slot?.ctaUrl === 'string' && slot.ctaUrl.trim() ? slot.ctaUrl : '/productos',
