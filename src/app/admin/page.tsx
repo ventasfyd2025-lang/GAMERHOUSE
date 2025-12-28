@@ -2336,7 +2336,7 @@ export default function AdminPage() {
   } as React.CSSProperties;
 
   // Advanced product filtering function
-  const getFilteredProducts = () => {
+  const filteredProducts = useMemo(() => {
     return products.filter(product => {
       // Category filter
       if (selectedCategory !== 'all' && !productHasCategory(product, selectedCategory)) {
@@ -2402,11 +2402,29 @@ export default function AdminPage() {
 
       return true;
     });
-  };
+  }, [
+    products,
+    selectedCategory,
+    productSearch,
+    productFilters.priceRange.min,
+    productFilters.priceRange.max,
+    productFilters.stockStatus,
+    productFilters.status,
+    productFilters.tags
+  ]);
+
+  const [productDisplayLimit, setProductDisplayLimit] = useState(50);
+
+  useEffect(() => {
+    setProductDisplayLimit(50);
+  }, [selectedCategory, productSearch, productFilters, products.length]);
+
+  const visibleProducts = useMemo(() => (
+    filteredProducts.slice(0, productDisplayLimit)
+  ), [filteredProducts, productDisplayLimit]);
 
   const selectAllProducts = () => {
-    const filteredProducts = getFilteredProducts();
-    const allIds = filteredProducts.map(p => p.id);
+    const allIds = visibleProducts.map(p => p.id);
     setSelectedProducts(allIds);
   };
 
@@ -3149,10 +3167,10 @@ export default function AdminPage() {
                                             updateProduct(product.id, { stock: parseInt(newStock) });
                                           }
                                         }}
-                                        className="bg-red-600 hover:bg-secondary text-white text-xs px-2 py-1 rounded transition-colors"
-                                        title="Ajustar Stock"
+                                        className="inline-flex items-center gap-1 bg-red-600 hover:bg-secondary text-white text-[11px] px-3 py-1.5 rounded-full font-semibold transition-colors"
+                                        title="Reponer stock"
                                       >
-                                        📈
+                                        🔄 Reponer stock
                                       </button>
                                       <button
                                         onClick={() => {
@@ -3161,10 +3179,10 @@ export default function AdminPage() {
                                             updateProduct(product.id, { minStock: parseInt(minStockNew) });
                                           }
                                         }}
-                                        className="bg-dark0 hover:bg-gray-600 text-white text-xs px-2 py-1 rounded transition-colors"
-                                        title="Configurar Mínimo"
+                                        className="inline-flex items-center gap-1 bg-slate-800 hover:bg-gray-600 text-white text-[11px] px-3 py-1.5 rounded-full font-semibold transition-colors"
+                                        title="Configurar stock mínimo"
                                       >
-                                        ⚙️
+                                        ⚙️ Stock mínimo
                                       </button>
                                     </div>
                                   </td>
@@ -3394,7 +3412,7 @@ export default function AdminPage() {
               <div className="mt-4 flex items-center justify-between text-sm">
                 <div className="flex items-center space-x-4">
                   <span className="bg-warning/20 text-secondary px-3 py-1 rounded-full font-medium">
-                    📊 {getFilteredProducts().length} de {products.length} productos
+                    📊 {filteredProducts.length} de {products.length} productos
                   </span>
                   {(productSearch || selectedCategory !== 'all' || showFilters) && (
                     <div className="flex items-center space-x-2">
@@ -3463,7 +3481,7 @@ export default function AdminPage() {
                       <th className="w-12 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                         <input
                           type="checkbox"
-                          checked={getFilteredProducts().length > 0 && getFilteredProducts().every(p => selectedProducts.includes(p.id))}
+                          checked={visibleProducts.length > 0 && visibleProducts.every(p => selectedProducts.includes(p.id))}
                           onChange={(e) => {
                             if (e.target.checked) {
                               selectAllProducts();
@@ -3492,7 +3510,7 @@ export default function AdminPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 bg-white">
-                    {getFilteredProducts().map((product) => (
+                    {visibleProducts.map((product) => (
                       <tr key={product.id}>
                         <td className="px-4 py-4 align-top">
                           <input
@@ -3581,12 +3599,12 @@ export default function AdminPage() {
               <div className="px-6 py-3 bg-slate-900 border-t border-yellow-300/30">
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-yellow-300">
-                    Mostrando <span className="font-bold text-red-600">{getFilteredProducts().length}</span> de <span className="font-medium">{products.length}</span> productos
+                    Mostrando <span className="font-bold text-red-600">{visibleProducts.length}</span> de <span className="font-medium">{filteredProducts.length}</span> productos
                     {(productSearch || selectedCategory !== 'all' || productFilters.tags.length > 0) && (
                       <span className="text-red-600 ml-1">con filtros aplicados</span>
                     )}
                   </p>
-                  {getFilteredProducts().length !== products.length && (
+                  {filteredProducts.length !== products.length && (
                     <button
                       onClick={() => {
                         setProductSearch('');
@@ -3605,6 +3623,16 @@ export default function AdminPage() {
                   )}
                 </div>
               </div>
+              {visibleProducts.length < filteredProducts.length && (
+                <div className="px-6 py-4 bg-slate-900 border-t border-yellow-300/20 flex justify-center">
+                  <button
+                    onClick={() => setProductDisplayLimit((prev) => prev + 50)}
+                    className="px-4 py-2 rounded-full bg-slate-800 text-yellow-300 text-sm font-semibold hover:bg-slate-700"
+                  >
+                    Cargar más productos
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
