@@ -8,6 +8,7 @@ import { Loader2, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { db, storage } from '@/lib/firebase';
 import optimizeImageFile from '@/utils/imageProcessing';
 import { HERO_BANNER_PLACEHOLDER } from '@/lib/placeholders';
+import { useCategories } from '@/hooks/useCategories';
 
 type SlotKey = 'hero' | 'middle' | 'footer';
 
@@ -17,6 +18,9 @@ interface BannerSlotForm {
   image?: string;
   ctaLabel: string;
   ctaUrl: string;
+  linkType: 'url' | 'category';
+  categoryId?: string;
+  textColor: string;
 }
 
 interface BannerForm {
@@ -44,7 +48,10 @@ const DEFAULT_SLOT: BannerSlotForm = {
   text: '',
   image: '',
   ctaLabel: 'Ver más',
-  ctaUrl: '/productos'
+  ctaUrl: '/productos',
+  linkType: 'url',
+  categoryId: '',
+  textColor: '#ffffff'
 };
 
 const getDefaultForm = (): BannerForm => ({
@@ -62,6 +69,9 @@ const sanitizeSlot = (slot?: Record<string, unknown>): BannerSlotForm => ({
   image: typeof slot?.image === 'string' ? slot.image : '',
   ctaLabel: typeof slot?.ctaLabel === 'string' && slot.ctaLabel.trim() ? slot.ctaLabel : 'Ver más',
   ctaUrl: typeof slot?.ctaUrl === 'string' && slot.ctaUrl.trim() ? slot.ctaUrl : '/productos',
+  linkType: slot?.linkType === 'category' ? 'category' : 'url',
+  categoryId: typeof slot?.categoryId === 'string' ? slot.categoryId : '',
+  textColor: typeof slot?.textColor === 'string' && slot.textColor.trim() ? slot.textColor : '#ffffff'
 });
 
 const normalizeBannerForm = (raw?: Record<string, unknown>): BannerForm => {
@@ -92,6 +102,9 @@ const normalizeBannerForm = (raw?: Record<string, unknown>): BannerForm => {
     image: legacyImages[index] || '',
     ctaLabel: typeof raw.ctaLabel === 'string' ? raw.ctaLabel : 'Ver más',
     ctaUrl: typeof raw.ctaUrl === 'string' ? raw.ctaUrl : '/productos',
+    linkType: 'url',
+    categoryId: '',
+    textColor: '#ffffff'
   });
 
   return {
@@ -110,6 +123,7 @@ export default function AdminBannerSection() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [uploadingSlot, setUploadingSlot] = useState<SlotKey | null>(null);
+  const { categories } = useCategories();
 
   useEffect(() => {
     const loadBanner = async () => {
@@ -182,6 +196,7 @@ export default function AdminBannerSection() {
       });
 
       const hero = bannerForm.slots.hero;
+      const heroLinkType = hero.linkType === 'category' && hero.categoryId ? 'category' : 'url';
       await setDoc(doc(db, 'config', 'main-banner'), {
         active: bannerForm.active,
         slides: [
@@ -189,8 +204,9 @@ export default function AdminBannerSection() {
             title: hero.title || 'Campaña destacada',
             subtitle: hero.text || '',
             imageUrl: hero.image || HERO_BANNER_PLACEHOLDER,
-            linkType: 'url',
-            customUrl: hero.ctaUrl || '/productos',
+            linkType: heroLinkType,
+            categoryId: heroLinkType === 'category' ? hero.categoryId || undefined : undefined,
+            customUrl: heroLinkType === 'url' ? (hero.ctaUrl || '/productos') : undefined,
             ctaLabel: hero.ctaLabel || 'Ver más',
           },
         ],
@@ -286,7 +302,36 @@ export default function AdminBannerSection() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800">Enlace del botón</label>
+                      <label className="block text-sm font-semibold text-gray-800">Tipo de enlace</label>
+                      <select
+                        value={slot.linkType}
+                        onChange={(event) => handleSlotChange(slotKey, 'linkType', event.target.value as BannerSlotForm['linkType'])}
+                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                      >
+                        <option value="url">URL personalizada</option>
+                        <option value="category">Categoría</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {slot.linkType === 'category' ? (
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-800">Categoría destino</label>
+                      <select
+                        value={slot.categoryId || ''}
+                        onChange={(event) => handleSlotChange(slotKey, 'categoryId', event.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                      >
+                        <option value="">Seleccione una categoría</option>
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>{category.name}</option>
+                        ))}
+                      </select>
+                      <p className="text-xs text-gray-500 mt-1">El botón redirigirá a la categoría seleccionada.</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-800">URL del botón</label>
                       <input
                         type="text"
                         value={slot.ctaUrl}
@@ -294,7 +339,27 @@ export default function AdminBannerSection() {
                         className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-200"
                         placeholder="/productos"
                       />
+                      <p className="text-xs text-gray-500 mt-1">Puedes pegar una URL interna o externa.</p>
                     </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-800">Color del texto</label>
+                    <div className="flex items-center gap-4">
+                      <input
+                        type="color"
+                        value={slot.textColor}
+                        onChange={(event) => handleSlotChange(slotKey, 'textColor', event.target.value)}
+                        className="h-12 w-16 rounded-lg border border-gray-300"
+                      />
+                      <input
+                        type="text"
+                        value={slot.textColor}
+                        onChange={(event) => handleSlotChange(slotKey, 'textColor', event.target.value)}
+                        className="flex-1 rounded-lg border border-gray-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500">Ajusta el color para que contraste con la imagen del banner.</p>
                   </div>
                 </div>
 

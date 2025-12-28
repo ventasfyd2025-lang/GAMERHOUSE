@@ -84,10 +84,18 @@ export default function DynamicBanner() {
 
   const { href: ctaHref, label: ctaLabel } = sourceType === 'slide'
     ? resolveSlideLink(slideCandidate)
-    : {
-        href: slotCandidate?.ctaUrl || '/productos',
-        label: slotCandidate?.ctaLabel || 'Ver más',
-      };
+    : (() => {
+        if (slotCandidate?.linkType === 'category' && slotCandidate.categoryId) {
+          return {
+            href: `/categoria/${slotCandidate.categoryId}`,
+            label: slotCandidate.ctaLabel || 'Ver categoría',
+          };
+        }
+        return {
+          href: slotCandidate?.ctaUrl || '/productos',
+          label: slotCandidate?.ctaLabel || 'Ver más',
+        };
+      })();
 
   const title = sourceType === 'slide'
     ? slideCandidate?.title || slotCandidate?.title || 'Campaña destacada'
@@ -95,6 +103,11 @@ export default function DynamicBanner() {
   const text = sourceType === 'slide'
     ? slideCandidate?.subtitle || slotCandidate?.text
     : slotCandidate?.text || slideCandidate?.subtitle;
+
+  const contentTextColor = sourceType === 'slot' && slotCandidate?.textColor
+    ? slotCandidate.textColor
+    : '#ffffff';
+  const contentShadow = '0 12px 35px rgba(0,0,0,0.65)';
 
   return (
     <section className="w-full px-3 sm:px-6 lg:px-8 py-5 sm:py-10">
@@ -118,18 +131,24 @@ export default function DynamicBanner() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex h-full flex-col justify-center gap-4 sm:gap-6 p-6 sm:p-10 lg:p-16 text-white max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-black/35 backdrop-blur-md rounded-[2rem] m-4 sm:m-8 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+          <div className="relative z-10 flex h-full flex-col justify-center gap-4 sm:gap-6 p-6 sm:p-10 lg:p-16 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-black/35 backdrop-blur-md rounded-[2rem] m-4 sm:m-8 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
             <div className="space-y-2">
               <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-[10px] sm:text-xs font-bold tracking-[0.45em] uppercase border border-white/40">
                 Destacado
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight drop-shadow-[0_10px_35px_rgba(0,0,0,0.65)]">
+              <h2
+                className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight"
+                style={{ color: contentTextColor, textShadow: contentShadow }}
+              >
                 {title}
               </h2>
             </div>
 
             {text && (
-              <p className="text-sm sm:text-lg text-white/90 max-w-lg leading-relaxed drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
+              <p
+                className="text-sm sm:text-lg max-w-lg leading-relaxed"
+                style={{ color: contentTextColor, textShadow: contentShadow, opacity: 0.9 }}
+              >
                 {text}
               </p>
             )}

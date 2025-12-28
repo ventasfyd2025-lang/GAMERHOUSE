@@ -23,6 +23,9 @@ interface BannerSlotConfig {
   ctaLabel?: string;
   emphasize?: boolean;
   height?: 'short' | 'medium' | 'tall';
+  linkType?: 'url' | 'category';
+  categoryId?: string;
+  textColor?: string;
 }
 
 interface BannerConfig {
@@ -80,6 +83,9 @@ const DEFAULT_SLOT: BannerSlotConfig = {
   ctaLabel: 'Ver más',
   height: 'medium',
   emphasize: false,
+  linkType: 'url',
+  categoryId: '',
+  textColor: '#ffffff',
 };
 
 const DEFAULT_BANNER: BannerConfig = {
@@ -152,6 +158,9 @@ const sanitizeSlot = (slot: Record<string, unknown> | undefined): BannerSlotConf
   height: typeof slot?.height === 'string' && ['short', 'medium', 'tall'].includes(slot.height)
     ? (slot.height as 'short' | 'medium' | 'tall')
     : undefined,
+  linkType: slot?.linkType === 'category' ? 'category' : 'url',
+  categoryId: typeof slot?.categoryId === 'string' && slot.categoryId.trim() ? slot.categoryId : undefined,
+  textColor: typeof slot?.textColor === 'string' && slot.textColor.trim() ? slot.textColor : undefined,
 });
 
 const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerConfig => {
@@ -169,6 +178,9 @@ const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerC
       ctaLabel: sanitized.ctaLabel ?? fallback?.ctaLabel ?? DEFAULT_SLOT.ctaLabel,
       height: sanitized.height ?? fallback?.height ?? defaultHeight,
       emphasize: sanitized.emphasize ?? fallback?.emphasize ?? defaultEmphasis,
+      linkType: sanitized.linkType ?? fallback?.linkType ?? DEFAULT_SLOT.linkType,
+      categoryId: sanitized.categoryId ?? fallback?.categoryId ?? DEFAULT_SLOT.categoryId,
+      textColor: sanitized.textColor ?? fallback?.textColor ?? DEFAULT_SLOT.textColor,
     };
   };
 
@@ -199,6 +211,9 @@ const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerC
       image: legacyImages[index] || DEFAULT_SLOT.image,
       ctaUrl: typeof raw?.ctaUrl === 'string' && raw.ctaUrl.trim() ? raw.ctaUrl : DEFAULT_SLOT.ctaUrl,
       ctaLabel: typeof raw?.ctaLabel === 'string' && raw.ctaLabel.trim() ? raw.ctaLabel : DEFAULT_SLOT.ctaLabel,
+      linkType: DEFAULT_SLOT.linkType,
+      categoryId: DEFAULT_SLOT.categoryId,
+      textColor: DEFAULT_SLOT.textColor,
       height: SLOT_DEFAULT_HEIGHT[slotKey] ?? DEFAULT_SLOT.height,
       emphasize: SLOT_DEFAULT_EMPHASIS[slotKey] ?? DEFAULT_SLOT.emphasize,
     };
