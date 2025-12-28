@@ -166,7 +166,7 @@ const defaultHomepageConfig: HomepageConfig = {
       position: 'normal'
     }
   ],
-  middleBanners: defaultMiddleBanners.map((banner) => ({ ...banner })),
+  middleBanners: defaultMiddleBanners.map((banner) => ({ ...banner })) as MiddleBanner[],
 };
 
 export function useHomepageConfig() {
