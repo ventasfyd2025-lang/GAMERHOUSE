@@ -9,6 +9,8 @@ interface LogoConfig {
   emoji: string;
   text: string;
   image: string;
+  textColor: string;
+  neonIntensity: number;
 }
 
 type BannerSlotKey = 'hero' | 'middle' | 'footer';
@@ -54,6 +56,8 @@ const DEFAULT_LOGO: LogoConfig = {
   emoji: '🎴',
   text: 'HunterCard TCG',
   image: '',
+  textColor: '#ffffff',
+  neonIntensity: 0.75,
 };
 
 const SLOT_DEFAULT_HEIGHT: Record<BannerSlotKey, 'short' | 'medium' | 'tall'> = {
@@ -119,6 +123,12 @@ const sanitizeLogoConfig = (raw: Record<string, unknown> | undefined): LogoConfi
   emoji: typeof raw?.emoji === 'string' && raw.emoji.trim() ? raw.emoji : DEFAULT_LOGO.emoji,
   text: typeof raw?.text === 'string' && raw.text.trim() ? raw.text : DEFAULT_LOGO.text,
   image: typeof raw?.image === 'string' ? raw.image : '',
+  textColor: typeof raw?.textColor === 'string' && raw.textColor.trim()
+    ? raw.textColor
+    : DEFAULT_LOGO.textColor,
+  neonIntensity: typeof raw?.neonIntensity === 'number'
+    ? Math.min(Math.max(raw.neonIntensity, 0.1), 1)
+    : DEFAULT_LOGO.neonIntensity,
 });
 
 const sanitizeSlot = (slot: Record<string, unknown> | undefined): BannerSlotConfig => ({

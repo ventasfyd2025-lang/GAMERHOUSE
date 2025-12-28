@@ -67,6 +67,10 @@ export default function UnifiedHeader() {
   const { currentUser, isRegistered, isGuest, logout } = useUserAuth();
   const { t } = useI18n();
   const unreadOrderNotifications = useOrderNotifications();
+  const clampNeon = (value: number) => Math.min(Math.max(value, 0.1), 1);
+  const logoTextColor = logoConfig?.textColor || '#ffffff';
+  const neonIntensity = clampNeon(logoConfig?.neonIntensity ?? 0.75);
+  const neonShadow = `0 0 ${6 + neonIntensity * 6}px ${logoTextColor}, 0 0 ${14 + neonIntensity * 14}px ${logoTextColor}, 0 0 ${26 + neonIntensity * 22}px ${logoTextColor}`;
 
   // Usar el hook compartido en vez de listener duplicado
   const hasUnreadMessages = unreadOrderNotifications > 0;
@@ -443,10 +447,16 @@ const handleMobileCategoryLinkClick = (
               >
                 {renderLogoBadge()}
                 <div className="flex flex-col leading-tight">
-                  <span className="text-2xl sm:text-[1.7rem] font-black uppercase tracking-[0.22em] text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-yellow-200 drop-shadow-[0_4px_14px_rgba(0,0,0,0.35)]">
+                  <span
+                    className="text-2xl sm:text-[1.7rem] font-black uppercase tracking-[0.22em]"
+                    style={{ color: logoTextColor, textShadow: neonShadow }}
+                  >
                     {logoConfig?.text || 'GAMERHOUSE'}
                   </span>
-                  <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.35em] text-amber-200/90">
+                  <span
+                    className="text-[11px] sm:text-[12px] uppercase tracking-[0.35em]"
+                    style={{ color: logoTextColor, textShadow: neonShadow, opacity: 0.8 }}
+                  >
                     Tu tienda de confianza
                   </span>
                 </div>

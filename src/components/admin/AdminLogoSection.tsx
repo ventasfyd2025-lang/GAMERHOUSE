@@ -10,17 +10,28 @@ import optimizeImageFile from '@/utils/imageProcessing';
 interface LogoForm {
   text: string;
   image: string;
+  textColor: string;
+  neonIntensity: number;
 }
 
 export default function AdminLogoSection() {
   const [logoForm, setLogoForm] = useState<LogoForm>({
     text: 'GAMER HOUSE',
-    image: ''
+    image: '',
+    textColor: '#ffffff',
+    neonIntensity: 0.75,
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [updatingLogo, setUpdatingLogo] = useState(false);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
+
+  const clampNeon = (value: number) => Math.min(Math.max(value, 0.1), 1);
+  const neonIntensity = clampNeon(logoForm.neonIntensity ?? 0.75);
+  const neonShadow = `0 0 ${6 + neonIntensity * 6}px ${logoForm.textColor}, 0 0 ${16 + neonIntensity * 12}px ${logoForm.textColor}, 0 0 ${28 + neonIntensity * 20}px ${logoForm.textColor}`;
+  const previewLines = logoForm.text
+    ? logoForm.text.split('\n').map((line) => line.trim()).filter(Boolean)
+    : [];
 
   useEffect(() => {
     const loadLogo = async () => {
@@ -30,7 +41,9 @@ export default function AdminLogoSection() {
           const data = logoDoc.data();
           setLogoForm({
             text: data.text || 'GAMER HOUSE',
-            image: data.image || ''
+            image: data.image || '',
+            textColor: typeof data.textColor === 'string' ? data.textColor : '#ffffff',
+            neonIntensity: typeof data.neonIntensity === 'number' ? data.neonIntensity : 0.75,
           });
         }
       } catch (error) {
@@ -123,9 +136,9 @@ export default function AdminLogoSection() {
               <span className="w-2 h-2 bg-gamerhouse-red rounded-full"></span>
               Vista Previa del Logo
             </p>
-            <div className="flex items-center gap-6 bg-white rounded-lg p-5 border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-6 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
               {logoForm.image && (
-                <div className="relative w-24 h-24 rounded-lg bg-gray-100 flex items-center justify-center border border-gray-300 shadow-sm">
+                <div className="relative w-24 h-24 rounded-2xl bg-white/10 flex items-center justify-center border border-white/30 shadow-inner">
                   <Image
                     src={logoForm.image}
                     alt="Logo preview"
@@ -134,10 +147,21 @@ export default function AdminLogoSection() {
                   />
                 </div>
               )}
-              <div className="flex-1">
-                <div className="text-xl font-bold text-gray-900">{logoForm.text.split('\n')[0]}</div>
-                {logoForm.text.includes('\n') && (
-                  <div className="text-lg font-bold text-gamerhouse-red">{logoForm.text.split('\n')[1]}</div>
+              <div className="flex-1 space-y-2">
+                {previewLines.map((line, index) => (
+                  <div
+                    key={index}
+                    className={`font-black uppercase tracking-[0.2em] text-lg sm:text-2xl ${index > 0 ? 'opacity-80 text-sm sm:text-xl tracking-[0.12em]' : ''}`}
+                    style={{
+                      color: logoForm.textColor,
+                      textShadow: neonShadow,
+                    }}
+                  >
+                    {line}
+                  </div>
+                ))}
+                {previewLines.length === 0 && (
+                  <div className="text-white/70 text-sm">Escribe un texto para previsualizarlo aqui.</div>
                 )}
               </div>
             </div>
@@ -158,6 +182,53 @@ export default function AdminLogoSection() {
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white text-gray-900 placeholder-gray-400 transition-all"
               />
               <p className="text-xs text-gray-500 mt-2">💡 Usa saltos de línea para logo en múltiples líneas</p>
+            </div>
+
+            {/* Color picker */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-900 mb-3">
+                Color del texto
+              </label>
+              <div className="flex items-center gap-4">
+                <input
+                  type="color"
+                  value={logoForm.textColor}
+                  onChange={(e) => setLogoForm((prev) => ({ ...prev, textColor: e.target.value }))}
+                  className="w-16 h-12 rounded-lg border border-gray-300 bg-white cursor-pointer"
+                />
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    value={logoForm.textColor}
+                    onChange={(e) => setLogoForm((prev) => ({ ...prev, textColor: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gamerhouse-red bg-white text-gray-900"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Acepta formatos hex (#FF0000) o palabras CSS (red, cyan...).</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Neon intensity */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-900 mb-3">
+                Intensidad del efecto neón
+              </label>
+              <div className="space-y-2">
+                <input
+                  type="range"
+                  min="0.1"
+                  max="1"
+                  step="0.05"
+                  value={neonIntensity}
+                  onChange={(e) => setLogoForm((prev) => ({ ...prev, neonIntensity: parseFloat(e.target.value) }))}
+                  className="w-full accent-gamerhouse-red"
+                />
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>Suave</span>
+                  <span className="font-semibold text-gray-800">{Math.round(neonIntensity * 100)}%</span>
+                  <span>Intenso</span>
+                </div>
+              </div>
             </div>
 
             {/* Imagen */}
