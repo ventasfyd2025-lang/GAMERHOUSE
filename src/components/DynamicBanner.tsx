@@ -126,12 +126,10 @@ export default function DynamicBanner() {
                 onError={() => setImageError(true)}
               />
             )}
-            <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#030712]/90 via-[#020912]/55 to-transparent" />
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex h-full flex-col justify-center gap-4 sm:gap-6 p-6 sm:p-10 lg:p-16 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-black/35 backdrop-blur-md rounded-[2rem] m-4 sm:m-8 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+          <div className="relative z-10 flex h-full flex-col justify-center gap-4 sm:gap-6 p-6 sm:p-10 lg:p-16 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] m-4 sm:m-8">
             <div className="space-y-2">
               <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-[10px] sm:text-xs font-bold tracking-[0.45em] uppercase border border-white/40">
                 Destacado
