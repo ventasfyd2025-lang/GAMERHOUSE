@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useEffect, Fragment } from 'react';
+import { useMemo, useState, useEffect, Fragment, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useProducts } from '@/hooks/useProducts';
@@ -43,20 +43,38 @@ export default function GamerHouseHomepage() {
 
   const normalizeValue = (value?: string | null) => value?.toString().toLowerCase().trim();
 
-  const getProductsByCategory = useMemo(() => {
-    return (categoryId?: string) => {
-      if (!categoryId) {
-        return [] as any[];
-      }
-      const normalized = normalizeValue(categoryId);
-      return products.filter((product) => {
-        const categories = [product.categoria, ...(product.categorias || [])]
-          .map((cat) => normalizeValue(typeof cat === 'string' ? cat : undefined))
-          .filter(Boolean);
-        return categories.includes(normalized);
+  const categoryIndex = useMemo(() => {
+    const map = new Map<string, any[]>();
+    if (!products.length) {
+      return map;
+    }
+
+    products.forEach((product) => {
+      const categories = [product.categoria, ...(product.categorias || [])]
+        .map((cat) => normalizeValue(typeof cat === 'string' ? cat : undefined))
+        .filter(Boolean) as string[];
+
+      categories.forEach((categoryKey) => {
+        if (!map.has(categoryKey)) {
+          map.set(categoryKey, []);
+        }
+        map.get(categoryKey)!.push(product);
       });
-    };
+    });
+
+    return map;
   }, [products]);
+
+  const getProductsByCategory = useCallback((categoryId?: string) => {
+    if (!categoryId) {
+      return [] as any[];
+    }
+    const normalized = normalizeValue(categoryId);
+    if (!normalized) {
+      return [] as any[];
+    }
+    return categoryIndex.get(normalized) ?? [];
+  }, [categoryIndex]);
 
   const getSectionProducts = useMemo(() => {
     return (section: any) => {

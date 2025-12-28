@@ -67,6 +67,10 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
     return null;
   }
 
+  const responsiveSizes = cards.length > 1
+    ? '(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw'
+    : '100vw';
+
   return (
     <section className={`w-full ${className ?? ''}`}>
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -83,6 +87,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                     src={card.image}
                     alt={card.title}
                     fill
+                    sizes={responsiveSizes}
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.02] group-hover:brightness-110 group-hover:contrast-110"
                   />
                 ) : (

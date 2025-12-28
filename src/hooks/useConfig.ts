@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { WIDE_BANNER_PLACEHOLDER } from '@/lib/placeholders';
 
@@ -94,6 +94,17 @@ const DEFAULT_BANNER: BannerConfig = {
 const DEFAULT_MAIN_BANNER: MainBannerConfig = {
   active: true,
   slides: [],
+};
+
+type ConfigCachePayload = {
+  logo: LogoConfig;
+  banner: BannerConfig;
+  mainBanner: MainBannerConfig;
+};
+
+const CONFIG_CACHE_TTL = 5 * 60 * 1000; // 5 minutos
+const configCache: { payload?: ConfigCachePayload; timestamp: number } = {
+  timestamp: 0,
 };
 
 const sanitizeMainBannerSlides = (input: unknown): MainBannerSlide[] => {
@@ -212,75 +223,90 @@ export function useConfig() {
   const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    let isMounted = true;
 
-    let loadedSegments = 0;
-    const markLoaded = () => {
-      loadedSegments += 1;
-      if (loadedSegments >= 3) {
+    const applyPayload = (payload: ConfigCachePayload) => {
+      if (!isMounted) return;
+      setLogoConfig(payload.logo);
+      setBannerConfig(payload.banner);
+      setMainBannerConfig(payload.mainBanner);
+    };
+
+    const maybeUseCache = () => {
+      const cached = configCache.payload;
+      const cacheIsFresh = cached && Date.now() - configCache.timestamp < CONFIG_CACHE_TTL;
+      if (reloadKey === 0 && cacheIsFresh && cached) {
+        applyPayload(cached);
         setLoading(false);
+        return true;
+      }
+      return false;
+    };
+
+    if (maybeUseCache()) {
+      return () => {
+        isMounted = false;
+      };
+    }
+
+    const fetchConfig = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const [logoSnap, bannerSnap, mainBannerSnap] = await Promise.all([
+          getDoc(doc(db, 'config', 'logo')),
+          getDoc(doc(db, 'config', 'banner')),
+          getDoc(doc(db, 'config', 'main-banner')),
+        ]);
+
+        if (!isMounted) {
+          return;
+        }
+
+        const mainBannerData = mainBannerSnap.exists()
+          ? (mainBannerSnap.data() as Record<string, unknown>)
+          : null;
+
+        const payload: ConfigCachePayload = {
+          logo: logoSnap.exists() ? sanitizeLogoConfig(logoSnap.data()) : DEFAULT_LOGO,
+          banner: bannerSnap.exists() ? sanitizeBannerConfig(bannerSnap.data()) : DEFAULT_BANNER,
+          mainBanner: mainBannerData
+            ? {
+                active: mainBannerData.active !== false,
+                slides: sanitizeMainBannerSlides(mainBannerData.slides),
+              }
+            : DEFAULT_MAIN_BANNER,
+        };
+
+        configCache.payload = payload;
+        configCache.timestamp = Date.now();
+        applyPayload(payload);
+      } catch (fetchError) {
+        console.error('Error cargando configuración:', fetchError);
+        if (!isMounted) return;
+        setError('No se pudo cargar la configuración, usando valores por defecto.');
+        applyPayload({
+          logo: DEFAULT_LOGO,
+          banner: DEFAULT_BANNER,
+          mainBanner: DEFAULT_MAIN_BANNER,
+        });
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
-    const unsubLogo = onSnapshot(
-      doc(db, 'config', 'logo'),
-      (snapshot) => {
-        setLogoConfig(snapshot.exists() ? sanitizeLogoConfig(snapshot.data()) : DEFAULT_LOGO);
-        markLoaded();
-      },
-      (err) => {
-        console.error('Error cargando logo:', err);
-        setLogoConfig(DEFAULT_LOGO);
-        setError('No se pudo cargar el logo, usando valores por defecto.');
-        markLoaded();
-      }
-    );
-
-    const unsubBanner = onSnapshot(
-      doc(db, 'config', 'banner'),
-      (snapshot) => {
-        setBannerConfig(snapshot.exists() ? sanitizeBannerConfig(snapshot.data()) : DEFAULT_BANNER);
-        markLoaded();
-      },
-      (err) => {
-        console.error('Error cargando banner:', err);
-        setBannerConfig(DEFAULT_BANNER);
-        setError('No se pudo cargar el banner, usando valores por defecto.');
-        markLoaded();
-      }
-    );
-
-    const unsubMainBanner = onSnapshot(
-      doc(db, 'config', 'main-banner'),
-      (snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.data() as Record<string, unknown>;
-          setMainBannerConfig({
-            active: data.active !== false,
-            slides: sanitizeMainBannerSlides(data.slides),
-          });
-        } else {
-          setMainBannerConfig(DEFAULT_MAIN_BANNER);
-        }
-        markLoaded();
-      },
-      (err) => {
-        console.error('Error cargando main-banner:', err);
-        setMainBannerConfig(DEFAULT_MAIN_BANNER);
-        setError('No se pudo cargar el banner principal, usando valores por defecto.');
-        markLoaded();
-      }
-    );
+    fetchConfig();
 
     return () => {
-      unsubLogo();
-      unsubBanner();
-      unsubMainBanner();
+      isMounted = false;
     };
   }, [reloadKey]);
 
   const refetch = useCallback(() => {
+    configCache.timestamp = 0;
     setReloadKey((prev) => prev + 1);
   }, []);
 
