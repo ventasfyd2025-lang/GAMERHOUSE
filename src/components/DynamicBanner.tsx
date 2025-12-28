@@ -107,30 +107,29 @@ export default function DynamicBanner() {
                 src={imageUrl}
                 alt={title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 priority
                 onError={() => setImageError(true)}
               />
             )}
+            <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#030712]/90 via-[#020912]/55 to-transparent" />
           </div>
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent" />
-
           {/* Content */}
-          <div className="relative z-10 flex h-full flex-col justify-center gap-3 sm:gap-5 p-6 sm:p-10 lg:p-16 text-slate-900 max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px]">
+          <div className="relative z-10 flex h-full flex-col justify-center gap-4 sm:gap-6 p-6 sm:p-10 lg:p-16 text-white max-w-2xl min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] bg-black/35 backdrop-blur-md rounded-[2rem] m-4 sm:m-8 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
             <div className="space-y-2">
-              <span className="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-600 text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-amber-200">
+              <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-[10px] sm:text-xs font-bold tracking-[0.45em] uppercase border border-white/40">
                 Destacado
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight uppercase tracking-tight drop-shadow-[0_10px_35px_rgba(0,0,0,0.65)]">
                 {title}
               </h2>
             </div>
 
             {text && (
-              <p className="text-sm sm:text-lg text-slate-600 max-w-lg leading-relaxed">
+              <p className="text-sm sm:text-lg text-white/90 max-w-lg leading-relaxed drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
                 {text}
               </p>
             )}
@@ -138,7 +137,7 @@ export default function DynamicBanner() {
             <div className="pt-2 sm:pt-4">
               <Link
                 href={ctaHref}
-                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 to-rose-400 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm hover:from-amber-300 hover:to-rose-300 hover:shadow-lg transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-gradient-to-r from-amber-400 via-rose-400 to-pink-500 text-white font-semibold uppercase tracking-wider text-xs sm:text-sm shadow-[0_15px_40px_rgba(249,115,22,0.35)] hover:scale-105 transition-transform"
               >
                 {ctaLabel}
               </Link>
