@@ -83,22 +83,29 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                     src={card.image}
                     alt={card.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02] group-hover:brightness-110 group-hover:contrast-110"
                   />
                 ) : (
                   <div className="absolute inset-0 bg-gradient-to-r from-sky-200 to-cyan-100" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-black/10" />
+                <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
               </div>
-              <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)] ${heightClasses[card.height ?? 'medium']}`}>
+              <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.65)] ${heightClasses[card.height ?? 'medium']}`}>
                 <div className="space-y-3">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-white/80">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-white/85">
                     Banner destacado
                   </p>
-                  <h3 className="text-2xl font-semibold leading-tight text-balance">
+                  <h3
+                    className="text-2xl font-black leading-tight text-balance"
+                    style={{ textShadow: '0 4px 18px rgba(0,0,0,0.8)' }}
+                  >
                     {card.title}
                   </h3>
-                  <p className="text-base text-white/90">
+                  <p
+                    className="text-base text-white/95"
+                    style={{ textShadow: '0 4px 12px rgba(0,0,0,0.65)' }}
+                  >
                     {card.text}
                   </p>
                 </div>
