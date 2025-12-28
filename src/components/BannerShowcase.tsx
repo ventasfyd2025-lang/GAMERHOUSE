@@ -32,27 +32,30 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
       return [];
     }
 
-    return slotOrder
-      .map((slotKey) => {
-        const slot = bannerConfig.slots?.[slotKey];
-        if (!slot) {
-          return null;
-        }
-        const hasContent = slot.title || slot.text || slot.image || slot.ctaLabel;
-        if (!hasContent) {
-          return null;
-        }
-        return {
-          id: slotKey,
-          title: slot.title || 'Campaña destacada',
-          text: slot.text || 'Personaliza este banner desde el panel de administración.',
-          image: slot.image,
-          ctaLabel: slot.ctaLabel || 'Ver más',
-          ctaUrl: slot.ctaUrl || '/productos',
-          emphasize: slot.emphasize || false,
-          height: slot.height || 'medium',
-        };
-      }).filter((card): card is BannerCard => Boolean(card));
+    return slotOrder.reduce<BannerCard[]>((acc, slotKey) => {
+      const slot = bannerConfig.slots?.[slotKey];
+      if (!slot) {
+        return acc;
+      }
+
+      const hasContent = slot.title || slot.text || slot.image || slot.ctaLabel;
+      if (!hasContent) {
+        return acc;
+      }
+
+      acc.push({
+        id: slotKey,
+        title: slot.title || 'Campaña destacada',
+        text: slot.text || 'Personaliza este banner desde el panel de administración.',
+        image: slot.image,
+        ctaLabel: slot.ctaLabel || 'Ver más',
+        ctaUrl: slot.ctaUrl || '/productos',
+        emphasize: slot.emphasize || false,
+        height: slot.height || 'medium',
+      });
+
+      return acc;
+    }, []);
   }, [bannerConfig.slots, slotOrder]);
 
   if (cards.length === 0 || bannerConfig.active === false) {
