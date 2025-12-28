@@ -149,7 +149,7 @@ Environment Variables (8)
 
 FIREBASE_CLIENT_EMAIL                      firebase-adminsdk-xxxx@... [All]
 FIREBASE_PRIVATE_KEY                       ********                   [All]
-NEXT_PUBLIC_FIREBASE_API_KEY               AIzaSyB-azg5UZl5y...      [All]
+NEXT_PUBLIC_FIREBASE_API_KEY               <obtener en GCP>          [All]
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN           importadora-fyd.fire...    [All]
 NEXT_PUBLIC_FIREBASE_PROJECT_ID            importadora-fyd            [All]
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET        importadora-fyd.fire...    [All]

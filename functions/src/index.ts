@@ -6,11 +6,74 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 admin.initializeApp();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+type RuntimeConfig = {
+  notifications?: {
+    from?: string;
+    reply_to?: string;
+    default_recipient?: string;
+  };
+  site?: {
+    url?: string;
+  };
+  resend?: {
+    api_key?: string;
+  };
+  store?: {
+    name?: string;
+  };
+};
+
+const getRuntimeConfig = (): RuntimeConfig => {
+  try {
+    return functions.config() as RuntimeConfig;
+  } catch {
+    return {};
+  }
+};
+
+const runtimeConfig = getRuntimeConfig();
+const storeName = process.env.STORE_NAME || runtimeConfig.store?.name || 'Gamer House';
+const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL
+  || process.env.BASE_URL
+  || runtimeConfig.site?.url
+  || 'https://www.gamer-house.cl';
+const storeBaseUrl = rawBaseUrl.replace(/\/$/, '');
+const storeHostname = (() => {
+  try {
+    return new URL(storeBaseUrl).hostname;
+  } catch {
+    return 'gamer-house.cl';
+  }
+})();
+const notificationFrom = process.env.NOTIFICATIONS_FROM_EMAIL
+  || runtimeConfig.notifications?.from
+  || `${storeName} <onboarding@resend.dev>`;
+const notificationReplyTo = process.env.NOTIFICATIONS_REPLY_TO
+  || runtimeConfig.notifications?.reply_to
+  || `contacto@${storeHostname}`;
+const resendApiKey = process.env.RESEND_API_KEY || runtimeConfig.resend?.api_key;
+
+let resend: Resend | null = null;
+if (resendApiKey) {
+  resend = new Resend(resendApiKey);
+} else {
+  console.warn('⚠️ Resend API key no configurada. Los correos quedar\u00e1n deshabilitados.');
+}
+
+const getOrdersUrl = `${storeBaseUrl}/mis-pedidos`;
+const getChatUrl = (orderId: string) => `${storeBaseUrl}/chat/${orderId}`;
+
+const ensureResend = () => {
+  if (!resend) {
+    console.warn('Resend no está inicializado. Email omitido.');
+    return null;
+  }
+  return resend;
+};
 
 // Función de prueba para verificar que los triggers funcionan
 export const testOrderTrigger = functions.firestore
-  .document('orders/{orderId}')
+  .document('gamerhouse_orders/{orderId}')
   .onCreate(async (snap, context) => {
     const orderId = context.params.orderId;
     const order = snap.data();
@@ -22,7 +85,7 @@ export const testOrderTrigger = functions.firestore
   });
 
 export const sendOrderConfirmationEmail = functions.firestore
-  .document('orders/{orderId}')
+  .document('gamerhouse_orders/{orderId}')
   .onCreate(async (snap, context) => {
     const order = snap.data();
     const orderId = context.params.orderId;
@@ -30,8 +93,8 @@ export const sendOrderConfirmationEmail = functions.firestore
     try {
       console.log(`Processing order ${orderId} with status: ${order.status}`);
       console.log(`Customer email: ${order.customerEmail}`);
-      console.log(`Resend API Key exists: ${!!process.env.RESEND_API_KEY}`);
-      console.log(`Resend API Key prefix: ${process.env.RESEND_API_KEY?.substring(0, 10)}...`);
+      console.log(`Resend API Key exists: ${!!resendApiKey}`);
+      console.log(`Resend API Key prefix: ${resendApiKey?.substring(0, 10)}...`);
 
       // Solo enviar email para órdenes confirmadas o con comprobante
       if (order.status !== 'confirmed' && order.status !== 'pending_verification') {
@@ -101,7 +164,7 @@ export const sendOrderConfirmationEmail = functions.firestore
             <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
               <h3 style="color: #4CAF50; margin-bottom: 15px;">📋 Seguimiento de tu Pedido</h3>
               <p style="margin-bottom: 15px;">Puedes ver el estado de tu pedido en tiempo real:</p>
-              <a href="https://www.importadora-fyd.cl/chat/${orderId}"
+              <a href="${getChatUrl(orderId)}"
                  style="display: inline-block; background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;">
                 🔍 Ver Estado del Pedido #${orderId}
               </a>
@@ -126,12 +189,17 @@ export const sendOrderConfirmationEmail = functions.firestore
       console.log('Attempting to send email...');
       console.log(`Sending email to: ${order.customerEmail}`);
 
-      const result = await resend.emails.send({
-        from: 'Gamer House <pedidos@importadora-fyd.cl>',
+      const resendClient = ensureResend();
+      if (!resendClient) {
+        return null;
+      }
+
+      const result = await resendClient.emails.send({
+        from: notificationFrom,
         to: [order.customerEmail],
         subject: `Confirmación de Pedido #${orderId} - Gamer House`,
         html: emailHtml,
-        reply_to: 'contacto@importadora-fyd.cl',
+        reply_to: notificationReplyTo,
       });
 
       console.log(`Email sent successfully for order ${orderId}. Resend response:`, result);
@@ -152,7 +220,7 @@ export const sendManualOrderEmail = functions.https.onCall(async (data, context)
   const { orderId, email } = data;
 
   try {
-    const orderDoc = await admin.firestore().doc(`orders/${orderId}`).get();
+    const orderDoc = await admin.firestore().doc(`gamerhouse_orders/${orderId}`).get();
     if (!orderDoc.exists) {
       throw new functions.https.HttpsError('not-found', 'Order not found');
     }
@@ -215,7 +283,7 @@ export const sendManualOrderEmail = functions.https.onCall(async (data, context)
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
             <h3 style="color: #4CAF50; margin-bottom: 15px;">📋 Seguimiento de tu Pedido</h3>
             <p style="margin-bottom: 15px;">Puedes ver el estado de tu pedido en tiempo real:</p>
-            <a href="https://www.importadora-fyd.cl/chat/${orderId}"
+            <a href="${getChatUrl(orderId)}"
                style="display: inline-block; background-color: #4CAF50; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;">
               🔍 Ver Estado del Pedido #${orderId}
             </a>
@@ -237,12 +305,17 @@ export const sendManualOrderEmail = functions.https.onCall(async (data, context)
       </html>
     `;
 
-    await resend.emails.send({
-      from: 'Gamer House <pedidos@importadora-fyd.cl>',
+    const resendClient = ensureResend();
+    if (!resendClient) {
+      return { success: false, message: 'Resend no configurado' };
+    }
+
+    await resendClient.emails.send({
+      from: notificationFrom,
       to: [email || order.customerEmail],
       subject: `Confirmación de Pedido #${orderId} - Gamer House`,
       html: emailHtml,
-      reply_to: 'contacto@importadora-fyd.cl',
+      reply_to: notificationReplyTo,
     });
 
     return { success: true, message: 'Email sent successfully' };
@@ -285,7 +358,7 @@ export const deleteUserAccount = functions.https.onCall(async (data, context) =>
 
 // Función para notificar cambios de estado de pedidos
 export const sendOrderStatusUpdate = functions.firestore
-  .document('orders/{orderId}')
+  .document('gamerhouse_orders/{orderId}')
   .onUpdate(async (change, context) => {
     const beforeData = change.before.data();
     const afterData = change.after.data();
@@ -373,6 +446,9 @@ export const sendOrderStatusUpdate = functions.firestore
             </div>
 
             <p>Puedes ver más detalles y hacer seguimiento en nuestra web en la sección "Mis Pedidos".</p>
+            <p>
+              <a href="${getOrdersUrl}" style="display:inline-block;background-color:#333;color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;">Ir a Mis Pedidos</a>
+            </p>
 
             ${afterData.status === 'shipped' ?
               '<p><strong>Nota:</strong> Recibirás información de tracking cuando esté disponible.</p>' :
@@ -388,12 +464,17 @@ export const sendOrderStatusUpdate = functions.firestore
         </html>
       `;
 
-      await resend.emails.send({
-        from: 'Gamer House <pedidos@importadora-fyd.cl>',
+      const resendClient = ensureResend();
+      if (!resendClient) {
+        return null;
+      }
+
+      await resendClient.emails.send({
+        from: notificationFrom,
         to: [afterData.customerEmail],
         subject: `${statusInfo.title} - Pedido #${orderId.slice(-8).toUpperCase()}`,
         html: emailHtml,
-        reply_to: 'contacto@importadora-fyd.cl',
+        reply_to: notificationReplyTo,
       });
 
       console.log(`Status update email sent to ${afterData.customerEmail}`);
@@ -470,7 +551,7 @@ export const sendNewMessageNotification = functions.firestore
               ''
             }
 
-            <a href="https://importadora-fyd.vercel.app/mis-pedidos" class="cta-button">
+            <a href="${getOrdersUrl}" class="cta-button">
               Ver Mis Pedidos y Responder
             </a>
           </div>
@@ -483,12 +564,17 @@ export const sendNewMessageNotification = functions.firestore
         </html>
       `;
 
-      await resend.emails.send({
-        from: 'Gamer House <mensajes@importadora-fyd.cl>',
+      const resendClient = ensureResend();
+      if (!resendClient) {
+        return null;
+      }
+
+      await resendClient.emails.send({
+        from: notificationFrom,
         to: [message.userEmail],
         subject: `💬 Nuevo mensaje sobre tu pedido${message.orderId ? ` #${message.orderId.slice(-8).toUpperCase()}` : ''}`,
         html: emailHtml,
-        reply_to: 'contacto@importadora-fyd.cl',
+        reply_to: notificationReplyTo,
       });
 
       console.log(`Message notification sent to ${message.userEmail}`);

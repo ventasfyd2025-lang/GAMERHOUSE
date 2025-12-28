@@ -149,12 +149,12 @@ Environment Variables (8)
 
 FIREBASE_CLIENT_EMAIL                      firebase-adminsdk-xxxx@... [All]
 FIREBASE_PRIVATE_KEY                       ********                   [All]
-NEXT_PUBLIC_FIREBASE_API_KEY               AIzaSyB-azg5UZl5y...      [All]
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN           importadora-fyd.fire...    [All]
-NEXT_PUBLIC_FIREBASE_PROJECT_ID            importadora-fyd            [All]
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET        importadora-fyd.fire...    [All]
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID   790742066847               [All]
-NEXT_PUBLIC_FIREBASE_APP_ID                1:790742066847:web:...     [All]
+NEXT_PUBLIC_FIREBASE_API_KEY               <obtener en GCP>          [All]
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN           gamer-house-779ae.fi...    [All]
+NEXT_PUBLIC_FIREBASE_PROJECT_ID            gamer-house-779ae          [All]
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET        gamer-house-779ae.fi...    [All]
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID   833020610004               [All]
+NEXT_PUBLIC_FIREBASE_APP_ID                1:833020610004:web:...     [All]
 ```
 
 ---

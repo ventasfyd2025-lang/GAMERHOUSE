@@ -186,13 +186,14 @@ export default function ChatPage() {
   }, [orderId]);
 
   const loadMessages = useCallback(() => {
-    if (!currentUser || !orderId) return undefined;
+    if (!currentUser || !isRegistered || !orderId) return undefined;
 
     // Use userEmail for consistent filtering across all user types
+    const userEmail = currentUser.email;
     const messagesQuery = query(
       collection(db, 'chat_messages'),
       where('orderId', '==', orderId),
-      where('userEmail', '==', currentUser.email)
+      where('userEmail', '==', userEmail)
     );
 
     const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
@@ -222,19 +223,19 @@ export default function ChatPage() {
     });
 
     return unsubscribe;
-  }, [currentUser, orderId]);
+  }, [currentUser, isRegistered, orderId]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   useEffect(() => {
-    if (!authLoading && !currentUser) {
+    if (!authLoading && (!currentUser || !isRegistered)) {
       router.push('/login');
       return;
     }
 
-    if (!currentUser) return;
+    if (!currentUser || !isRegistered) return;
 
     loadOrder();
     const unsubscribe = loadMessages();
@@ -242,14 +243,20 @@ export default function ChatPage() {
     return () => {
       unsubscribe?.();
     };
-  }, [authLoading, currentUser, loadMessages, loadOrder, router]);
+  }, [authLoading, currentUser, isRegistered, loadMessages, loadOrder, router]);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
   const sendMessage = async () => {
-    if ((!newMessage.trim() && !selectedImage) || !currentUser || sendingMessage || !orderId) return;
+    if ((!newMessage.trim() && !selectedImage) || !currentUser || !isRegistered || sendingMessage || !orderId) return;
+
+    const userId = 'uid' in currentUser ? currentUser.uid : null;
+    if (!userId) {
+      console.error('No UID available for current user. Unable to send message.');
+      return;
+    }
 
     setSendingMessage(true);
     setUploadingImage(true);
@@ -271,7 +278,7 @@ export default function ChatPage() {
 
       const messageData = {
         orderId,
-        userId: currentUser.email, // Use email for consistent filtering
+        userId,
         userEmail: currentUser.email,
         userName: `${currentUser.firstName} ${currentUser.lastName}`,
         message: newMessage.trim() || (imageUrl ? 'Imagen compartida' : ''),

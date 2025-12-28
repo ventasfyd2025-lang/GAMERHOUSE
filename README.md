@@ -26,6 +26,8 @@ npm install
 npm run dev
 \`\`\`
 
+> Nota: Esta sección se actualizó el 28/12/2025 para forzar un redeploy en Vercel tras los cambios de variables de entorno relacionados con las notificaciones por correo.
+
 ## 🔐 Admin Panel
 
 **URL**: /admin

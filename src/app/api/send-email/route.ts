@@ -1,15 +1,43 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-// Instanciar Resend solo cuando sea necesario para evitar errores en build
-const getResend = () => {
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error('RESEND_API_KEY is not defined');
-  }
-  return new Resend(process.env.RESEND_API_KEY);
+const normalizeEmail = (email?: string | null) => {
+  if (!email) return null;
+  const trimmed = email.trim();
+  if (!trimmed) return null;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(trimmed) ? trimmed : null;
 };
 
-const DEFAULT_RECIPIENT = 'ventas.fyd2025@gmail.com';
+const STORE_NAME = process.env.STORE_NAME?.trim() || 'Gamer House';
+const RAW_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL?.trim()
+  || process.env.BASE_URL?.trim()
+  || 'https://www.gamer-house.cl';
+const STORE_BASE_URL = RAW_BASE_URL.replace(/\/$/, '');
+const DEFAULT_FROM_EMAIL = process.env.NOTIFICATIONS_FROM_EMAIL?.trim()
+  || `${STORE_NAME} <onboarding@resend.dev>`;
+const DEFAULT_REPLY_TO = process.env.NOTIFICATIONS_REPLY_TO?.trim()
+  || (() => {
+    try {
+      return `contacto@${new URL(STORE_BASE_URL).hostname}`;
+    } catch {
+      return 'contacto@gamer-house.cl';
+    }
+  })();
+
+const DEFAULT_RECIPIENTS = (process.env.NOTIFICATIONS_DEFAULT_RECIPIENTS || 'ventas.fyd2025@gmail.com')
+  .split(',')
+  .map((recipient) => normalizeEmail(recipient))
+  .filter((recipient): recipient is string => Boolean(recipient));
+
+// Instanciar Resend solo cuando sea necesario para evitar errores en build
+const getResend = () => {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not defined');
+  }
+  return new Resend(apiKey);
+};
 
 // ⚠️ SEGURIDAD: Token secreto para proteger el endpoint
 // Genera uno seguro y agrégalo en .env: EMAIL_API_SECRET=tu_token_secreto_aqui
@@ -49,15 +77,6 @@ setInterval(() => {
     }
   }
 }, 5 * 60 * 1000);
-
-const normalizeEmail = (email?: string | null) => {
-  if (!email) return null;
-  const trimmed = email.trim();
-  if (!trimmed) return null;
-  // Minimal email format check to avoid Resend API errors
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(trimmed) ? trimmed : null;
-};
 
 export async function POST(request: NextRequest) {
   try {
@@ -278,9 +297,9 @@ export async function POST(request: NextRequest) {
 
     const resend = getResend();
     const { data: emailData, error } = await resend.emails.send({
-      from: 'GAMERHOUSE <onboarding@resend.dev>',
+      from: DEFAULT_FROM_EMAIL,
       to,
-      ...(replyTo ? { reply_to: replyTo } : {}),
+      ...(replyTo ? { reply_to: replyTo } : { reply_to: DEFAULT_REPLY_TO }),
       subject,
       html: `
         <!DOCTYPE html>
@@ -320,7 +339,7 @@ export async function POST(request: NextRequest) {
             ${emailContent}
             <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
             <p style="font-size: 12px; color: #999;">
-              Este es un email automático de GAMERHOUSE<br>
+              Este es un email automático de ${STORE_NAME.toUpperCase()}<br>
               Fecha: ${new Date().toLocaleString('es-CL')}
             </p>
           </body>

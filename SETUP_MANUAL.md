@@ -171,7 +171,7 @@ Environment Variables
 
 FIREBASE_CLIENT_EMAIL                      firebase-adminsdk-xxxx@... [Production, Preview, Development]
 FIREBASE_PRIVATE_KEY                       ******** (hidden)          [Production, Preview, Development]
-NEXT_PUBLIC_FIREBASE_API_KEY               AIzaSyB...                 [Production, Preview, Development]
+NEXT_PUBLIC_FIREBASE_API_KEY               <obtener en GCP>          [Production, Preview, Development]
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN           importadora-fyd...         [Production, Preview, Development]
 ... (otras variables)
 ```

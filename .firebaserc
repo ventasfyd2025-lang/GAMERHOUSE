@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "gamer-house-779ae"
+  },
+  "targets": {
+    "gamer-house-779ae": {
+      "hosting": {
+        "gamerhouse": [
+          "gamerhouse",
+          "hosting:gamerhouse"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

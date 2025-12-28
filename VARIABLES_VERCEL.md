@@ -24,13 +24,15 @@ El cliente debe configurar estas variables en Vercel antes de hacer deploy.
 ### Firebase Client (PÚBLICAS)
 
 ```bash
-NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDCPLSzaBQCbrsB5T0u9ryqcic4pcFjwaM
+NEXT_PUBLIC_FIREBASE_API_KEY=<OBTENER_DESDE_GOOGLE_CLOUD_CONSOLE>
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=gamer-house-779ae.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=gamer-house-779ae
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=gamer-house-779ae.firebasestorage.app
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=833020610004
 NEXT_PUBLIC_FIREBASE_APP_ID=1:833020610004:web:1d9399c5c7b1eb5f9c8241
 ```
+
+> ⚠️ La API key debe mantenerse fuera del repositorio. Guárdala solo en Vercel/.env y, si necesitas rotarla, hazlo desde Google Cloud Console → APIs & Services → Credentials.
 
 ### Firebase Admin (PRIVADAS) - IMPORTANTE
 
@@ -62,20 +64,32 @@ MERCADOPAGO_ACCESS_TOKEN=APP_USR-5287307946030683-100211-90e6fc1fa421b655b4edc4d
 ### URLs
 
 ```bash
-NEXT_PUBLIC_BASE_URL=https://www.importadora-fyd.cl
-BASE_URL=https://www.importadora-fyd.cl
+NEXT_PUBLIC_BASE_URL=https://www.gamer-house.cl
+BASE_URL=https://www.gamer-house.cl
+```
+
+### Notificaciones / Correos
+
+```bash
+RESEND_API_KEY=re_XpMoa3YK_NtrVQcZHZUu3J4kuUpRMueMN
+EMAIL_API_SECRET=2e739ce4e374ae7d5278eb414924a2a01694bc1bd8e7ad124acab51685374939
+NOTIFICATIONS_FROM_EMAIL="Gamer House <onboarding@resend.dev>"
+NOTIFICATIONS_REPLY_TO=contacto@gamer-house.cl
+NOTIFICATIONS_DEFAULT_RECIPIENTS=ventas.fyd2025@gmail.com
+STORE_NAME="Gamer House"
 ```
 
 ---
 
 ## Resumen
 
-**Total de variables:** 13
+**Total de variables:** 19
 
 - 6 variables de Firebase Client (NEXT_PUBLIC_FIREBASE_*)
 - 3 variables de Firebase Admin (FIREBASE_ADMIN_*)
 - 2 variables de MercadoPago
 - 2 variables de URLs
+- 6 variables para notificaciones/correos
 
 ---
 

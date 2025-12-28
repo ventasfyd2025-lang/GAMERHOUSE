@@ -56,6 +56,16 @@ service cloud.firestore {
         && (!('orderId' in data) || data.orderId is string);
     }
 
+    function matchesChatOwner(data) {
+      return isSignedIn()
+        && (
+          (data.userId is string && request.auth.uid == data.userId)
+          || (data.userEmail is string
+            && request.auth.token.email != null
+            && data.userEmail == request.auth.token.email)
+        );
+    }
+
     // Validar que usuarios regulares solo puedan editar campos permitidos
     function validateUserUpdate() {
       // Campos sensibles que NO pueden ser editados por usuarios regulares
@@ -189,18 +199,17 @@ service cloud.firestore {
       // Admins pueden crear mensajes para cualquier usuario
       allow create: if isAdmin() && validateChatMessage(request.resource.data);
 
-      // Usuarios regulares solo pueden crear mensajes para sí mismos
-      allow create: if isSignedIn()
-        && request.auth.uid == request.resource.data.userId
+      // Usuarios regulares solo pueden crear mensajes asociados a su cuenta/correo
+      allow create: if matchesChatOwner(request.resource.data)
         && validateChatMessage(request.resource.data);
 
-      // Lectura: admin o el propio usuario
+      // Lectura: admin o el propio usuario (se valida por UID o email)
       allow read: if isAdmin()
-        || (isSignedIn() && request.auth.uid == resource.data.userId);
+        || matchesChatOwner(resource.data);
 
       // Actualización: admin o el propio usuario (para marcar como leído)
       allow update: if isAdmin()
-        || (isSignedIn() && request.auth.uid == resource.data.userId);
+        || matchesChatOwner(resource.data);
 
       // Eliminación: solo admin
       allow delete: if isAdmin();

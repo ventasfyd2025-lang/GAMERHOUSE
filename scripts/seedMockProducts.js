@@ -81,13 +81,17 @@ async function main() {
     const { getAuth } = await import('firebase/auth');
 
     const firebaseConfig = {
-      apiKey: 'AIzaSyB-azg5UZl5y-4jyRFpbpBlGcyo1hibLpM',
-      authDomain: 'importadora-fyd.firebaseapp.com',
-      projectId: 'importadora-fyd',
-      storageBucket: 'importadora-fyd.firebasestorage.app',
-      messagingSenderId: '790742066847',
-      appId: '1:790742066847:web:f7ae71cb04c9345185e4aa',
+      apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+      authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || 'gamer-house-779ae.firebaseapp.com',
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'gamer-house-779ae',
+      storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'gamer-house-779ae.firebasestorage.app',
+      messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '833020610004',
+      appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '1:833020610004:web:1d9399c5c7b1eb5f9c8241',
     };
+
+    if (!firebaseConfig.apiKey) {
+      throw new Error('NEXT_PUBLIC_FIREBASE_API_KEY no está definida. Exporta la clave antes de ejecutar este script.');
+    }
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
