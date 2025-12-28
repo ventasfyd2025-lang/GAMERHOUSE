@@ -51,7 +51,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
       acc.push({
         id: slotKey,
         title: slot.title || 'Campaña destacada',
-        text: slot.text || 'Personaliza este banner desde el panel de administración.',
+        text: typeof slot.text === 'string' && slot.text.trim().length > 0 ? slot.text : '',
         image: slot.image,
         ctaLabel: slot.ctaLabel || 'Ver más',
         ctaUrl: slot.ctaUrl || '/productos',
@@ -104,11 +104,11 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                   >
                     {card.title}
                   </h3>
-                  <p
-                    className="banner-neon-text--secondary text-base"
-                  >
-                    {card.text}
-                  </p>
+                  {card.text && (
+                    <p className="banner-neon-text--secondary text-base">
+                      {card.text}
+                    </p>
+                  )}
                 </div>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-100">
                   {card.ctaLabel || 'Ver más'}
