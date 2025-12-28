@@ -885,7 +885,7 @@ function CheckoutContent() {
                         <button
                           type="submit"
                           disabled={isProcessing || stockLoading}
-                          className="flex-1 py-3 px-6 bg-primary hover:bg-secondary text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="flex-1 py-3 px-6 rounded-lg text-base font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-slate-900 text-white border border-slate-900 hover:bg-slate-800"
                         >
                           {isProcessing
                             ? 'Procesando...'
