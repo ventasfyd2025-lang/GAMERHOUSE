@@ -566,7 +566,7 @@ export default function AdminPage() {
   const router = useRouter();
   const { user, loading: authLoading, login, logout } = useAuth();
   const { userProfile, isAdmin, loading: userAuthLoading } = useUserAuth();
-  const { products, refetch, removeProduct, removeProducts } = useProducts();
+  const { products, refetch, removeProduct, removeProducts } = useProducts({ includeOutOfStock: true });
   const { footerConfig, updateFooterConfig, loading: footerLoading } = useFooterConfig();
   const { bankConfig, updateBankConfig, loading: bankLoading } = useBankConfig();
   const { notifyOrderStatusChange } = useEmailNotifications();

@@ -16,14 +16,21 @@ import {
 // Simple in-memory cache
 const productCache = new Map<string, { data: Product[], timestamp: number }>();
 const CACHE_DURATION = 1 * 60 * 1000; // 1 minute
+const AVAILABLE_CACHE_KEY = 'products_available';
+const ALL_CACHE_KEY = 'products_all';
 
-export function useProducts() {
+interface UseProductsOptions {
+  includeOutOfStock?: boolean;
+}
+
+export function useProducts(options: UseProductsOptions = {}) {
+  const includeOutOfStock = options.includeOutOfStock ?? false;
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadProducts = useCallback(async () => {
-    const cacheKey = 'products';
+    const cacheKey = includeOutOfStock ? ALL_CACHE_KEY : AVAILABLE_CACHE_KEY;
 
     // Check if we have valid cached data
     const cached = productCache.get(cacheKey);
@@ -77,12 +84,24 @@ export function useProducts() {
             ofertaDesde: data.ofertaDesde,
             ofertaDuracionHoras: data.ofertaDuracionHoras
           } as Product;
-        }).filter(product => (product.stock || 0) > 0 && product.activo !== false);
+        });
+
+        const filteredList = productsList.filter(product => {
+          const hasStock = (product.stock || 0) > 0;
+          const isActive = product.activo !== false;
+          if (!isActive) {
+            return includeOutOfStock;
+          }
+          if (!includeOutOfStock) {
+            return hasStock;
+          }
+          return true;
+        });
 
         // Cache the data
-        productCache.set(cacheKey, { data: productsList, timestamp: Date.now() });
-        setProducts(productsList);
-        console.log(`✅ Loaded ${productsList.length} products from gamerhouse_products`);
+        productCache.set(cacheKey, { data: filteredList, timestamp: Date.now() });
+        setProducts(filteredList);
+        console.log(`✅ Loaded ${filteredList.length} products from gamerhouse_products`);
       } catch (firebaseError) {
         console.warn('Firebase failed, using mock fallback:', firebaseError);
         // Fallback to mock products if Firebase fails
@@ -102,7 +121,7 @@ export function useProducts() {
             envioGratis: product.precio > 50000,
             fechaCreacion: '2024-01-15'
           } as Product))
-          .filter(product => (product.stock || 0) > 0);
+          .filter(product => includeOutOfStock || (product.stock || 0) > 0);
 
         productCache.set(cacheKey, { data: productsList, timestamp: Date.now() });
         setProducts(productsList);
@@ -113,7 +132,7 @@ export function useProducts() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [includeOutOfStock]);
 
   useEffect(() => {
     loadProducts();
@@ -215,7 +234,8 @@ export function useProducts() {
       setProducts(prev => prev.filter(product => product.id !== id));
       
       // Invalidate cache
-      productCache.delete('products');
+      productCache.delete(AVAILABLE_CACHE_KEY);
+      productCache.delete(ALL_CACHE_KEY);
     } catch (error) {
       setError('Error al eliminar el producto');
     }
@@ -228,7 +248,8 @@ export function useProducts() {
       setProducts(prev => prev.filter(product => !ids.includes(product.id)));
       
       // Invalidate cache
-      productCache.delete('products');
+      productCache.delete(AVAILABLE_CACHE_KEY);
+      productCache.delete(ALL_CACHE_KEY);
     } catch (error) {
       setError('Error al eliminar los productos');
     }
@@ -243,14 +264,16 @@ export function useProducts() {
       ));
 
       // Invalidate cache
-      productCache.delete('products');
+      productCache.delete(AVAILABLE_CACHE_KEY);
+      productCache.delete(ALL_CACHE_KEY);
     } catch (error) {
       setError('Error al actualizar el producto');
     }
   };
 
   const invalidateCache = () => {
-    productCache.delete('products');
+    productCache.delete(AVAILABLE_CACHE_KEY);
+    productCache.delete(ALL_CACHE_KEY);
     loadProducts();
   };
 
