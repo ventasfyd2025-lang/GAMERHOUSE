@@ -101,6 +101,34 @@ p {
   animation: neonPulse 2.8s infinite ease-in-out;
 }
 
+@keyframes shimmerFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes dualGlow {
+  0%, 100% { text-shadow: 0 0 16px rgba(56,189,248,0.8), 0 0 32px rgba(168,85,247,0.7); }
+  50% { text-shadow: 0 0 16px rgba(168,85,247,0.8), 0 0 32px rgba(56,189,248,0.7); }
+}
+
+.banner-neon-text {
+  background-image: linear-gradient(120deg, rgba(59,130,246,0.9), rgba(236,72,153,0.9), rgba(249,115,22,0.9));
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: shimmerFlow 6s linear infinite, dualGlow 4s ease-in-out infinite;
+}
+
+.banner-neon-text--secondary {
+  background-image: linear-gradient(120deg, rgba(190,242,100,0.85), rgba(34,197,94,0.85), rgba(59,130,246,0.85));
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: shimmerFlow 8s linear infinite, dualGlow 5s ease-in-out infinite;
+  opacity: 0.85;
+}
+
 
 #admin-container {
   --admin-surface: #ffffff;
