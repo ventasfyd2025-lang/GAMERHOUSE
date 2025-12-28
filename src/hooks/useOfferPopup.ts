@@ -34,7 +34,7 @@ export function useOfferPopup() {
     description: 'Descuentos increíbles por tiempo limitado',
     buttonText: 'Ver Ofertas',
     buttonLink: '/popup-ofertas',
-    active: true,
+    active: false,
     size: '2x2',
     position: 'bottom-right',
     mediaUrl: '',

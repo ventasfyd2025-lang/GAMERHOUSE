@@ -25,6 +25,8 @@ interface MiddleBanner {
   ctaLink: string;
   badgeText: string;
   badgeColor?: string;
+  height?: 'short' | 'medium' | 'tall';
+  emphasize?: boolean;
 }
 
 const normalizeMiddleBanners = (raw: unknown): MiddleBanner[] => {
@@ -84,6 +86,10 @@ const normalizeMiddleBanners = (raw: unknown): MiddleBanner[] => {
       ctaLink: resolveLink(),
       badgeText: getString(banner.badgeText ?? banner.tagText, fallback.badgeText),
       badgeColor: resolveBadgeColor(),
+      height: ['short', 'medium', 'tall'].includes(banner.height as string)
+        ? (banner.height as 'short' | 'medium' | 'tall')
+        : (fallback.height as 'short' | 'medium' | 'tall' | undefined) ?? 'medium',
+      emphasize: typeof banner.emphasize === 'boolean' ? banner.emphasize : (fallback.emphasize ?? false),
     };
   });
 };

@@ -38,9 +38,11 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
           image: slot.image,
           ctaLabel: slot.ctaLabel || 'Ver más',
           ctaUrl: slot.ctaUrl || '/productos',
+          emphasize: slot.emphasize || false,
+          height: slot.height || 'medium',
         };
       })
-      .filter(Boolean) as Array<{ id: string; title: string; text: string; image?: string; ctaLabel?: string; ctaUrl?: string }>;
+      .filter(Boolean) as Array<{ id: string; title: string; text: string; image?: string; ctaLabel?: string; ctaUrl?: string; emphasize?: boolean; height?: string }>;
   }, [bannerConfig.slots, slotOrder]);
 
   if (cards.length === 0 || bannerConfig.active === false) {
@@ -55,7 +57,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
             <Link
               key={card.id}
               href={card.ctaUrl || '/productos'}
-              className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-lg"
+              className={`group relative overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-lg transition-transform duration-500 ${card.emphasize ? 'sm:col-span-2 lg:col-span-3' : ''}`}
             >
               <div className="absolute inset-0">
                 {card.image ? (
@@ -70,7 +72,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                 )}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#031624]/85 via-[#04314a]/50 to-transparent" />
               </div>
-              <div className="relative flex min-h-[180px] flex-col justify-between gap-3 p-5 text-white">
+              <div className={`relative flex flex-col justify-between gap-3 p-5 text-white ${card.height === 'tall' ? 'min-h-[260px]' : 'min-h-[200px]'}`}>
                 <div>
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-white/70">
                     Banner destacado

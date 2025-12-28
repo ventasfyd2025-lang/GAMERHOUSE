@@ -19,6 +19,8 @@ interface BannerSlotConfig {
   image?: string;
   ctaUrl?: string;
   ctaLabel?: string;
+  emphasize?: boolean;
+  height?: 'short' | 'medium' | 'tall';
 }
 
 interface BannerConfig {
@@ -111,6 +113,10 @@ const sanitizeSlot = (slot: Record<string, unknown> | undefined): BannerSlotConf
   image: typeof slot?.image === 'string' && slot.image.trim() ? slot.image : undefined,
   ctaUrl: typeof slot?.ctaUrl === 'string' && slot.ctaUrl.trim() ? slot.ctaUrl : undefined,
   ctaLabel: typeof slot?.ctaLabel === 'string' && slot.ctaLabel.trim() ? slot.ctaLabel : undefined,
+  emphasize: typeof slot?.emphasize === 'boolean' ? slot.emphasize : undefined,
+  height: typeof slot?.height === 'string' && ['short', 'medium', 'tall'].includes(slot.height)
+    ? (slot.height as 'short' | 'medium' | 'tall')
+    : undefined,
 });
 
 const sanitizeBannerConfig = (raw: Record<string, unknown> | undefined): BannerConfig => {

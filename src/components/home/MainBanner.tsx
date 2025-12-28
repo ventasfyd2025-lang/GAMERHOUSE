@@ -113,7 +113,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-cyan-100 bg-white shadow-lg">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_45%,rgba(85,201,231,0.2),transparent_55%),radial-gradient(circle_at_90%_5%,rgba(174,226,246,0.3),transparent_55%)] opacity-80" />
-      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
+      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
         <div className="flex-1 space-y-6 p-10 sm:p-12">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900">
             {title}
@@ -133,7 +133,7 @@ export default function MainBanner({ config, onResetFilters }: MainBannerProps) 
           </div>
         </div>
 
-        <div className="relative hidden lg:flex w-full max-w-xl overflow-hidden">
+        <div className="relative hidden lg:flex flex-1 overflow-hidden min-h-[360px]">
           <Link
             href={primaryLink.href}
             target={primaryLink.external ? '_blank' : undefined}
