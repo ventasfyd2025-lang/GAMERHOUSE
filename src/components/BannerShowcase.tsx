@@ -93,10 +93,8 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                 ) : (
                   <div className="absolute inset-0 bg-gradient-to-r from-sky-200 to-cyan-100" />
                 )}
-                <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
               </div>
-              <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_10px_28px_rgba(0,0,0,0.65)] ${heightClasses[card.height ?? 'medium']}`}>
+              <div className={`relative flex flex-col justify-between gap-4 p-6 text-white drop-shadow-[0_12px_28px_rgba(0,0,0,0.75)] ${heightClasses[card.height ?? 'medium']}`}>
                 <div className="space-y-3">
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-white/85">
                     Banner destacado
