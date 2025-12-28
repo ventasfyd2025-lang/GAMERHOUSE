@@ -1,7 +1,7 @@
 "use strict";
 var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendNewMessageNotification = exports.sendOrderStatusUpdate = exports.deleteUserAccount = exports.sendManualOrderEmail = exports.sendOrderConfirmationEmail = exports.testOrderTrigger = void 0;
+exports.sendNewMessageNotification = exports.sendOrderStatusUpdate = exports.deleteUserAccount = exports.sendManualOrderEmail = exports.sendOrderConfirmationEmail = exports.testOrderTrigger = exports.ensureUserProfile = void 0;
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const resend_1 = require("resend");
@@ -54,6 +54,31 @@ const ensureResend = () => {
     }
     return resend;
 };
+exports.ensureUserProfile = functions.auth.user().onCreate(async (user) => {
+    var _a, _b;
+    const userRef = admin.firestore().collection('users').doc(user.uid);
+    const existingDoc = await userRef.get();
+    if (existingDoc.exists) {
+        console.log(`Perfil ya existía para ${user.uid}, no se crea uno nuevo.`);
+        return null;
+    }
+    const displayNameParts = (user.displayName || '').trim().split(/\s+/).filter(Boolean);
+    const [firstName = '', ...rest] = displayNameParts;
+    const lastName = rest.join(' ');
+    const providerId = ((_b = (_a = user.providerData) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.providerId) || 'email';
+    await userRef.set({
+        uid: user.uid,
+        email: user.email || '',
+        firstName,
+        lastName,
+        phone: user.phoneNumber || '',
+        role: 'cliente',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        provider: providerId,
+    });
+    console.log(`✅ Perfil creado en Firestore para ${user.email || user.uid}`);
+    return null;
+});
 // Función de prueba para verificar que los triggers funcionan
 exports.testOrderTrigger = functions.firestore
     .document('gamerhouse_orders/{orderId}')

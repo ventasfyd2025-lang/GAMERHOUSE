@@ -71,6 +71,35 @@ const ensureResend = () => {
   return resend;
 };
 
+export const ensureUserProfile = functions.auth.user().onCreate(async (user) => {
+  const userRef = admin.firestore().collection('users').doc(user.uid);
+  const existingDoc = await userRef.get();
+
+  if (existingDoc.exists) {
+    console.log(`Perfil ya existía para ${user.uid}, no se crea uno nuevo.`);
+    return null;
+  }
+
+  const displayNameParts = (user.displayName || '').trim().split(/\s+/).filter(Boolean);
+  const [firstName = '', ...rest] = displayNameParts;
+  const lastName = rest.join(' ');
+  const providerId = user.providerData?.[0]?.providerId || 'email';
+
+  await userRef.set({
+    uid: user.uid,
+    email: user.email || '',
+    firstName,
+    lastName,
+    phone: user.phoneNumber || '',
+    role: 'cliente',
+    createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    provider: providerId,
+  });
+
+  console.log(`✅ Perfil creado en Firestore para ${user.email || user.uid}`);
+  return null;
+});
+
 // Función de prueba para verificar que los triggers funcionan
 export const testOrderTrigger = functions.firestore
   .document('gamerhouse_orders/{orderId}')
