@@ -27,7 +27,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
   const { bannerConfig } = useConfig();
   const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
 
-  const cards = useMemo<BannerCard[]>(() => {
+  const cards = useMemo((): BannerCard[] => {
     if (!bannerConfig?.slots) {
       return [];
     }
@@ -52,8 +52,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
           emphasize: slot.emphasize || false,
           height: slot.height || 'medium',
         };
-      })
-      .filter((card): card is BannerCard => Boolean(card));
+      }).filter((card): card is BannerCard => Boolean(card));
   }, [bannerConfig.slots, slotOrder]);
 
   if (cards.length === 0 || bannerConfig.active === false) {
