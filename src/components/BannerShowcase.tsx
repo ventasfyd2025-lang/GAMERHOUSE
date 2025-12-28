@@ -26,6 +26,11 @@ interface BannerCard {
 export default function BannerShowcase({ className, slots }: BannerShowcaseProps) {
   const { bannerConfig } = useConfig();
   const slotOrder: BannerSlotKey[] = slots && slots.length > 0 ? slots : ['middle', 'footer'];
+  const heightClasses: Record<NonNullable<BannerCard['height']>, string> = {
+    short: 'min-h-[220px] sm:min-h-[240px] lg:min-h-[280px]',
+    medium: 'min-h-[280px] sm:min-h-[320px] lg:min-h-[380px]',
+    tall: 'min-h-[340px] sm:min-h-[400px] lg:min-h-[480px]'
+  };
 
   const cards = useMemo((): BannerCard[] => {
     if (!bannerConfig?.slots) {
@@ -85,7 +90,7 @@ export default function BannerShowcase({ className, slots }: BannerShowcaseProps
                 )}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#031624]/85 via-[#04314a]/50 to-transparent" />
               </div>
-              <div className={`relative flex flex-col justify-between gap-3 p-5 text-white ${card.height === 'tall' ? 'min-h-[260px]' : 'min-h-[200px]'}`}>
+              <div className={`relative flex flex-col justify-between gap-3 p-5 text-white ${heightClasses[card.height ?? 'medium']}`}>
                 <div>
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-white/70">
                     Banner destacado
