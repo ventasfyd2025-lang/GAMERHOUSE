@@ -15,7 +15,7 @@ import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import { productMatchesCategory, productMatchesSubcategory, formatCategoryLabel, normalizeCategoryValue } from '@/utils/category';
 import { getPaginationRange } from '@/lib/pagination';
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = 10;
 
 export default function AllProductsPage() {
   return (
