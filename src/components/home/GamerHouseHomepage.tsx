@@ -15,7 +15,7 @@ export default function GamerHouseHomepage() {
   const { products, loading: productsLoading } = useProducts();
   const { addItem } = useCart();
   const { sections: productSections } = useProductSections();
-  const PAGE_SIZE = 20;
+  const PAGE_SIZE = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = useMemo(() => (products.length > 0 ? Math.ceil(products.length / PAGE_SIZE) : 1), [products.length]);
 
